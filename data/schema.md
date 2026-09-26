@@ -1,8 +1,19 @@
 # Token Atlas data schema
 
-Every record is one measured (or explicitly estimated) inference speed figure
-with full provenance. **No record without a source URL, retrieval date, and
-the exact quoted values.**
+Every record is one **measured** inference speed figure with full provenance.
+**No record without a source URL, retrieval date, and the exact quoted values.**
+
+## Layout
+
+- `data/records.csv` / `data/records.json`: measured records only
+  (provenance `sourced` or `community`).
+- `data/reference/estimates.json`: the sources' own model-based estimates.
+  Reference values, not records: excluded from record counts, flags, and the
+  site's default views; shown only where explicitly labeled (lookup toggle,
+  cross-source checks).
+- `data/raw/`: per-source collector output (one file per source, with the
+  source registry entry).
+- `data/sources.json`: source registry (name, URL, license, retrieval date).
 
 ## Fields
 
@@ -22,7 +33,7 @@ the exact quoted values.**
 | `ttft_s` | number | time to first token in seconds, when reported; else empty |
 | `power_w` | number | power draw in watts, when reported; else empty |
 | `date` | string | original measurement date as published (month or day granularity) |
-| `provenance` | enum | `sourced` (linked public page with the quoted number), `community` (community-measured run carried in the source dataset), `estimated` (the source's own model-based estimate) |
+| `provenance` | enum | `sourced` (linked public page with the quoted number), `community` (community-measured run carried in the source dataset), `estimated` (the source's own model-based estimate; lives in `data/reference/estimates.json`) |
 | `source_url` | url | where the figure was retrieved from (per-row page when available, else the dataset download URL) |
 | `source_name` | string | name of the source dataset/page |
 | `retrieved` | date | UTC date the record was retrieved |

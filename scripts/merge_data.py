@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Merge data/raw/*.json source files into data/records.csv + records.json.
 
-Also computes contradiction/outlier flags (scripts/flags.py) so every record
-carries them. Stdlib only.
+Also splits reference estimates (data/reference/estimates.json) and computes
+contradiction/outlier flags (scripts/flags.py) on measured rows, so every
+record carries them. Stdlib only.
 """
 import csv
 import glob
@@ -40,28 +41,40 @@ def main() -> int:
         seen.add(r["id"])
         deduped.append(r)
 
-    # flags
+    # v3: estimates are reference values, not records. They live in
+    # data/reference/ and are excluded from record counts, flags, and the
+    # default site views.
+    measured = [r for r in deduped if r.get("provenance") != "estimated"]
+    estimated = [r for r in deduped if r.get("provenance") == "estimated"]
+
+    # flags (measured rows only)
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from flags import compute_flags
-    fl = compute_flags(deduped)
-    for r in deduped:
+    fl = compute_flags(measured)
+    for r in measured:
         r["flags"] = fl.get(r["id"], [])
 
-    retrieved = max((r["retrieved"] for r in deduped), default="?")
+    retrieved = max((r["retrieved"] for r in measured), default="?")
     with open(os.path.join(ROOT, "data", "records.csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDNAMES)
         w.writeheader()
-        for r in deduped:
+        for r in measured:
             w.writerow({k: (",".join(r[k]) if isinstance(r.get(k), list)
                             else ("" if r.get(k) is None else r[k]))
                         for k in FIELDNAMES})
     with open(os.path.join(ROOT, "data", "records.json"), "w") as f:
-        json.dump({"count": len(deduped), "retrieved": retrieved, "records": deduped},
+        json.dump({"count": len(measured), "retrieved": retrieved, "records": measured},
                   f, indent=1, sort_keys=True)
+    os.makedirs(os.path.join(ROOT, "data", "reference"), exist_ok=True)
+    with open(os.path.join(ROOT, "data", "reference", "estimates.json"), "w") as f:
+        json.dump({"count": len(estimated), "retrieved": retrieved,
+                   "note": "reference estimates only (source models, not measurements); excluded from record counts",
+                   "records": estimated}, f, indent=1, sort_keys=True)
     with open(os.path.join(ROOT, "data", "sources.json"), "w") as f:
         json.dump(sources, f, indent=1, sort_keys=True)
 
-    print("merged %d records from %d sources (retrieved %s)" % (len(deduped), len(files), retrieved))
+    print("merged %d records + %d reference estimates from %d sources (retrieved %s)"
+          % (len(measured), len(estimated), len(files), retrieved))
     return 0
 
 
