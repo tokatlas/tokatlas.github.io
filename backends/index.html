@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cross-backend notes — Token Atlas</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<header><a class="logo" href="/">tokatlas</a><nav>
+<a href="/">home</a><a href="/lookup.html">lookup</a><a href="/hardware/">hardware</a>
+<a href="/models/">models</a><a href="/backends/">backends</a><a href="/data/">data</a>
+<a href="/changelog.html">changelog</a></nav></header>
+<main>
+
+<h1>Cross-backend notes</h1>
+<p>Where the same model and chip were recorded on more than one backend, we show them
+side by side. 10 comparable cases so far. These are the seeds of the
+regression/improvement tracking the project will run between backend builds.</p>
+<h3>Devstral Small 24B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>GLM-4.5-Air on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 34 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 30 tok/s (88%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Gemma 4 31B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 26 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 26 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Llama 3.3 70B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>Ollama</strong>: 12 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>MLX</strong>: 12 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Llama 4 Scout on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 26 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 22 tok/s (85%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Mistral Small 3.2 24B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Mistral Small 4 on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 42 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 38 tok/s (90%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen 3.5 35B-A3B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 52 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 48 tok/s (92%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen 3.6-35B-A3B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 55 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 48 tok/s (87%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen3-235B-A22B on M5 Max (Q4_K_M)</h3>
+<ul><li><strong>MLX</strong>: 18 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 15 tok/s (83%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p>
+</main>
+<footer>
+<p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
+(<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
+to its public source. <a href="/#cite">Cite it</a>.</p>
+<p class="gen">generated 2026-09-26 16:12 UTC from <a href="/data/records.json">data/records.json</a></p>
+</footer>
+</body></html>
