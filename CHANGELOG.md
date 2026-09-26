@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-26: Hardware Corner context curves, 308 measured GPU rows; estimates move to the reference area
+
+- New source collected: Hardware Corner GPU LLM benchmark hub pages (21 NVIDIA
+  GPUs, llama.cpp runtime). Each hub page publishes per-model, per-context
+  (4k to 262k) prompt-processing and token-generation tok/s tables. The
+  collector records one row per (model, quant, context) with the exact quoted
+  cells: 308 measured rows covering Qwen3/Qwen3.5, Gemma 4, gpt-oss, and
+  Llama 3.3 70B across RTX 3060 to RTX Pro 6000 Blackwell.
+- Estimates are now reference values, not records. They live in
+  `data/reference/estimates.json` (549 rows), excluded from
+  `records.csv`/`records.json`, record counts, and the site's default views;
+  the lookup has an explicit toggle to show them.
+- Dataset: 752 measured records, 131 hardware strings, 72 models, 9 backends.
+- Cross-source checks page rebuilt on the reference file: 4 strict overlaps
+  plus 26 Q4-K family reference rows from the new hub tables.
+- Style gate in CI: no em dashes in authored or generated files
+  (`scripts/check_style.py`).
+
 ## 2026-09-26 - v0.3.0: 993 records, 70-accelerator estimate cells, power column
 
 - New endpoint collected: LLM Configurator benchmark cells
@@ -17,9 +35,9 @@
   flag computation with estimates.
 
 
-## 2026-09-26 — v0.2.0: x86 GPUs, 3 sources, contradiction/outlier flags
+## 2026-09-26: v0.2.0, x86 GPUs, 3 sources, contradiction/outlier flags
 
-- Added 2 sources: LLM Configurator measured benchmarks (CC BY 4.0 — RTX 3090/
+- Added 2 sources: LLM Configurator measured benchmarks (CC BY 4.0: RTX 3090/
   4090, llama.cpp, context lengths 4k-131k, per-row publisher + source URL) and
   Silicon Score benchmark audit (416 Apple Silicon rows with per-row source URLs,
   prompt-processing and TTFT figures).
@@ -31,10 +49,10 @@
   every push. Flags are badged in every table.
 - Site: lookup and tables show flags; coverage, credits, and citation updated.
 
-## 2026-09-26 — v0.1.0: first dataset, first site
+## 2026-09-26: v0.1.0, first dataset, first site
 
 - Initial dataset: 258 records from the LLMCheck Apple Silicon LLM Benchmark
-  Database (CC BY 4.0) — 64 models, 16 chips (M1–M6), backends MLX, Ollama,
+  Database (CC BY 4.0): 64 models, 16 chips (M1 to M6), backends MLX, Ollama,
   LM Studio, llama.cpp; Q4_K_M plus 9 other quants. Every row carries source
   URL, retrieval date, and the exact quoted values; provenance classes
   (sourced / community / estimated) are badged on the site.
