@@ -161,6 +161,7 @@ recorded tokens/sec figure with its source.</p>
 <li><a href="/hardware/">Per-hardware pages</a> — every recorded run on each chip</li>
 <li><a href="/models/">Per-model pages</a> — every hardware/quant/backend for each model</li>
 <li><a href="/backends/">Cross-backend notes</a> — same model + chip across backends</li>
+<li><a href="/notes/cross-source.html">Cross-source checks</a> — where an estimate meets a measurement</li>
 <li><a href="/data/">The dataset</a> — CSV and JSON, with schema</li>
 <li><a href="/changelog.html">Changelog</a> — what changed, when</li>
 </ul>
@@ -170,10 +171,12 @@ recorded tokens/sec figure with its source.</p>
 <strong>community</strong> — a community-measured run (e.g. llama-bench results) carried in the
 source dataset. <strong>estimated</strong> — the source's own model-based estimate; always shown
 as such, never mixed with measured rows.</p>
-<p>Current coverage: Apple Silicon (M1–M6) and x86 GPUs (RTX 3090/4090); backends
-MLX / Ollama / LM Studio / llama.cpp / llamafile; multiple quantizations and context
-lengths (4k–131k where published). vLLM, ExLlama, and more x86 hardware are next —
-see the <a href="/changelog.html">changelog</a>.</p>
+<p>Current coverage: {len(hw)} hardware strings — Apple Silicon (M1–M6),
+NVIDIA RTX 30/40/50, AMD (Radeon RX 7000/9000, Ryzen AI APUs), Intel Arc, and
+datacenter GPUs (A100, H100, L40S, DGX Spark); backends MLX / Ollama / LM Studio /
+llama.cpp / llamafile; Q4_K_M plus other quants; context lengths 4k–131k where
+published; board-spec power on the estimate rows. vLLM and ExLlama backends are
+next — see the <a href="/changelog.html">changelog</a>.</p>
 <h2>Complementary projects</h2>
 <p>Token Atlas is built to complement, not duplicate, existing efforts — we credit and link them:</p>
 <ul>{credits}</ul>
@@ -189,7 +192,8 @@ or <a href="https://github.com/tokatlas/tokatlas.github.io/issues/new?template=s
 <p>Token Atlas (tokatlas.github.io), retrieved {esc(retrieved)}. Data: LLMCheck Apple Silicon
 LLM Benchmark Database (CC BY 4.0) via <a href="https://llmcheck.net/data/">llmcheck.net/data</a>;
 LLM Configurator measured benchmarks (CC BY 4.0) via
-<a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a>;
+<a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a> and
+benchmark cells via <a href="https://llmconfigurator.com/benchmarks.json">benchmarks.json</a>;
 Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>.
 Per-row source links are in the dataset.</p>
 """
@@ -256,6 +260,94 @@ sampling, and context differences, not just the backend itself.</p>""")
 side by side. {len(multi)} comparable cases so far. These are the seeds of the
 regression/improvement tracking the project will run between backend builds.</p>
 {''.join(notes)}"""))
+
+    # --- cross-source checks (analysis) ---
+    # Where a measured llama.cpp row and a bandwidth-model estimate cell cover
+    # the same model+chip at the same quant+ctx, show both and the delta.
+    est_by_key = {}
+    for r in records:
+        if (r["id"].startswith("llmconfigurator-est") and r.get("ctx") == 4096
+                and r.get("quant") == "Q4_K_M"):
+            est_by_key[(r["model"], r["hardware"])] = r
+    check_rows = {}
+    for r in records:
+        if (r.get("provenance") in ("sourced", "community")
+                and "llama.cpp" in (r.get("backend") or "")
+                and r.get("ctx") == 4096 and r.get("quant") == "Q4_K_M"):
+            k = (r["model"], r["hardware"])
+            if k in est_by_key:
+                prev = check_rows.get(k)
+                if prev is None or (r.get("tps") or 0) > (prev[0].get("tps") or 0):
+                    check_rows[k] = (r, est_by_key[k])
+    def overlap_lines(pairs, with_quant=False, label=True):
+        lines, oos = [], []
+        for (m, h), (mr, er) in sorted(pairs.items()):
+            delta = (er["tps"] - mr["tps"]) / mr["tps"] * 100
+            in_sample = abs(delta) < 0.5
+            if not in_sample and label:
+                oos.append(abs(delta))
+            q = f"<td class=\"num\">{esc(mr.get('quant'))}</td>" if with_quant else ""
+            if not label:
+                cls = "reference"
+            elif in_sample:
+                cls = "in-sample (fitted)"
+            else:
+                cls = "out-of-sample"
+            lines.append(
+                f"<tr><td><a href=\"/models/{slug(m)}/\">{esc(m)}</a></td>"
+                f"<td><a href=\"/hardware/{slug(h)}/\">{esc(h)}</a></td>"
+                f"{q}"
+                f"<td class=\"num\">{esc(mr['tps'])}</td>"
+                f"<td><a href=\"{esc(mr['source_url'])}\" rel=\"nofollow\">source</a></td>"
+                f"<td class=\"num\">{esc(er['tps'])}</td>"
+                f"<td class=\"num\">{delta:+.1f}%</td>"
+                f"<td>{cls}</td></tr>")
+        return lines, oos
+
+    check_lines, oos = overlap_lines(check_rows)
+    # reference overlaps: same model+chip+ctx+backend but the measured row is
+    # another Q4-K quant (the estimate is Q4_K_M); labeled, not mixed in
+    ref_rows = {}
+    for r in records:
+        if (r.get("provenance") in ("sourced", "community")
+                and "llama.cpp" in (r.get("backend") or "")
+                and r.get("ctx") == 4096
+                and str(r.get("quant") or "").upper().startswith("Q4_K")
+                and r.get("quant") != "Q4_K_M"):
+            k = (r["model"], r["hardware"])
+            if k in est_by_key:
+                prev = ref_rows.get(k)
+                if prev is None or (r.get("tps") or 0) > (prev[0].get("tps") or 0):
+                    ref_rows[k] = (r, est_by_key[k])
+    ref_lines, oos_ref = overlap_lines(ref_rows, with_quant=True, label=False)
+    if oos:
+        verdict = ("Strict-overlap rows differ by at most %.1f%%; in-sample "
+                   "configurations (the model was fitted from those runs) "
+                   "agree by construction." % max(oos))
+    elif ref_lines:
+        verdict = ("All strict overlaps are in-sample (fitted) configurations; "
+                   "the Q4-K family reference table below is the first "
+                   "out-of-quant view, where part of the delta is the quant "
+                   "difference itself.")
+    else:
+        verdict = ("No overlap yet; both tables fill in as sources cover the "
+                   "same model + chip + ctx.")
+    write("notes/cross-source.html", page("Cross-source checks", f"""
+<h1>Cross-source checks</h1>
+<p>Where a <strong>measured</strong> llama.cpp row (any source) and the LLM
+Configurator <strong>bandwidth-model estimate</strong> cover the same model +
+chip at Q4_K_M / 4096 ctx, they are shown side by side. {len(check_rows)}
+strict overlaps so far.</p>
+<table><tr><th>model</th><th>hardware</th><th>measured tok/s</th><th>source</th>
+<th>estimated tok/s</th><th>delta</th><th>class</th></tr>{''.join(check_lines)}</table>
+<h2>Q4-K family reference (measured quant differs from the estimate's)</h2>
+<p>Same model + chip + 4096 ctx, but the measured row is another Q4-K quant;
+the quant difference contributes part of the delta.</p>
+{'<table><tr><th>model</th><th>hardware</th><th>measured quant</th><th>measured tok/s</th><th>source</th><th>estimated tok/s</th><th>delta</th><th>class</th></tr>' + ''.join(ref_lines) + '</table>' if ref_lines else '<p class="dim">No reference overlaps yet.</p>'}
+<p class=\"dim\">{esc(verdict)} Estimated values: LLM Configurator benchmark
+cells (CC BY 4.0), calibrated per GPU architecture from the 14 measured runs
+in their published dataset. Delta = (estimated - measured) / measured.</p>
+<p><a href=\"/backends/\">← cross-backend notes</a></p>"""))
 
     # --- data page ---
     schema_fields = [

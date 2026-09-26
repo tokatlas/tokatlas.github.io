@@ -23,6 +23,7 @@ recorded tokens/sec figure with its source.</p>
 <li><a href="/hardware/">Per-hardware pages</a> — every recorded run on each chip</li>
 <li><a href="/models/">Per-model pages</a> — every hardware/quant/backend for each model</li>
 <li><a href="/backends/">Cross-backend notes</a> — same model + chip across backends</li>
+<li><a href="/notes/cross-source.html">Cross-source checks</a> — where an estimate meets a measurement</li>
 <li><a href="/data/">The dataset</a> — CSV and JSON, with schema</li>
 <li><a href="/changelog.html">Changelog</a> — what changed, when</li>
 </ul>
@@ -32,10 +33,12 @@ recorded tokens/sec figure with its source.</p>
 <strong>community</strong> — a community-measured run (e.g. llama-bench results) carried in the
 source dataset. <strong>estimated</strong> — the source's own model-based estimate; always shown
 as such, never mixed with measured rows.</p>
-<p>Current coverage: Apple Silicon (M1–M6) and x86 GPUs (RTX 3090/4090); backends
-MLX / Ollama / LM Studio / llama.cpp / llamafile; multiple quantizations and context
-lengths (4k–131k where published). vLLM, ExLlama, and more x86 hardware are next —
-see the <a href="/changelog.html">changelog</a>.</p>
+<p>Current coverage: 174 hardware strings — Apple Silicon (M1–M6),
+NVIDIA RTX 30/40/50, AMD (Radeon RX 7000/9000, Ryzen AI APUs), Intel Arc, and
+datacenter GPUs (A100, H100, L40S, DGX Spark); backends MLX / Ollama / LM Studio /
+llama.cpp / llamafile; Q4_K_M plus other quants; context lengths 4k–131k where
+published; board-spec power on the estimate rows. vLLM and ExLlama backends are
+next — see the <a href="/changelog.html">changelog</a>.</p>
 <h2>Complementary projects</h2>
 <p>Token Atlas is built to complement, not duplicate, existing efforts — we credit and link them:</p>
 <ul><li><a href="https://www.localscore.ai">LocalScore</a> — Open benchmark and CLI on top of Llamafile; per-hardware LLM scores. Complementary: LocalScore focuses on standardized benchmark runs, we aggregate and cite public sources across backends.</li><li><a href="https://llmcheck.net">LLMCheck</a> — Apple Silicon LLM index and the source of our current dataset (CC BY 4.0).</li><li><a href="https://llmconfigurator.com/en/benchmarks">llmconfigurator benchmarks</a> — GPU leaderboard of local LLM tokens/sec; one of our data sources (CC BY 4.0).</li><li><a href="https://siliconscore.com/bench/">Silicon Score</a> — Apple Silicon benchmark audit with per-row sources; one of our data sources.</li><li><a href="https://www.localmaxxing.com">Localmaxxing</a> — Community local LLM inference speed tests, filterable by model/hardware/engine/quant.</li><li><a href="https://arxiv.org/abs/2511.16682">Bench360</a> — Academic benchmarking of local LLM inference (360 degrees).</li><li><a href="https://github.com/uncSoft/anubis-oss">anubis-oss</a> — Apple Silicon community leaderboard.</li><li><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a> — Community benchmark threads; llama-bench results posts.</li></ul>
@@ -51,7 +54,8 @@ or <a href="https://github.com/tokatlas/tokatlas.github.io/issues/new?template=s
 <p>Token Atlas (tokatlas.github.io), retrieved 2026-09-26. Data: LLMCheck Apple Silicon
 LLM Benchmark Database (CC BY 4.0) via <a href="https://llmcheck.net/data/">llmcheck.net/data</a>;
 LLM Configurator measured benchmarks (CC BY 4.0) via
-<a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a>;
+<a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a> and
+benchmark cells via <a href="https://llmconfigurator.com/benchmarks.json">benchmarks.json</a>;
 Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>.
 Per-row source links are in the dataset.</p>
 
@@ -60,6 +64,6 @@ Per-row source links are in the dataset.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 16:54 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-26 17:07 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>
