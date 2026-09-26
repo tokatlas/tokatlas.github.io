@@ -15,3 +15,5 @@ jobs:
         run: python3 scripts/check_data.py
       - name: No em dashes in authored and generated files
         run: python3 scripts/check_style.py
+      - name: No broken internal links
+        run: python3 scripts/check_links.py

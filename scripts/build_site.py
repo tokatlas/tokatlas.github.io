@@ -94,8 +94,8 @@ def record_row(r):
     ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "–"
     ctx = r.get("ctx") or "–"
     date = r.get("date") or "–"
-    return (f"<tr><td><a href=\"/{slug(r['hardware'])}/\">{esc(r['hardware'])}</a></td>"
-            f"<td><a href=\"/{slug(r['model'])}/\">{esc(r['model'])}</a> "
+    return (f"<tr><td><a href=\"/hardware/{slug(r['hardware'])}/\">{esc(r['hardware'])}</a></td>"
+            f"<td><a href=\"/models/{slug(r['model'])}/\">{esc(r['model'])}</a> "
             f"<span class=\"dim\">{esc(r.get('params'))}</span></td>"
             f"<td>{esc(r.get('quant'))}</td><td>{esc(r.get('backend'))}</td>"
             f"<td class=\"num\">{esc(r.get('tps'))}</td><td class=\"num\">{esc(ttft)}</td>"
@@ -230,7 +230,7 @@ Per-row source links are in the dataset.</p>
 
     # --- hardware pages ---
     hw_list = "".join(
-        f"<li><a href=\"hardware/{slug(h)}/\">{esc(h)}</a>: {len(rs)} records, "
+        f"<li><a href=\"/hardware/{slug(h)}/\">{esc(h)}</a>: {len(rs)} records, "
         f"{len(set(r['model'] for r in rs))} models</li>"
         for h, rs in sorted(hw.items()))
     write("hardware/index.html", page("Hardware", f"""
@@ -249,7 +249,7 @@ Per-row source links are in the dataset.</p>
 
     # --- model pages ---
     m_list = "".join(
-        f"<li><a href=\"models/{slug(m)}/\">{esc(m)}</a>: {len(rs)} records, "
+        f"<li><a href=\"/models/{slug(m)}/\">{esc(m)}</a>: {len(rs)} records, "
         f"{len(set(r['hardware'] for r in rs))} hardware</li>"
         for m, rs in sorted(models.items()))
     write("models/index.html", page("Models", f"""
