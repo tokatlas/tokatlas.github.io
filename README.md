@@ -33,8 +33,9 @@ without provenance (see `data/schema.md`).
 ## Complementary projects
 
 We complement, and credit, existing work: [LocalScore](https://www.localscore.ai),
-[LLMCheck](https://llmcheck.net) (current data source, CC BY 4.0),
-[llmconfigurator benchmarks](https://llmconfigurator.com/en/benchmarks),
+[LLMCheck](https://llmcheck.net) (CC BY 4.0),
+[llmconfigurator benchmarks](https://llmconfigurator.com/en/benchmarks) (CC BY 4.0),
+[Silicon Score](https://siliconscore.com) (per-row source URLs),
 [Localmaxxing](https://www.localmaxxing.com),
 [Bench360](https://arxiv.org/abs/2511.16682),
 [anubis-oss](https://github.com/uncSoft/anubis-oss), and the
