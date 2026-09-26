@@ -1,4 +1,11 @@
 {
+ "hardwarecorner": {
+  "license": "not stated; used with per-row attribution (source_url on each row)",
+  "name": "Hardware Corner GPU LLM benchmarks (per-row attribution)",
+  "note": "hub pages: prompt processing and token generation t/s per context column (4k-256k, k=1024); model + quant as labeled in the row; runtime llama.cpp per the site's benchmark methodology; dashes in the source are not records",
+  "retrieved": "2026-09-26",
+  "url": "https://www.hardware-corner.net/gpu-llm-benchmarks/"
+ },
  "llmcheck": {
   "dataset_version": "2026-09-23",
   "license": "CC BY 4.0",
