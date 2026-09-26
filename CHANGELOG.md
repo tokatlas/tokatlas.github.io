@@ -1,12 +1,13 @@
 # Changelog
 
-## 2026-09-26: GitHub issue reports added (DGX Spark GB10, dual 5090, first ExLlamaV2 row); site link fix
+## 2026-09-26: GitHub issue reports added (GB10, dual 5090; first vLLM and ExLlamaV2 rows); site link fix
 
-- New source `data/raw/github_issues.json`: 6 hand-curated community rows quoted
-  verbatim from GitHub issues (llama.cpp #28196 and #23010, ExLlamaV2 #806).
-  Adds DGX Spark (GB10) and dual RTX 5090 coverage plus the first ExLlamaV2
-  backend row (RTX 5090 laptop, TinyLlama 1.1B EXL2).
-- Dataset: 758 measured records, 134 hardware strings, 74 models, 10 backends.
+- New source `data/raw/github_issues.json`: 7 hand-curated community rows quoted
+  verbatim from GitHub issues (llama.cpp #28196 and #23010, ExLlamaV2 #806,
+  vLLM #49548). Adds GB10 / DGX Spark and dual RTX 5090 coverage plus the
+  first ExLlamaV2 row (RTX 5090 laptop, TinyLlama 1.1B EXL2) and the first
+  vLLM measured row (GB10, Qwen3.5-122B-A10B INT4, MTP k=2).
+- Dataset: 759 measured records, 134 hardware strings, 74 models, 11 backends.
 - Fixed broken link prefixes in generated record tables: rows linked hardware
   to `/<slug>/` instead of `/hardware/<slug>/` and models to `/<slug>/` instead
   of `/models/<slug>/`; the hardware/model index lists used relative hrefs that

@@ -1,6 +1,6 @@
 {
  "source": {
-  "name": "GitHub issue reports (llama.cpp, ExLlamaV2)",
+  "name": "GitHub issue reports (llama.cpp, ExLlamaV2, vLLM)",
   "note": "Hand-curated community reports from GitHub issues; quotes are verbatim excerpts (markdown symbols stripped) from the issue body.",
   "retrieved": "2026-09-26",
   "url": "https://github.com/ggml-org/llama.cpp"
@@ -55,7 +55,7 @@
    "model": "Qwen3.6-35B-A3B",
    "params": "35B-A3B",
    "quant": "Q4_K_M",
-   "hardware": "DGX Spark (GB10)",
+   "hardware": "GB10 (DGX Spark)",
    "ram_gb": null,
    "backend": "llama.cpp",
    "ctx": null,
@@ -69,7 +69,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/23010",
    "source_name": "llama.cpp issue #23010 (community report)",
    "retrieved": "2026-09-26",
-   "quote": "NVIDIA DGX Spark (GB10 Grace Blackwell); NVIDIA GB10 (Blackwell, sm_120) aarch64 (issue title); I served Qwen3.6-35B-A3B-UD-Q4_K_M.gguf (unsloth) on the same image, same GPU, same flags; Coherent output, 7 tok/s cold / 59 tok/s warm decode across multiple prompts",
+   "quote": "NVIDIA GB10; DGX Spark (GB10 Grace Blackwell); I served Qwen3.6-35B-A3B-UD-Q4_K_M.gguf (unsloth) on the same image, same GPU, same flags; Coherent output, 7 tok/s cold / 59 tok/s warm decode across multiple prompts",
    "notes": "warm decode tps; unsloth UD-Q4_K_M build; llama.cpp server-cuda-b9014 container on DGX Spark (GB10, sm_120, aarch64)"
   },
   {
@@ -77,7 +77,7 @@
    "model": "Qwen3-Coder-Next",
    "params": null,
    "quant": "Q4_K_M",
-   "hardware": "DGX Spark (GB10)",
+   "hardware": "GB10 (DGX Spark)",
    "ram_gb": null,
    "backend": "llama.cpp",
    "ctx": null,
@@ -91,7 +91,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/23010",
    "source_name": "llama.cpp issue #23010 (community report)",
    "retrieved": "2026-09-26",
-   "quote": "On NVIDIA DGX Spark (GB10 Grace Blackwell, compute capability 12.1, aarch64), llama-server from the ghcr.io/ggml-org/llama.cpp:server-cuda-b9014 image loads qwen3-coder-next-Q4_K_M.gguf successfully, accepts chat completions, but every output token is ? (Unicode U+003F). SHA256 of the GGUF matches upstream. Prompt processing log timings are normal (~220 tok/s prefill). Decode throughput is normal (~63 tok/s).",
+   "quote": "NVIDIA GB10; DGX Spark (GB10 Grace Blackwell, compute capability 12.1, aarch64), llama-server from the ghcr.io/ggml-org/llama.cpp:server-cuda-b9014 image loads qwen3-coder-next-Q4_K_M.gguf successfully, accepts chat completions, but every output token is ? (Unicode U+003F). SHA256 of the GGUF matches upstream. Prompt processing log timings are normal (~220 tok/s prefill). Decode throughput is normal (~63 tok/s).",
    "notes": "decode throughput reported by issue reporter; server configured with --ctx-size 131072 but measured with a minimal prompt; model output was corrupted (all-? tokens) though throughput was normal"
   },
   {
@@ -137,6 +137,28 @@
    "retrieved": "2026-09-26",
    "quote": "TinyLlama-1.1B-intermediate; GPU: RTX 5090 24GB laptop; The maximum result I achieved in terms of speed is around 350/370 tokens/s",
    "notes": "EXL2 4.0 bpw build; reporter's best sustained tps on a 24GB laptop 5090, i9 24-core CPU, 64GB RAM; CUDA 12.x, PyTorch 2.8.0"
+  },
+  {
+   "id": "githubissues-gb10-dgxspark-qwen35-122b-a10b-int4-vllm",
+   "model": "Qwen3.5-122B-A10B",
+   "params": "122B-A10B",
+   "quant": "INT4 (AutoRound)",
+   "hardware": "GB10 (DGX Spark)",
+   "ram_gb": 128,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 1,
+   "tps": 59.6,
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-07",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/issues/49548",
+   "source_name": "vLLM issue #49548 (community report)",
+   "retrieved": "2026-09-26",
+   "quote": "NVIDIA GB10 / DGX Spark, sm_121a, 128 GB unified memory (~273 GB/s); vLLM 0.23.1rc1.dev1302+ge765bbc97; Model: Qwen3.5-122B-A10B INT4 (AutoRound), native MTP speculator, num_speculative_tokens: 2; Single-stream tok/s | 59.6 | 50.0 (expected PIECEWISE downgrade)",
+   "notes": "single-stream decode, static MTP k=2; the dynamic k schedule variant reports 50.0 t/s single-stream; 8 concurrent x 180-token aggregate ~232 tok/s; FLASH_ATTN, enforce_eager=false"
   }
  ]
 }
