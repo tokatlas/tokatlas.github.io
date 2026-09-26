@@ -51,12 +51,13 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
       rows.length + ' of ' + recs.length + ' records';
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
-      '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>source</th></tr>' +
+      '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
         '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '—') +
         '</td><td>' + esc(r.date ?? '—') + '</td><td>' + badge(r.provenance) +
+        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '—') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
@@ -69,6 +70,6 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 16:12 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-26 16:25 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

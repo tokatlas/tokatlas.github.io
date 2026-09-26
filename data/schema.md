@@ -28,6 +28,7 @@ the exact quoted values.**
 | `retrieved` | date | UTC date the record was retrieved |
 | `quote` | string | the exact values as they appear in the source (comma-joined row) |
 | `notes` | string | collector notes (e.g. "LLMCheck model-based estimate (bandwidth model)") |
+| `flags` | string | computed flags, comma-separated: `contradiction`, `outlier` (rules 4-5 below) |
 
 ## Rules
 

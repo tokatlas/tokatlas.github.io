@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-26 — v0.2.0: x86 GPUs, 3 sources, contradiction/outlier flags
+
+- Added 2 sources: LLM Configurator measured benchmarks (CC BY 4.0 — RTX 3090/
+  4090, llama.cpp, context lengths 4k-131k, per-row publisher + source URL) and
+  Silicon Score benchmark audit (432 Apple Silicon rows with per-row source URLs,
+  prompt-processing and TTFT figures).
+- Dataset is now multi-source: 3 sources merged by `scripts/merge_data.py` from
+  `data/raw/*.json`; collector-per-source, deterministic, cached.
+- New `flags` column with deterministic rules: `contradiction` (same
+  model+hardware+quant+backend+ctx differing >10%) and `outlier` (>3x group
+  median among measured rows); verified fresh by `scripts/check_data.py` on
+  every push. Flags are badged in every table.
+- Site: lookup and tables show flags; coverage, credits, and citation updated.
+
 ## 2026-09-26 — v0.1.0: first dataset, first site
 
 - Initial dataset: 258 records from the LLMCheck Apple Silicon LLM Benchmark

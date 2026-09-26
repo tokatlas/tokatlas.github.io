@@ -2,13 +2,12 @@
 """Deterministic collector: LLMCheck Apple Silicon LLM Benchmark Database.
 
 Source: https://llmcheck.net/data/ (CC BY 4.0, machine-readable CSV+JSON).
-Fetches the JSON, normalizes every row into Token Atlas canonical records
-with full provenance (source URL, retrieval date, exact quoted values),
-and writes data/records.csv + data/records.json.
+Writes data/raw/llmcheck.json (canonical records + source metadata).
+Run merge_data.py afterwards to combine sources into data/records.*.
 
 Stdlib only. Responses are cached in .cache/.
 """
-import csv
+import datetime
 import hashlib
 import json
 import os
@@ -18,16 +17,9 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".cache")
-DATA = os.path.join(ROOT, "data")
 
 DATASET_URL = "https://llmcheck.net/data/benchmarks.json"
 SOURCE_NAME = "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)"
-
-FIELDNAMES = [
-    "id", "model", "params", "quant", "hardware", "ram_gb", "backend",
-    "ctx", "batch", "tps", "pp_tps", "ttft_s", "power_w", "date",
-    "provenance", "source_url", "source_name", "retrieved", "quote", "notes",
-]
 
 
 def fetch(url: str, timeout: int = 30) -> bytes:
@@ -58,21 +50,17 @@ def num(v):
         return None
 
 
-def main() -> None:
+def main() -> int:
     body = fetch(DATASET_URL)
     src = json.loads(body)
-    today = src.get("version") or "unknown"  # dataset version, used for freshness
-    # retrieval date: prefer the local UTC date
-    import datetime
     retrieved = datetime.date.today().isoformat()
 
     out = []
     for r in src["benchmarks"]:
         quote = ",".join(str(r[k]) for k in
                          ["model", "params", "quant", "chip", "ram", "engine", "tps", "ttft", "date"])
-        row = {
-            "id": slug("%s|%s|%s|%s|%s" % (
-                "llmcheck", r["model"], r["chip"], r["quant"], r["engine"])),
+        out.append({
+            "id": slug("llmcheck|%s|%s|%s|%s" % (r["model"], r["chip"], r["quant"], r["engine"])),
             "model": r["model"],
             "params": r.get("params"),
             "quant": r.get("quant"),
@@ -93,24 +81,24 @@ def main() -> None:
             "quote": quote,
             "notes": ("LLMCheck model-based estimate (bandwidth model)"
                       if r.get("provenance") == "estimated" else None),
-        }
-        out.append(row)
+        })
 
-    os.makedirs(DATA, exist_ok=True)
-    with open(os.path.join(DATA, "records.csv"), "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        w.writeheader()
-        for row in out:
-            w.writerow({k: ("" if row[k] is None else row[k]) for k in FIELDNAMES})
-    with open(os.path.join(DATA, "records.json"), "w") as f:
-        json.dump({"count": len(out), "retrieved": retrieved,
-                   "dataset_version": today,
-                   "source": DATASET_URL, "records": out}, f, indent=1, sort_keys=True)
-    with open(os.path.join(DATA, "sources.json"), "w") as f:
-        json.dump({"llmcheck": {"url": DATASET_URL, "license": "CC BY 4.0",
-                                "retrieved": retrieved, "rows": len(out),
-                                "dataset_version": today}}, f, indent=1, sort_keys=True)
-    print("wrote %d records (retrieved %s, dataset version %s)" % (len(out), retrieved, today))
+    os.makedirs(os.path.join(ROOT, "data", "raw"), exist_ok=True)
+    doc = {
+        "source": {
+            "name": SOURCE_NAME,
+            "url": DATASET_URL,
+            "license": "CC BY 4.0",
+            "retrieved": retrieved,
+            "dataset_version": src.get("version"),
+            "note": "Rows are estimates (244), sourced (9), or community (5) per the source's own provenance field.",
+        },
+        "records": out,
+    }
+    with open(os.path.join(ROOT, "data", "raw", "llmcheck.json"), "w") as f:
+        json.dump(doc, f, indent=1, sort_keys=True)
+    print("wrote %d llmcheck records (retrieved %s)" % (len(out), retrieved))
+    return 0
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 10 comparable cases so far. These are the seeds of the
+side by side. 11 comparable cases so far. These are the seeds of the
 regression/improvement tracking the project will run between backend builds.</p>
 <h3>Devstral Small 24B on M5 Max (Q4_K_M)</h3>
 <ul><li><strong>MLX</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 33 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
@@ -54,12 +54,16 @@ sampling, and context differences, not just the backend itself.</p><h3>Qwen3-235
 <ul><li><strong>MLX</strong>: 18 tok/s (100%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li><li><strong>Ollama</strong>: 15 tok/s (83%) <span class="badge b-est">estimated</span> <a href="https://llmcheck.net/data/benchmarks.json" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen3.5-35B-A3B on M1 Max (64 GB) (4bit)</h3>
+<ul><li><strong>MLX</strong>: 57.6 tok/s (100%) <span class="badge b-src">sourced</span> <a href="https://www.reddit.com/r/LocalLLaMA/comments/1s4bggo/benchmarked_qwen35_35b_moe_27b_dense_122b_moe/" rel="nofollow">source</a></li><li><strong>LM Studio (MLX)</strong>: 57 tok/s (99%) <span class="badge b-src">sourced</span> <a href="https://famstack.dev/guides/mlx-vs-gguf-apple-silicon/" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p>
 </main>
 <footer>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 16:12 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-26 16:25 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

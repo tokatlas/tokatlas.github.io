@@ -30,6 +30,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .b-src{background:#1f3d2b;color:#7ee787}
 .b-com{background:#3d311f;color:#e3c07e}
 .b-est{background:#2a2f36;color:#a5adba}
+.b-flag{background:#3d2230;color:#ff9ec0}
 .filters{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0}
 .filters label{color:var(--dim);font-size:14px}
 .filters select{background:var(--panel);color:var(--text);border:1px solid var(--border);

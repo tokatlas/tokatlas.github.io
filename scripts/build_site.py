@@ -27,7 +27,9 @@ CREDITS = [
     ("LLMCheck", "https://llmcheck.net",
      "Apple Silicon LLM index and the source of our current dataset (CC BY 4.0)."),
     ("llmconfigurator benchmarks", "https://llmconfigurator.com/en/benchmarks",
-     "GPU leaderboard of local LLM tokens/sec."),
+     "GPU leaderboard of local LLM tokens/sec; one of our data sources (CC BY 4.0)."),
+    ("Silicon Score", "https://siliconscore.com/bench/",
+     "Apple Silicon benchmark audit with per-row sources; one of our data sources."),
     ("Localmaxxing", "https://www.localmaxxing.com",
      "Community local LLM inference speed tests, filterable by model/hardware/engine/quant."),
     ("Bench360", "https://arxiv.org/abs/2511.16682",
@@ -80,6 +82,13 @@ def prov_badge(p):
     return f'<span class="badge {cls}">{label}</span>'
 
 
+def flag_badges(flags):
+    flags = flags or []
+    if not flags:
+        return "—"
+    return " ".join(f'<span class="badge b-flag">{esc(f)}</span>' for f in flags)
+
+
 def record_row(r):
     ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "—"
     ctx = r.get("ctx") or "—"
@@ -91,11 +100,12 @@ def record_row(r):
             f"<td class=\"num\">{esc(r.get('tps'))}</td><td class=\"num\">{esc(ttft)}</td>"
             f"<td>{esc(ctx)}</td><td>{esc(date)}</td>"
             f"<td>{prov_badge(r.get('provenance'))}</td>"
+            f"<td>{flag_badges(r.get('flags'))}</td>"
             f"<td><a href=\"{esc(r['source_url'])}\" rel=\"nofollow\">source</a></td></tr>")
 
 
 TABLE_HEAD = ("<tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>"
-              "<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>source</th></tr>")
+              "<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>")
 
 
 def records_table(rows):
@@ -160,8 +170,9 @@ recorded tokens/sec figure with its source.</p>
 <strong>community</strong> — a community-measured run (e.g. llama-bench results) carried in the
 source dataset. <strong>estimated</strong> — the source's own model-based estimate; always shown
 as such, never mixed with measured rows.</p>
-<p>Current coverage: Apple Silicon (M1–M6), Q4_K_M and other quants, backends MLX / Ollama /
-LM Studio / llama.cpp. x86 GPU coverage (llama.cpp CUDA/ROCm/Vulkan, vLLM, ExLlama) is next —
+<p>Current coverage: Apple Silicon (M1–M6) and x86 GPUs (RTX 3090/4090); backends
+MLX / Ollama / LM Studio / llama.cpp / llamafile; multiple quantizations and context
+lengths (4k–131k where published). vLLM, ExLlama, and more x86 hardware are next —
 see the <a href="/changelog.html">changelog</a>.</p>
 <h2>Complementary projects</h2>
 <p>Token Atlas is built to complement, not duplicate, existing efforts — we credit and link them:</p>
@@ -176,7 +187,11 @@ or <a href="https://github.com/tokatlas/tokatlas.github.io/issues/new?template=s
 (via issue templates).</p>
 <h2 id="cite">Cite</h2>
 <p>Token Atlas (tokatlas.github.io), retrieved {esc(retrieved)}. Data: LLMCheck Apple Silicon
-LLM Benchmark Database, CC BY 4.0, via <a href="https://llmcheck.net/data/">llmcheck.net/data</a>.</p>
+LLM Benchmark Database (CC BY 4.0) via <a href="https://llmcheck.net/data/">llmcheck.net/data</a>;
+LLM Configurator measured benchmarks (CC BY 4.0) via
+<a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a>;
+Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>.
+Per-row source links are in the dataset.</p>
 """
     write("index.html", page("Local LLM inference performance, source-cited", index))
 
@@ -257,6 +272,7 @@ regression/improvement tracking the project will run between backend builds.</p>
         ("pp_tps", "prompt-processing tokens/second (when reported)"),
         ("ttft_s", "time to first token, seconds (when reported)"),
         ("power_w", "power draw, watts (when reported)"),
+        ("flags", "computed flags: contradiction / outlier (see schema.md rules 4-5)"),
         ("date", "original measurement date, as published"),
         ("provenance", "sourced | community | estimated (see schema)"),
         ("source_url", "URL the number was retrieved from"),
@@ -342,12 +358,13 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
       rows.length + ' of ' + recs.length + ' records';
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
-      '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>source</th></tr>' +
+      '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
         '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '—') +
         '</td><td>' + esc(r.date ?? '—') + '</td><td>' + badge(r.provenance) +
+        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '—') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
