@@ -13,3 +13,5 @@ jobs:
           python-version: "3.12"
       - name: Validate dataset
         run: python3 scripts/check_data.py
+      - name: No em dashes in authored and generated files
+        run: python3 scripts/check_style.py

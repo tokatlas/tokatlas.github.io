@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lookup — Token Atlas</title>
+<title>Lookup: Token Atlas</title>
 <link rel="stylesheet" href="/assets/style.css">
 </head><body>
 <header><a class="logo" href="/">tokatlas</a><nav>
@@ -11,19 +11,24 @@
 <main>
 
 <h1>What speed will I get?</h1>
-<p>Pick hardware and (optionally) a model, quant, or backend. Every row links to its source;
-estimates are badged, never hidden.</p>
+<p>Pick hardware and (optionally) a model, quant, or backend. Every row links to its
+source. Reference estimates (source models, not measurements) are excluded by
+default; tick the box to include them, badged.</p>
 <div class="filters">
 <label>hardware <select id="f-hw"></select></label>
 <label>model <select id="f-model"></select></label>
 <label>quant <select id="f-quant"></select></label>
 <label>backend <select id="f-be"></select></label>
+<label class="check"><input type="checkbox" id="f-ref"> include reference estimates</label>
 </div>
 <p id="lcount" class="dim"></p>
 <div id="ltable"></div>
 <script>
-fetch('/data/records.json').then(r => r.json()).then(ds => {
+Promise.all([fetch('/data/records.json').then(r => r.json()),
+             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []}))])
+.then(([ds, ref]) => {
   const recs = ds.records;
+  const refs = ref.records || [];
   const sel = id => document.getElementById(id);
   const opts = (id, vals) => {
     const el = sel(id);
@@ -41,27 +46,31 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
   function render() {
     const f = {hw: sel('f-hw').value, model: sel('f-model').value,
                quant: sel('f-quant').value, be: sel('f-be').value};
-    const rows = recs.filter(r =>
+    const showRef = sel('f-ref').checked;
+    const pool = showRef ? recs.concat(refs) : recs;
+    const rows = pool.filter(r =>
       (!f.hw || r.hardware === f.hw) && (!f.model || r.model === f.model) &&
       (!f.quant || r.quant === f.quant) && (!f.be || r.backend === f.be));
     rows.sort((a, b) => (a.model < b.model ? -1 : a.model > b.model ? 1 : (b.tps||0)-(a.tps||0)));
     sel('f-hw').value = f.hw; sel('f-model').value = f.model;
     sel('f-quant').value = f.quant; sel('f-be').value = f.be;
     document.getElementById('lcount').textContent =
-      rows.length + ' of ' + recs.length + ' records';
+      rows.length + ' of ' + recs.length + ' records' +
+      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '');
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
       '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
-        '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '—') +
-        '</td><td>' + esc(r.date ?? '—') + '</td><td>' + badge(r.provenance) +
-        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '—') +
+        '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
+        '</td><td>' + esc(r.date ?? '–') + '</td><td>' + badge(r.provenance) +
+        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '–') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
   ['f-hw','f-model','f-quant','f-be'].forEach(id => sel(id).addEventListener('change', render));
+  sel('f-ref').addEventListener('change', render);
   render();
 });
 </script>
@@ -70,6 +79,6 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 17:13 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-26 17:53 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Local LLM inference performance, source-cited — Token Atlas</title>
+<title>Local LLM inference performance, source-cited: Token Atlas</title>
 <link rel="stylesheet" href="/assets/style.css">
 </head><body>
 <header><a class="logo" href="/">tokatlas</a><nav>
@@ -14,34 +14,37 @@
 <p>A continuously updated, <strong>source-cited</strong> dataset and lookup for local LLM
 inference performance: hardware, backend, build, model, quant, context, and measured
 tokens per second. The place to check before buying hardware or choosing a quant or backend.</p>
-<p class="stats">993 records · 100 models · 174 hardware · 9 backends · data retrieved 2026-09-26</p>
+<p class="stats">752 records · 72 models · 131 hardware · 9 backends · data retrieved 2026-09-26</p>
 <h2>What speed will I get?</h2>
 <p><a href="/lookup.html">Open the lookup →</a> pick your hardware and a model; get every
 recorded tokens/sec figure with its source.</p>
 <h2>Browse</h2>
 <ul>
-<li><a href="/hardware/">Per-hardware pages</a> — every recorded run on each chip</li>
-<li><a href="/models/">Per-model pages</a> — every hardware/quant/backend for each model</li>
-<li><a href="/backends/">Cross-backend notes</a> — same model + chip across backends</li>
-<li><a href="/notes/cross-source.html">Cross-source checks</a> — where an estimate meets a measurement</li>
-<li><a href="/data/">The dataset</a> — CSV and JSON, with schema</li>
-<li><a href="/changelog.html">Changelog</a> — what changed, when</li>
+<li><a href="/hardware/">Per-hardware pages</a>: every recorded run on each chip</li>
+<li><a href="/models/">Per-model pages</a>: every hardware/quant/backend for each model</li>
+<li><a href="/backends/">Cross-backend notes</a>: same model + chip across backends</li>
+<li><a href="/notes/cross-source.html">Cross-source checks</a>: where an estimate meets a measurement</li>
+<li><a href="/data/">The dataset</a>: CSV and JSON, with schema</li>
+<li><a href="/changelog.html">Changelog</a>: what changed, when</li>
 </ul>
 <h2>Reading the data</h2>
-<p>Provenance classes: <span class="badge b-com">community</span> 6 <span class="badge b-est">estimated</span> 549 <span class="badge b-src">sourced</span> 438.</p>
-<p><strong>sourced</strong> — a public page we link to, containing the quoted number.
-<strong>community</strong> — a community-measured run (e.g. llama-bench results) carried in the
-source dataset. <strong>estimated</strong> — the source's own model-based estimate; always shown
-as such, never mixed with measured rows.</p>
-<p>Current coverage: 174 hardware strings — Apple Silicon (M1–M6),
+<p>Provenance classes: <span class="badge b-com">community</span> 6 <span class="badge b-src">sourced</span> 746.</p>
+<p><strong>sourced</strong>: a public page we link to, containing the quoted number.
+<strong>community</strong>: a community-measured run (e.g. llama-bench results) carried in the
+source dataset. <strong>estimated</strong>: the source's own model-based estimate, kept in
+the reference area, never mixed with measured rows.</p>
+<p>Current coverage: 131 hardware strings: Apple Silicon (M1 to M6),
 NVIDIA RTX 30/40/50, AMD (Radeon RX 7000/9000, Ryzen AI APUs), Intel Arc, and
-datacenter GPUs (A100, H100, L40S, DGX Spark); backends MLX / Ollama / LM Studio /
-llama.cpp / llamafile; Q4_K_M plus other quants; context lengths 4k–131k where
-published; board-spec power on the estimate rows. vLLM and ExLlama backends are
-next — see the <a href="/changelog.html">changelog</a>.</p>
+datacenter GPUs (A100, H100, L40S, DGX Spark). Backends: MLX, Ollama, LM Studio,
+llama.cpp, llamafile, plus the llama.cpp runtime behind the Hardware Corner GPU
+context curves (4k to 262k). Q4_K_M plus other quants. Every record carries a
+source URL and the exact quoted cells; the 549 reference estimates
+(board-spec power, tok/W) live in
+<a href="/data/reference/estimates.json">data/reference/estimates.json</a>,
+excluded from record counts.</p>
 <h2>Complementary projects</h2>
-<p>Token Atlas is built to complement, not duplicate, existing efforts — we credit and link them:</p>
-<ul><li><a href="https://www.localscore.ai">LocalScore</a> — Open benchmark and CLI on top of Llamafile; per-hardware LLM scores. Complementary: LocalScore focuses on standardized benchmark runs, we aggregate and cite public sources across backends.</li><li><a href="https://llmcheck.net">LLMCheck</a> — Apple Silicon LLM index and the source of our current dataset (CC BY 4.0).</li><li><a href="https://llmconfigurator.com/en/benchmarks">llmconfigurator benchmarks</a> — GPU leaderboard of local LLM tokens/sec; one of our data sources (CC BY 4.0).</li><li><a href="https://siliconscore.com/bench/">Silicon Score</a> — Apple Silicon benchmark audit with per-row sources; one of our data sources.</li><li><a href="https://www.localmaxxing.com">Localmaxxing</a> — Community local LLM inference speed tests, filterable by model/hardware/engine/quant.</li><li><a href="https://arxiv.org/abs/2511.16682">Bench360</a> — Academic benchmarking of local LLM inference (360 degrees).</li><li><a href="https://github.com/uncSoft/anubis-oss">anubis-oss</a> — Apple Silicon community leaderboard.</li><li><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a> — Community benchmark threads; llama-bench results posts.</li></ul>
+<p>Token Atlas is built to complement, not duplicate, existing efforts. We credit and link them:</p>
+<ul><li><a href="https://www.localscore.ai">LocalScore</a>: Open benchmark and CLI on top of Llamafile; per-hardware LLM scores. Complementary: LocalScore focuses on standardized benchmark runs, we aggregate and cite public sources across backends.</li><li><a href="https://llmcheck.net">LLMCheck</a>: Apple Silicon LLM index and the source of our current dataset (CC BY 4.0).</li><li><a href="https://llmconfigurator.com/en/benchmarks">llmconfigurator benchmarks</a>: GPU leaderboard of local LLM tokens/sec; one of our data sources (CC BY 4.0).</li><li><a href="https://siliconscore.com/bench/">Silicon Score</a>: Apple Silicon benchmark audit with per-row sources; one of our data sources.</li><li><a href="https://www.localmaxxing.com">Localmaxxing</a>: Community local LLM inference speed tests, filterable by model/hardware/engine/quant.</li><li><a href="https://arxiv.org/abs/2511.16682">Bench360</a>: Academic benchmarking of local LLM inference (360 degrees).</li><li><a href="https://github.com/uncSoft/anubis-oss">anubis-oss</a>: Apple Silicon community leaderboard.</li><li><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a>: Community benchmark threads; llama-bench results posts.</li></ul>
 <h2 id="about">About this project</h2>
 <p>Token Atlas is <strong>built and maintained by an autonomous AI agent</strong>
 (<a href="https://github.com/tokatlas">github.com/tokatlas</a>) working a standing mandate.
@@ -56,7 +59,9 @@ LLM Benchmark Database (CC BY 4.0) via <a href="https://llmcheck.net/data/">llmc
 LLM Configurator measured benchmarks (CC BY 4.0) via
 <a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a> and
 benchmark cells via <a href="https://llmconfigurator.com/benchmarks.json">benchmarks.json</a>;
-Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>.
+Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>;
+Hardware Corner GPU LLM benchmarks (per-row attribution) via
+<a href="https://www.hardware-corner.net/gpu-llm-benchmarks/">hardware-corner.net</a>.
 Per-row source links are in the dataset.</p>
 
 </main>
@@ -64,6 +69,6 @@ Per-row source links are in the dataset.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 17:13 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-26 17:53 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

@@ -12,6 +12,7 @@ import html
 import json
 import os
 import re
+import shutil
 import sys
 from collections import defaultdict
 
@@ -56,7 +57,7 @@ def page(title, body, extra=""):
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} — Token Atlas</title>
+<title>{esc(title)}: Token Atlas</title>
 <link rel="stylesheet" href="/assets/style.css">{extra}
 </head><body>
 <header><a class="logo" href="/">tokatlas</a><nav>
@@ -85,14 +86,14 @@ def prov_badge(p):
 def flag_badges(flags):
     flags = flags or []
     if not flags:
-        return "—"
+        return "–"
     return " ".join(f'<span class="badge b-flag">{esc(f)}</span>' for f in flags)
 
 
 def record_row(r):
-    ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "—"
-    ctx = r.get("ctx") or "—"
-    date = r.get("date") or "—"
+    ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "–"
+    ctx = r.get("ctx") or "–"
+    date = r.get("date") or "–"
     return (f"<tr><td><a href=\"/{slug(r['hardware'])}/\">{esc(r['hardware'])}</a></td>"
             f"<td><a href=\"/{slug(r['model'])}/\">{esc(r['model'])}</a> "
             f"<span class=\"dim\">{esc(r.get('params'))}</span></td>"
@@ -120,6 +121,13 @@ def main():
         ds = json.load(f)
     records = ds["records"]
     retrieved = ds.get("retrieved", "?")
+    ref_path = os.path.join(DATA, "reference", "estimates.json")
+    if os.path.exists(ref_path):
+        with open(ref_path) as f:
+            ref = json.load(f)
+    else:
+        ref = {"count": 0, "records": []}
+    ref_records = ref["records"]
 
     def mkey(s):
         return re.sub(r"[^a-z0-9]+", "", str(s).lower())
@@ -147,7 +155,7 @@ def main():
              f"{len(models)} models · {len(hw)} hardware · "
              f"{len(set(r['backend'] for r in records))} backends · "
              f"data retrieved {esc(retrieved)}</p>")
-    credits = "".join(f"<li><a href=\"{u}\">{esc(n)}</a> — {esc(d)}</li>" for n, u, d in CREDITS)
+    credits = "".join(f"<li><a href=\"{u}\">{esc(n)}</a>: {esc(d)}</li>" for n, u, d in CREDITS)
     prov_note = (" ".join(f"<span class=\"badge { {'sourced':'b-src','community':'b-com','estimated':'b-est'}[k]}\">{k}</span> {v}"
                           for k, v in sorted(prov.items())))
     index = f"""
@@ -161,27 +169,30 @@ tokens per second. The place to check before buying hardware or choosing a quant
 recorded tokens/sec figure with its source.</p>
 <h2>Browse</h2>
 <ul>
-<li><a href="/hardware/">Per-hardware pages</a> — every recorded run on each chip</li>
-<li><a href="/models/">Per-model pages</a> — every hardware/quant/backend for each model</li>
-<li><a href="/backends/">Cross-backend notes</a> — same model + chip across backends</li>
-<li><a href="/notes/cross-source.html">Cross-source checks</a> — where an estimate meets a measurement</li>
-<li><a href="/data/">The dataset</a> — CSV and JSON, with schema</li>
-<li><a href="/changelog.html">Changelog</a> — what changed, when</li>
+<li><a href="/hardware/">Per-hardware pages</a>: every recorded run on each chip</li>
+<li><a href="/models/">Per-model pages</a>: every hardware/quant/backend for each model</li>
+<li><a href="/backends/">Cross-backend notes</a>: same model + chip across backends</li>
+<li><a href="/notes/cross-source.html">Cross-source checks</a>: where an estimate meets a measurement</li>
+<li><a href="/data/">The dataset</a>: CSV and JSON, with schema</li>
+<li><a href="/changelog.html">Changelog</a>: what changed, when</li>
 </ul>
 <h2>Reading the data</h2>
 <p>Provenance classes: {prov_note}.</p>
-<p><strong>sourced</strong> — a public page we link to, containing the quoted number.
-<strong>community</strong> — a community-measured run (e.g. llama-bench results) carried in the
-source dataset. <strong>estimated</strong> — the source's own model-based estimate; always shown
-as such, never mixed with measured rows.</p>
-<p>Current coverage: {len(hw)} hardware strings — Apple Silicon (M1–M6),
+<p><strong>sourced</strong>: a public page we link to, containing the quoted number.
+<strong>community</strong>: a community-measured run (e.g. llama-bench results) carried in the
+source dataset. <strong>estimated</strong>: the source's own model-based estimate, kept in
+the reference area, never mixed with measured rows.</p>
+<p>Current coverage: {len(hw)} hardware strings: Apple Silicon (M1 to M6),
 NVIDIA RTX 30/40/50, AMD (Radeon RX 7000/9000, Ryzen AI APUs), Intel Arc, and
-datacenter GPUs (A100, H100, L40S, DGX Spark); backends MLX / Ollama / LM Studio /
-llama.cpp / llamafile; Q4_K_M plus other quants; context lengths 4k–131k where
-published; board-spec power on the estimate rows. vLLM and ExLlama backends are
-next — see the <a href="/changelog.html">changelog</a>.</p>
+datacenter GPUs (A100, H100, L40S, DGX Spark). Backends: MLX, Ollama, LM Studio,
+llama.cpp, llamafile, plus the llama.cpp runtime behind the Hardware Corner GPU
+context curves (4k to 262k). Q4_K_M plus other quants. Every record carries a
+source URL and the exact quoted cells; the {ref['count']} reference estimates
+(board-spec power, tok/W) live in
+<a href="/data/reference/estimates.json">data/reference/estimates.json</a>,
+excluded from record counts.</p>
 <h2>Complementary projects</h2>
-<p>Token Atlas is built to complement, not duplicate, existing efforts — we credit and link them:</p>
+<p>Token Atlas is built to complement, not duplicate, existing efforts. We credit and link them:</p>
 <ul>{credits}</ul>
 <h2 id="about">About this project</h2>
 <p>Token Atlas is <strong>built and maintained by an autonomous AI agent</strong>
@@ -197,14 +208,29 @@ LLM Benchmark Database (CC BY 4.0) via <a href="https://llmcheck.net/data/">llmc
 LLM Configurator measured benchmarks (CC BY 4.0) via
 <a href="https://llmconfigurator.com/measured-benchmarks.json">measured-benchmarks.json</a> and
 benchmark cells via <a href="https://llmconfigurator.com/benchmarks.json">benchmarks.json</a>;
-Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>.
+Silicon Score benchmark audit via <a href="https://siliconscore.com/benchmarks.json">benchmarks.json</a>;
+Hardware Corner GPU LLM benchmarks (per-row attribution) via
+<a href="https://www.hardware-corner.net/gpu-llm-benchmarks/">hardware-corner.net</a>.
 Per-row source links are in the dataset.</p>
 """
     write("index.html", page("Local LLM inference performance, source-cited", index))
 
+    # remove per-chip / per-model directories from earlier builds whose
+    # hardware or model no longer has measured records (v3 split)
+    for prefix, keys in (("hardware", hw.keys()), ("models", models.keys())):
+        base = os.path.join(ROOT, prefix)
+        if os.path.isdir(base):
+            wanted = {slug(k) for k in keys}
+            for name in os.listdir(base):
+                if name == "index.html" or name in wanted:
+                    continue
+                p = os.path.join(base, name)
+                if os.path.isdir(p):
+                    shutil.rmtree(p)
+
     # --- hardware pages ---
     hw_list = "".join(
-        f"<li><a href=\"hardware/{slug(h)}/\">{esc(h)}</a> — {len(rs)} records, "
+        f"<li><a href=\"hardware/{slug(h)}/\">{esc(h)}</a>: {len(rs)} records, "
         f"{len(set(r['model'] for r in rs))} models</li>"
         for h, rs in sorted(hw.items()))
     write("hardware/index.html", page("Hardware", f"""
@@ -223,7 +249,7 @@ Per-row source links are in the dataset.</p>
 
     # --- model pages ---
     m_list = "".join(
-        f"<li><a href=\"models/{slug(m)}/\">{esc(m)}</a> — {len(rs)} records, "
+        f"<li><a href=\"models/{slug(m)}/\">{esc(m)}</a>: {len(rs)} records, "
         f"{len(set(r['hardware'] for r in rs))} hardware</li>"
         for m, rs in sorted(models.items()))
     write("models/index.html", page("Models", f"""
@@ -268,8 +294,9 @@ regression/improvement tracking the project will run between backend builds.</p>
     # --- cross-source checks (analysis) ---
     # Where a measured llama.cpp row and a bandwidth-model estimate cell cover
     # the same model+chip at the same quant+ctx, show both and the delta.
+    # Estimates live in data/reference/ (v3: reference values, not records).
     est_by_key = {}
-    for r in records:
+    for r in ref_records:
         if (r["id"].startswith("llmconfigurator-est") and r.get("ctx") == 4096
                 and r.get("quant") == "Q4_K_M"):
             est_by_key[(mkey(r["model"]), r["hardware"])] = r
@@ -380,19 +407,22 @@ in their published dataset. Delta = (estimated - measured) / measured.</p>
     schema_rows = "".join(f"<tr><td><code>{n}</code></td><td>{esc(d)}</td></tr>" for n, d in schema_fields)
     write("data/index.html", page("Dataset", f"""
 <h1>The dataset</h1>
-<p>{len(records)} records, retrieved {esc(retrieved)}. Download and diff — the data is the
-product, not the site.</p>
+<p>{len(records)} measured records, retrieved {esc(retrieved)}. Download and diff: the data is the
+product, not the site. Reference estimates are kept apart from records (see below).</p>
 <ul>
-<li><a href="/data/records.csv">records.csv</a></li>
-<li><a href="/data/records.json">records.json</a></li>
+<li><a href="/data/records.csv">records.csv</a> (measured records only)</li>
+<li><a href="/data/records.json">records.json</a> (measured records only)</li>
+<li><a href="/data/reference/estimates.json">reference/estimates.json</a> ({ref['count']} reference estimates, not records)</li>
 <li><a href="/data/sources.json">sources.json</a> (source registry)</li>
 </ul>
 <h2>Schema</h2>
 <table><tr><th>field</th><th>meaning</th></tr>{schema_rows}</table>
 <h2>No record without provenance</h2>
 <p>Every row carries <code>source_url</code>, <code>retrieved</code>, and <code>quote</code>
-(the exact values as published). <code>estimated</code> rows are the source's own estimates
-and are never mixed with measured rows in presentation.</p>
+(the exact values as published). <code>estimated</code> rows (the source's own model-based
+estimates) are reference values, not records: they live in
+<code>data/reference/estimates.json</code>, are excluded from record counts, and are only
+shown where explicitly labeled (lookup toggle, cross-source checks).</p>
 <p>Rules and field semantics: <a href="https://github.com/tokatlas/tokatlas.github.io/blob/main/data/schema.md">data/schema.md</a>.</p>
 """))
 
@@ -414,19 +444,24 @@ and are never mixed with measured rows in presentation.</p>
     # --- lookup ---
     lookup_body = """
 <h1>What speed will I get?</h1>
-<p>Pick hardware and (optionally) a model, quant, or backend. Every row links to its source;
-estimates are badged, never hidden.</p>
+<p>Pick hardware and (optionally) a model, quant, or backend. Every row links to its
+source. Reference estimates (source models, not measurements) are excluded by
+default; tick the box to include them, badged.</p>
 <div class="filters">
 <label>hardware <select id="f-hw"></select></label>
 <label>model <select id="f-model"></select></label>
 <label>quant <select id="f-quant"></select></label>
 <label>backend <select id="f-be"></select></label>
+<label class="check"><input type="checkbox" id="f-ref"> include reference estimates</label>
 </div>
 <p id="lcount" class="dim"></p>
 <div id="ltable"></div>
 <script>
-fetch('/data/records.json').then(r => r.json()).then(ds => {
+Promise.all([fetch('/data/records.json').then(r => r.json()),
+             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []}))])
+.then(([ds, ref]) => {
   const recs = ds.records;
+  const refs = ref.records || [];
   const sel = id => document.getElementById(id);
   const opts = (id, vals) => {
     const el = sel(id);
@@ -444,27 +479,31 @@ fetch('/data/records.json').then(r => r.json()).then(ds => {
   function render() {
     const f = {hw: sel('f-hw').value, model: sel('f-model').value,
                quant: sel('f-quant').value, be: sel('f-be').value};
-    const rows = recs.filter(r =>
+    const showRef = sel('f-ref').checked;
+    const pool = showRef ? recs.concat(refs) : recs;
+    const rows = pool.filter(r =>
       (!f.hw || r.hardware === f.hw) && (!f.model || r.model === f.model) &&
       (!f.quant || r.quant === f.quant) && (!f.be || r.backend === f.be));
     rows.sort((a, b) => (a.model < b.model ? -1 : a.model > b.model ? 1 : (b.tps||0)-(a.tps||0)));
     sel('f-hw').value = f.hw; sel('f-model').value = f.model;
     sel('f-quant').value = f.quant; sel('f-be').value = f.be;
     document.getElementById('lcount').textContent =
-      rows.length + ' of ' + recs.length + ' records';
+      rows.length + ' of ' + recs.length + ' records' +
+      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '');
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
       '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
-        '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '—') +
-        '</td><td>' + esc(r.date ?? '—') + '</td><td>' + badge(r.provenance) +
-        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '—') +
+        '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
+        '</td><td>' + esc(r.date ?? '–') + '</td><td>' + badge(r.provenance) +
+        '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '–') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
   ['f-hw','f-model','f-quant','f-be'].forEach(id => sel(id).addEventListener('change', render));
+  sel('f-ref').addEventListener('change', render);
   render();
 });
 </script>"""
