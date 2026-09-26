@@ -292,9 +292,25 @@ def backend_of(cell):
     if not up or set(up) <= {"-"}:
         return "llama.cpp"
     for pat, name in BACKEND_MAP:
-        if re.search(pat, up):
+        if re.search(pat, up, re.I):
             return name
     return "llama.cpp"
+
+
+def dev_backend(dev):
+    """The dev column names the device a test ran on ('Vulkan0', 'CUDA0',
+    'ROCm1', 'SYCL0/SYCL1'); it is authoritative over the backend cell,
+    which only describes the build."""
+    d = dev.upper()
+    if "VULKAN" in d:
+        return "llama.cpp (Vulkan)"
+    if "CUDA" in d:
+        return "llama.cpp (CUDA)"
+    if "ROCM" in d or "HIP" in d:
+        return "llama.cpp (ROCm)"
+    if "SYCL" in d:
+        return "llama.cpp (SYCL)"
+    return None
 
 
 def value_of(cell):
@@ -354,24 +370,34 @@ def power_entries(part):
         return pos_map[m.start()]
 
     out = []
-    for m in re.finditer(r"tg\d*\s*:\s*(\d+\.?\d*)\s*W", t):
-        if "Total system power" in t[max(0, m.start() - 160):m.start()]:
+    for m in re.finditer(r"tg\d*\s*:\s*(\d+\.?\d*)\s*W\b", t, re.I):
+        if "total system power" in t[max(0, m.start() - 160):m.start()].lower():
             out.append((rawpos(m), None, "sys", float(m.group(1)),
                         "measured total system power (hwmon), tg test"))
     for m in re.finditer(
-            r"([^:|<]{2,40}?)\s*:\s*~?(\d+)-(\d+)\s*W\s*" \
-            r"\(\s*Watt per tg/s:\s*~?([\d.]+)", t):
+            r"([^:|<]{2,40}?)\s*:\s*~?(\d+)-(\d+)\s*W\s*"
+            r"\(\s*Watt per tg/s:\s*~?([\d.]+)", t, re.I):
         out.append((rawpos(m), m.group(1), "rate", float(m.group(4)),
                     "measured nvtop power, %s W per t/s (published range %s-%sW)"
                     % (m.group(4), m.group(2), m.group(3))))
     for m in re.finditer(r"Observed power\.draw:\s*Short runs:\s*~?(\d+)\s*W",
-                         t):
+                         t, re.I):
         out.append((rawpos(m), None, "watts", float(m.group(1)),
                     "measured nvidia-smi power.draw, short runs (approximate)"))
     for m in re.finditer(r"Power-draw went up as well:\s*~?(\d+)\s*W",
-                         t):
+                         t, re.I):
         out.append((rawpos(m), None, "watts", float(m.group(1)),
                     "measured power draw"))
+    for m in re.finditer(r"peaked? at\s*~?(\d+\.?\d*)\s*W\b", t, re.I):
+        out.append((rawpos(m), None, "watts", float(m.group(1)),
+                    "measured GPU power, peaked at ~%s W during the run (approximate)"
+                    % m.group(1)))
+    for m in re.finditer(r"run at performance[^:.|<]{0,60}:\s*~?(\d+)-(\d+)\s*W\b",
+                         t, re.I):
+        lo, hi = float(m.group(1)), float(m.group(2))
+        out.append((rawpos(m), None, "range", (lo + hi) / 2,
+                    "measured GPU power %s-%s W during the run (midpoint %s W, approximate)"
+                    % (m.group(1), m.group(2), (lo + hi) / 2)))
     return out
 
 
@@ -490,12 +516,14 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     test = tm.group(1) + tm.group(2)
                     model, quant = split_model_quant(model_cell)
                     mg = r[mg_i] if mg_i is not None and mg_i < len(r) else ""
-                    key = (model, quant, mg,
+                    dev = (r[idx["dev"]].strip().upper() if "dev" in idx
+                           and idx["dev"] < len(r) else "")
+                    key = (model, quant, mg, dev,
                            r[idx.get("backend", 0)] if "backend" in idx and idx["backend"] < len(r) else "",
                            r[idx.get("threads", idx.get("ngl", 0))] if ("threads" in idx or "ngl" in idx) and max(idx.get("threads", 0), idx.get("ngl", 0)) < len(r) else "")
                     ent = merged.setdefault(key, {"model": model, "quant": quant,
-                                                  "mg": key[2],
-                                                  "backend": key[3], "threads": key[4], "cells": []})
+                                                  "mg": key[2], "dev": dev,
+                                                  "backend": key[4], "threads": key[5], "cells": []})
                     ent[test] = (val, r[idx["t/s"]])
                     ent["cells"].append((model_cell or key[0], test, r[idx["t/s"]]))
                 for key, ent in merged.items():
@@ -508,6 +536,8 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     tgv, tgs = ent[tgk[0]]
                     pp = ent.get(ppk[0], (None, "")) if ppk else (None, "")
                     quote = "; ".join("%s | %s | %s" % c for c in ent["cells"])
+                    if ent["dev"]:
+                        quote = "dev=%s; " % ent["dev"] + quote
                     hw, gsnip = None, None
                     if mg_i is not None and ent["mg"]:
                         gmap = gpu_map(pos)
@@ -524,7 +554,7 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                             quote = hw + "; " + quote
                     rows.append({
                         "model": ent["model"], "quant": ent["quant"],
-                        "backend": backend_of(ent["backend"]),
+                        "backend": dev_backend(ent["dev"]) or backend_of(ent["backend"]),
                         "ctx": int(tgk[0][2:]), "tps": tgv,
                         "pp_tps": pp[0],
                         "quote": quote,
@@ -567,12 +597,16 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                                 quote = quote + "; " + h + ": " + raw
                     if tps is None:
                         continue
+                    dev = (r[idx["dev"]].strip().upper() if "dev" in idx
+                           and idx["dev"] < len(r) else "")
+                    if dev:
+                        quote = "dev=%s; " % dev + quote
                     hw = nearest_hw(pos)
                     if hw:
                         quote = hw + "; " + quote
                     rows.append({
                         "model": model, "quant": quant or "as-published",
-                        "backend": backend_of(r[idx["backend"]]),
+                        "backend": dev_backend(dev) or backend_of(r[idx["backend"]]),
                         "ctx": ctx, "tps": tps, "pp_tps": pp,
                         "quote": quote, "notes": None, "source_url": comment_url,
                         "hardware": hw,

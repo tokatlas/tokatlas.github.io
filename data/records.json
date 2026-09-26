@@ -1,5 +1,5 @@
 {
- "count": 1858,
+ "count": 1866,
  "records": [
   {
    "backend": "llama.cpp",
@@ -13587,7 +13587,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2024-01-21",
@@ -14415,7 +14415,9 @@
    "batch": null,
    "ctx": 128,
    "date": "2024-12-18",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "RTX 3080",
    "id": "lc-disc-10879-c11600977-llama7b-Q4_0",
    "model": "llama 7B",
@@ -14902,7 +14904,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-01-12",
@@ -14951,7 +14953,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-01-12",
@@ -15020,7 +15022,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-07-30",
@@ -15066,7 +15068,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-07",
@@ -15153,7 +15155,7 @@
    "pp_tps": 3932.57,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3692.87 \u00b1 84.82; llama 7B Q4_0 | tg128 | 170.69 \u00b1 0.06; llama 7B Q4_0 | pp512 | 3932.57 \u00b1 33.28; llama 7B Q4_0 | tg128 | 179.66 \u00b1 0.10",
+   "quote": "Radeon RX 7900 XTX; dev=VULKAN1; llama 7B Q4_0 | pp512 | 3692.87 \u00b1 84.82; llama 7B Q4_0 | tg128 | 170.69 \u00b1 0.06; llama 7B Q4_0 | pp512 | 3932.57 \u00b1 33.28; llama 7B Q4_0 | tg128 | 179.66 \u00b1 0.10",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15260,11 +15262,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-09-17",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "RTX 5090",
    "id": "lc-disc-10879-c18485429-llama7b-Q4_0",
    "model": "llama 7B",
@@ -15274,7 +15278,7 @@
    "pp_tps": 5546.39,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "RTX 5090; llama 7B Q4_0 | pp512 | 5546.39 \u00b1 17.00; llama 7B Q4_0 | tg128 | 149.41 \u00b1 2.13",
+   "quote": "RTX 5090; dev=VULKAN0; llama 7B Q4_0 | pp512 | 5546.39 \u00b1 17.00; llama 7B Q4_0 | tg128 | 149.41 \u00b1 2.13",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15283,21 +15287,23 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-09-17",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "RTX 5090",
    "id": "lc-disc-10879-c18485429-llama7b-Q4_0-2",
    "model": "llama 7B",
-   "notes": "threads=99",
+   "notes": "threads=99; 160.0 W measured GPU power, peaked at ~160 W during the run (approximate)",
    "params": null,
-   "power_w": null,
+   "power_w": 160.0,
    "pp_tps": 6011.18,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "RTX 5090; llama 7B Q4_0 | pp512 | 6011.18 \u00b1 20.90; llama 7B Q4_0 | tg128 | 154.31 \u00b1 1.61",
+   "quote": "RTX 5090; dev=VULKAN0; llama 7B Q4_0 | pp512 | 6011.18 \u00b1 20.90; llama 7B Q4_0 | tg128 | 154.31 \u00b1 1.61",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15517,7 +15523,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-01-18",
@@ -15613,7 +15619,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-02-06",
@@ -15725,7 +15731,7 @@
    "pp_tps": 5200.68,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 4666.15 \u00b1 12.89; llama 7B Q4_0 | tg128 | 164.05 \u00b1 0.89; llama 7B Q4_0 | pp512 | 5200.68 \u00b1 16.44; llama 7B Q4_0 | tg128 | 171.61 \u00b1 2.69",
+   "quote": "Radeon 8060S; dev=VULKAN0; llama 7B Q4_0 | pp512 | 4666.15 \u00b1 12.89; llama 7B Q4_0 | tg128 | 164.05 \u00b1 0.89; llama 7B Q4_0 | pp512 | 5200.68 \u00b1 16.44; llama 7B Q4_0 | tg128 | 171.61 \u00b1 2.69",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15748,7 +15754,7 @@
    "pp_tps": 499.58,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 5700 XT; llama 7B Q4_0 | pp512 | 499.58 \u00b1 0.21; llama 7B Q4_0 | tg128 | 73.43 \u00b1 0.08",
+   "quote": "Radeon RX 5700 XT; dev=VULKAN0; llama 7B Q4_0 | pp512 | 499.58 \u00b1 0.21; llama 7B Q4_0 | tg128 | 73.43 \u00b1 0.08",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15771,7 +15777,7 @@
    "pp_tps": 498.99,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 5700 XT; llama 7B Q4_0 | pp512 | 498.99 \u00b1 0.93; llama 7B Q4_0 | tg128 | 73.42 \u00b1 0.03",
+   "quote": "Radeon RX 5700 XT; dev=VULKAN0; llama 7B Q4_0 | pp512 | 498.99 \u00b1 0.93; llama 7B Q4_0 | tg128 | 73.42 \u00b1 0.03",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15867,7 +15873,7 @@
    "pp_tps": 206.61,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 470 G; llama 7B Q4_0 | pp512 | 206.61 \u00b1 0.77; llama 7B Q4_0 | tg128 | 39.85 \u00b1 0.07",
+   "quote": "Radeon RX 470 G; dev=VULKAN0; llama 7B Q4_0 | pp512 | 206.61 \u00b1 0.77; llama 7B Q4_0 | tg128 | 39.85 \u00b1 0.07",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -15974,7 +15980,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-07-14",
@@ -15988,7 +15994,7 @@
    "pp_tps": 3321.91,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 2789.51 \u00b1 18.33; llama 7B Q4_0 | tg128 | 58.51 \u00b1 0.04; llama 7B Q4_0 | pp512 | 3321.91 \u00b1 5.86; llama 7B Q4_0 | tg128 | 60.39 \u00b1 0.05",
+   "quote": "GB10; dev=VULKAN0; llama 7B Q4_0 | pp512 | 2789.51 \u00b1 18.33; llama 7B Q4_0 | tg128 | 58.51 \u00b1 0.04; llama 7B Q4_0 | pp512 | 3321.91 \u00b1 5.86; llama 7B Q4_0 | tg128 | 60.39 \u00b1 0.05",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -16382,7 +16388,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-21",
@@ -16419,7 +16425,7 @@
    "pp_tps": 252.83,
    "provenance": "community",
    "quant": "Q3_K - Medium",
-   "quote": "Radeon RX 7900 XTX; glm4moe 106B.A12B Q3_K - Medium | pp512 | 252.83 \u00b1 1.62; glm4moe 106B.A12B Q3_K - Medium | tg128 | 10.35 \u00b1 0.17",
+   "quote": "Radeon RX 7900 XTX; dev=VULKAN0; glm4moe 106B.A12B Q3_K - Medium | pp512 | 252.83 \u00b1 1.62; glm4moe 106B.A12B Q3_K - Medium | tg128 | 10.35 \u00b1 0.17",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -16474,13 +16480,39 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2026-04-03",
+   "flags": [
+    "contradiction",
+    "outlier"
+   ],
+   "hardware": "RTX 3080",
+   "id": "lc-disc-10879-c16432568-llama7b-Q4_0",
+   "model": "llama 7B",
+   "notes": "threads=99",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 230.79,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "RTX 3080; dev=VULKAN0; llama 7B Q4_0 | pp512 | 230.79 \u00b1 2.19; llama 7B Q4_0 | tg128 | 18.32 \u00b1 0.14",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-16432568",
+   "tps": 18.32,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-03",
    "flags": [],
    "hardware": "RTX 3080",
-   "id": "lc-disc-10879-c16432568-llama7b-Q4_0",
+   "id": "lc-disc-10879-c16432568-llama7b-Q4_0-2",
    "model": "llama 7B",
    "notes": "threads=99",
    "params": null,
@@ -16488,7 +16520,7 @@
    "pp_tps": 4889.13,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "RTX 3080; llama 7B Q4_0 | pp512 | 230.79 \u00b1 2.19; llama 7B Q4_0 | tg128 | 18.32 \u00b1 0.14; llama 7B Q4_0 | pp512 | 4889.13 \u00b1 58.58; llama 7B Q4_0 | tg128 | 143.44 \u00b1 0.62",
+   "quote": "RTX 3080; dev=VULKAN1; llama 7B Q4_0 | pp512 | 4889.13 \u00b1 58.58; llama 7B Q4_0 | tg128 | 143.44 \u00b1 0.62",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -16513,7 +16545,7 @@
    "pp_tps": 7567.94,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 7567.94 \u00b1 41.96; llama 7B Q4_0 | tg128 | 176.18 \u00b1 1.12",
+   "quote": "Radeon 8060S; dev=VULKAN0; llama 7B Q4_0 | pp512 | 7567.94 \u00b1 41.96; llama 7B Q4_0 | tg128 | 176.18 \u00b1 1.12",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17423,7 +17455,7 @@
    "pp_tps": 103.87,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 6800; llama 7B Q4_0 | pp512 | 103.87 \u00b1 0.02; llama 7B Q4_0 | tg128 | 9.63 \u00b1 0.01",
+   "quote": "Radeon RX 6800; dev=VULKAN1; llama 7B Q4_0 | pp512 | 103.87 \u00b1 0.02; llama 7B Q4_0 | tg128 | 9.63 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17449,7 +17481,7 @@
    "pp_tps": 113.32,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 6800; llama 7B Q4_0 | pp512 | 113.32 \u00b1 0.01; llama 7B Q4_0 | tg128 | 9.87 \u00b1 0.01",
+   "quote": "Radeon RX 6800; dev=VULKAN1; llama 7B Q4_0 | pp512 | 113.32 \u00b1 0.01; llama 7B Q4_0 | tg128 | 9.87 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17669,7 +17701,7 @@
    "pp_tps": 3479.41,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3338.82 \u00b1 69.83; llama 7B Q4_0 | tg128 | 161.07 \u00b1 0.15; llama 7B Q4_0 | pp512 | 3479.41 \u00b1 25.85; llama 7B Q4_0 | tg128 | 168.62 \u00b1 0.45",
+   "quote": "Radeon RX 7900 XTX; dev=VULKAN0; llama 7B Q4_0 | pp512 | 3338.82 \u00b1 69.83; llama 7B Q4_0 | tg128 | 161.07 \u00b1 0.15; llama 7B Q4_0 | pp512 | 3479.41 \u00b1 25.85; llama 7B Q4_0 | tg128 | 168.62 \u00b1 0.45",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17678,7 +17710,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-14",
@@ -17694,7 +17726,7 @@
    "pp_tps": 3171.16,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 2731.93 \u00b1 62.70; llama 7B Q4_0 | tg128 | 47.55 \u00b1 2.16; llama 7B Q4_0 | pp512 | 3171.16 \u00b1 83.09; llama 7B Q4_0 | tg128 | 46.61 \u00b1 0.36",
+   "quote": "GB10; dev=VULKAN0; llama 7B Q4_0 | pp512 | 2731.93 \u00b1 62.70; llama 7B Q4_0 | tg128 | 47.55 \u00b1 2.16; llama 7B Q4_0 | pp512 | 3171.16 \u00b1 83.09; llama 7B Q4_0 | tg128 | 46.61 \u00b1 0.36",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17703,7 +17735,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-15",
@@ -17719,7 +17751,7 @@
    "pp_tps": 3279.89,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 2737.79 \u00b1 19.56; llama 7B Q4_0 | tg128 | 52.28 \u00b1 0.03; llama 7B Q4_0 | pp512 | 3279.89 \u00b1 26.78; llama 7B Q4_0 | tg128 | 53.64 \u00b1 0.05",
+   "quote": "GB10; dev=VULKAN0; llama 7B Q4_0 | pp512 | 2737.79 \u00b1 19.56; llama 7B Q4_0 | tg128 | 52.28 \u00b1 0.03; llama 7B Q4_0 | pp512 | 3279.89 \u00b1 26.78; llama 7B Q4_0 | tg128 | 53.64 \u00b1 0.05",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17728,7 +17760,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-15",
@@ -17744,7 +17776,7 @@
    "pp_tps": 3219.57,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 2710.58 \u00b1 15.24; llama 7B Q4_0 | tg128 | 51.70 \u00b1 0.19; llama 7B Q4_0 | pp512 | 3219.57 \u00b1 84.09; llama 7B Q4_0 | tg128 | 53.21 \u00b1 0.08",
+   "quote": "GB10; dev=VULKAN0; llama 7B Q4_0 | pp512 | 2710.58 \u00b1 15.24; llama 7B Q4_0 | tg128 | 51.70 \u00b1 0.19; llama 7B Q4_0 | pp512 | 3219.57 \u00b1 84.09; llama 7B Q4_0 | tg128 | 53.21 \u00b1 0.08",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17753,7 +17785,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-15",
@@ -17769,7 +17801,7 @@
    "pp_tps": 3137.97,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 2692.06 \u00b1 32.45; llama 7B Q4_0 | tg128 | 48.42 \u00b1 2.04; llama 7B Q4_0 | pp512 | 3137.97 \u00b1 30.23; llama 7B Q4_0 | tg128 | 46.67 \u00b1 0.16",
+   "quote": "GB10; dev=VULKAN0; llama 7B Q4_0 | pp512 | 2692.06 \u00b1 32.45; llama 7B Q4_0 | tg128 | 48.42 \u00b1 2.04; llama 7B Q4_0 | pp512 | 3137.97 \u00b1 30.23; llama 7B Q4_0 | tg128 | 46.67 \u00b1 0.16",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -17999,7 +18031,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-12",
@@ -18022,7 +18054,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-12",
@@ -18045,7 +18077,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-12",
@@ -18070,7 +18102,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-12",
@@ -18502,7 +18534,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-20",
@@ -18527,7 +18559,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-21",
@@ -18596,7 +18628,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-21",
@@ -18978,7 +19010,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-01-17",
@@ -19154,7 +19186,9 @@
    "batch": null,
    "ctx": 128,
    "date": "2026-01-20",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "GB10",
    "id": "lc-disc-10879-c15544966-llama7b-Q4_0",
    "model": "llama 7B",
@@ -19476,7 +19510,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-26",
@@ -19501,7 +19535,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-26",
@@ -19551,7 +19585,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-26",
@@ -19574,11 +19608,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-05-26",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 7900 XTX",
    "id": "lc-disc-10879-c13274882-llama7b-Q4_0-3",
    "model": "llama 7B",
@@ -19672,7 +19708,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-06-23",
@@ -19793,7 +19829,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-06-04",
@@ -20358,7 +20394,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-11",
@@ -20369,10 +20405,33 @@
    "notes": "threads=99",
    "params": null,
    "power_w": null,
+   "pp_tps": 4356.94,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "RTX 3090; dev=VULKAN0; llama 7B Q4_0 | pp512 | 3877.12 \u00b1 561.58; llama 7B Q4_0 | tg128 | 143.46 \u00b1 0.31; llama 7B Q4_0 | pp512 | 4356.94 \u00b1 5.59; llama 7B Q4_0 | tg128 | 151.65 \u00b1 0.25",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-15234836",
+   "tps": 151.65,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-12-11",
+   "flags": [],
+   "hardware": "RTX 3090",
+   "id": "lc-disc-10879-c15234836-llama7b-Q4_0-2",
+   "model": "llama 7B",
+   "notes": "threads=99",
+   "params": null,
+   "power_w": null,
    "pp_tps": 4435.33,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "RTX 3090; llama 7B Q4_0 | pp512 | 3877.12 \u00b1 561.58; llama 7B Q4_0 | tg128 | 143.46 \u00b1 0.31; llama 7B Q4_0 | pp512 | 4356.94 \u00b1 5.59; llama 7B Q4_0 | tg128 | 151.65 \u00b1 0.25; llama 7B Q4_0 | pp512 | 4033.29 \u00b1 340.56; llama 7B Q4_0 | tg128 | 142.76 \u00b1 0.27; llama 7B Q4_0 | pp512 | 4435.33 \u00b1 5.14; llama 7B Q4_0 | tg128 | 151.65 \u00b1 0.23",
+   "quote": "RTX 3090; dev=VULKAN1; llama 7B Q4_0 | pp512 | 4033.29 \u00b1 340.56; llama 7B Q4_0 | tg128 | 142.76 \u00b1 0.27; llama 7B Q4_0 | pp512 | 4435.33 \u00b1 5.14; llama 7B Q4_0 | tg128 | 151.65 \u00b1 0.23",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -20392,10 +20451,33 @@
    "notes": "threads=100",
    "params": null,
    "power_w": null,
+   "pp_tps": 1760.15,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Radeon RX 7900 GRE; dev=VULKAN0; llama 7B Q4_0 | pp512 | 1711.33 \u00b1 5.64; llama 7B Q4_0 | tg128 | 104.75 \u00b1 0.46; llama 7B Q4_0 | pp512 | 1760.15 \u00b1 3.42; llama 7B Q4_0 | tg128 | 110.80 \u00b1 0.32",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-15249350",
+   "tps": 110.8,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-12-14",
+   "flags": [],
+   "hardware": "Radeon RX 7900 GRE",
+   "id": "lc-disc-10879-c15249350-llama7b-Q4_0-2",
+   "model": "llama 7B",
+   "notes": "threads=100",
+   "params": null,
+   "power_w": null,
    "pp_tps": 2372.49,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 7900 GRE; llama 7B Q4_0 | pp512 | 1711.33 \u00b1 5.64; llama 7B Q4_0 | tg128 | 104.75 \u00b1 0.46; llama 7B Q4_0 | pp512 | 1760.15 \u00b1 3.42; llama 7B Q4_0 | tg128 | 110.80 \u00b1 0.32; llama 7B Q4_0 | pp512 | 2411.47 \u00b1 14.04; llama 7B Q4_0 | tg128 | 105.91 \u00b1 0.25; llama 7B Q4_0 | pp512 | 2372.49 \u00b1 3.79; llama 7B Q4_0 | tg128 | 110.73 \u00b1 0.13",
+   "quote": "Radeon RX 7900 GRE; dev=VULKAN1; llama 7B Q4_0 | pp512 | 2411.47 \u00b1 14.04; llama 7B Q4_0 | tg128 | 105.91 \u00b1 0.25; llama 7B Q4_0 | pp512 | 2372.49 \u00b1 3.79; llama 7B Q4_0 | tg128 | 110.73 \u00b1 0.13",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -20450,7 +20532,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-14",
@@ -21004,7 +21086,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-06-28",
@@ -21321,9 +21403,34 @@
    "batch": null,
    "ctx": 128,
    "date": "2025-11-18",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "RTX 3060",
    "id": "lc-disc-10879-c14995287-llama8b-Q4_K - Medium",
+   "model": "llama 8B",
+   "notes": "threads=99",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 1061.32,
+   "provenance": "community",
+   "quant": "Q4_K - Medium",
+   "quote": "RTX 3060; dev=VULKAN0; llama 8B Q4_K - Medium | pp512 | 1061.32 \u00b1 2.07; llama 8B Q4_K - Medium | tg128 | 9.06 \u00b1 0.02",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-14995287",
+   "tps": 9.06,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-11-18",
+   "flags": [],
+   "hardware": "RTX 3060",
+   "id": "lc-disc-10879-c14995287-llama8b-Q4_K - Medium-2",
    "model": "llama 8B",
    "notes": "threads=99",
    "params": null,
@@ -21331,7 +21438,7 @@
    "pp_tps": 230.26,
    "provenance": "community",
    "quant": "Q4_K - Medium",
-   "quote": "RTX 3060; llama 8B Q4_K - Medium | pp512 | 1061.32 \u00b1 2.07; llama 8B Q4_K - Medium | tg128 | 9.06 \u00b1 0.02; llama 8B Q4_K - Medium | pp512 | 230.26 \u00b1 1.56; llama 8B Q4_K - Medium | tg128 | 12.11 \u00b1 0.05",
+   "quote": "RTX 3060; dev=VULKAN1; llama 8B Q4_K - Medium | pp512 | 230.26 \u00b1 1.56; llama 8B Q4_K - Medium | tg128 | 12.11 \u00b1 0.05",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21344,9 +21451,34 @@
    "batch": null,
    "ctx": 128,
    "date": "2025-11-18",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "RTX 3060",
    "id": "lc-disc-10879-c14995287-llama7b-Q4_K - Medium",
+   "model": "llama 7B",
+   "notes": "threads=99",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 1081.37,
+   "provenance": "community",
+   "quant": "Q4_K - Medium",
+   "quote": "RTX 3060; dev=VULKAN0; llama 7B Q4_K - Medium | pp512 | 1081.37 \u00b1 2.29; llama 7B Q4_K - Medium | tg128 | 9.40 \u00b1 0.01",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-14995287",
+   "tps": 9.4,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-11-18",
+   "flags": [],
+   "hardware": "RTX 3060",
+   "id": "lc-disc-10879-c14995287-llama7b-Q4_K - Medium-2",
    "model": "llama 7B",
    "notes": "threads=99",
    "params": null,
@@ -21354,7 +21486,7 @@
    "pp_tps": 218.01,
    "provenance": "community",
    "quant": "Q4_K - Medium",
-   "quote": "RTX 3060; llama 7B Q4_K - Medium | pp512 | 1081.37 \u00b1 2.29; llama 7B Q4_K - Medium | tg128 | 9.40 \u00b1 0.01; llama 7B Q4_K - Medium | pp512 | 218.01 \u00b1 1.39; llama 7B Q4_K - Medium | tg128 | 11.80 \u00b1 0.01",
+   "quote": "RTX 3060; dev=VULKAN1; llama 7B Q4_K - Medium | pp512 | 218.01 \u00b1 1.39; llama 7B Q4_K - Medium | tg128 | 11.80 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21379,7 +21511,7 @@
    "pp_tps": 184.9,
    "provenance": "community",
    "quant": "as-published",
-   "quote": "RTX 3060; gpt-oss 20B MXFP4 MoE | pp512 | 184.90 \u00b1 2.73; gpt-oss 20B MXFP4 MoE | tg128 | 16.18 \u00b1 0.33",
+   "quote": "RTX 3060; dev=VULKAN0; gpt-oss 20B MXFP4 MoE | pp512 | 184.90 \u00b1 2.73; gpt-oss 20B MXFP4 MoE | tg128 | 16.18 \u00b1 0.33",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21402,7 +21534,7 @@
    "pp_tps": 324.21,
    "provenance": "community",
    "quant": "as-published",
-   "quote": "RTX 3060; gpt-oss 20B MXFP4 MoE | pp512 | 324.21 \u00b1 2.15; gpt-oss 20B MXFP4 MoE | tg128 | 18.65 \u00b1 0.07",
+   "quote": "RTX 3060; dev=VULKAN1; gpt-oss 20B MXFP4 MoE | pp512 | 324.21 \u00b1 2.15; gpt-oss 20B MXFP4 MoE | tg128 | 18.65 \u00b1 0.07",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21427,7 +21559,7 @@
    "pp_tps": 86.32,
    "provenance": "community",
    "quant": "Q8_0",
-   "quote": "RTX 3060; qwen3moe 30B.A3B Q8_0 | pp512 | 86.32 \u00b1 4.69; qwen3moe 30B.A3B Q8_0 | tg128 | 8.69 \u00b1 0.15",
+   "quote": "RTX 3060; dev=VULKAN0; qwen3moe 30B.A3B Q8_0 | pp512 | 86.32 \u00b1 4.69; qwen3moe 30B.A3B Q8_0 | tg128 | 8.69 \u00b1 0.15",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21450,7 +21582,7 @@
    "pp_tps": 171.43,
    "provenance": "community",
    "quant": "Q8_0",
-   "quote": "RTX 3060; qwen3moe 30B.A3B Q8_0 | pp512 | 171.43 \u00b1 32.20; qwen3moe 30B.A3B Q8_0 | tg128 | 15.52 \u00b1 0.02",
+   "quote": "RTX 3060; dev=VULKAN1; qwen3moe 30B.A3B Q8_0 | pp512 | 171.43 \u00b1 32.20; qwen3moe 30B.A3B Q8_0 | tg128 | 15.52 \u00b1 0.02",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21475,7 +21607,7 @@
    "pp_tps": 113.21,
    "provenance": "community",
    "quant": "Q4_K - Medium",
-   "quote": "RTX 3060; qwen3moe 30B.A3B Q4_K - Medium | pp512 | 113.21 \u00b1 2.87; qwen3moe 30B.A3B Q4_K - Medium | tg128 | 15.47 \u00b1 0.08",
+   "quote": "RTX 3060; dev=VULKAN0; qwen3moe 30B.A3B Q4_K - Medium | pp512 | 113.21 \u00b1 2.87; qwen3moe 30B.A3B Q4_K - Medium | tg128 | 15.47 \u00b1 0.08",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21498,7 +21630,7 @@
    "pp_tps": 212.78,
    "provenance": "community",
    "quant": "Q4_K - Medium",
-   "quote": "RTX 3060; qwen3moe 30B.A3B Q4_K - Medium | pp512 | 212.78 \u00b1 38.20; qwen3moe 30B.A3B Q4_K - Medium | tg128 | 22.79 \u00b1 0.11",
+   "quote": "RTX 3060; dev=VULKAN1; qwen3moe 30B.A3B Q4_K - Medium | pp512 | 212.78 \u00b1 38.20; qwen3moe 30B.A3B Q4_K - Medium | tg128 | 22.79 \u00b1 0.11",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -21555,7 +21687,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21580,7 +21712,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21605,7 +21737,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21705,7 +21837,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21730,7 +21862,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21755,7 +21887,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21855,7 +21987,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21880,7 +22012,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -21905,7 +22037,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-20",
@@ -22097,13 +22229,63 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-11-26",
+   "flags": [
+    "contradiction"
+   ],
+   "hardware": "Radeon RX 480 G",
+   "id": "lc-disc-10879-c15089098-llama7b-Q4_0",
+   "model": "llama 7B",
+   "notes": "threads=100",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 330.84,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Radeon RX 480 G; dev=VULKAN0; llama 7B Q4_0 | pp512 | 321.57 \u00b1 0.93; llama 7B Q4_0 | tg128 | 41.48 \u00b1 0.09; llama 7B Q4_0 | pp512 | 330.84 \u00b1 1.02; llama 7B Q4_0 | tg128 | 43.33 \u00b1 0.06",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-15089098",
+   "tps": 43.33,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-26",
    "flags": [],
    "hardware": "Radeon RX 480 G",
-   "id": "lc-disc-10879-c15089098-llama7b-Q4_0",
+   "id": "lc-disc-10879-c15089098-llama7b-Q4_0-2",
+   "model": "llama 7B",
+   "notes": "threads=100",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 325.3,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Radeon RX 480 G; dev=VULKAN1; llama 7B Q4_0 | pp512 | 311.90 \u00b1 0.22; llama 7B Q4_0 | tg128 | 46.18 \u00b1 0.05; llama 7B Q4_0 | pp512 | 325.30 \u00b1 0.25; llama 7B Q4_0 | tg128 | 48.64 \u00b1 0.04",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-15089098",
+   "tps": 48.64,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2025-11-26",
+   "flags": [
+    "contradiction"
+   ],
+   "hardware": "Radeon RX 480 G",
+   "id": "lc-disc-10879-c15089098-llama7b-Q4_0-3",
    "model": "llama 7B",
    "notes": "threads=100",
    "params": null,
@@ -22111,7 +22293,7 @@
    "pp_tps": 217.77,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 480 G; llama 7B Q4_0 | pp512 | 321.57 \u00b1 0.93; llama 7B Q4_0 | tg128 | 41.48 \u00b1 0.09; llama 7B Q4_0 | pp512 | 330.84 \u00b1 1.02; llama 7B Q4_0 | tg128 | 43.33 \u00b1 0.06; llama 7B Q4_0 | pp512 | 311.90 \u00b1 0.22; llama 7B Q4_0 | tg128 | 46.18 \u00b1 0.05; llama 7B Q4_0 | pp512 | 325.30 \u00b1 0.25; llama 7B Q4_0 | tg128 | 48.64 \u00b1 0.04; llama 7B Q4_0 | pp512 | 214.61 \u00b1 0.50; llama 7B Q4_0 | tg128 | 37.29 \u00b1 0.02; llama 7B Q4_0 | pp512 | 217.77 \u00b1 1.05; llama 7B Q4_0 | tg128 | 40.37 \u00b1 0.01",
+   "quote": "Radeon RX 480 G; dev=VULKAN2; llama 7B Q4_0 | pp512 | 214.61 \u00b1 0.50; llama 7B Q4_0 | tg128 | 37.29 \u00b1 0.02; llama 7B Q4_0 | pp512 | 217.77 \u00b1 1.05; llama 7B Q4_0 | tg128 | 40.37 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -22264,7 +22446,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-27",
@@ -22289,7 +22471,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-27",
@@ -22314,7 +22496,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-27",
@@ -22364,7 +22546,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-22",
@@ -22435,7 +22617,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-30",
@@ -22506,7 +22688,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-30",
@@ -22627,7 +22809,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-07-30",
@@ -22942,7 +23124,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-01",
@@ -23063,7 +23245,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-07",
@@ -23238,7 +23420,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-27",
@@ -23254,7 +23436,7 @@
    "pp_tps": 102.55,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 480 G; llama 7B Q4_0 | pp512 | 103.24 \u00b1 0.17; llama 7B Q4_0 | tg128 | 31.23 \u00b1 0.19; llama 7B Q4_0 | pp512 | 102.55 \u00b1 0.13; llama 7B Q4_0 | tg128 | 31.53 \u00b1 0.18",
+   "quote": "Radeon RX 480 G; dev=VULKAN0; llama 7B Q4_0 | pp512 | 103.24 \u00b1 0.17; llama 7B Q4_0 | tg128 | 31.23 \u00b1 0.19; llama 7B Q4_0 | pp512 | 102.55 \u00b1 0.13; llama 7B Q4_0 | tg128 | 31.53 \u00b1 0.18",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -23263,11 +23445,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-27",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 480 G",
    "id": "lc-disc-10879-c14798753-llama7b-Q4_0-4",
    "model": "llama 7B",
@@ -23277,7 +23461,7 @@
    "pp_tps": 106.39,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 480 G; llama 7B Q4_0 | pp512 | 107.79 \u00b1 0.01; llama 7B Q4_0 | tg128 | 39.93 \u00b1 0.10; llama 7B Q4_0 | pp512 | 106.39 \u00b1 0.01; llama 7B Q4_0 | tg128 | 40.40 \u00b1 0.07",
+   "quote": "Radeon RX 480 G; dev=VULKAN1; llama 7B Q4_0 | pp512 | 107.79 \u00b1 0.01; llama 7B Q4_0 | tg128 | 39.93 \u00b1 0.10; llama 7B Q4_0 | pp512 | 106.39 \u00b1 0.01; llama 7B Q4_0 | tg128 | 40.40 \u00b1 0.07",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -23525,7 +23709,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-15",
@@ -23550,7 +23734,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-15",
@@ -24328,11 +24512,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (CUDA)",
+   "backend": "llama.cpp (Vulkan)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-24",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 480 G",
    "id": "lc-disc-10879-c14772967-llama7b-Q4_0",
    "model": "llama 7B",
@@ -24342,7 +24528,7 @@
    "pp_tps": 194.52,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 480 G; llama 7B Q4_0 | pp512 | 201.82 \u00b1 0.73; llama 7B Q4_0 | tg128 | 36.49 \u00b1 0.06; llama 7B Q4_0 | pp512 | 194.52 \u00b1 0.61; llama 7B Q4_0 | tg128 | 37.23 \u00b1 0.09",
+   "quote": "Radeon RX 480 G; dev=VULKAN2; llama 7B Q4_0 | pp512 | 201.82 \u00b1 0.73; llama 7B Q4_0 | tg128 | 36.49 \u00b1 0.06; llama 7B Q4_0 | pp512 | 194.52 \u00b1 0.61; llama 7B Q4_0 | tg128 | 37.23 \u00b1 0.09",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #10879 (performance thread, Vulkan)",
@@ -24495,7 +24681,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-01",
@@ -24541,7 +24727,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-01",
@@ -25003,7 +25189,9 @@
    "batch": null,
    "ctx": 128,
    "date": "2025-09-21",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 480 G",
    "id": "lc-disc-10879-c14467951-llama7b-Q4_0",
    "model": "llama 7B",
@@ -25884,7 +26072,7 @@
    "pp_tps": 5973.72,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GeForce RTX 3090; llama 7B Q4_0 | pp512 | 5153.91 \u00b1 429.71; llama 7B Q4_0 | tg128 | 168.95 \u00b1 0.66; llama 7B Q4_0 | pp512 | 5973.72 \u00b1 397.62; llama 7B Q4_0 | tg128 | 177.75 \u00b1 0.51",
+   "quote": "GeForce RTX 3090; dev=CUDA0; llama 7B Q4_0 | pp512 | 5153.91 \u00b1 429.71; llama 7B Q4_0 | tg128 | 168.95 \u00b1 0.66; llama 7B Q4_0 | pp512 | 5973.72 \u00b1 397.62; llama 7B Q4_0 | tg128 | 177.75 \u00b1 0.51",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
@@ -25903,9 +26091,9 @@
    "hardware": "GeForce RTX 5090",
    "id": "lc-disc-15013-c18458510-llama7b-Q4_0",
    "model": "llama 7B",
-   "notes": "threads=99",
+   "notes": "threads=99; 150.0 W measured GPU power 140-160 W during the run (midpoint 150.0 W, approximate)",
    "params": null,
-   "power_w": null,
+   "power_w": 150.0,
    "pp_tps": 7603.2,
    "provenance": "community",
    "quant": "Q4_0",
@@ -26280,7 +26468,7 @@
    "pp_tps": 4016.46,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 3306.61 \u00b1 59.73; llama 7B Q4_0 | tg128 | 59.06 \u00b1 0.06; llama 7B Q4_0 | pp512 | 4016.46 \u00b1 43.89; llama 7B Q4_0 | tg128 | 59.62 \u00b1 0.41",
+   "quote": "GB10; dev=CUDA0; llama 7B Q4_0 | pp512 | 3306.61 \u00b1 59.73; llama 7B Q4_0 | tg128 | 59.06 \u00b1 0.06; llama 7B Q4_0 | pp512 | 4016.46 \u00b1 43.89; llama 7B Q4_0 | tg128 | 59.62 \u00b1 0.41",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
@@ -26349,7 +26537,7 @@
    "pp_tps": 5438.27,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GeForce RTX 3080; llama 7B Q4_0 | pp512 | 5438.27 \u00b1 154.07; llama 7B Q4_0 | tg128 | 143.88 \u00b1 1.06",
+   "quote": "GeForce RTX 3080; dev=CUDA0; llama 7B Q4_0 | pp512 | 5438.27 \u00b1 154.07; llama 7B Q4_0 | tg128 | 143.88 \u00b1 1.06",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
@@ -27401,7 +27589,7 @@
    "pp_tps": 3861.19,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GB10; llama 7B Q4_0 | pp512 | 3241.51 \u00b1 28.66; llama 7B Q4_0 | tg128 | 58.13 \u00b1 0.01; llama 7B Q4_0 | pp512 | 3861.19 \u00b1 36.01; llama 7B Q4_0 | tg128 | 58.14 \u00b1 0.05",
+   "quote": "GB10; dev=CUDA0; llama 7B Q4_0 | pp512 | 3241.51 \u00b1 28.66; llama 7B Q4_0 | tg128 | 58.13 \u00b1 0.01; llama 7B Q4_0 | pp512 | 3861.19 \u00b1 36.01; llama 7B Q4_0 | tg128 | 58.14 \u00b1 0.05",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
@@ -27796,7 +27984,7 @@
    "pp_tps": 9439.01,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "GeForce RTX 4080 Super; llama 7B Q4_0 | pp512 | 8125.15 \u00b1 41.05; llama 7B Q4_0 | tg128 | 148.33 \u00b1 0.20; llama 7B Q4_0 | pp512 | 9439.01 \u00b1 56.75; llama 7B Q4_0 | tg128 | 147.48 \u00b1 1.41",
+   "quote": "GeForce RTX 4080 Super; dev=CUDA0; llama 7B Q4_0 | pp512 | 8125.15 \u00b1 41.05; llama 7B Q4_0 | tg128 | 148.33 \u00b1 0.20; llama 7B Q4_0 | pp512 | 9439.01 \u00b1 56.75; llama 7B Q4_0 | tg128 | 147.48 \u00b1 1.41",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
@@ -28551,7 +28739,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-01",
@@ -28599,7 +28787,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-08",
@@ -28622,7 +28810,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-01",
@@ -28645,7 +28833,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-01",
@@ -28693,7 +28881,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-02",
@@ -28718,7 +28906,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-02",
@@ -28743,7 +28931,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-02",
@@ -28768,7 +28956,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-17",
@@ -28793,11 +28981,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-06",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 7900 XTX",
    "id": "lc-disc-15021-c14019297-llama7b-Q4_0",
    "model": "llama 7B",
@@ -28816,7 +29006,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-08",
@@ -28841,7 +29031,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-11",
@@ -28864,7 +29054,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-06-04",
@@ -28887,7 +29077,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-13",
@@ -28912,11 +29102,13 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-15",
-   "flags": [],
+   "flags": [
+    "contradiction"
+   ],
    "hardware": "Radeon RX 6900 XT",
    "id": "lc-disc-15021-c14113551-llama7b-Q4_0",
    "model": "llama 7B",
@@ -28935,7 +29127,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-17",
@@ -28960,7 +29152,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-06-05",
@@ -29006,7 +29198,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-07-14",
@@ -29054,7 +29246,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-11",
@@ -29079,7 +29271,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-23",
@@ -29093,7 +29285,7 @@
    "pp_tps": 4190.07,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3875.83 \u00b1 206.27; llama 7B Q4_0 | tg128 | 147.06 \u00b1 0.37; llama 7B Q4_0 | pp512 | 4190.07 \u00b1 147.38; llama 7B Q4_0 | tg128 | 153.88 \u00b1 0.29",
+   "quote": "Radeon RX 7900 XTX; dev=ROCM1; llama 7B Q4_0 | pp512 | 3875.83 \u00b1 206.27; llama 7B Q4_0 | tg128 | 147.06 \u00b1 0.37; llama 7B Q4_0 | pp512 | 4190.07 \u00b1 147.38; llama 7B Q4_0 | tg128 | 153.88 \u00b1 0.29",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
@@ -29102,7 +29294,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-23",
@@ -29127,7 +29319,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-23",
@@ -29152,7 +29344,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-23",
@@ -29177,7 +29369,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-08-23",
@@ -29200,7 +29392,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-09-10",
@@ -29223,7 +29415,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-08-24",
@@ -29271,7 +29463,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-08",
@@ -29296,7 +29488,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-03",
@@ -29321,7 +29513,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-05",
@@ -29346,7 +29538,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-06",
@@ -29371,7 +29563,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-09",
@@ -29394,7 +29586,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-09",
@@ -29440,7 +29632,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (RPC)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-14",
@@ -29488,7 +29680,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-23",
@@ -29513,7 +29705,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-09-23",
@@ -29538,7 +29730,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-05",
@@ -29563,7 +29755,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-15",
@@ -29609,7 +29801,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-18",
@@ -29655,7 +29847,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-23",
@@ -29678,7 +29870,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-23",
@@ -29701,7 +29893,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-28",
@@ -29726,7 +29918,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-28",
@@ -29749,7 +29941,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-10-28",
@@ -29772,7 +29964,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-22",
@@ -29797,7 +29989,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp (Vulkan)",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-02-16",
@@ -29810,10 +30002,35 @@
    "notes": "threads=99",
    "params": null,
    "power_w": null,
+   "pp_tps": 1155.75,
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Radeon RX 7900 XTX; dev=ROCM0; llama 7B Q4_0 | pp512 | 1253.30 \u00b1 76.39; llama 7B Q4_0 | tg128 | 129.33 \u00b1 0.10; llama 7B Q4_0 | pp512 | 1155.75 \u00b1 1.66; llama 7B Q4_0 | tg128 | 134.46 \u00b1 0.07",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/15021#discussioncomment-15825763",
+   "tps": 134.46,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": 128,
+   "date": "2026-02-16",
+   "flags": [
+    "contradiction"
+   ],
+   "hardware": "Radeon RX 7900 XTX",
+   "id": "lc-disc-15021-c15825763-llama7b-Q4_0-2",
+   "model": "llama 7B",
+   "notes": "threads=99",
+   "params": null,
+   "power_w": null,
    "pp_tps": 3453.79,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 1253.30 \u00b1 76.39; llama 7B Q4_0 | tg128 | 129.33 \u00b1 0.10; llama 7B Q4_0 | pp512 | 1155.75 \u00b1 1.66; llama 7B Q4_0 | tg128 | 134.46 \u00b1 0.07; llama 7B Q4_0 | pp512 | 3292.37 \u00b1 27.90; llama 7B Q4_0 | tg128 | 154.32 \u00b1 0.24; llama 7B Q4_0 | pp512 | 3453.79 \u00b1 47.32; llama 7B Q4_0 | tg128 | 161.46 \u00b1 0.27",
+   "quote": "Radeon RX 7900 XTX; dev=VULKAN0; llama 7B Q4_0 | pp512 | 3292.37 \u00b1 27.90; llama 7B Q4_0 | tg128 | 154.32 \u00b1 0.24; llama 7B Q4_0 | pp512 | 3453.79 \u00b1 47.32; llama 7B Q4_0 | tg128 | 161.46 \u00b1 0.27",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
@@ -29847,7 +30064,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-01",
@@ -29872,7 +30089,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-01",
@@ -29897,7 +30114,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-05",
@@ -29922,7 +30139,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-18",
@@ -29972,7 +30189,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-18",
@@ -30070,7 +30287,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-25",
@@ -30095,7 +30312,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-03-25",
@@ -30120,7 +30337,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-01",
@@ -30146,7 +30363,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-03",
@@ -30171,7 +30388,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-03",
@@ -30196,7 +30413,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-04-20",
@@ -30221,7 +30438,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-05-09",
@@ -30244,7 +30461,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-05-13",
@@ -30269,7 +30486,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-05",
@@ -30292,7 +30509,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-15",
@@ -30317,7 +30534,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-26",
@@ -30342,7 +30559,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-26",
@@ -30367,7 +30584,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-26",
@@ -30381,7 +30598,7 @@
    "pp_tps": 4773.07,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 4443.54 \u00b1 339.25; llama 7B Q4_0 | tg128 | 93.84 \u00b1 0.26; llama 7B Q4_0 | pp512 | 4773.07 \u00b1 49.30; llama 7B Q4_0 | tg128 | 97.98 \u00b1 0.13",
+   "quote": "Radeon 8060S; dev=ROCM0; llama 7B Q4_0 | pp512 | 4443.54 \u00b1 339.25; llama 7B Q4_0 | tg128 | 93.84 \u00b1 0.26; llama 7B Q4_0 | pp512 | 4773.07 \u00b1 49.30; llama 7B Q4_0 | tg128 | 97.98 \u00b1 0.13",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
@@ -30390,7 +30607,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-11-26",
@@ -30406,7 +30623,7 @@
    "pp_tps": 4727.48,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 3585.20 \u00b1 646.73; llama 7B Q4_0 | tg128 | 66.27 \u00b1 2.99; llama 7B Q4_0 | pp512 | 4727.48 \u00b1 60.77; llama 7B Q4_0 | tg128 | 68.67 \u00b1 1.56",
+   "quote": "Radeon 8060S; dev=ROCM1; llama 7B Q4_0 | pp512 | 3585.20 \u00b1 646.73; llama 7B Q4_0 | tg128 | 66.27 \u00b1 2.99; llama 7B Q4_0 | pp512 | 4727.48 \u00b1 60.77; llama 7B Q4_0 | tg128 | 68.67 \u00b1 1.56",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
@@ -30415,7 +30632,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-10",
@@ -30438,7 +30655,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-10",
@@ -30463,7 +30680,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-10",
@@ -30488,7 +30705,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-11",
@@ -30513,7 +30730,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-15",
@@ -30538,7 +30755,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-20",
@@ -30563,7 +30780,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2026-02-25",
@@ -30588,7 +30805,7 @@
    "ttft_s": null
   },
   {
-   "backend": "llama.cpp",
+   "backend": "llama.cpp (ROCm)",
    "batch": null,
    "ctx": 128,
    "date": "2025-12-15",
@@ -30819,7 +31036,7 @@
    "pp_tps": 1851.35,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc B580; llama 7B Q4_0 | pp512 | 1851.35 \u00b1 1.16; llama 7B Q4_0 | tg128 | 77.92 \u00b1 0.01",
+   "quote": "Arc B580; dev=SYCL0; llama 7B Q4_0 | pp512 | 1851.35 \u00b1 1.16; llama 7B Q4_0 | tg128 | 77.92 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -30842,7 +31059,7 @@
    "pp_tps": 1631.3,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc B580; llama 7B Q4_0 | pp512 | 1631.30 \u00b1 1.21; llama 7B Q4_0 | tg128 | 82.85 \u00b1 0.01",
+   "quote": "Arc B580; dev=SYCL0; llama 7B Q4_0 | pp512 | 1631.30 \u00b1 1.21; llama 7B Q4_0 | tg128 | 82.85 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -30865,7 +31082,7 @@
    "pp_tps": 2015.51,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc B580; llama 7B Q4_0 | pp512 | 2015.51 \u00b1 15.87; llama 7B Q4_0 | tg128 | 82.49 \u00b1 0.38",
+   "quote": "Arc B580; dev=SYCL1; llama 7B Q4_0 | pp512 | 2015.51 \u00b1 15.87; llama 7B Q4_0 | tg128 | 82.49 \u00b1 0.38",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -30888,7 +31105,7 @@
    "pp_tps": 1806.18,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc B580; llama 7B Q4_0 | pp512 | 1806.18 \u00b1 8.68; llama 7B Q4_0 | tg128 | 86.54 \u00b1 0.33",
+   "quote": "Arc B580; dev=SYCL1; llama 7B Q4_0 | pp512 | 1806.18 \u00b1 8.68; llama 7B Q4_0 | tg128 | 86.54 \u00b1 0.33",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -30986,7 +31203,7 @@
    "pp_tps": 1621.0,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1621.00 \u00b1 2.51; llama 7B Q4_0 | tg128 | 68.07 \u00b1 0.01",
+   "quote": "Arc Pro B60; dev=VULKAN1; llama 7B Q4_0 | pp512 | 1621.00 \u00b1 2.51; llama 7B Q4_0 | tg128 | 68.07 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31009,7 +31226,7 @@
    "pp_tps": 1572.29,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1572.29 \u00b1 2.51; llama 7B Q4_0 | tg128 | 71.42 \u00b1 0.00",
+   "quote": "Arc Pro B60; dev=VULKAN1; llama 7B Q4_0 | pp512 | 1572.29 \u00b1 2.51; llama 7B Q4_0 | tg128 | 71.42 \u00b1 0.00",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31032,7 +31249,7 @@
    "pp_tps": 1929.93,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1929.93 \u00b1 17.92; llama 7B Q4_0 | tg128 | 73.01 \u00b1 0.44",
+   "quote": "Arc Pro B60; dev=VULKAN0; llama 7B Q4_0 | pp512 | 1929.93 \u00b1 17.92; llama 7B Q4_0 | tg128 | 73.01 \u00b1 0.44",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31055,7 +31272,7 @@
    "pp_tps": 1841.31,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1841.31 \u00b1 22.24; llama 7B Q4_0 | tg128 | 76.83 \u00b1 0.18",
+   "quote": "Arc Pro B60; dev=VULKAN0; llama 7B Q4_0 | pp512 | 1841.31 \u00b1 22.24; llama 7B Q4_0 | tg128 | 76.83 \u00b1 0.18",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31460,7 +31677,7 @@
    "pp_tps": 445.85,
    "provenance": "community",
    "quant": "Q4_K - Small",
-   "quote": "Arc A770; muse-glimmer 30B Q4_K - Small | pp512 | 528.15 \u00b1 0.76; muse-glimmer 30B Q4_K - Small | tg128 | 13.66 \u00b1 0.03; muse-glimmer 30B Q4_K - Small | pp512 | 598.60 \u00b1 0.46; muse-glimmer 30B Q4_K - Small | tg128 | 12.57 \u00b1 0.02; muse-glimmer 30B Q4_K - Small | pp512 | 445.85 \u00b1 0.69; muse-glimmer 30B Q4_K - Small | tg128 | 8.69 \u00b1 0.01",
+   "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 528.15 \u00b1 0.76; muse-glimmer 30B Q4_K - Small | tg128 | 13.66 \u00b1 0.03; muse-glimmer 30B Q4_K - Small | pp512 | 598.60 \u00b1 0.46; muse-glimmer 30B Q4_K - Small | tg128 | 12.57 \u00b1 0.02; muse-glimmer 30B Q4_K - Small | pp512 | 445.85 \u00b1 0.69; muse-glimmer 30B Q4_K - Small | tg128 | 8.69 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31483,7 +31700,7 @@
    "pp_tps": 467.16,
    "provenance": "community",
    "quant": "Q4_K - Small",
-   "quote": "Arc A770; muse-glimmer 30B Q4_K - Small | pp512 | 544.62 \u00b1 0.29; muse-glimmer 30B Q4_K - Small | tg128 | 18.68 \u00b1 0.01; muse-glimmer 30B Q4_K - Small | pp512 | 623.17 \u00b1 0.25; muse-glimmer 30B Q4_K - Small | tg128 | 17.88 \u00b1 0.03; muse-glimmer 30B Q4_K - Small | pp512 | 467.16 \u00b1 0.61; muse-glimmer 30B Q4_K - Small | tg128 | 9.98 \u00b1 0.02",
+   "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 544.62 \u00b1 0.29; muse-glimmer 30B Q4_K - Small | tg128 | 18.68 \u00b1 0.01; muse-glimmer 30B Q4_K - Small | pp512 | 623.17 \u00b1 0.25; muse-glimmer 30B Q4_K - Small | tg128 | 17.88 \u00b1 0.03; muse-glimmer 30B Q4_K - Small | pp512 | 467.16 \u00b1 0.61; muse-glimmer 30B Q4_K - Small | tg128 | 9.98 \u00b1 0.02",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31506,7 +31723,7 @@
    "pp_tps": 580.37,
    "provenance": "community",
    "quant": "Q4_K - Small",
-   "quote": "Arc A770; muse-glimmer 30B Q4_K - Small | pp512 | 546.94 \u00b1 0.47; muse-glimmer 30B Q4_K - Small | tg128 | 18.68 \u00b1 0.02; muse-glimmer 30B Q4_K - Small | pp512 | 625.05 \u00b1 1.07; muse-glimmer 30B Q4_K - Small | tg128 | 17.90 \u00b1 0.01; muse-glimmer 30B Q4_K - Small | pp512 | 580.37 \u00b1 0.55; muse-glimmer 30B Q4_K - Small | tg128 | 10.12 \u00b1 0.03",
+   "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 546.94 \u00b1 0.47; muse-glimmer 30B Q4_K - Small | tg128 | 18.68 \u00b1 0.02; muse-glimmer 30B Q4_K - Small | pp512 | 625.05 \u00b1 1.07; muse-glimmer 30B Q4_K - Small | tg128 | 17.90 \u00b1 0.01; muse-glimmer 30B Q4_K - Small | pp512 | 580.37 \u00b1 0.55; muse-glimmer 30B Q4_K - Small | tg128 | 10.12 \u00b1 0.03",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31529,7 +31746,7 @@
    "pp_tps": 547.77,
    "provenance": "community",
    "quant": "Q4_K - Small",
-   "quote": "Arc A770; muse-glimmer 30B Q4_K - Small | pp512 | 547.77 \u00b1 0.75; muse-glimmer 30B Q4_K - Small | tg128 | 9.82 \u00b1 0.02",
+   "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 547.77 \u00b1 0.75; muse-glimmer 30B Q4_K - Small | tg128 | 9.82 \u00b1 0.02",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31552,7 +31769,7 @@
    "pp_tps": 516.6,
    "provenance": "community",
    "quant": "Q4_K - Medium",
-   "quote": "Arc A770; qwen35 27B Q4_K - Medium | pp512 | 452.70 \u00b1 0.65; qwen35 27B Q4_K - Medium | tg128 | 17.40 \u00b1 0.02; qwen35 27B Q4_K - Medium | pp512 | 524.50 \u00b1 1.87; qwen35 27B Q4_K - Medium | tg128 | 17.63 \u00b1 0.03; qwen35 27B Q4_K - Medium | pp512 | 516.60 \u00b1 1.24; qwen35 27B Q4_K - Medium | tg128 | 8.61 \u00b1 0.02",
+   "quote": "Arc A770; dev=SYCL0/SYCL1; qwen35 27B Q4_K - Medium | pp512 | 452.70 \u00b1 0.65; qwen35 27B Q4_K - Medium | tg128 | 17.40 \u00b1 0.02; qwen35 27B Q4_K - Medium | pp512 | 524.50 \u00b1 1.87; qwen35 27B Q4_K - Medium | tg128 | 17.63 \u00b1 0.03; qwen35 27B Q4_K - Medium | pp512 | 516.60 \u00b1 1.24; qwen35 27B Q4_K - Medium | tg128 | 8.61 \u00b1 0.02",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31667,7 +31884,7 @@
    "pp_tps": 4651.26,
    "provenance": "community",
    "quant": "Q4_0",
-   "quote": "Arc Pro B70; llama 7B Q4_0 | pp512 | 4271.32 \u00b1 6.30; llama 7B Q4_0 | tg128 | 112.43 \u00b1 0.04; llama 7B Q4_0 | pp512 | 4651.26 \u00b1 15.15; llama 7B Q4_0 | tg128 | 116.67 \u00b1 0.04",
+   "quote": "Arc Pro B70; dev=VULKAN1; llama 7B Q4_0 | pp512 | 4271.32 \u00b1 6.30; llama 7B Q4_0 | tg128 | 112.43 \u00b1 0.04; llama 7B Q4_0 | pp512 | 4651.26 \u00b1 15.15; llama 7B Q4_0 | tg128 | 116.67 \u00b1 0.04",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
@@ -31690,7 +31907,7 @@
    "pp_tps": 1138.09,
    "provenance": "community",
    "quant": "Q8_0",
-   "quote": "Arc Pro B70; qwen35 27B Q8_0 | pp512 | 1140.11 \u00b1 3.26; qwen35 27B Q8_0 | tg128 | 18.56 \u00b1 0.00; qwen35 27B Q8_0 | pp512 | 1138.09 \u00b1 1.59; qwen35 27B Q8_0 | tg128 | 18.60 \u00b1 0.01",
+   "quote": "Arc Pro B70; dev=VULKAN1; qwen35 27B Q8_0 | pp512 | 1140.11 \u00b1 3.26; qwen35 27B Q8_0 | tg128 | 18.56 \u00b1 0.00; qwen35 27B Q8_0 | pp512 | 1138.09 \u00b1 1.59; qwen35 27B Q8_0 | tg128 | 18.60 \u00b1 0.01",
    "ram_gb": null,
    "retrieved": "2026-09-26",
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
