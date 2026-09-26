@@ -1,5 +1,5 @@
 {
- "count": 1642,
+ "count": 1644,
  "records": [
   {
    "backend": "llama.cpp",
@@ -160,6 +160,54 @@
    "source_name": "vLLM issue #49548 (community report)",
    "source_url": "https://github.com/vllm-project/vllm/issues/49548",
    "tps": 59.6,
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 1,
+   "ctx": null,
+   "date": "2026-09",
+   "flags": [
+    "contradiction"
+   ],
+   "hardware": "GB200",
+   "id": "githubissues-gb200-glm53-nvfp4-vllm-mnnvl",
+   "model": "GLM-5.3",
+   "notes": "vLLM P/D disaggregation on GB200 (DEP8 prefill + TP4 decode, AgentX C64 agentic load); NIXL KV transfer over MNNVL cuda_ipc; output tok/s/user mean under agentic load",
+   "params": "MLA + DSA indexer (DeepSeek-V3.2 architecture)",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "NVFP4",
+   "quote": "GLM-5.3 (NVFP4), DEP8 prefill + TP4 decode, AgentX C64. ; with P/D disaggregation on GB200, NIXL KV transfer is dominated by ; Output tok/s/user mean / p50 | 102.68 / 91.10 | 136.77 / 129.06 | +33% / +42%",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "vLLM issue #55434 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/55434",
+   "tps": 102.68,
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 1,
+   "ctx": null,
+   "date": "2026-09",
+   "flags": [],
+   "hardware": "GB200",
+   "id": "githubissues-gb200-glm53-nvfp4-vllm-ib4",
+   "model": "GLM-5.3",
+   "notes": "same GB200 P/D deployment (DEP8 prefill + TP4 decode, AgentX C64 agentic load) with NIXL over native IB 4-rail rc_x; output tok/s/user mean under agentic load",
+   "params": "MLA + DSA indexer (DeepSeek-V3.2 architecture)",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "NVFP4",
+   "quote": "GLM-5.3 (NVFP4), DEP8 prefill + TP4 decode, AgentX C64. ; with P/D disaggregation on GB200, NIXL KV transfer is dominated by ; Output tok/s/user mean / p50 | 102.68 / 91.10 | 136.77 / 129.06 | +33% / +42%",
+   "ram_gb": null,
+   "retrieved": "2026-09-26",
+   "source_name": "vLLM issue #55434 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/55434",
+   "tps": 136.77,
    "ttft_s": null
   },
   {

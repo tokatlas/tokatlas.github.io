@@ -25,7 +25,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/28196",
    "source_name": "llama.cpp issue #28196 (community report)",
    "retrieved": "2026-09-26",
-   "quote": "GPU: NVIDIA GeForce RTX 5090 (32 GB GDDR7, driver 616.56); Model: Qwen3.5-27B Q4_K_M GGUF, 15.65 GiB; qwen35 27B Q4_K_M | pp1024 | 1515.83 ± 47.03; qwen35 27B Q4_K_M | tg400 | 30.09 ± 0.44",
+   "quote": "GPU: NVIDIA GeForce RTX 5090 (32 GB GDDR7, driver 616.56); Model: Qwen3.5-27B Q4_K_M GGUF, 15.65 GiB; qwen35 27B Q4_K_M | pp1024 | 1515.83 \u00b1 47.03; qwen35 27B Q4_K_M | tg400 | 30.09 \u00b1 0.44",
    "notes": "llama-bench -ngl 99 -fa 1 -p 1024 -n 400, 5 reps; llama.cpp b10741 Windows binaries, Windows 11; reporter notes 76% of roofline on native Linux build, 28% on this Windows rig"
   },
   {
@@ -47,7 +47,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/28196",
    "source_name": "llama.cpp issue #28196 (community report)",
    "retrieved": "2026-09-26",
-   "quote": "GPU: NVIDIA GeForce RTX 5090 (32 GB GDDR7, driver 616.56); qwen3moe 30B.A3B Q4_K_M (control, same rig) | pp1024 | 4081.20 ± 89.86; qwen3moe 30B.A3B Q4_K_M (control, same rig) | tg400 | 134.18 ± 1.84",
+   "quote": "GPU: NVIDIA GeForce RTX 5090 (32 GB GDDR7, driver 616.56); qwen3moe 30B.A3B Q4_K_M (control, same rig) | pp1024 | 4081.20 \u00b1 89.86; qwen3moe 30B.A3B Q4_K_M (control, same rig) | tg400 | 134.18 \u00b1 1.84",
    "notes": "MoE control model on the same rig and build, per issue; same llama-bench command and reps"
   },
   {
@@ -99,7 +99,7 @@
    "model": "Qwen3-Coder-Next",
    "params": null,
    "quant": "Q4_K_M",
-   "hardware": "RTX 5090 ×2",
+   "hardware": "RTX 5090 \u00d72",
    "ram_gb": null,
    "backend": "llama.cpp",
    "ctx": null,
@@ -113,7 +113,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/23010",
    "source_name": "llama.cpp issue #23010 (community report)",
    "retrieved": "2026-09-26",
-   "quote": "The same qwen3-coder-next-Q4_K_M.gguf runs cleanly on RTX 5090 × 2 (Blackwell, sm_120, amd64) at ~74 tok/s decode using the same server-cuda-b9014 image family.",
+   "quote": "The same qwen3-coder-next-Q4_K_M.gguf runs cleanly on RTX 5090 \u00d7 2 (Blackwell, sm_120, amd64) at ~74 tok/s decode using the same server-cuda-b9014 image family.",
    "notes": "dual RTX 5090, amd64; same server-cuda-b9014 image family; cross-platform check cited in the issue"
   },
   {
@@ -159,6 +159,50 @@
    "retrieved": "2026-09-26",
    "quote": "NVIDIA GB10 / DGX Spark, sm_121a, 128 GB unified memory (~273 GB/s); vLLM 0.23.1rc1.dev1302+ge765bbc97; Model: Qwen3.5-122B-A10B INT4 (AutoRound), native MTP speculator, num_speculative_tokens: 2; Single-stream tok/s | 59.6 | 50.0 (expected PIECEWISE downgrade)",
    "notes": "single-stream decode, static MTP k=2; the dynamic k schedule variant reports 50.0 t/s single-stream; 8 concurrent x 180-token aggregate ~232 tok/s; FLASH_ATTN, enforce_eager=false"
+  },
+  {
+   "model": "GLM-5.3",
+   "params": "MLA + DSA indexer (DeepSeek-V3.2 architecture)",
+   "quant": "NVFP4",
+   "hardware": "GB200",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 1,
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-09",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/issues/55434",
+   "source_name": "vLLM issue #55434 (community report)",
+   "retrieved": "2026-09-26",
+   "quote": "GLM-5.3 (NVFP4), DEP8 prefill + TP4 decode, AgentX C64. ; with P/D disaggregation on GB200, NIXL KV transfer is dominated by ; Output tok/s/user mean / p50 | 102.68 / 91.10 | 136.77 / 129.06 | +33% / +42%",
+   "id": "githubissues-gb200-glm53-nvfp4-vllm-mnnvl",
+   "tps": 102.68,
+   "notes": "vLLM P/D disaggregation on GB200 (DEP8 prefill + TP4 decode, AgentX C64 agentic load); NIXL KV transfer over MNNVL cuda_ipc; output tok/s/user mean under agentic load"
+  },
+  {
+   "model": "GLM-5.3",
+   "params": "MLA + DSA indexer (DeepSeek-V3.2 architecture)",
+   "quant": "NVFP4",
+   "hardware": "GB200",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 1,
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-09",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/issues/55434",
+   "source_name": "vLLM issue #55434 (community report)",
+   "retrieved": "2026-09-26",
+   "quote": "GLM-5.3 (NVFP4), DEP8 prefill + TP4 decode, AgentX C64. ; with P/D disaggregation on GB200, NIXL KV transfer is dominated by ; Output tok/s/user mean / p50 | 102.68 / 91.10 | 136.77 / 129.06 | +33% / +42%",
+   "id": "githubissues-gb200-glm53-nvfp4-vllm-ib4",
+   "tps": 136.77,
+   "notes": "same GB200 P/D deployment (DEP8 prefill + TP4 decode, AgentX C64 agentic load) with NIXL over native IB 4-rail rc_x; output tok/s/user mean under agentic load"
   }
  ]
 }
