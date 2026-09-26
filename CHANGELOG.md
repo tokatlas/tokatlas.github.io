@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-26: llama.cpp performance discussions collected (885 measured rows, 5 threads)
+
+- New source `data/raw/llamacpp_discussions.json`: 885 measured community rows
+  from the official llama.cpp performance threads (GitHub Discussions
+  #4167 Apple Silicon, #15013 CUDA, #15021 ROCm, #10879 Vulkan, #23313
+  SYCL). The collector (scripts/collect_llamacpp_discussions.py) parses
+  primary-source llama-bench tables from every post, including the paginated
+  "hidden items" windows and the curated M-series scoreboard in #4167.
+- Hardware is attributed from post text and section headings (chip patterns
+  per thread); rows without a detectable chip are skipped. Accelerator is
+  taken from the benchmark's backend column, so backends are now qualified
+  (llama.cpp (Metal), (CUDA), (Vulkan), (ROCm), (SYCL), (CPU), (RPC),
+  (OpenCL), (OpenVINO)) for cross-backend comparison.
+- Dataset: 1644 measured records, 265 hardware strings, 102 models, 19
+  backends. Provenance: 746 sourced, 898 community. Flags: 310
+  contradiction, 38 outlier (community threads publish repeated runs on the
+  same setups, which is exactly what the contradiction flag is for).
+
 ## 2026-09-26: GitHub issue reports added (GB10, dual 5090; first vLLM and ExLlamaV2 rows); site link fix
 
 - New source `data/raw/github_issues.json`: 7 hand-curated community rows quoted
