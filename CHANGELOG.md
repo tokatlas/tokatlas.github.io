@@ -21,7 +21,7 @@
 
 - Added 2 sources: LLM Configurator measured benchmarks (CC BY 4.0 — RTX 3090/
   4090, llama.cpp, context lengths 4k-131k, per-row publisher + source URL) and
-  Silicon Score benchmark audit (432 Apple Silicon rows with per-row source URLs,
+  Silicon Score benchmark audit (416 Apple Silicon rows with per-row source URLs,
   prompt-processing and TTFT figures).
 - Dataset is now multi-source: 3 sources merged by `scripts/merge_data.py` from
   `data/raw/*.json`; collector-per-source, deterministic, cached.
