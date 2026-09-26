@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-26: GitHub issue reports added (DGX Spark GB10, dual 5090, first ExLlamaV2 row); site link fix
+
+- New source `data/raw/github_issues.json`: 6 hand-curated community rows quoted
+  verbatim from GitHub issues (llama.cpp #28196 and #23010, ExLlamaV2 #806).
+  Adds DGX Spark (GB10) and dual RTX 5090 coverage plus the first ExLlamaV2
+  backend row (RTX 5090 laptop, TinyLlama 1.1B EXL2).
+- Dataset: 758 measured records, 134 hardware strings, 74 models, 10 backends.
+- Fixed broken link prefixes in generated record tables: rows linked hardware
+  to `/<slug>/` instead of `/hardware/<slug>/` and models to `/<slug>/` instead
+  of `/models/<slug>/`; the hardware/model index lists used relative hrefs that
+  doubled the directory prefix.
+- CI now verifies every internal link in the built site
+  (`scripts/check_links.py`, 4,800+ links across 210 pages).
+
 ## 2026-09-26: Hardware Corner context curves, 308 measured GPU rows; estimates move to the reference area
 
 - New source collected: Hardware Corner GPU LLM benchmark hub pages (21 NVIDIA
