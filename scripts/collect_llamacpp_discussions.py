@@ -56,7 +56,7 @@ CHIP_PATTERNS = {
     ],
     "NVIDIA CUDA": [
         r"(?:GeForce |Quadro |NVIDIA )?RTX\s?(?:[3-6]\d{3})(?:\s?(?:Super|Ti|Mobile|Max-Q|Blackwell))?",
-        r"\b(?:RTX\s?PRO\s?\d{4}|A[1-9]\d{2}|T4|V100|P100|B[12]\d{2,3}|H100|H200|B200|B300|GB200|GB10)\b",
+        r"\b(?:RTX\s?PRO\s?\d{4}|A[1-9]\d{2,4}|T4|V100|P100|B[12]\d{2,3}|H100|H200|B200|B300|GB200|GB10)\b",
     ],
     "AMD ROCm": [
         r"Radeon\s?(?:RX\s?)?\d{3,4}\s?[A-Z]{0,3}",
@@ -65,14 +65,14 @@ CHIP_PATTERNS = {
     "Vulkan": [
         r"RTX\s?\d{4}(?:\s?(?:Super|Ti|Mobile|Max-Q))?",
         r"Radeon\s?(?:RX\s?)?\d{3,4}\s?[A-Z]{0,3}",
-        r"\bArc\s?[ABK]\d{3}\b",
+        r"\bArc(?:\(tm\))?\s?(?:Pro\s?)?[ABK]\d{2,3}\b",
         r"\bIris\s?Xe\b",
         r"M[1-5](?: Max| Pro| Ultra)?\s*\d+\s?GB",
         r"M[1-5](?: Max| Pro| Ultra)?\b(?![0-9A-Za-z])",
-        r"\b(?:A[1-9]\d{2}|T4|V100|P100|B[12]\d{2,3}|H100|H200|B200|B300|GB200|GB10)\b",
+        r"\b(?:A[1-9]\d{2,4}|T4|V100|P100|B[12]\d{2,3}|H100|H200|B200|B300|GB200|GB10)\b",
     ],
     "Intel SYCL": [
-        r"\bArc\s?[ABK]\d{3}\b",
+        r"\bArc(?:\(tm\))?\s?(?:Pro\s?)?[ABK]\d{2,3}\b",
         r"\bIris\s?Xe\b(?:\s?\d{1,3})?",
         r"\bUHD\s?\d{3}\b",
     ],
@@ -139,6 +139,66 @@ def table_rows(fragment):
     return out
 
 
+def text_tables(fragment):
+    """Markdown-style pipe tables pasted as plain text inside <pre>/<code>.
+
+    Many posts paste llama-bench output verbatim; GitHub renders it as
+    text, so TABLE_RE never sees it. We only accept blocks whose header
+    line looks like a llama-bench header (test + t/s, or ppNNN/tgNNN
+    columns) so random pipe text does not become a table.
+    """
+    out = []
+    for m in re.finditer(r"<pre[^>]*>(.*?)</pre>|<code[^>]*>(.*?)</code>",
+                         fragment, re.S):
+        block = m.group(1) if m.group(1) is not None else m.group(2)
+        block_abs = m.start(1) if m.group(1) is not None else m.start(2)
+        txt = html.unescape(re.sub(r"<[^>]+>", " ", block))
+        lines = txt.splitlines()
+        # absolute offset of each line (tags are rare inside <pre>/<code>)
+        line_off, o = [], 0
+        for ln in txt.splitlines():
+            i = txt.find(ln, o)
+            line_off.append(block_abs + (i if i >= 0 else 0))
+            o = i + len(ln) + 1
+        runs = []  # (first_line_index, lines)
+        cur, cur_start = [], None
+        for i, ln in enumerate(lines):
+            s = ln.strip()
+            if s.startswith("|") and s.count("|") >= 6:
+                if cur_start is None:
+                    cur_start = i
+                cur.append(s)
+            else:
+                if cur:
+                    runs.append((cur_start, cur))
+                    cur, cur_start = [], None
+        if cur:
+            runs.append((cur_start, cur))
+        last_hdr = None
+        for start_i, run in runs:
+            cells_rows = []
+            for s in run:
+                cells = [c.strip() for c in s.strip("|").split("|")]
+                if all(re.fullmatch(r":?-+:?", c) for c in cells if c):
+                    continue  # separator line
+                cells_rows.append(cells)
+            if not cells_rows:
+                continue
+            low0 = [c.lower() for c in cells_rows[0]]
+            if "t/s" in low0 or "test" in low0:
+                hdr, body = cells_rows[0], cells_rows[1:]
+            elif last_hdr is not None and len(cells_rows[0]) == len(last_hdr):
+                # continuation of the previous table (header not repeated)
+                hdr, body = last_hdr, cells_rows
+            else:
+                continue
+            if body:
+                preceding = " ".join(l.strip() for l in lines[:start_i])
+                out.append((line_off[start_i], [hdr] + body, preceding))
+                last_hdr = hdr
+    return out
+
+
 def discussion_items(num):
     """Yield (author, date, comment_url, fragment) for every post in the thread."""
     urls = [BASE + "/" + str(num)]
@@ -195,12 +255,36 @@ def split_model_quant(model_cell):
     return model_cell, None
 
 
+def _clean(chip):
+    chip = re.sub(r"\s*\(tm\)\s*", " ", chip, flags=re.I)
+    return re.sub(r"\s+", " ", chip).strip()
+
+
+def _match_chip(text, pat, m):
+    chip = m.group(0)
+    ext = re.match(r"\s+(Super|Blackwell|Mobile)\b", text[m.end():], re.I)
+    if ext:
+        chip += " " + ext.group(1).capitalize()
+    return _clean(chip)
+
+
 def chip_in(text, thread_label):
     for pat in CHIP_PATTERNS.get(thread_label, []):
         m = re.search(pat, text)
         if m:
-            return m.group(0).strip()
+            return _match_chip(text, pat, m)
     return None
+
+
+def nearest_chip(text, thread_label):
+    """Chip mentioned closest to the end of the text, i.e. the one
+    describing the machine the table that follows was run on."""
+    best_end, best = -1, None
+    for pat in CHIP_PATTERNS.get(thread_label, []):
+        for m in re.finditer(pat, text):
+            if m.end() > best_end:
+                best_end, best = m.end(), _match_chip(text, pat, m)
+    return best
 
 
 def backend_of(cell):
@@ -243,6 +327,97 @@ def body_parts(fragment):
     return parts
 
 
+def norm(s):
+    return re.sub(r"[^a-z0-9]+", "", (s or "").lower())
+
+
+def power_entries(part):
+    """Measured power reported in post prose, as (pos, label, kind, value, desc).
+
+    kind is 'sys' (whole-system watts for the tg test), 'rate' (watts per
+    t/s; multiply by the row's tps), or 'watts' (device watts).
+    Positions are offsets into the raw part HTML so they line up with
+    table positions; the text is matched on a tag-flattened copy.
+    """
+    flat_chars, pos_map = [], []
+    for mm in re.finditer(r"<[^>]+>|.", part, re.S):
+        s = mm.group(0)
+        if s.startswith("<"):
+            flat_chars.append(" ")
+            pos_map.append(mm.end())
+        else:
+            flat_chars.append(s)
+            pos_map.append(mm.start())
+    t = "".join(flat_chars)
+
+    def rawpos(m):
+        return pos_map[m.start()]
+
+    out = []
+    for m in re.finditer(r"tg\d*\s*:\s*(\d+\.?\d*)\s*W", t):
+        if "Total system power" in t[max(0, m.start() - 160):m.start()]:
+            out.append((rawpos(m), None, "sys", float(m.group(1)),
+                        "measured total system power (hwmon), tg test"))
+    for m in re.finditer(
+            r"([^:|<]{2,40}?)\s*:\s*~?(\d+)-(\d+)\s*W\s*" \
+            r"\(\s*Watt per tg/s:\s*~?([\d.]+)", t):
+        out.append((rawpos(m), m.group(1), "rate", float(m.group(4)),
+                    "measured nvtop power, %s W per t/s (published range %s-%sW)"
+                    % (m.group(4), m.group(2), m.group(3))))
+    for m in re.finditer(r"Observed power\.draw:\s*Short runs:\s*~?(\d+)\s*W",
+                         t):
+        out.append((rawpos(m), None, "watts", float(m.group(1)),
+                    "measured nvidia-smi power.draw, short runs (approximate)"))
+    for m in re.finditer(r"Power-draw went up as well:\s*~?(\d+)\s*W",
+                         t):
+        out.append((rawpos(m), None, "watts", float(m.group(1)),
+                    "measured power draw"))
+    return out
+
+
+def attach_power(rows, part, table_pos):
+    """Pair measured-power prose with the rows of the table it follows.
+
+    An entry belongs to the table that starts just before it. If several
+    entries belong to the same table (multi-GPU sections), pair by label
+    when possible, then by row/entry order.
+    """
+    entries = power_entries(part)
+    if not entries:
+        return
+    unused = set(id(e) for e in entries)
+
+    def apply(r, e):
+        w = round(e[3] * r["tps"]) if e[2] == "rate" else e[3]
+        if e[2] == "rate" and w == 0:
+            w = e[3]
+        r["power_w"] = w
+        r["notes"] = ((r["notes"] + "; " if r["notes"] else "")
+                      + str(w) + " W " + e[4])
+
+    for r in rows:
+        hw = norm(r.get("hardware"))
+        lab = [e for e in entries if id(e) in unused and e[1]
+               and (norm(e[1]) in hw or hw in norm(e[1]))]
+        if len(lab) == 1:
+            apply(r, lab[0])
+            unused.discard(id(lab[0]))
+    tpos = sorted(set(p for p in table_pos.values() if p is not None))
+    by_table = {}
+    for e in entries:
+        if id(e) in unused and tpos:
+            t = min(tpos, key=lambda tp: abs(tp - e[0]))
+            by_table.setdefault(t, []).append(e)
+    for r in rows:
+        if r.get("power_w"):
+            continue
+        es = [e for e in by_table.get(table_pos.get(id(r)), [])
+              if id(e) in unused]
+        if len(es) == 1:
+            apply(r, es[0])
+            unused.discard(id(es[0]))
+
+
 def extract(frag, comment_url, thread_label, thread_num, comment_id):
     """Pull benchmark rows out of one post fragment."""
     rows = []
@@ -250,7 +425,9 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
     parts = body_parts(frag)
     plain = re.sub(r"\s+", " ", " ".join(
         text_of(re.sub(r"<table.*?</table>", " ", p, flags=re.S)) for p in parts))
+    part_starts = []
     for part in parts:
+        part_starts.append(len(rows))
         context = [(m.start(), clean(m.group(1))) for m in HEADING_RE.finditer(part)]
         context += [(m.start(), clean(m.group(1))) for m in re.finditer(r"<p[^>]*>(.*?)</p>", part, re.S)]
         heads = [(m.start(), clean(m.group(1))) for m in HEADING_RE.finditer(part)]
@@ -260,18 +437,44 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
             return before[-1] if before else ""
 
         def nearest_hw(pos):
-            for hp, ht in reversed([x for x in heads if x[0] < pos]):
-                c = chip_in(ht, thread_label)
+            for hp, ht in reversed([x for x in xcontext if x[0] <= pos]):
+                c = nearest_chip(ht, thread_label)
                 if c:
                     return c
             return chip_in(plain, thread_label)
 
-        for pos, tbl in table_rows(part):
+        def gpu_map(pos):
+            """Numbered GPU list ('0: X 1: Y' or '0 = X 1 = Y') in the text
+            preceding a table, as {index: (chip, snippet)}. The mention
+            closest to the table wins.
+            """
+            m = {}
+            for gp, gt in [x for x in xcontext if x[0] <= pos]:
+                segs = re.split(r"\b(\d)\s*[:=]\s*", gt)
+                if len(segs) < 4:
+                    continue
+                for k in range(1, len(segs) - 1, 2):
+                    chip = chip_in(segs[k + 1][:120], thread_label)
+                    if chip:
+                        m[segs[k]] = (chip, segs[k + 1][:80].strip())
+            return m
+
+        all_tables = []
+        for p2, t2 in table_rows(part):
+            all_tables.append((p2, t2, ""))
+        for p2, t2, pred in text_tables(part):
+            all_tables.append((p2, t2, pred))
+        all_tables.sort(key=lambda x: x[0])
+        xcontext = context + [(p2, pred) for p2, t2, pred in all_tables
+                              if pred]
+        xcontext.sort(key=lambda x: x[0])
+        for ti, (pos, tbl, pred) in enumerate(all_tables):
             hdr = [h.lower() for h in tbl[0]]
             if "test" in hdr and "t/s" in hdr:
                 # old llama-bench: one row per test (pp*/tg*)
                 idx = {c.lower(): i for i, c in enumerate(tbl[0])}
                 model_i = idx.get("model", 0)
+                mg_i = idx.get("main_gpu")
                 merged = {}
                 for r in tbl[1:]:
                     if len(r) < len(tbl[0]):
@@ -286,10 +489,13 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                         continue
                     test = tm.group(1) + tm.group(2)
                     model, quant = split_model_quant(model_cell)
-                    key = (model, quant, r[idx.get("backend", 0)] if "backend" in idx and idx["backend"] < len(r) else "",
+                    mg = r[mg_i] if mg_i is not None and mg_i < len(r) else ""
+                    key = (model, quant, mg,
+                           r[idx.get("backend", 0)] if "backend" in idx and idx["backend"] < len(r) else "",
                            r[idx.get("threads", idx.get("ngl", 0))] if ("threads" in idx or "ngl" in idx) and max(idx.get("threads", 0), idx.get("ngl", 0)) < len(r) else "")
                     ent = merged.setdefault(key, {"model": model, "quant": quant,
-                                                  "backend": key[2], "threads": key[3], "cells": []})
+                                                  "mg": key[2],
+                                                  "backend": key[3], "threads": key[4], "cells": []})
                     ent[test] = (val, r[idx["t/s"]])
                     ent["cells"].append((model_cell or key[0], test, r[idx["t/s"]]))
                 for key, ent in merged.items():
@@ -302,9 +508,20 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     tgv, tgs = ent[tgk[0]]
                     pp = ent.get(ppk[0], (None, "")) if ppk else (None, "")
                     quote = "; ".join("%s | %s | %s" % c for c in ent["cells"])
-                    hw = nearest_hw(pos)
+                    hw, gsnip = None, None
+                    if mg_i is not None and ent["mg"]:
+                        gmap = gpu_map(pos)
+                        if ent["mg"] in gmap:
+                            hw, gsnip = gmap[ent["mg"]]
+                    if not hw:
+                        hw = nearest_hw(pos)
                     if hw:
-                        quote = hw + "; " + quote
+                        if gsnip and norm(hw) not in norm(gsnip):
+                            quote = hw + "; " + gsnip + "; " + quote
+                        elif gsnip:
+                            quote = gsnip + "; " + quote
+                        else:
+                            quote = hw + "; " + quote
                     rows.append({
                         "model": ent["model"], "quant": ent["quant"],
                         "backend": backend_of(ent["backend"]),
@@ -314,6 +531,7 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                         "notes": "threads=%s" % ent["threads"] if ent["threads"] else None,
                         "source_url": comment_url,
                         "hardware": hw,
+                        "_tpos": pos,
                     })
             elif any(re.fullmatch(r"pp\d+", h) for h in hdr) and any(re.fullmatch(r"tg\d+", h) for h in hdr):
                 # new llama-bench: pp/tg in one row
@@ -358,6 +576,7 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                         "ctx": ctx, "tps": tps, "pp_tps": pp,
                         "quote": quote, "notes": None, "source_url": comment_url,
                         "hardware": hw,
+                        "_tpos": pos,
                     })
             else:
                 # curated summary: hardware row labels, per-quant PP/TG columns
@@ -412,7 +631,15 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                             "backend": "llama.cpp (Metal)" if thread_label == "Apple Silicon" else "llama.cpp",
                             "ctx": None, "tps": tps_out, "pp_tps": pp_out,
                             "hardware": hw, "quote": quote, "notes": None,
-                            "source_url": comment_url})
+                            "source_url": comment_url, "_tpos": pos})
+    # measured power reported in the post prose, paired to rows per part
+    off = 0
+    for i, part in enumerate(parts):
+        nxt = part_starts[i + 1] if i + 1 < len(part_starts) else len(rows)
+        seg = rows[off:nxt]
+        table_pos = {id(r): r.pop("_tpos", None) for r in seg}
+        attach_power(seg, part, table_pos)
+        off = nxt
     # attach hardware from post text (curated rows already carry their row label)
     for row in rows:
         if row.get("hardware"):
@@ -456,7 +683,7 @@ def main():
                     "tps": row["tps"],
                     "pp_tps": row.get("pp_tps"),
                     "ttft_s": None,
-                    "power_w": None,
+                    "power_w": row.get("power_w"),
                     "date": date,
                     "provenance": "community",
                     "source_url": row["source_url"],
