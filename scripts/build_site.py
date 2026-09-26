@@ -92,13 +92,16 @@ def flag_badges(flags):
 
 def record_row(r):
     ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "–"
+    pw = f"{r['power_w']}" if r.get("power_w") is not None else "–"
     ctx = r.get("ctx") or "–"
     date = r.get("date") or "–"
     return (f"<tr><td><a href=\"/hardware/{slug(r['hardware'])}/\">{esc(r['hardware'])}</a></td>"
             f"<td><a href=\"/models/{slug(r['model'])}/\">{esc(r['model'])}</a> "
             f"<span class=\"dim\">{esc(r.get('params'))}</span></td>"
             f"<td>{esc(r.get('quant'))}</td><td>{esc(r.get('backend'))}</td>"
-            f"<td class=\"num\">{esc(r.get('tps'))}</td><td class=\"num\">{esc(ttft)}</td>"
+            f"<td class=\"num\">{esc(r.get('tps'))}</td>"
+            f"<td class=\"num\">{esc(pw)}</td>"
+            f"<td class=\"num\">{esc(ttft)}</td>"
             f"<td>{esc(ctx)}</td><td>{esc(date)}</td>"
             f"<td>{prov_badge(r.get('provenance'))}</td>"
             f"<td>{flag_badges(r.get('flags'))}</td>"
@@ -106,7 +109,8 @@ def record_row(r):
 
 
 TABLE_HEAD = ("<tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>"
-              "<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>")
+              "<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx</th><th>date</th>"
+              "<th>class</th><th>flags</th><th>source</th></tr>")
 
 
 def records_table(rows):
@@ -492,11 +496,11 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
       (showRef ? ' (reference estimates included: ' + refs.length + ')' : '');
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
-      '<th>tok/s</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
+      '<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
-        '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
+        '</td><td class="num">' + esc(r.power_w ?? '') + '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
         '</td><td>' + esc(r.date ?? '–') + '</td><td>' + badge(r.provenance) +
         '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '–') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
