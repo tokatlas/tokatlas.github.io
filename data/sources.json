@@ -15,6 +15,14 @@
   "retrieved": "2026-09-26",
   "url": "https://llmconfigurator.com/measured-benchmarks.json"
  },
+ "llmconfigurator-estimates": {
+  "generated_at": "2026-08-17",
+  "license": "CC BY 4.0 (self-declared in file)",
+  "name": "LLM Configurator benchmark cells (CC BY 4.0)",
+  "note": "bandwidth-model estimate cells: 5 reference models x 70 accelerators at Q4_K_M / 4096 ctx; per-architecture calibration state in each row's notes; power is board-spec, not measured; hardware names strip a leading vendor token to match other sources",
+  "retrieved": "2026-09-26",
+  "url": "https://llmconfigurator.com/benchmarks.json"
+ },
  "siliconscore": {
   "license": "not stated; used with per-row attribution (source_url on each row)",
   "name": "Silicon Score benchmark audit",

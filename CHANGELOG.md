@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-09-26 - v0.3.0: 993 records, 70-accelerator estimate cells, power column
+
+- New endpoint collected: LLM Configurator benchmark cells
+  (/benchmarks.json, CC BY 4.0) - bandwidth-model estimates for 5 reference
+  models x 70 accelerators at Q4_K_M / 4096 ctx, each row carrying the
+  per-architecture calibration state (fitted run count, MAPE), board-spec
+  power in watts, tok/W, and VRAM fit. Hardware names normalized by stripping
+  the leading vendor token so cells join existing per-chip pages
+  (e.g. "RTX 4090", "M3 Max").
+- Dataset: 688 -> 993 records, 120 -> 174 hardware strings. First coverage of
+  AMD APUs (Ryzen AI 9 HX 370, Ryzen AI Max+ 395), Intel Arc, Radeon RX
+  7000/9000, and datacenter GPUs (A100/H100/L40S/DGX Spark/GB10). Power
+  (board-spec, labeled) now populated for 305 rows.
+- Estimates stay badged as estimates; measured rows are never mixed into
+  flag computation with estimates.
+
+
 ## 2026-09-26 — v0.2.0: x86 GPUs, 3 sources, contradiction/outlier flags
 
 - Added 2 sources: LLM Configurator measured benchmarks (CC BY 4.0 — RTX 3090/

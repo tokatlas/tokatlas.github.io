@@ -5,8 +5,9 @@ Flags are computed from the merged record set and stored on each record in the
 `flags` field, so check_data.py can verify they are up to date.
 
 Rules (conservative, documented in data/schema.md):
-- contradiction: >=2 records with the same (model, hardware, quant, backend,
-  ctx) whose tps differ by more than 10% relative to the group max.
+- contradiction: >=2 measured records (provenance != 'estimated') with the
+  same (model, hardware, quant, backend, ctx) whose tps differ by more than
+  10% relative to the group max. Estimates are reference values, not claims.
 - outlier: within a (model, hardware, quant, ctx) group of >=3 measured rows
   (provenance != 'estimated'), a row whose tps is >3x or <1/3 of the group
   median.
@@ -41,10 +42,11 @@ def compute_flags(rows):
     for r in rows:
         flags[r["id"]]  # touch so every id exists
 
-    # contradictions
+    # contradictions (measured rows only; estimates are reference values)
     for grp in _grp(rows, lambda r: (
             norm(r.get("model")), norm(r.get("hardware")), norm(r.get("quant")),
             norm(r.get("backend")), str(r.get("ctx") or ""))).values():
+        grp = [r for r in grp if r.get("provenance") != "estimated"]
         vals = [tps_of(r) for r in grp]
         vals = [v for v in vals if v is not None]
         if len(vals) < 2:

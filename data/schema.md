@@ -42,6 +42,12 @@ the exact quoted values.**
    (model, hardware, quant, backend) are collapsed to the newest retrieval;
    contradictions between sources for the same configuration are kept as
    separate rows and flagged on the site.
+   - `contradiction`: >=2 *measured* rows (provenance sourced/community) with
+     the same (model, hardware, quant, backend, ctx) whose tps differ by more
+     than 10% of the group max. Estimate rows are reference values, not
+     claims, so they never trigger or receive this flag.
+   - `outlier`: within a (model, hardware, quant, ctx) group of >=3 measured
+     rows, a row whose tps is >3x or <1/3 of the group median.
 4. **Outliers** (e.g. tok/s more than 3× the median for the same
    (model, hardware, quant)) are kept but annotated, not deleted.
 5. **Estimates are badged** everywhere and never mixed into measured-only
