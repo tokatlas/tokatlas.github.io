@@ -121,13 +121,16 @@ def main():
     records = ds["records"]
     retrieved = ds.get("retrieved", "?")
 
+    def mkey(s):
+        return re.sub(r"[^a-z0-9]+", "", str(s).lower())
+
     hw = defaultdict(list)
     models = defaultdict(list)
     backends = defaultdict(list)
     for r in records:
         hw[r["hardware"]].append(r)
         models[r["model"]].append(r)
-        backends[(r["model"], r["hardware"], r["quant"])].append(r)
+        backends[(mkey(r["model"]), r["hardware"], r["quant"])].append(r)
 
     def write(path, content):
         full = os.path.join(ROOT, path)
@@ -236,10 +239,11 @@ with source links.</p>
 <p><a href="/models/">← all models</a></p>"""))
 
     # --- cross-backend notes (analysis) ---
-    multi = {k: v for k, v in sorted(backends.items()) if len({r["backend"] for r in v}) > 1}
+    multi = {k: v for k, v in backends.items() if len({r["backend"] for r in v}) > 1}
     notes = []
-    for (m, h, q), rs in multi.items():
+    for (m, h, q), rs in sorted(multi.items()):
         best = max(rs, key=lambda r: r.get("tps") or 0)
+        names = " / ".join(sorted({r["model"] for r in rs}))
         lines = []
         for r in sorted(rs, key=lambda r: -(r.get("tps") or 0)):
             pct = (100.0 * (r.get("tps") or 0) / (best.get("tps") or 1))
@@ -247,7 +251,7 @@ with source links.</p>
                          f"{esc(r.get('tps'))} tok/s ({pct:.0f}%) "
                          f"{prov_badge(r.get('provenance'))} "
                          f"<a href=\"{esc(r['source_url'])}\" rel=\"nofollow\">source</a></li>")
-        notes.append(f"""<h3>{esc(m)} on {esc(h)} ({esc(q)})</h3>
+        notes.append(f"""<h3>{esc(names)} on {esc(h)} ({esc(q)})</h3>
 <ul>{''.join(lines)}</ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
@@ -268,13 +272,13 @@ regression/improvement tracking the project will run between backend builds.</p>
     for r in records:
         if (r["id"].startswith("llmconfigurator-est") and r.get("ctx") == 4096
                 and r.get("quant") == "Q4_K_M"):
-            est_by_key[(r["model"], r["hardware"])] = r
+            est_by_key[(mkey(r["model"]), r["hardware"])] = r
     check_rows = {}
     for r in records:
         if (r.get("provenance") in ("sourced", "community")
                 and "llama.cpp" in (r.get("backend") or "")
                 and r.get("ctx") == 4096 and r.get("quant") == "Q4_K_M"):
-            k = (r["model"], r["hardware"])
+            k = (mkey(r["model"]), r["hardware"])
             if k in est_by_key:
                 prev = check_rows.get(k)
                 if prev is None or (r.get("tps") or 0) > (prev[0].get("tps") or 0):
@@ -294,7 +298,7 @@ regression/improvement tracking the project will run between backend builds.</p>
             else:
                 cls = "out-of-sample"
             lines.append(
-                f"<tr><td><a href=\"/models/{slug(m)}/\">{esc(m)}</a></td>"
+                f"<tr><td><a href=\"/models/{slug(mr['model'])}/\">{esc(mr['model'])}</a></td>"
                 f"<td><a href=\"/hardware/{slug(h)}/\">{esc(h)}</a></td>"
                 f"{q}"
                 f"<td class=\"num\">{esc(mr['tps'])}</td>"
@@ -314,7 +318,7 @@ regression/improvement tracking the project will run between backend builds.</p>
                 and r.get("ctx") == 4096
                 and str(r.get("quant") or "").upper().startswith("Q4_K")
                 and r.get("quant") != "Q4_K_M"):
-            k = (r["model"], r["hardware"])
+            k = (mkey(r["model"]), r["hardware"])
             if k in est_by_key:
                 prev = ref_rows.get(k)
                 if prev is None or (r.get("tps") or 0) > (prev[0].get("tps") or 0):
