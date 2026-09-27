@@ -7765,6 +7765,24 @@
    "provenance": "community",
    "pp_tokens": 512,
    "tg_tokens": 128
+  },
+  {
+   "id": "hf1-gemma12b-3060",
+   "model": "gemma4 12B Q4_KM",
+   "hardware": "RTX 3060 12GB",
+   "backend": "llama.cpp (CUDA)",
+   "quant": "Q4_K_M",
+   "tps": "33.34",
+   "pp_tps": 609.26,
+   "batch": null,
+   "ctx": null,
+   "date": "2026-06-09",
+   "notes": "Community re-hosted card with a speed-benchmark table (Ryzen 5 5600x, 64 GB RAM, RTX 3060 12GB); runtime not stated on the card (GGUF benchmark, assumed llama.cpp CUDA path). Generation 33.34 / prompt processing 609.26 tok/s.",
+   "quote": "Speed Benchmarks Tested on: Ryzen 5 5600x | 64GB RAM | Nvidia RTX 3060 12GB Model Size Generation Prompt Processing gemma-4-12B-Q4_K_M.gguf 7.4 GB 33.34 tok/s 609.26 tok/s",
+   "source_name": "HF model card: superkuh/gemma-4-12b-Q4_K_M-GGUF",
+   "source_url": "https://huggingface.co/superkuh/gemma-4-12b-Q4_K_M-GGUF",
+   "retrieved": "2026-09-27",
+   "provenance": "community"
   }
  ],
  "source": {
@@ -7773,5 +7791,5 @@
   "retrieved": "2026-09-27",
   "url": "https://github.com/ggml-org/llama.cpp"
  },
- "count": 386
+ "count": 387
 }
