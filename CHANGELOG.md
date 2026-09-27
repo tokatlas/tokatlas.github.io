@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-27: Hugging Face model-card mining (first pass): 28 new rows across 6 repos
+
+- **Ternary-Bonsai-2-27B llama-bench GPU table (prism-ml, 20 rows).** The custom ternary 27B (7.2 GB) benchmarked with llama-bench TG128/PP512 at batch 1, custom low-bit kernels, no vision tower, across 8 platforms and both ternary packs: RTX 5090 129.9 / 3893 (PQ2_0, 1.95 J/tok) versus 120.5 / 1805 (PTQ1_0), RTX PRO 6000 Blackwell 124.8 / 4020, H100 113.9 / 2830, RTX 6000 Ada 82.8 / 2431, RTX 4090 81.2 / 3124, L40S 74.4 / 2868, A100 73.9 / 1328, L4 29.8 / 777. The PQ2_0 M5 Pro row (28.1 / 387) carries the card's powermetrics draw: 34.1 W across CPU+GPU (27.5 W on the GPU rail). The pre-rotation build re-measurement table adds M5 Max 47.0 / 765, M5 Pro 28.7 / 393, M4 Pro 18.0 / 125.
+- **LFM2.5-2.6B CPU inference (Liquid AI, 2 rows).** Vendor benchmark from the official card: 220 tok/s decode on an M5 Max and 113 on a Ryzen AI Max+ 395, under 2.5 GB footprint. The M5 Max figure independently matches the llmcheck MLX Q4_K_M row.
+- **Qwen3.5-9B and Qwen3.6-27B MTP quants on a 5090 (DavidAU, 4 rows).** The fine-tune authors' own rough LM Studio / Windows 11 numbers: Q4_K_S about 130 t/s versus over 185 t/s with the MTP quant (Qwen3.5-9B) and about 75 versus over 90 t/s (Qwen3.6-27B); MTP acceptance about 60%, 2 tokens. New hardware page: 5090 (the cards name the card only).
+- **DeepSeek-V4-Flash ds4 imatrix on M3 Max (ox-ox, 1 row).** The 0731 model re-quantized 2+4-bit mixed precision with imatrix, single-run Metal CLI at ctx 32768: 45.08 prefill / 27.01 generation against the upstream 58.52 / 26.68 reference on the same machine class.
+- **gemma-4-12B Q4_K_M speed table (superkuh, 1 row).** RTX 3060 12GB, 64 GB RAM: 33.34 generation / 609.26 prompt processing tok/s.
+- Skipped: ISTA-DASLab Qwen3.8-Flash-Next-GSQ-RCO (clean Q2_0 367.49 / 93.79 and IQ2_XS 108.19 / 70.30 over 55 prompts, but the card names no hardware), yuxinlu1 gemma-4-12B-agentic (about 88 to about 180 tok/s with the MTP draft, no named hardware), Liquid AI's GPU inference line ("almost 15K tok/s on a single H100" has no clean figure), DavidAU's LFM2.5-2.6B mirror (cited the Liquid AI original instead).
+- New hardware pages: 5090, Ryzen AI Max+ 395, L40S, L4. New backend: CPU. This opens the Hugging Face model-card venue: 28 hand-mined card rows join the 359 GitHub issue rows.
+- Dataset: 2,933 measured records, 320 hardware strings, 156 models, 23 backends. Provenance: 746 sourced, 2,187 community. 387 hand-mined rows (359 GitHub issue rows across 41 llama.cpp, 30 vLLM, 4 ExLlamaV2 issues, plus 28 HF model-card rows across 6 repos). Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: venue re-checks and llama.cpp fifth pass: 11 new rows across 4 issues
 
 - **flash_attn_ext_rows unified-KV A/B on RTX PRO 6000 (llama.cpp PR #29510, 4 rows).** llama-batched-bench, -kvu unified KV cache, ctx 400000, -npp 99936 -ntg 64 -npl 4 -fa on, batch 4. gemma-4-26B-A4B-it Q8_0: master 2982.14 prefill / 273.42 decode versus 8625.75 / 288.11 on the PR branch (2.9x prefill recovery, decode +5%); Qwen3.8-27B Q8_0: master 1106.13 / 90.29 versus 2778.22 / 102.08 (2.5x). Skipped from the same window: #29509, #29508, #29507, #29506 (no tok/s triple).
