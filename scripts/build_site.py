@@ -152,6 +152,18 @@ def main():
         models[r["model"]].append(r)
         backends[(mkey(r["model"]), r["hardware"], r["quant"])].append(r)
 
+    # Guard: one page per key at <prefix>/<slug>/, so two keys with the same
+    # slug would overwrite each other and hide rows. Fail the build instead.
+    for prefix, keys in (("hardware", hw), ("model", models)):
+        seen = {}
+        for k in keys:
+            seen.setdefault(slug(k), []).append(k)
+        coll = {s: ks for s, ks in seen.items() if len(ks) > 1}
+        if coll:
+            for s, ks in sorted(coll.items()):
+                print(f"slug collision on {s}: {sorted(ks)}", file=sys.stderr)
+            sys.exit(1)
+
     def write(path, content):
         full = os.path.join(ROOT, path)
         os.makedirs(os.path.dirname(full), exist_ok=True)
