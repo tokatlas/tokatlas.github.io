@@ -760,16 +760,16 @@ between builds of the same backend, see the
                         f"{val(rows,'qsl17221-2a10-qwen257b-awq-sglang-tp-c30-r2','tps')} "
                         "tok/s), about "
                         f"{pct(rows,'qsl17221-2a10-qwen257b-awq-sglang-dp-c30-r2','qsl17221-2a10-qwen257b-awq-sglang-tp-c30-r1','tps'):+.0f}% "
-                        "over the best DP run.")
+                        "over the weaker same-day DP run.")
             if hw == "2 A10" and model == "Qwen2.5-7B" and backend == "vLLM":
                 return ("vLLM v0.8.4 --tensor-parallel-size 2 on the same "
                         "box and model: two same-day c30 runs at "
                         f"{val(rows,'qsl17221-2a10-qwen257b-awq-vllm-c30-r1','tps')} / "
                         f"{val(rows,'qsl17221-2a10-qwen257b-awq-vllm-c30-r2','tps')} tok/s. "
-                        "The project's own table calls this a draw with "
-                        "SGLang tensor parallelism; the next-day retake of "
-                        "this box (the Qwen7B-awq groups) resolves the "
-                        "tie in SGLang's favor at every concurrency.")
+                        "The project's 2-GPU comparison table puts SGLang "
+                        "tensor parallelism ahead (1151-1158 vs 1074 tok/s); "
+                        "the next-day retake of this box (the Qwen7B-awq "
+                        "groups) shows SGLang TP2 ahead again at c50.")
             if hw == "2 A10" and model == "Qwen7B-awq" and backend == "SGLang":
                 return ("Next-day (4.29) retake on the same pair of A10s, "
                         "SGLang --tp 2: "
@@ -790,10 +790,14 @@ between builds of the same backend, see the
                         f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r2','tps')}, c100 "
                         f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c100-r1','tps')} / "
                         f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c100-r2','tps')} "
-                        "tok/s. vLLM trails SGLang's TP2 from the same "
-                        f"sweep at every concurrency ({val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r1','tps')} "
-                        f"vs {val(all_by_id,'qsl17221-2a10-qwen7bawq-sglang-c50-r1','tps')} at c50), "
-                        "and the gap widens as concurrency rises.")
+                        "tok/s. vLLM leads the same-day SGLang TP2 runs at "
+                        f"c30 ({val(rows,'qsl17221-2a10-qwen7bawq-vllm-c30-r2','tps')} vs "
+                        f"{val(all_by_id,'qsl17221-2a10-qwen7bawq-sglang-c30-r1','tps')} best run), "
+                        "but SGLang reclaims the lead at c50 "
+                        f"({val(all_by_id,'qsl17221-2a10-qwen7bawq-sglang-c50-r1','tps')} vs "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r1','tps')}, about "
+                        f"{pct(all_by_id,'qsl17221-2a10-qwen7bawq-vllm-c50-r1','qsl17221-2a10-qwen7bawq-sglang-c50-r1','tps'):+.0f}%), "
+                        "and the SGLang sweep stops at c50.")
             if hw == "4 A10" and model == "Qwen7B-awq" and backend == "SGLang":
                 return ("SGLang TP4 on the full box: three c30 runs across "
                         "two days "
@@ -815,11 +819,12 @@ between builds of the same backend, see the
                         f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c50-r2','tps')}, c100 "
                         f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c100-r1','tps')} / "
                         f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c100-r2','tps')} "
-                        "tok/s. The project's scaling analysis finds only "
-                        "2-10% gains from 2 to 4 GPUs at high concurrency: "
-                        "this c100 rate is within about 10% of the 2 A10 "
-                        "TP2 c100 rate in the matching group, and it stays "
-                        "far behind SGLang TP4 "
+                        "tok/s. The project's summary calls vLLM's 2 to 4 "
+                        "GPU gains modest (its analysis: 15-20% improvement "
+                        "in most scenarios); the stored c100 pair is within "
+                        "about 10% of the 2 A10 TP2 c100 rate in the "
+                        "matching group, and the c50 rate stays far behind "
+                        "SGLang TP4 "
                         f"({val(rows,'qsl17221-4a10-qwen7bawq-vllm-c50-r1','tps')} vs "
                         f"{val(all_by_id,'qsl17221-4a10-qwen7bawq-sglang-c50-r1','tps')} at c50).")
         if (venue, issue) == ("llama.cpp", "27050"):
