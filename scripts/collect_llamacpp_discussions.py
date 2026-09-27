@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".cache")
 UA = "tokatlas/0.1 (+https://tokatlas.github.io)"
 BASE = "https://github.com/ggml-org/llama.cpp/discussions"
-RETRIEVED = "2026-09-26"
+RETRIEVED = "2026-09-27"
 
 THREADS = {
     4167: "Apple Silicon",

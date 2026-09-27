@@ -15,7 +15,7 @@
  "llamacpp_discussions": {
   "name": "llama.cpp GitHub Discussions performance threads",
   "note": "Primary-source llama-bench posts from the official per-backend performance threads (#4167 Apple Silicon, #15013 CUDA, #15021 ROCm, #10879 Vulkan, #23313 SYCL). Hardware is taken from the post text; rows without a detectable chip are skipped.",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://github.com/ggml-org/llama.cpp/discussions"
  },
  "llmcheck": {

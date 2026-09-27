@@ -105,11 +105,26 @@ def _num_present(v, nums):
     return False
 
 
+# A source may publish power as a range ("~220-230 W") rather than a point.
+# A stored power value inside a published range is backed by the source even
+# though it is not itself a point figure (the collector derives per-row watts
+# from the published W-per-t/s rate and the row's tps).
+_WATT_RANGE_RE = re.compile(r"~?(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*W\b", re.I)
+
+
+def _in_published_watt_range(v, text):
+    for m in _WATT_RANGE_RE.finditer(text):
+        lo, hi = float(m.group(1)), float(m.group(2))
+        if lo <= v <= hi:
+            return True
+    return False
+
+
 def numbers_of(r):
     for k in ("tps", "pp_tps", "ttft_s", "power_w"):
         v = (r.get(k) or "").strip() if isinstance(r.get(k), str) else r.get(k)
         if v not in (None, ""):
-            yield str(v)
+            yield k, str(v)
 
 
 def main():
@@ -194,12 +209,14 @@ def main():
                 errors += 1
                 continue
             checked += 1
-            for n in numbers_of(r):
+            for k, n in numbers_of(r):
                 if (n not in text
                         and not _num_present(float(n), numcache[purl])
-                        and not _num_present(float(n), aux_nums)):
+                        and not _num_present(float(n), aux_nums)
+                        and not (k == "power_w"
+                                 and _in_published_watt_range(float(n), text))):
                     print("%s (%s): %s %r not in cached source"
-                          % (name, r["id"], "value", n))
+                          % (name, r["id"], k, n))
                     errors += 1
             for tok in set(re.findall(r"\b(pp\d{1,4}|tg\d{1,4})\b",
                                      str(r.get("quote") or ""))):

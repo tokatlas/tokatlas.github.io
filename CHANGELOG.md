@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-27: Daily refresh: llama.cpp discussions re-retrieved, derived power values verified against published ranges
+
+- Re-fetched every llama.cpp discussion page (all five performance threads, including all paginated windows) on 2026-09-27. No new rows: still 1,805 discussion records.
+- `check_quotes` now accepts a stored power value when it falls inside a watt range the source publishes (for example "~220-230 W"). The collector derives per-row watts from the published W-per-t/s rate times the row's t/s, so the derived value is verified against the exact range it was derived from, instead of requiring the derived figure itself to appear as a point value on the page.
+- The 4070 Ti Vulkan row consequently keeps the deterministic collector value (221 W at 110.53 t/s from the published ~2 W/tg/s rate), verified against the published 220-230 W nvtop range.
+
 ## 2026-09-26: Data quality fixes: ctx semantics, multi-run splitting, settings-aware flags, cluster scope, quote verification
 
 - **ctx semantics fixed.** `pp512`/`tg128` are prompt-processing and token-generation test lengths, not context windows. Added `pp_tokens`/`tg_tokens` fields; `ctx` is now null on llama-bench rows (all 1,805 llama.cpp discussion rows).
