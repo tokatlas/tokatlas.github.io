@@ -9,7 +9,7 @@
   "license": "not stated; used with per-row attribution (source_url on each row)",
   "name": "Hardware Corner GPU LLM benchmarks (per-row attribution)",
   "note": "hub pages: prompt processing and token generation t/s per context column (4k-256k, k=1024); model + quant as labeled in the row; runtime llama.cpp per the site's benchmark methodology; dashes in the source are not records",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://www.hardware-corner.net/gpu-llm-benchmarks/"
  },
  "llamacpp_discussions": {
@@ -23,7 +23,7 @@
   "license": "CC BY 4.0",
   "name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
   "note": "Rows are estimates (244), sourced (9), or community (5) per the source's own provenance field.",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://llmcheck.net/data/benchmarks.json"
  },
  "llmconfigurator": {
@@ -31,7 +31,7 @@
   "license": "CC BY 4.0 (self-declared in file)",
   "name": "LLM Configurator measured benchmarks (CC BY 4.0)",
   "note": "curated-public rows are compiled from third-party published benchmarks (publisher + sourceUrl per row); community-submitted rows carry reviewedAt.",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://llmconfigurator.com/measured-benchmarks.json"
  },
  "llmconfigurator-estimates": {
@@ -39,14 +39,14 @@
   "license": "CC BY 4.0 (self-declared in file)",
   "name": "LLM Configurator benchmark cells (CC BY 4.0)",
   "note": "bandwidth-model estimate cells: 5 reference models x 70 accelerators at Q4_K_M / 4096 ctx; per-architecture calibration state in each row's notes; power is board-spec, not measured; hardware names strip a leading vendor token to match other sources",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://llmconfigurator.com/benchmarks.json"
  },
  "siliconscore": {
   "license": "not stated; used with per-row attribution (source_url on each row)",
   "name": "Silicon Score benchmark audit",
   "note": "Apple Silicon rows; runtime is llamafile/MLX/Ollama/llama.cpp/LM Studio; rows carry prompt eval and TTFT where published.",
-  "retrieved": "2026-09-26",
+  "retrieved": "2026-09-27",
   "url": "https://siliconscore.com/benchmarks.json"
  }
 }
