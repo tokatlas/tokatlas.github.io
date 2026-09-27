@@ -682,6 +682,176 @@ between builds of the same backend, see the
                     "tok/s median), and GPU_MAX_HW_QUEUES=2 (arms B and C) "
                     "removes the microbench penalty but does not match the "
                     "main-stream option end to end.")
+        if (venue, issue) == ("vLLM", "40124"):
+            return ("Patched results, not stock vLLM: the 13 Ampere-specific "
+                    "monkey patches fix Hopper+ kernel selection (Triton FP8, "
+                    "TurboQuant hybrid-MoE geometry). CUDA graphs are load-"
+                    "bearing: enforce-eager drops "
+                    f"{val(rows,'vllm-40124-a5000x2-qwen3-35b-decode','tps')} to "
+                    f"{val(rows,'vllm-40124-a5000x2-qwen3-35b-eager','tps')} tok/s "
+                    f"({pct(rows,'vllm-40124-a5000x2-qwen3-35b-decode','vllm-40124-a5000x2-qwen3-35b-eager','tps'):.0f}%), "
+                    f"and TurboQuant k8v4 fits 160k context into 2x24 GB at "
+                    f"{val(rows,'vllm-40124-a5000x2-qwen3-35b-160k','tps')} tok/s. "
+                    "The source reports 10/10 stability runs, sigma 0.11 tok/s.")
+        if (venue, issue) == ("vLLM", "58638"):
+            return ("Every KV cache group rebuilds attention metadata per step, "
+                    "and the GDN builders are expensive. The one-layer drafter "
+                    "bucket forces one group per layer (46 groups), so the RFC's "
+                    "worst-case-padding group sizing (gs=3, 17 groups) lifts "
+                    f"c=1 from {val(rows,'vllm-58638-b300-qwen36-g46','tps')} to "
+                    f"{val(rows,'vllm-58638-b300-qwen36-g17','tps')} tok/s "
+                    f"({pct(rows,'vllm-58638-b300-qwen36-g46','vllm-58638-b300-qwen36-g17','tps'):+.0f}%); "
+                    "the price is KV capacity, 7.42M down to 5.19M tokens.")
+        if (venue, issue) == ("vLLM", "58845"):
+            return ("Skips the qlnorm compute for MHA, which saves 78 kernel "
+                    "calls per forward, with MTP on (8k prefill cannot be "
+                    "cuda-graphed). Throughput holds at c4: "
+                    f"{val(rows,'vllm-58845-glm53-main-c4','tps')} to "
+                    f"{val(rows,'vllm-58845-glm53-skip-c4','tps')} tok/s "
+                    f"({pct(rows,'vllm-58845-glm53-main-c4','vllm-58845-glm53-skip-c4','tps'):+.0f}%), "
+                    "and the PR reports TTFT 360.5 to 332.9 ms (-7.7%) at c1 "
+                    "and gsm8k 0.9212 vs 0.9151; at c16 the same change is "
+                    f"{val(rows,'vllm-58845-glm53-main-c16','tps')} to "
+                    f"{val(rows,'vllm-58845-glm53-skip-c16','tps')} tok/s "
+                    f"({pct(rows,'vllm-58845-glm53-main-c16','vllm-58845-glm53-skip-c16','tps'):+.0f}%).")
+        if (venue, issue) == ("vLLM", "58872"):
+            return ("The split activates only at 2048+ token batches, so the "
+                    "1K rows run the same kernels as main: c1 "
+                    f"{val(rows,'vllm-58872-h20-main-1k-c1','tps')} to "
+                    f"{val(rows,'vllm-58872-h20-split-1k-c1','tps')} tok/s "
+                    f"({pct(rows,'vllm-58872-h20-main-1k-c1','vllm-58872-h20-split-1k-c1','tps'):+.0f}%), "
+                    "which the PR notes is not the split (main under the same "
+                    "Python overlay measured 335.7). The 8K rows take it: "
+                    f"c16 {val(rows,'vllm-58872-h20-main-8k-c16','tps')} to "
+                    f"{val(rows,'vllm-58872-h20-split-8k-c16','tps')} "
+                    f"({pct(rows,'vllm-58872-h20-main-8k-c16','vllm-58872-h20-split-8k-c16','tps'):+.0f}%), "
+                    f"c64 {val(rows,'vllm-58872-h20-main-8k-c64','tps')} to "
+                    f"{val(rows,'vllm-58872-h20-split-8k-c64','tps')} "
+                    f"({pct(rows,'vllm-58872-h20-main-8k-c64','vllm-58872-h20-split-8k-c64','tps'):+.0f}%), "
+                    "with the PR reporting about 55 ms TTFT saved per 8K "
+                    "chunk.")
+        if (venue, issue) == ("vLLM", "58880"):
+            return ("Fuses MiniMax2-style routing into the monolithic TRT-LLM "
+                    "MoE kernel, removing a separate topk_sigmoid launch per "
+                    "MoE layer (1.3-2 microseconds per layer, 91-115 us per "
+                    "decode step at TP4 for 32 tokens or fewer). "
+                    f"c1 {val(rows,'vllm-58880-gb300-main-c1','tps')} to "
+                    f"{val(rows,'vllm-58880-gb300-fused-c1','tps')} tok/s "
+                    f"({pct(rows,'vllm-58880-gb300-main-c1','vllm-58880-gb300-fused-c1','tps'):+.0f}%), "
+                    f"c8 {val(rows,'vllm-58880-gb300-main-c8','tps')} to "
+                    f"{val(rows,'vllm-58880-gb300-fused-c8','tps')} tok/s "
+                    f"({pct(rows,'vllm-58880-gb300-main-c8','vllm-58880-gb300-fused-c8','tps'):+.0f}%); "
+                    "gsm8k means match (0.855 vs 0.857).")
+        if (venue, issue) == ("vLLM", "58887"):
+            return ("A race fix at zero cost. The ps-metadata planner rewrote "
+                    "shared device buffers with blocking copies that are not "
+                    "ordered on the current stream, so a step could run with "
+                    "the next step's work maps, faulting deterministically "
+                    "(request 111 at c32) or silently corrupting prefill "
+                    "when the stale indices stay in bounds. Planning into "
+                    "pinned host buffers orders the update: "
+                    f"c4 stays {val(rows,'vllm-58887-mi355x-main-c4','tps')} = "
+                    f"{val(rows,'vllm-58887-mi355x-fix-c4','tps')} tok/s, "
+                    f"c32 goes {val(rows,'vllm-58887-mi355x-main-c32','tps')} to "
+                    f"{val(rows,'vllm-58887-mi355x-fix-c32','tps')} tok/s.")
+        if (venue, issue) == ("vLLM", "40551"):
+            return ("The reporter expected MRV2's draft-prob-aware sampling to "
+                    f"help and got the opposite: at temperature 1, MRV2 "
+                    f"collapses to {val(rows,'vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv2-temp1','tps')} tok/s "
+                    f"({pct(rows,'vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv2-temp0','vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv2-temp1','tps'):+.0f}% "
+                    f"vs its own temperature 0), while MRV1 degrades gently "
+                    f"from {val(rows,'vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv1-temp0','tps')} to "
+                    f"{val(rows,'vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv1-temp1','tps')} tok/s "
+                    f"({pct(rows,'vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv1-temp0','vllm-40551-rtxpro6000-qwen3-8b-bf16-eagle3-mrv1-temp1','tps'):+.0f}%).")
+        if (venue, issue) == ("llama.cpp", "26750"):
+            if "W7900" in hw:
+                return ("Same GGUF, same b10290 build, same prompts as the "
+                        "CUDA rows: MTP acceptance on this GPU is 92.2% and "
+                        f"decode goes {val(rows,'lc-26750-w7900-base','tps')} to "
+                        f"{val(rows,'lc-26750-w7900-mtp','tps')} tok/s "
+                        f"({pct(rows,'lc-26750-w7900-base','lc-26750-w7900-mtp','tps'):+.0f}%). "
+                        "The issue's point is the contrast: the CUDA path "
+                        "runs the same model at 35.8% acceptance, "
+                        "deterministic across full matrix reruns and "
+                        "invariant to slot count and context, which it reads "
+                        "as the MTP head forward degrading on CUDA.")
+            if "7800" in hw:
+                return ("Same GGUF and b10290 build, RADV: MTP acceptance "
+                        f"91.4% and decode {val(rows,'lc-26750-7800xt-base','tps')} to "
+                        f"{val(rows,'lc-26750-7800xt-mtp','tps')} tok/s "
+                        f"({pct(rows,'lc-26750-7800xt-base','lc-26750-7800xt-mtp','tps'):+.0f}%), "
+                        "against 35.8% acceptance on the CUDA path, where "
+                        "the same feature is a net loss.")
+            return ("MTP on the CUDA path is a deterministic 35.8% "
+                    "acceptance (a full matrix rerun reproduced the figure "
+                    "exactly), invariant to slot count and context, which "
+                    "the issue reads as the MTP head forward producing "
+                    f"degraded predictions on CUDA: decode "
+                    f"{val(rows,'lc-26750-cuda-mtp','tps')} vs baseline "
+                    f"{val(rows,'lc-26750-cuda-base','tps')} tok/s "
+                    f"({pct(rows,'lc-26750-cuda-base','lc-26750-cuda-mtp','tps'):+.0f}%). "
+                    "Combined with draftless the waste is ~6400-8600 drafted "
+                    "tokens for a 400-token output at 3.8% acceptance.")
+        if (venue, issue) == ("llama.cpp", "27117"):
+            return ("DFlash drafts under 16 concurrent slots get corrupted "
+                    "per slot: 16 identical requests show an ~8x spread in "
+                    "acceptance from the first speculative tick, and "
+                    f"throughput inverts to {val(rows,'lc-27117-nospec16','tps')} tok/s. "
+                    "The fix is length, not backend: --spec-draft-n-max 1 "
+                    f"accepts 83-92% and runs {val(rows,'lc-27117-dflash-nmax1','tps')} tok/s "
+                    f"({pct(rows,'lc-27117-nospec16','lc-27117-dflash-nmax1','tps'):+.0f}% "
+                    "over the no-spec row). The pathology still reproduced "
+                    "on master as of 2026-08-15.")
+        if (venue, issue) == ("llama.cpp", "27544"):
+            if "lc-27544-vk-1-s" in rows:
+                return ("With -np > 1, MTP n-max > 1 collapses on Vulkan: "
+                        "parallel over single-session scaling is "
+                        f"{val(rows,'lc-27544-vk-r4-p','tps')}/{val(rows,'lc-27544-vk-r4-s','tps')} = "
+                        f"{val(rows,'lc-27544-vk-r4-p','tps')/val(rows,'lc-27544-vk-r4-s','tps'):.2f}x at n-max 1 "
+                        "(run r4, np 3), but "
+                        f"{val(rows,'lc-27544-vk-r3-p','tps')}/{val(rows,'lc-27544-vk-r3-s','tps')} = "
+                        f"{val(rows,'lc-27544-vk-r3-p','tps')/val(rows,'lc-27544-vk-r3-s','tps'):.2f}x at n-max 2 "
+                        f"and {val(rows,'lc-27544-vk-r2-p','tps')}/{val(rows,'lc-27544-vk-r2-s','tps')} = "
+                        f"{val(rows,'lc-27544-vk-r2-p','tps')/val(rows,'lc-27544-vk-r2-s','tps'):.2f}x at n-max 3. "
+                        "Per-position acceptance falls with n-max on "
+                        "parallel runs (about 0.69 single, n-max 1, down to "
+                        "0.39-0.53). The reporter suspects the Vulkan "
+                        "backend's interworking with sessions and "
+                        "speculation; NVIDIA is not affected.")
+            return ("The same matrix on ROCm scales better: at n-max 1, "
+                    f"np3 is {val(rows,'lc-27544-r1t','tps')} vs single "
+                    f"{val(rows,'lc-27544-r1s','tps')} tok/s "
+                    f"({val(rows,'lc-27544-r1t','tps')/val(rows,'lc-27544-r1s','tps'):.2f}x), and "
+                    "n-max 3 still scales: "
+                    f"{val(rows,'lc-27544-r2t','tps')} vs "
+                    f"{val(rows,'lc-27544-r2s','tps')} tok/s "
+                    f"({val(rows,'lc-27544-r2t','tps')/val(rows,'lc-27544-r2s','tps'):.2f}x), "
+                    "where the Vulkan rows only manage about 1.1x.")
+        if (venue, issue) == ("llama.cpp", "28863"):
+            return ("The -ub sweep is flat "
+                    f"({val(rows,'lc-28863-rocm-ub512','tps')} to "
+                    f"{val(rows,'lc-28863-rocm-ub4096','tps')} tok/s), so ubatch is "
+                    "not the lever here, and layer split is worse on "
+                    f"throughput ({val(rows,'lc-28863-rocm-layer-q4kxl','tps')} vs "
+                    f"{val(rows,'lc-28863-rocm-tensor-q4kxl','tps')} at Q4_K_XL, "
+                    f"{val(rows,'lc-28863-rocm-layer-q8','tps')} vs "
+                    f"{val(rows,'lc-28863-rocm-tensor-q8','tps')} at Q8_0) even "
+                    "though its per-active-card utilization is higher. The "
+                    "issue's working hypothesis: splitting a batch-1 GEMV "
+                    "halves the output rows per launch, drops waves per SIMD "
+                    "below the occupancy threshold, and the pair delivers "
+                    "only 43.0% of its DRAM bandwidth (65.9% solo).")
+        if (venue, issue) == ("llama.cpp", "28454"):
+            return ("Quantized KV falls off the sparse-fa fused kernel: the "
+                    "dispatch added in #27970 is only reachable through the "
+                    "mma_f16 path, which requires non-quantized K/V, so "
+                    "single-query decode with q8_0 KV is forced onto the VEC "
+                    "kernel: "
+                    f"{val(rows,'lc-28454-a6000-kvf16','tps')} to "
+                    f"{val(rows,'lc-28454-a6000-kvq8','tps')} tok/s "
+                    f"({pct(rows,'lc-28454-a6000-kvf16','lc-28454-a6000-kvq8','tps'):+.0f}%), "
+                    "with GPU utilization at only 24-37% during q8_0 decode "
+                    "(memory/latency-bound, 4x A6000, ctx 1048576).")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
