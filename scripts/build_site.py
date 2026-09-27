@@ -747,6 +747,81 @@ between builds of the same backend, see the
                     "commit, and a CPU-only replay of the access pattern found "
                     "no eviction-order regression, so the loss is in the fs "
                     "transfer or GPU-side timing the replay cannot capture.")
+        if (venue, issue) == ("vLLM", "17221"):
+            if hw == "2 A10" and model == "Qwen2.5-7B" and backend == "SGLang":
+                return ("DP vs TP on the same pair of A10s with the same "
+                        "model. SGLang --dp (a full model copy per GPU) "
+                        f"varied {val(rows,'qsl17221-2a10-qwen257b-awq-sglang-dp-c30-r1','tps')} "
+                        f"to {val(rows,'qsl17221-2a10-qwen257b-awq-sglang-dp-c30-r2','tps')} tok/s "
+                        "between same-day runs; on advice from SGLang issue "
+                        "#5808 the author switched to --tp, which returned "
+                        "to single-GPU-level consistency "
+                        f"({val(rows,'qsl17221-2a10-qwen257b-awq-sglang-tp-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen257b-awq-sglang-tp-c30-r2','tps')} "
+                        "tok/s), about "
+                        f"{pct(rows,'qsl17221-2a10-qwen257b-awq-sglang-dp-c30-r2','qsl17221-2a10-qwen257b-awq-sglang-tp-c30-r1','tps'):+.0f}% "
+                        "over the best DP run.")
+            if hw == "2 A10" and model == "Qwen2.5-7B" and backend == "vLLM":
+                return ("vLLM v0.8.4 --tensor-parallel-size 2 on the same "
+                        "box and model: two same-day c30 runs at "
+                        f"{val(rows,'qsl17221-2a10-qwen257b-awq-vllm-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen257b-awq-vllm-c30-r2','tps')} tok/s. "
+                        "The project's own table calls this a draw with "
+                        "SGLang tensor parallelism; the next-day retake of "
+                        "this box (the Qwen7B-awq groups) resolves the "
+                        "tie in SGLang's favor at every concurrency.")
+            if hw == "2 A10" and model == "Qwen7B-awq" and backend == "SGLang":
+                return ("Next-day (4.29) retake on the same pair of A10s, "
+                        "SGLang --tp 2: "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-sglang-c5','tps')} at c5, "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-sglang-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-sglang-c30-r2','tps')} at c30, "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-sglang-c50-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-sglang-c50-r2','tps')} at c50; "
+                        "repeat runs agree within about 1%. This file names "
+                        "the model only by its local path /home/vllm/llm/"
+                        "Qwen7B-awq, which the README identifies as the "
+                        "Qwen2.5-7B-AWQ download.")
+            if hw == "2 A10" and model == "Qwen7B-awq" and backend == "vLLM":
+                return ("Next-day retake, vLLM --tensor-parallel-size 2: "
+                        f"c30 {val(rows,'qsl17221-2a10-qwen7bawq-vllm-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c30-r2','tps')}, c50 "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r2','tps')}, c100 "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c100-r1','tps')} / "
+                        f"{val(rows,'qsl17221-2a10-qwen7bawq-vllm-c100-r2','tps')} "
+                        "tok/s. vLLM trails SGLang's TP2 from the same "
+                        f"sweep at every concurrency ({val(rows,'qsl17221-2a10-qwen7bawq-vllm-c50-r1','tps')} "
+                        f"vs {val(all_by_id,'qsl17221-2a10-qwen7bawq-sglang-c50-r1','tps')} at c50), "
+                        "and the gap widens as concurrency rises.")
+            if hw == "4 A10" and model == "Qwen7B-awq" and backend == "SGLang":
+                return ("SGLang TP4 on the full box: three c30 runs across "
+                        "two days "
+                        f"({val(rows,'qsl17221-4a10-qwen7bawq-sglang-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-sglang-c30-r2','tps')} "
+                        f"on 4.27-28, {val(rows,'qsl17221-4a10-qwen7bawq-sglang-c30-r3','tps')} "
+                        "on 4.29) and three c50 runs "
+                        f"({val(rows,'qsl17221-4a10-qwen7bawq-sglang-c50-r1','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-sglang-c50-r2','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-sglang-c50-r3','tps')}), "
+                        "all within about 2% of each other. At c50 SGLang "
+                        "TP4 leads vLLM TP4 on the same box by about "
+                        f"{pct(all_by_id,'qsl17221-4a10-qwen7bawq-vllm-c50-r1','qsl17221-4a10-qwen7bawq-sglang-c50-r1','tps'):+.0f}%.")
+            if hw == "4 A10" and model == "Qwen7B-awq" and backend == "vLLM":
+                return ("vLLM TP4 on the full box: c30 "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c30-r1','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c30-r2','tps')}, c50 "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c50-r1','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c50-r2','tps')}, c100 "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c100-r1','tps')} / "
+                        f"{val(rows,'qsl17221-4a10-qwen7bawq-vllm-c100-r2','tps')} "
+                        "tok/s. The project's scaling analysis finds only "
+                        "2-10% gains from 2 to 4 GPUs at high concurrency: "
+                        "this c100 rate is within about 10% of the 2 A10 "
+                        "TP2 c100 rate in the matching group, and it stays "
+                        "far behind SGLang TP4 "
+                        f"({val(rows,'qsl17221-4a10-qwen7bawq-vllm-c50-r1','tps')} vs "
+                        f"{val(all_by_id,'qsl17221-4a10-qwen7bawq-sglang-c50-r1','tps')} at c50).")
         if (venue, issue) == ("llama.cpp", "27050"):
             if "lc-27050-vllm-1s" in rows:
                 return ("Reference arm from the same run: vLLM BF16 at "
@@ -1165,6 +1240,7 @@ between builds of the same backend, see the
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
     multi_ab = {k: v for k, v in ab_groups.items() if len(v) >= 2}
+    all_by_id = {r["id"]: r for r in records}
     ab_sections = []
     for (venue, issue, hw, model, backend), rs in sorted(
             multi_ab.items(),
