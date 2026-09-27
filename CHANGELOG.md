@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-27: HF model-card re-scan: 1 new row (DavidAU LFM2.5-2.6B Q6 on 5090)
+
+- The DavidAU LFM2.5-2.6B fine-tune card (Qwen3.8-Turbo-Brilliance, NEO-MAX) carries a new author figure in its quant list: Q6, non-imatrix, standard quant, 380 t/s on a 5090 (2 GB). Added as one row (LM Studio, the harness the author's other 5090 entries use). The card's base 220 tok/s M5 Max and 113 tok/s Ryzen AI Max+ 395 CPU numbers were already covered from the Liquid AI card. HF model cards now 31 rows across 9 repos.
+- Dataset: 2,982 measured records, 325 hardware strings, 139 models, 23 backends; 521 contradiction, 34 outlier flags (unchanged); 3,558 quote-verified; 473 pages, 16,731 internal links.
+
 ## 2026-09-27: llama.cpp re-scan above #29530: 10 new rows (PR #29534)
 
 - Mined #29534 (PR, use wave64 for GCN Q8 flash attention, gfx906): 10 rows in two model groups, master vs the wave64 build. Llama 3 8B Q4_K_M (D128 head, KV Q8_0): tg128 50.19 to 54.44 at 4096 ctx (+8.47%) and 39.86 to 45.23 at 8192 ctx (+13.47%), prefill flat (719.86 to 715.36, 615.38 to 614.56). Qwen3.6-27B Q4_1 (D256 head, KV Q8_0): 22.97 to 23.84 at 4096, 19.50 to 21.42 at 16384, 16.11 to ~18.86 at 32768; the gain widens with context (+3.8% to +17.1%). The PR's kernel microbench attributes it to the fused Q8 attention kernel, with gains concentrated below KV 10k (up to +92.37% at KV 4096) and flat beyond. New hardware page gfx906, new model page Meta-Llama-3-8B-Instruct. The build A/B page gained the two matching interpretive notes (46 to 48 of 74 groups annotated).

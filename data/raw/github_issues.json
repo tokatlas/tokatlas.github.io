@@ -8708,6 +8708,24 @@
    "source_name": "llama.cpp issue #29534 (community report)",
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/29534",
    "tps": "18.86"
+  },
+  {
+   "id": "hf1-lfm2526b-5090-q6",
+   "backend": "LM Studio",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-09-17",
+   "hardware": "5090",
+   "model": "LFM2.5-2.6B",
+   "notes": "DavidAU quant-list entry (Q6, non-imatrix, 2 GB); the card does not name the harness, the author's other 5090 entries are LM Studio tests",
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "Q6",
+   "quote": "LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF; Q6, non imatrix, standard quant ; 380 t/s [5090], Quant size: 2 GB",
+   "retrieved": "2026-09-27",
+   "source_name": "HF model card: DavidAU LFM2.5-2.6B Q6 GGUF",
+   "source_url": "https://huggingface.co/DavidAU/LFM2.5-2.6B-Qwen3.8-Turbo-Brilliance-Power-X12-NEO-MAX-GGUF",
+   "tps": "380"
   }
  ],
  "source": {
