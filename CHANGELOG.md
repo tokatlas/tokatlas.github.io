@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-26: Data quality fixes: ctx semantics, multi-run splitting, settings-aware flags, cluster scope, quote verification
+
+- **ctx semantics fixed.** `pp512`/`tg128` are prompt-processing and token-generation test lengths, not context windows. Added `pp_tokens`/`tg_tokens` fields; `ctx` is now null on llama-bench rows (all 1,805 llama.cpp discussion rows).
+- **Multi-run splitting.** Repeated test cells within one post (separate runs on the same setup) are now separate record rows, marked in notes as "run 2 of 2" and so on. llama.cpp discussion rows went from 885 to 1,805.
+- **Settings-aware contradiction flag.** The flag key now includes batch, threads/ngl/config, pp/tg test lengths, and run number, so different runs and different setups of the same chip+model+quant pair no longer flag each other. Flags: contradiction 616 to 521, outlier 40 to 34.
+- **Cluster scope.** Nine multi-GPU node rows (24x GB200 DSV4-Pro FP4 runs, 8x H200-NVL Gemma-4-31B, 4x GB200 GLM-5.3-Flash FP8 at three concurrency levels, 1x H20 DSV3.2) moved from the record set to `data/reference/cluster.json` (`scope: cluster`); the site lists them in a separate reference table so they do not mix with single-node rows.
+- **Quote verification in CI.** New `scripts/check_quotes.py` re-fetches (from cache) every cited source page and verifies that every stored value, every pp/tg test token, and every quote fragment appears in the source. For SiliconScore, LLMCheck, and LLM Configurator the machine-readable dataset JSON is checked, since the stored numbers come from the dataset, not the per-row attribution page. Citations are now machine-checked, not just written.
+- **22 new GitHub issue rows.** ExLlamaV2 #450 (2080 Ti, EXL2 4.0bpw, batched_inference and multi-cache scaling, 8 rows); vLLM #48071 (8x H200-NVL, Gemma-4-31B ITL by concurrency, 6 rows including the TRT-LLM row); #55139 (A100, GPT-OSS-20B, MRV1/MRV2); #49369/#49370 (B300, DeepSeek-V4-Flash FP4, base/no-break/dspark); #58031 (GB300, DeepSeek-V4.1-Flash MXFP4); #39323 (H100, Qwen3.5-35B-A3B FP8 with FlashAttention-3); #30832 (H20, DeepSeek-V3.2, cluster scope).
+- All quotes re-verified verbatim against cached source pages; github_issues quotes are checked fragment by fragment, discussion quotes are checked against the paginated comment pages where the cited content actually renders.
+- Dataset: 2,591 measured records, 287 hardware strings, 117 models, 19 backends, plus 549 reference estimates and 9 cluster runs. Provenance: 746 sourced, 1,845 community. Flags: 521 contradiction, 34 outlier.
+
 ## 2026-09-26: llama.cpp performance discussions collected (885 measured rows, 5 threads)
 
 - New source `data/raw/llamacpp_discussions.json`: 885 measured community rows

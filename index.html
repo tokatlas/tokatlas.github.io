@@ -14,7 +14,7 @@
 <p>A continuously updated, <strong>source-cited</strong> dataset and lookup for local LLM
 inference performance: hardware, backend, build, model, quant, context, and measured
 tokens per second. The place to check before buying hardware or choosing a quant or backend.</p>
-<p class="stats">1878 records · 115 models · 287 hardware · 19 backends · data retrieved 2026-09-26</p>
+<p class="stats">2591 records · 117 models · 287 hardware · 19 backends · data retrieved 2026-09-26</p>
 <h2>What speed will I get?</h2>
 <p><a href="/lookup.html">Open the lookup →</a> pick your hardware and a model; get every
 recorded tokens/sec figure with its source.</p>
@@ -28,7 +28,7 @@ recorded tokens/sec figure with its source.</p>
 <li><a href="/changelog.html">Changelog</a>: what changed, when</li>
 </ul>
 <h2>Reading the data</h2>
-<p>Provenance classes: <span class="badge b-com">community</span> 1132 <span class="badge b-src">sourced</span> 746.</p>
+<p>Provenance classes: <span class="badge b-com">community</span> 1845 <span class="badge b-src">sourced</span> 746.</p>
 <p><strong>sourced</strong>: a public page we link to, containing the quoted number.
 <strong>community</strong>: a community-measured run (e.g. llama-bench results) carried in the
 source dataset. <strong>estimated</strong>: the source's own model-based estimate, kept in
@@ -41,7 +41,11 @@ context curves (4k to 262k). Q4_K_M plus other quants. Every record carries a
 source URL and the exact quoted cells; the 549 reference estimates
 (board-spec power, tok/W) live in
 <a href="/data/reference/estimates.json">data/reference/estimates.json</a>,
-excluded from record counts.</p>
+excluded from record counts. Cluster and multi-node runs (e.g. 8-way or 24-way
+datacenter boxes) are measured and source-cited but out of the local-inference
+record set: they live in
+<a href="/data/reference/cluster.json">data/reference/cluster.json</a> and are
+shown only via the lookup toggle.</p>
 <h2>Complementary projects</h2>
 <p>Token Atlas is built to complement, not duplicate, existing efforts. We credit and link them:</p>
 <ul><li><a href="https://www.localscore.ai">LocalScore</a>: Open benchmark and CLI on top of Llamafile; per-hardware LLM scores. Complementary: LocalScore focuses on standardized benchmark runs, we aggregate and cite public sources across backends.</li><li><a href="https://llmcheck.net">LLMCheck</a>: Apple Silicon LLM index and the source of our current dataset (CC BY 4.0).</li><li><a href="https://llmconfigurator.com/en/benchmarks">llmconfigurator benchmarks</a>: GPU leaderboard of local LLM tokens/sec; one of our data sources (CC BY 4.0).</li><li><a href="https://siliconscore.com/bench/">Silicon Score</a>: Apple Silicon benchmark audit with per-row sources; one of our data sources.</li><li><a href="https://www.localmaxxing.com">Localmaxxing</a>: Community local LLM inference speed tests, filterable by model/hardware/engine/quant.</li><li><a href="https://arxiv.org/abs/2511.16682">Bench360</a>: Academic benchmarking of local LLM inference (360 degrees).</li><li><a href="https://github.com/uncSoft/anubis-oss">anubis-oss</a>: Apple Silicon community leaderboard.</li><li><a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a>: Community benchmark threads; llama-bench results posts.</li></ul>
@@ -69,6 +73,6 @@ Per-row source links are in the dataset.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 22:27 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-27 00:36 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

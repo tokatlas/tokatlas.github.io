@@ -20,15 +20,18 @@ default; tick the box to include them, badged.</p>
 <label>quant <select id="f-quant"></select></label>
 <label>backend <select id="f-be"></select></label>
 <label class="check"><input type="checkbox" id="f-ref"> include reference estimates</label>
+<label class="check"><input type="checkbox" id="f-clu"> include cluster runs (out of scope)</label>
 </div>
 <p id="lcount" class="dim"></p>
 <div id="ltable"></div>
 <script>
 Promise.all([fetch('/data/records.json').then(r => r.json()),
-             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []}))])
-.then(([ds, ref]) => {
+             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []})),
+             fetch('/data/reference/cluster.json').then(r => r.json()).catch(() => ({records: []}))])
+.then(([ds, ref, clu]) => {
   const recs = ds.records;
   const refs = ref.records || [];
+  const clus = clu.records || [];
   const sel = id => document.getElementById(id);
   const opts = (id, vals) => {
     const el = sel(id);
@@ -47,7 +50,8 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
     const f = {hw: sel('f-hw').value, model: sel('f-model').value,
                quant: sel('f-quant').value, be: sel('f-be').value};
     const showRef = sel('f-ref').checked;
-    const pool = showRef ? recs.concat(refs) : recs;
+    const showClu = sel('f-clu').checked;
+    const pool = recs.concat(showRef ? refs : [], showClu ? clus : []);
     const rows = pool.filter(r =>
       (!f.hw || r.hardware === f.hw) && (!f.model || r.model === f.model) &&
       (!f.quant || r.quant === f.quant) && (!f.be || r.backend === f.be));
@@ -56,21 +60,24 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
     sel('f-quant').value = f.quant; sel('f-be').value = f.be;
     document.getElementById('lcount').textContent =
       rows.length + ' of ' + recs.length + ' records' +
-      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '');
+      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '') +
+      (showClu ? ' (cluster runs included: ' + clus.length + ')' : '');
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
-      '<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
+      '<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
-        '</td><td class="num">' + esc(r.power_w ?? '') + '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
+        '</td><td class="num">' + esc(r.power_w ?? '') + '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? (r.tg_tokens ? 'tg' + r.tg_tokens : '–')) +
         '</td><td>' + esc(r.date ?? '–') + '</td><td>' + badge(r.provenance) +
+        (r.scope === 'cluster' ? ' <span class="badge b-est">cluster</span>' : '') +
         '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '–') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
   ['f-hw','f-model','f-quant','f-be'].forEach(id => sel(id).addEventListener('change', render));
   sel('f-ref').addEventListener('change', render);
+  sel('f-clu').addEventListener('change', render);
   render();
 });
 </script>
@@ -79,6 +86,6 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-26 22:27 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-27 00:36 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>
