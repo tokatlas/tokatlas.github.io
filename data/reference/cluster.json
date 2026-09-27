@@ -1,5 +1,5 @@
 {
- "count": 10,
+ "count": 11,
  "note": "cluster and multi-node runs (measured, source-cited) out of record scope: local inference means single-machine hardware",
  "records": [
   {
@@ -240,6 +240,29 @@
    "source_name": "vLLM issue #43648 (community report)",
    "source_url": "https://github.com/vllm-project/vllm/issues/43648",
    "tps": "1118.18",
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 512,
+   "ctx": null,
+   "date": "2026-04",
+   "flags": [],
+   "hardware": "B300",
+   "id": "vllm-40350-b300-qwen35-397b-nvfp4-c512",
+   "model": "Qwen3.5-397B-A17B",
+   "notes": "4x B300 node, TP=4 EP=4, MTP3 + async scheduling, FP8 KV; engine-log snapshot during the c=512 bench (bug: the last request then hangs at 0.0 tok/s); first ~1000 of 1536 requests completed at full throughput; scope=cluster (multi-GPU node); config=mtp3-ep4",
+   "params": "397B MoE A17B",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "NVFP4",
+   "quote": "GPU: NVIDIA B300 x 4 (single node, TP=4, EP=4); --model nvidia/Qwen3.5-397B-A17B-NVFP4; --max-concurrency 512; Avg generation throughput: 12921.2 tokens/s, Running: 493 reqs",
+   "retrieved": "2026-09-27",
+   "scope": "cluster",
+   "source_name": "https://github.com/vllm-project/vllm/issues/40350",
+   "source_url": "https://github.com/vllm-project/vllm/issues/40350",
+   "tps": "12921.2",
    "ttft_s": null
   }
  ],

@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-27: vLLM issue mining pass, second batch: 10 new rows across five issues
+
+- **Qwen3.5-35B-A3B at concurrency 100 (vLLM #35625, 2 rows).** RTX PRO 6000 Blackwell Max-Q Workstation Edition (3341.89 tok/s) and DGX Spark (431.42 tok/s), both with Qwen3-Next MTP k=2 speculative decoding; the poster's TTFT tail-latency report, kept as measured rows with the TTFT numbers in notes.
+- **EAGLE3 on Qwen3-8B (vLLM #40551, 4 rows).** RTX PRO 6000 Blackwell Workstation Edition, MT-Bench with 80 concurrent requests, EAGLE3 RedHatAI speculator k=7, across the MRV1/MRV2 model-runner tables at temperature 0 and 1 (2021.33 to 3936.20 tok/s); each table is a separate `config=` variant.
+- **CPU whisper (vLLM #38586, 1 row).** whisper-medium on a dual-socket Xeon 6767P (torch CPU build, TP2), 9.08 output tok/s at 2.67x real-time on LibriSpeech ASR; first CPU row from the vLLM source.
+- **Qwen3-VL-30B position-computation PR (vLLM #27021, 2 rows).** A100 PCIe, FP8 VLM, request-rate 10 RPS, before and after PR #25337 (681.42 vs 689.02 tok/s).
+- **4x B300 Qwen3.5-397B-A17B NVFP4 (vLLM #40350, 1 cluster row).** TP4+EP4 with MTP3 at concurrency 512: 12921.2 tok/s aggregate in the engine log at Running 493, from the crash-report bench (the last request then hangs at 0.0 tok/s); added to the cluster reference area (now 11 runs).
+- Skipped from the same search pass: #51799 (KV-cache concurrency headroom, no tok/s), #56868 (qualitative degeneration report), #44705 (latency table, no tok/s), #50880 (hang report, 0.0 tok/s only), #55394 (TTFT/kernel-ms table, no tok/s), #37666 (no model name in body).
+- Dataset: 2,636 measured records, 293 hardware strings, 128 models, 19 backends, plus 549 reference estimates and 11 cluster runs. Provenance: 746 sourced, 1,890 community. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: vLLM issue mining pass: 36 new rows across six issues
 
 - **A100 multimodal benchmarks (vLLM #24728, 25 rows).** Four VLMs (Qwen2.5-VL-7B, MiniCPM-V-4, InternVL3.5-4B, InternVL3.5-2B) on a single A100 40 GB, image and video inputs, at the published concurrency levels (1, 10, 50 and the unlimited-rate max-QPS test). Modality is a machine-readable `config=` token, so image and video rows flag separately.

@@ -1,7 +1,7 @@
 {
  "github_issues": {
   "name": "GitHub issue reports (llama.cpp, ExLlamaV2, vLLM)",
-  "note": "Hand-curated community reports from GitHub issues; quotes are verbatim excerpts (markdown symbols stripped) from the issue body.",
+  "note": "Hand-curated community reports from GitHub issues; quotes are verbatim excerpts (markdown symbols stripped) from the issue body or title.",
   "retrieved": "2026-09-26",
   "url": "https://github.com/ggml-org/llama.cpp"
  },
