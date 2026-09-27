@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27: vLLM re-scan above #58880: 4 new rows from PR #58887
+
+- **Kimi-K3 AITER MLA FP8 prefill race, before/after on MI355X (vLLM PR #58887, 4 rows).** The ROCm AITER MLA FP8 prefill path rewrites its scheduling metadata off-stream, so with async scheduling a step can run the next step's work maps. Reported as a deterministic GPU memory fault on 8x MI355X (issue #58886); the fix plans the metadata into pinned host slots and copies it on the stream. The PR's performance table (Kimi-K3, TP8, ROCm 10 nightly, FP8 KV cache, dummy weights, sglang bench_serving random 8k/1k, aggregate output tok/s) shows no throughput cost to the fix: 236.05 / 236.05 at c4 and 1083.0 / 1082.6 at c32, before vs after (median ITL unchanged). First rows for the Kimi-K3 model page and the MI355X hardware page (the 8x count is from the #58886 env table, noted on each row).
+- Also scanned and skipped: vLLM #58881-#58890 besides #58887 (bugfixes and features, no throughput tables), and llama.cpp #29514-#29521 (PRs and bug reports; #29520's qwen4exp Vulkan kernel fusion has decode numbers (49.84 to 51.72 t/s, +3.8%) but names no GPU in the decode line, so it is parked).
+- New model page: Kimi-K3. New hardware page: MI355X. This closes the cycle above vLLM #58880 and llama.cpp #29513.
+- Dataset: 2,959 measured records, 325 hardware strings, 159 models, 23 backends. Provenance: 746 sourced, 2,213 community. 413 hand-mined rows (385 GitHub issue rows across 42 llama.cpp, 34 vLLM, and 4 ExLlamaV2 issues, plus 28 HF model-card rows across 6 repos). Flags unchanged: 521 contradiction, 34 outlier. 3,535 records quote-verified.
+
 ## 2026-09-27: llama.cpp and vLLM re-scans: 22 new rows across 4 issues
 
 - **First-request warm-up cliff on RTX 2060 6 GB (llama.cpp #29513, 4 rows).** Qwen3.5-4B Q4_K_M (unsloth GGUF, hybrid Gated DeltaNet) on a 6 GB sm_75 card, Windows x64 b11206, -ngl 99 -c 16384 -ctk q8_0 -ctv q8_0, filed by an AI agent on behalf of its user: the first chat completion after load crawls at 3.09 t/s (prompt eval 0.44) on the CUDA build and 15.4 t/s on the Vulkan build, while requests from the third on run at 56.1 and 47.0 t/s respectively (prompt eval 117-131 and 84-90). A warm-start cliff the dataset now has a first record of, and the first row for the RTX 2060 6 GB page.
