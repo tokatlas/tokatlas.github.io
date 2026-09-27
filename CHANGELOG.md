@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27: vLLM re-scan: 24 new rows across 4 issues
+
+- **H100 NVL version regression, Qwen3.6-35B-A3B-FP8 (vLLM #57680, 6 rows).** Three frozen images A 0.24.0, B 0.26.0, C 0.29.0 (same weights, SEV-SNP CC VM), 512-token output, ~122-token prompt, median of 5: c=1 138.8/148.3/41.4 and c=12 1183.3/1295.0/362.3 t/s, ITL 6.68 to 23.88 ms. The 0.29.0 image runs 3.3-3.6x slower than A and B on the same hybrid Gated DeltaNet model; the user runs a patched fork pinned to 0.26.0 behavior.
+- **TurboQuant on 2x RTX A5000 (vLLM #40124, 3 rows).** Qwen3-35B-A3B-FP8, TP=2, TurboQuant k8v4 KV after 13 patches (vLLM 0.19.1rc1 nightly): 145.3 t/s single-request decode, 48.6 at 160k context, 11 with enforce-eager (CUDAGraphs mandatory).
+- **DSV4.1-Flash on 8x RTX PRO 6000 Max-Q (vLLM #56892, 2 rows).** FP8 checkpoint, TP=8, enforce-eager (CUDA graphs unusable on SM120 for V4.1-Flash): engine-side 2.3-4.0 t/s total across 3 concurrent requests (about 1 t/s each, 300 completion tokens); the same 8-GPU box does about 2452 aggregate t/s on the V4-Flash checkpoint per published recipes.
+- **V2 side-stream dispatch cost on R9700 (vLLM #58639, 13 rows).** PP=3 pipeline V620/V620/R9700, MTP2, FULL HIP graphs: R9700-side pipeline throughput ~33 t/s with side streams vs 45.3-46.6 on the main stream; separate serving measurement 31.0 to 46.5 median decode; plus the 3-arm queue-cap matrix (three xhigh decode rates each, 48.2/48.9/42.2 vs 35.9/35.8/34.3 vs 35.9/36.2/37.2, 16K TTFT ~9.9 s).
+
 ## 2026-09-27: llama.cpp issue mining, second pass: 133 new rows across 15 issues
 
 - **MTP6 vs baseline on three datacenter cards (llama.cpp #26750, 6 rows).** Qwen3.5-9B, b10290 official image, median of 108 runs per cell: draft-mtp n-max 6 vs no speculation - the W7900 goes 96 to 218 t/s and the RX 7800 XT 70 to 124, while the RTX PRO 4000 Blackwell drops 90 to 61.
