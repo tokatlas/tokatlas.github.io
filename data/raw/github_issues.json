@@ -7783,6 +7783,78 @@
    "source_url": "https://huggingface.co/superkuh/gemma-4-12b-Q4_K_M-GGUF",
    "retrieved": "2026-09-27",
    "provenance": "community"
+  },
+  {
+   "id": "lc-29513-cuda-first",
+   "model": "Qwen3.5-4B",
+   "hardware": "RTX 2060 6 GB",
+   "backend": "llama.cpp (CUDA)",
+   "quant": "Q4_K_M",
+   "tps": "3.09",
+   "pp_tps": 0.44,
+   "batch": null,
+   "ctx": 16384,
+   "date": "2026-09-27",
+   "notes": "unsloth Qwen3.5-4B Q4_K_M GGUF; ngl=99, ctx 16384, ctk q8_0, ctv q8_0, reasoning-budget 0; Windows x64 release build b11206 (2b129ccfa), driver 610.88; first chat completion right after model load (Gated DeltaNet warm-up at startup defaults; /health was ok before it); requests from the third on run at normal speed; config=first-request",
+   "quote": "- GPU: RTX 2060 6 GB (sm_75), driver 610.88; - CPU i7-9750H; Windows 11 Pro; - Model: unsloth Qwen3.5-4B, Q4_K_M GGUF; llama-server.exe -m Qwen3.5-4B-Q4_K_M.gguf -ngl 99 -c 16384 -ctk q8_0 -ctv q8_0 --reasoning-budget 0 --no-webui; | CUDA | 1st | 0.44 tok/s | 3.09 tok/s |",
+   "source_name": "llama.cpp issue #29513",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29513",
+   "retrieved": "2026-09-27",
+   "provenance": "community"
+  },
+  {
+   "id": "lc-29513-cuda-warm",
+   "model": "Qwen3.5-4B",
+   "hardware": "RTX 2060 6 GB",
+   "backend": "llama.cpp (CUDA)",
+   "quant": "Q4_K_M",
+   "tps": "56.1",
+   "pp_tps": null,
+   "batch": null,
+   "ctx": 16384,
+   "date": "2026-09-27",
+   "notes": "unsloth Qwen3.5-4B Q4_K_M GGUF; ngl=99, ctx 16384, ctk q8_0, ctv q8_0, reasoning-budget 0; Windows x64 release build b11206 (2b129ccfa), driver 610.88; requests from the third on (warm; the first request after load is extremely slow on this hybrid Gated DeltaNet model, see companion row); prompt eval 117-131 tok/s range as published; config=warm-3rd",
+   "quote": "- GPU: RTX 2060 6 GB (sm_75), driver 610.88; - CPU i7-9750H; Windows 11 Pro; - Model: unsloth Qwen3.5-4B, Q4_K_M GGUF; llama-server.exe -m Qwen3.5-4B-Q4_K_M.gguf -ngl 99 -c 16384 -ctk q8_0 -ctv q8_0 --reasoning-budget 0 --no-webui; | CUDA | 3rd+ | 117-131 tok/s | 56.1 tok/s |",
+   "source_name": "llama.cpp issue #29513",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29513",
+   "retrieved": "2026-09-27",
+   "provenance": "community"
+  },
+  {
+   "id": "lc-29513-vulkan-first",
+   "model": "Qwen3.5-4B",
+   "hardware": "RTX 2060 6 GB",
+   "backend": "llama.cpp (Vulkan)",
+   "quant": "Q4_K_M",
+   "tps": "15.4",
+   "pp_tps": 6.4,
+   "batch": null,
+   "ctx": 16384,
+   "date": "2026-09-27",
+   "notes": "unsloth Qwen3.5-4B Q4_K_M GGUF; ngl=99, ctx 16384, ctk q8_0, ctv q8_0, reasoning-budget 0; Windows x64 release build b11206 (2b129ccfa), driver 610.88; Vulkan release binary, first chat completion right after model load (Gated DeltaNet warm-up at startup defaults); requests from the third on run at normal speed; config=first-request",
+   "quote": "- GPU: RTX 2060 6 GB (sm_75), driver 610.88; - CPU i7-9750H; Windows 11 Pro; - Model: unsloth Qwen3.5-4B, Q4_K_M GGUF; llama-server.exe -m Qwen3.5-4B-Q4_K_M.gguf -ngl 99 -c 16384 -ctk q8_0 -ctv q8_0 --reasoning-budget 0 --no-webui; | Vulkan | 1st | 6.4 tok/s | 15.4 tok/s |",
+   "source_name": "llama.cpp issue #29513",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29513",
+   "retrieved": "2026-09-27",
+   "provenance": "community"
+  },
+  {
+   "id": "lc-29513-vulkan-warm",
+   "model": "Qwen3.5-4B",
+   "hardware": "RTX 2060 6 GB",
+   "backend": "llama.cpp (Vulkan)",
+   "quant": "Q4_K_M",
+   "tps": "47.0",
+   "pp_tps": null,
+   "batch": null,
+   "ctx": 16384,
+   "date": "2026-09-27",
+   "notes": "unsloth Qwen3.5-4B Q4_K_M GGUF; ngl=99, ctx 16384, ctk q8_0, ctv q8_0, reasoning-budget 0; Windows x64 release build b11206 (2b129ccfa), driver 610.88; Vulkan release binary, requests from the third on (warm; the first request after load is extremely slow on this hybrid Gated DeltaNet model, see companion row); prompt eval 84-90 tok/s range as published; config=warm-3rd",
+   "quote": "- GPU: RTX 2060 6 GB (sm_75), driver 610.88; - CPU i7-9750H; Windows 11 Pro; - Model: unsloth Qwen3.5-4B, Q4_K_M GGUF; llama-server.exe -m Qwen3.5-4B-Q4_K_M.gguf -ngl 99 -c 16384 -ctk q8_0 -ctv q8_0 --reasoning-budget 0 --no-webui; | Vulkan | 3rd+ | 84-90 tok/s | 47.0 tok/s |",
+   "source_name": "llama.cpp issue #29513",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29513",
+   "retrieved": "2026-09-27",
+   "provenance": "community"
   }
  ],
  "source": {
@@ -7791,5 +7863,5 @@
   "retrieved": "2026-09-27",
   "url": "https://github.com/ggml-org/llama.cpp"
  },
- "count": 387
+ "count": 391
 }
