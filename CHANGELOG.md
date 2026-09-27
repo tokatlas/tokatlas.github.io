@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-27: Freshness re-scan: 3 new rows (vLLM #58920 KV-connector A/B, HF KAT card), #58887 quote refresh
+
+- vLLM above #58919: #58920 (2026-09-27) mined, 2 rows. 2 nodes x 8x H100 80GB, pipeline parallel 8 x tensor parallel 2, vLLM 0.30.0 Model Runner V2 + async scheduling, GLM-5.2 FP8, 12k prompts / 1024 output: aggregate decode at 8 running requests ~250 to ~133 tok/s with a no-op KV connector (empty metadata, no loads or stores) vs none, decode TPOT 32.1 to 60.0 ms (+87%), while the V1 runner shows no overhead; the report's root cause is all 16 ranks replying to every RPC (output_rank None once a KV aggregator exists) and the reply-ring writer spinning with the GIL held. New hardware page 2 nodes x 8x H100 80GB; new build A/B group with interpretive note (page 83 of 83). #58921 (PR, no bench) and #58922 (CPU tensor crash) skipped. New watermark: vLLM above #58920.
+- llama.cpp: nothing new above the #29536 watermark; #29532 (Vulkan matmul crash on RTX 5070 Ti Laptop) rechecked, no throughput table, still not mineable. Watermark unchanged.
+- ExLlamaV2: the repo moved from EXLlama/EXLlamaV2 to turboderp-org/exllamav2 (now 404 redirect, marked archived; development continues in ExLlamaV3). Nothing above issue #818; discussion watermark still #819.
+- HF card scan (194 cards refreshed): 1 new row. IsValorum/KAT-Coder-V2.5-Dev-APEX-I-MiniPlus-V2.1-GGUF (2026-09-18): single-stream generation approx. 247-251 t/s on RTX 5090 (stored lower bound 247), prefill 2,800-3,900+ (stored 2800), full GPU -ngl 99, verified in Unsloth Studio & llama.cpp, attributed to the zephel01 Occamy V2 reference; joins the existing KAT-Coder-V2.5 and RTX 5090 pages. All other hits already mined or parked.
+- vLLM #58887 quote refresh (commit 4e7bf189): the PR author re-edited the env block after mining (Test Plan section, Kimi-K3 as its own heading); the 4 rows' quote fragments were rewritten to the current verbatim text. Lesson: CI's check_quotes always re-fetches, so upstream edits to mined bodies surface there first.
+- Dataset: 3,060 measured records, 333 hardware strings, 147 models, 23 backends; 521 contradiction, 34 outlier flags (unchanged); 3,636 quote-verified; 489 pages, 17,203 internal links. Hand-mined: 514 rows (451 GitHub issue rows: 304 llama.cpp, 136 vLLM, 11 ExLlamaV2; 34 HF model-card rows; 29 ExLlamaV2 discussion rows).
+
 ## 2026-09-27: Prefill-only schema relaxation: 44 new rows from the 5 parked llama.cpp issues
 
 - Schema: tps is no longer a required column; a row needs tps or pp_tps above 0, and prefill-only reports carry pp_tps with tps empty (data/schema.md and scripts/check_data.py updated). This unblocks the five parked pp-only llama.cpp issues in one pass: 44 new rows.

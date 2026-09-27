@@ -722,6 +722,19 @@ between builds of the same backend, see the
                     f"0.24.0 is {val(rows,'vllm-57680-h100nvl-qwen36-35b-v0240-c12','tps')} at c12, "
                     "so 0.26.0 is slightly faster than 0.24.0 and the loss is not a "
                     "gradual drift.")
+        if (venue, issue) == ("vLLM", "58920"):
+            return ("KV connector overhead on Model Runner V2 with pipeline "
+                    "parallelism: with a no-op connector (empty metadata, "
+                    "no loads or stores) aggregate decode throughput drops "
+                    f"from {val(rows,'vllm-58920-2nodes-h100-none-c8','tps')} to "
+                    f"{val(rows,'vllm-58920-2nodes-h100-noop-c8','tps')} tok/s "
+                    f"({pct(rows,'vllm-58920-2nodes-h100-none-c8','vllm-58920-2nodes-h100-noop-c8','tps'):.0f}%) "
+                    "at 8 running requests, decode TPOT 32.1 to 60.0 ms, while "
+                    "the V1 model runner shows no overhead. All 16 PP x TP "
+                    "ranks reply to every RPC once a KV aggregator exists "
+                    "(output_rank becomes None) and the reply-ring writer "
+                    "spins holding the GIL, starving prepare_inputs on the "
+                    "worker main thread.")
         if (venue, issue) == ("llama.cpp", "27050"):
             if "lc-27050-vllm-1s" in rows:
                 return ("Reference arm from the same run: vLLM BF16 at "
