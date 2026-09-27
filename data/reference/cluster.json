@@ -257,7 +257,7 @@
    "pp_tps": null,
    "provenance": "community",
    "quant": "NVFP4",
-   "quote": "GPU: NVIDIA B300 x 4 (single node, TP=4, EP=4); --model nvidia/Qwen3.5-397B-A17B-NVFP4; --max-concurrency 512; Avg generation throughput: 12921.2 tokens/s, Running: 493 reqs",
+   "quote": "GPU: NVIDIA B300 \u00d7 4 (single node, TP=4, EP=4); --model nvidia/Qwen3.5-397B-A17B-NVFP4; --max-concurrency 512; Avg generation throughput: 12921.2 tokens/s, Running: 493 reqs",
    "retrieved": "2026-09-27",
    "scope": "cluster",
    "source_name": "https://github.com/vllm-project/vllm/issues/40350",

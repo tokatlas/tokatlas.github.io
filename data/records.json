@@ -1,5 +1,5 @@
 {
- "count": 2636,
+ "count": 2637,
  "records": [
   {
    "backend": "llama.cpp",
@@ -1816,6 +1816,30 @@
    "source_name": "https://github.com/vllm-project/vllm/issues/27021",
    "source_url": "https://github.com/vllm-project/vllm/issues/27021",
    "tps": "689.02",
+   "ttft_s": null
+  },
+  {
+   "backend": "ExLlamaV2",
+   "batch": 1,
+   "ctx": null,
+   "date": "2023-09",
+   "flags": [],
+   "hardware": "Tesla P40",
+   "id": "exllamav2-40-p40-codellama34b-exl2",
+   "model": "CodeLlama-34B",
+   "notes": "2023 report, P40 at 80 W underload (the bug); test_inference.py at length 1024, all seven positions (1 to 896) land between 1.17 and 1.19 t/s; the position-1 value is recorded; the same issue mentions a 3090 at 36 to 39 t/s under a driver change but does not name the model, so it is not a row",
+   "params": "34B",
+   "power_w": 80,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "EXL2 4.0bpw H6",
+   "quote": "Tesla P40 performance is still very low, only using 80W underload.; python test_inference.py -m models/CodeLlama-34B-instruct-4.0bpw-h6-exl2/ -s -l 1024; ** Position     1 + 127 tokens:    1.1905 t/s",
+   "ram_gb": null,
+   "retrieved": "2026-09-27",
+   "scope": null,
+   "source_name": "ExLlamaV2 issue #40 (community report)",
+   "source_url": "https://github.com/turboderp-org/exllamav2/issues/40",
+   "tps": "1.1905",
    "ttft_s": null
   },
   {

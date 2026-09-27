@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-27: ExLlamaV2 issue pass: first row from the issue archive
+
+- **Tesla P40 CodeLlama-34B (ExLlamaV2 #40, 1 row).** A 2023 report of 1.19 t/s (EXL2 4.0bpw H6, test_inference at length 1024, all seven positions between 1.17 and 1.19 t/s) with the card idling at 80 W under load; the same issue's 3090 driver-comparison figures (36/39 t/s) are not a row because the model is unnamed.
+- Also inspected and skipped: #571 (no numbers), #734 (prompt-processing speeds only, no token-generation figure, so outside the row schema), #630 (an 11-16 t/s range with no named hardware), #499 (Q-Cache speeds, no hardware named).
+- Dataset: 2,637 measured records, 294 hardware strings, 129 models, 19 backends, plus 549 reference estimates and 11 cluster runs. Provenance: 746 sourced, 1,891 community. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: vLLM issue mining pass, second batch: 10 new rows across five issues
 
 - **Qwen3.5-35B-A3B at concurrency 100 (vLLM #35625, 2 rows).** RTX PRO 6000 Blackwell Max-Q Workstation Edition (3341.89 tok/s) and DGX Spark (431.42 tok/s), both with Qwen3-Next MTP k=2 speculative decoding; the poster's TTFT tail-latency report, kept as measured rows with the TTFT numbers in notes.
