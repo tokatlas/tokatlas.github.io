@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-27: llama.cpp issue mining, fourth pass: 12 new rows across 4 issues
+
+- **Snapdragon 7 Gen 4 Hexagon backend (llama.cpp #29473, 7 rows).** Motorola Edge 70 (XT2601-2, SM7750, Hexagon v73, 12 GB LPDDR5X), build 86a24a1, pp512/tg64, -t 4. Llama-3.2-1B Q4_0: CPU 216.3 prefill / 34.4 decode, HTP0 HMX default 1749.4 / 29.9 (garbled output), the HVX-only + OPFILTER workaround 78.7 / 27.0 (correct, slower than CPU). Qwen3.5-4B Q4_0: CPU 46.3 / 9.1, Adreno 722 OpenCL 77.5 / 7.5, HTP0 HMX 437.4 / 8.1 (garbled), workaround 25.6 / 6.2. First rows on the Hexagon backend (4 rows).
+- **2x Intel Arc B580 Limited Edition MTP draft, SYCL versus Vulkan (llama.cpp #29419 + #29418, 4 rows).** gemma-4-31B-it UD-Q4_K_XL + MTP draft n-max 4, KV bf16, ctx 65536, sm tensor, both cards (Gen4x8 + Gen4x4). SYCL build cd74ef6: 28.44 t/s at n_gen 103, 23.79 at 159 before the flash-attention abort. Vulkan build b1175 on the same machine: 23.11 at 103, 20.87 at 156 before the neq0==HSK assert. New hardware page for the B580 Limited Edition.
+- **2x P100 Pascal tensor split (llama.cpp #29466, 1 row).** Qwen3.8-27B UD-Q5_K_XL, patched v0.4.0 tree (29 Pascal sm_60 kernel + AllReduce patches), sm tensor, KV q8_0, ctx 8192: request 1 runs clean at 18.5 t/s (291 graph reuses), the second request crashes in the meta backend.
+
+New hardware pages: Snapdragon 7 Gen 4 (SM7750), Intel Arc B580 Limited Edition. New model page: Llama-3.2-1B. New backend: llama.cpp (Hexagon), the first Hexagon rows in the dataset. Dataset: 2,894 records, 316 hardware, 156 models, 22 backends. 348 hand-mined issue rows across 40 llama.cpp, 28 vLLM, and 3 ExLlamaV2 issues.
+
 ## 2026-09-27: llama.cpp issue mining, third pass: 64 new rows across 11 issues
 
 - **RX 7900 XTX pair versus solo (llama.cpp #28863, 16 rows).** gfx1100, ROCm 10.0, build f9f09f02c (10794), llama-bench -p 2048 -n 512 -r 5: Qwen3.8-27B Q4_K_XL solo card 0 versus card 1 is 1074.51 versus 1008.57 prefill and 36.05 versus 35.54 decode; the 2-card tensor split is 1547.96 prefill / 47.06 decode (1.44x, no 2x). Q8_0 29.034 GB is 2-card only (36.26), Qwen2.5-7B Q8_0 hits 122.63 decode on the tensor split. The ub 512 to 4096 sweep is flat for decode and 1.466 to 1.582 of solo prefill; -sm layer loses to tensor (34.03 versus 47.06). Vulkan is +8.5% solo (39.07 versus 36.02 at tg128) but its 2-card tensor path serialises to 23.36.
