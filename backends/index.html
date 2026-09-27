@@ -12,7 +12,7 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 62 comparable cases so far. These are the seeds of the
+side by side. 63 comparable cases so far. These are the seeds of the
 regression/improvement tracking the project will run between backend builds.</p>
 <h3>deci 70B on RTX 5060 Ti (IQ4_XS - 4.25 bpw)</h3>
 <ul><li><strong>llama.cpp (CUDA)</strong>: 14.6 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 14.59 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 14.41 tok/s (99%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 14.35 tok/s (98%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 10.61 tok/s (73%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 9.76 tok/s (67%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 9.73 tok/s (67%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 8.48 tok/s (58%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 8.45 tok/s (58%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 6.73 tok/s (46%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13937285" rel="nofollow">source</a></li></ul>
@@ -24,6 +24,10 @@ sampling, and context differences, not just the backend itself.</p><h3>gemma3 27
 Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>gemma3 27B on Radeon RX 7900 XTX (Q6_K)</h3>
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 7.05 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13222968" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 6.81 tok/s (97%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-13222968" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>gemma-4-12b-it on Radeon RX 6700 XT (IQ4_NL)</h3>
+<ul><li><strong>llama.cpp (Vulkan)</strong>: 40.92 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/issues/26702" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 34.6 tok/s (85%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/issues/26702" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>gemma4 31B on Radeon RX 7900 XTX (Q8_0)</h3>
@@ -268,6 +272,6 @@ sampling, and context differences, not just the backend itself.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-09-27 02:20 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-09-27 02:56 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

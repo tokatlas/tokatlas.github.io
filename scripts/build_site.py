@@ -284,11 +284,11 @@ with source links.</p>
     multi = {k: v for k, v in backends.items() if len({r["backend"] for r in v}) > 1}
     notes = []
     for (m, h, q), rs in sorted(multi.items()):
-        best = max(rs, key=lambda r: r.get("tps") or 0)
+        best = max(rs, key=lambda r: float(r.get("tps") or 0))
         names = " / ".join(sorted({r["model"] for r in rs}))
         lines = []
-        for r in sorted(rs, key=lambda r: -(r.get("tps") or 0)):
-            pct = (100.0 * (r.get("tps") or 0) / (best.get("tps") or 1))
+        for r in sorted(rs, key=lambda r: -float(r.get("tps") or 0)):
+            pct = (100.0 * float(r.get("tps") or 0) / float(best.get("tps") or 1))
             lines.append(f"<li><strong>{esc(r['backend'])}</strong>: "
                          f"{esc(r.get('tps'))} tok/s ({pct:.0f}%) "
                          f"{prov_badge(r.get('provenance'))} "

@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-27: llama.cpp issue mining pass: 24 new rows across eight issues
+
+- **Deep-context RX 7900 XTX decode (llama.cpp #27734, 4 rows).** Qwen3.8-27B UD-Q4_K_XL, llama-server wall-clock decode: 40.4/40.8 t/s at ctx 65536/98304, a 8.9 t/s cliff at 131072 with the default KV-cache allocation, and 40.3 t/s at 131072 with a 4 GiB sub-allocated cache. First wall-clock (not llama-bench) rows; context depth is the row's independent variable.
+- **Qwopus3.6-35B-A3B-Coder-MTP build comparison (llama.cpp #29410, 6 rows).** RX 7800 XT, Q4_K_M, two builds (c77ae695c, 84e76d8a2) across three test shapes: empty-context tg32+pp512, then MTP tg128 at 48k and 130k context. The MTP rows are flagged `spec` in notes.
+- **Build regression on RTX 5070 Ti (llama.cpp #27171, 2 rows).** Qwen3.6-35B-A3B Q4_K_M, fit-target 1024: 101.00 t/s on build b10283 vs 87.92 on b10284 (pp512 1265.61 vs 923.45), 8 threads.
+- **ROCm vs Vulkan on RX 6700 XT (llama.cpp #26702, 2 rows).** gemma-4-12b-it IQ4_NL, average of three runs: Vulkan 40.92 vs ROCm 34.6 t/s (pp512 354.4 vs 653.9) - the first entry on the new cross-backend notes page.
+- **RTX 5060 Ti ceiling tests (llama.cpp #26674, 2 rows).** gemma-4-31B-it Q6_K at 0.62 t/s (pp512 41.84) and Qwen3.6-35B-A3B UD-Q6_K at 5.49 t/s (pp512 108.23) - models that fit with barely any headroom.
+- **OpenVINO device naming (llama.cpp #29235, 4 rows).** Qwen2.5-7B-Instruct Q4_K_M on Arc Pro B70: the unmasked device (44.1 t/s at depth 128, 9.6 at 4096) vs the GPU.1 alias (59.7 / 41.1), with device identity kept as a `config=` token.
+- **Ternary PTQ depth test (llama.cpp #29172, 2 rows).** Ternary-Bonsai-2-27B PTQ1_0 on RTX 5060 Ti: 44.68 t/s at depth 0 vs 8.10 at depth 154855 (pp 464.81 vs 21.87).
+- **Dual-GPU split (llama.cpp #27137, 2 rows).** Qwen3.6-27B Q4_K_M across RTX 3060 + Intel Arc A770: build 9006 at 7.88 t/s vs build 10433 at 2.93, with the split ratio in notes.
+- New conventions fixed by this pass: Unsloth Dynamic quant names (UD-Q4_K_XL, UD-Q6_K), ternary PTQ1_0, IQ4_NL in gguf form, and verbatim multi-GPU hardware strings from the issue body.
+- Also inspected and skipped: #27181 (prompt-processing speeds only, no token-generation figure), #29341, #29323, #27097, #27682, #27366, #27373, #29154, #24437 (no complete hardware+model+t/s triple or values too thin to quote cleanly).
+- Also fixed a latent bug in build_site.py: the cross-backend notes sort used the raw string tps, which crashes the moment that section has content to render.
+- Dataset: 2,661 measured records, 295 hardware strings, 134 models, 19 backends, plus 549 reference estimates and 11 cluster runs. Provenance: 746 sourced, 1,915 community. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: ExLlamaV2 issue pass: first row from the issue archive
 
 - **Tesla P40 CodeLlama-34B (ExLlamaV2 #40, 1 row).** A 2023 report of 1.19 t/s (EXL2 4.0bpw H6, test_inference at length 1024, all seven positions between 1.17 and 1.19 t/s) with the card idling at 80 W under load; the same issue's 3090 driver-comparison figures (36/39 t/s) are not a row because the model is unnamed.
