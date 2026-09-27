@@ -6698,7 +6698,7 @@
   {
    "id": "lc-28219-b10734-baseline",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "38.8",
@@ -6716,7 +6716,7 @@
   {
    "id": "lc-28219-b10734-ts1",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "1.67",
@@ -6734,7 +6734,7 @@
   {
    "id": "lc-28219-msvc-mtp",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "2.01",
@@ -6752,7 +6752,7 @@
   {
    "id": "lc-28219-msvc-dflash",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "2.01",
@@ -6770,7 +6770,7 @@
   {
    "id": "lc-28219-msvc-nospec",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "26.55",
@@ -6788,7 +6788,7 @@
   {
    "id": "lc-28219-b10734-128k",
    "model": "Qwen3.8-27B",
-   "hardware": "RTX 5060 Ti 16 GB",
+   "hardware": "RTX 5060 Ti",
    "backend": "llama.cpp",
    "quant": "UD-IQ3_S",
    "tps": "19",
