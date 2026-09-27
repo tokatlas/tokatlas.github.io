@@ -1,4 +1,10 @@
 {
+ "exllamav2_discussions": {
+  "name": "ExLlamaV2 GitHub Discussions (community benchmark threads)",
+  "note": "Hand-curated measured reports from ExLlamaV2 GitHub discussions. Quotes are verbatim excerpts from the discussion title or body (markdown symbols stripped).",
+  "retrieved": "2026-09-27",
+  "url": "https://github.com/turboderp-org/exllamav2/discussions"
+ },
  "github_issues": {
   "name": "GitHub issue reports + HF model cards (llama.cpp, ExLlamaV2, vLLM)",
   "note": "Hand-curated community reports from GitHub issues and Hugging Face model cards; quotes are verbatim excerpts (markdown symbols stripped) from the issue body or title, or from the model card page.",

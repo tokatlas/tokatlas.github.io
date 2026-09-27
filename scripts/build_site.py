@@ -572,6 +572,30 @@ between builds of the same backend, see the
                     "drafter reads the shared 248,320 x 5120 lm_head for every draft "
                     "token, which is most of the per-draft cost on this bandwidth-bound "
                     "card.")
+        if (venue, issue) == ("ExLlamaV2", "10"):
+            v1 = "exldisc-10-a6000-freewilly2-70b-v1-1"
+            v2 = "exldisc-10-a6000-freewilly2-70b-v2-1"
+            v1e = "exldisc-10-a6000-freewilly2-70b-v1-9"
+            v2e = "exldisc-10-a6000-freewilly2-70b-v2-9"
+            return ("v1 is the GPTQ runtime, v2 the v2.0 EXL2 format, same 4bit 70b "
+                    f"weights on the A6000. The comparable first long run (3156 tokens, "
+                    f"ctx 941) goes {val(rows,v1,'tps')} to {val(rows,v2,'tps')} tok/s "
+                    f"({pct(rows,v1,v2,'tps'):+.1f}%), and the gap holds at the deepest "
+                    f"context ({val(rows,v1e,'tps')} to {val(rows,v2e,'tps')} tok/s, "
+                    f"{pct(rows,v1e,v2e,'tps'):+.1f}%); the author's verdict: \"It's "
+                    "definitely faster. I applaud this work.\"")
+        if (venue, issue) == ("ExLlamaV2", "572"):
+            a7 = "exldisc-572-4xa10g-llama3ft-env017-ctx0"
+            a8 = "exldisc-572-4xa10g-llama3ft-env018-ctx0"
+            b7 = "exldisc-572-4xa10g-llama3ft-env017-ctx12500"
+            b8 = "exldisc-572-4xa10g-llama3ft-env018-ctx12500"
+            return ("environment A/B, not code: the 0.1.7 and 0.1.8 venvs differ in "
+                    f"torch (2.3 vs 2.4) and CUDA libraries. At ctx 0, request 1 is flat "
+                    f"({val(rows,a7,'tps')} vs {val(rows,a8,'tps')} tok/s); at ctx 12,500 "
+                    f"the 0.1.8 env falls to {val(rows,b8,'tps')} from {val(rows,b7,'tps')} "
+                    f"tok/s ({pct(rows,b7,b8,'tps'):+.1f}%) and degrades another ~0.05 t/s "
+                    "per 100 output tokens; the author's profile blames the "
+                    "gemm_half_q_half call in the newer torch.")
         if (venue, issue) == ("ExLlamaV2", "450"):
             c, p2 = ("githubissues-rtx2080ti-llama3-exl2-b8-batched",
                      "githubissues-rtx2080ti-llama3-exl2-b8-caches")
