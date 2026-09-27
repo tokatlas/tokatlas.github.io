@@ -196,6 +196,7 @@ recorded tokens/sec figure with its source.</p>
 <li><a href="/hardware/">Per-hardware pages</a>: every recorded run on each chip</li>
 <li><a href="/models/">Per-model pages</a>: every hardware/quant/backend for each model</li>
 <li><a href="/backends/">Cross-backend notes</a>: same model + chip across backends</li>
+<li><a href="/notes/build-ab.html">Build A/B notes</a>: regressions and improvements between builds of the same backend</li>
 <li><a href="/notes/cross-source.html">Cross-source checks</a>: where an estimate meets a measurement</li>
 <li><a href="/data/">The dataset</a>: CSV and JSON, with schema</li>
 <li><a href="/changelog.html">Changelog</a>: what changed, when</li>
@@ -315,9 +316,207 @@ sampling, and context differences, not just the backend itself.</p>""")
     write("backends/index.html", page("Cross-backend notes", f"""
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. {len(multi)} comparable cases so far. These are the seeds of the
-regression/improvement tracking the project will run between backend builds.</p>
+side by side. {len(multi)} comparable cases so far. For regressions and improvements
+between builds of the same backend, see the
+<a href="/notes/build-ab.html">build A/B notes</a>.</p>
 {''.join(notes)}"""))
+
+    # --- build A/B notes (analysis) ---
+    # Rows tagged with a config= token in notes form A/B groups: same model +
+    # chip + backend, different builds or configurations of the same engine.
+    # Every number in a rendered table or note comes from the record at build
+    # time, so the page can never drift from records.json silently.
+    def issue_ref(r):
+        m = re.search(r"#(\d+)", r.get("source_name") or "")
+        if m:
+            return m.group(1)
+        m = re.search(r"/(\d+)", r.get("source_url") or "")
+        return m.group(1) if m else "?"
+
+    def venue_of(r):
+        name = r.get("source_name") or ""
+        url = r.get("source_url") or ""
+        if "llama.cpp" in name:
+            return "llama.cpp"
+        if "vLLM" in name:
+            return "vLLM"
+        if "ExLlamaV2" in name:
+            return "ExLlamaV2"
+        if "HF" in name:
+            return "HF"
+        if "vllm-project" in url:
+            return "vLLM"
+        if "llama.cpp" in url:
+            return "llama.cpp"
+        if "exllamav2" in url:
+            return "ExLlamaV2"
+        return "?"
+
+    def cfg_token(r):
+        m = re.search(r"config=([^\s;]+)", r.get("notes") or "")
+        return m.group(1) if m else "?"
+
+    ab_groups = defaultdict(list)
+    for r in records:
+        if re.search(r"config=", r.get("notes") or ""):
+            ab_groups[(venue_of(r), issue_ref(r), r["hardware"],
+                       r["model"], r.get("backend") or "?")].append(r)
+
+    def ab_row(r):
+        url = r.get("source_url") or ""
+        tps = r.get("tps") if r.get("tps") is not None else "\u2013"
+        pp = r.get("pp_tps") if r.get("pp_tps") is not None else "\u2013"
+        batch = r.get("batch") if r.get("batch") is not None else "\u2013"
+        return (f"<tr><td><code>{esc(cfg_token(r))}</code></td>"
+                f"<td class=\"num\">{esc(tps)}</td>"
+                f"<td class=\"num\">{esc(pp)}</td>"
+                f"<td class=\"num\">{esc(batch)}</td>"
+                f"<td><code>{esc(r['id'])}</code></td>"
+                f"<td><a href=\"{esc(url)}\" rel=\"nofollow\">source</a></td></tr>")
+
+    def val(rows, rid, field):
+        r = rows.get(rid)
+        return float(r[field]) if r and r.get(field) is not None else None
+
+    def pct(rows, a, b, field):
+        x, y = val(rows, a, field), val(rows, b, field)
+        if x is None or y is None or not x:
+            return None
+        return (y - x) / x * 100
+
+    def ab_note(venue, issue, hw, model, rows):
+        if (venue, issue) == ("llama.cpp", "27137"):
+            return ("Between tags 9006 and 10433, flash attention under Vulkan is "
+                    f"auto-selected onto the slow path in this configuration: generation "
+                    f"{val(rows,'lc-27137-b9006','tps')} to {val(rows,'lc-27137-b10433','tps')} tok/s "
+                    f"({pct(rows,'lc-27137-b9006','lc-27137-b10433','tps'):.1f}%), prefill unchanged "
+                    f"({val(rows,'lc-27137-b10433','pp_tps')} vs {val(rows,'lc-27137-b9006','pp_tps')} tok/s). "
+                    "The issue argues the capability detection should not pick FA here.")
+        if (venue, issue) == ("llama.cpp", "27171"):
+            return ("Bisected: b10284 (commit 9a688e51e) is the first bad build for "
+                    f"--fit-target 1024. tg256 {val(rows,'lc-27171-b10283','tps')} to "
+                    f"{val(rows,'lc-27171-b10284','tps')} tok/s "
+                    f"({pct(rows,'lc-27171-b10283','lc-27171-b10284','tps'):.1f}%), "
+                    f"pp2048 {val(rows,'lc-27171-b10283','pp_tps')} to "
+                    f"{val(rows,'lc-27171-b10284','pp_tps')} tok/s "
+                    f"({pct(rows,'lc-27171-b10283','lc-27171-b10284','pp_tps'):.1f}%).")
+        if (venue, issue) == ("llama.cpp", "27464"):
+            hwtag = "gb10" if hw == "GB10" else "pro6000"
+            if model == "mamba2-2.7b":
+                q = "Q8_0" if hwtag == "gb10" else "BF16"
+                c = f"lc-27464-{hwtag}-mamba227b-q{q}-cur"
+                p2 = f"lc-27464-{hwtag}-mamba227b-q{q}-pat"
+                return ("The mamba-base.cpp reshape sent decode down a GEMV path; keeping "
+                        f"the state tensor flat in 2D restores GEMM dispatch: "
+                        f"{val(rows,c,'tps')} to {val(rows,p2,'tps')} tok/s "
+                        f"({pct(rows,c,p2,'tps'):.0f}%).")
+            if model.startswith("Nemotron"):
+                c = f"lc-27464-{hwtag}-nemo-npl256-cur"
+                p2 = f"lc-27464-{hwtag}-nemo-npl256-pat"
+                return ("The fix targets decode at high concurrency, which is where the "
+                        f"issue was filed: npl 256 goes {val(rows,c,'tps')} to "
+                        f"{val(rows,p2,'tps')} tok/s ({pct(rows,c,p2,'tps'):.0f}%). "
+                        f"Batch 1 barely moves (see the npl 1 rows).")
+            return None
+        if (venue, issue) == ("llama.cpp", "28790"):
+            return ("On a self-built MSVC + CUDA 12.8 build, MTP makes prefill about 57x "
+                    f"slower ({val(rows,'lc-28790-msvc-mtp','pp_tps')} vs "
+                    f"{val(rows,'lc-28790-msvc-nomtp','pp_tps')} tok/s without MTP); the "
+                    f"official Clang build b10917 keeps MTP prefill at "
+                    f"{val(rows,'lc-28790-b10917-mtp','pp_tps')} tok/s. Between the official "
+                    f"builds, MTP decode goes {val(rows,'lc-28790-b10889-mtp','tps')} to "
+                    f"{val(rows,'lc-28790-b10917-mtp','tps')} tok/s and prefill "
+                    f"{val(rows,'lc-28790-b10889-mtp','pp_tps')} to "
+                    f"{val(rows,'lc-28790-b10917-mtp','pp_tps')} tok/s.")
+        if (venue, issue) == ("llama.cpp", "29168") and "26B" in model:
+            return ("Draft acceptance dropped 0.82 to 0.48 after the MoE weighted-reduction "
+                    "fusion (bisected to b10751). MTP went from a "
+                    f"{pct(rows,'lc-29168-b10750-plain','lc-29168-b10750-mtp','tps'):+.0f}% gain "
+                    f"on b10750 ({val(rows,'lc-29168-b10750-mtp','tps')} vs "
+                    f"{val(rows,'lc-29168-b10750-plain','tps')} tok/s plain) to a net loss "
+                    f"on b10964 ({val(rows,'lc-29168-b10964-mtp','tps')} vs "
+                    f"{val(rows,'lc-29168-b10964-plain','tps')}) and b11057 "
+                    f"({val(rows,'lc-29168-b11057-mtp','tps')} vs "
+                    f"{val(rows,'lc-29168-b11057-plain','tps')}).")
+        if (venue, issue) == ("llama.cpp", "29410") and "Qwopus" in model:
+            return ("146 commits apart (not bisected): decode "
+                    f"{val(rows,'lc-29410-b1','tps')} to {val(rows,'lc-29410-b2','tps')} tok/s "
+                    f"({pct(rows,'lc-29410-b1','lc-29410-b2','tps'):.1f}%), MTP "
+                    f"{val(rows,'lc-29410-b3','tps')} to {val(rows,'lc-29410-b5','tps')}/"
+                    f"{val(rows,'lc-29410-b6','tps')} tok/s; pp512 did not regress "
+                    f"({val(rows,'lc-29410-b1','pp_tps')} to {val(rows,'lc-29410-b2','pp_tps')} tok/s). "
+                    "The issue suspects #27952 (RDNA3 q4_K MMQ retarget) for decode; the "
+                    "MTP drop is attributed to an unknown commit in the same range.")
+        if (venue, issue) == ("vLLM", "27021"):
+            return ("Reproduction of PR #25337 on A100 PCIe: before vs after is "
+                    f"{val(rows,'vllm-27021-a100-pcie-qwen3vl30b-fp8-pre','tps')} to "
+                    f"{val(rows,'vllm-27021-a100-pcie-qwen3vl30b-fp8-post','tps')} tok/s "
+                    f"({pct(rows,'vllm-27021-a100-pcie-qwen3vl30b-fp8-pre','vllm-27021-a100-pcie-qwen3vl30b-fp8-post','tps'):+.1f}%), "
+                    "far below the PR's own numbers, which were measured on SXM hardware. "
+                    "The issue asks whether the model and hardware difference explains "
+                    "the gap.")
+        if (venue, issue) == ("vLLM", "37441"):
+            return ("vLLM 0.16.0 (Triton 3.5): "
+                    f"{val(rows,'vllm-37441-h200-gptoss120b-v0160-triton35','tps')} tok/s. "
+                    "On 0.17.1, Triton 3.6's _reduce MoE kernel runs about 6.4x longer, "
+                    f"dropping to {val(rows,'vllm-37441-h200-gptoss120b-v0171-triton36','tps')} tok/s "
+                    f"({pct(rows,'vllm-37441-h200-gptoss120b-v0160-triton35','vllm-37441-h200-gptoss120b-v0171-triton36','tps'):.1f}%); "
+                    "forcing the legacy Triton 3.5 kernels on 0.17.1 recovers the "
+                    f"original {val(rows,'vllm-37441-h200-gptoss120b-v0171-legacy-triton35','tps')} tok/s.")
+        if (venue, issue) == ("vLLM", "56564"):
+            return ("The 0.6.17 to 0.6.18 bump flipped this GLM-5.3-Flash TP8 setup from the "
+                    "forced FlashAttention sparse path to the auto-selected FlashInfer sparse "
+                    f"path. Sonnet 300/256: {val(rows,'vllm-56564-h100fa-c1','tps')} to "
+                    f"{val(rows,'vllm-56564-h100fi-c1','tps')} tok/s at c1 "
+                    f"({pct(rows,'vllm-56564-h100fa-c1','vllm-56564-h100fi-c1','tps'):.1f}%) and "
+                    f"{val(rows,'vllm-56564-h100fa-c8','tps')} to "
+                    f"{val(rows,'vllm-56564-h100fi-c8','tps')} at c8 "
+                    f"({pct(rows,'vllm-56564-h100fa-c8','vllm-56564-h100fi-c8','tps'):.1f}%); random "
+                    f"worst case c1 {val(rows,'vllm-56564-h100fa-c1-random','tps')} to "
+                    f"{val(rows,'vllm-56564-h100fi-c1-random','tps')} tok/s. MTP draft "
+                    "acceptance is identical across arms, so the gap is the per-step "
+                    "attention kernel.")
+        if (venue, issue) == ("vLLM", "57680"):
+            return ("Decode throughput drops about 3.3x between vLLM 0.26.0 and 0.29.0 in a "
+                    "Confidential Computing VM: c12 "
+                    f"{val(rows,'vllm-57680-h100nvl-qwen36-35b-v0260-c12','tps')} to "
+                    f"{val(rows,'vllm-57680-h100nvl-qwen36-35b-v0290-c12','tps')} tok/s "
+                    f"({pct(rows,'vllm-57680-h100nvl-qwen36-35b-v0260-c12','vllm-57680-h100nvl-qwen36-35b-v0290-c12','tps'):.1f}%), "
+                    f"c1 {val(rows,'vllm-57680-h100nvl-qwen36-35b-v0260-c1','tps')} to "
+                    f"{val(rows,'vllm-57680-h100nvl-qwen36-35b-v0290-c1','tps')} tok/s. "
+                    f"0.24.0 is {val(rows,'vllm-57680-h100nvl-qwen36-35b-v0240-c12','tps')} at c12, "
+                    "so 0.26.0 is slightly faster than 0.24.0 and the loss is not a "
+                    "gradual drift.")
+        return None
+
+    venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
+    multi_ab = {k: v for k, v in ab_groups.items() if len(v) >= 2}
+    ab_sections = []
+    for (venue, issue, hw, model, backend), rs in sorted(
+            multi_ab.items(),
+            key=lambda kv: (venue_order.get(kv[0][0], 9),
+                            int(kv[0][1]) if kv[0][1].isdigit() else 0,
+                            kv[0][3].lower(), kv[0][2].lower())):
+        by_id = {r["id"]: r for r in rs}
+        url = rs[0].get("source_url") or ""
+        rows_html = "".join(ab_row(r) for r in
+                            sorted(rs, key=lambda r: (cfg_token(r), r["id"])))
+        note = ab_note(venue, issue, hw, model, by_id)
+        note_html = (f"<p><strong>Note:</strong> {note}</p>" if note else "")
+        ab_sections.append(f"""<h3>{esc(model)} on {esc(hw)} ({esc(backend)}) - {esc(venue)} <a href=\"{esc(url)}\" rel=\"nofollow\">#{esc(issue)}</a></h3>
+<table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr>{rows_html}</table>
+{note_html}""")
+    write("notes/build-ab.html", page("Build A/B notes", f"""
+<h1>Build A/B notes</h1>
+<p>Regressions and improvements between builds of the same backend. Each section is a
+group of records on the same model, chip, and backend where the rows differ only in
+build or configuration (the <code>config</code> column is the distinguishing tag from
+the record notes). {len(multi_ab)} comparable groups, {sum(len(v) for v in multi_ab.values())}
+records; every number is rendered from the record at build time. A <strong>note</strong>
+is present where the source or this project interprets the delta; the rest are
+recorded as published.</p>
+{''.join(ab_sections)}
+<p><a href="/backends/">&larr; cross-backend notes</a></p>"""))
 
     # --- cross-source checks (analysis) ---
     # Where a measured llama.cpp row and a bandwidth-model estimate cell cover
@@ -406,7 +605,7 @@ the quant difference contributes part of the delta.</p>
 <p class=\"dim\">{esc(verdict)} Estimated values: LLM Configurator benchmark
 cells (CC BY 4.0), calibrated per GPU architecture from the 14 measured runs
 in their published dataset. Delta = (estimated - measured) / measured.</p>
-<p><a href=\"/backends/\">← cross-backend notes</a></p>"""))
+<p><a href=\"/backends/\">← cross-backend notes</a> · <a href=\"/notes/build-ab.html\">build A/B notes</a></p>"""))
 
     # --- data page ---
     schema_fields = [
