@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-27: venue re-checks and llama.cpp fifth pass: 11 new rows across 4 issues
+
+- **flash_attn_ext_rows unified-KV A/B on RTX PRO 6000 (llama.cpp PR #29510, 4 rows).** llama-batched-bench, -kvu unified KV cache, ctx 400000, -npp 99936 -ntg 64 -npl 4 -fa on, batch 4. gemma-4-26B-A4B-it Q8_0: master 2982.14 prefill / 273.42 decode versus 8625.75 / 288.11 on the PR branch (2.9x prefill recovery, decode +5%); Qwen3.8-27B Q8_0: master 1106.13 / 90.29 versus 2778.22 / 102.08 (2.5x). Skipped from the same window: #29509, #29508, #29507, #29506 (no tok/s triple).
+- **B300 KV-cache grouping RFC (vLLM #58638, 2 rows).** Qwen3.6-35B-A3B + DFlash at c=1: 460 t/s with 46 KV cache groups, 733 after the group-size fix drops them to 17 (the RFC's own section 4.1 measurement).
+- **Reduced draft vocabulary decode on Arc Pro B70 XPU (vLLM #58578, 4 rows).** vLLM 0.26.1.dev0 docker, eager, fp8 KV, one stream on an idle server: Qwen3.8-27B (AutoRound int4, 3 drafts) 59.5 to 74.6 t/s and Qwen3.6-35B-A3B (sym_int4) 147.4 to 189.8 t/s with the 50,521-id draft list at unchanged acceptance (per step 19.3 to 15.2 ms).
+- **RTX PRO 4000 Blackwell SFF control run (ExLlamaV2 #813, 1 row).** The system-freeze report for RTX 5060 Ti Thunderbolt 5 eGPUs: the PCIe-direct SFF card runs stable at ~47 t/s, LoneStriker Qwen2.5-7B-Instruct 6.0bpw h6 EXL2 quant, TabbyAPI.
+- Dataset: 2,905 measured records, 316 hardware strings, 156 models, 22 backends. Provenance: 746 sourced, 2,159 community. 359 hand-mined issue rows across 41 llama.cpp, 30 vLLM, and 4 ExLlamaV2 issues. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: llama.cpp issue mining, fourth pass: 12 new rows across 4 issues
 
 - **Snapdragon 7 Gen 4 Hexagon backend (llama.cpp #29473, 7 rows).** Motorola Edge 70 (XT2601-2, SM7750, Hexagon v73, 12 GB LPDDR5X), build 86a24a1, pp512/tg64, -t 4. Llama-3.2-1B Q4_0: CPU 216.3 prefill / 34.4 decode, HTP0 HMX default 1749.4 / 29.9 (garbled output), the HVX-only + OPFILTER workaround 78.7 / 27.0 (correct, slower than CPU). Qwen3.5-4B Q4_0: CPU 46.3 / 9.1, Adreno 722 OpenCL 77.5 / 7.5, HTP0 HMX 437.4 / 8.1 (garbled), workaround 25.6 / 6.2. First rows on the Hexagon backend (4 rows).
