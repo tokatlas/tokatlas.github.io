@@ -19,7 +19,7 @@ def norm(s):
     return re.sub(r"[^a-z0-9]+", "", str(s).lower())
 
 REQUIRED = ["id", "model", "hardware", "backend", "quant", "source_url",
-            "source_name", "retrieved", "quote", "tps"]
+            "source_name", "retrieved", "quote"]
 PROV_OK = {"sourced", "community", "estimated", "unknown"}
 FLAG_OK = {"contradiction", "outlier"}
 
@@ -67,12 +67,24 @@ def main():
             print("row %d: duplicate id %s" % (i, r["id"]))
             errors += 1
         seen.add(r["id"])
-        try:
-            tps = float(r["tps"])
-            if tps <= 0:
-                raise ValueError
-        except ValueError:
-            print("row %d (%s): bad tps %r" % (i, r["id"], r["tps"]))
+        # speed: at least one of tps (decode) / pp_tps (prompt) must be > 0;
+        # prefill-only reports carry pp_tps with tps left empty
+        def _pos(key):
+            v = (r.get(key) or "").strip()
+            if not v:
+                return True
+            try:
+                return float(v) > 0
+            except ValueError:
+                return False
+        if not _pos("tps"):
+            print("row %d (%s): bad tps %r" % (i, r.get("id"), r.get("tps")))
+            errors += 1
+        if not _pos("pp_tps"):
+            print("row %d (%s): bad pp_tps %r" % (i, r.get("id"), r.get("pp_tps")))
+            errors += 1
+        if not (r.get("tps") or "").strip() and not (r.get("pp_tps") or "").strip():
+            print("row %d (%s): needs tps or pp_tps > 0" % (i, r.get("id")))
             errors += 1
         if r["retrieved"] > today:
             print("row %d (%s): retrieved %s is in the future" % (i, r["id"], r["retrieved"]))

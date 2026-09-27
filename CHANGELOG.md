@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-27: Prefill-only schema relaxation: 44 new rows from the 5 parked llama.cpp issues
+
+- Schema: tps is no longer a required column; a row needs tps or pp_tps above 0, and prefill-only reports carry pp_tps with tps empty (data/schema.md and scripts/check_data.py updated). This unblocks the five parked pp-only llama.cpp issues in one pass: 44 new rows.
+- #27181 (R9700 MMQ quant sweep, 2026-08-16): 3 rows, Qwen3.8-27B on the Radeon AI PRO R9700, identical weights requantized from one UD-Q6_K_XL source (pp512: Q2_K 471.2 / Q4_K 1120.7 / Q8_0 1178.3, FA on, ubatch 1024).
+- #28135 (RX 9070 Vulkan f16-scratch hybrid-KV fix, 2026-09-01): 2 rows, the before/after A/B, prefill 65 to 119 tok/s (+83%) at a 21.5 K prompt, decode published unchanged.
+- #28761 (TU106 sm_75 FA tile cap, 2026-09-11): 17 rows. 2 x TU106, Qwen3.8-27B IQ3_S, tile32 vs tile64 vs dynamic across KV 8 K to 230 K (prompt_per_second, FA on, KV q4_0, ubatch 2048, MTP), the 230 K concurrent-slot row, and single-TU106 Llama 3.1 8B Q4_0 (2052 vs 2127 at 8 K). New hardware pages TU106 and 2 x TU106.
+- #28828 (RX 7800 XT IQ4_XS cliff, 2026-09-13): 20 rows. b10727 and self-built b10909 IQ4_XS across seven prompt lengths (the cliff sits at 32-33 K for b10727 and 31-32 K for b10909), Q3_K_XL flat control rows at 28-34 K (474-482 tok/s), plus the MTP server rows at a 32 100-token prompt (93.7 tok/s prefill, 342.7 s TTFT, vs 461.8 for Q3_K_XL).
+- #29536 (R9700 LLVM 23 MMQ VGPR spill, 2026-09-27): 2 rows, prefill 298 to 1250 tok/s on Qwen3.8-27B Q4_K_M under stock LLVM 23, matching AMD-compiler parity. New hardware page R9700 (the issue body says R9700, not the full card name).
+- All six new build A/B groups carry interpretive notes; the page is at 82 of 82 comparable groups annotated.
+- Dataset: 3,057 measured records, 332 hardware strings, 147 models, 23 backends; 521 contradiction, 34 outlier flags (unchanged); 3,633 quote-verified; 488 pages, 17,181 internal links. Hand-mined: 511 rows (449 GitHub issue rows: 304 llama.cpp, 134 vLLM, 11 ExLlamaV2; 33 HF model-card rows; 29 ExLlamaV2 discussion rows).
+
 ## 2026-09-27: Freshness re-scan: 2 new HF card rows, watermarks advanced
 
 - GitHub venues: llama.cpp above #29534, #29535 (K2 Horizon model support, no tok/s) and #29536 (PR, stock LLVM 23 RDNA4 MMQ VGPR-spill fix) parked as the fifth prefill-only report: the PR's R9700 A/B on Qwen3.8-27B Q4_K_M is prefill only (about 298 to about 1250 t/s, at the author's AMD-compiler parity), and the schema requires a decode tps. vLLM above #58910, #58911 to #58919: no tok/s tables (#58917 is latency-only ms, deferred). ExLlamaV2: nothing new above #818 (issues); discussions max still #819. New watermarks: llama.cpp above #29536, vLLM above #58919.

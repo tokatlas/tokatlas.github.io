@@ -400,6 +400,17 @@ between builds of the same backend, see the
                     f"pp2048 {val(rows,'lc-27171-b10283','pp_tps')} to "
                     f"{val(rows,'lc-27171-b10284','pp_tps')} tok/s "
                     f"({pct(rows,'lc-27171-b10283','lc-27171-b10284','pp_tps'):.1f}%).")
+        if (venue, issue) == ("llama.cpp", "27181"):
+            return ("Identical-weights quant sweep: all three rows were "
+                    "requantized from a single UD-Q6_K_XL source file, so this "
+                    "is prefill throughput vs quant width, not a model "
+                    "comparison. pp512 goes "
+                    f"{val(rows,'lc-27181-r9700-mmq-q2_k','pp_tps')} tok/s "
+                    "(Q2_K) to "
+                    f"{val(rows,'lc-27181-r9700-mmq-q8_0','pp_tps')} tok/s "
+                    f"(Q8_0), {pct(rows,'lc-27181-r9700-mmq-q2_k','lc-27181-r9700-mmq-q8_0','pp_tps'):+.0f}%, "
+                    "with Q4_K at "
+                    f"{val(rows,'lc-27181-r9700-mmq-q4_k','pp_tps')} tok/s.")
         if (venue, issue) == ("llama.cpp", "27464"):
             hwtag = "gb10" if hw == "GB10" else "pro6000"
             if model == "mamba2-2.7b":
@@ -444,6 +455,17 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-27734-r131072','tps')} tok/s). A 4 GiB suballocator "
                     f"restores {val(rows,'lc-27734-r131072-4gib','tps')} tok/s at the "
                     "same depth.")
+        if (venue, issue) == ("llama.cpp", "28135"):
+            return ("Fix-verification A/B on the same machine: fastpath-off "
+                    "ran with the hybrid-KV f16-scratch fast path disabled, "
+                    "fastpath-on with it enabled. Prefill goes "
+                    f"{val(rows,'lc-28135-rx9070-f16-scratch-off','pp_tps')} "
+                    f"to "
+                    f"{val(rows,'lc-28135-rx9070-f16-scratch-on','pp_tps')} "
+                    "tok/s "
+                    f"({pct(rows,'lc-28135-rx9070-f16-scratch-off','lc-28135-rx9070-f16-scratch-on','pp_tps'):+.0f}%); "
+                    "decode was published as unchanged, so this group is the "
+                    "prefill-only delta.")
         if (venue, issue) == ("llama.cpp", "28219"):
             return ("The local MSVC build collapses on both spec paths: MTP "
                     f"{val(rows,'lc-28219-msvc-mtp','tps')} and DFlash2 "
@@ -453,6 +475,32 @@ between builds of the same backend, see the
                     "the official b10734 MTP baseline is "
                     f"{val(rows,'lc-28219-b10734-baseline','tps')} tok/s. The DFlash2 "
                     "result is identical to MTP, so the cliff is not MTP-specific.")
+        if (venue, issue) == ("llama.cpp", "28761"):
+            if hw == "2× TU106":
+                return ("Tile-variant comparison on sm_75 (head_dim=256): "
+                        "tile32 is the stock Q-tile cap, tile64 is a forced "
+                        "build that register-spills at this head dimension, "
+                        "and dynamic picks per FA call. All rows are "
+                        "prompt_per_second (prefill) with FA on, KV q4_0, "
+                        "ubatch 2048, MTP. At 8 K tile32 leads "
+                        f"({val(rows,'lc-28761-tu106-qwen-tile32-8k','pp_tps')} "
+                        f"vs {val(rows,'lc-28761-tu106-qwen-tile64-8k','pp_tps')} "
+                        "tok/s); by 32 K tile64 leads "
+                        f"({val(rows,'lc-28761-tu106-qwen-tile32-32k','pp_tps')} "
+                        f"vs {val(rows,'lc-28761-tu106-qwen-tile64-32k','pp_tps')} "
+                        "tok/s), and at 230 K "
+                        f"({val(rows,'lc-28761-tu106-qwen-tile32-230k','pp_tps')} "
+                        f"vs {val(rows,'lc-28761-tu106-qwen-tile64-230k','pp_tps')} "
+                        "tok/s). The concurrent row is the 230 K slot at its "
+                        f"solo speed ({val(rows,'lc-28761-tu106-qwen-dynamic-230k-concurrent','pp_tps')} "
+                        "tok/s) while an 8 K slot runs alongside.")
+            return ("Same tile-variant comparison at head_dim=128 on a single "
+                    "TU106 (KV 8 K, prefill-only): no register spill at "
+                    "either tile size, and tile64 is faster even here "
+                    f"({val(rows,'lc-28761-tu106-llama-tile32-8k','pp_tps')} "
+                    f"vs {val(rows,'lc-28761-tu106-llama-tile64-8k','pp_tps')} "
+                    "tok/s), so the 32-token cap costs the most common "
+                    "open-weight models on Turing.")
         if (venue, issue) == ("llama.cpp", "28790"):
             return ("On a self-built MSVC + CUDA 12.8 build, MTP makes prefill about 57x "
                     f"slower ({val(rows,'lc-28790-msvc-mtp','pp_tps')} vs "
@@ -463,6 +511,24 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-28790-b10917-mtp','tps')} tok/s and prefill "
                     f"{val(rows,'lc-28790-b10889-mtp','pp_tps')} to "
                     f"{val(rows,'lc-28790-b10917-mtp','pp_tps')} tok/s.")
+        if (venue, issue) == ("llama.cpp", "28828"):
+            return ("Cliff reproduction, not a version regression: both "
+                    "IQ4_XS builds collapse, at slightly different prompt "
+                    "lengths (b10727 between 32 K and 33 K, b10909 between 31 "
+                    "K and 32 K), while the Q3_K_XL control stays flat across "
+                    f"the same range ({val(rows,'lc-28828-7800xt-b10909-q3kxl-28672','pp_tps')}-"
+                    f"{val(rows,'lc-28828-7800xt-b10909-q3kxl-33792','pp_tps')} "
+                    "tok/s), so the cliff is IQ4_XS-specific on this RDNA3 "
+                    "card. The MTP rows are the server-side (llama-server, MTP "
+                    "spec decode) view of the same collapse: "
+                    f"{val(rows,'lc-28828-7800xt-b10909-mtp-32100','pp_tps')} "
+                    "tok/s prefill with a "
+                    f"{val(rows,'lc-28828-7800xt-b10909-mtp-32100','ttft_s')} s "
+                    "TTFT at the 32 100-token prompt, vs "
+                    f"{val(rows,'lc-28828-7800xt-b10909-mtp-q3kxl-32100','pp_tps')} "
+                    "tok/s for Q3_K_XL under identical conditions. The 8 192 "
+                    "b10909 row is the single low sample the source flags as a "
+                    "likely measurement artifact.")
         if (venue, issue) == ("llama.cpp", "28867"):
             return ("Bisected to #28102 (16378d93f), which admitted head-256 batches "
                     "to the AMD WMMA flash-attention path with a batch threshold of "
@@ -502,6 +568,14 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29419-2','tps')} tok/s), immediately followed by a "
                     "SIGABRT in ggml_sycl_flash_attn_ext. The gap between the samples "
                     "is the in-run trend into the crash, not a between-build difference.")
+        if (venue, issue) == ("llama.cpp", "29536"):
+            return ("Same R9700 under stock LLVM 23, before and after the "
+                    "MMQ VGPR-spill fix: prefill "
+                    f"{val(rows,'lc-29536-r9700-stock','pp_tps')} to "
+                    f"{val(rows,'lc-29536-r9700-nospill','pp_tps')} tok/s "
+                    f"({pct(rows,'lc-29536-r9700-stock','lc-29536-r9700-nospill','pp_tps'):+.0f}%) "
+                    "on Qwen3.8-27B Q4_K_M, matching the result under AMD's "
+                    "compiler. Prefill-only A/B.")
         if (venue, issue) == ("vLLM", "24728"):
             if "4B" in model:
                 im_inf = "vllm-24728-a100-iv4-img-inf"

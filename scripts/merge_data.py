@@ -28,6 +28,7 @@ CANON = {
     'Gemma 4 31B': 'Gemma-4-31B',
     'Granite 4.0 H Tiny': 'granite-4.0-h-tiny',
     'LLaMA 7B': 'llama 7B',
+    'Llama-3.1-8B': 'Llama 3.1 8B',
     'Llama-3.3-70B': 'Llama 3.3 70B',
     'Mamba2 2.7B': 'mamba2-2.7b',
     'Muse Glimmer 30B': 'muse-glimmer 30B',

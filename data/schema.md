@@ -31,7 +31,7 @@ Every record is one **measured** inference speed figure with full provenance.
 | `backend` | string | inference backend/engine as published (llama.cpp, MLX, Ollama, LM Studio, vLLM, ExLlama, …) |
 | `ctx` | number | context depth the benchmark actually ran at, when stated; else empty. llama-bench `pp512`/`tg128` are prompt/generation **lengths**, not context: they are stored in `pp_tokens`/`tg_tokens`, never in `ctx` |
 | `batch` | number | batch size, when stated; else empty |
-| `tps` | number | **generation** tokens/second |
+| `tps` | number | **generation** tokens/second; empty for prefill-only reports (a row needs `tps` or `pp_tps` > 0) |
 | `pp_tps` | number | prompt-processing tokens/second, when reported; else empty |
 | `pp_tokens` | number | prompt token length of the prompt test (512 for `pp512`), when the harness reports it |
 | `tg_tokens` | number | generation token length of the decode test (128 for `tg128`), when the harness reports it |
@@ -50,7 +50,9 @@ Every record is one **measured** inference speed figure with full provenance.
 ## Rules
 
 1. **Provenance is mandatory.** Every row must pass `scripts/check_data.py`:
-   required fields non-empty, `tps > 0`, `retrieved` not in the future,
+   required fields non-empty, `tps > 0` when present, `pp_tps > 0` when
+   present, at least one of `tps`/`pp_tps` set (prefill-only reports carry
+   `pp_tps` with `tps` empty), `retrieved` not in the future,
    valid URL, unique id, and every recorded number must appear in `quote`.
 2. **Normalize, don't rewrite.** Model/chip/quant names keep the source's
    spelling; normalization happens in presentation (slugs, grouping), never by
