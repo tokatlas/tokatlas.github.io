@@ -6,11 +6,15 @@ Flags are computed from the merged record set and stored on each record in the
 
 Rules (conservative, documented in data/schema.md):
 - contradiction: >=2 measured records (provenance != 'estimated') with the
-  same (model, hardware, quant, backend, ctx) whose tps differ by more than
-  10% relative to the group max. Estimates are reference values, not claims.
-- outlier: within a (model, hardware, quant, ctx) group of >=3 measured rows
-  (provenance != 'estimated'), a row whose tps is >3x or <1/3 of the group
-  median.
+  same (model, hardware, quant, backend, ctx, settings) whose tps differ by
+  more than 10% relative to the group max. Estimates are reference values,
+  not claims. 'settings' is a machine-readable build/settings signature
+  (batch, pp/tg test shape, threads/ngl/config tokens in notes), so
+  build-to-build or setting-to-setting differences group separately instead
+  of flagging each other (they are a regression signal, shown in analysis).
+- outlier: within a (model, hardware, quant, ctx, settings) group of >=3
+  measured rows (provenance != 'estimated'), a row whose tps is >3x or <1/3
+  of the group median.
 
 tps may arrive as number (JSON) or string (CSV); both are handled.
 """
@@ -37,16 +41,39 @@ def _grp(rows, key):
     return g
 
 
+def settings_of(r):
+    """Deterministic build/settings signature from record fields.
+
+    Machine-readable tokens only: batch (operating point), the pp/tg token
+    lengths of the test, and threads=/ngl=/config= values in notes. Free-form
+    text is not part of the signature.
+    """
+    notes = str(r.get("notes") or "")
+    parts = [str(r.get("batch") or "")]
+    parts.extend(re.findall(r"(?:threads|ngl|config)\s*=\s*([^\s;]+)", notes))
+    m = re.search(r"run\s+(\d+)\s+of\s+(\d+)", notes)
+    if m:
+        parts.append("run" + m.group(1) + "of" + m.group(2))
+    parts.append(str(r.get("pp_tokens") or ""))
+    parts.append(str(r.get("tg_tokens") or ""))
+    return "|".join(p for p in parts if p not in ("", "None"))
+
+
+def _in_scope(r):
+    return r.get("provenance") != "estimated" and r.get("scope") != "cluster"
+
+
 def compute_flags(rows):
     flags = defaultdict(set)
     for r in rows:
         flags[r["id"]]  # touch so every id exists
 
-    # contradictions (measured rows only; estimates are reference values)
+    # contradictions (measured, in-scope rows only; estimates are reference values)
     for grp in _grp(rows, lambda r: (
             norm(r.get("model")), norm(r.get("hardware")), norm(r.get("quant")),
-            norm(r.get("backend")), str(r.get("ctx") or ""))).values():
-        grp = [r for r in grp if r.get("provenance") != "estimated"]
+            norm(r.get("backend")), str(r.get("ctx") or ""),
+            settings_of(r))).values():
+        grp = [r for r in grp if _in_scope(r)]
         vals = [tps_of(r) for r in grp]
         vals = [v for v in vals if v is not None]
         if len(vals) < 2:
@@ -59,12 +86,12 @@ def compute_flags(rows):
             if v is not None and hi - v > 0.10 * hi:
                 flags[r["id"]].add("contradiction")
 
-    # outliers (measured rows only)
+    # outliers (measured, in-scope rows only)
     for grp in _grp(rows, lambda r: (
             norm(r.get("model")), norm(r.get("hardware")), norm(r.get("quant")),
-            str(r.get("ctx") or ""))).values():
+            str(r.get("ctx") or ""), settings_of(r))).values():
         measured = [r for r in grp
-                    if tps_of(r) is not None and r.get("provenance") != "estimated"]
+                    if tps_of(r) is not None and _in_scope(r)]
         if len(measured) < 3:
             continue
         vals = sorted(tps_of(r) for r in measured)

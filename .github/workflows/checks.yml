@@ -17,3 +17,5 @@ jobs:
         run: python3 scripts/check_style.py
       - name: No broken internal links
         run: python3 scripts/check_links.py
+      - name: Quotes verified against (cached) sources
+        run: python3 scripts/check_quotes.py

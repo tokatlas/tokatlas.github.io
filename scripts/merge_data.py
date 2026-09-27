@@ -14,9 +14,9 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIELDNAMES = [
     "id", "model", "params", "quant", "hardware", "ram_gb", "backend",
-    "ctx", "batch", "tps", "pp_tps", "ttft_s", "power_w", "date",
-    "provenance", "source_url", "source_name", "retrieved", "quote", "notes",
-    "flags",
+    "ctx", "batch", "tps", "pp_tps", "pp_tokens", "tg_tokens",
+    "ttft_s", "power_w", "date", "provenance", "source_url",
+    "source_name", "retrieved", "quote", "notes", "flags",
 ]
 
 
@@ -43,16 +43,23 @@ def main() -> int:
 
     # v3: estimates are reference values, not records. They live in
     # data/reference/ and are excluded from record counts, flags, and the
-    # default site views.
-    measured = [r for r in deduped if r.get("provenance") != "estimated"]
+    # default site views. v3.1: cluster / multi-node runs (scope=cluster) are
+    # out of the local-inference record set too; they stay in the reference
+    # area, measured and source-cited but excluded from counts and flags.
+    measured = [r for r in deduped if r.get("provenance") != "estimated"
+                and r.get("scope") != "cluster"]
     estimated = [r for r in deduped if r.get("provenance") == "estimated"]
+    cluster = [r for r in deduped if r.get("provenance") != "estimated"
+               and r.get("scope") == "cluster"]
 
-    # flags (measured rows only)
+    # flags (measured rows only; cluster rows are out of record scope)
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     from flags import compute_flags
     fl = compute_flags(measured)
     for r in measured:
         r["flags"] = fl.get(r["id"], [])
+    for r in cluster:
+        r["flags"] = []
 
     retrieved = max((r["retrieved"] for r in measured), default="?")
     with open(os.path.join(ROOT, "data", "records.csv"), "w", newline="") as f:
@@ -70,11 +77,15 @@ def main() -> int:
         json.dump({"count": len(estimated), "retrieved": retrieved,
                    "note": "reference estimates only (source models, not measurements); excluded from record counts",
                    "records": estimated}, f, indent=1, sort_keys=True)
+    with open(os.path.join(ROOT, "data", "reference", "cluster.json"), "w") as f:
+        json.dump({"count": len(cluster), "retrieved": retrieved,
+                   "note": "cluster and multi-node runs (measured, source-cited) out of record scope: local inference means single-machine hardware",
+                   "records": cluster}, f, indent=1, sort_keys=True)
     with open(os.path.join(ROOT, "data", "sources.json"), "w") as f:
         json.dump(sources, f, indent=1, sort_keys=True)
 
-    print("merged %d records + %d reference estimates from %d sources (retrieved %s)"
-          % (len(measured), len(estimated), len(files), retrieved))
+    print("merged %d records + %d reference estimates + %d cluster runs from %d sources (retrieved %s)"
+          % (len(measured), len(estimated), len(cluster), len(files), retrieved))
     return 0
 
 

@@ -99,6 +99,17 @@ def main():
             if v and norm(v) not in norm(r["quote"]):
                 print("row %d (%s): %s=%r not in quote" % (i, r["id"], k, v))
                 errors += 1
+        # each llama-bench run is its own record: a test appearing twice in one
+        # quote means two runs were collapsed into one record
+        tests = re.findall(r"\b(pp\d{1,4}|tg\d{1,4})\b", r["quote"])
+        if len(tests) != len(set(tests)):
+            print("row %d (%s): quote has duplicate test tokens %r" % (i, r["id"], tests))
+            errors += 1
+        for k in ("pp_tokens", "tg_tokens"):
+            v = (r.get(k) or "").strip()
+            if v and not (v.isdigit() and int(v) > 0):
+                print("row %d (%s): bad %s %r" % (i, r["id"], k, v))
+                errors += 1
 
     if errors:
         print("%d errors in %d records" % (errors, len(rows)))

@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+"""Quote provenance check.
+
+Re-reads every record's source from the .cache/ response cache (fetching
+once if absent) and confirms the quoted material is actually on the page:
+
+- every stored number (tps, pp_tps, ttft_s, power_w) must appear in the
+  cached source text
+- every pp*/tg* test token in a quote must appear in the cached source text
+- hand-typed literal rows (data/raw/github_issues.json) must have their full
+  quote present verbatim (normalized) in the cached source text
+
+Exits non-zero on any failure. Stdlib only.
+"""
+import glob
+import hashlib
+import html as htmllib
+import json
+import os
+import re
+import sys
+import time
+import urllib.request
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CACHE = os.path.join(ROOT, ".cache")
+UA = "tokatlas/0.3 (+https://tokatlas.github.io) check_quotes"
+LITERAL_FILES = {"github_issues.json"}
+# GitHub discussion threads paginate comments; a row's source_url anchors a
+# comment that lives on some cursor page, so walk the pagination to find it.
+CID_RE = re.compile(r'id="discussioncomment-(\d+)"')
+NEXT_PAGE_RE = re.compile(
+    r'action="(/ggml-org/llama\.cpp/discussions/\d+/pages\?after=[^"]+)"')
+MAX_PAGES = 80
+# API payloads the rows' stored numbers are parsed from; the row's own
+# source_url may only carry display-rounded values.
+AUX_SOURCES = {
+    "siliconscore.json": "https://siliconscore.com/benchmarks.json",
+    "llmcheck.json": "https://llmcheck.net/data/benchmarks.json",
+    "llmconfigurator-estimates.json":
+        "https://llmconfigurator.com/benchmarks.json",
+    "llmconfigurator.json":
+        "https://llmconfigurator.com/measured-benchmarks.json",
+}
+
+
+def fetch(url):
+    os.makedirs(CACHE, exist_ok=True)
+    key = hashlib.sha256(url.encode()).hexdigest()
+    path = os.path.join(CACHE, key)
+    if not os.path.exists(path):
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            body = r.read()
+        tmp = path + ".tmp"
+        with open(tmp, "wb") as f:
+            f.write(body)
+        os.replace(tmp, path)
+        time.sleep(0.25)
+    with open(path, "rb") as f:
+        return f.read().decode("utf-8", "replace")
+
+
+def page_text(url, raw):
+    """Flattened text of a cached response (HTML or JSON API body)."""
+    body = None
+    try:
+        data = json.loads(raw)
+    except (ValueError, TypeError):
+        data = None
+    if isinstance(data, dict):
+        for k in ("body_html", "body"):
+            if isinstance(data.get(k), str):
+                body = data[k]
+                break
+    if body is None:
+        body = raw
+    t = re.sub(r"<[^>]+>", " ", body)
+    t = htmllib.unescape(t)
+    return re.sub(r"\s+", " ", t)
+
+
+def norm(s):
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9]+", " ", str(s).lower()))
+
+
+# plain numbers and thousands-grouped numbers ("4,578.6" on display tables)
+_NUM_RE = re.compile(r"\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?")
+
+
+def _numbers(text):
+    out = []
+    for m in _NUM_RE.findall(text):
+        try:
+            out.append(float(m.replace(",", "")))
+        except ValueError:
+            continue
+    return out
+
+
+def _num_present(v, nums):
+    for n in nums:
+        if abs(n - v) <= max(1e-9, 1e-4 * abs(v)):
+            return True
+    return False
+
+
+def numbers_of(r):
+    for k in ("tps", "pp_tps", "ttft_s", "power_w"):
+        v = (r.get(k) or "").strip() if isinstance(r.get(k), str) else r.get(k)
+        if v not in (None, ""):
+            yield str(v)
+
+
+def main():
+    files = sorted(glob.glob(os.path.join(ROOT, "data", "raw", "*.json")))
+    if not files:
+        print("no raw source files; run the collectors first")
+        return 1
+    errors = 0
+    checked = 0
+    for path in files:
+        name = os.path.basename(path)
+        doc = json.load(open(path))
+        recs = doc.get("records", [])
+        if not recs:
+            continue
+        aux_url = AUX_SOURCES.get(name)
+        aux_text = None
+        if aux_url:
+            try:
+                aux_text = page_text(aux_url, fetch(aux_url))
+            except Exception as e:  # noqa: BLE001
+                print("%s: aux fetch %s failed: %s" % (name, aux_url, e))
+        aux_nums = _numbers(aux_text) if aux_text else []
+        rows = []
+        for r in recs:
+            url = r.get("source_url") or ""
+            if not url.startswith(("http://", "https://")):
+                continue
+            cid = url.split("#discussioncomment-")[-1] \
+                if "#discussioncomment-" in url else None
+            root = url.split("#")[0]
+            rows.append((r, root, cid))
+        # resolve each comment to the paginated page that contains it
+        cids_needed = {}
+        for r, root, cid in rows:
+            if cid:
+                cids_needed.setdefault(root, set()).add(cid)
+        cid_page = {}
+        for root, cids in cids_needed.items():
+            url = root
+            seen = set()
+            found = set()
+            while url and url not in seen:
+                if len(seen) >= MAX_PAGES:
+                    break
+                seen.add(url)
+                try:
+                    raw = fetch(url)
+                except Exception as e:  # noqa: BLE001
+                    print("%s: fetch %s failed: %s" % (name, url, e))
+                    break
+                for cid in set(CID_RE.findall(raw)):
+                    if cid in cids:
+                        found.add(cid)
+                        cid_page[(root, cid)] = url
+                if found == cids:
+                    break
+                m = NEXT_PAGE_RE.search(raw)
+                url = ("https://github.com" + htmllib.unescape(m.group(1))
+                       if m else None)
+            for cid in cids - found:
+                print("%s: comment %s not found in thread %s" % (name, cid, root))
+                cid_page[(root, cid)] = root
+        text_cache = {}
+        numcache = {}
+        for r, root, cid in rows:
+            purl = cid_page.get((root, cid), root) if cid else root
+            if purl not in text_cache:
+                try:
+                    text_cache[purl] = page_text(purl, fetch(purl))
+                except Exception as e:  # noqa: BLE001
+                    print("%s: fetch %s failed: %s" % (name, purl, e))
+                    text_cache[purl] = None
+            if purl not in numcache:
+                numcache[purl] = _numbers(text_cache[purl] or "")
+            text = text_cache[purl]
+            if aux_text:
+                text = ((text or "") + " " + aux_text)
+            if text is None or not text.strip():
+                print("%s (%s): source unavailable for verification"
+                      % (name, r["id"]))
+                errors += 1
+                continue
+            checked += 1
+            for n in numbers_of(r):
+                if (n not in text
+                        and not _num_present(float(n), numcache[purl])
+                        and not _num_present(float(n), aux_nums)):
+                    print("%s (%s): %s %r not in cached source"
+                          % (name, r["id"], "value", n))
+                    errors += 1
+            for tok in set(re.findall(r"\b(pp\d{1,4}|tg\d{1,4})\b",
+                                     str(r.get("quote") or ""))):
+                # pages render the test cell as "pp 512" / "tg 128"
+                spaced = tok[:2] + " " + tok[2:]
+                if tok not in text and spaced not in text:
+                    print("%s (%s): test token %r not in cached source"
+                          % (name, r["id"], tok))
+                    errors += 1
+            if name in LITERAL_FILES:
+                nt = norm(text)
+                for frag in str(r.get("quote") or "").split("; "):
+                    f = norm(frag).strip()
+                    if f and f not in nt:
+                        print("%s (%s): quote fragment not found verbatim in cached source: %r"
+                              % (name, r["id"], frag[:80]))
+                        errors += 1
+                        break
+    print("OK: %d records verified against cached sources" % checked if not errors
+          else "%d errors, %d records checked" % (errors, checked))
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

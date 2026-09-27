@@ -501,7 +501,10 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                 idx = {c.lower(): i for i, c in enumerate(tbl[0])}
                 model_i = idx.get("model", 0)
                 mg_i = idx.get("main_gpu")
-                merged = {}
+                # Repeated test cells for the same (model, quant, mg, dev,
+                # backend, threads) are separate llama-bench runs (different
+                # build/flags); split them instead of overwriting.
+                runs_by_key = {}
                 for r in tbl[1:]:
                     if len(r) < len(tbl[0]):
                         continue
@@ -521,48 +524,62 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     key = (model, quant, mg, dev,
                            r[idx.get("backend", 0)] if "backend" in idx and idx["backend"] < len(r) else "",
                            r[idx.get("threads", idx.get("ngl", 0))] if ("threads" in idx or "ngl" in idx) and max(idx.get("threads", 0), idx.get("ngl", 0)) < len(r) else "")
-                    ent = merged.setdefault(key, {"model": model, "quant": quant,
-                                                  "mg": key[2], "dev": dev,
-                                                  "backend": key[4], "threads": key[5], "cells": []})
-                    ent[test] = (val, r[idx["t/s"]])
-                    ent["cells"].append((model_cell or key[0], test, r[idx["t/s"]]))
-                for key, ent in merged.items():
-                    if "tg128" not in ent and "tg256" not in ent and "tg64" not in ent:
-                        continue
-                    tgk = [k for k in ent if k.startswith("tg")]
-                    ppk = [k for k in ent if k.startswith("pp")]
-                    if not tgk:
-                        continue
-                    tgv, tgs = ent[tgk[0]]
-                    pp = ent.get(ppk[0], (None, "")) if ppk else (None, "")
-                    quote = "; ".join("%s | %s | %s" % c for c in ent["cells"])
-                    if ent["dev"]:
-                        quote = "dev=%s; " % ent["dev"] + quote
-                    hw, gsnip = None, None
-                    if mg_i is not None and ent["mg"]:
-                        gmap = gpu_map(pos)
-                        if ent["mg"] in gmap:
-                            hw, gsnip = gmap[ent["mg"]]
-                    if not hw:
-                        hw = nearest_hw(pos)
-                    if hw:
-                        if gsnip and norm(hw) not in norm(gsnip):
-                            quote = hw + "; " + gsnip + "; " + quote
-                        elif gsnip:
-                            quote = gsnip + "; " + quote
-                        else:
-                            quote = hw + "; " + quote
-                    rows.append({
-                        "model": ent["model"], "quant": ent["quant"],
-                        "backend": dev_backend(ent["dev"]) or backend_of(ent["backend"]),
-                        "ctx": int(tgk[0][2:]), "tps": tgv,
-                        "pp_tps": pp[0],
-                        "quote": quote,
-                        "notes": "threads=%s" % ent["threads"] if ent["threads"] else None,
-                        "source_url": comment_url,
-                        "hardware": hw,
-                        "_tpos": pos,
-                    })
+                    runs = runs_by_key.setdefault(key, [])
+                    target = None
+                    for run in reversed(runs):
+                        if test not in run["tests"]:
+                            target = run
+                            break
+                    if target is None:
+                        target = {"model": model, "quant": quant, "mg": key[2],
+                                  "dev": dev, "backend": key[4], "threads": key[5],
+                                  "tests": {}, "cells": []}
+                        runs.append(target)
+                    target["tests"][test] = (val, r[idx["t/s"]])
+                    target["cells"].append((model_cell or key[0], test, r[idx["t/s"]]))
+                for key, runs in runs_by_key.items():
+                    for ri, ent in enumerate(runs):
+                        tgk = [k for k in ent["tests"] if k.startswith("tg")]
+                        ppk = [k for k in ent["tests"] if k.startswith("pp")]
+                        if not tgk:
+                            continue
+                        tgv, tgs = ent["tests"][tgk[0]]
+                        pp = ent["tests"].get(ppk[0], (None, "")) if ppk else (None, "")
+                        note = "threads=%s" % ent["threads"] if ent["threads"] else None
+                        if ri:
+                            run_note = ("run %d of %d in this comment (separate "
+                                        "llama-bench run; build/flags differ)"
+                                        % (ri + 1, len(runs)))
+                            note = (note + "; " + run_note) if note else run_note
+                        quote = "; ".join("%s | %s | %s" % c for c in ent["cells"])
+                        if ent["dev"]:
+                            quote = "dev=%s; " % ent["dev"] + quote
+                        hw, gsnip = None, None
+                        if mg_i is not None and ent["mg"]:
+                            gmap = gpu_map(pos)
+                            if ent["mg"] in gmap:
+                                hw, gsnip = gmap[ent["mg"]]
+                        if not hw:
+                            hw = nearest_hw(pos)
+                        if hw:
+                            if gsnip and norm(hw) not in norm(gsnip):
+                                quote = hw + "; " + gsnip + "; " + quote
+                            elif gsnip:
+                                quote = gsnip + "; " + quote
+                            else:
+                                quote = hw + "; " + quote
+                        rows.append({
+                            "model": ent["model"], "quant": ent["quant"],
+                            "backend": dev_backend(ent["dev"]) or backend_of(ent["backend"]),
+                            "ctx": None, "tps": tgv,
+                            "pp_tps": pp[0],
+                            "pp_tokens": int(ppk[0][2:]) if ppk else None,
+                            "tg_tokens": int(tgk[0][2:]),
+                            "quote": quote, "notes": note,
+                            "source_url": comment_url,
+                            "hardware": hw,
+                            "_tpos": pos,
+                        })
             elif any(re.fullmatch(r"pp\d+", h) for h in hdr) and any(re.fullmatch(r"tg\d+", h) for h in hdr):
                 # new llama-bench: pp/tg in one row
                 if "model" not in hdr or "backend" not in hdr:
@@ -583,18 +600,21 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     tps = None
                     pp = None
                     quote = model_cell
+                    tg_tokens = None
+                    pp_tokens = None
                     for h in hdr[1:]:
                         if re.fullmatch(r"tg\d+", h):
                             v, raw = value_of(r[idx[h]]), r[idx[h]]
                             if tps is None and v is not None:
                                 tps = v
+                                tg_tokens = int(h[2:])
                             quote = quote + "; " + h + ": " + raw
-                            ctx = int(h[2:])
                         elif re.fullmatch(r"pp\d+", h):
                             v, raw = value_of(r[idx[h]]), r[idx[h]]
-                            if v is not None:
+                            if v is not None and pp is None:
                                 pp = v
-                                quote = quote + "; " + h + ": " + raw
+                                pp_tokens = int(h[2:])
+                            quote = quote + "; " + h + ": " + raw
                     if tps is None:
                         continue
                     dev = (r[idx["dev"]].strip().upper() if "dev" in idx
@@ -607,7 +627,8 @@ def extract(frag, comment_url, thread_label, thread_num, comment_id):
                     rows.append({
                         "model": model, "quant": quant or "as-published",
                         "backend": dev_backend(dev) or backend_of(r[idx["backend"]]),
-                        "ctx": ctx, "tps": tps, "pp_tps": pp,
+                        "ctx": None, "tps": tps, "pp_tps": pp,
+                        "pp_tokens": pp_tokens, "tg_tokens": tg_tokens,
                         "quote": quote, "notes": None, "source_url": comment_url,
                         "hardware": hw,
                         "_tpos": pos,
@@ -716,6 +737,8 @@ def main():
                     "batch": None,
                     "tps": row["tps"],
                     "pp_tps": row.get("pp_tps"),
+                    "pp_tokens": row.get("pp_tokens"),
+                    "tg_tokens": row.get("tg_tokens"),
                     "ttft_s": None,
                     "power_w": row.get("power_w"),
                     "date": date,

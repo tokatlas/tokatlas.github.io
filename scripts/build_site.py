@@ -93,7 +93,9 @@ def flag_badges(flags):
 def record_row(r):
     ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "–"
     pw = f"{r['power_w']}" if r.get("power_w") is not None else "–"
-    ctx = r.get("ctx") or "–"
+    # ctx is a real context depth; when it is null but the test shape is
+    # known (llama-bench), show the decode length (tgNNN) instead
+    ctx = r.get("ctx") or ("tg" + str(r["tg_tokens"]) if r.get("tg_tokens") else "–")
     date = r.get("date") or "–"
     return (f"<tr><td><a href=\"/hardware/{slug(r['hardware'])}/\">{esc(r['hardware'])}</a></td>"
             f"<td><a href=\"/models/{slug(r['model'])}/\">{esc(r['model'])}</a> "
@@ -109,13 +111,13 @@ def record_row(r):
 
 
 TABLE_HEAD = ("<tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>"
-              "<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx</th><th>date</th>"
+              "<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th><th>date</th>"
               "<th>class</th><th>flags</th><th>source</th></tr>")
 
 
 def records_table(rows):
     rows = sorted(rows, key=lambda r: (str(r.get("model")).lower(),
-                                       -(r.get("tps") or 0)))
+                                       -float(r.get("tps") or 0)))
     body = "\n".join(record_row(r) for r in rows)
     return f"<table>{TABLE_HEAD}{body}</table>"
 
@@ -132,6 +134,12 @@ def main():
     else:
         ref = {"count": 0, "records": []}
     ref_records = ref["records"]
+    clu_path = os.path.join(DATA, "reference", "cluster.json")
+    if os.path.exists(clu_path):
+        with open(clu_path) as f:
+            clu = json.load(f)
+    else:
+        clu = {"count": 0, "records": []}
 
     def mkey(s):
         return re.sub(r"[^a-z0-9]+", "", str(s).lower())
@@ -194,7 +202,11 @@ context curves (4k to 262k). Q4_K_M plus other quants. Every record carries a
 source URL and the exact quoted cells; the {ref['count']} reference estimates
 (board-spec power, tok/W) live in
 <a href="/data/reference/estimates.json">data/reference/estimates.json</a>,
-excluded from record counts.</p>
+excluded from record counts. Cluster and multi-node runs (e.g. 8-way or 24-way
+datacenter boxes) are measured and source-cited but out of the local-inference
+record set: they live in
+<a href="/data/reference/cluster.json">data/reference/cluster.json</a> and are
+shown only via the lookup toggle.</p>
 <h2>Complementary projects</h2>
 <p>Token Atlas is built to complement, not duplicate, existing efforts. We credit and link them:</p>
 <ul>{credits}</ul>
@@ -393,10 +405,13 @@ in their published dataset. Delta = (estimated - measured) / measured.</p>
         ("hardware", "chip/hardware identifier (e.g. M5 Max, RTX 4090)"),
         ("ram_gb", "memory, GB (when the source states it)"),
         ("backend", "inference backend/engine (llama.cpp, MLX, Ollama, vLLM, …)"),
-        ("ctx", "context length (when stated)"),
-        ("batch", "batch size (when stated)"),
+        ("ctx", "context depth the benchmark actually ran at (when stated; null when the harness did not fix a context)"),
+        ("batch", "batch size / concurrency (when stated)"),
         ("tps", "generation tokens/second"),
         ("pp_tps", "prompt-processing tokens/second (when reported)"),
+        ("pp_tokens", "prompt token length of the prompt test (e.g. 512 for pp512)"),
+        ("tg_tokens", "generation token length of the decode test (e.g. 128 for tg128)"),
+        ("scope", "record scope: empty = in scope; cluster = multi-node/cluster run, reference area only"),
         ("ttft_s", "time to first token, seconds (when reported)"),
         ("power_w", "power draw, watts (when reported)"),
         ("flags", "computed flags: contradiction / outlier (see schema.md rules 4-5)"),
@@ -417,6 +432,7 @@ product, not the site. Reference estimates are kept apart from records (see belo
 <li><a href="/data/records.csv">records.csv</a> (measured records only)</li>
 <li><a href="/data/records.json">records.json</a> (measured records only)</li>
 <li><a href="/data/reference/estimates.json">reference/estimates.json</a> ({ref['count']} reference estimates, not records)</li>
+<li><a href="/data/reference/cluster.json">reference/cluster.json</a> ({clu['count']} cluster/multi-node runs, measured and source-cited but out of record scope)</li>
 <li><a href="/data/sources.json">sources.json</a> (source registry)</li>
 </ul>
 <h2>Schema</h2>
@@ -457,15 +473,18 @@ default; tick the box to include them, badged.</p>
 <label>quant <select id="f-quant"></select></label>
 <label>backend <select id="f-be"></select></label>
 <label class="check"><input type="checkbox" id="f-ref"> include reference estimates</label>
+<label class="check"><input type="checkbox" id="f-clu"> include cluster runs (out of scope)</label>
 </div>
 <p id="lcount" class="dim"></p>
 <div id="ltable"></div>
 <script>
 Promise.all([fetch('/data/records.json').then(r => r.json()),
-             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []}))])
-.then(([ds, ref]) => {
+             fetch('/data/reference/estimates.json').then(r => r.json()).catch(() => ({records: []})),
+             fetch('/data/reference/cluster.json').then(r => r.json()).catch(() => ({records: []}))])
+.then(([ds, ref, clu]) => {
   const recs = ds.records;
   const refs = ref.records || [];
+  const clus = clu.records || [];
   const sel = id => document.getElementById(id);
   const opts = (id, vals) => {
     const el = sel(id);
@@ -484,7 +503,8 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
     const f = {hw: sel('f-hw').value, model: sel('f-model').value,
                quant: sel('f-quant').value, be: sel('f-be').value};
     const showRef = sel('f-ref').checked;
-    const pool = showRef ? recs.concat(refs) : recs;
+    const showClu = sel('f-clu').checked;
+    const pool = recs.concat(showRef ? refs : [], showClu ? clus : []);
     const rows = pool.filter(r =>
       (!f.hw || r.hardware === f.hw) && (!f.model || r.model === f.model) &&
       (!f.quant || r.quant === f.quant) && (!f.be || r.backend === f.be));
@@ -493,21 +513,24 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
     sel('f-quant').value = f.quant; sel('f-be').value = f.be;
     document.getElementById('lcount').textContent =
       rows.length + ' of ' + recs.length + ' records' +
-      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '');
+      (showRef ? ' (reference estimates included: ' + refs.length + ')' : '') +
+      (showClu ? ' (cluster runs included: ' + clus.length + ')' : '');
     document.getElementById('ltable').innerHTML =
       '<table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>' +
-      '<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
+      '<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr>' +
       rows.map(r => '<tr><td>' + esc(r.hardware) + '</td><td>' + esc(r.model) +
         ' <span class="dim">' + esc(r.params) + '</span></td><td>' + esc(r.quant) +
         '</td><td>' + esc(r.backend) + '</td><td class="num">' + esc(r.tps) +
-        '</td><td class="num">' + esc(r.power_w ?? '') + '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? '–') +
+        '</td><td class="num">' + esc(r.power_w ?? '') + '</td><td class="num">' + esc(r.ttft_s ?? '') + '</td><td>' + esc(r.ctx ?? (r.tg_tokens ? 'tg' + r.tg_tokens : '–')) +
         '</td><td>' + esc(r.date ?? '–') + '</td><td>' + badge(r.provenance) +
+        (r.scope === 'cluster' ? ' <span class="badge b-est">cluster</span>' : '') +
         '</td><td>' + ((r.flags||[]).map(f => '<span class="badge b-flag">' + esc(f) + '</span>').join(' ') || '–') +
         '</td><td><a href="' + esc(r.source_url) + '" rel="nofollow">source</a></td></tr>'
       ).join('') + '</table>';
   }
   ['f-hw','f-model','f-quant','f-be'].forEach(id => sel(id).addEventListener('change', render));
   sel('f-ref').addEventListener('change', render);
+  sel('f-clu').addEventListener('change', render);
   render();
 });
 </script>"""
