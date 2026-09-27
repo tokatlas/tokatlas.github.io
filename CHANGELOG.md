@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-09-27: llama.cpp issue mining, second pass: 133 new rows across 15 issues
+
+- **MTP6 vs baseline on three datacenter cards (llama.cpp #26750, 6 rows).** Qwen3.5-9B, b10290 official image, median of 108 runs per cell: draft-mtp n-max 6 vs no speculation - the W7900 goes 96 to 218 t/s and the RX 7800 XT 70 to 124, while the RTX PRO 4000 Blackwell drops 90 to 61.
+- **RTX 5090 closed-loop server sweep (llama.cpp #27050, 8 rows).** Qwen2.5-7B-Instruct F16, 512+128 tokens per request at 1 and 32 concurrent: llama.cpp CUDA b9660 99.8/700.9, b10423 100.1/705.9, b10423 with the batching fix 101.4/1045.8, and vLLM BF16 92.9/1404.7.
+- **DFlash on Strix Halo (llama.cpp #27117, 2 rows).** muse-glimmer 30B Q4_K on Radeon 8060S, 16 concurrent aggregate: 37 t/s with no speculation vs 80 with draft-dflash n-max 1 (0.83-0.92 acceptance, 2.2x the baseline).
+- **Gated DeltaNet fused-op fix (llama.cpp #27327, 3 rows).** KAT-Coder-V2.5 on RTX 5080, three server-log runs after the fix (build 10154): 71.63/70.29/69.93 t/s.
+- **ubatch and KV-quant interaction on R9700 (llama.cpp #27420, 4 rows).** qwen35 dense 27B at ctx 50000 with MTP3: ub256 f16 9.5, ub1024 f16 50, ub256 q8 53, ub1024 q8 60 t/s - the ubatch floor matters more than the KV quant.
+- **Mamba2 flat-2d GEMM dispatch (llama.cpp #27464, 40 rows).** GB10 and RTX PRO 6000 Blackwell: Nemotron 3 Nano 30B-A3B NVFP4 across parallel-sequence lengths 1/8/32/256, current master vs the flat-2d fix (67.5 vs 67.7 at npl 1, 292.5 vs 660.8 at npl 256 on GB10; 1959.8 vs 3159.1 on the PRO 6000), plus Mamba2 2.7B, Falcon-H1 7B, and Granite 4.0 H Tiny at npl 32 in three quants each.
+- **Vulkan vs ROCm MTP sweep on 2xR9700 (llama.cpp #27544, 20 rows).** Qwen3.8-27B UD-Q4_K_XL, n-max 1/2/3 across single, 2, and 3 parallel sessions: single-session TG 32-38 t/s on both backends; the 3-session aggregate peaks at 55.58 (Vulkan, n-max 1) and 71.42 (ROCm, n-max 3).
+- **Draft-MTP race on Strix Halo (llama.cpp #27572, 4 rows).** Qwen3.8-27B on Radeon 8060S, the racing pre-workaround build: single-stream tg 16.3 to 25.3 t/s across 620 to 18256-token prompts.
+- **Position sweep on RTX 4080 SUPER (llama.cpp #27623, 4 rows).** Qwen3.8-27B decode at KV positions 45574 to 91077: 35.6 to 33.1 t/s, then a cliff to 1.4 at position 91077 (q8 KV, no flash attention).
+- **4x Tesla P40 decode (llama.cpp #27980, 5 rows).** Qwen3.8-Flash-Next: about 18 t/s at 150 tokens regardless of mmap, all-VRAM, or force-mmq; the 10B-active MoE reference on the same GPUs and build does 29.5.
+- **500 ms stepping cliff on RTX 5060 Ti (llama.cpp #28218, 5 rows).** Qwen3.8-27B UD-IQ3_S with MTP: 38.8 t/s baseline, then 1.67 to 2.01 with tensor split 1 (official b10734 and a local MSVC build, dflash too), no-spec control 26.55.
+- **CUDA vs Vulkan on RTX 5080 (llama.cpp #28274, 2 rows).** Qwen3.8-27B IQ4_XS on the b10766 builds: CUDA around 16 t/s, Vulkan settling at 35.59 (started at 40).
+- **Arc Pro B70 deep-context MTP scan (llama.cpp #28721, 18 rows).** Qwen3.8-27B Q4_K_M, MTP3 draft at depth 1k/15k/32k/64k on Vulkan with q8 or f16 KV against SYCL, plus no-MTP controls: Vulkan drops to 4.3 at 64k depth while SYCL holds 15.8; MTP3 leads at 1k (35.6 vs 21.4 no-draft).
+- **Flash-attention dispatch threshold on R9700 (llama.cpp #28867, 6 rows).** Qwen3.8-27B UD-Q4_K_XL with MTP3: 41.37 t/s on master, 51.62 at threshold 64 (51.70 on the pre-#28102 commit).
+- **MTP exactness across builds (llama.cpp #29168, 6 rows).** RTX 2070 Super, gemma-4-26B-A4B-it QAT, partial offload ngl 31 + 21 CPU MoE: MTP 46.35 (b10750, byte-identical greedy output) vs 35.36 (b10964, the v0.4.1 build) vs 36.73 (b11057); plain 37.0 to 38.3.
+- Also inspected and parked: #27256 (MTP acceptance-rate regression report, no clean tok/s value to quote) and #28828 (IQ4_XS prefill collapse on RX 7800 XT: 93.7 t/s prefill and 342.7 s TTFT only, no generation figure, so outside the row schema).
+- New hardware pages: 2xR9700, 4x Tesla P40, Radeon AI PRO R9700, Radeon PRO W7900. New model pages include Nemotron 3 Nano 30B-A3B, Mamba2 2.7B, Falcon-H1 7B, Granite 4.0 H Tiny.
+- Dataset: 2,794 measured records, 300 hardware strings, 146 models, 19 backends, plus 549 reference estimates and 11 cluster runs. Provenance: 746 sourced, 2,048 community. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: llama.cpp issue mining pass: 24 new rows across eight issues
 
 - **Deep-context RX 7900 XTX decode (llama.cpp #27734, 4 rows).** Qwen3.8-27B UD-Q4_K_XL, llama-server wall-clock decode: 40.4/40.8 t/s at ctx 65536/98304, a 8.9 t/s cliff at 131072 with the default KV-cache allocation, and 40.3 t/s at 131072 with a 4 GiB sub-allocated cache. First wall-clock (not llama-bench) rows; context depth is the row's independent variable.
