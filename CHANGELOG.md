@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-27: vLLM issue mining pass: 36 new rows across six issues
+
+- **A100 multimodal benchmarks (vLLM #24728, 25 rows).** Four VLMs (Qwen2.5-VL-7B, MiniCPM-V-4, InternVL3.5-4B, InternVL3.5-2B) on a single A100 40 GB, image and video inputs, at the published concurrency levels (1, 10, 50 and the unlimited-rate max-QPS test). Modality is a machine-readable `config=` token, so image and video rows flag separately.
+- **B200 DeepSeek-R1-0528 (vLLM #29662, 4 rows).** 8x B200 TP8 with MTP speculative decoding at concurrency 256, FP8 and FP4, with and without `--async-scheduling` (1994/2421/2375/2895 tok/s).
+- **H100 Qwen3-8B FP8 (vLLM #48518, 2 rows).** Concurrency 4; the two runs differ only in L2 cache state persisting from server startup (809.40 vs 839.75 tok/s), kept as separate `config=` variants.
+- **4090D Qwen2.5-14B (vLLM #36629, 2 rows).** FP8+EAGLE3 vs W4A16+EAGLE3 at batch 16 (1131.19 vs 1079.15 tok/s).
+- **GPT OSS 120B kernel regression (vLLM #37441, 3 rows).** 8x H200 node, TP2, concurrency 1, eagle speculative decoding: vLLM 0.16.0/Triton 3.5 (275.84), vLLM 0.17.1/Triton 3.6 (231.22), and 0.17.1 with the reverted legacy kernels (275.84 recovered).
+- **4x H200 DeepSeek-V4-Flash-FP8 (vLLM #43648, 1 cluster row).** DP4 + expert parallel crash-report run (1118.18 tok/s, 135 of 600 requests completed) added to the cluster reference area.
+- Dataset: 2,627 measured records, 288 hardware strings, 126 models, 19 backends, plus 549 reference estimates and 10 cluster runs. Provenance: 746 sourced, 1,881 community. Flags unchanged: 521 contradiction, 34 outlier.
+
 ## 2026-09-27: Daily refresh: llama.cpp discussions re-retrieved, derived power values verified against published ranges
 
 - Re-fetched every llama.cpp discussion page (all five performance threads, including all paginated windows) on 2026-09-27. No new rows: still 1,805 discussion records.

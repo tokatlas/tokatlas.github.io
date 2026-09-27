@@ -1,5 +1,5 @@
 {
- "count": 9,
+ "count": 10,
  "note": "cluster and multi-node runs (measured, source-cited) out of record scope: local inference means single-machine hardware",
  "records": [
   {
@@ -216,6 +216,30 @@
    "source_name": "vLLM issue #30832 (community report)",
    "source_url": "https://github.com/vllm-project/vllm/issues/30832",
    "tps": "791.73",
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 120,
+   "ctx": null,
+   "date": "2026-05",
+   "flags": [],
+   "hardware": "H200",
+   "id": "vllm-43648-h200-dsv4flash-fp8-dp4",
+   "model": "DeepSeek-V4-Flash",
+   "notes": "DP4 + expert parallel across 4x H200; crash-report run: server died mid-benchmark, 135 of 600 requests completed; vLLM v0.20.1, --kv-cache-dtype fp8, --block-size 256; max request concurrency 120",
+   "params": "V4-Flash MoE",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "FP8",
+   "quote": "GPU model: NVIDIA H200; Model: DeepSeek-V4-Flash-FP8; --enable-expert-parallel --data-parallel-size 4; Successful requests: 135; Failed requests: 465; Output token throughput (tok/s): 1118.18",
+   "ram_gb": null,
+   "retrieved": "2026-09-27",
+   "scope": "cluster",
+   "source_name": "vLLM issue #43648 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/43648",
+   "tps": "1118.18",
    "ttft_s": null
   }
  ],
