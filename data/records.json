@@ -1,5 +1,5 @@
 {
- "count": 2959,
+ "count": 2961,
  "records": [
   {
    "backend": "llama.cpp",
@@ -8330,6 +8330,48 @@
    "source_url": "https://github.com/vllm-project/vllm/issues/58887",
    "tg_tokens": 1024,
    "tps": "1082.6"
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": 1,
+   "ctx": 262144,
+   "date": "2026-09-27",
+   "flags": [],
+   "hardware": "2x RTX 3090",
+   "id": "lc-29523-2x3090-released",
+   "model": "Qwen3.8-27B",
+   "notes": "build b29c606 (v0.4.1), 2x RTX 3090, --split-mode layer, --tensor-split 0.525,0.475, --spec-type draft-mtp, draft acceptance 71.4%, 10464-token prompt with cache_prompt false, 200 tokens greedy, 3 rounds per arm; quant not named in the PR (the #27428 report used unsloth Qwen3.8-27B GGUF Q6_K_XL / Q3_K_XL); the released build also OOMs the MTP draft context buffer on device 1 and silently drops pipeline parallelism; config=as-released",
+   "pp_tokens": 10464,
+   "pp_tps": "1132.0",
+   "provenance": "community",
+   "quant": "not stated",
+   "quote": "Two builds of `b29c606` (v0.4.1) differing only by this branch, same machine (2x RTX 3090, `--split-mode layer`, `--tensor-split 0.525,0.475`), Qwen3.8-27B hybrid (arch `qwen35`), `--spec-type draft-mtp`, `--ctx-size 262144`.; Identical 10464-token prompt, greedy sampling, `cache_prompt: false` so every round pays the full prefill, 200 tokens generated, 3 rounds per arm.; Prompt processing is the warm rounds (2 and 3); including the cold first round the figures are 1111.5 and 1779.1 t/s, so +60% rather than +63%.; | | prompt processing | generation |; | `b29c606` as released | 1132.0 t/s | 57.98 t/s |; Generation is the mean of all three rounds, with a round-to-round spread of 2.7% and 2.2% respectively; and draft acceptance was 71.4% in both arms, so nothing about generation is being traded away.",
+   "retrieved": "2026-09-27",
+   "source_name": "llama.cpp PR #29523 (community report)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29523",
+   "tg_tokens": 200,
+   "tps": "57.98"
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": 1,
+   "ctx": 262144,
+   "date": "2026-09-27",
+   "flags": [],
+   "hardware": "2x RTX 3090",
+   "id": "lc-29523-2x3090-mtp-lag",
+   "model": "Qwen3.8-27B",
+   "notes": "build b29c606 (v0.4.1), 2x RTX 3090, --split-mode layer, --tensor-split 0.525,0.475, --spec-type draft-mtp, draft acceptance 71.4%, 10464-token prompt with cache_prompt false, 200 tokens greedy, 3 rounds per arm; quant not named in the PR (the #27428 report used unsloth Qwen3.8-27B GGUF Q6_K_XL / Q3_K_XL); the released build also OOMs the MTP draft context buffer on device 1 and silently drops pipeline parallelism; config=mtp-catchup-lag",
+   "pp_tokens": 10464,
+   "pp_tps": "1848.8",
+   "provenance": "community",
+   "quant": "not stated",
+   "quote": "Two builds of `b29c606` (v0.4.1) differing only by this branch, same machine (2x RTX 3090, `--split-mode layer`, `--tensor-split 0.525,0.475`), Qwen3.8-27B hybrid (arch `qwen35`), `--spec-type draft-mtp`, `--ctx-size 262144`.; Identical 10464-token prompt, greedy sampling, `cache_prompt: false` so every round pays the full prefill, 200 tokens generated, 3 rounds per arm.; Prompt processing is the warm rounds (2 and 3); including the cold first round the figures are 1111.5 and 1779.1 t/s, so +60% rather than +63%.; | | prompt processing | generation |; | this branch | **1848.8 t/s** | 59.98 t/s |; Generation is the mean of all three rounds, with a round-to-round spread of 2.7% and 2.2% respectively; and draft acceptance was 71.4% in both arms, so nothing about generation is being traded away.",
+   "retrieved": "2026-09-27",
+   "source_name": "llama.cpp PR #29523 (community report)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29523",
+   "tg_tokens": 200,
+   "tps": "59.98"
   },
   {
    "backend": "llama.cpp",
