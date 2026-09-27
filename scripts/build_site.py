@@ -417,6 +417,18 @@ between builds of the same backend, see the
                         f"issue was filed: npl 256 goes {val(rows,c,'tps')} to "
                         f"{val(rows,p2,'tps')} tok/s ({pct(rows,c,p2,'tps'):.0f}%). "
                         f"Batch 1 barely moves (see the npl 1 rows).")
+            if model.startswith("Falcon-H1") or model.startswith("granite"):
+                tag = "falconh17b" if model.startswith("Falcon-H1") else "granite40htiny"
+                qs = ["BF16", "Q4_K_M"]
+                if tag == "falconh17b" and hwtag == "pro6000":
+                    qs.insert(1, "Q8_0")
+                parts = []
+                for q in qs:
+                    c = f"lc-27464-{hwtag}-{tag}-q{q}-cur"
+                    p2 = f"lc-27464-{hwtag}-{tag}-q{q}-pat"
+                    parts.append(f"{q} {val(rows,c,'tps')} to {val(rows,p2,'tps')} "
+                                 f"({pct(rows,c,p2,'tps'):.0f}%)")
+                return ("Same mamba2 flat-2D fix, npl 32: " + ", ".join(parts) + " tok/s.")
             return None
         if (venue, issue) == ("llama.cpp", "27623"):
             return ("Position sweep, q8 KV, no flash attention, WSL2 llama-server: "
@@ -490,6 +502,88 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29419-2','tps')} tok/s), immediately followed by a "
                     "SIGABRT in ggml_sycl_flash_attn_ext. The gap between the samples "
                     "is the in-run trend into the crash, not a between-build difference.")
+        if (venue, issue) == ("vLLM", "24728"):
+            if "4B" in model:
+                im_inf = "vllm-24728-a100-iv4-img-inf"
+                vi_inf = "vllm-24728-a100-iv4-vid-inf"
+                return (f"Burst mode (request-rate inf) only for this model: image "
+                        f"{val(rows,im_inf,'tps')} vs video {val(rows,vi_inf,'tps')} tok/s "
+                        "aggregate output, 50-prompt ShareGPT4Video sweep.")
+            pfx = "qwen" if "Qwen" in model else ("minicpm" if "MiniCPM" in model else "iv2")
+            im_c1, im_c50 = f"vllm-24728-a100-{pfx}-img-c1", f"vllm-24728-a100-{pfx}-img-c50"
+            vi_c1, vi_c50 = f"vllm-24728-a100-{pfx}-vid-c1", f"vllm-24728-a100-{pfx}-vid-c50"
+            vi_inf = f"vllm-24728-a100-{pfx}-vid-inf"
+            if "Qwen" in model:
+                im_inf = "vllm-24728-a100-qwen-img-inf"
+                return (f"Aggregate output tok/s, 50-prompt ShareGPT4Video sweep: video "
+                        f"c1 {val(rows,vi_c1,'tps')} to c50 {val(rows,vi_c50,'tps')} "
+                        f"({pct(rows,vi_c1,vi_c50,'tps'):+.0f}%), image burst "
+                        f"(request-rate inf) {val(rows,im_inf,'tps')} vs c50 "
+                        f"{val(rows,im_c50,'tps')} tok/s; burst video "
+                        f"{val(rows,vi_inf,'tps')} tok/s. The issue's finding is that "
+                        "video prefill is CPU-bound (frame decoding plus ViT extraction "
+                        "at ~100% CPU, ~20% GPU).")
+            return (f"Aggregate output tok/s, 50-prompt ShareGPT4Video sweep: video c1 "
+                    f"{val(rows,vi_c1,'tps')} to c50 {val(rows,vi_c50,'tps')} "
+                    f"({pct(rows,vi_c1,vi_c50,'tps'):+.0f}%), image c1 "
+                    f"{val(rows,im_c1,'tps')} to c50 {val(rows,im_c50,'tps')}; the burst "
+                    f"(request-rate inf) video figure is {val(rows,vi_inf,'tps')} tok/s. "
+                    "The issue's finding is that video prefill is CPU-bound (frame "
+                    "decoding plus ViT extraction at ~100% CPU, ~20% GPU).")
+        if (venue, issue) == ("vLLM", "29662"):
+            if "FP4" in model:
+                c, p2 = "vllm-29662-b200-dsr1-0528-fp4-async", "vllm-29662-b200-dsr1-0528-fp4-sync"
+            else:
+                c, p2 = "vllm-29662-b200-dsr1-0528-fp8-async", "vllm-29662-b200-dsr1-0528-fp8-sync"
+            return (f"Same 8x B200 TP8 MTP setup (con 256, 1280 prompts): "
+                    f"{val(rows,c,'tps')} with --async-scheduling vs "
+                    f"{val(rows,p2,'tps')} tok/s without "
+                    f"({pct(rows,c,p2,'tps'):+.1f}%), so synchronous scheduling wins on "
+                    "this workload regardless of FP8 vs FP4 weights.")
+        if (venue, issue) == ("vLLM", "36629"):
+            c, p2 = ("vllm-36629-4090d-qwen25-14b-fp8-eagle3",
+                     "vllm-36629-4090d-qwen25-14b-w4a16-eagle3")
+            return (f"batch16: FP8 + EAGLE3 {val(rows,c,'tps')} vs W4A16 + EAGLE3 "
+                    f"{val(rows,p2,'tps')} tok/s ({pct(rows,c,p2,'tps'):+.1f}%); the issue "
+                    "reports W4A16 leading at low concurrency, and its W4A16 run shows "
+                    "worse tail ITL (P95 73.98 ms vs 56.24 ms).")
+        if (venue, issue) == ("vLLM", "48518"):
+            c, p2 = ("vllm-48518-h100-qwen3-8b-fp8-l2persist",
+                     "vllm-48518-h100-qwen3-8b-fp8-l2cleared")
+            return (f"Run right after server start, high-priority L2 data from startup "
+                    f"still persisting: {val(rows,c,'tps')} tok/s (TPOT 4.83 ms) vs "
+                    f"{val(rows,p2,'tps')} tok/s (TPOT 4.66 ms) after a one-shot L2 clear "
+                    f"({pct(rows,c,p2,'tps'):+.1f}%).")
+        if (venue, issue) == ("vLLM", "49370"):
+            c, p2 = "vllm-49370-b300-dsv4-flash-fp4-base", "vllm-49370-b300-dsv4-flash-fp4-nobreak"
+            return (f"VLLM_USE_BREAKABLE_CUDAGRAPH=0 moves capture to the normal "
+                    f"FULL_AND_PIECEWISE path: {val(rows,c,'tps')} to {val(rows,p2,'tps')} "
+                    f"tok/s ({pct(rows,c,p2,'tps'):+.0f}%) on the same B300 offline batch, "
+                    "the default startup with breakable cudagraph auto-enabled being "
+                    "the slow arm.")
+        if (venue, issue) == ("vLLM", "58578"):
+            if "Qwen3.8" in model:
+                c, p2 = "vllm-58578-b70-qwen38-dvfull", "vllm-58578-b70-qwen38-dvred"
+            else:
+                c, p2 = "vllm-58578-b70-qwen36-dvfull", "vllm-58578-b70-qwen36-dvred"
+            return (f"Reduced draft vocabulary: {val(rows,c,'tps')} to {val(rows,p2,'tps')} "
+                    f"tok/s ({pct(rows,c,p2,'tps'):+.1f}%) one-stream decode at unchanged "
+                    "acceptance (2.99-3.04 vs 2.96-3.00 tokens per step); the stock "
+                    "drafter reads the shared 248,320 x 5120 lm_head for every draft "
+                    "token, which is most of the per-draft cost on this bandwidth-bound "
+                    "card.")
+        if (venue, issue) == ("ExLlamaV2", "450"):
+            c, p2 = ("githubissues-rtx2080ti-llama3-exl2-b8-batched",
+                     "githubissues-rtx2080ti-llama3-exl2-b8-caches")
+            c1 = "githubissues-rtx2080ti-llama3-exl2-b1-batched"
+            c1m = "githubissues-rtx2080ti-llama3-exl2-b1-caches"
+            return (f"batched_inference.py scales to {val(rows,c,'tps')} tok/s at batch 8 "
+                    f"({pct(rows,c1,c,'tps'):+.0f}% over its batch 1 of {val(rows,c1,'tps')}), "
+                    f"while the multiple_caches.py inflight path only reaches "
+                    f"{val(rows,p2,'tps')} tok/s (1.48x from its own batch 1 of "
+                    f"{val(rows,c1m,'tps')}): the issue's 2x-worse scaling complaint. "
+                    "EXL2 4 bpw, 2080 Ti, 16 prompts; the issue body says llama3 while "
+                    "the linked gist script loads mistral-7b-exl2.")
         if (venue, issue) == ("vLLM", "27021"):
             return ("Reproduction of PR #25337 on A100 PCIe: before vs after is "
                     f"{val(rows,'vllm-27021-a100-pcie-qwen3vl30b-fp8-pre','tps')} to "
@@ -552,6 +646,74 @@ between builds of the same backend, see the
                     "step; -bs transfers only the sampled token id. The vLLM "
                     "reference rows from the same run are in the vLLM section "
                     "of this issue.")
+        if (venue, issue) == ("llama.cpp", "27327"):
+            return ("Three consecutive runs of the same server (build 10154, after the "
+                    "Gated DeltaNet fused-op fix): "
+                    f"{val(rows,'lc-27327-t1','tps')} / "
+                    f"{val(rows,'lc-27327-t285','tps')} / "
+                    f"{val(rows,'lc-27327-t556','tps')} tok/s, prompt processing "
+                    f"{val(rows,'lc-27327-t1','pp_tps')} / "
+                    f"{val(rows,'lc-27327-t285','pp_tps')} tok/s; the model sits "
+                    "partially outside the 16 GB of VRAM.")
+        if (venue, issue) == ("llama.cpp", "27572"):
+            return ("Single-stream MTP decode (np 4, the racing build before the "
+                    "sched-sync workaround): tg rises "
+                    f"{val(rows,'lc-27572-d620','tps')} / "
+                    f"{val(rows,'lc-27572-d4603','tps')} / "
+                    f"{val(rows,'lc-27572-d9154','tps')} / "
+                    f"{val(rows,'lc-27572-d18256','tps')} tok/s as the prompt grows "
+                    "620 to 18256 tokens and plateaus, with MTP acceptance growing "
+                    f"with context; prefill {val(rows,'lc-27572-d620','pp_tps')} to "
+                    f"{val(rows,'lc-27572-d9154','pp_tps')} tok/s over the same sweep.")
+        if (venue, issue) == ("llama.cpp", "27980"):
+            return ("Four memory-placement configurations (mmap with embeddings on "
+                    f"CPU, no-load with embeddings on CPU, all-VRAM, forced MMQ) hold "
+                    f"decode within {val(rows,'lc-27980-r1','tps')} to "
+                    f"{val(rows,'lc-27980-r3','tps')} tok/s on the 4x Tesla P40 rig; "
+                    "placement barely matters here, and the issue's reference run of "
+                    "a 10B-active MoE on the same GPUs and build reaches 29.5 tok/s.")
+        if (venue, issue) == ("llama.cpp", "28484"):
+            return ("Draft-MTP depth 2 over an RPC tensor split to a second 10 GB GPU: "
+                    f"{val(rows,'lc-28484-mtp-depth2','tps')} vs "
+                    f"{val(rows,'lc-28484-dense','tps')} tok/s raw dense decode on the "
+                    f"same split ({pct(rows,'lc-28484-dense','lc-28484-mtp-depth2','tps'):+.1f}%); "
+                    "the commit regressed MTP from 27-32 tok/s at bb4caa7, while the "
+                    "issue's 31B Glimmer control row (no speculation, same split) "
+                    "sits at 17.66 tok/s on both commits.")
+        if (venue, issue) == ("llama.cpp", "29418"):
+            return ("Not a build A/B: two timing samples from the same 2x B580 Vulkan "
+                    f"run (n_gen 103 at {val(rows,'lc-29418-1','tps')} and n_gen 156 at "
+                    f"{val(rows,'lc-29418-2','tps')} tok/s), immediately followed by the "
+                    "GGML_ASSERT(neq0 == HSK) crash.")
+        if (venue, issue) == ("llama.cpp", "29473"):
+            if "Llama" in model:
+                return ("The CPU runs 34.4 tok/s; the default Hexagon HMX path is broken "
+                        "(garbled output, MUL_MAT inf for n >= 5) at "
+                        f"{val(rows,'lc-29473-2','tps')} tok/s, and the HVX-only "
+                        f"workaround that restores correct output gives "
+                        f"{val(rows,'lc-29473-3','tps')} tok/s.")
+            return ("Same pattern at 4B: the CPU runs 9.1 tok/s and the Adreno 722 "
+                    "OpenCL path 7.5, while the broken HMX path gives "
+                    f"{val(rows,'lc-29473-6','tps')} (garbled output) and the HVX-only "
+                    f"workaround {val(rows,'lc-29473-7','tps')} tok/s.")
+        if (venue, issue) == ("llama.cpp", "29510"):
+            if "gemma" in model.lower():
+                c, p2 = "lc-29510-gemma-master", "lc-29510-gemma-pr"
+            else:
+                c, p2 = "lc-29510-qwen-master", "lc-29510-qwen-pr"
+            return ("The PR's flash_attn_ext_rows replaces the unified-KV penalty at "
+                    f"ctx 400000: tg {val(rows,c,'tps')} to {val(rows,p2,'tps')} tok/s "
+                    f"({pct(rows,c,p2,'tps'):+.1f}%), prefill "
+                    f"{val(rows,c,'pp_tps')} to {val(rows,p2,'pp_tps')} tok/s "
+                    f"({pct(rows,c,p2,'pp_tps'):+.0f}%).")
+        if (venue, issue) == ("llama.cpp", "29523"):
+            c, p2 = "lc-29523-2x3090-released", "lc-29523-2x3090-mtp-lag"
+            return ("With the MTP catch-up lag fix: prefill "
+                    f"{val(rows,c,'pp_tps')} to {val(rows,p2,'pp_tps')} tok/s "
+                    f"({pct(rows,c,p2,'pp_tps'):+.0f}%), tg "
+                    f"{val(rows,c,'tps')} to {val(rows,p2,'tps')} tok/s "
+                    f"({pct(rows,c,p2,'tps'):+.1f}%); draft-mtp at 71.4% acceptance, "
+                    "layer split 0.525/0.475.")
         if (venue, issue) == ("llama.cpp", "27420"):
             return ("The 2x2 matrix isolates the failure: only ubatch 256 + f16 "
                     f"KV + MTP at ctx 50000 collapses ({val(rows,'lc-27420-ub256-f16','tps')} "
