@@ -1,5 +1,5 @@
 {
- "count": 2894,
+ "count": 2895,
  "records": [
   {
    "backend": "llama.cpp",
@@ -7024,6 +7024,25 @@
    "source_name": "llama.cpp issue #29466 (community report)",
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/29466",
    "tps": "18.5"
+  },
+  {
+   "backend": "ExLlamaV2",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-03-16",
+   "flags": [],
+   "hardware": "RTX PRO 4000 Blackwell",
+   "id": "exl-813-1",
+   "model": "Qwen2.5-7B-Instruct",
+   "notes": "control run for the RTX 5060 Ti Thunderbolt 5 eGPU freeze report: the SFF card runs stable on direct PCIe; TabbyAPI, LoneStriker 6.0bpw h6 EXL2 quant",
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "EXL2 6.0bpw H6",
+   "quote": "LoneStriker / Qwen2.5-7B-Instruct-6.0bpw-h6-exl2; RTX PRO 4000 Blackwell SFF (PCIe direct) works perfectly; stable inference at ~47 t/s",
+   "retrieved": "2026-09-27",
+   "source_name": "ExLlamaV2 issue #813 (community report)",
+   "source_url": "https://github.com/turboderp-org/exllamav2/issues/813",
+   "tps": "47"
   },
   {
    "backend": "llama.cpp",
