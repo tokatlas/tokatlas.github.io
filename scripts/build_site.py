@@ -841,6 +841,30 @@ between builds of the same backend, see the
                     "halves the output rows per launch, drops waves per SIMD "
                     "below the occupancy threshold, and the pair delivers "
                     "only 43.0% of its DRAM bandwidth (65.9% solo).")
+        if (venue, issue) == ("llama.cpp", "29534"):
+            if model == "Meta-Llama-3-8B-Instruct":
+                return ("The wave64 Q8 flash-attention path (GCN, gfx906) "
+                        f"lifts decode where KV depth is shallow: "
+                        f"{val(rows,'lc-29534-llama-master-d4k','tps')} to "
+                        f"{val(rows,'lc-29534-llama-wave64-d4k','tps')} at 4096 ctx "
+                        f"({pct(rows,'lc-29534-llama-master-d4k','lc-29534-llama-wave64-d4k','tps'):+.0f}%), "
+                        f"{val(rows,'lc-29534-llama-master-d8k','tps')} to "
+                        f"{val(rows,'lc-29534-llama-wave64-d8k','tps')} at 8192 ctx "
+                        f"({pct(rows,'lc-29534-llama-master-d8k','lc-29534-llama-wave64-d8k','tps'):+.0f}%), "
+                        "with prefill flat. The kernel microbench in the same "
+                        "PR shows the gain concentrated below KV 10k (up to "
+                        "+92.37% at KV 4096) and flat beyond.")
+            return ("The same patch on the D256 head: "
+                    f"{val(rows,'lc-29534-qwen-master-d4k','tps')} to "
+                    f"{val(rows,'lc-29534-qwen-wave64-d4k','tps')} at 4096, "
+                    f"{val(rows,'lc-29534-qwen-master-d16k','tps')} to "
+                    f"{val(rows,'lc-29534-qwen-wave64-d16k','tps')} at 16384, "
+                    f"{val(rows,'lc-29534-qwen-master-d32k','tps')} to "
+                    f"{val(rows,'lc-29534-qwen-wave64-d32k','tps')} at 32768 "
+                    f"(the source prints the last figure as ~18.86). The "
+                    f"gain widens with context, "
+                    f"{pct(rows,'lc-29534-qwen-master-d4k','lc-29534-qwen-wave64-d4k','tps'):+.0f}% "
+                    f"to {pct(rows,'lc-29534-qwen-master-d32k','lc-29534-qwen-wave64-d32k','tps'):+.0f}%.")
         if (venue, issue) == ("llama.cpp", "28454"):
             return ("Quantized KV falls off the sparse-fa fused kernel: the "
                     "dispatch added in #27970 is only reachable through the "
