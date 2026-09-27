@@ -1,5 +1,5 @@
 {
- "count": 3060,
+ "count": 3062,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -10728,6 +10728,46 @@
    "source_name": "HF model card: IsValorum/KAT-Coder-V2.5-Dev-APEX-I-MiniPlus-V2.1-GGUF",
    "source_url": "https://huggingface.co/IsValorum/KAT-Coder-V2.5-Dev-APEX-I-MiniPlus-V2.1-GGUF",
    "tps": "247"
+  },
+  {
+   "backend": "vLLM",
+   "batch": 64,
+   "ctx": null,
+   "date": "2026-09-25",
+   "flags": [],
+   "hardware": "H100",
+   "id": "vllm-58804-h100-fs-tiering-ab35354",
+   "model": "gpt-oss 120B",
+   "notes": "Guidellm synthetic multi-turn: 20K initial prefix, 4096 tokens per turn, 5 turns, concurrency 64, 700 s; OffloadingConnector with TieringOffloadingSpec, 24 GB CPU tier plus NVMe FS secondary tier, block_size 1024, prefix caching enabled; tensor parallel 2 on a 4x H100 80GB node; baseline commit ab35354 (direct parent of the bisected commit); Total tokens/s is the Guidellm aggregate; config=fs-tiering-ab35354",
+   "pp_tokens": 20000,
+   "provenance": "community",
+   "quant": "as-published",
+   "quote": "Machine : H100; vllm serve openai/gpt-oss-120b; --tensor-parallel-size=2; \"spec_name\": \"TieringOffloadingSpec\"; \"cpu_bytes_to_use\": 25769803776; \"block_size\": 1024; Multi-turn conversations with initial prompt of size 20K, subsequent prompts 4K and 5 Turns. Run at concurrency 64 for 700s; BENCH_PREFIX_TOKENS=20000; BENCH_PROMPT_TOKENS=\"4096\"; commit `ab35354` (before f12fe1) : Total tokens / s = 119092; A git bisect, led me to the commit https://github.com/vllm-project/vllm/pull/51787",
+   "retrieved": "2026-09-27",
+   "source_name": "vLLM issue #58804 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58804",
+   "tg_tokens": null,
+   "tps": "119092"
+  },
+  {
+   "backend": "vLLM",
+   "batch": 64,
+   "ctx": null,
+   "date": "2026-09-25",
+   "flags": [],
+   "hardware": "H100",
+   "id": "vllm-58804-h100-fs-tiering-f12fe1",
+   "model": "gpt-oss 120B",
+   "notes": "Guidellm synthetic multi-turn: 20K initial prefix, 4096 tokens per turn, 5 turns, concurrency 64, 700 s; OffloadingConnector with TieringOffloadingSpec, 24 GB CPU tier plus NVMe FS secondary tier, block_size 1024, prefix caching enabled; tensor parallel 2 on a 4x H100 80GB node; regressed commit f12fe1 (lands PR #51787, the bisect hit); Total tokens/s is the Guidellm aggregate; config=fs-tiering-f12fe1",
+   "pp_tokens": 20000,
+   "provenance": "community",
+   "quant": "as-published",
+   "quote": "Machine : H100; vllm serve openai/gpt-oss-120b; --tensor-parallel-size=2; \"spec_name\": \"TieringOffloadingSpec\"; \"cpu_bytes_to_use\": 25769803776; \"block_size\": 1024; Multi-turn conversations with initial prompt of size 20K, subsequent prompts 4K and 5 Turns. Run at concurrency 64 for 700s; BENCH_PREFIX_TOKENS=20000; BENCH_PROMPT_TOKENS=\"4096\"; commit `f12fe1` : Total tokens / s = 102876; A git bisect, led me to the commit https://github.com/vllm-project/vllm/pull/51787",
+   "retrieved": "2026-09-27",
+   "source_name": "vLLM issue #58804 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58804",
+   "tg_tokens": null,
+   "tps": "102876"
   },
   {
    "backend": "llama.cpp",

@@ -735,6 +735,18 @@ between builds of the same backend, see the
                     "(output_rank becomes None) and the reply-ring writer "
                     "spins holding the GIL, starving prepare_inputs on the "
                     "worker main thread.")
+        if (venue, issue) == ("vLLM", "58804"):
+            return ("Tiered KV offloading (24 GB CPU tier plus NVMe FS tier), "
+                    "gpt-oss-120b TP2, Guidellm 5-turn concurrency-64 replay: "
+                    "aggregate total tokens/s goes "
+                    f"{val(rows,'vllm-58804-h100-fs-tiering-ab35354','tps')} to "
+                    f"{val(rows,'vllm-58804-h100-fs-tiering-f12fe1','tps')} "
+                    f"({pct(rows,'vllm-58804-h100-fs-tiering-ab35354','vllm-58804-h100-fs-tiering-f12fe1','tps'):+.0f}%) "
+                    "when commit f12fe1, which lands PR #51787, replaces its "
+                    "parent ab35354; the reporter's git bisect lands on that "
+                    "commit, and a CPU-only replay of the access pattern found "
+                    "no eviction-order regression, so the loss is in the fs "
+                    "transfer or GPU-side timing the replay cannot capture.")
         if (venue, issue) == ("llama.cpp", "27050"):
             if "lc-27050-vllm-1s" in rows:
                 return ("Reference arm from the same run: vLLM BF16 at "
