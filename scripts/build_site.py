@@ -418,6 +418,29 @@ between builds of the same backend, see the
                         f"{val(rows,p2,'tps')} tok/s ({pct(rows,c,p2,'tps'):.0f}%). "
                         f"Batch 1 barely moves (see the npl 1 rows).")
             return None
+        if (venue, issue) == ("llama.cpp", "27623"):
+            return ("Position sweep, q8 KV, no flash attention, WSL2 llama-server: "
+                    f"decode holds {val(rows,'lc-27623-p45574','tps')} / "
+                    f"{val(rows,'lc-27623-p60309','tps')} / {val(rows,'lc-27623-p68642','tps')} tok/s "
+                    "at KV positions 45574 / 60309 / 68642, then collapses to "
+                    f"{val(rows,'lc-27623-p91077','tps')} tok/s at 91077 (the source's "
+                    "last row, published as '1.4 or timeout').")
+        if (venue, issue) == ("llama.cpp", "27734"):
+            return ("Wall-clock 1200-token single-stream completion: decode holds "
+                    f"{val(rows,'lc-27734-r98304','tps')} tok/s at 98304, but at 131072 "
+                    "the default KV suballocator hits a fragmentation cliff ("
+                    f"{val(rows,'lc-27734-r131072','tps')} tok/s). A 4 GiB suballocator "
+                    f"restores {val(rows,'lc-27734-r131072-4gib','tps')} tok/s at the "
+                    "same depth.")
+        if (venue, issue) == ("llama.cpp", "28219"):
+            return ("The local MSVC build collapses on both spec paths: MTP "
+                    f"{val(rows,'lc-28219-msvc-mtp','tps')} and DFlash2 "
+                    f"{val(rows,'lc-28219-msvc-dflash','tps')} tok/s, with an exact "
+                    "500 ms stepping in the per-3s log lines. The same MSVC build "
+                    f"without spec is {val(rows,'lc-28219-msvc-nospec','tps')} tok/s; "
+                    "the official b10734 MTP baseline is "
+                    f"{val(rows,'lc-28219-b10734-baseline','tps')} tok/s. The DFlash2 "
+                    "result is identical to MTP, so the cliff is not MTP-specific.")
         if (venue, issue) == ("llama.cpp", "28790"):
             return ("On a self-built MSVC + CUDA 12.8 build, MTP makes prefill about 57x "
                     f"slower ({val(rows,'lc-28790-msvc-mtp','pp_tps')} vs "
@@ -428,6 +451,15 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-28790-b10917-mtp','tps')} tok/s and prefill "
                     f"{val(rows,'lc-28790-b10889-mtp','pp_tps')} to "
                     f"{val(rows,'lc-28790-b10917-mtp','pp_tps')} tok/s.")
+        if (venue, issue) == ("llama.cpp", "28867"):
+            return ("Bisected to #28102 (16378d93f), which admitted head-256 batches "
+                    "to the AMD WMMA flash-attention path with a batch threshold of "
+                    f"16: speculative decode drops from {val(rows,'lc-28867-pre','tps')} "
+                    f"tok/s on 9113cc188 to {val(rows,'lc-28867-master','tps')} tok/s on "
+                    f"master ({pct(rows,'lc-28867-pre','lc-28867-master','tps'):.0f}%). "
+                    "Raising the WMMA threshold to 64 restores "
+                    f"{val(rows,'lc-28867-t64','tps')} tok/s; prefill was insensitive "
+                    "to the threshold at every width tested.")
         if (venue, issue) == ("llama.cpp", "29168") and "26B" in model:
             return ("Draft acceptance dropped 0.82 to 0.48 after the MoE weighted-reduction "
                     "fusion (bisected to b10751). MTP went from a "
@@ -438,6 +470,11 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29168-b10964-plain','tps')}) and b11057 "
                     f"({val(rows,'lc-29168-b11057-mtp','tps')} vs "
                     f"{val(rows,'lc-29168-b11057-plain','tps')}).")
+        if (venue, issue) == ("llama.cpp", "29172"):
+            return ("Ternary PTQ1_0 weights, ngl 99, flash attention on: at KV depth "
+                    f"154855 decode collapses to {val(rows,'lc-29172-d154855','tps')} "
+                    f"tok/s from {val(rows,'lc-29172-d0','tps')} at depth 0, and the "
+                    "source reports an ~21x prefill collapse at the same depth.")
         if (venue, issue) == ("llama.cpp", "29410") and "Qwopus" in model:
             return ("146 commits apart (not bisected): decode "
                     f"{val(rows,'lc-29410-b1','tps')} to {val(rows,'lc-29410-b2','tps')} tok/s "
@@ -447,6 +484,12 @@ between builds of the same backend, see the
                     f"({val(rows,'lc-29410-b1','pp_tps')} to {val(rows,'lc-29410-b2','pp_tps')} tok/s). "
                     "The issue suspects #27952 (RDNA3 q4_K MMQ retarget) for decode; the "
                     "MTP drop is attributed to an unknown commit in the same range.")
+        if (venue, issue) == ("llama.cpp", "29419"):
+            return ("Not a build A/B: two timing samples from the same SYCL run (n_gen "
+                    f"103 at {val(rows,'lc-29419-1','tps')} and n_gen 159 at "
+                    f"{val(rows,'lc-29419-2','tps')} tok/s), immediately followed by a "
+                    "SIGABRT in ggml_sycl_flash_attn_ext. The gap between the samples "
+                    "is the in-run trend into the crash, not a between-build difference.")
         if (venue, issue) == ("vLLM", "27021"):
             return ("Reproduction of PR #25337 on A100 PCIe: before vs after is "
                     f"{val(rows,'vllm-27021-a100-pcie-qwen3vl30b-fp8-pre','tps')} to "

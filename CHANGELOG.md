@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-27: Build A/B notes: 6 new interpretive notes (13 to 19)
+
+- The build A/B page (/notes/build-ab.html) had 13 interpretive notes on the 72 comparable groups; six more groups now carry one where the source or the row notes attribute a cause: #27623 (position sweep on the RTX 4080 SUPER holds 33 to 36 tok/s out to KV position 68642, then collapses to 1.4 at 91077); #27734 (RX 7900 XTX at 131k context: the default KV suballocator fragmentation cliff, 40 to 9 tok/s, fixed by a 4 GiB suballocator); #28219 (RTX 5060 Ti: a local MSVC build collapses both MTP and DFlash2 to 2.01 tok/s, the identical cliff ruling out an MTP-specific cause, against 38.8 for the official build); #28867 (Radeon AI PRO R9700: the #28102 WMMA head-256 dispatch regressed speculative decode about 20 percent, recovered by raising the WMMA batch threshold to 64 at zero prefill cost); #29172 (Ternary-Bonsai-2-27B on the RTX 5060 Ti: decode and prefill collapse at KV depth 154855); #29419 (gemma-4-31B on the Arc B580 LE: explicitly not an A/B, two samples from one SYCL run immediately before a SIGABRT in ggml_sycl_flash_attn_ext). Every figure is still rendered from the records at build time.
+- Also scanned and skipped: vLLM #58894 (DFlash2 spec-decode acceptance collapse on a Jetson Orin, t/s figures are server log stats, parked with #58580) and #58895 to #58898 (CI tooling, XPU kernel, a per-step microsecond routing-build analysis, no tok/s tables). ExLlamaV2 #814 (below the watermark, closed, PPL-focused E8 KV-quant proposal, no t/s) evaluated and skipped.
+- Site-wide live crawl: all 471 pages return 200.
+- No data changes: 2,971 measured records, 324 hardware strings, 138 models, 23 backends; 521 contradiction, 34 outlier flags (unchanged); 3,547 quote-verified; 471 pages, 16,667 internal links.
+
 ## 2026-09-27: HF model-card re-scan: 2 new rows, plus a label-canonicalization fix
 
 - The HF card re-scan (refreshed with today's new model names) surfaced two repos published since the morning pass, and both are mined: huihui-ai/Huihui-DeepSeek-V4-Flash-abliterated-ds4-GGUF (DeepSeek-V4-Flash Q2, RTX 6000 Pro 96GB, WSL2/CUDA 13.0, the card's published lower bound of 35 tokens/s on its custom llama.cpp fork) and Ryanchen911/Kimi-K3-Uncensored-GGUF (Kimi-K3 IQ1_S-XS on an 8xH100 + 2TB RAM node with MoE offloaded to CPU, the card's published expectation of ~6.8 tok/s at ctx 8192). HF cards mined now: 8 repos, 30 rows.
