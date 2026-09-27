@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-27: llama.cpp re-scan above #29523: 2 new rows
+
+- Mined #29526 and #29527: a companion pair from the same host, Arc A770 16GB running Qwen3.5-9B (UD-Q4_K_XL) under llama-server with a 131072 context. Both are long-run stability bugs, and the rows are the normal-operation decode rates from their timelines: Vulkan (build 11160) `tg ≈ 26 t/s` in the 0-7h window before empty EOS replies start; SYCL/Level Zero (build 11100) `tg ≈ 21.19 t/s` in the 0-18h window before a hard decode fence deadlock. Skipped: #29528 (convert PR, no numbers). vLLM above #58892: #58893 (AITER v0.1.23 gfx950 MoE crash) has no throughput table, skipped. ExLlamaV2 above #818: nothing new. New watermarks: llama.cpp above #29528, vLLM above #58893.
+- Dataset: 2,969 measured records, 322 hardware strings, 138 models, 23 backends; 521 contradiction, 34 outlier flags (unchanged); 3,545 quote-verified; 469 pages, 16,639 internal links.
+
 ## 2026-09-27: Build A/B notes page: regressions and improvements between backend builds
 
 - **New analysis page: /notes/build-ab.html.** Fills the mandate item the cross-backend page pointed to ("the seeds of the regression/improvement tracking the project will run between backend builds"). It groups every record tagged with a `config=` token in its notes that shares model, chip, and backend with at least one such row: same engine, different build or configuration. 72 comparable groups, 308 records, spanning llama.cpp build-to-build comparisons, vLLM release regressions, toolchain and kernel A/Bs. Every table cell is rendered from the record at build time, so the page cannot drift from the CSV.
