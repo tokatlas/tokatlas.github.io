@@ -1193,6 +1193,18 @@ between builds of the same backend, see the
                     "microbenchmark reports 1.47-1.57x at TP1/TP2 and "
                     "1.32-1.41x at TP4/TP8, and accuracy stays within one "
                     "BF16 ulp of the Triton gated output.")
+        if (venue, issue) == ("vLLM", "59040"):
+            return ("Quark W8A8 + MTP speculative decoding on Radeon 8060S "
+                    "(gfx1151), 400-token greedy single stream: the missing "
+                    "quark carve-out left mtp.fc zero-initialized, so the "
+                    "drafter emitted token 0 every step (0.0% acceptance) "
+                    "and MTP was a loss, "
+                    f"{val(rows,'vllm-59040-radeon8060s-spec-none','tps')} to "
+                    f"{val(rows,'vllm-59040-radeon8060s-spec-mtp-before','tps')} tok/s "
+                    f"({pct(rows,'vllm-59040-radeon8060s-spec-none','vllm-59040-radeon8060s-spec-mtp-before','tps'):+.1f}% vs no speculation); "
+                    "the one-line fix restores 22-45% acceptance and "
+                    f"{val(rows,'vllm-59040-radeon8060s-spec-mtp-after','tps')} tok/s "
+                    f"({pct(rows,'vllm-59040-radeon8060s-spec-none','vllm-59040-radeon8060s-spec-mtp-after','tps'):+.1f}% vs no speculation).")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
