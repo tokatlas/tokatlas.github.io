@@ -1127,6 +1127,24 @@ between builds of the same backend, see the
                     f"{val(rows,'vllm-58944-mi355x-atomic-c16','tps')} tok/s "
                     f"({pct(rows,'vllm-58944-mi355x-addmm-c16','vllm-58944-mi355x-atomic-c16','tps'):+.1f}%), "
                     "TPOT 23.86 to 23.47 ms, gsm8k 5-shot unchanged at 0.9636.")
+        if (venue, issue) == ("vLLM", "58986"):
+            return ("Retunes the block-FP8 MoE tile config (16/32-row tiles "
+                    "instead of the 64-row default) for GLM-5.3-Flash TP4 on "
+                    "4xH20, vLLM 0.30.0 with MTP3; the tuned arm leads all "
+                    "six workloads, from "
+                    f"c16 2048/512 at {pct(rows,'vllm-58986-h20-default-2048-512-c16','vllm-58986-h20-tuned-2048-512-c16','tps'):+.1f}% "
+                    f"and c16 8192/128 at {pct(rows,'vllm-58986-h20-default-8192-128-c16','vllm-58986-h20-tuned-8192-128-c16','tps'):+.1f}% "
+                    f"to c32 512/1024 at {val(rows,'vllm-58986-h20-default-512-1024-c32','tps')} to "
+                    f"{val(rows,'vllm-58986-h20-tuned-512-1024-c32','tps')} tok/s "
+                    f"({pct(rows,'vllm-58986-h20-default-512-1024-c32','vllm-58986-h20-tuned-512-1024-c32','tps'):+.1f}% "
+                    f"and c32 512/128 at {pct(rows,'vllm-58986-h20-default-512-128-c32','vllm-58986-h20-tuned-512-128-c32','tps'):+.1f}%). "
+                    "The author treats the roughly 1-2% c16 and long-prefill "
+                    "changes as not robust and headlines conservative "
+                    "C0-return gains of +8.02% mixed, +27.10% long-output "
+                    "and +9.46% short-output on the three c32 workloads; "
+                    "P99 TTFT and P99 TPOT improve on every workload except "
+                    "the c16 512/1024 P99 TPOT, which rises 12.35 to 12.93 "
+                    "ms and is retained as a tradeoff.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
