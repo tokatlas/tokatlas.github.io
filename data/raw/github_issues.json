@@ -1,5 +1,5 @@
 {
- "count": 487,
+ "count": 489,
  "records": [
   {
    "backend": "llama.cpp",
@@ -9913,6 +9913,44 @@
    "source_url": "https://github.com/vllm-project/vllm/issues/58804",
    "tg_tokens": null,
    "tps": "102876"
+  },
+  {
+   "backend": "vLLM",
+   "ctx": null,
+   "date": "2026-09-28",
+   "hardware": "MI355X",
+   "model": "Kimi-K3",
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "BF16",
+   "retrieved": "2026-09-28",
+   "source_name": "vLLM issue #58944 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58944",
+   "tg_tokens": 1024,
+   "batch": 16,
+   "notes": "ROCm Kimi-K3 TP8 on MI355X, vLLM with VLLM_ROCM_USE_AITER=1 and AITER_SITUV2_A8W4=1 (a8w4 routed experts), max_num_seqs 128, prefix caching, Kimi-K3 tool/reasoning parsers; vllm bench serve random 1k in / 1k out, aggregate output tok/s; A/B of the sharded latent-MoE tail addmm_ (hipBLASLt Cijk 8.57 us/layer) vs aiter gemm_a16w16_atomic accumulate=True in-place add (4.35 us/layer); gsm8k 5-shot exact match 0.9636 with the tuned kernel; no explicit weight quant flag (BF16 assumed); kernel-level before/after table in the Purpose section; config=addmm",
+   "id": "vllm-58944-mi355x-addmm-c16",
+   "tps": "658.42",
+   "quote": "On MI355X this is hipBLASLt `Cijk_..._MT16x16x512`, 8.57 us per layer at decode; vllm serve /data/Kimi-K3; --dataset-name random --random-input-len 1024 --random-output-len 1024; Maximum request concurrency:             16; Output token throughput (tok/s):         658.42"
+  },
+  {
+   "backend": "vLLM",
+   "ctx": null,
+   "date": "2026-09-28",
+   "hardware": "MI355X",
+   "model": "Kimi-K3",
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "BF16",
+   "retrieved": "2026-09-28",
+   "source_name": "vLLM issue #58944 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58944",
+   "tg_tokens": 1024,
+   "batch": 16,
+   "notes": "ROCm Kimi-K3 TP8 on MI355X, vLLM with VLLM_ROCM_USE_AITER=1 and AITER_SITUV2_A8W4=1 (a8w4 routed experts), max_num_seqs 128, prefix caching, Kimi-K3 tool/reasoning parsers; vllm bench serve random 1k in / 1k out, aggregate output tok/s; A/B of the sharded latent-MoE tail addmm_ (hipBLASLt Cijk 8.57 us/layer) vs aiter gemm_a16w16_atomic accumulate=True in-place add (4.35 us/layer); gsm8k 5-shot exact match 0.9636 with the tuned kernel; no explicit weight quant flag (BF16 assumed); kernel-level before/after table in the Purpose section; config=atomic",
+   "id": "vllm-58944-mi355x-atomic-c16",
+   "tps": "668.97",
+   "quote": "On MI355X this is hipBLASLt `Cijk_..._MT16x16x512`, 8.57 us per layer at decode; vllm serve /data/Kimi-K3; --dataset-name random --random-input-len 1024 --random-output-len 1024; Maximum request concurrency:             16; Output token throughput (tok/s):         668.97"
   }
  ],
  "source": {

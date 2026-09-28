@@ -1119,6 +1119,14 @@ between builds of the same backend, see the
                     f"{val(rows,'vllm-58887-mi355x-fix-c4','tps')} tok/s, "
                     f"c32 goes {val(rows,'vllm-58887-mi355x-main-c32','tps')} to "
                     f"{val(rows,'vllm-58887-mi355x-fix-c32','tps')} tok/s.")
+        if (venue, issue) == ("vLLM", "58944"):
+            return ("Swaps the sharded latent-MoE up-projection tail from the "
+                    "hipBLASLt addmm_ path to aiter's in-place atomic GEMM, "
+                    "8.57 to 4.35 microseconds per layer; serving at c16 on "
+                    f"1k/1k random goes {val(rows,'vllm-58944-mi355x-addmm-c16','tps')} to "
+                    f"{val(rows,'vllm-58944-mi355x-atomic-c16','tps')} tok/s "
+                    f"({pct(rows,'vllm-58944-mi355x-addmm-c16','vllm-58944-mi355x-atomic-c16','tps'):+.1f}%), "
+                    "TPOT 23.86 to 23.47 ms, gsm8k 5-shot unchanged at 0.9636.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
