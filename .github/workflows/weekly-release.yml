@@ -4,6 +4,8 @@ on:
     # Monday 07:00 UTC
     - cron: "0 7 * * 1"
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   release:
     runs-on: ubuntu-latest
