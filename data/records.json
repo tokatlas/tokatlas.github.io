@@ -1,5 +1,5 @@
 {
- "count": 3125,
+ "count": 3127,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -11048,6 +11048,46 @@
    "source_url": "https://github.com/vllm-project/vllm/issues/58986",
    "tg_tokens": 128,
    "tps": "140.85"
+  },
+  {
+   "backend": "vLLM",
+   "batch": null,
+   "ctx": 4096,
+   "date": "2026-09-28",
+   "flags": [],
+   "hardware": "RTX PRO 5000 72GB",
+   "id": "vllm-58989-rtxpro5000-deepgemm",
+   "model": "Qwen3-30B-A3B-Instruct-2507-FP8",
+   "notes": "2x RTX PRO 5000 72GB Blackwell (SM 12.0) rig, TP1, driver 595.80, torch 2.13.0+cu130; vllm bench throughput random 1024 in / 256 out, 256 prompts, max model len 4096; block-FP8 MoE backend selection A/B: DEEPGEMM auto default vs TRITON fused MoE (PR #58989); real weights, bs1 latency 0.800 s, bs32 latency 3.739 s, GSM8K 5-shot 88.02%; config=deepgemm",
+   "pp_tokens": 1024,
+   "provenance": "community",
+   "quant": "FP8",
+   "quote": "2x RTX PRO 5000 72GB Blackwell (SM 12.0), driver 595.80, torch 2.13.0+cu130; Real weights, Qwen3-30B-A3B-Instruct-2507-FP8, TP=1; DeepGEMM (current) 0.800 3.739 19778 88.02%; --dataset-name random --input-len 1024 --output-len 256 --num-prompts 256; --max-model-len 4096",
+   "retrieved": "2026-09-28",
+   "source_name": "vLLM issue #58989 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58989",
+   "tg_tokens": 256,
+   "tps": "19778"
+  },
+  {
+   "backend": "vLLM",
+   "batch": null,
+   "ctx": 4096,
+   "date": "2026-09-28",
+   "flags": [],
+   "hardware": "RTX PRO 5000 72GB",
+   "id": "vllm-58989-rtxpro5000-triton",
+   "model": "Qwen3-30B-A3B-Instruct-2507-FP8",
+   "notes": "2x RTX PRO 5000 72GB Blackwell (SM 12.0) rig, TP1, driver 595.80, torch 2.13.0+cu130; vllm bench throughput random 1024 in / 256 out, 256 prompts, max model len 4096; block-FP8 MoE backend selection A/B: DEEPGEMM auto default vs TRITON fused MoE (PR #58989, the selected default after the PR); real weights, bs1 latency 0.678 s, bs32 latency 3.250 s, GSM8K 5-shot 88.55%; config=triton",
+   "pp_tokens": 1024,
+   "provenance": "community",
+   "quant": "FP8",
+   "quote": "2x RTX PRO 5000 72GB Blackwell (SM 12.0), driver 595.80, torch 2.13.0+cu130; Real weights, Qwen3-30B-A3B-Instruct-2507-FP8, TP=1; Triton (this PR) 0.678 3.250 19806 88.55%; --dataset-name random --input-len 1024 --output-len 256 --num-prompts 256; --max-model-len 4096",
+   "retrieved": "2026-09-28",
+   "source_name": "vLLM issue #58989 (community report)",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58989",
+   "tg_tokens": 256,
+   "tps": "19806"
   },
   {
    "backend": "llama.cpp",

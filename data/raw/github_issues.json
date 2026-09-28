@@ -1,5 +1,5 @@
 {
- "count": 501,
+ "count": 503,
  "records": [
   {
    "backend": "llama.cpp",
@@ -10191,6 +10191,46 @@
    "notes": "4xH20 TP4, vLLM 0.30.0 release (ced6857af plus three correctness backports) with MTP3 draft, GLM-5.3-Flash 62-shard block-FP8 checkpoint (128x128 weight blocks), BF16 activations, max length 16384, max sequences 32; vllm bench serve random 8192 in / 128 out, concurrency 16, 3 repeats, median of paired runs; A/B of the MoE tile config (default 64-row tile vs tuned 16/32-row tiles, PR #58986); P99 TTFT 13125.58 to 13051.19 ms, P99 TPOT 169.07 to 164.70 ms (old to new); config=moe-tuned",
    "provenance": "community",
    "flags": []
+  },
+  {
+   "model": "Qwen3-30B-A3B-Instruct-2507-FP8",
+   "hardware": "RTX PRO 5000 72GB",
+   "backend": "vLLM",
+   "quant": "FP8",
+   "ctx": 4096,
+   "batch": null,
+   "pp_tokens": 1024,
+   "tg_tokens": 256,
+   "date": "2026-09-28",
+   "retrieved": "2026-09-28",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58989",
+   "source_name": "vLLM issue #58989 (community report)",
+   "provenance": "community",
+   "flags": [],
+   "id": "vllm-58989-rtxpro5000-deepgemm",
+   "tps": "19778",
+   "notes": "2x RTX PRO 5000 72GB Blackwell (SM 12.0) rig, TP1, driver 595.80, torch 2.13.0+cu130; vllm bench throughput random 1024 in / 256 out, 256 prompts, max model len 4096; block-FP8 MoE backend selection A/B: DEEPGEMM auto default vs TRITON fused MoE (PR #58989); real weights, bs1 latency 0.800 s, bs32 latency 3.739 s, GSM8K 5-shot 88.02%; config=deepgemm",
+   "quote": "2x RTX PRO 5000 72GB Blackwell (SM 12.0), driver 595.80, torch 2.13.0+cu130; Real weights, Qwen3-30B-A3B-Instruct-2507-FP8, TP=1; DeepGEMM (current) 0.800 3.739 19778 88.02%; --dataset-name random --input-len 1024 --output-len 256 --num-prompts 256; --max-model-len 4096"
+  },
+  {
+   "model": "Qwen3-30B-A3B-Instruct-2507-FP8",
+   "hardware": "RTX PRO 5000 72GB",
+   "backend": "vLLM",
+   "quant": "FP8",
+   "ctx": 4096,
+   "batch": null,
+   "pp_tokens": 1024,
+   "tg_tokens": 256,
+   "date": "2026-09-28",
+   "retrieved": "2026-09-28",
+   "source_url": "https://github.com/vllm-project/vllm/issues/58989",
+   "source_name": "vLLM issue #58989 (community report)",
+   "provenance": "community",
+   "flags": [],
+   "id": "vllm-58989-rtxpro5000-triton",
+   "tps": "19806",
+   "notes": "2x RTX PRO 5000 72GB Blackwell (SM 12.0) rig, TP1, driver 595.80, torch 2.13.0+cu130; vllm bench throughput random 1024 in / 256 out, 256 prompts, max model len 4096; block-FP8 MoE backend selection A/B: DEEPGEMM auto default vs TRITON fused MoE (PR #58989, the selected default after the PR); real weights, bs1 latency 0.678 s, bs32 latency 3.250 s, GSM8K 5-shot 88.55%; config=triton",
+   "quote": "2x RTX PRO 5000 72GB Blackwell (SM 12.0), driver 595.80, torch 2.13.0+cu130; Real weights, Qwen3-30B-A3B-Instruct-2507-FP8, TP=1; Triton (this PR) 0.678 3.250 19806 88.55%; --dataset-name random --input-len 1024 --output-len 256 --num-prompts 256; --max-model-len 4096"
   }
  ],
  "source": {

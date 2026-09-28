@@ -1145,6 +1145,19 @@ between builds of the same backend, see the
                     "P99 TTFT and P99 TPOT improve on every workload except "
                     "the c16 512/1024 P99 TPOT, which rises 12.35 to 12.93 "
                     "ms and is retained as a tradeoff.")
+        if (venue, issue) == ("vLLM", "58989"):
+            return ("Moves TRITON ahead of DEEPGEMM for block-FP8 MoE "
+                    "auto-selection on SM120. On the real-weights TP1 "
+                    "throughput bench (1024/256, 256 prompts) the switch "
+                    f"gives {val(rows,'vllm-58989-rtxpro5000-deepgemm','tps')} to "
+                    f"{val(rows,'vllm-58989-rtxpro5000-triton','tps')} tok/s "
+                    f"({pct(rows,'vllm-58989-rtxpro5000-deepgemm','vllm-58989-rtxpro5000-triton','tps'):+.1f}%) "
+                    "while bs1 latency drops 0.800 to 0.678 s and bs32 3.739 "
+                    "to 3.250 s, with GSM8K 5-shot 88.02% to 88.55%; the "
+                    "dummy-weight table shows the same flat throughput on "
+                    "this shape (+0% at TP1, +1% at TP2) with the larger "
+                    "wins elsewhere, Qwen3-Next-80B TP2 at +22%, parked as "
+                    "dummy-weight rows.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
