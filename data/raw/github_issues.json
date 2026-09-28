@@ -10409,7 +10409,7 @@
    "retrieved": "2026-09-28",
    "source_url": "https://github.com/vllm-project/vllm/issues/59054",
    "source_name": "vLLM issue #59054 (community report)",
-   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, spec decode on, stock 2D-forced path",
+   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, spec decode on, stock 2D-forced path; config=verify-2d",
    "quote": "4x CMP 170HX (sm80, PP=4), MiMo-V2.6-Flash-RL official fp8 checkpoint, MTP k=2, steady-state decode; 67K context: 16.5 tok/s (stock) vs 33.7 tok/s (3D verify)",
    "provenance": "community",
    "flags": []
@@ -10429,7 +10429,7 @@
    "retrieved": "2026-09-28",
    "source_url": "https://github.com/vllm-project/vllm/issues/59054",
    "source_name": "vLLM issue #59054 (community report)",
-   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, spec decode on, 3D split-KV verify path (MiaAI-Lab DGX-Spark recipe, env-gated)",
+   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, spec decode on, 3D split-KV verify path (MiaAI-Lab DGX-Spark recipe, env-gated); config=verify-3d",
    "quote": "4x CMP 170HX (sm80, PP=4), MiMo-V2.6-Flash-RL official fp8 checkpoint, MTP k=2, steady-state decode; 67K context: 16.5 tok/s (stock) vs 33.7 tok/s (3D verify)",
    "provenance": "community",
    "flags": []
@@ -10449,7 +10449,7 @@
    "retrieved": "2026-09-28",
    "source_url": "https://github.com/vllm-project/vllm/issues/59054",
    "source_name": "vLLM issue #59054 (community report)",
-   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, no speculative decoding",
+   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; 67K context, no speculative decoding; config=no-spec",
    "quote": "4x CMP 170HX (sm80, PP=4), MiMo-V2.6-Flash-RL official fp8 checkpoint, MTP k=2, steady-state decode; Without speculative decoding the same rig decodes 67K context at 56.1 tok/s",
    "provenance": "community",
    "flags": []
@@ -10469,7 +10469,7 @@
    "retrieved": "2026-09-28",
    "source_url": "https://github.com/vllm-project/vllm/issues/59054",
    "source_name": "vLLM issue #59054 (community report)",
-   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; around 5K context (cliff start point per body), spec decode on, stock 2D-forced path",
+   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; around 5K context (cliff start point per body), spec decode on, stock 2D-forced path; config=verify-2d",
    "quote": "4x CMP 170HX (sm80, PP=4), MiMo-V2.6-Flash-RL official fp8 checkpoint, MTP k=2, steady-state decode; The cliff starts around 5K context (42.5 tok/s with spec vs ~63 without)",
    "provenance": "community",
    "flags": []
@@ -10489,7 +10489,7 @@
    "retrieved": "2026-09-28",
    "source_url": "https://github.com/vllm-project/vllm/issues/59054",
    "source_name": "vLLM issue #59054 (community report)",
-   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; around 5K context (approximate, body says ~63), no speculative decoding",
+   "notes": "Triton attention backend: spec-decode verify batches (q_len>1) are forced onto the 2D varlen kernel by the max_seqlen_q>1 condition (4 CTAs on a 70-SM GPU at 67K context), MTP k=2, unique-content prompts, thinking off, warmup dropped, steady-state decode; kernel-level table (ms per call, q_len 1-4 at 67K/19K) parked; around 5K context (approximate, body says ~63), no speculative decoding; config=no-spec",
    "quote": "4x CMP 170HX (sm80, PP=4), MiMo-V2.6-Flash-RL official fp8 checkpoint, MTP k=2, steady-state decode; The cliff starts around 5K context (42.5 tok/s with spec vs ~63 without)",
    "provenance": "community",
    "flags": []
