@@ -1205,6 +1205,23 @@ between builds of the same backend, see the
                     "the one-line fix restores 22-45% acceptance and "
                     f"{val(rows,'vllm-59040-radeon8060s-spec-mtp-after','tps')} tok/s "
                     f"({pct(rows,'vllm-59040-radeon8060s-spec-none','vllm-59040-radeon8060s-spec-mtp-after','tps'):+.1f}% vs no speculation).")
+        if (venue, issue) == ("vLLM", "59054"):
+            return ("Triton attention on 4x CMP 170HX (sm80, PP=4), "
+                    "MiMo-V2.6-Flash-RL FP8, MTP k=2: the 2D-forcing "
+                    "condition (max_seqlen_q > 1) pushes every spec-verify "
+                    "batch (q_len>1) onto the 2D varlen kernel, which at "
+                    "67K context launches only 4 CTAs on a 70-SM GPU. "
+                    "Steady-state decode at 67K context: stock path "
+                    f"{val(rows,'vllm-59054-cmp170hx-spec-2d-c67k','tps')} tok/s "
+                    "vs the 3D split-KV verify path "
+                    f"{val(rows,'vllm-59054-cmp170hx-spec-3d-c67k','tps')} tok/s "
+                    f"({pct(rows,'vllm-59054-cmp170hx-spec-2d-c67k','vllm-59054-cmp170hx-spec-3d-c67k','tps'):+.1f}%), "
+                    f"while no speculation runs {val(rows,'vllm-59054-cmp170hx-nospec-c67k','tps')} tok/s "
+                    f"({pct(rows,'vllm-59054-cmp170hx-nospec-c67k','vllm-59054-cmp170hx-spec-2d-c67k','tps'):+.1f}% vs stock spec) - "
+                    "the bug makes speculative decoding a net loss at "
+                    "long context on Triton-backend hardware; the kernel-"
+                    "level table shows 5.08 to 0.26 ms per verify call "
+                    "(19.6x) at q_len 2, 67K KV.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
