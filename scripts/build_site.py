@@ -1158,6 +1158,37 @@ between builds of the same backend, see the
                     "this shape (+0% at TP1, +1% at TP2) with the larger "
                     "wins elsewhere, Qwen3-Next-80B TP2 at +22%, parked as "
                     "dummy-weight rows.")
+        if (venue, issue) == ("llama.cpp", "29570"):
+            return ("The tensor-API FLASH_ATTN_EXT kernel runs Q*K^T and P*V "
+                    "with matmul2d over 64-row KV blocks, 32 queries per "
+                    "threadgroup, and only engages when the call is big "
+                    "enough to fill the GPU (about 20 queries and up). On "
+                    "Qwen3.8-27B Q8_0 with -fa 1, the win scales with KV "
+                    f"length: pp512 at 32k context goes "
+                    f"{val(rows,'lc-29570-m5-pp512-d32768-master','pp_tps')} to "
+                    f"{val(rows,'lc-29570-m5-pp512-d32768-tensor','pp_tps')} tok/s "
+                    f"({pct(rows,'lc-29570-m5-pp512-d32768-master','lc-29570-m5-pp512-d32768-tensor','pp_tps'):+.1f}%), "
+                    f"at 8k {val(rows,'lc-29570-m5-pp512-d8192-master','pp_tps')} to "
+                    f"{val(rows,'lc-29570-m5-pp512-d8192-tensor','pp_tps')} tok/s "
+                    f"({pct(rows,'lc-29570-m5-pp512-d8192-master','lc-29570-m5-pp512-d8192-tensor','pp_tps'):+.1f}%), "
+                    "while short-context pp512 is flat and the below-"
+                    f"threshold pp32 and tg32 give back about 1%: "
+                    f"{val(rows,'lc-29570-m5-tg32-master','tps')} to "
+                    f"{val(rows,'lc-29570-m5-tg32-tensor','tps')} tok/s "
+                    f"({pct(rows,'lc-29570-m5-tg32-master','lc-29570-m5-tg32-tensor','tps'):+.1f}%) on tg32.")
+        if (venue, issue) == ("vLLM", "59010"):
+            return ("Adds a SM90 CuTe kernel for Qwen4Exp QSA sparse prefill "
+                    "(transposed wgmma m64n16k16 GEMMs, cp.async K and V "
+                    "rows) that replaces the (32, 1, 1) Triton path above "
+                    "2048 programs; BF16 KV only. On the prefill-heavy "
+                    "16k-in / 8-out serve at TP4 on H20, c16, total token "
+                    f"throughput moves {val(rows,'vllm-59010-h20-triton','pp_tps')} to "
+                    f"{val(rows,'vllm-59010-h20-native','pp_tps')} tok/s "
+                    f"({pct(rows,'vllm-59010-h20-triton','vllm-59010-h20-native','pp_tps'):+.1f}%) "
+                    "with mean TTFT 12.81 to 12.53 s; the kernel "
+                    "microbenchmark reports 1.47-1.57x at TP1/TP2 and "
+                    "1.32-1.41x at TP4/TP8, and accuracy stays within one "
+                    "BF16 ulp of the Triton gated output.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
