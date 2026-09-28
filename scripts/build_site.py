@@ -1282,6 +1282,25 @@ between builds of the same backend, see the
                     f"({pct(rows,'vllm-59082-amx-main-no-mtp-auto','vllm-59082-amx-branch-no-mtp-auto','tps'):+.1f}%), "
                     "so most of the headline gain is the spec-decode path "
                     "itself, not the scheduler change.")
+        if (venue, issue) == ("llama.cpp", "29619"):
+            return ("--cpu-mtp keeps the MTP drafter block and its recurrent-"
+                    "state snapshots in host RAM so a 12 GB card can fit the "
+                    "target's KV cache; the hybrid recipe pins the MTP block "
+                    "back to the GPU via -ot. On the RTX 5070 Ti Laptop with "
+                    "Qwen3-27B REAP192 at 16 k ctx, hybrid recovers most of "
+                    "the full-GPU speed, "
+                    f"{val(rows,'lc-29619-rtx5070ti-hybrid-c16k','tps')} vs "
+                    f"{val(rows,'lc-29619-rtx5070ti-mtp-full-c16k','tps')} tok/s "
+                    f"({pct(rows,'lc-29619-rtx5070ti-mtp-full-c16k','lc-29619-rtx5070ti-hybrid-c16k','tps'):+.1f}%), "
+                    "while pure --cpu-mtp only adds "
+                    f"{pct(rows,'lc-29619-rtx5070ti-mtp-off-c16k','lc-29619-rtx5070ti-cpu-mtp-c16k','tps'):+.1f}% "
+                    f"over the {val(rows,'lc-29619-rtx5070ti-mtp-off-c16k','tps')} tok/s "
+                    "MTP-off baseline; at 60 k ctx the hybrid edge over pure "
+                    f"--cpu-mtp widens to {val(rows,'lc-29619-rtx5070ti-hybrid-c60k','tps')} vs "
+                    f"{val(rows,'lc-29619-rtx5070ti-cpu-mtp-c60k','tps')} tok/s "
+                    f"({pct(rows,'lc-29619-rtx5070ti-cpu-mtp-c60k','lc-29619-rtx5070ti-hybrid-c60k','tps'):+.1f}%) "
+                    "per the author's prior campaign, because the CPU-side "
+                    "draft attention cost grows with context.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "

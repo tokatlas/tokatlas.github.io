@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-28: llama.cpp #29619 cpu-mtp MTP drafter (6 rows)
+
+- llama.cpp #29619 (2026-09-28, PR): adds `--cpu-mtp`, keeping the MTP drafter block and its recurrent-state snapshots in host RAM (plus the hybrid recipe that pins the MTP block back to the GPU with `-ot`) so a 12 GB card can fit the target's KV cache. Mined 6 rows from the 4-variant needle sweep (12 960-token prompt, `--spec-draft-n-max 4`, ctx 16 384, KV q4_0, RTX 5070 Ti Laptop 12 GB, Qwen3-27B REAP192): MTP off 28.7, pure --cpu-mtp 31.1 (69.2% accept), hybrid 51.2 (72.4% accept), full-GPU MTP 62.5 (79.6% accept), plus the prior-campaign 60 k ctx pair hybrid 40.8 vs pure 30.0 tok/s. New build A/B group with interpretive note (page now 101 of 101); new RTX 5070 Ti Laptop 12 GB hardware page and Qwen3-27B model page.
+- Pulses from the 22:14 watermarks (23:20 UTC): llama.cpp #29617-#29619: #29619 mined above, #29617 speculative default-props plumbing, #29618-#29619 cpu-mtp PR stack, 0 t/s elsewhere; watermark now above #29619. vLLM #59098-#59103: batch-sort-by-context, KV-offload reset flush, ROCm kernel source maps, UMA startup gate bug, NIXL chunked-prefill boundary re-save, stale block-hash drop, 0 t/s; watermark now above #59103. ExLlamaV2 #821 (ngram last-token fix, no bench) nothing new above; forum still nothing above topic #3006; HF leftovers still 401 (no Wayback snapshots).
+- Dataset: 3,167 measured records, 345 hardware strings, 151 models, 24 backends; 525 contradiction, 34 outlier flags; 3,743 quote-verified; 505 pages, 17,791 internal links. Hand-mined: 621 rows (509 GitHub issue rows: 334 llama.cpp, 164 vLLM, 11 ExLlamaV2; 34 HF model-card rows; 29 ExLlamaV2 discussion rows; 49 qiulang/vllm-sglang-perf rows).
+
+
 ## 2026-09-28: llama.cpp #29604 SYCL allreduce (10 rows), #29606 Hexagon HTP queue (4 rows), vLLM #59082 AMX MTP scheduling (6 rows)
 
 - llama.cpp #29604 (2026-09-28, PR): replaces the tensor-split allreduce's blocking dev2dev memcpy and queue drains with pinned-host-buffer crosses and async SYCL copies (F16, small F32, BF16-compressed paths; perplexity unchanged). Mined 10 rows, master vs patched llama-bench on 2x Arc Pro B70 with Qwen3.8-27B Q8_0 (f16 KV, -fa on, Windows 11 oneAPI 2026.0): prefill pp2048 665 to 928 tok/s (+40.0%) without VMM and 675 to 918 (+36.0%) with VMM=1 at ub 1024, 477 to 692 (+45.1%) and 478 to 661 (+38.3%) at ub 256; decode tg128 18.2 to 20.2 (+11.0%). New build A/B group with interpretive note (page now 100 of 100); new 2x Arc Pro B70 hardware page.
