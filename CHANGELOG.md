@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-29: vLLM #59109 GLOO docker-bridge PP fix (11 rows) + #59112 FlashInfer packed KV (6 rows)
+
+- vLLM #59109 (2026-09-29, issue): in a single-container PP4 docker deployment the cpu:gloo control plane resolved the container hostname to the docker bridge IP, costing ~535 ms per control send and collapsing single-stream decode with context on DeepSeek-V4.1-Flash 764B EXL3 (4x NVIDIA CMP 170HX rig, PP4, DSpark, fp8_ds_mla KV, 1M ctx). Mined 11 rows from the before/after table of the GLOO_SOCKET_IFNAME=lo fix (single-stream decode, warm: 32K 57.0 to 60.7, 128K 46.7 to 58.3, 300K ~40 to 56.7, 524K 35.8 to 54.7 tok/s) plus the post-fix concurrency rows C8 200.6 / C16 199.4 / C24 252.1 decode tok/s. New build A/B group with interpretive note (page now 103 of 103); new hardware page 4× NVIDIA CMP 170HX (the earlier CMP 170HX rows come from #59054's "4x CMP 170HX" rig string).
+- vLLM #59112 (2026-09-29, PR): FlashInfer dense-GQA re-paging for packed BLHNC KV caches, B300, Qwen3.6-35B-A3B-FP8 + DFlash MRv2 (7 spec tokens), BF16 KV. Mined 6 rows from the two-run-averaged LBHNC/BLHNC table: c1 output 286.56 to 427.01 tok/s (+49%), c32 output 5115.53 to 7221.04 tok/s (+41.2%, per-run 7258.52/7183.57), 8192-in/1-out req/s 6.419 to 7.015; KV groups drop 46 to 5 with +2.2% reported capacity. New build A/B group with interpretive note (page now 104 of 104).
+- 01:30 UTC pulse from the 00:26 watermarks: the two mines above; llama.cpp #29622 (embd + raw tokens batch support, 0 t/s); vLLM #59107, #59108, #59110-#59111, #59113-#59115 (0 t/s: DiffusionGemma canvas, dropped chat turns, NixlConnector KV-page misread + RFC, zmq socket dir, MoRIIO producer-dead hang, GLM-5.3-Flash illegal access); ExLlamaV2 nothing above #821; forum nothing above #3006; HF leftovers still 401.
+
+
 ## 2026-09-29: llama.cpp #29620 cpu-mtp final-commit sweep (6 rows)
 
 - llama.cpp #29620 (2026-09-29, PR, same author's successor to #29619): fresh 4-variant sweep on the exact commits in this PR (12 960-token needle prompt, `--spec-draft-n-max 4`, ctx 16 384, KV q4_0, RTX 5070 Ti Laptop 12 GB, Qwen3-27B REAP192): MTP off 28.9, pure --cpu-mtp 36.7 (78.1% accept), hybrid 55.2 (78.1% accept), full-GPU MTP 58.7 (70.2% accept), plus the repeated 60 k ctx prior-campaign pair hybrid 40.8 vs pure 30.0 tok/s. Mined 6 rows; new build A/B group with interpretive note (page now 102 of 102); the #29619/#29620 pairs surface as contradictions, which is the point: prior sweep vs final-commit sweep on the same rig.
