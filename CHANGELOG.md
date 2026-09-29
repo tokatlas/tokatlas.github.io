@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: llama.cpp #29654 PCIe choke upper-bound mine (1 row)
+
+- llama.cpp #29654 (2026-09-29, issue): GPUs choking on PCIe (VK device lost) on a two-GPU rig (RTX 3090 on PCIe4 x16 + RX 7900 XT on PCIe4 x1) with Qwen3.8 27B Q8_0: mined 1 row recording the reported "decode speed drops drastically down to less than 1 t/s" as an upper-bound degradation value (not a benchmark), during the episode with 39 GiB/s TX+RX on the x16 lanes and 120K+ context restore after reboot as the most common trigger; model + context fully in VRAM. New hardware page "RTX 3090 + RX 7900 XT" (first two-GPU rig string).
+- 13:13 UTC pulse from the 12:21 watermarks: the #29654 mine above; llama.cpp #29655-#29656 (Gemma 4 tool-calling streaming bug, AGENTS.md revamp; 0 t/s); vLLM #59214-#59217 (Qwen4Exp SM100 decode GEMM plans, STT preprocessing docs, ShareGPT language-filter fix, multi-model tokenize RFC; 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-29: llama.cpp #29639 Vulkan sparse FA quantized-KV mine (8 rows)
 
 - llama.cpp #29639 (2026-09-29, PR): Vulkan sparse flash attention enabled for quantized K/V (Qwen3.8-Flash-Next QSA / DeepSeek-style sparse attention previously ran dense over the whole context with a quantized cache). Mined 8 rows from the interleaved decode table (4 KV depths x master+#29591 baseline vs PR build, q8_0 KV): depth 0 51.4 vs 51.6 t/s, 32k 38.9 vs 39.7 t/s (per-session +2.1%/-0.6%), 64k 27.9 vs 32.3 t/s (+15.6%, largest gain), 128k 20.6 vs 21.4 t/s (+4.1%); f16 cache and prompt processing unchanged, 16x minimum context/kept ratio threshold (upstream 2x regressed 4% at 16k). The table is not GPU-tagged; rows attributed to the R9700 rig (sanity-check section names R9700 first, 7900 XT second; threshold sweep stated as RDNA3/RDNA4), noted in the row notes. New build A/B group with interpretive note (page now 107 of 107).

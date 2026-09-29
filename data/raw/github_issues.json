@@ -1,5 +1,5 @@
 {
- "count": 578,
+ "count": 579,
  "records": [
   {
    "backend": "llama.cpp",
@@ -11796,6 +11796,29 @@
    "tg_tokens": null,
    "tps": 21.4,
    "ttft_s": null
+  },
+  {
+   "id": "lc-29654-3090-7900xt-pcie",
+   "backend": "llama.cpp",
+   "batch": null,
+   "ctx": 120000,
+   "date": "2026-09-29",
+   "hardware": "RTX 3090 + RX 7900 XT",
+   "model": "Qwen3.8-27B",
+   "quant": "Q8_0",
+   "tps": 1,
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "params": null,
+   "ram_gb": null,
+   "tg_tokens": null,
+   "notes": "PCIe bandwidth exhaustion on a two-GPU rig (RTX 3090 on PCIe4 x16, RX 7900 XT on PCIe4 x1): during the episode decode drops below 1 t/s (upper-bound value, not a benchmark), 39 GiB/s TX+RX on the x16 lanes; VK device lost before the bigger timeout; model + context fully in VRAM; 120K+ context scenario; first noticed since Qwen3.8-flash-next support, possibly coincidental; unified context, cache ram, mtp/dflash2 combinations tried without success",
+   "provenance": "community",
+   "quote": "Qwen3.8 27B Q8_0; RTX 3090  + RX 7900 XT; When the situation occurs the decode speed drops drastically down to less than 1 t/s.; The most common scenario is restoring big context (120K+) after reboot",
+   "retrieved": "2026-09-29",
+   "source_name": "llama.cpp issue #29654",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29654"
   }
  ],
  "source": {
