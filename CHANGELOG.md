@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: llama.cpp #29679 MMVQ RDNA3 driver fix mine (8 rows)
+
+- llama.cpp #29679 (2026-09-29, PR): Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 with the AMD proprietary driver; 5-7 column batches (spec decoding, multi-slot) were up to 7x slower (q4_K n=7 497 vs 71 us). RX 7900 XTX, Windows 11, driver 26.8.1 (LLPC), ThinkingCap-Qwen3.8-27B Q4_K_S, 64k ctx, KV q4_0, MTP draft, llama-server t/s per client (avg of 4 runs): control slot flat 81.5 vs 78.9 (noise), 2 slots 15.5 -> 45.6, 3 slots 10.6 -> 34.2, 1 slot n_max 5 26.7 -> 92.4. llama-bench ms/batch: Q4_K_S n=6 157.6 -> 31.3, n=7 256.6 -> 36.1; Q4_0 n=7 regresses 42.0 -> 46.4. New model page ThinkingCap-Qwen3.8-27B. New build A/B group with interpretive note (page now 109 of 109).
+- 20:50 UTC pulse from the 19:25 watermarks: no rows (llama.cpp #29676-#29678; vLLM #59287-#59301; all bugfix/CI/docs, 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-29: vLLM #59280 FlyDSL MQA-logits kernel mine (36 rows)
 
 - vLLM #59280 (2026-09-29, PR): opt-in FlyDSL prefill MQA-logits kernel for the sparse indexer on gfx950 (MI355X), behind VLLM_ROCM_USE_AITER_FLYDSL_MQA_LOGITS, vs the Gluon baseline on GLM-5.2-MXFP4, TP4. Mined 36 per-GPU throughput rows: ISL 60000 / OSL 600 at conc 4-32 (FlyDSL wins 1.1-1.6 pct, e.g. 5315.0 -> 5399.4 tput/GPU at conc 32; TTFT 2866.7 -> 2708.7 ms at conc 4) and ISL 8192 / OSL 1024 plus ISL 1024 / OSL 1024 at conc 4-256 (within noise; geomean over all 18 points 1560.4 -> 1558.5 tput/GPU, -0.1 pct). Kernel trace: prefill MQA-logits kernel time -35 pct (1.53x), same 16k chunk 153.4 -> 98.7 ms. Accuracy: GPQA Diamond 0.899 vs 0.884 single run, RULER niah 1.00 both arms at 64k/128k. New model page GLM-5.2 (MXFP4). New build A/B group with interpretive note (page now 108 of 108).

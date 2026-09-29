@@ -1377,6 +1377,28 @@ between builds of the same backend, see the
                     "the PR's real effect is accuracy, DAISY exact "
                     "match 5.9 pct to 8.3 pct against 8.4 pct for "
                     "official transformers.")
+        if (venue, issue) == ("llama.cpp", "29679"):
+            return ("Vulkan MMVQ: the 4-rows-per-workgroup policy was only "
+                    "applied at 8 columns on RDNA3 with the AMD proprietary "
+                    "driver, so 5-7 column batches (spec decoding, multi-slot "
+                    "serving) ran up to 7x slower (q4_K n=7: 497 vs 71 us). "
+                    "RX 7900 XTX, Windows 11, driver 26.8.1 (LLPC), Q4_K_S "
+                    "64k ctx KV q4_0 MTP draft, t/s per client over 4 runs. "
+                    "The control slot is flat "
+                    f"({val(rows,'lc-29679-7900xtx-control-master','tps')} vs "
+                    f"{val(rows,'lc-29679-7900xtx-control-pr','tps')}, "
+                    "noise: one master run hit 70.7, the rest matched). "
+                    "The broken batches jump: 2 slots "
+                    f"{val(rows,'lc-29679-7900xtx-2slot-master','tps')} -> "
+                    f"{val(rows,'lc-29679-7900xtx-2slot-pr','tps')}, 3 slots "
+                    f"{val(rows,'lc-29679-7900xtx-3slot-master','tps')} -> "
+                    f"{val(rows,'lc-29679-7900xtx-3slot-pr','tps')}, and the "
+                    "5-token draft batch "
+                    f"{val(rows,'lc-29679-7900xtx-nmax5-master','tps')} -> "
+                    f"{val(rows,'lc-29679-7900xtx-nmax5-pr','tps')}. The "
+                    "llama-bench ms-per-batch table shows the same shape: "
+                    "Q4_K_S n=6 157.6 -> 31.3 ms, n=7 256.6 -> 36.1 ms; one "
+                    "small regression, pure Q4_0 n=7 42.0 -> 46.4 ms.")
         if (venue, issue) == ("vLLM", "59280"):
             return ("ROCm FlyDSL prefill MQA-logits kernel for the "
                     "sparse indexer (gfx950, opt-in env flag) vs the "
