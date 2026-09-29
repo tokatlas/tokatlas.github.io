@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: llama.cpp #29635 prefix-LM regression mine (2 rows)
+
+- llama.cpp #29635 (2026-09-29, PR): prefix-LM attention mask for DFM Mimir HRM-Text models. Mined 2 rows from the "other models are unaffected" regression block: Llama-3.2-1B Q8_0 on a GTX 1060, llama-bench means of the last two of three alternating runs, master tg128 90.7 t/s (pp512 2381) versus PR build tg128 90.3 t/s (pp512 2380), a neutral performance check alongside the DAISY accuracy fix (5.9 pct to 8.3 pct exact match vs 8.4 pct official transformers). New hardware page GTX 1060; new build A/B group with interpretive note (page now 106 of 106).
+- 08:20 UTC pulse from the 07:17 watermarks: the #29635 mine above; llama.cpp #29634 + #29636 (graph_inputs collection, ggml-zdnn 0-row fix; 0 t/s); vLLM #59158-#59172 (sleep-mode offload batch, XPU DeepSeek V4 sparse decode, LoRA-per-logits bug, MoRIIO KV zeroing, sleep-mode docs, DFlash padding fix, int64 offsets, EPLB load balancer, Engram hooks, frontend error preservation, Engram device restrictions, Anthropic warnings; 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3006; HF leftovers still 401.
+
+
 ## 2026-09-29: vLLM #59151 CDNA2 mxfp4 TRITON_UNFUSED mine (2 rows)
 
 - vLLM #59151 (2026-09-29, issue): ROCm mxfp4 MoE backend-selection gap on pre-CDNA3 (gfx90a), reported after several days of clean operation. Mined 2 rows from the final environment reference: 4x AMD MI210 (64 GB HBM2e each, TP=4, 262K context config) running XiaomiMiMo/MiMo-V2.6-Flash-RL mxfp4 with explicit --moe-backend triton_unfused and a DFlash drafter: 31 tok/s single-stream decode and 160 tok/s aggregate across 32 concurrent streams, with needle-in-a-haystack retrieval verified at 1,038,700 tokens. New hardware page 4x AMD MI210; new build A/B group with interpretive note (page now 105 of 105).

@@ -1365,6 +1365,18 @@ between builds of the same backend, see the
                     "aggregate across 32 concurrent streams in a 262K-"
                     "context config whose needle retrieval was verified "
                     "at 1,038,700 tokens.")
+        if (venue, issue) == ("llama.cpp", "29635"):
+            return ("Prefix-LM attention-mask PR for DFM Mimir "
+                    "HRM-Text models, checked for collateral damage on "
+                    "a normal model: Llama-3.2-1B Q8_0 on a GTX 1060, "
+                    "llama-bench, means of the last two of three "
+                    "alternating runs. "
+                    f"Master {val(rows,'lc-29635-gtx1060-master','tps')} versus "
+                    f"PR {val(rows,'lc-29635-gtx1060-pr','tps')} t/s "
+                    "tg128 (pp512 2381 versus 2380), i.e. neutral; "
+                    "the PR's real effect is accuracy, DAISY exact "
+                    "match 5.9 pct to 8.3 pct against 8.4 pct for "
+                    "official transformers.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
