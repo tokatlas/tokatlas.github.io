@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: vLLM #59151 CDNA2 mxfp4 TRITON_UNFUSED mine (2 rows)
+
+- vLLM #59151 (2026-09-29, issue): ROCm mxfp4 MoE backend-selection gap on pre-CDNA3 (gfx90a), reported after several days of clean operation. Mined 2 rows from the final environment reference: 4x AMD MI210 (64 GB HBM2e each, TP=4, 262K context config) running XiaomiMiMo/MiMo-V2.6-Flash-RL mxfp4 with explicit --moe-backend triton_unfused and a DFlash drafter: 31 tok/s single-stream decode and 160 tok/s aggregate across 32 concurrent streams, with needle-in-a-haystack retrieval verified at 1,038,700 tokens. New hardware page 4x AMD MI210; new build A/B group with interpretive note (page now 105 of 105).
+- 07:17 UTC pulse from the 06:13 watermarks: the #59151 mine above; llama.cpp #29631-#29633 (hexagon FP32 GELU/GEGLU, tool init fixes, CUDA MMVF thin mul_mat; 0 t/s); vLLM #59146-#59150 + #59152-#59157 (Mamba sparse retention, GLM-5.3-Flash KDA dtype, Rust MiMo builder, POWER10 W4A16, sparse-indexer allocs, mimo_audio CUDA import bug, rust bench discrepancy, AITER relu2 tracking, workspace-scratch-on-sleep, cu129 image torch mismatch; 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3006; HF leftovers still 401.
+
+
 ## 2026-09-29: vLLM #59109 GLOO docker-bridge PP fix (11 rows) + #59112 FlashInfer packed KV (6 rows)
 
 - vLLM #59109 (2026-09-29, issue): in a single-container PP4 docker deployment the cpu:gloo control plane resolved the container hostname to the docker bridge IP, costing ~535 ms per control send and collapsing single-stream decode with context on DeepSeek-V4.1-Flash 764B EXL3 (4x NVIDIA CMP 170HX rig, PP4, DSpark, fp8_ds_mla KV, 1M ctx). Mined 11 rows from the before/after table of the GLOO_SOCKET_IFNAME=lo fix (single-stream decode, warm: 32K 57.0 to 60.7, 128K 46.7 to 58.3, 300K ~40 to 56.7, 524K 35.8 to 54.7 tok/s) plus the post-fix concurrency rows C8 200.6 / C16 199.4 / C24 252.1 decode tok/s. New build A/B group with interpretive note (page now 103 of 103); new hardware page 4× NVIDIA CMP 170HX (the earlier CMP 170HX rows come from #59054's "4x CMP 170HX" rig string).

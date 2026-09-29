@@ -1355,6 +1355,16 @@ between builds of the same backend, see the
                     "5 and reported capacity rises 2.2%; the 8192-in/1-out "
                     f"req/s pair moves {val(rows,'vllm-59112-b300-lbhnc-8k1','tps')} to "
                     f"{val(rows,'vllm-59112-b300-blhnc-8k1','tps')}.")
+        if (venue, issue) == ("vLLM", "59151"):
+            return ("CDNA2 (gfx90a) mxfp4 MoE on 4x MI210 running the "
+                    "TRITON_UNFUSED backend that ROCm auto-selection "
+                    "never offered: "
+                    f"{val(rows,'vllm-59151-mi210-triton-unfused-c1','tps')} tok/s "
+                    "single-stream decode with the DFlash drafter versus "
+                    f"{val(rows,'vllm-59151-mi210-triton-unfused-c32','tps')} tok/s "
+                    "aggregate across 32 concurrent streams in a 262K-"
+                    "context config whose needle retrieval was verified "
+                    "at 1,038,700 tokens.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
