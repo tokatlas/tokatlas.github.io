@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: llama.cpp #29639 Vulkan sparse FA quantized-KV mine (8 rows)
+
+- llama.cpp #29639 (2026-09-29, PR): Vulkan sparse flash attention enabled for quantized K/V (Qwen3.8-Flash-Next QSA / DeepSeek-style sparse attention previously ran dense over the whole context with a quantized cache). Mined 8 rows from the interleaved decode table (4 KV depths x master+#29591 baseline vs PR build, q8_0 KV): depth 0 51.4 vs 51.6 t/s, 32k 38.9 vs 39.7 t/s (per-session +2.1%/-0.6%), 64k 27.9 vs 32.3 t/s (+15.6%, largest gain), 128k 20.6 vs 21.4 t/s (+4.1%); f16 cache and prompt processing unchanged, 16x minimum context/kept ratio threshold (upstream 2x regressed 4% at 16k). The table is not GPU-tagged; rows attributed to the R9700 rig (sanity-check section names R9700 first, 7900 XT second; threshold sweep stated as RDNA3/RDNA4), noted in the row notes. New build A/B group with interpretive note (page now 107 of 107).
+- 10:17 UTC pulse from the 09:23 watermarks: the #29639 mine above; llama.cpp #29638 + #29640 (draft-token EOG stop, AOCL-BLAS docs; 0 t/s); vLLM #59188-#59202 (AMD CI bootstrap, GB200 DP4+EP NCCL reduce-scatter crash, Kimi K3 grammar, symmetric-memory rendezvous guard, mooncake auto-label, BLIP-2 ViT CUDA graph, Pixtral fused normalization, ECMooncakeConnector docs, DSv4.1 SWA replay, docker wheel alignment, WNA16 batch-invariant, workspace init refactor, ROCm CI path, Anthropic merge warning; 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-29: llama.cpp #29635 prefix-LM regression mine (2 rows)
 
 - llama.cpp #29635 (2026-09-29, PR): prefix-LM attention mask for DFM Mimir HRM-Text models. Mined 2 rows from the "other models are unaffected" regression block: Llama-3.2-1B Q8_0 on a GTX 1060, llama-bench means of the last two of three alternating runs, master tg128 90.7 t/s (pp512 2381) versus PR build tg128 90.3 t/s (pp512 2380), a neutral performance check alongside the DAISY accuracy fix (5.9 pct to 8.3 pct exact match vs 8.4 pct official transformers). New hardware page GTX 1060; new build A/B group with interpretive note (page now 106 of 106).

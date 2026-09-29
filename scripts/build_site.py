@@ -1377,6 +1377,23 @@ between builds of the same backend, see the
                     "the PR's real effect is accuracy, DAISY exact "
                     "match 5.9 pct to 8.3 pct against 8.4 pct for "
                     "official transformers.")
+        if (venue, issue) == ("llama.cpp", "29639"):
+            return ("Vulkan sparse flash attention extended to "
+                    "quantized K/V (Qwen3.8-Flash-Next QSA, q8_0 KV, "
+                    "decode at growing KV depth, 4 interleaved rounds "
+                    "against master + #29591). The body tags the "
+                    "sanity numbers for both R9700 and 7900 XT and "
+                    "the table is not GPU-tagged; rows here are "
+                    "attributed to the R9700 rig. Flat at depth 0 "
+                    f"({val(rows,'lc-29639-r9700-master-c0','tps')}/"
+                    f"{val(rows,'lc-29639-r9700-pr-c0','tps')}), noisy at 32k "
+                    f"({val(rows,'lc-29639-r9700-master-c32k','tps')}/"
+                    f"{val(rows,'lc-29639-r9700-pr-c32k','tps')}, +2.1%/-0.6% "
+                    "per session), the largest gain at 64k "
+                    f"({val(rows,'lc-29639-r9700-master-c64k','tps')}/"
+                    f"{val(rows,'lc-29639-r9700-pr-c64k','tps')}, +15.6%) and "
+                    f"{pct(rows,'lc-29639-r9700-master-c128k','lc-29639-r9700-pr-c128k','tps'):+.1f}% at 128k; "
+                    "f16 cache and prompt processing unchanged.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
