@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: vLLM #59280 FlyDSL MQA-logits kernel mine (36 rows)
+
+- vLLM #59280 (2026-09-29, PR): opt-in FlyDSL prefill MQA-logits kernel for the sparse indexer on gfx950 (MI355X), behind VLLM_ROCM_USE_AITER_FLYDSL_MQA_LOGITS, vs the Gluon baseline on GLM-5.2-MXFP4, TP4. Mined 36 per-GPU throughput rows: ISL 60000 / OSL 600 at conc 4-32 (FlyDSL wins 1.1-1.6 pct, e.g. 5315.0 -> 5399.4 tput/GPU at conc 32; TTFT 2866.7 -> 2708.7 ms at conc 4) and ISL 8192 / OSL 1024 plus ISL 1024 / OSL 1024 at conc 4-256 (within noise; geomean over all 18 points 1560.4 -> 1558.5 tput/GPU, -0.1 pct). Kernel trace: prefill MQA-logits kernel time -35 pct (1.53x), same 16k chunk 153.4 -> 98.7 ms. Accuracy: GPQA Diamond 0.899 vs 0.884 single run, RULER niah 1.00 both arms at 64k/128k. New model page GLM-5.2 (MXFP4). New build A/B group with interpretive note (page now 108 of 108).
+- 19:25 UTC pulse from the 18:33 watermarks: the #59280 mine above; llama.cpp #29675 (BF16 unary/GLU/binary/scale ops CPU+CUDA; 0 t/s); vLLM #59271-#59279 + #59281-#59286 (DSv4 VL dummy image, ThinkingBudgetStateHolder bugs, HiSparse GPU prefix copies, UMBP standalone/distributed modes, CuTe MoE SM107 default, Kimi K2.5/K3 mm normalization, Qwen4Exp QSA DCP, UMBP staged loading, HiSparse free queue, MiniMax-M3 tensor descriptors, LoRA adapter name rejection; 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-29: llama.cpp #29654 PCIe choke upper-bound mine (1 row)
 
 - llama.cpp #29654 (2026-09-29, issue): GPUs choking on PCIe (VK device lost) on a two-GPU rig (RTX 3090 on PCIe4 x16 + RX 7900 XT on PCIe4 x1) with Qwen3.8 27B Q8_0: mined 1 row recording the reported "decode speed drops drastically down to less than 1 t/s" as an upper-bound degradation value (not a benchmark), during the episode with 39 GiB/s TX+RX on the x16 lanes and 120K+ context restore after reboot as the most common trigger; model + context fully in VRAM. New hardware page "RTX 3090 + RX 7900 XT" (first two-GPU rig string).

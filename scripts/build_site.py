@@ -1377,6 +1377,25 @@ between builds of the same backend, see the
                     "the PR's real effect is accuracy, DAISY exact "
                     "match 5.9 pct to 8.3 pct against 8.4 pct for "
                     "official transformers.")
+        if (venue, issue) == ("vLLM", "59280"):
+            return ("ROCm FlyDSL prefill MQA-logits kernel for the "
+                    "sparse indexer (gfx950, opt-in env flag) vs the "
+                    "Gluon baseline, GLM-5.2-MXFP4, TP4 MI355X, "
+                    "per-GPU throughput. Same build for both runs; "
+                    "only the flag changes. At ISL 60000 / OSL 600 "
+                    "FlyDSL is the small winner (e.g. "
+                    f"{val(rows,'vllm-59280-mi355x-60k-gluon-c32','tps')} -> "
+                    f"{val(rows,'vllm-59280-mi355x-60k-flydsl-c32','tps')} tput/GPU "
+                    "at conc 32, TTFT 13285.8 -> 12848 ms); at "
+                    "8192-in/1024-out and 1024-in/"
+                    "1024-out the two kernels are within noise "
+                    f"(geomean over all 18 points 1560.4 -> 1558.5, "
+                    "-0.1 pct). The real gain is kernel-time: the "
+                    "prefill MQA-logits kernel drops 35 pct (1.53x) "
+                    "and the same 16k prefill chunk runs 153.4 -> "
+                    "98.7 ms. GPQA Diamond single-run 0.899 vs "
+                    "0.884 (stderr about 0.02), RULER niah 1.00 at "
+                    "64k and 128k both arms.")
         if (venue, issue) == ("llama.cpp", "29639"):
             return ("Vulkan sparse flash attention extended to "
                     "quantized K/V (Qwen3.8-Flash-Next QSA, q8_0 KV, "
