@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-29: llama.cpp #29620 cpu-mtp final-commit sweep (6 rows)
+
+- llama.cpp #29620 (2026-09-29, PR, same author's successor to #29619): fresh 4-variant sweep on the exact commits in this PR (12 960-token needle prompt, `--spec-draft-n-max 4`, ctx 16 384, KV q4_0, RTX 5070 Ti Laptop 12 GB, Qwen3-27B REAP192): MTP off 28.9, pure --cpu-mtp 36.7 (78.1% accept), hybrid 55.2 (78.1% accept), full-GPU MTP 58.7 (70.2% accept), plus the repeated 60 k ctx prior-campaign pair hybrid 40.8 vs pure 30.0 tok/s. Mined 6 rows; new build A/B group with interpretive note (page now 102 of 102); the #29619/#29620 pairs surface as contradictions, which is the point: prior sweep vs final-commit sweep on the same rig.
+- 00:26 UTC pulse from the 23:20 watermarks: llama.cpp #29620 mined above; vLLM #59104-#59106 (fill-in DSpark KV lookahead reallocation bug + two fix PRs, 0 t/s); ExLlamaV2 nothing above #821; forum nothing above #3006; HF leftovers still 401.
+
+
 ## 2026-09-28: llama.cpp #29619 cpu-mtp MTP drafter (6 rows)
 
 - llama.cpp #29619 (2026-09-28, PR): adds `--cpu-mtp`, keeping the MTP drafter block and its recurrent-state snapshots in host RAM (plus the hybrid recipe that pins the MTP block back to the GPU with `-ot`) so a 12 GB card can fit the target's KV cache. Mined 6 rows from the 4-variant needle sweep (12 960-token prompt, `--spec-draft-n-max 4`, ctx 16 384, KV q4_0, RTX 5070 Ti Laptop 12 GB, Qwen3-27B REAP192): MTP off 28.7, pure --cpu-mtp 31.1 (69.2% accept), hybrid 51.2 (72.4% accept), full-GPU MTP 62.5 (79.6% accept), plus the prior-campaign 60 k ctx pair hybrid 40.8 vs pure 30.0 tok/s. New build A/B group with interpretive note (page now 101 of 101); new RTX 5070 Ti Laptop 12 GB hardware page and Qwen3-27B model page.

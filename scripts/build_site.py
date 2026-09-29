@@ -1304,6 +1304,24 @@ between builds of the same backend, see the
                     f"({pct(rows,'lc-29619-rtx5070ti-cpu-mtp-c60k','lc-29619-rtx5070ti-hybrid-c60k','tps'):+.1f}%) "
                     "per the author's prior campaign, because the CPU-side "
                     "draft attention cost grows with context.")
+        if (venue, issue) == ("llama.cpp", "29620"):
+            return ("Fresh 4-variant sweep on the final commits of this "
+                    "PR, successor to #29619, whose prior sweep read "
+                    "28.7/31.1/51.2/62.5 tok/s. On the RTX 5070 Ti "
+                    "Laptop 12 GB with Qwen3-27B REAP192, 12 960-token "
+                    "needle, ctx 16 384, KV q4_0: pure --cpu-mtp moved "
+                    "up to "
+                    f"{val(rows,'lc-29620-rtx5070ti-cpu-mtp-c16k','tps')} "
+                    "tok/s while hybrid holds "
+                    f"{val(rows,'lc-29620-rtx5070ti-hybrid-c16k','tps')} vs "
+                    f"{val(rows,'lc-29620-rtx5070ti-mtp-full-c16k','tps')} tok/s "
+                    f"({pct(rows,'lc-29620-rtx5070ti-mtp-full-c16k','lc-29620-rtx5070ti-hybrid-c16k','tps'):+.1f}%) "
+                    "and MTP-off stays at "
+                    f"{val(rows,'lc-29620-rtx5070ti-mtp-off-c16k','tps')}; "
+                    "the 60 k ctx pair (hybrid "
+                    f"{val(rows,'lc-29620-rtx5070ti-hybrid-c60k','tps')} vs pure "
+                    f"{val(rows,'lc-29620-rtx5070ti-cpu-mtp-c60k','tps')} tok/s) is the "
+                    "author's prior campaign repeated in the body.")
         if (venue, issue) == ("vLLM", "40551"):
             return ("The reporter expected MRV2's draft-prob-aware sampling to "
                     f"help and got the opposite: at temperature 1, MRV2 "
