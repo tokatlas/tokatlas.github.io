@@ -1,5 +1,5 @@
 {
- "count": 623,
+ "count": 625,
  "records": [
   {
    "backend": "llama.cpp",
@@ -12831,6 +12831,52 @@
    "retrieved": "2026-09-29",
    "source_name": "llama.cpp PR #29679",
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/29679"
+  },
+  {
+   "backend": "vllm",
+   "batch": 128,
+   "ctx": 10000,
+   "date": "2026-09-30",
+   "hardware": "H200",
+   "model": "DeepSeek-V4.1-Flash",
+   "quant": "unspecified",
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "params": null,
+   "ram_gb": null,
+   "tg_tokens": null,
+   "provenance": "community",
+   "quote": "Repro environment: DeepSeek-V4.1-Flash, 8x H200 (SM90), vLLM 0.30.0,; random workload (10000 in / 5000 out), `--max-concurrency 128`.; | output throughput | 3972 (partial) | 4031.5 tok/s |",
+   "retrieved": "2026-09-30",
+   "source_name": "vLLM PR #59355",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59355",
+   "id": "vllm-59355-h200-oob-before",
+   "tps": 3972,
+   "notes": "Spec-decode residual-mass OOB fix, before arm: unpatched master build crashes at conc=128 (2/2 runs, 131/320 requests completed, 189 Internal Server Errors, cudaErrorIllegalAddress); 3972 tok/s is the partial-run output throughput; dspark spec config, 5 speculative tokens, block verification, adaptive verification; TP2 x DP4 + EP, vLLM 0.30.0 container; config=oob-before"
+  },
+  {
+   "backend": "vllm",
+   "batch": 128,
+   "ctx": 10000,
+   "date": "2026-09-30",
+   "hardware": "H200",
+   "model": "DeepSeek-V4.1-Flash",
+   "quant": "unspecified",
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "params": null,
+   "ram_gb": null,
+   "tg_tokens": null,
+   "provenance": "community",
+   "quote": "Repro environment: DeepSeek-V4.1-Flash, 8x H200 (SM90), vLLM 0.30.0,; random workload (10000 in / 5000 out), `--max-concurrency 128`.; | output throughput | 3972 (partial) | 4031.5 tok/s |",
+   "retrieved": "2026-09-30",
+   "source_name": "vLLM PR #59355",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59355",
+   "id": "vllm-59355-h200-oob-after",
+   "tps": 4031.5,
+   "notes": "Spec-decode residual-mass OOB fix, after arm: 12-line guard (tl.num_programs(0) bound on the draft_sampled+1 read), 1/1 clean, 320/320 requests, 0 errors; output throughput 4031.5 tok/s vs 3972 partial before; mean spec acceptance length 2.399 (n=54) vs 2.145 (n=23, early death); same deployment and workload, only the patch differs; config=oob-after"
   }
  ],
  "source": {

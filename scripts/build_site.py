@@ -1399,6 +1399,19 @@ between builds of the same backend, see the
                     "llama-bench ms-per-batch table shows the same shape: "
                     "Q4_K_S n=6 157.6 -> 31.3 ms, n=7 256.6 -> 36.1 ms; one "
                     "small regression, pure Q4_0 n=7 42.0 -> 46.4 ms.")
+        if (venue, issue) == ("vLLM", "59355"):
+            return ("Bug-fix pair, not a tuning win: the 12-line OOB guard in "
+                    "the block-verification residual-mass kernel removes the "
+                    "crash at concurrency 128 (unpatched: 2/2 runs died with "
+                    "cudaErrorIllegalAddress after 131/320 requests; patched: "
+                    "1/1 clean, 320/320) with no throughput cost - "
+                    f"{val(rows,'vllm-59355-h200-oob-before','tps')} tok/s on "
+                    "the partial before run vs "
+                    f"{val(rows,'vllm-59355-h200-oob-after','tps')} tok/s "
+                    "after, same random 10000-in/5000-out workload, dspark "
+                    "spec config on 8x H200 (TP2 x DP4 + EP). The mean "
+                    "speculative acceptance length also rose 2.145 -> 2.399, "
+                    "though the before arm died early (n=23 vs n=54).")
         if (venue, issue) == ("vLLM", "59280"):
             return ("ROCm FlyDSL prefill MQA-logits kernel for the "
                     "sparse indexer (gfx950, opt-in env flag) vs the "

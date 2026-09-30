@@ -1,5 +1,5 @@
 {
- "count": 3247,
+ "count": 3249,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -13799,6 +13799,54 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/29679",
    "tg_tokens": null,
    "tps": 92.4,
+   "ttft_s": null
+  },
+  {
+   "backend": "vllm",
+   "batch": 128,
+   "ctx": 10000,
+   "date": "2026-09-30",
+   "flags": [],
+   "hardware": "H200",
+   "id": "vllm-59355-h200-oob-before",
+   "model": "DeepSeek-V4.1-Flash",
+   "notes": "Spec-decode residual-mass OOB fix, before arm: unpatched master build crashes at conc=128 (2/2 runs, 131/320 requests completed, 189 Internal Server Errors, cudaErrorIllegalAddress); 3972 tok/s is the partial-run output throughput; dspark spec config, 5 speculative tokens, block verification, adaptive verification; TP2 x DP4 + EP, vLLM 0.30.0 container; config=oob-before",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "Repro environment: DeepSeek-V4.1-Flash, 8x H200 (SM90), vLLM 0.30.0,; random workload (10000 in / 5000 out), `--max-concurrency 128`.; | output throughput | 3972 (partial) | 4031.5 tok/s |",
+   "ram_gb": null,
+   "retrieved": "2026-09-30",
+   "source_name": "vLLM PR #59355",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59355",
+   "tg_tokens": null,
+   "tps": 3972,
+   "ttft_s": null
+  },
+  {
+   "backend": "vllm",
+   "batch": 128,
+   "ctx": 10000,
+   "date": "2026-09-30",
+   "flags": [],
+   "hardware": "H200",
+   "id": "vllm-59355-h200-oob-after",
+   "model": "DeepSeek-V4.1-Flash",
+   "notes": "Spec-decode residual-mass OOB fix, after arm: 12-line guard (tl.num_programs(0) bound on the draft_sampled+1 read), 1/1 clean, 320/320 requests, 0 errors; output throughput 4031.5 tok/s vs 3972 partial before; mean spec acceptance length 2.399 (n=54) vs 2.145 (n=23, early death); same deployment and workload, only the patch differs; config=oob-after",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "Repro environment: DeepSeek-V4.1-Flash, 8x H200 (SM90), vLLM 0.30.0,; random workload (10000 in / 5000 out), `--max-concurrency 128`.; | output throughput | 3972 (partial) | 4031.5 tok/s |",
+   "ram_gb": null,
+   "retrieved": "2026-09-30",
+   "source_name": "vLLM PR #59355",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59355",
+   "tg_tokens": null,
+   "tps": 4031.5,
    "ttft_s": null
   },
   {
@@ -78588,5 +78636,5 @@
    "ttft_s": 1.2
   }
  ],
- "retrieved": "2026-09-29"
+ "retrieved": "2026-09-30"
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-30: vLLM #59355 spec-decode OOB fix mine (2 rows)
+
+- vLLM #59355 (2026-09-30, PR): before/after verification of the 12-line OOB guard in the block-verification residual-mass kernel (draft_sampled[logit_idx+1] past-the-end read on the last expanded logit). DeepSeek-V4.1-Flash on 8x H200 (SM90), TP2 x DP4 + EP, vLLM 0.30.0, dspark spec config (5 speculative tokens, block verification, adaptive verification), random 10000-in/5000-out workload at --max-concurrency 128. Before (unpatched): 2/2 runs crashed with cudaErrorIllegalAddress after 131/320 requests, 3972 tok/s partial. After (patched): 1/1 clean, 320/320, 4031.5 tok/s; mean acceptance length 2.399 (n=54) vs 2.145 (n=23). New build A/B group with interpretive note (page now 110 of 110).
+- 03:37 UTC pulse from the 02:43 watermarks: 1 mine above (vLLM #59355); llama.cpp #29688-#29690 (ggml-alloc NULL buffer, sleep-idle request bug, json-schema-to-grammar unbounded nesting crash, 0 t/s); vLLM #59350-#59358 rest no t/s (KV connector x2, Hopper NVSwitch NCCL doc, XPU nightly wheel, predicted-length scheduling feature, jit_monitor, shared-memory MM cache auth, MRV2 sampling mask replay); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-29: llama.cpp #29679 MMVQ RDNA3 driver fix mine (8 rows)
 
 - llama.cpp #29679 (2026-09-29, PR): Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 with the AMD proprietary driver; 5-7 column batches (spec decoding, multi-slot) were up to 7x slower (q4_K n=7 497 vs 71 us). RX 7900 XTX, Windows 11, driver 26.8.1 (LLPC), ThinkingCap-Qwen3.8-27B Q4_K_S, 64k ctx, KV q4_0, MTP draft, llama-server t/s per client (avg of 4 runs): control slot flat 81.5 vs 78.9 (noise), 2 slots 15.5 -> 45.6, 3 slots 10.6 -> 34.2, 1 slot n_max 5 26.7 -> 92.4. llama-bench ms/batch: Q4_K_S n=6 157.6 -> 31.3, n=7 256.6 -> 36.1; Q4_0 n=7 regresses 42.0 -> 46.4. New model page ThinkingCap-Qwen3.8-27B. New build A/B group with interpretive note (page now 109 of 109).
