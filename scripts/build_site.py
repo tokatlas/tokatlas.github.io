@@ -1399,6 +1399,20 @@ between builds of the same backend, see the
                     "llama-bench ms-per-batch table shows the same shape: "
                     "Q4_K_S n=6 157.6 -> 31.3 ms, n=7 256.6 -> 36.1 ms; one "
                     "small regression, pure Q4_0 n=7 42.0 -> 46.4 ms.")
+        if (venue, issue) == ("vLLM", "59434"):
+            return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
+                    "ZenDNN fast routed MoE path eligible. bf16 expert scales "
+                    "failed the f32-only eligibility gate and silently used the "
+                    "generic per-expert path; the f32 arm takes the fast path. "
+                    "Measured totals are within run noise: "
+                    f"{val(rows,'vllm-59434-zen5-before-s8','tps')} -> "
+                    f"{val(rows,'vllm-59434-zen5-after-s8','tps')} at max-num-seqs "
+                    "8 and "
+                    f"{val(rows,'vllm-59434-zen5-before-s32','tps')} -> "
+                    f"{val(rows,'vllm-59434-zen5-after-s32','tps')} at 32 total "
+                    "tok/s (vllm bench throughput counts input plus output). "
+                    "The point of the PR is eligibility, not a measured "
+                    "speedup.")
         if (venue, issue) == ("vLLM", "59367"):
             return ("Bug-fix validation, three configurations on the same "
                     "4x H200 NVL DCP4 deployment (GLM-5.3-NVFP4, MTP 3, "

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-09-30: vLLM #59434 Zen CPU f32 expert scales mine (4 rows)
+
+- vLLM #59434 (2026-09-30, PR): ZenCPUExpertsInt8 now passes f32 expert scales to the ZenDNN fused MoE executor instead of bf16 (which silently failed the f32-only eligibility gate and fell back to the generic per-expert path). Throughput measured on AMD Zen 5 (Turin, 32 cores pinned to one NUMA node, new hardware page), gpt-oss 20B BF16-w8a8 (existing model page), vllm bench throughput random 128/128, 256 prompts: max-num-seqs 8 154.23 (bf16) vs 155.21 (f32) total tok/s; max-num-seqs 32 369.79 vs 365.74. Measured within run noise either way; the fix is about reaching the fast path. New build A/B group with interpretive note (page now 112 of 112).
+
+
 ## 2026-09-30: vLLM #59367 DCP top-k merge scratch reserve mine (11 rows)
 
 - vLLM #59367 (2026-09-30, PR): serving validation for reserving the sparse-indexer DCP top-k merge scratch through the workspace manager (fixes #59317), paired with the CUDA-graph pool estimate fix. GLM-5.3-NVFP4, 4x H200 NVL (new hardware page), TP4 DCP4 EP, MTP 3, fp8_ds_mla, max-model-len 786432, nightly af7f9488c. Prefill: fresh 8x32768 5092 patched vs 5129 unpatched production image (same night); 2x131072 4941 vs 4988. Decode single samples: N=1 110.7, N=8 329.8, N=32 761.1 patched (unpatched ranged 263-317 / 701-838 across seven boots; no decode change claimed). Second boot with ESTIMATE_CUDAGRAPHS=0 and only the merge-scratch fix (the combination that OOMed before): 8x32768 5103, decode 119.1 / 279.2 / 823.9, 0.8 GiB free per GPU. Sister PR #59368 carries the identical sweep, not re-mined. New build A/B group with interpretive note (page now 111 of 111).
