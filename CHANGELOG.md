@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-30: vLLM #59367 DCP top-k merge scratch reserve mine (11 rows)
+
+- vLLM #59367 (2026-09-30, PR): serving validation for reserving the sparse-indexer DCP top-k merge scratch through the workspace manager (fixes #59317), paired with the CUDA-graph pool estimate fix. GLM-5.3-NVFP4, 4x H200 NVL (new hardware page), TP4 DCP4 EP, MTP 3, fp8_ds_mla, max-model-len 786432, nightly af7f9488c. Prefill: fresh 8x32768 5092 patched vs 5129 unpatched production image (same night); 2x131072 4941 vs 4988. Decode single samples: N=1 110.7, N=8 329.8, N=32 761.1 patched (unpatched ranged 263-317 / 701-838 across seven boots; no decode change claimed). Second boot with ESTIMATE_CUDAGRAPHS=0 and only the merge-scratch fix (the combination that OOMed before): 8x32768 5103, decode 119.1 / 279.2 / 823.9, 0.8 GiB free per GPU. Sister PR #59368 carries the identical sweep, not re-mined. New build A/B group with interpretive note (page now 111 of 111).
+- 05:21 UTC pulse from the 03:37 watermarks: 1 mine above (vLLM #59367; #59368 parked as the identical-sweep sister PR); llama.cpp #29691-#29696 (0 t/s); vLLM #59359-#59381 rest no clean tables (#59362 FA4 num_splits SM90 48% slower decode is a bug report with no bench table); ExLlamaV2 nothing above #821; forum nothing above #3012; HF leftovers still 401.
+
+
 ## 2026-09-30: vLLM #59355 spec-decode OOB fix mine (2 rows)
 
 - vLLM #59355 (2026-09-30, PR): before/after verification of the 12-line OOB guard in the block-verification residual-mass kernel (draft_sampled[logit_idx+1] past-the-end read on the last expanded logit). DeepSeek-V4.1-Flash on 8x H200 (SM90), TP2 x DP4 + EP, vLLM 0.30.0, dspark spec config (5 speculative tokens, block verification, adaptive verification), random 10000-in/5000-out workload at --max-concurrency 128. Before (unpatched): 2/2 runs crashed with cudaErrorIllegalAddress after 131/320 requests, 3972 tok/s partial. After (patched): 1/1 clean, 320/320, 4031.5 tok/s; mean acceptance length 2.399 (n=54) vs 2.145 (n=23). New build A/B group with interpretive note (page now 110 of 110).

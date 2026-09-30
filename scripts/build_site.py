@@ -1399,6 +1399,28 @@ between builds of the same backend, see the
                     "llama-bench ms-per-batch table shows the same shape: "
                     "Q4_K_S n=6 157.6 -> 31.3 ms, n=7 256.6 -> 36.1 ms; one "
                     "small regression, pure Q4_0 n=7 42.0 -> 46.4 ms.")
+        if (venue, issue) == ("vLLM", "59367"):
+            return ("Bug-fix validation, three configurations on the same "
+                    "4x H200 NVL DCP4 deployment (GLM-5.3-NVFP4, MTP 3, "
+                    "fp8_ds_mla). Prefill (fresh, longer context is slightly "
+                    "slower in all arms): 8x32768 "
+                    f"{val(rows,'vllm-59367-h200nvl-bothfix-pp-c32k','pp_tps')} "
+                    "patched vs "
+                    f"{val(rows,'vllm-59367-h200nvl-unpatched-pp-c32k','pp_tps')} "
+                    "on the unpatched production image the same night (within "
+                    "noise, the fix is about memory reservation, not speed); "
+                    "2x131072 "
+                    f"{val(rows,'vllm-59367-h200nvl-bothfix-pp-c131k','pp_tps')} "
+                    "vs "
+                    f"{val(rows,'vllm-59367-h200nvl-unpatched-pp-c131k','pp_tps')}"
+                    "Decode figures are single samples; across seven boots of "
+                    "the unpatched image N=8 ranged 263 to 317 and N=32 701 to "
+                    "838, so no decode change is claimed either way. The "
+                    "est0 rows are the second boot with "
+                    "VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0 and only the "
+                    "merge-scratch fix - the combination that OOMed before, "
+                    "now clean with 0.8 GiB free per GPU. Sister PR #59368 "
+                    "carries the identical sweep and was not re-mined.")
         if (venue, issue) == ("vLLM", "59355"):
             return ("Bug-fix pair, not a tuning win: the 12-line OOB guard in "
                     "the block-verification residual-mass kernel removes the "
