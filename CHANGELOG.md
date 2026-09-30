@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (64 rows)
+
+- llama.cpp #29768 (PR): CUDA graph repeated-warmup avoidance. RTX 5090 (CC 12.0, Windows, CUDA 12.9), Qwen3.8-27B Q4_K_M, F16 KV, llama-batched-bench -c 131072 -npp 15872 -ntg 512 -npl 8 -kvu: decode TPS 295.80 (without) vs 299.82 (with), +1.14% (95% CI +0.44% to +1.84%). 2 rows.
+- vLLM #59489 (PR): Rust vllm-bench openai-responses backend parity. RTX 3070, Qwen3-0.6B with reasoning parser, bench serve random 512/128 c16, 200 prompts: output throughput Rust 1676-1680 vs Python 1671-1673 tok/s, 200/200 both, TPOT/ITL within noise. 2 rows, new model page.
+- vLLM #59488 (draft PR): DeepSeek-V4.1-Flash MXFP4 MoE backend default change on 8x H200. Marlin (W4A16) vs Humming (per-token FP8, indexed GEMM), 6 layouts (TP8, TP8+EP, DP8+EP, TP2xDP4+EP, TP4xDP2+EP, P/D 1P1D) x 5 workloads (decode c1/c32/c128, 8K and 32K prompts), bench serve random, output tok/s single runs: 60 rows. Humming wins up to +28.5% at c128 and +35.9% on 8K prompts; c1/c32 within noise, P/D c32 decode leg -3.6%.
+- Three new build A/B groups with interpretive notes (page now 115 of 115).
+
+
 ## 2026-09-30: vLLM #59434 Zen CPU f32 expert scales mine (4 rows)
 
 - vLLM #59434 (2026-09-30, PR): ZenCPUExpertsInt8 now passes f32 expert scales to the ZenDNN fused MoE executor instead of bf16 (which silently failed the f32-only eligibility gate and fell back to the generic per-expert path). Throughput measured on AMD Zen 5 (Turin, 32 cores pinned to one NUMA node, new hardware page), gpt-oss 20B BF16-w8a8 (existing model page), vllm bench throughput random 128/128, 256 prompts: max-num-seqs 8 154.23 (bf16) vs 155.21 (f32) total tok/s; max-num-seqs 32 369.79 vs 365.74. Measured within run noise either way; the fix is about reaching the fast path. New build A/B group with interpretive note (page now 112 of 112).

@@ -1399,6 +1399,39 @@ between builds of the same backend, see the
                     "llama-bench ms-per-batch table shows the same shape: "
                     "Q4_K_S n=6 157.6 -> 31.3 ms, n=7 256.6 -> 36.1 ms; one "
                     "small regression, pure Q4_0 n=7 42.0 -> 46.4 ms.")
+        if (venue, issue) == ("vLLM", "59488"):
+            return ("MoE backend A/B for DeepSeek-V4.1-Flash (MXFP4) on 8x "
+                    "H200, six serving layouts, single runs. Marlin "
+                    "(today's default, W4A16 BF16 activations) vs the PR's "
+                    "new default: Humming MoE with per-token FP8 "
+                    "activations and the indexed GEMM. Humming wins clearly "
+                    "at high-concurrency decode and on long prompts "
+                    f"(up to {val(rows,'vllm-59488-h200-tp4dp2ep-c128-marlin','tps')} -> "
+                    f"{val(rows,'vllm-59488-h200-tp4dp2ep-c128-humming','tps')} output "
+                    "tok/s at c128 on TP2\u00d7DP4+EP, +28.5%), while c1 and "
+                    "c32 are mostly within noise and the P/D 1P1D c32 decode "
+                    "leg regresses "
+                    f"{val(rows,'vllm-59488-h200-pd1p1d-c32-marlin','tps')} -> "
+                    f"{val(rows,'vllm-59488-h200-pd1p1d-c32-humming','tps')} "
+                    "(-3.6%, within the author's ±5% noise band for P/D "
+                    "layouts). Draft PR; the author treats ±3% on TP-only "
+                    "layouts as noise.")
+        if (venue, issue) == ("vLLM", "59489"):
+            return ("Backend parity A/B: the Rust vllm-bench port of the "
+                    "openai-responses backend vs Python vllm bench serve. "
+                    f"Rust: {val(rows,'vllm-59489-rtx3070-rust','tps')}-1680, "
+                    f"Python: {val(rows,'vllm-59489-rtx3070-python','tps')}-1673 "
+                    "output tok/s over three runs, 200/200 requests each, "
+                    "with TPOT/ITL within run noise. The point of the PR is "
+                    "parity for the Responses API, not a speedup.")
+        if (venue, issue) == ("llama.cpp", "29768"):
+            return ("Decode TPS on RTX 5090 with an 8-sequence unified 128K "
+                    "KV cache. The patch recaptures a changed CUDA graph "
+                    "instead of resetting warmup every time the padded KV "
+                    f"length steps. {val(rows,'lc-29768-rtx5090-pre','tps')} -> "
+                    f"{val(rows,'lc-29768-rtx5090-post','tps')} tok/s, +1.14%, "
+                    "mean of 10 paired per-repetition changes (95% CI "
+                    "+0.44% to +1.84%).")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "
