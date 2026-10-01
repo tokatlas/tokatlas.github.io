@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 + #29779 mine (72 rows)
+## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 + #29779 mine (72 rows) + #29768 rebuild
 
 - llama.cpp #29820 (issue): ROCm/HIP patch lowering MMVQ_MAX_BATCH_SIZE from 8 to 4 for gfx1201. Radeon AI PRO R9700, Qwopus3.8-27B-Flash-V2 Q4_K_M (new model page), llama-batched-bench -c 32768 -npp 512 -ntg 128, -ctk q8_0 -ctv q4_0, stock vs patched TG t/s at 1/2/4/5/6/8/16 sequences: flat at 1/2/4/16, +13% at 5 (81.1 to 91.8), +24% at 6 (84.4 to 104.9), +44% at 8 (88.6 to 127.3). Perplexity unchanged. 14 rows.
 - llama.cpp #29809 (PR): SYCL MXFP4 MoE arithmetic decoding + weight reordering. Intel Arc Pro B70, gpt-oss: 20B decode on one card 55.84 to 106.64 tok/s (1.91x, 5 reps), 120B decode on two cards 33.27 to 67.14 (2.02x, 2 reps), 120B prompt processing 594.5 to 600.1. Windows 11, oneAPI 2026.0, EPYC 7402P host, FA on. 6 rows.
@@ -10,6 +10,7 @@
 - llama.cpp #29824 (PR): qwen4exp mask construction repeats rows instead of 1-element seeds (slow graph on Metal). M2 Ultra, Qwen3.8-Flash-Next GGUF, batched-bench B=1 ntg=32, ctx 2048 to 65536. Prompt processing recovers the #29751 long-context regression and beats pre-#29751: 65536 528.55 to 754.63 (pre was 690.15), 32768 637.29 to 781.91. Decode roughly flat. 12 rows.
 - llama.cpp #29779 (PR): Hexagon matmul flattened 3D to 2D to run on HMX instead of HVX. IQ-9075 (new hardware page), llama-batched-bench -c 4096 -npp 128 -ntg 32, npl 1/2/4. Qwen3.5-2B Q4_0 (new model page): flat at 1 sequence, pp128 x2 452.70 to 719.49 (+58.9%), x4 445.93 to 703.51 (+57.8%), decode +2%. LFM2-2.6B Q4_0 (new model page): flat at 1 sequence, pp128 x2 209.92 to 687.22 (+227.4%), x4 209.26 to 679.47 (+224.7%), decode +2%. 24 rows.
 - Eight new build A/B groups with interpretive notes (page now 124 of 124).
+- llama.cpp #29768 rebuilt after a second same-day upstream rewrite: the old npl8-only paragraph (295.80 to 299.82) was replaced by a 5-arm table (npl 8/6/4/2/1, warmup-reset counts, 95% CIs). The 2 stale rows were dropped and replaced by 10 rows: npl 8 296.0 to 300.3 (+1.28%), npl 6 230.4 to 232.0 (+0.85%), npl 4 182.3 to 184.3 (+0.93%), npl 2 102.5 to 102.9 (+0.27%), npl 1 54.5 to 54.3 (-0.30%). The rewritten body names the model only as qwen35 (the llama.cpp internal name; the earlier revision said Qwen3.8-27B Q4_K_M), so the rows moved to a qwen35 model page.
 
 ## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
