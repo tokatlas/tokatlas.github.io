@@ -1,9 +1,14 @@
 # Changelog
 
-## 2026-10-01: vLLM #59668 mine (24 rows)
+## 2026-10-01: vLLM #59668 + #59653 + #59567 + #59520 + #59548 mine (63 rows)
 
 - vLLM #59668 (PR): single-launch DSA decode candidate mask on ROCm. MI355X, DeepSeek V4.1 (new model page), TP4 + EP, FP8, vllm bench serve output throughput at 12 input/output x concurrency points, stock four-kernel mask vs fused single kernel: mean +0.44% throughput, -0.48% TPOT; e.g. 8192/1024 c16 1262.90 to 1273.77, c256 3814.25 to 3827.03, 128000/1024 c4 185.73 to 186.21. Kernel-level mask speedups 1.06x to 2.50x. GSM8K unchanged within error. 24 rows.
 - One new build A/B group with interpretive note (page now 125 of 125).
+- vLLM #59653 (PR): fused sparse-layer decode for MiniMax-M3 on ROCm via AITER (one kernel per sparse MoE layer, TP all-reduces inside). 4x MI350X (new hardware page), MXFP4, TP4, FP8 KV. Decode 8K/256 output tok/s unfused -> fused: c1 141 -> 254 (1.95x, TPOT 6.14 -> 3.15 ms), c2 254 -> 405, c4 415 -> 574, c8 599 -> 682, c16 825 -> 910. Serving 128K/1K: c2 157 -> 195 (+24%), c4 206 -> 243, c8 246 -> 273. GSM8K 0.948 both ways. 16 rows.
+- vLLM #59567 (PR): batch sampling-mask transport. GB300, Qwen3-8B, c=256, output tok/s with no mask / stock mask path / this PR: 1024/1024 16515 / 15705 (-4.9%) / 16364 (-0.9%); 256/256 25515 / 23488 (-7.9%) / 24811 (-2.8%); 256/256 wide (50 ids/token) 25781 / 21249 (-17.6%) / 22873 (-11.3%). 9 rows.
+- vLLM #59520 (issue): default CUDA GDN wrapper regresses non-spec Qwen3.5 decode. 2x H200 TP2, Qwen3.5-9B BF16, throughput bench 200 requests / 204,800 output tokens, CUDA default -> Triton: sparse prefix retention 1426.638 -> 1859.655 (+30.35%), dense 1536.536 -> 2069.343 (+34.68%). vLLM 0.29.0. 4 rows.
+- vLLM #59548 (issue): spec-decode boot-to-boot dispersion. Qwen3-4B + DFlash-b16 drafter, concurrency 1, mean of 12 boots per arm. L4, vLLM 0.29.0: CUDA-graph default vs enforce-eager 39.2 vs 80.5 (ratio 0.487, CV 13.92%) and 61.2 vs 79.7 (0.768, 3.73%); vLLM 0.30.0 reaches parity: 82.8 vs 81.6 (1.014) and 78.2 vs 77.0 (1.017). A10 on 0.29.0 nearly immune: 132.6 vs 138.3 (0.959). 10 rows.
+- Five new build A/B groups with interpretive notes (page now 129 of 129).
 
 ## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 + #29779 mine (72 rows) + #29768 rebuild
 

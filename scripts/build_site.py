@@ -1447,6 +1447,91 @@ between builds of the same backend, see the
                     "sweep points (no single point moves more than 1%); the "
                     "mask kernel alone is 1.06x to 2.50x faster on MI355X. "
                     "GSM8K unchanged within error.")
+        if (venue, issue) == ("vLLM", "59653"):
+            dec = ", ".join(
+                f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "
+                f"{val(rows,f'vllm-59653-mi350x-dec-c{c}-on','tps'):g}"
+                for c in ("1", "2", "4", "8", "16"))
+            srv = ", ".join(
+                f"c{c} {val(rows,f'vllm-59653-mi350x-srv-c{c}-off','tps'):g} -> "
+                f"{val(rows,f'vllm-59653-mi350x-srv-c{c}-on','tps'):g}"
+                for c in ("2", "4", "8"))
+            return ("Fused sparse-layer decode via AITER on 4x MI350X "
+                    "(MiniMax-M3 MXFP4, TP4, FP8 KV): each of the 57 sparse "
+                    "MoE layers runs as one kernel launch with both TP "
+                    "all-reduces inside the kernel, on pure decode steps of "
+                    "up to 16 tokens. Output tok/s, unfused -> fused. Decode "
+                    f"8K/256: {dec} (1.95x at c1, TPOT 6.14 -> 3.15 ms). "
+                    f"Serving 128K/1K: {srv} (+24% at c2). The gain shrinks "
+                    "with concurrency because launches stop dominating. "
+                    "GSM8K 0.948 both ways.")
+        if (venue, issue) == ("vLLM", "59567"):
+            pts = [("p1024", "1024/1024"), ("p256", "256/256"),
+                   ("p256wide", "256/256 wide (50 ids/token)")]
+            segs = []
+            for pid, label in pts:
+                segs.append(
+                    f"{label}: no mask "
+                    f"{val(rows,f'vllm-59567-gb300-{pid}-base','tps'):g}, stock "
+                    f"{val(rows,f'vllm-59567-gb300-{pid}-stock','tps'):g}, "
+                    f"branch "
+                    f"{val(rows,f'vllm-59567-gb300-{pid}-branch','tps'):g}")
+            return ("Sampling-mask transport cost A/B on one GB300 "
+                    "(Qwen3-8B, c=256, median of 2 passes). The PR moves "
+                    "mask work from per-request to per-step batches. Output "
+                    "tok/s, no mask / stock mask path / this PR: "
+                    + "; ".join(segs) + ". The stock mask path costs 4.9% "
+                    "(narrow) to 17.6% (wide); the PR cuts that to 0.9% to "
+                    "11.3%. Most of the removed cost was CPU-side: msgspec "
+                    "encode/decode hooks, per-row CSR build, and pydantic "
+                    "re-validation of the mask lists.")
+        if (venue, issue) == ("vLLM", "59520"):
+            return ("GDN decode kernel dispatch A/B on 2x H200 (Qwen3.5-9B "
+                    "BF16, non-speculative decode, one sequential 2x2). The "
+                    "default CUDA fused-norm wrapper only helps "
+                    "speculative/MTP batches; for pure decode the Triton "
+                    "path is faster. Output tok/s, CUDA default -> Triton: "
+                    "sparse retention "
+                    f"{val(rows,'vllm-59520-h200-sparse-cuda','tps')} -> "
+                    f"{val(rows,'vllm-59520-h200-sparse-triton','tps')} "
+                    "(+30.35%), dense retention "
+                    f"{val(rows,'vllm-59520-h200-dense-cuda','tps')} -> "
+                    f"{val(rows,'vllm-59520-h200-dense-triton','tps')} "
+                    "(+34.68%). Measured on vLLM 0.29.0; the reporter did "
+                    "not rerun current main, but the same dispatch is still "
+                    "in the source.")
+        if (venue, issue) == ("vLLM", "59548"):
+            if hw == "A10":
+                return ("Spec-decode boot-to-boot dispersion A/B, Qwen3-4B "
+                        "with a DFlash-b16 drafter, concurrency 1, mean of "
+                        "12 boots per arm, vLLM 0.29.0 on an A10. "
+                        "CUDA-graph default vs --enforce-eager: "
+                        f"{val(rows,'vllm-59548-a10-e-default','tps')} vs "
+                        f"{val(rows,'vllm-59548-a10-e-eager','tps')} tok/s "
+                        "(ratio 0.959, CV 2.08%). The same config on L4 "
+                        "lost up to half its throughput to boot luck; the "
+                        "A10 is nearly immune, and the reporter suspects "
+                        "memory pressure (the L4's 22.03 GiB usable sits "
+                        "right at this config's ceiling).")
+            return ("Spec-decode boot-to-boot dispersion A/B, Qwen3-4B with "
+                    "a DFlash-b16 drafter, concurrency 1, mean of 12 boots "
+                    "per arm on one L4. CUDA-graph default vs "
+                    "--enforce-eager, vLLM 0.29.0: session A "
+                    f"{val(rows,'vllm-59548-l4-a-default','tps')} vs "
+                    f"{val(rows,'vllm-59548-l4-a-eager','tps')} tok/s "
+                    "(ratio 0.487, CV 13.92%), session B "
+                    f"{val(rows,'vllm-59548-l4-b-default','tps')} vs "
+                    f"{val(rows,'vllm-59548-l4-b-eager','tps')} (ratio "
+                    "0.768, CV 3.73%). vLLM 0.30.0 reaches parity: session "
+                    f"C {val(rows,'vllm-59548-l4-c-default','tps')} vs "
+                    f"{val(rows,'vllm-59548-l4-c-eager','tps')} (1.014, CV "
+                    f"0.99%), session D {val(rows,'vllm-59548-l4-d-default','tps')} "
+                    f"vs {val(rows,'vllm-59548-l4-d-eager','tps')} (1.017, "
+                    "CV 1.61%). The eager arm is stable everywhere, which "
+                    "is what makes it usable as a control; acceptance length "
+                    "is flat, so this is throughput, not acceptance. Same "
+                    "config, same container, different boots: the "
+                    "dispersion itself is not reproducible.")
         if (venue, issue) == ("llama.cpp", "29768"):
             return ("CUDA graph warmup fix: recapture a changed graph once "
                     "instead of resetting warmup at every padded-KV length "
