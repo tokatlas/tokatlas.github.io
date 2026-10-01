@@ -1485,6 +1485,23 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29807-pro6000b-mtp-pr','tps')} t/s "
                     "(1.035x, faster on 80 of 80 prompts, acceptance 0.777 "
                     "identical on both builds).")
+        if (venue, issue) == ("llama.cpp", "29769"):
+            return ("Unified decode masks built in one cache scan (sequence "
+                    "membership bits, batches of 4+ tokens with one token "
+                    "per sequence). RTX 5090, Qwen3.8-27B Q4_K_M, F16 KV. "
+                    "The fast path (llama-batched-bench -c 131072 -npp 15872 "
+                    "-ntg 512 -npl 8) medians "
+                    f"{val(rows,'lc-29769-rtx5090-npl8-before','tps')} -> "
+                    f"{val(rows,'lc-29769-rtx5090-npl8-after','tps')} tok/s, "
+                    "+5.77% (95% CI +5.11% to +6.43%, mean of 10 paired "
+                    "per-repetition changes). The sanity runs do not "
+                    "trigger the fast path and move within noise: pp512 "
+                    f"{val(rows,'lc-29769-rtx5090-pp512-before','pp_tps')} -> "
+                    f"{val(rows,'lc-29769-rtx5090-pp512-after','pp_tps')} "
+                    "(-0.33%), tg128 "
+                    f"{val(rows,'lc-29769-rtx5090-tg128-before','tps')} -> "
+                    f"{val(rows,'lc-29769-rtx5090-tg128-after','tps')} "
+                    "(-0.23%); perplexity 6.1814 unchanged.")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "

@@ -1,11 +1,12 @@
 # Changelog
 
-## 2026-10-01: llama.cpp #29820 + #29809 + #29807 mine (26 rows)
+## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 mine (32 rows)
 
 - llama.cpp #29820 (issue): ROCm/HIP patch lowering MMVQ_MAX_BATCH_SIZE from 8 to 4 for gfx1201. Radeon AI PRO R9700, Qwopus3.8-27B-Flash-V2 Q4_K_M (new model page), llama-batched-bench -c 32768 -npp 512 -ntg 128, -ctk q8_0 -ctv q4_0, stock vs patched TG t/s at 1/2/4/5/6/8/16 sequences: flat at 1/2/4/16, +13% at 5 (81.1 to 91.8), +24% at 6 (84.4 to 104.9), +44% at 8 (88.6 to 127.3). Perplexity unchanged. 14 rows.
 - llama.cpp #29809 (PR): SYCL MXFP4 MoE arithmetic decoding + weight reordering. Intel Arc Pro B70, gpt-oss: 20B decode on one card 55.84 to 106.64 tok/s (1.91x, 5 reps), 120B decode on two cards 33.27 to 67.14 (2.02x, 2 reps), 120B prompt processing 594.5 to 600.1. Windows 11, oneAPI 2026.0, EPYC 7402P host, FA on. 6 rows.
 - llama.cpp #29807 (PR): remove redundant CUDA copies after SSM_SCAN. RTX PRO 6000 Blackwell (new hardware page, edition not stated by the author), nemotron_h_moe 31B.A3.5B Q4_K_M, Windows. MTP off: flat (pp512 11485.61 to 11474.42, tg128 313.28 to 314.14). MTP on (draft-mtp, acceptance 0.777 identical): SPEED-Bench coding decode 432.58 to 447.63 t/s, 1.035x, faster on 80 of 80 prompts. 6 rows.
-- Three new build A/B groups with interpretive notes (page now 119 of 119).
+- llama.cpp #29769 (PR): unified decode masks in one cache scan. RTX 5090, Qwen3.8-27B Q4_K_M, F16 KV. Fast path llama-batched-bench -c 131072 -npp 15872 -ntg 512 -npl 8: medians 274.54 to 291.21 tok/s, +5.77% (95% CI +5.11% to +6.43%). Sanity runs (fast path not triggered): pp512 3731.18 to 3718.85 (-0.33%), tg128 78.67 to 78.49 (-0.23%). 6 rows.
+- Four new build A/B groups with interpretive notes (page now 120 of 120).
 
 ## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
