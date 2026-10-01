@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 mine (48 rows)
+## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 + #29779 mine (72 rows)
 
 - llama.cpp #29820 (issue): ROCm/HIP patch lowering MMVQ_MAX_BATCH_SIZE from 8 to 4 for gfx1201. Radeon AI PRO R9700, Qwopus3.8-27B-Flash-V2 Q4_K_M (new model page), llama-batched-bench -c 32768 -npp 512 -ntg 128, -ctk q8_0 -ctv q4_0, stock vs patched TG t/s at 1/2/4/5/6/8/16 sequences: flat at 1/2/4/16, +13% at 5 (81.1 to 91.8), +24% at 6 (84.4 to 104.9), +44% at 8 (88.6 to 127.3). Perplexity unchanged. 14 rows.
 - llama.cpp #29809 (PR): SYCL MXFP4 MoE arithmetic decoding + weight reordering. Intel Arc Pro B70, gpt-oss: 20B decode on one card 55.84 to 106.64 tok/s (1.91x, 5 reps), 120B decode on two cards 33.27 to 67.14 (2.02x, 2 reps), 120B prompt processing 594.5 to 600.1. Windows 11, oneAPI 2026.0, EPYC 7402P host, FA on. 6 rows.
@@ -8,7 +8,8 @@
 - llama.cpp #29769 (PR): unified decode masks in one cache scan. RTX 5090, Qwen3.8-27B Q4_K_M, F16 KV. Fast path llama-batched-bench -c 131072 -npp 15872 -ntg 512 -npl 8: medians 274.54 to 291.21 tok/s, +5.77% (95% CI +5.11% to +6.43%). Sanity runs (fast path not triggered): pp512 3731.18 to 3718.85 (-0.33%), tg128 78.67 to 78.49 (-0.23%). 6 rows.
 - llama.cpp #29784 (PR): CPU thread default on Apple Super+Performance cluster chips (sum all perflevel physicalcpu). M5 Max, muse-glimmer 30B Q4_K_XL, llama-bench -ngl 0 -r 3 CPU-only, threads 6 to 18: pp512 26.98 to 58.76 t/s (2.18x), tg128 9.24 to 13.64 (1.48x). 4 rows.
 - llama.cpp #29824 (PR): qwen4exp mask construction repeats rows instead of 1-element seeds (slow graph on Metal). M2 Ultra, Qwen3.8-Flash-Next GGUF, batched-bench B=1 ntg=32, ctx 2048 to 65536. Prompt processing recovers the #29751 long-context regression and beats pre-#29751: 65536 528.55 to 754.63 (pre was 690.15), 32768 637.29 to 781.91. Decode roughly flat. 12 rows.
-- Six new build A/B groups with interpretive notes (page now 122 of 122).
+- llama.cpp #29779 (PR): Hexagon matmul flattened 3D to 2D to run on HMX instead of HVX. IQ-9075 (new hardware page), llama-batched-bench -c 4096 -npp 128 -ntg 32, npl 1/2/4. Qwen3.5-2B Q4_0 (new model page): flat at 1 sequence, pp128 x2 452.70 to 719.49 (+58.9%), x4 445.93 to 703.51 (+57.8%), decode +2%. LFM2-2.6B Q4_0 (new model page): flat at 1 sequence, pp128 x2 209.92 to 687.22 (+227.4%), x4 209.26 to 679.47 (+224.7%), decode +2%. 24 rows.
+- Eight new build A/B groups with interpretive notes (page now 124 of 124).
 
 ## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
