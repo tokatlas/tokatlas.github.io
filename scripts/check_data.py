@@ -101,9 +101,11 @@ def main():
                 errors += 1
         # quote consistency: numbers must appear verbatim; identity fields must
         # appear as a normalized substring (hardware may be a mapped name)
+        # thousands separators in the quote are ignored, as in check_quotes
+        quote_nums = r["quote"].replace(",", "")
         for k in ("tps", "ttft_s"):
             v = (r.get(k) or "").strip()
-            if v and v not in r["quote"]:
+            if v and v not in quote_nums:
                 print("row %d (%s): %s=%r not in quote" % (i, r["id"], k, v))
                 errors += 1
         for k in ("hardware", "model"):

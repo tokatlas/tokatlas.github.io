@@ -1,10 +1,10 @@
 # Changelog
 
-## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (64 rows)
+## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
 - llama.cpp #29768 (PR): CUDA graph repeated-warmup avoidance. RTX 5090 (CC 12.0, Windows, CUDA 12.9), Qwen3.8-27B Q4_K_M, F16 KV, llama-batched-bench -c 131072 -npp 15872 -ntg 512 -npl 8 -kvu: decode TPS 295.80 (without) vs 299.82 (with), +1.14% (95% CI +0.44% to +1.84%). 2 rows.
 - vLLM #59489 (PR): Rust vllm-bench openai-responses backend parity. RTX 3070, Qwen3-0.6B with reasoning parser, bench serve random 512/128 c16, 200 prompts: output throughput Rust 1676-1680 vs Python 1671-1673 tok/s, 200/200 both, TPOT/ITL within noise. 2 rows, new model page.
-- vLLM #59488 (draft PR): DeepSeek-V4.1-Flash MXFP4 MoE backend default change on 8x H200. Marlin (W4A16) vs Humming (per-token FP8, indexed GEMM), 6 layouts (TP8, TP8+EP, DP8+EP, TP2xDP4+EP, TP4xDP2+EP, P/D 1P1D) x 5 workloads (decode c1/c32/c128, 8K and 32K prompts), bench serve random, output tok/s single runs: 60 rows. Humming wins up to +28.5% at c128 and +35.9% on 8K prompts; c1/c32 within noise, P/D c32 decode leg -3.6%.
+- vLLM #59488 (draft PR): DeepSeek-V4.1-Flash MXFP4 MoE backend default change on 8x H200 (SM90). Upstream rewrote the body on 2026-10-01 and removed the original 6-layout x 5-workload serving table (60 rows dropped). The surviving absolute figures, TP8+EP with per-token FP8 activations, offline LLM runs, decode 64 prompts x 512 in / 256 out, 2 repeats: Marlin 2648 vs Humming grouped 2222 output tok/s (grouped 16% behind Marlin; the PR's new indexed-GEMM default is 14% faster than grouped, percentage only, no absolute published). The rewritten body also reports indexed vs grouped at +47% prefill / +63% decode (BF16) and +24% / +36% (FP8), percentages only. 2 rows.
 - Three new build A/B groups with interpretive notes (page now 115 of 115).
 
 
