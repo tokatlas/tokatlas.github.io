@@ -1469,6 +1469,22 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29809-2xb70-120b-pp-after','pp_tps')} "
                     "tok/s): the win is in the decode-side expert matmuls. "
                     "Perplexity 14.5148 -> 14.5129, within noise.")
+        if (venue, issue) == ("llama.cpp", "29807"):
+            return ("CUDA copy removal after SSM_SCAN (recurrent state "
+                    "snapshots are written straight into the cache by the "
+                    "kernel). nemotron_h_moe 31B.A3.5B Q4_K_M on RTX PRO "
+                    "6000 Blackwell, Windows. Without MTP the change is "
+                    "flat: pp512 "
+                    f"{val(rows,'lc-29807-pro6000b-pp512-master','pp_tps')} -> "
+                    f"{val(rows,'lc-29807-pro6000b-pp512-pr','pp_tps')}, tg128 "
+                    f"{val(rows,'lc-29807-pro6000b-tg128-master','tps')} -> "
+                    f"{val(rows,'lc-29807-pro6000b-tg128-pr','tps')} (both "
+                    "1.00x). With MTP drafting the removed copies matter: "
+                    f"SPEED-Bench coding decode "
+                    f"{val(rows,'lc-29807-pro6000b-mtp-master','tps')} -> "
+                    f"{val(rows,'lc-29807-pro6000b-mtp-pr','tps')} t/s "
+                    "(1.035x, faster on 80 of 80 prompts, acceptance 0.777 "
+                    "identical on both builds).")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "
