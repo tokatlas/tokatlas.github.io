@@ -1420,11 +1420,33 @@ between builds of the same backend, see the
         if (venue, issue) == ("vLLM", "59489"):
             return ("Backend parity A/B: the Rust vllm-bench port of the "
                     "openai-responses backend vs Python vllm bench serve. "
-                    f"Rust: {val(rows,'vllm-59489-rtx3070-rust','tps')}-1680, "
-                    f"Python: {val(rows,'vllm-59489-rtx3070-python','tps')}-1673 "
+                    f"Rust: {val(rows,'vllm-59489-rtx3070-rust','tps'):g}-1680, "
+                    f"Python: {val(rows,'vllm-59489-rtx3070-python','tps'):g}-1673 "
                     "output tok/s over three runs, 200/200 requests each, "
                     "with TPOT/ITL within run noise. The point of the PR is "
                     "parity for the Responses API, not a speedup.")
+        if (venue, issue) == ("vLLM", "59668"):
+            pts = [("8k1k", "8192/1024", ["4", "8", "16", "32", "64",
+                                          "128", "256"]),
+                   ("60k600", "60000/600", ["4", "16", "64"]),
+                   ("128k1k", "128000/1024", ["4", "16"])]
+            segs = []
+            for key, label, concs in pts:
+                pairs = ", ".join(
+                    f"c{c} "
+                    f"{val(rows,f'vllm-59668-mi355x-{key}-c{c}-default','tps')} -> "
+                    f"{val(rows,f'vllm-59668-mi355x-{key}-c{c}-fused','tps')}"
+                    for c in concs)
+                segs.append(f"{label}: {pairs}")
+            return ("Single-launch DSA decode candidate mask on MI355X "
+                    "(TP4 + EP, FP8): the flags kernel is folded into the "
+                    "mask kernel and the int64 cast and zeros_like before it "
+                    "are dropped. Output throughput tok/s, default -> fused, "
+                    "by input/output length and concurrency. " + "; ".join(segs)
+                    + ". Mean +0.44% throughput and -0.48% TPOT over the 12 "
+                    "sweep points (no single point moves more than 1%); the "
+                    "mask kernel alone is 1.06x to 2.50x faster on MI355X. "
+                    "GSM8K unchanged within error.")
         if (venue, issue) == ("llama.cpp", "29768"):
             return ("CUDA graph warmup fix: recapture a changed graph once "
                     "instead of resetting warmup at every padded-KV length "
