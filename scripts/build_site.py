@@ -1502,6 +1502,20 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29769-rtx5090-tg128-before','tps')} -> "
                     f"{val(rows,'lc-29769-rtx5090-tg128-after','tps')} "
                     "(-0.23%); perplexity 6.1814 unchanged.")
+        if (venue, issue) == ("llama.cpp", "29784"):
+            return ("CPU thread default fix for Apple chips with Super and "
+                    "Performance clusters: sum every hw.perflevelN."
+                    "physicalcpu instead of reading only perflevel0. M5 Max "
+                    "(6 Super + 12 Performance), muse-glimmer 30B Q4_K_XL, "
+                    "llama-bench -ngl 0 -r 3 CPU-only, default threads 6 -> "
+                    "18: pp512 "
+                    f"{val(rows,'lc-29784-m5max-pp512-master','pp_tps')} -> "
+                    f"{val(rows,'lc-29784-m5max-pp512-fix','pp_tps')} t/s "
+                    "(2.18x), tg128 "
+                    f"{val(rows,'lc-29784-m5max-tg128-master','tps')} -> "
+                    f"{val(rows,'lc-29784-m5max-tg128-fix','tps')} (1.48x). "
+                    "Prompt processing benefits most: it is the "
+                    "thread-starved side of the old 6-core default.")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "
