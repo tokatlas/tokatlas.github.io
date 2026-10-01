@@ -1453,6 +1453,22 @@ between builds of the same backend, see the
                     "5.3703 patched) and test-backend-ops passes; only the "
                     "R9700 and Q4_K_M were tested, and the author notes the "
                     "threshold should probably be architecture-dependent.")
+        if (venue, issue) == ("llama.cpp", "29809"):
+            return ("SYCL MXFP4 MoE A/B on Intel Arc Pro B70 (Windows 11, "
+                    "oneAPI 2026.0, EPYC 7402P host). The patch replaces "
+                    "table-based MXFP4 decoding with bit-identical 32-bit "
+                    "arithmetic plus lazy per-expert weight reordering. "
+                    "gpt-oss 20B decode on one card: "
+                    f"{val(rows,'lc-29809-b70-20b-dec-before','tps')} -> "
+                    f"{val(rows,'lc-29809-b70-20b-dec-after','tps')} tok/s "
+                    "(1.91x, 5 repetitions); gpt-oss 120B decode on two "
+                    f"cards: {val(rows,'lc-29809-2xb70-120b-dec-before','tps')} -> "
+                    f"{val(rows,'lc-29809-2xb70-120b-dec-after','tps')} tok/s "
+                    "(2.02x, 2 repetitions). Prompt processing barely moves "
+                    f"({val(rows,'lc-29809-2xb70-120b-pp-before','pp_tps')} -> "
+                    f"{val(rows,'lc-29809-2xb70-120b-pp-after','pp_tps')} "
+                    "tok/s): the win is in the decode-side expert matmuls. "
+                    "Perplexity 14.5148 -> 14.5129, within noise.")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "

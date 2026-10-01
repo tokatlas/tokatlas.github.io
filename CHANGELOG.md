@@ -1,9 +1,10 @@
 # Changelog
 
-## 2026-10-01: llama.cpp #29820 R9700 MMVQ threshold mine (14 rows)
+## 2026-10-01: llama.cpp #29820 + #29809 mine (20 rows)
 
 - llama.cpp #29820 (issue): ROCm/HIP patch lowering MMVQ_MAX_BATCH_SIZE from 8 to 4 for gfx1201. Radeon AI PRO R9700, Qwopus3.8-27B-Flash-V2 Q4_K_M (new model page), llama-batched-bench -c 32768 -npp 512 -ntg 128, -ctk q8_0 -ctv q4_0, stock vs patched TG t/s at 1/2/4/5/6/8/16 sequences: flat at 1/2/4/16, +13% at 5 (81.1 to 91.8), +24% at 6 (84.4 to 104.9), +44% at 8 (88.6 to 127.3). Perplexity unchanged. 14 rows.
-- New build A/B group with interpretive note (page now 116 of 116).
+- llama.cpp #29809 (PR): SYCL MXFP4 MoE arithmetic decoding + weight reordering. Intel Arc Pro B70, gpt-oss: 20B decode on one card 55.84 to 106.64 tok/s (1.91x, 5 reps), 120B decode on two cards 33.27 to 67.14 (2.02x, 2 reps), 120B prompt processing 594.5 to 600.1. Windows 11, oneAPI 2026.0, EPYC 7402P host, FA on. 6 rows.
+- Two new build A/B groups with interpretive notes (page now 118 of 118).
 
 ## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
