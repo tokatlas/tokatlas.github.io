@@ -1433,6 +1433,26 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29768-rtx5090-post','tps')} tok/s, +1.14%, "
                     "mean of 10 paired per-repetition changes (95% CI "
                     "+0.44% to +1.84%).")
+        if (venue, issue) == ("llama.cpp", "29820"):
+            return ("HIP MMVQ threshold A/B on the Radeon AI PRO R9700 "
+                    "(gfx1201). Stock routes quantized matmuls of 5-8 "
+                    "columns to MMVQ, which is up to 46% slower than MMQ at "
+                    "those sizes on this chip; the patch lowers "
+                    "MMVQ_MAX_BATCH_SIZE from 8 to 4. Concurrent decode "
+                    "(llama-batched-bench, ntg 128) is flat at 1, 2, 4 and "
+                    "16 sequences but the 5-8 sequence band lifts: "
+                    f"{val(rows,'lc-29820-r9700-npl5-stock','tps'):g} -> "
+                    f"{val(rows,'lc-29820-r9700-npl5-patched','tps'):g} t/s "
+                    "(+13%) at 5, "
+                    f"{val(rows,'lc-29820-r9700-npl6-stock','tps'):g} -> "
+                    f"{val(rows,'lc-29820-r9700-npl6-patched','tps'):g} "
+                    "(+24%) at 6, "
+                    f"{val(rows,'lc-29820-r9700-npl8-stock','tps'):g} -> "
+                    f"{val(rows,'lc-29820-r9700-npl8-patched','tps'):g} "
+                    "(+44%) at 8. Perplexity is unchanged (5.3652 stock vs "
+                    "5.3703 patched) and test-backend-ops passes; only the "
+                    "R9700 and Q4_K_M were tested, and the author notes the "
+                    "threshold should probably be architecture-dependent.")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "

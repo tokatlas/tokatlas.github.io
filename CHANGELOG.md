@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-01: llama.cpp #29820 R9700 MMVQ threshold mine (14 rows)
+
+- llama.cpp #29820 (issue): ROCm/HIP patch lowering MMVQ_MAX_BATCH_SIZE from 8 to 4 for gfx1201. Radeon AI PRO R9700, Qwopus3.8-27B-Flash-V2 Q4_K_M (new model page), llama-batched-bench -c 32768 -npp 512 -ntg 128, -ctk q8_0 -ctv q4_0, stock vs patched TG t/s at 1/2/4/5/6/8/16 sequences: flat at 1/2/4/16, +13% at 5 (81.1 to 91.8), +24% at 6 (84.4 to 104.9), +44% at 8 (88.6 to 127.3). Perplexity unchanged. 14 rows.
+- New build A/B group with interpretive note (page now 116 of 116).
+
 ## 2026-09-30: llama.cpp #29768 + vLLM #59488/#59489 mine (6 rows after the 2026-10-01 upstream rewrite of #59488)
 
 - llama.cpp #29768 (PR): CUDA graph repeated-warmup avoidance. RTX 5090 (CC 12.0, Windows, CUDA 12.9), Qwen3.8-27B Q4_K_M, F16 KV, llama-batched-bench -c 131072 -npp 15872 -ntg 512 -npl 8 -kvu: decode TPS 295.80 (without) vs 299.82 (with), +1.14% (95% CI +0.44% to +1.84%). 2 rows.
