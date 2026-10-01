@@ -1516,6 +1516,27 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29784-m5max-tg128-fix','tps')} (1.48x). "
                     "Prompt processing benefits most: it is the "
                     "thread-starved side of the old 6-core default.")
+        if (venue, issue) == ("llama.cpp", "29824"):
+            return ("qwen4exp attention-mask construction repeats rows "
+                    "instead of 1-element seeds (the seed-repeat graph is "
+                    "slow on Metal). M2 Ultra, Qwen3.8-Flash-Next GGUF, "
+                    "llama-batched-bench B=1, npp=ctx, ntg=32. Prompt "
+                    "processing S_PP t/s, master -> PR: 2048 "
+                    f"{val(rows,'lc-29824-m2ultra-2048-master','pp_tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-2048-pr','pp_tps'):g}, 8192 "
+                    f"{val(rows,'lc-29824-m2ultra-8192-master','pp_tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-8192-pr','pp_tps'):g}, 32768 "
+                    f"{val(rows,'lc-29824-m2ultra-32768-master','pp_tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-32768-pr','pp_tps'):g}, 65536 "
+                    f"{val(rows,'lc-29824-m2ultra-65536-master','pp_tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-65536-pr','pp_tps'):g}: the "
+                    "PR recovers the long-context regression #29751 "
+                    "introduced (pre-#29751 was 690.15 at 65536) and "
+                    "surpasses it. Decode S_TG t/s roughly flat: 2048 "
+                    f"{val(rows,'lc-29824-m2ultra-2048-master','tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-2048-pr','tps'):g}, 65536 "
+                    f"{val(rows,'lc-29824-m2ultra-65536-master','tps'):g} -> "
+                    f"{val(rows,'lc-29824-m2ultra-65536-pr','tps'):g}.")
         if (venue, issue) == ("vLLM", "59434"):
             return ("CPU A/B on AMD Zen 5 (Turin), the fix that makes the "
                     "ZenDNN fast routed MoE path eligible. bf16 expert scales "
