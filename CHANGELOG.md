@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card LemesoftNostalgic Ornith-1.5-35B-A3B 2 x RTX 3060 (1 row, 1 new model, 1 new hardware)
+
+- HF model card LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF: an imatrix IQ4_XS quant of ornith-ai/Ornith-1.5-35B-A3B, sized for a 24GB-VRAM-budget rig (2 x RTX 3060). Measured on 2 x RTX 3060 (full-GPU, tensor split), MTP --spec-type draft-mtp n-max 3, mmproj, max ctx 180224, 10 CPU threads.
+- The card reports peak fill ~1800 tok/s and peak generation ~120 tok/s (the author's approximations, one run per cell, not a clean benchmark); agentic heavy-KV use hovers 50-90 tok/s. The peak generation rate is MTP-accelerated. Stored as a single community row with the qualifiers noted; new model and new hardware, no A/B group (single arm).
+- 1 row. Dataset 3793 -> 3794, hardware 366 -> 367, models 183 -> 184. Quote-verified 4376 -> 4377.
+
 ## 2026-10-02: HF card Ornith-1.5-397B-A17B GB10 DFlash n_max sweep (5 rows, 1 new A/B group, 1 new model)
 
 - HF model card cdtio33/Ornith-1.5-397B-IQ2_XXS-DFlash-Drafter-GGUF: a DFlash drafter for the Ornith-1.5-397B-A17B target (finetune of z-lab/Qwen3.5-397B-A17B-DFlash), IQ2_XXS, on an NVIDIA GB10 (DGX Spark) under ik_llama.cpp. Mined the "Choosing n_max" sweep: effective generation tok/s vs draft depth, ~32k prompts, 131072-token q8_0 KV, 256-token generations, one boot two reps.

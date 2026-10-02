@@ -1,5 +1,5 @@
 {
- "count": 3793,
+ "count": 3794,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -22915,6 +22915,26 @@
    "source_name": "HF model card: cdtio33/Ornith-1.5-397B-IQ2_XXS-DFlash-Drafter-GGUF",
    "source_url": "https://huggingface.co/cdtio33/Ornith-1.5-397B-IQ2_XXS-DFlash-Drafter-GGUF",
    "tps": "17.72",
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": 1,
+   "ctx": null,
+   "date": "2026-10-02",
+   "flags": [],
+   "hardware": "2 x RTX 3060",
+   "id": "lemesoft-ornith35-2x3060",
+   "model": "Ornith-1.5-35B-A3B",
+   "notes": "2 x RTX 3060 full-GPU (-ngl 999, tensor split), IQ4_XS imatrix; MTP --spec-type draft-mtp n-max 3, mmproj, max ctx 180224, 10 CPU threads, flash attention on; peak fill ~1800 tok/s, peak generation ~120 tok/s (author's approximations, one run per cell, not a clean benchmark); agentic heavy-KV use 50-90 tok/s",
+   "pp_tps": "1800",
+   "provenance": "community",
+   "quant": "IQ4_XS",
+   "quote": "Llamacpp imatrix IQ4_XS Quantization of Ornith-1.5-35B-A3B by ornith-ai; With 2 x RTX 3060 the peak fill rate is about 1800 tok/s and peak generation rate is about 120 tok/s",
+   "retrieved": "2026-10-02",
+   "source_name": "HF model card: LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF",
+   "source_url": "https://huggingface.co/LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF",
+   "tps": "120",
    "ttft_s": null
   },
   {
