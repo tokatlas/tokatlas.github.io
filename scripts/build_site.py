@@ -2205,15 +2205,23 @@ between builds of the same backend, see the
                         "(~+8%). Reporter notes the ordering inverts on MoE "
                         "models (ROCm +8.5% at 57k ctx on a 35B-A3B).")
         if (venue, issue) == ("llama.cpp", "15013"):
-            off = next(i for i in rows if i.endswith("fa0"))
-            on = next(i for i in rows if i.endswith("fa1"))
-            return ("P102-100 mining card (Pascal GP104, 5 GB, no display) on "
-                    "llama.cpp CUDA b11312. fa=0 -> fa=1: prefill "
-                    f"{val(rows,off,'pp_tps')} -> {val(rows,on,'pp_tps')} tok/s "
-                    f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
-                    f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
-                    f"({pct(rows,off,on,'tps'):+.1f}%). A 5 GB Pascal mining part, usable "
-                    "for 7B Q4_0 at ~46 tok/s decode.")
+            off5 = "lc-disc-15013-c18693775-fa0"
+            on5 = "lc-disc-15013-c18693775-fa1"
+            off10 = "lc-disc-15013-c18695871-fa0"
+            on10 = "lc-disc-15013-c18695871-fa1"
+            return ("P102-100 mining card (Pascal GP104, no display) on "
+                    "llama.cpp CUDA b11312, llama 7B Q4_0. fa=0 -> fa=1 on the "
+                    "stock 5 GB BIOS: prefill "
+                    f"{val(rows,off5,'pp_tps'):g} -> {val(rows,on5,'pp_tps'):g} tok/s "
+                    f"({pct(rows,off5,on5,'pp_tps'):+.1f}%), decode "
+                    f"{val(rows,off5,'tps'):g} -> {val(rows,on5,'tps'):g} tok/s "
+                    f"({pct(rows,off5,on5,'tps'):+.1f}%). A BIOS mod doubles the "
+                    "reported VRAM to 10 GB: prefill "
+                    f"{val(rows,off10,'pp_tps'):g} -> {val(rows,on10,'pp_tps'):g}, "
+                    "decode "
+                    f"{val(rows,off10,'tps'):g} -> {val(rows,on10,'tps'):g} tok/s "
+                    f"({pct(rows,off10,on10,'tps'):+.1f}%). Doubling VRAM barely "
+                    "moves speed (within ~1%): the 3.56 GiB model fits in either.")
         if (venue, issue) == ("llama.cpp", "4167"):
             if hw == "M5 Ultra":
                 f16 = next(i for i in rows if i.endswith("quant-f16"))
