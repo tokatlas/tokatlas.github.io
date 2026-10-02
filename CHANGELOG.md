@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card Livesport rune-26b-a4b-v3 2x Quadro RTX 4000 prefill (2 rows, 1 new A/B group, 1 new hardware, 1 new model)
+
+- HF model card Livesport/rune-26b-a4b-v3-GGUF: prompt-processing (prefill) throughput on 2x Quadro RTX 4000 8 GB with llama.cpp build 8212c78, one request at a time, median of 3, on the IQ3_M 26B MoE (gemma4 arch, 128 experts / 8 active, 262144 ctx) with a q8_0 KV cache. Found via hf_scan.py (new card, 2 tok/s mentions).
+- Two prefill arms at a 2k-token prompt: -ub 512 (update/buffer batch 512) 2,098 tok/s, -ub 256 1,696 tok/s (a 19% prefill cost from the smaller update batch). New hardware "2x Quadro RTX 4000" and new model "rune-26b-a4b-v3". The card's latency table is per-question seconds (decode-side, KV-cache reuse) and is left unmined as tok/s.
+- Dataset 3822 -> 3824, hardware 370 -> 371, models 186 -> 187, quote-verified 4405 -> 4407.
+
 ## 2026-10-02: HF card Davidmg0815 Qwen3.8-Flash-Next MTP-256exp CPU spec decode (3 rows, 1 new A/B group, 1 new hardware)
 
 - HF model card Davidmg0815/Qwen3.8-Flash-Next-MTP-256exp-GGUF: field note on MTP draft-mtp speculative decoding (--spec-type draft-mtp) on the Qwen3.8-Flash-Next 176B MoE pruned 512 -> 256 experts (GSQ-RCO), main model IQ1_M + a separate Q8_0 MTP head loaded as its own model via -md. Found via hf_scan.py (re-examined a previously-parked card; its GPU section is an unnamed 2x 20 GB setup with a prose loss, so the clean finding is the CPU section).
