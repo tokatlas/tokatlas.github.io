@@ -102,6 +102,12 @@ def _num_present(v, nums):
     for n in nums:
         if abs(n - v) <= max(1e-9, 1e-4 * abs(v)):
             return True
+
+
+def _in_raw(raw, n):
+    # lazy-rendered discussion pages keep comment bodies in an embedded
+    # JSON payload that page_text drops; raw HTML still proves presence
+    return _num_present(float(n), _numbers(raw)) if raw else False
     return False
 
 
@@ -163,10 +169,12 @@ def main():
             if cid:
                 cids_needed.setdefault(root, set()).add(cid)
         cid_page = {}
+        thread_raw = {}
         for root, cids in cids_needed.items():
             url = root
             seen = set()
             found = set()
+            raws = []
             while url and url not in seen:
                 if len(seen) >= MAX_PAGES:
                     break
@@ -176,6 +184,7 @@ def main():
                 except Exception as e:  # noqa: BLE001
                     print("%s: fetch %s failed: %s" % (name, url, e))
                     break
+                raws.append(raw)
                 for cid in set(CID_RE.findall(raw)):
                     if cid in cids:
                         found.add(cid)
@@ -188,19 +197,31 @@ def main():
             for cid in cids - found:
                 print("%s: comment %s not found in thread %s" % (name, cid, root))
                 cid_page[(root, cid)] = root
+            # a comment's anchor and its rendered body can land on
+            # different pagination pages; verify against the whole thread
+            thread_raw[root] = "\n".join(raws)
         text_cache = {}
+        raw_cache = {}
         numcache = {}
         for r, root, cid in rows:
-            purl = cid_page.get((root, cid), root) if cid else root
-            if purl not in text_cache:
-                try:
-                    text_cache[purl] = page_text(purl, fetch(purl))
-                except Exception as e:  # noqa: BLE001
-                    print("%s: fetch %s failed: %s" % (name, purl, e))
-                    text_cache[purl] = None
-            if purl not in numcache:
-                numcache[purl] = _numbers(text_cache[purl] or "")
-            text = text_cache[purl]
+            if cid and root in thread_raw:
+                key = ("thread", root)
+                if key not in text_cache:
+                    text_cache[key] = page_text(root, thread_raw[root])
+                    raw_cache[key] = thread_raw[root]
+            else:
+                key = root
+                if key not in text_cache:
+                    try:
+                        raw_cache[key] = fetch(key)
+                        text_cache[key] = page_text(key, raw_cache[key])
+                    except Exception as e:  # noqa: BLE001
+                        print("%s: fetch %s failed: %s" % (name, key, e))
+                        text_cache[key] = None
+                        raw_cache[key] = ""
+            if key not in numcache:
+                numcache[key] = _numbers(text_cache[key] or "")
+            text = text_cache[key]
             if aux_text:
                 text = ((text or "") + " " + aux_text)
             if text is None or not text.strip():
@@ -211,7 +232,8 @@ def main():
             checked += 1
             for k, n in numbers_of(r):
                 if (n not in text
-                        and not _num_present(float(n), numcache[purl])
+                        and not _in_raw(raw_cache.get(key, ""), n)
+                        and not _num_present(float(n), numcache[key])
                         and not _num_present(float(n), aux_nums)
                         and not (k == "power_w"
                                  and _in_published_watt_range(float(n), text))):

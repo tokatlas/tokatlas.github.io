@@ -1923,6 +1923,69 @@ between builds of the same backend, see the
                     f"({pct(rows,'lc-28454-a6000-kvf16','lc-28454-a6000-kvq8','tps'):+.0f}%), "
                     "with GPU utilization at only 24-37% during q8_0 decode "
                     "(memory/latency-bound, 4x A6000, ctx 1048576).")
+        if (venue, issue) == ("llama.cpp", "10879"):
+            if hw == "AMD Custom GPU 0932":
+                ids = sorted(rows)
+                off = next(i for i in ids if i.endswith("fa0"))
+                on = next(i for i in ids if i.endswith("fa1"))
+                return ("Flash-attention A/B on a Steam Deck iGPU (AMD "
+                        "Custom GPU 0932, VANGOGH, 4 GiB shared memory), "
+                        "llama-b10360, -ngl 100, llama-bench pp512/tg128. "
+                        "fa=0 -> fa=1: decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} "
+                        f"tok/s ({pct(rows,off,on,'tps'):+.1f}%), prefill "
+                        f"{val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%). Across the "
+                        "reporter's 12-model matrix fa is worth up to "
+                        "+14% prefill and +7% decode, sometimes costs a "
+                        "point or two, and is a wash on the 3B-31B "
+                        "IQ2_XXS quants; the effect is model-dependent, "
+                        "not free.")
+            if model == "Qwen3.6-35B-A3B-APEX-MTP-I-Balanced":
+                bare = next(i for i in rows if i.endswith("-bare"))
+                mtp = next(i for i in rows if i.endswith("-mtp"))
+                return ("Vulkan vs ROCm on the same Radeon 8060S Strix "
+                        "Halo iGPU (llama.cpp master 2026-08, "
+                        "single-request chat decode, tok/s). This arm is "
+                        f"{'ROCm' if 'rocm' in bare else 'Vulkan'}: bare "
+                        f"{val(rows,bare,'tps')} -> with MTP "
+                        f"{val(rows,mtp,'tps')} "
+                        f"({pct(rows,bare,mtp,'tps'):+.1f}%). Cross-backend: "
+                        "bare ROCm 56.41 vs Vulkan 66.86 (+18.5% Vulkan); "
+                        "with MTP ROCm 69.47 vs Vulkan 80.89 (+16.4%). The "
+                        "sibling MoE entry (Hy-MT2-30B-A3B, Q6_K) shows the "
+                        "widest bare gap: ROCm 59.19 vs Vulkan 74.28 "
+                        "(+25.5%). Reporter's pick on this UMA iGPU "
+                        "(~230 GB/s measured): Vulkan + MTP.")
+            if model == "Qwopus3.6-27B-Coder-Compat-MTP":
+                bare = next(i for i in rows if i.endswith("-bare"))
+                mtp = next(i for i in rows if i.endswith("-mtp"))
+                return ("Vulkan vs ROCm on the same Radeon 8060S Strix "
+                        "Halo iGPU, dense 27B coder Q5_K_M, "
+                        "single-request chat decode, tok/s. This arm is "
+                        f"{'ROCm' if 'rocm' in bare else 'Vulkan'}: bare "
+                        f"{val(rows,bare,'tps')} -> with MTP "
+                        f"{val(rows,mtp,'tps')} "
+                        f"({pct(rows,bare,mtp,'tps'):+.1f}%). Cross-backend: "
+                        "bare ROCm 10.94 vs Vulkan 11.23 (+2.6%, near "
+                        "parity); with MTP ROCm 19.38 vs Vulkan 22.38 "
+                        "(+15.5%). MTP nearly doubles both backends; the "
+                        "backend gap only shows up once speculation is on.")
+            if model == "Qwen3.8-27B-AD":
+                bare = next(i for i in rows if i.endswith("-bare"))
+                mtp = next(i for i in rows if i.endswith("-mtp"))
+                return ("Vulkan vs ROCm on the same Radeon 8060S Strix "
+                        "Halo iGPU, dense 27B Q5_K_M, single-request chat "
+                        "decode, tok/s. This arm is "
+                        f"{'ROCm' if 'rocm' in bare else 'Vulkan'}: bare "
+                        f"{val(rows,bare,'tps')} -> with MTP "
+                        f"{val(rows,mtp,'tps')} "
+                        f"({pct(rows,bare,mtp,'tps'):+.1f}%). Cross-backend: "
+                        "bare ROCm 10.52 vs Vulkan 10.76 (+2.3%); with MTP "
+                        "ROCm 14.09 vs Vulkan 16.98 (+20.5%). Same pattern "
+                        "as the sibling 27B: bare backends at parity, MTP "
+                        "widens the gap.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-01: llama.cpp discussions #10879 re-mine + Steam Deck and Strix Halo data (27 rows net)
+
+- llama.cpp discussions #10879 (Vulkan performance thread): upstream edited two comments the dataset was anchored to. The RX 5700 XT rows moved to a surviving comment (439.42 / 70.13 t/s, llama-bench pp512/tg128, RX 5700 XT, RADV NAVI10); three rows whose source comment was deleted were dropped.
+- New: 24-row flash-attention A/B matrix from a Steam Deck (AMD Custom GPU 0932, VANGOGH iGPU, llama-b10360, -ngl 100), 12 models x fa off/on, llama-bench pp512/tg128. fa is worth up to +14% prefill (llama 7B 144.31 to 164.34) and +7% decode (Nanbeige4.2-3B 15.27 to 16.36), costs a point or two on Qwen3.8-9B and gemma-4-E4B, and is a wash on the IQ2_XXS quants. 12 new A/B groups.
+- New: 14-row Vulkan vs ROCm matrix on a Radeon 8060S Strix Halo iGPU (master 2026-08, single-request chat decode), 4 models x 2 backends x bare/MTP. Vulkan wins bare MoE by +18.5% to +25.5% and dense by ~+2%; MTP adds +16% to +99% and widens the backend gap to +15% to +20%. 6 new A/B groups (Qwen3.6-35B-A3B-APEX, Hy-MT2-30B-A3B, Qwopus3.6-27B-Coder, Qwen3.8-27B-AD).
+- check_quotes: discussion threads now verify against the union of all pagination pages (GitHub can render a comment's body and its anchor on different pages), and numbers are also matched inside raw HTML when text extraction misses them. check_data ignores thousands separators inside quotes.
+- Eighteen new build A/B groups with interpretive notes (page now 148 of 148).
+
 ## 2026-10-01: vLLM #59668 + #59653 + #59567 + #59520 + #59548 mine (63 rows)
 
 - vLLM #59668 (PR): single-launch DSA decode candidate mask on ROCm. MI355X, DeepSeek V4.1 (new model page), TP4 + EP, FP8, vllm bench serve output throughput at 12 input/output x concurrency points, stock four-kernel mask vs fused single kernel: mean +0.44% throughput, -0.48% TPOT; e.g. 8192/1024 c16 1262.90 to 1273.77, c256 3814.25 to 3827.03, 128000/1024 c4 185.73 to 186.21. Kernel-level mask speedups 1.06x to 2.50x. GSM8K unchanged within error. 24 rows.
@@ -8,7 +16,7 @@
 - vLLM #59567 (PR): batch sampling-mask transport. GB300, Qwen3-8B, c=256, output tok/s with no mask / stock mask path / this PR: 1024/1024 16515 / 15705 (-4.9%) / 16364 (-0.9%); 256/256 25515 / 23488 (-7.9%) / 24811 (-2.8%); 256/256 wide (50 ids/token) 25781 / 21249 (-17.6%) / 22873 (-11.3%). 9 rows.
 - vLLM #59520 (issue): default CUDA GDN wrapper regresses non-spec Qwen3.5 decode. 2x H200 TP2, Qwen3.5-9B BF16, throughput bench 200 requests / 204,800 output tokens, CUDA default -> Triton: sparse prefix retention 1426.638 -> 1859.655 (+30.35%), dense 1536.536 -> 2069.343 (+34.68%). vLLM 0.29.0. 4 rows.
 - vLLM #59548 (issue): spec-decode boot-to-boot dispersion. Qwen3-4B + DFlash-b16 drafter, concurrency 1, mean of 12 boots per arm. L4, vLLM 0.29.0: CUDA-graph default vs enforce-eager 39.2 vs 80.5 (ratio 0.487, CV 13.92%) and 61.2 vs 79.7 (0.768, 3.73%); vLLM 0.30.0 reaches parity: 82.8 vs 81.6 (1.014) and 78.2 vs 77.0 (1.017). A10 on 0.29.0 nearly immune: 132.6 vs 138.3 (0.959). 10 rows.
-- Five new build A/B groups with interpretive notes (page now 129 of 129).
+- Four new build A/B groups with interpretive notes (page now 130 of 130).
 
 ## 2026-10-01: llama.cpp #29820 + #29809 + #29807 + #29769 + #29784 + #29824 + #29779 mine (72 rows) + #29768 rebuild
 
