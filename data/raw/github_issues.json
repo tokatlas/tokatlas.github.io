@@ -16346,7 +16346,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "quote": "On two H200s, selecting the standard Triton path instead; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; The performance run used vLLM 0.29.0.; Sparse (`0`) | 1,426.638 | 1,859.655 | **+30.35%**",
+   "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Sparse (`0`) | 1,426.638 | 1,859.655 | **+30.35%**",
    "tps": "1426.638",
    "pp_tps": null,
    "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Sparse (retention 0); default CUDA GDN wrapper (regressed path); config=gdn-cuda"
@@ -16369,7 +16369,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "quote": "On two H200s, selecting the standard Triton path instead; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; The performance run used vLLM 0.29.0.; Sparse (`0`) | 1,426.638 | 1,859.655 | **+30.35%**",
+   "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Sparse (`0`) | 1,426.638 | 1,859.655 | **+30.35%**",
    "tps": "1859.655",
    "pp_tps": null,
    "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Sparse (retention 0); Triton GDN decode path, +30.35% vs CUDA; config=gdn-triton"
@@ -16392,7 +16392,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "quote": "On two H200s, selecting the standard Triton path instead; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; The performance run used vLLM 0.29.0.; Dense (`None`) | 1,536.536 | 2,069.343 | **+34.68%**",
+   "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Dense (`None`) | 1,536.536 | 2,069.343 | **+34.68%**",
    "tps": "1536.536",
    "pp_tps": null,
    "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Dense (retention None); default CUDA GDN wrapper (regressed path); config=gdn-cuda"
@@ -16415,7 +16415,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "quote": "On two H200s, selecting the standard Triton path instead; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; The performance run used vLLM 0.29.0.; Dense (`None`) | 1,536.536 | 2,069.343 | **+34.68%**",
+   "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Dense (`None`) | 1,536.536 | 2,069.343 | **+34.68%**",
    "tps": "2069.343",
    "pp_tps": null,
    "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Dense (retention None); Triton GDN decode path, +34.68% vs CUDA; config=gdn-triton"
