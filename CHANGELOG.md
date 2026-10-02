@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-02: IBM Z NNPA zDNN Q8_0 matmul (16 rows, 1 new A/B group)
+
+- llama.cpp PR #29836: Q8_0 matrix-multiplication support added to the IBM zDNN backend, tested on the IBM Z Neural Network Processing Assist (NNPA) coprocessor, llama 1B Q8_0, build feat/zdnn-i8-upscale vs baseline b11284. The gain is dramatic for prompt processing and modest for decode: pp512 25.81 -> 249.62 tok/s (9.67x), tg128 9.02 -> 12.53 tok/s (1.39x). The multiplier shrinks as the @d context/KV depth grows: pp512 4.71x at d1024 to 2.39x at d4096, tg128 1.17x at d1024 to 1.06x at d4096. Eight tests (pp512/tg128 at the base context and @d1024/@d2048/@d4096) x 2 builds.
+- 16 rows, 1 new A/B group with note (page now 187 of 187). New hardware page (IBM Z NNPA), new backend (llama.cpp (zDNN)).
+
 ## 2026-10-02: Radeon RX 9060 XT fa A/B on Vulkan and ROCm (10 rows, 2 new A/B groups)
 
 - llama.cpp #10879 (Vulkan) and #15021 (ROCm), comments 18709094/18709095: AMD Radeon RX 9060 XT (16 GB GDDR6, 128-bit bus, gfx1200), build f1cee99, Ryzen 5 7600X, llama 7B Q4_0. Vulkan (Mesa RADV 26.2.2, RADV_PERFTEST=nogttspill, -ngl 100) fa=0 -> fa=1: pp512 2844.80 -> 3228.15, tg128 71.07 -> 74.01. ROCm 7.2.4 (-DGGML_HIP=ON, -ngl 99) fa=0 -> fa=1: pp512 2641.07 -> 3014.51, tg128 67.27 -> 70.18. Vulkan still leads this RDNA4 card on both (decode 74.01 vs 70.18, prefill 3228.15 vs 3014.51).

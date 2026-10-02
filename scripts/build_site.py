@@ -1740,6 +1740,20 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-29807-pro6000b-mtp-pr','tps')} t/s "
                     "(1.035x, faster on 80 of 80 prompts, acceptance 0.777 "
                     "identical on both builds).")
+        if (venue, issue) == ("llama.cpp", "29836"):
+            return ("Q8_0 matmul support added to the zDNN backend "
+                    "(feat/zdnn-i8-upscale vs baseline build b11284) on the "
+                    "IBM Z NNPA coprocessor. llama 1B Q8_0. The gain is "
+                    "dramatic for prompt processing and modest for decode: "
+                    "pp512 "
+                    f"{val(rows,'lc-29836-nnpa-pp512-base','pp_tps'):g} -> "
+                    f"{val(rows,'lc-29836-nnpa-pp512-pr','pp_tps'):g} tok/s "
+                    "(9.67x), tg128 "
+                    f"{val(rows,'lc-29836-nnpa-tg128-base','tps'):g} -> "
+                    f"{val(rows,'lc-29836-nnpa-tg128-pr','tps'):g} tok/s "
+                    "(1.39x). The multiplier shrinks as the @d context depth "
+                    "grows: pp512 4.71x at d1024 to 2.39x at d4096, tg128 "
+                    "1.17x at d1024 to 1.06x at d4096.")
         if (venue, issue) == ("llama.cpp", "29769"):
             return ("Unified decode masks built in one cache scan (sequence "
                     "membership bits, batches of 4+ tokens with one token "
