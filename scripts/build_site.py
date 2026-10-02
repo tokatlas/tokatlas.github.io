@@ -2638,6 +2638,15 @@ between builds of the same backend, see the
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
+            if hw == "2\u00d7 Quadro RTX 4000" and model == "rune-26b-a4b-v3":
+                return ("Prompt processing (prefill) on 2x Quadro RTX 4000 8 GB, "
+                        "llama.cpp 8212c78, 2k-token prompt, IQ3_M 26B MoE + q8_0 "
+                        "KV cache. The update/buffer batch size is the lever: "
+                        f"-ub 512 gives {val(rows,'livesport-rune26b-rtx4000-ub512','pp_tps')} "
+                        f"vs -ub 256 {val(rows,'livesport-rune26b-rtx4000-ub256','pp_tps')} tok/s "
+                        f"({pct(rows,'livesport-rune26b-rtx4000-ub256','livesport-rune26b-rtx4000-ub512','pp_tps'):+.0f}%). "
+                        "The card's latency table (per-question seconds, KV-cache "
+                        "reuse) is decode-side and is not mined here as tok/s.")
             if hw == "8 threads" and model == "Qwen3.8-Flash-Next":
                 return ("CPU field note: a separate MTP head (--spec-type "
                         "draft-mtp) is a clear win on CPU for this 176B MoE "
