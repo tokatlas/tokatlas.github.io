@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: Strix Halo llama 7B Q4_0 (6 rows, 3 new A/B groups)
+
+- llama.cpp discussions #10879 (@ddpasa): AMD Strix Halo (Ryzen AI Max+ 395 CPU, Radeon 8060S iGPU), llama 7B Q4_0, llama-bench pp512/tg128, fa=0 vs fa=1. CPU 16 threads: pp 300.27 -> 340.11, tg 27.68 -> 29.52. ROCm ngl 100: pp 1313.76 -> 1456.15, tg 47.36 -> 51.33. Vulkan ngl 100: pp 1487.08 -> 1704.30, tg 51.81 -> 54.38.
+- Cross-backend at fa=1: Vulkan leads on both axes (decode 54.38, prefill 1704.30), ahead of ROCm (51.33 / 1456.15) and far ahead of CPU (29.52 / 340.11). Reporter: Vulkan has improved a lot on Strix Halo and is now destroying ROCm.
+- 6 rows, 3 new A/B groups (CPU, ROCm, Vulkan fa 0/1) with notes (page now 193 of 193).
+
 ## 2026-10-02: vLLM #59740 MTP draft-vocab list (8 rows, 1 new A/B group)
 
 - vLLM PR #59740 (1x DGX Spark, GB10 SM121, Qwen3.8-Flash-Next-NVFP4, 3 draft tokens): letting the MTP drafters project onto a 32k-token list (speculative_config.draft_token_map) instead of the full 248k vocabulary. Decode tok/s, full (stock) -> 32k gen (94.9% coverage), per-stream at BS1 and aggregate at BS4: BS1 41.38 -> 51.20 (+23.7%), BS4 106.6 -> 117.1 (+9.9%); 32k corpus 51.05 / 117.0 and 64k gen 51.24 / 117.6 at BS1/BS4, all within a fraction of a percent of 32k gen. GSM8K 245 -> 246, within noise; at forced equal AL 3.00 the 32k gen list still leads (BS1 52.46 vs 40.01), so the gain is not just the acceptance-length shift.

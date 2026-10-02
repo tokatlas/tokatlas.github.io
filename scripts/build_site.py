@@ -385,6 +385,35 @@ between builds of the same backend, see the
         return (y - x) / x * 100
 
     def ab_note(venue, issue, hw, model, rows):
+        if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
+            fa0 = next(i for i in rows if i.endswith("fa0"))
+            fa1 = next(i for i in rows if i.endswith("fa1"))
+            be = rows[fa0].get("backend") or ""
+            if hw == "Ryzen AI Max+ 395":
+                return ("Strix Halo (Ryzen AI Max+ 395) CPU, 16 threads, "
+                        "llama 7B Q4_0, llama-bench. fa=0 -> fa=1: prefill "
+                        f"{val(rows,fa0,'pp_tps')} -> {val(rows,fa1,'pp_tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,fa0,'tps')} -> {val(rows,fa1,'tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'tps'):+.1f}%).")
+            if "ROCm" in be:
+                return ("Strix Halo Radeon 8060S iGPU, ROCm, ngl 100, "
+                        "llama 7B Q4_0, llama-bench. fa=0 -> fa=1: prefill "
+                        f"{val(rows,fa0,'pp_tps')} -> {val(rows,fa1,'pp_tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,fa0,'tps')} -> {val(rows,fa1,'tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'tps'):+.1f}%).")
+            if "Vulkan" in be:
+                return ("Strix Halo Radeon 8060S iGPU, Vulkan (RADV strix_halo), "
+                        "ngl 100, llama 7B Q4_0, llama-bench. fa=0 -> fa=1: prefill "
+                        f"{val(rows,fa0,'pp_tps')} -> {val(rows,fa1,'pp_tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,fa0,'tps')} -> {val(rows,fa1,'tps')} tok/s "
+                        f"({pct(rows,fa0,fa1,'tps'):+.1f}%). Reporter: Vulkan has "
+                        "improved a lot on Strix Halo and is now ahead of ROCm on "
+                        f"both axes at fa=1 (decode {val(rows,fa1,'tps')} vs 51.33 "
+                        f"tok/s, prefill {val(rows,fa1,'pp_tps')} vs 1456.15 tok/s).")
+            return None
         if (venue, issue) == ("llama.cpp", "27137"):
             return ("Between tags 9006 and 10433, flash attention under Vulkan is "
                     f"auto-selected onto the slow path in this configuration: generation "
