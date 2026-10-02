@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card Ornith-1.5-397B-A17B GB10 DFlash n_max sweep (5 rows, 1 new A/B group, 1 new model)
+
+- HF model card cdtio33/Ornith-1.5-397B-IQ2_XXS-DFlash-Drafter-GGUF: a DFlash drafter for the Ornith-1.5-397B-A17B target (finetune of z-lab/Qwen3.5-397B-A17B-DFlash), IQ2_XXS, on an NVIDIA GB10 (DGX Spark) under ik_llama.cpp. Mined the "Choosing n_max" sweep: effective generation tok/s vs draft depth, ~32k prompts, 131072-token q8_0 KV, 256-token generations, one boot two reps.
+- The curve rises to n_max=4 and turns over at 5: n_max 0/2/3/4/5 = 15.00/19.07/19.18/19.82/17.72 tok/s. Depths 2, 3 and 4 are not statistically separable on the author's data; n_max=3 ships unchanged (the 4 is a point-estimate peak the author declines to distinguish from 3).
+- 5 rows (n_max 0/2/3/4/5 as arms), new GB10 Ornith-1.5-397B-A17B A/B group and new model. Dataset 3788 -> 3793, models 182 -> 183, A/B groups 198 -> 199. Quote-verified 4371 -> 4376.
+
 ## 2026-10-02: vLLM #59779 Qwen3 4B B300 watermarking fix no-regression (6 rows, 1 new A/B group)
 
 - vLLM PR #59779 (open): "[Bugfix][Watermarking] Keep draft prompt lengths valid under CUDA graphs". Mined the Performance table: B300, Qwen3-4B + EAGLE3 (AngelSlim/Qwen3-4B_eagle3, K=3, probabilistic), aggregate output tok/s, main vs fix, random 1024 in / 256 out, --ignore-eos, concurrencies 1/8/64.
