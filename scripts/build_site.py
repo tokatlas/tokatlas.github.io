@@ -1555,6 +1555,76 @@ between builds of the same backend, see the
                     "8.49 -> 3.28 ms, native 3.06 ms. GSM8K accuracy is "
                     "unchanged either way, which is exactly why only an "
                     "acceptance-length gate catches this bug.")
+        if (venue, issue) == ("llama.cpp", "29772"):
+            return ("Vulkan FWHT extended from width 512 up to 8192: wide "
+                    "Hadamard blocks move from the dense f32 fallback to a "
+                    "shared-memory FWHT shader. Radeon 860M (RDNA 3.5), "
+                    "Bonsai 2 27B Q2_0: decode "
+                    f"{val(rows,'lc-29772-radeon860m-fwht-master','tps')} -> "
+                    f"{val(rows,'lc-29772-radeon860m-fwht-pr','tps')} tok/s "
+                    f"({pct(rows,'lc-29772-radeon860m-fwht-master','lc-29772-radeon860m-fwht-pr','tps'):+.1f}%), "
+                    "pp512 59.2 -> 66.4, pp2048 55.8 -> 62.2 (+12 to "
+                    "13%), KLD unchanged. The underlying op at width 8192 "
+                    "drops 76.4 ms -> 2.0 ms; widths 64-512 are untouched. "
+                    "Same fix measured on Apple M5 Pro in the body "
+                    "(kernel-level only).")
+        if (venue, issue) == ("vLLM", "59600"):
+            return ("ShortConv drafter state restore fix for the Mamba "
+                    "hybrid LFM2.5 target on ROCm. Radeon 8060S "
+                    "(gfx1151), TP1, BF16, GSM8K first 32 questions, "
+                    "offline output tok/s: target only "
+                    f"{val(rows,'vllm-59600-8060s-target-only','tps')} -> "
+                    f"target + fixed LFM2.5-350M drafter K=3 "
+                    f"{val(rows,'vllm-59600-8060s-drafter-k3','tps')} "
+                    f"({pct(rows,'vllm-59600-8060s-target-only','vllm-59600-8060s-drafter-k3','tps'):+.1f}%). "
+                    "Acceptance 71.83% (4,491/6,252 draft tokens); "
+                    "accuracy identical at 16/32, single run each. Before "
+                    "the fix the drafter's recurrent state was not "
+                    "restored on rejected tails, which is why speculation "
+                    "previously did not help.")
+        if (venue, issue) == ("vLLM", "59606"):
+            return ("MoE backend A/B on a DGX Spark (GB10, SM121) TP2, "
+                    "CYBER-FROST-3.8-NVFP4 (512 experts, top-10) with MTP "
+                    "k=3, vLLM 0.30.0. 8-stream aggregate decode: "
+                    f"flashinfer_cutlass {val(rows,'vllm-59606-spark-decode-cutlass','tps')} "
+                    "vs native b12x "
+                    f"{val(rows,'vllm-59606-spark-decode-b12x','tps')} "
+                    f"tok/s ({pct(rows,'vllm-59606-spark-decode-cutlass','vllm-59606-spark-decode-b12x','tps'):+.1f}% "
+                    "for b12x), and at 1 stream 43 vs 48 ms per step. "
+                    "b12x is also broken here beyond speed: illegal memory "
+                    "access during CUDA-graph capture with padded batches, "
+                    "and a worker kill on the first 6,941-token prefill "
+                    "even with the padding workaround. NLL identical. "
+                    "Reporter reverted to flashinfer_cutlass.")
+        if (venue, issue) == ("vLLM", "59514"):
+            return ("silu_and_mul_quant kernel fix (dead vector loop, fp32 "
+                    "fast-math chain), H100, Llama 3.1 8B FP8, vllm bench "
+                    "serve output tok/s, three interleaved rounds per arm "
+                    "in one session: main kernel "
+                    f"{val(rows,'vllm-59514-h100-main-kernel','tps')} -> PR "
+                    f"{val(rows,'vllm-59514-h100-pr','tps')} "
+                    f"({pct(rows,'vllm-59514-h100-main-kernel','vllm-59514-h100-pr','tps'):+.1f}%), "
+                    "torch Inductor path "
+                    f"{val(rows,'vllm-59514-h100-inductor','tps')} (PR vs "
+                    "Inductor +0.6%, noise; outputs bit-identical). Every "
+                    "main round is below every PR round. Fused op's GPU "
+                    "time per profile iteration: 69.87 -> 27.63 ms; mean "
+                    "TPOT 73.31 -> 70.66 ms. GSM8K differences are noise.")
+        if (venue, issue) == ("vLLM", "59679"):
+            slug = {"GLM-4-9B-Chat": "glm-4-9b-chat",
+                    "AFM-4.5B-Base": "afm-4-5b-base",
+                    "facebook/cwm": "cwm",
+                    "Mellum2-12B-A2.5B-Base": "mellum2-12b-a2-5b"}[model]
+            return ("Migration to the Transformers modeling backend, "
+                    f"{model} on 1x B200, vllm bench throughput 1024/256 "
+                    "x 1000 prompts, one run per cell: main "
+                    f"{val(rows,f'vllm-59679-b200-{slug}-main','tps')} vs "
+                    f"branch {val(rows,f'vllm-59679-b200-{slug}-branch','tps')} "
+                    f"tok/s ({pct(rows,f'vllm-59679-b200-{slug}-main',f'vllm-59679-b200-{slug}-branch','tps'):+.1f}%). "
+                    "The author states the +-1.5% spread is run-to-run "
+                    "noise, not a speedup or regression, and gsm8k agrees "
+                    "within noise: this is a parity check, recorded as "
+                    "one.")
         if (venue, issue) == ("llama.cpp", "29768"):
             return ("CUDA graph warmup fix: recapture a changed graph once "
                     "instead of resetting warmup at every padded-KV length "

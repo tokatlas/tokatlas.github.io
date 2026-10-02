@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-02: llama.cpp #29772 + vLLM #59600 + #59606 + #59514 + #59679 mine (17 rows)
+
+- llama.cpp #29772 (PR): Vulkan FWHT extended from block width 512 to 8192. Radeon 860M (RDNA 3.5), Bonsai 2 27B Q2_0: tg64 7.26 -> 8.17, pp512 59.2 -> 66.4, pp2048 55.8 -> 62.2 t/s (+12 to 13%), KLD unchanged; the width-8192 op drops 76.4 ms -> 2.0 ms. 2 rows.
+- vLLM #59600 (PR): ShortConv drafter state restore in the V2 runner. Radeon 8060S (gfx1151) TP1 BF16, LFM2.5-1.2B + LFM2.5-350M drafter K=3, GSM8K 32-question offline output tok/s: 496.40 -> 663.49 (+33.7%), acceptance 71.83%, accuracy 16/32 both arms. 2 rows.
+- vLLM #59606 (issue): b12x native NVFP4 MoE backend on DGX Spark (GB10, SM121) TP2, CYBER-FROST-3.8-NVFP4 (new model page) with MTP k=3: 8-stream decode 155.6 (flashinfer_cutlass) vs 137.6 tok/s (b12x, -11.6%), 43 vs 48 ms per step at 1 stream; b12x also crashes on padded graph capture and on a 6,941-token prefill. 2 rows.
+- vLLM #59514 (PR): flat-grid silu_and_mul_quant fix (dead vector loop, fp32 fast-math chain). H100, Llama 3.1 8B FP8, vllm bench serve, three interleaved rounds per arm: main kernel 4821 -> PR 5005 (+3.8%), Inductor path 4977 (+0.6% vs PR, noise); fused-op GPU time 69.87 -> 27.63 ms per iteration, mean TPOT 73.31 -> 70.66 ms. 3 rows.
+- vLLM #59679 (PR): Glm/Arcee/CWM/Mellum migration to the Transformers modeling backend, B200 throughput bench 1024/256 x 1000 prompts, main vs branch: GLM-4-9B-Chat 7,481 -> 7,591, AFM-4.5B-Base 13,657 -> 13,820, facebook/cwm 1,761 -> 1,766, Mellum2-12B-A2.5B-Base 16,604 -> 16,498 tok/s; author states the +-1.5% spread is noise (parity checks). 8 rows, 4 new model pages.
+- Eight new build A/B groups with interpretive notes (page now 157 of 157).
+
 ## 2026-10-02: vLLM #59655 mine (18 rows)
 
 - vLLM #59655 (PR): NVFP4 DeepSeek V4.1 Flash checkpoints silently mis-quantize the bundled MXFP4 MTP/DSpark draft experts, so every draft token is rejected (acceptance length 1.00) and speculation is pure overhead. GB300 TP4, DSpark k=5, MT-Bench 80 prompts greedy, vllm bench serve output tok/s, all arms run on each of three nodes (node spread up to ~25%): v0.30.0 -> fixed at concurrency 1: 114 -> 250 / 273 / 280 (2.19x / 2.39x / 2.45x); at concurrency 8: 773 -> 1471, 796 -> 1554, 766 -> 1595 (1.90x / 1.95x / 2.08x). Native deepseek-ai checkpoint arm lands -13.1% to +0.4% off the PR (author's rotated back-to-back runs: +2.5%, node noise). Median TPOT at c1 8.49 -> 3.28 ms, native 3.06 ms. GSM8K accuracy unchanged either way. 18 rows, one new A/B group with interpretive note (page now 149 of 149).
