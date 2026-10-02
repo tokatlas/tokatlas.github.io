@@ -1625,6 +1625,20 @@ between builds of the same backend, see the
                     "noise, not a speedup or regression, and gsm8k agrees "
                     "within noise: this is a parity check, recorded as "
                     "one.")
+        if (venue, issue) == ("vLLM", "59701"):
+            slug = {"pythia-12b": "pythia-12b", "phi-2": "phi-2",
+                    "Seed-OSS-36B-Base": "seed-oss-36b-base",
+                    "Jais-2-8B-Chat": "jais-2-8b-chat"}[model]
+            return ("Migration to the Transformers modeling backend, "
+                    f"{model} on 1x B200, vllm bench throughput 1024/256 "
+                    "x 1000 prompts, one run per cell: main "
+                    f"{val(rows,f'vllm-59701-b200-{slug}-main','tps')} vs "
+                    f"branch {val(rows,f'vllm-59701-b200-{slug}-branch','tps')} "
+                    f"tok/s ({pct(rows,f'vllm-59701-b200-{slug}-main',f'vllm-59701-b200-{slug}-branch','tps'):+.1f}%). "
+                    "The author states the +-1% spread is run-to-run "
+                    "noise, not a speedup or regression, and gsm8k agrees "
+                    "within noise: this is a parity check, recorded as "
+                    "one.")
         if (venue, issue) == ("vLLM", "59594"):
             return ("KV-cache layout fallback fix (BLNHC -> BLHNC when a "
                     "connector needs head-major pages), RTX PRO 6000 TP2, "

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-02: vLLM #59701 mine (8 rows)
+
+- vLLM #59701 (PR): migration of GPT-NeoX/Phi/Seed-OSS/Jais2 to the Transformers modeling backend. 1x B200 per model, vllm bench throughput 1024/256 x 1000 prompts, main vs branch, one run per cell: pythia-12b 2,912 -> 2,911, phi-2 5,144 -> 5,155, Seed-OSS-36B-Base 1,540 -> 1,542, Jais-2-8B-Chat 5,324 -> 5,359 tok/s; author states the +-1% spread is noise (parity checks). 8 rows, 4 new model pages, 4 new A/B groups (page now 162 of 162).
+
 ## 2026-10-02: vLLM #59594 + #59607 mine (21 rows)
 
 - vLLM #59594 (PR): KV-cache layout fallback fix (BLNHC -> BLHNC when a KV connector needs head-major pages). RTX PRO 6000 TP2, Qwen3.8-Flash-Next, 8K in / 1K out, output tok/s at c=1/4/16/32/64 with and without MTP3 speculation: all ten cells within +-2% (worst -2% at MTP c4), p50 TPOT identical; the fix is functional (BLNHC fails the Mooncake handshake at TP1 prefill, local=39739392 vs remote=1605632). 20 rows, parity A/B group.
