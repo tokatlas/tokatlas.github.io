@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-02: llama.cpp #29869 M3 Ultra (60-core GPU) DFlash2 spec decode few-row MMA (10 rows, 1 new A/B group, 1 new hardware)
+
+- llama.cpp PR #29869 (open): "metal: few-row MMA mat-mul and batched copies for speculative decoding". On Apple GPUs without the tensor API (M1-M4), speculative decoding runs mat-muls with 2..16 src1 rows, whose time grows per row; this PR adds dedicated few-row MMA kernels (Q4_0/Q8_0/Q5_K own kernels, rest generic), MUL_MAT+ADD fusion, and batched f32 copies. Measured on an Apple M3 Ultra (60-core GPU), macOS 15.7.9, Qwen3.8-27B Q4_0 target + DFlash2 Q8_0 drafter, -ngl 99 -fa on -c 8192 -np 1, 64 generated tokens, median of 5 requests, mean of 2 server runs; plus a llama-bench -fa 1 pp512/tg128 no-regression check.
+- The finding is a build-to-build reversal: on master DFlash2 (spec decode) on this M3 Ultra is at or below serial (code 30.3, prose 16.8 vs serial ~32.1 tok/s); with the PR it is 3-4x faster than serial (code 113.4, +274%, prose 64.4, +283%). Serial decode is flat (32.1 -> 32.0 code, 32.1 -> 32.1 prose) and the serial llama-bench path does not regress (pp512 317.2 -> 319.8, +0.8%; tg128 32.40 -> 32.44, first of two interleaved runs each).
+- 10 rows (DFlash2/serial x code/prose x master/PR decode, T=0, plus llama-bench master/PR), one new M3 Ultra Qwen3.8-27B llama.cpp (Metal) A/B group (master vs this-PR build), new hardware variant "M3 Ultra (60-core GPU)". Dataset 3799 -> 3809, hardware 367 -> 368, quote-verified 4382 -> 4392.
+- Also this cycle: fresh issue/PR pulse mined this PR; the rest of the new range above the old watermarks had no clean end-to-end tables (llama.cpp #29864 XMX refactor no table, #29865-29868 bugs, vLLM #59804-59807 bugfixes/metrics). Watermarks advanced -> llama.cpp #29869, vLLM #59807, ExLlamaV2 #821.
+
 ## 2026-10-02: HF card Dargoth Qwen3.6-35B-A3B RTX 5090 quant blend (5 rows, 1 new A/B group)
 
 - HF model card Dargoth/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-Final-Experimental-GGUF: a custom per-tensor requantizer (Q4_K/Q6_K/Q8_0/NVFP4 blend, each tensor's format chosen by measured element-wise quantization error) of the Hermes3.6-35B-A3B fine-tune of Qwen3.6-35B-A3B, dequantized from the Q8_0 source in memory (no F16/BF16 intermediate). The card's claim is a perplexity-quality win at Q4_K_M-class size, not a speed record.
