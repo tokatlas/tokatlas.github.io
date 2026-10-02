@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-02: llama.cpp #27593 mine (43 rows, Arc Pro B70 SYCL tuning)
+
+- llama.cpp discussion #27593 ("Squeezing Every Token/s from the Intel Arc Pro B70"): a full SYCL tuning log on one 32 GB B70 (BMG G31, Qwen3.8-27B Q8_0, master 63b64a50a, oneAPI 2026.1). Headline: -DGGML_SYCL_F16 OFF -> ON is 389.2 -> 1446.8 tok/s pp2048 (3.72x) with generation flat, and the flag is OFF in the CMake default. Also mined: the built-in MTP sweep (short answers 15.73 -> 50.92 tok/s at n-max 6, long answers peak at 33.53 at n-max 3, acceptance 0.87 -> 0.40), the -ub sweep (+34.8% prefill at 512 -> 2048), -fa 1 (+6 to +9% prefill), KV-quant context fit (f16 49152 / q8_0 65536 / q4_0 131072, tg128 15.79/15.72/15.69), a 15-arm SYCL env-var sweep (ENABLE_OPT=0 costs 68% of generation; LEVEL_ZERO_V2=0 is +1.4% free; FA_ONEDNN=0 trades -5% prefill for +3% generation), and a comment-18692471 single-vs-dual B70 comparison (1149.66 vs 855.54 tok/s PP at 4096 tokens, tensor 50,50 over PCIe gen4 x16, -25.6%). 43 rows, one new A/B group with interpretive note (page now 173 of 173).
+
 ## 2026-10-02: llama.cpp performance threads, 9 new comments mined (42 rows)
 
 - llama.cpp discussions #10879 (Vulkan) and #15021 (ROCm): fresh scoreboard comments. A desktop RX 6800 (RADV 26.2.2 with nogttspill vs ROCm 7.2.4, same commit f1cee99): fa A/B on both backends, and a cross-backend table for gpt-oss 20B / Qwen3.8-27B IQ4_XS / Gemma 4 12B; Vulkan generates ~18% faster on RDNA2, ROCm only wins prefill with FA on. An R9700 (RDNA4) comment shows ROCm falling off hard with prompt length (pp512 5039.78 -> pp8192 2755.01) while Vulkan stays steady (5411.28 -> 4235.87), a 54% gap at 8k that inverts on MoE. New hardware pages: Arc B390 (FA collapses pp8192 by -57%), Arc 140V (FA neutral), P102-100 mining card (Pascal, 5 GB, 46.45 tok/s 7B decode).

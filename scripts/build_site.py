@@ -2284,6 +2284,36 @@ between builds of the same backend, see the
                         "step is cheap precisely because few params are "
                         "active, so a ~1B drafter eats a larger share of what "
                         "it saves (reporter's analysis).")
+        if (venue, issue) == ("llama.cpp", "27593"):
+            return ("SYCL tuning sweep on one Arc Pro B70 (BMG G31, 32 GB), "
+                    "Qwen3.8-27B Q8_0, master 63b64a50a, oneAPI 2026.1. The "
+                    f"headline is a build flag: -DGGML_SYCL_F16 OFF -> ON takes "
+                    f"pp2048 {val(rows,'lc-disc-27593-f16-off','pp_tps'):g} -> "
+                    f"{val(rows,'lc-disc-27593-f16-on','pp_tps'):g} tok/s (3.72x) "
+                    "with tg128 flat (15.80 -> 15.79); the flag is OFF in the "
+                    "CMake default. MTP sweep (--spec-type draft-mtp, the model's "
+                    "own MTP layer): short 22-token answers 15.73 -> 50.92 tok/s "
+                    "(3.2x at n-max 6), long 512-token answers peak at 33.53 "
+                    "(n-max 3, 2.1x); draft acceptance falls 0.87 -> 0.40 across "
+                    "the sweep, so the optimum draft length differs by answer "
+                    "length. Micro-batch: -ub 512 -> 2048 is +34.8% prefill "
+                    "(1074.8 -> 1448.7), -b makes no difference once >= -ub, "
+                    "-ub 4096 adds ~+2% at pp8192. -fa 1 is +6% at 2048 / +9% "
+                    "at 8192, generation flat. KV cache: f16 reaches 49152 "
+                    "context at 1115.7 tok/s, q8_0 65536 at 1032.6, q4_0 the "
+                    "full 131072 at 795.3; tg128 is 15.79/15.72/15.69 across "
+                    "f16/q8_0/q4_0 at short context (deep-context decode not "
+                    "measured here). Env vars: GGML_SYCL_ENABLE_OPT=0 costs 68% "
+                    "of generation (15.79 -> 5.07) though it is the documented "
+                    "corruption workaround for #21893; SYCL_UR_USE_LEVEL_ZERO_V2=0 "
+                    "is +1.4% generation for free; GGML_SYCL_FA_ONEDNN=0 trades "
+                    "-5% prefill for +3% generation (16.59 combined with L0 v2). "
+                    "Repeated runs land within ~+-1% on prefill, so smaller "
+                    "moves are noise. Separately, comment 18692471 (Qwen3.8-27B-"
+                    "UD-Q4_K_XL, n_slots 4, ctx 262144, KV q8_0, MTP k=3) "
+                    f"reports PP 1149.66 tok/s on the single card vs 855.54 "
+                    "with the tensor split across two B70s over PCIe gen4 x16 "
+                    "(-25.6%); both fall to ~668-870 by 64k tokens.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
