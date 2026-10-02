@@ -1608,6 +1608,21 @@ between builds of the same backend, see the
                         f"{val(rows,'vllm-59778-gb10-b4k3-tuned','tps')}. "
                         "n=3 per arm (3.1 sigma at the headline point); "
                         "84% of the gain is the LM head.")
+        if (venue, issue) == ("vLLM", "59779"):
+            if hw == "B300":
+                return ("Watermarking fix (stale draft prompt lengths under "
+                        "CUDA graphs) on Qwen3-4B + EAGLE3, aggregate output "
+                        "tok/s, main vs fix. A correctness change with no "
+                        "measurable regression: the fix moves output "
+                        f"c1 {val(rows,'vllm-59779-b300-c1-main','tps'):g} -> "
+                        f"{val(rows,'vllm-59779-b300-c1-fix','tps'):g}, "
+                        f"c8 {val(rows,'vllm-59779-b300-c8-main','tps'):g} -> "
+                        f"{val(rows,'vllm-59779-b300-c8-fix','tps'):g}, "
+                        f"c64 {val(rows,'vllm-59779-b300-c64-main','tps'):g} -> "
+                        f"{val(rows,'vllm-59779-b300-c64-fix','tps'):g}; "
+                        "every delta is within its 95% CI, which includes "
+                        "zero, and mean TTFT rises 0.35-0.65 ms, inside the "
+                        "A/A noise floor.")
         if (venue, issue) == ("vLLM", "59653"):
             dec = ", ".join(
                 f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "

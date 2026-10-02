@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59779 Qwen3 4B B300 watermarking fix no-regression (6 rows, 1 new A/B group)
+
+- vLLM PR #59779 (open): "[Bugfix][Watermarking] Keep draft prompt lengths valid under CUDA graphs". Mined the Performance table: B300, Qwen3-4B + EAGLE3 (AngelSlim/Qwen3-4B_eagle3, K=3, probabilistic), aggregate output tok/s, main vs fix, random 1024 in / 256 out, --ignore-eos, concurrencies 1/8/64.
+- This is a no-regression check for a correctness fix, not an optimization: the fix moves output c1 464.7 -> 462.3, c8 3032 -> 3012, c64 10543 -> 10495, every delta within its 95% CI (which includes zero), and mean TTFT rises 0.35-0.65 ms, inside the A/A noise floor. Quant is BF16 (default for the 4B target; not stated in the source).
+- 6 rows (3 concurrencies x 2 arms), new B300 Qwen3 4B A/B group. Dataset 3782 -> 3788, A/B groups 197 -> 198. Quote-verified 4365 -> 4371.
+
 ## 2026-10-02: vLLM #59778 Qwen3.8-Flash-Next GB10 skinny GEMM (8 rows, 1 new A/B group)
 
 - vLLM PR #59778 (closed): "Tune the Qwen3.8-Flash-Next skinny GEMMs for GB10 (sm_121)". Enables the CuTe skinny-GEMM table for sm_121 (GB10) on Qwen3.8-Flash-Next-NVFP4, MTP, single GB10 TP=1, ISL 2048/OSL 256.
