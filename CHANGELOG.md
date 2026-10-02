@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59732 + #59733 (12 rows, 2 new A/B groups)
+
+- vLLM PR #59732 (MI355X TP2, Qwen3.8-Flash-Next-Quark-MXFP4): the fused QSA prepare launch folds the main-attention QK-norm, RoPE, gate split and K/V cache write into the prepare launch, as already done for NVIDIA. Output tok/s, unfused -> fused: 8192/1024 c4 462.0 -> 475.5, c16 964.1 -> 975.3, c64 1457.2 -> 1471.0; 60000/600 c4 144.8 -> 147.4. +0.9% to +2.9%, all 8 measured cells faster; GSM8K 0.9638 -> 0.9605, within run-to-run noise.
+- vLLM PR #59733 (MI355X TP8, Kimi-K3 MXFP4 + DSpark draft): #57652 dropped the KV cache from 4 to 20 groups because the DSpark draft spec omitted max_tp_shards, so the MLA layers stopped merging; the fix declares max_tp_shards=1 to restore the 4-group layout. 4-build A/B, output tok/s: pre-#57652 nightly 648, current nightly with #57652 623, full revert 646, this PR 647; restores pre-#57652 throughput, median TPOT 11.47 -> 11.09 ms.
+- 12 rows, 2 new A/B groups with notes (page now 189 of 189).
+
 ## 2026-10-02: IBM Z NNPA zDNN Q8_0 matmul (16 rows, 1 new A/B group)
 
 - llama.cpp PR #29836: Q8_0 matrix-multiplication support added to the IBM zDNN backend, tested on the IBM Z Neural Network Processing Assist (NNPA) coprocessor, llama 1B Q8_0, build feat/zdnn-i8-upscale vs baseline b11284. The gain is dramatic for prompt processing and modest for decode: pp512 25.81 -> 249.62 tok/s (9.67x), tg128 9.02 -> 12.53 tok/s (1.39x). The multiplier shrinks as the @d context/KV depth grows: pp512 4.71x at d1024 to 2.39x at d4096, tg128 1.17x at d1024 to 1.06x at d4096. Eight tests (pp512/tg128 at the base context and @d1024/@d2048/@d4096) x 2 builds.

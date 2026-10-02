@@ -1447,6 +1447,38 @@ between builds of the same backend, see the
                     "sweep points (no single point moves more than 1%); the "
                     "mask kernel alone is 1.06x to 2.50x faster on MI355X. "
                     "GSM8K unchanged within error.")
+        if (venue, issue) == ("vLLM", "59732"):
+            segs = []
+            for key, label, concs in (("8k1k", "8192/1024", ("4", "16", "64")),
+                                      ("60k600", "60000/600", ("4",))):
+                pairs = ", ".join(
+                    f"c{c} "
+                    f"{val(rows,f'vllm-59732-mi355x-{key}-c{c}-ctrl','tps')} -> "
+                    f"{val(rows,f'vllm-59732-mi355x-{key}-c{c}-fused','tps')}"
+                    for c in concs)
+                segs.append(f"{label}: {pairs}")
+            return ("QSA prepare launch on MI355X (TP2, MXFP4): the "
+                    "main-attention QK-norm, RoPE, gate split and K/V cache "
+                    "write are folded into the fused QSA prepare launch, as "
+                    "already done for NVIDIA. Output throughput tok/s, "
+                    "unfused -> fused, by input/output length and "
+                    "concurrency. " + "; ".join(segs)
+                    + ". Gain +0.9% to +2.9%, faster in all 8 measured cells. "
+                    "GSM8K 0.9638 -> 0.9605, within run-to-run noise.")
+        if (venue, issue) == ("vLLM", "59733"):
+            return ("Kimi-K3 + DSpark draft on MI355X (TP8, MXFP4): #57652 "
+                    "dropped the KV cache from 4 to 20 groups because the "
+                    "DSpark draft spec omitted max_tp_shards, so the MLA "
+                    "layers stopped merging. This PR declares "
+                    "max_tp_shards=1 to restore the 4-group layout. Output "
+                    "tok/s by build (c8, 8K/1K): pre-#57652 nightly "
+                    f"{val(rows,'vllm-59733-mi355x-k3-36768d1','tps'):g}, "
+                    f"current nightly with #57652 "
+                    f"{val(rows,'vllm-59733-mi355x-k3-ac9126e','tps'):g}, full "
+                    f"revert {val(rows,'vllm-59733-mi355x-k3-revert57652','tps'):g}, "
+                    f"this PR {val(rows,'vllm-59733-mi355x-k3-59733','tps'):g}. "
+                    "The fix restores pre-#57652 throughput (median TPOT "
+                    "11.47 -> 11.09 ms).")
         if (venue, issue) == ("vLLM", "59653"):
             dec = ", ".join(
                 f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "
