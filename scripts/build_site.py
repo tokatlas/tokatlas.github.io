@@ -2638,6 +2638,20 @@ between builds of the same backend, see the
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
+            if hw == "8 threads" and model == "Qwen3.8-Flash-Next":
+                return ("CPU field note: a separate MTP head (--spec-type "
+                        "draft-mtp) is a clear win on CPU for this 176B MoE "
+                        "(pruned 512 -> 256 experts). Serial decode is "
+                        f"{val(rows,'davidmg-qwen38flash-mtp-nospec','tps')} tok/s; "
+                        "the unsloth 512-expert head gives "
+                        f"{val(rows,'davidmg-qwen38flash-mtp-h512','tps')} "
+                        f"({pct(rows,'davidmg-qwen38flash-mtp-nospec','davidmg-qwen38flash-mtp-h512','tps'):+.0f}%, "
+                        "81.7% draft acceptance) and the pruned 256-expert head "
+                        f"{val(rows,'davidmg-qwen38flash-mtp-h256','tps')} "
+                        f"({pct(rows,'davidmg-qwen38flash-mtp-nospec','davidmg-qwen38flash-mtp-h256','tps'):+.0f}%, "
+                        "74.8% acceptance). The card's GPU setup (2x 20 GB) shows "
+                        "only a small code gain and a prose loss, so the CPU rows "
+                        "are the clean win.")
             if hw == "Radeon 8065S" and model == "GLM-5.3-Flash":
                 return ("GLM-5.3-Flash (320.8B MoE) Q5K-IQ3S mix on a Gorgon Halo "
                         "(Radeon 8065S, 192 GB) with the ROCmFPX Vulkan build. "
