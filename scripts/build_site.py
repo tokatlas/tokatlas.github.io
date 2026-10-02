@@ -1479,6 +1479,30 @@ between builds of the same backend, see the
                     f"this PR {val(rows,'vllm-59733-mi355x-k3-59733','tps'):g}. "
                     "The fix restores pre-#57652 throughput (median TPOT "
                     "11.47 -> 11.09 ms).")
+        if (venue, issue) == ("vLLM", "59740"):
+            return ("MTP draft-vocab list on DGX Spark (GB10): the MTP "
+                    "drafters project onto a 32k-token list instead of the "
+                    "full 248k vocabulary (speculative_config.draft_token_map); "
+                    "only drafting changes, the target still verifies with its "
+                    "full head. Qwen3.8-Flash-Next-NVFP4, 3 draft tokens. "
+                    "Decode tok/s, full (stock) -> 32k gen (94.9% coverage): "
+                    "BS1 per stream "
+                    f"{val(rows,'vllm-59740-gb10-spec-full-bs1','tps')} -> "
+                    f"{val(rows,'vllm-59740-gb10-spec-32k-gen-bs1','tps')} "
+                    f"({pct(rows,'vllm-59740-gb10-spec-full-bs1','vllm-59740-gb10-spec-32k-gen-bs1','tps'):.1f}%), "
+                    "BS4 aggregate "
+                    f"{val(rows,'vllm-59740-gb10-spec-full-bs4','tps')} -> "
+                    f"{val(rows,'vllm-59740-gb10-spec-32k-gen-bs4','tps')} "
+                    f"({pct(rows,'vllm-59740-gb10-spec-full-bs4','vllm-59740-gb10-spec-32k-gen-bs4','tps'):.1f}%) "
+                    "(32k corpus "
+                    f"{val(rows,'vllm-59740-gb10-spec-32k-corp-bs1','tps')}/"
+                    f"{val(rows,'vllm-59740-gb10-spec-32k-corp-bs4','tps')}, "
+                    f"64k gen {val(rows,'vllm-59740-gb10-spec-64k-gen-bs1','tps')}/"
+                    f"{val(rows,'vllm-59740-gb10-spec-64k-gen-bs4','tps')} at "
+                    "BS1/BS4, all within a fraction of a percent of 32k gen). "
+                    "GSM8K 245 -> 246, within noise. At forced equal AL 3.00 "
+                    "the 32k gen list still leads (BS1 52.46 vs 40.01), so the "
+                    "gain is not just the acceptance-length shift.")
         if (venue, issue) == ("vLLM", "59653"):
             dec = ", ".join(
                 f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "

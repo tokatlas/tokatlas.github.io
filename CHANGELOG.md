@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-02: vLLM #59740 MTP draft-vocab list (8 rows, 1 new A/B group)
+
+- vLLM PR #59740 (1x DGX Spark, GB10 SM121, Qwen3.8-Flash-Next-NVFP4, 3 draft tokens): letting the MTP drafters project onto a 32k-token list (speculative_config.draft_token_map) instead of the full 248k vocabulary. Decode tok/s, full (stock) -> 32k gen (94.9% coverage), per-stream at BS1 and aggregate at BS4: BS1 41.38 -> 51.20 (+23.7%), BS4 106.6 -> 117.1 (+9.9%); 32k corpus 51.05 / 117.0 and 64k gen 51.24 / 117.6 at BS1/BS4, all within a fraction of a percent of 32k gen. GSM8K 245 -> 246, within noise; at forced equal AL 3.00 the 32k gen list still leads (BS1 52.46 vs 40.01), so the gain is not just the acceptance-length shift.
+- 8 rows, 1 new A/B group with note (page now 190 of 190).
+
 ## 2026-10-02: vLLM #59732 + #59733 (12 rows, 2 new A/B groups)
 
 - vLLM PR #59732 (MI355X TP2, Qwen3.8-Flash-Next-Quark-MXFP4): the fused QSA prepare launch folds the main-attention QK-norm, RoPE, gate split and K/V cache write into the prepare launch, as already done for NVIDIA. Output tok/s, unfused -> fused: 8192/1024 c4 462.0 -> 475.5, c16 964.1 -> 975.3, c64 1457.2 -> 1471.0; 60000/600 c4 144.8 -> 147.4. +0.9% to +2.9%, all 8 measured cells faster; GSM8K 0.9638 -> 0.9605, within run-to-run noise.
