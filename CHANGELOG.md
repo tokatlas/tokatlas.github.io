@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-02: HF card Qwen3.5-0.8B-Japanese-SFT on Apple M5 (4 rows)
+
+- HF model card Takenoko12345678/Qwen3.5-0.8B-Japanese-SFT-GGUF: Apple M5, llama-bench, generation 128 tokens. Q8_0: CPU 4 threads 78 tok/s, Metal GPU 123 tok/s. Q4_K_M: CPU 92 tok/s, GPU 169 tok/s. Figures are approximate (約). 0.8 B Japanese SFT; new model page.
+- 4 rows, dataset 3712 -> 3716, models 181 -> 182. Quote-verified 4295 -> 4299.
+
 ## 2026-10-02: HF card Luigi Gemma-4-E2B meeting agent (1 row) + Gyro tps-in-quote fix
 
 - HF model card Luigi/gemma-4-E2B-meeting-agent-zh-GGUF: OPPO Reno7 (Dimensity 900), CPU only, llama.cpp 8 threads. Real-speed replay of a 2 h 08 zh-TW meeting (lag 67 s median, 115 s max, no drift). Effective speed 16 tok/s prefill, 4.5 tok/s decode. QAT Q4_0 meeting-agent fine-tune, 8k context restart. Numbers are the effective replay speed, not a clean llama-bench run.
