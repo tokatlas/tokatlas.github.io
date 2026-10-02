@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card ResonateX T1 TPU v6e training throughput (1 row, first TPU row)
+
+- HF model card ResonatexIntegratedTechnologies/ResonateX-T1-125M-Talking-GGUF: training telemetry for the 125.3M-parameter ResonateX T1 talking model. This is the first TPU row in the dataset (hardware "TPU v6e", backend "training (TPU)"). Found via hf_scan.py (previously parked as a training-throughput card; mined now to close out the scan).
+- Single row: average training throughput 53,225 tok/s over 22,100 steps (3.83 h), 1 TPU v6e worker via Google Colab, 724.2M tokens (5.78 tok/param). The card notes throughput stabilized at ~53K tok/s after warm-up. tps is the average training rate (training, not inference); the per-stage curriculum table is left in notes.
+- Dataset 3824 -> 3825, hardware 371 -> 372, models 187 -> 188, backends 26 -> 27, quote-verified 4407 -> 4408.
+
 ## 2026-10-02: HF card Livesport rune-26b-a4b-v3 2x Quadro RTX 4000 prefill (2 rows, 1 new A/B group, 1 new hardware, 1 new model)
 
 - HF model card Livesport/rune-26b-a4b-v3-GGUF: prompt-processing (prefill) throughput on 2x Quadro RTX 4000 8 GB with llama.cpp build 8212c78, one request at a time, median of 3, on the IQ3_M 26B MoE (gemma4 arch, 128 experts / 8 active, 262144 ctx) with a q8_0 KV cache. Found via hf_scan.py (new card, 2 tok/s mentions).
