@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-02: Coverage backfill, 13 rows from previously unmined comments (3 new A/B groups)
+
+- llama.cpp #4167 (Apple Silicon), comment 18555918: M2 Max (30 GPU, 32 GB), Metal. Qwen3.6-35B-A3B Q4_K_M (MoE, 3B active): pp4096 671.40 / tg128 58.56 tok/s. Qwen3.8-27B dense IQ3_S: pp4096 106.78 / tg128 10.82 (architecture swamps quantization: 5.4x slower decode than the MoE). An MTP sweep (--spec-type draft-mtp, 32k window, q8_0 KV, ollama) is a net loss on this chip and degrades monotonically with draft depth: no-draft 46.2, n=2 34.6, n=4 29.4, n=6 20.1, n=8 17.1 tok/s.
+- llama.cpp #15021 (ROCm), comment 18378967: AMD Radeon Pro V620 (gfx1030, 32 GB) on ROCm v10, llama.cpp 434ddbbc0, llama 7B Q4_0. Single card fa=0 -> fa=1: pp512 1846.20 -> 2173.13, tg128 91.70 -> 98.78. Two cards in parallel: pp512 1801.75 -> 2146.36, tg128 64.85 -> 71.38. The second card holds prefill (-1.2%) but costs 27.7% of decode (71.38 vs 98.78): tensor-parallel sync, not bandwidth, is the bottleneck for a 3.56 GiB model.
+- llama.cpp #23313 (Intel Arc), comment 18474926: Arc A770 (i7-13700K, Ubuntu 24.04, 64 GB DDR5), llama.cpp 2cdae802e, SYCL, llama 7B Q4_0, -ctk f16 -ctv f16. fa=0 -> fa=1: pp512 826.15 -> 979.76, tg128 47.81 -> 54.38.
+- 13 rows, 3 new A/B groups with notes (page now 184 of 184); the M2 Max Qwen3.8-27B group (shared with the DFlash2 rows) now carries 12 rows under one note. Two new hardware pages (V620, 2x V620).
+
+## 2026-10-02: llama.cpp #15013 P102-100 10 GB BIOS-mod run (2 rows, VRAM 5/10 GB A/B)
+
+- llama.cpp discussion #15013 (CUDA), comment 18695871: a P102-100 mining card (Pascal) BIOS-modded from 5 GB to 10 GB, llama 7B Q4_0. The 10 GB card runs fa=0 / fa=1 at pp512 935.02 / tg128 46.77 and pp512 1032.13 / tg128 49.59, versus 927.54 / 46.45 and 1029.43 / 49.08 for the stock 5 GB card (comment 18693775). The extra VRAM is nearly neutral (the 7B Q4_0 fits in 5 GB with room for KV): +0.8% prefill / +0.7% decode at fa=0, +0.3% / +1.0% at fa=1. The group is now a 2x2 (VRAM 5/10 GB x fa 0/1) under one note.
+
 ## 2026-10-02: HF model cards mined (40 rows, 6 new A/B groups)
 
 - Four fresh HF model cards with measured performance sections:

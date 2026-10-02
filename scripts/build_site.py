@@ -2204,6 +2204,37 @@ between builds of the same backend, see the
                         "they are within 8%. Decode also favors Vulkan "
                         "(~+8%). Reporter notes the ordering inverts on MoE "
                         "models (ROCm +8.5% at 57k ctx on a 35B-A3B).")
+            if hw == "V620":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("AMD Radeon Pro V620 (gfx1030, 32 GB) on ROCm v10, "
+                        "llama.cpp 434ddbbc0 (10884), llama 7B Q4_0, single "
+                        f"card. fa=0 -> fa=1: prefill {val(rows,off,'pp_tps'):g} -> "
+                        f"{val(rows,on,'pp_tps'):g} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,off,'tps'):g} -> {val(rows,on,'tps'):g} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%). The second card is a "
+                        "near-identical replicate (pp512 1819.51, tg128 "
+                        "91.48/98.44). Cross-config: running both V620s in "
+                        "parallel keeps prefill flat (2146.36 vs 2173.13, "
+                        "-1.2%) but decode falls to 71.38 tok/s (-27.7%), so a "
+                        "second 32 GB card costs rather than helps a 3.56 GiB "
+                        "model that already fits on one.")
+            if hw == "2x V620":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Two V620 (gfx1030) in parallel on ROCm v10, "
+                        "llama.cpp 434ddbbc0 (10884), llama 7B Q4_0. fa=0 -> "
+                        f"fa=1: prefill {val(rows,off,'pp_tps'):g} -> "
+                        f"{val(rows,on,'pp_tps'):g} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,off,'tps'):g} -> {val(rows,on,'tps'):g} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%). Versus the single "
+                        "card (2173.13 prefill / 98.78 decode at fa=1), the "
+                        "dual setup holds prefill (-1.2%) but loses ~28% of "
+                        "decode (71.38 vs 98.78): tensor-parallel sync over "
+                        "PCIe, not extra bandwidth, is the bottleneck for a "
+                        "model that fits on one card.")
         if (venue, issue) == ("llama.cpp", "15013"):
             off5 = "lc-disc-15013-c18693775-fa0"
             on5 = "lc-disc-15013-c18693775-fa1"
@@ -2253,9 +2284,14 @@ between builds of the same backend, see the
                         "bandwidth-decode / compute-prefill split as the M5 "
                         "Ultra, at a much smaller absolute rate.")
             if model == "Qwen3.8-27B":
-                return ("DFlash2 speculative decoding (xsn/dflash2 branch, "
-                        "--spec-draft-n-max 7) vs plain generation on an M2 "
-                        "Max, dense 27B IQ3_S, 256-token generations. Code: "
+                mp = "lc-disc-4167-c18555918-"
+                return ("Qwen3.8-27B dense IQ3_S on M2 Max (30 GPU, 32 GB) "
+                        "Metal, llama.cpp. Plain bench: pp4096 "
+                        f"{val(rows,mp+'q38-27b','pp_tps'):g} / tg128 "
+                        f"{val(rows,mp+'q38-27b','tps'):g} tok/s. "
+                        "DFlash2 speculative decoding (xsn/dflash2 branch, "
+                        "--spec-draft-n-max 7) vs plain, 256-token "
+                        "generations: code "
                         f"{val(rows,'lc-disc-4167-c18631101-code-off','tps')} "
                         "-> "
                         f"{val(rows,'lc-disc-4167-c18631101-code-dflash','tps')} "
@@ -2268,10 +2304,16 @@ between builds of the same backend, see the
                         "prose "
                         f"{val(rows,'lc-disc-4167-c18631101-prose-off','tps')} -> "
                         f"{val(rows,'lc-disc-4167-c18631101-prose-dflash','tps')} "
-                        f"({pct(rows,'lc-disc-4167-c18631101-prose-off','lc-disc-4167-c18631101-prose-dflash','tps'):+.1f}%). "
-                        "Spec decode loses on every prompt type despite 76% "
-                        "acceptance and 6.22/7 mean accepted length on code: "
-                        "the drafter cost exceeds the savings on Metal.")
+                        f"({pct(rows,'lc-disc-4167-c18631101-prose-off','lc-disc-4167-c18631101-prose-dflash','tps'):+.1f}%) "
+                        "- spec decode loses on every prompt type despite 76% "
+                        "acceptance. MTP (--spec-type draft-mtp, 32k window, "
+                        "q8_0 KV, ollama) is also a net loss on this chip and "
+                        "degrades monotonically with draft depth: no-draft "
+                        f"{val(rows,mp+'mtp-nodraft','tps'):g} -> n=2 "
+                        f"{val(rows,mp+'mtp-n2','tps'):g} -> n=4 "
+                        f"{val(rows,mp+'mtp-n4','tps'):g} -> n=6 "
+                        f"{val(rows,mp+'mtp-n6','tps'):g} -> n=8 "
+                        f"{val(rows,mp+'mtp-n8','tps'):g} tok/s.")
             if model == "Qwen3.6-35B-A3B":
                 return ("DFlash2 spec decode on the same M2 Max, MoE 35B-A3B "
                         "IQ3_S (only 3B active per token). Code: "
@@ -2351,6 +2393,19 @@ between builds of the same backend, see the
                         "(acceptance 0.936) down to long_code_review 28.0 "
                         "(0.653); throughput tracks acceptance, and even the "
                         "best cell is ~1.9x the 21.32 bare tg256.")
+        if (venue, issue) == ("llama.cpp", "23313") and hw == "Arc A770":
+            off = next(i for i in rows if i.endswith("fa0"))
+            on = next(i for i in rows if i.endswith("fa1"))
+            return ("Intel Arc A770, i7-13700K, Ubuntu 24.04, 64 GB DDR5, "
+                    "llama.cpp 2cdae802e (10714), SYCL, llama 7B Q4_0, "
+                    "-ctk f16 -ctv f16. fa=0 -> fa=1: prefill "
+                    f"{val(rows,off,'pp_tps'):g} -> {val(rows,on,'pp_tps'):g} "
+                    "tok/s "
+                    f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                    f"{val(rows,off,'tps'):g} -> {val(rows,on,'tps'):g} tok/s "
+                    f"({pct(rows,off,on,'tps'):+.1f}%). FA helps both, decode "
+                    "more than prefill here (the opposite of the B70, where "
+                    "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
             if hw == "Radeon 8065S" and model == "GLM-5.3-Flash":
                 return ("GLM-5.3-Flash (320.8B MoE) Q5K-IQ3S mix on a Gorgon Halo "
