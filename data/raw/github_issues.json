@@ -1,5 +1,5 @@
 {
- "count": 1042,
+ "count": 1043,
  "records": [
   {
    "backend": "llama.cpp",
@@ -22176,6 +22176,27 @@
    "retrieved": "2026-10-02",
    "quote": "Livesport/rune-26b-a4b-v3-GGUF; Latency on 2\u00d7 Quadro RTX 4000 8 GB; --swa-full and a q8_0 KV cache; 1,696 tok/s with -ub 256",
    "notes": "HF card: prompt processing (prefill) on 2x Quadro RTX 4000 8 GB, llama.cpp build 8212c78, one request at a time, median of 3, IQ3_M 26B MoE (gemma4 arch, 128 experts/8 active, 262144 ctx) + q8_0 KV cache; 2k-token prompt, -ub = update/buffer batch size; prompt processing 1,696 tok/s at 2k tokens with -ub 256 (update batch 256); config=ub256"
+  },
+  {
+   "id": "resonatex-t1-tpuv6e-training",
+   "model": "ResonateX T1",
+   "quant": "unspecified",
+   "hardware": "TPU v6e",
+   "backend": "training (TPU)",
+   "ctx": null,
+   "batch": null,
+   "tps": "53225",
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-02",
+   "provenance": "community",
+   "source_url": "https://huggingface.co/ResonatexIntegratedTechnologies/ResonateX-T1-125M-Talking-GGUF",
+   "source_name": "HF model card: ResonatexIntegratedTechnologies/ResonateX-T1-125M-Talking-GGUF",
+   "retrieved": "2026-10-02",
+   "quote": "ResonatexIntegratedTechnologies/ResonateX-T1-125M-Talking-GGUF; Google Cloud TPU v6e environment through Google Colab; Throughput : 53,225 tok/s Total time : 3.83 h",
+   "notes": "HF card: training (not inference) telemetry for the 125.3M-parameter ResonateX T1 talking model, 1 TPU v6e worker, 22,100 steps, 724.2M tokens (5.78 tok/param), single run; tps is the average training throughput over the run (throughput stabilized ~53K tok/s after warm-up); average training throughput 53,225 tok/s over 22,100 steps (3.83 h), 1 TPU v6e worker"
   }
  ],
  "source": {
