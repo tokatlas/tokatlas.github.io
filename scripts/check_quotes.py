@@ -21,6 +21,7 @@ import re
 import sys
 import time
 import urllib.request
+import urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".cache")
@@ -49,9 +50,18 @@ def fetch(url):
     key = hashlib.sha256(url.encode()).hexdigest()
     path = os.path.join(CACHE, key)
     if not os.path.exists(path):
-        req = urllib.request.Request(url, headers={"User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=60) as r:
-            body = r.read()
+        body = None
+        for attempt in range(3):
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    body = r.read()
+                break
+            except urllib.error.HTTPError as e:
+                if e.code in (502, 503, 504) and attempt < 2:
+                    time.sleep(5 * (attempt + 1))
+                    continue
+                raise
         tmp = path + ".tmp"
         with open(tmp, "wb") as f:
             f.write(body)
