@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: Radeon RX 9060 XT fa A/B on Vulkan and ROCm (10 rows, 2 new A/B groups)
+
+- llama.cpp #10879 (Vulkan) and #15021 (ROCm), comments 18709094/18709095: AMD Radeon RX 9060 XT (16 GB GDDR6, 128-bit bus, gfx1200), build f1cee99, Ryzen 5 7600X, llama 7B Q4_0. Vulkan (Mesa RADV 26.2.2, RADV_PERFTEST=nogttspill, -ngl 100) fa=0 -> fa=1: pp512 2844.80 -> 3228.15, tg128 71.07 -> 74.01. ROCm 7.2.4 (-DGGML_HIP=ON, -ngl 99) fa=0 -> fa=1: pp512 2641.07 -> 3014.51, tg128 67.27 -> 70.18. Vulkan still leads this RDNA4 card on both (decode 74.01 vs 70.18, prefill 3228.15 vs 3014.51).
+- Larger-model table on the same card (-ngl 99 -fa 1, pp512/tg128, Vulkan/HIP): gpt-oss-20b MXFP4 3464/105.8 vs 3372/92.8, Qwen3.8-27B UD-IQ4_XS 709/20.1 vs 738/19.5, Gemma 4 12B Q4_K_M 1509/39.0 vs 1467/37.6. Reporter notes the 128-bit (not 256-bit) bus and a large build-over-build prefill gain vs the older RX 9060 XT scoreboard entries (Vulkan pp512 +33%/+69%, ROCm +86%/+104% no-FA/FA).
+- 10 rows, 2 new A/B groups with notes (page now 186 of 186).
+
 ## 2026-10-02: Coverage backfill, 13 rows from previously unmined comments (3 new A/B groups)
 
 - llama.cpp #4167 (Apple Silicon), comment 18555918: M2 Max (30 GPU, 32 GB), Metal. Qwen3.6-35B-A3B Q4_K_M (MoE, 3B active): pp4096 671.40 / tg128 58.56 tok/s. Qwen3.8-27B dense IQ3_S: pp4096 106.78 / tg128 10.82 (architecture swamps quantization: 5.4x slower decode than the MoE). An MTP sweep (--spec-type draft-mtp, 32k window, q8_0 KV, ollama) is a net loss on this chip and degrades monotonically with draft depth: no-draft 46.2, n=2 34.6, n=4 29.4, n=6 20.1, n=8 17.1 tok/s.

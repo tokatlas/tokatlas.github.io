@@ -2110,6 +2110,28 @@ between builds of the same backend, see the
                         "same card ROCm gets pp512 1510/1739 and tg128 "
                         "86.0/93.6 (no FA/FA): Vulkan generates ~18% faster on "
                         "RDNA2, ROCm only wins prefill with FA on.")
+            if hw == "Radeon RX 9060 XT":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Flash-attention A/B on a Radeon RX 9060 XT "
+                        "(16 GB, 128-bit, gfx1200) under Vulkan (Mesa RADV "
+                        "26.2.2, RADV_PERFTEST=nogttspill, build f1cee99, "
+                        "-ngl 100, Ryzen 5 7600X). fa=0 -> fa=1: decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} "
+                        f"tok/s ({pct(rows,off,on,'tps'):+.1f}%), prefill "
+                        f"{val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%). Same card on "
+                        "ROCm 7.2.4 (same commit, -ngl 99): fa=0->fa=1 pp512 "
+                        "2641.07->3014.51, tg128 67.27->70.18; Vulkan is still "
+                        "ahead on RDNA4 for both (decode 74.01 vs 70.18, "
+                        "prefill 3228.15 vs 3014.51). Larger models on the "
+                        "same card (-ngl 99 -fa 1, pp512/tg128, Vulkan/HIP): "
+                        "gpt-oss-20b MXFP4 3464/105.8 vs 3372/92.8, Qwen3.8-27B "
+                        "UD-IQ4_XS 709/20.1 vs 738/19.5, Gemma 4 12B Q4_K_M "
+                        "1509/39.0 vs 1467/37.6. Reporter notes the 128-bit "
+                        "bus (not 256-bit) and a big build-over-build prefill "
+                        "gain vs the older scoreboard entry (ed52f36).")
             if hw == "Arc(TM) B390":
                 s0 = next(i for i in rows if i.endswith("fa0-short"))
                 s1 = next(i for i in rows if i.endswith("fa1-short"))
@@ -2169,6 +2191,25 @@ between builds of the same backend, see the
                         "pp512 1594/1598 and tg128 101.5/106.5 (no FA/FA), so "
                         "Vulkan still leads generation on RDNA2 while ROCm "
                         "only wins prefill with FA on.")
+            if hw == "Radeon RX 9060 XT":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Flash-attention A/B on a Radeon RX 9060 XT "
+                        "(16 GB, 128-bit, gfx1200) under ROCm 7.2.4 (build "
+                        "f1cee99, -DGGML_HIP=ON -DGPU_TARGETS=gfx1200, -ngl "
+                        "99, Ryzen 5 7600X). fa=0 -> fa=1: prefill "
+                        f"{val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%). Same card on Vulkan "
+                        "(RADV 26.2.2, RADV_PERFTEST=nogttspill, -ngl 100): "
+                        "fa=0->fa=1 pp512 2844.80->3228.15, tg128 71.07->74.01, "
+                        "so Vulkan is still ahead on both for this RDNA4 card. "
+                        "Reporter: vs the older scoreboard entry (a0e13dc) "
+                        "pp512 is up 86% (no FA) and 104% (FA), tg128 level "
+                        "(no FA) and up 7% (FA); the card has a 128-bit bus, "
+                        "not 256-bit.")
             if hw == "Radeon AI PRO R9700":
                 ids = list(rows)
                 fa0 = next(i for i in ids if i.endswith("fa0"))
