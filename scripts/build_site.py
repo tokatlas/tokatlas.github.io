@@ -2558,6 +2558,18 @@ between builds of the same backend, see the
                         f"{val(rows,'hf3-glm53flash-8065s-tg-d32k','tps')} tok/s. "
                         "Plain llama.cpp master runs the file at the same decode "
                         "speed but slower prefill.")
+            if hw == "Radeon 8065S" and model == "MiMo-V2.6-Flash-RL":
+                return ("MiMo-V2.6-Flash-RL-UNCENSORED (309.8B MoE) at "
+                        "4.29 bpw (MXFP4 experts, Q5_K attention/dense/MTP) "
+                        "on a Gorgon Halo (Radeon 8065S, 192 GB), ROCmFPX "
+                        "main Vulkan build with the fused gate/up expert "
+                        "tensors (from PR #33), full GPU offload. "
+                        "Context-depth decay: prefill "
+                        f"{val(rows,'hf3-mimov26flashrl-8065s-pp2048','pp_tps')} -> "
+                        f"{val(rows,'hf3-mimov26flashrl-8065s-pp2048-d32k','pp_tps')} at "
+                        "32K context, decode "
+                        f"{val(rows,'hf3-mimov26flashrl-8065s-tg','tps')} -> "
+                        f"{val(rows,'hf3-mimov26flashrl-8065s-tg-d32k','tps')} tok/s.")
             if hw == "RTX 3090" and model == "Qwen3.8-27B":
                 return ("PAW-27B-X3.1: a 3.5 bpw trellis-quantized Qwen3.8-27B "
                         "run on one RTX 3090 with the llama-paw CUDA fork, full "

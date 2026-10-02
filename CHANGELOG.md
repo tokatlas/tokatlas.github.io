@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-02: HF card MiMo-V2.6-Flash-RL-UNCENSORED on Gorgon Halo (4 rows)
+
+- HF model card cafonez/MiMo-V2.6-Flash-RL-UNCENSORED-Gorgon-GGUF: Framework Desktop (Gorgon Halo, Ryzen AI Max+ PRO 495 / Radeon 8065S, 192 GB LPDDR5X), llama.cpp Vulkan via ROCmFPX main (fused gate/up expert tensors, from PR #33), llama-bench -fa 1 -b 2048 -ub 2048, 3 runs. 309.8B MoE at 4.29 bpw (MXFP4 experts, Q5_K attention/dense/MTP). pp2048 484.9, decode 23.6; at 32K context pp2048 258.7, decode 22.1. New A/B group for the context-depth decay.
+- 4 rows, dataset 3716 -> 3720, A/B groups 193 -> 194. Quote-verified 4299 -> 4303.
+
 ## 2026-10-02: HF card Qwen3.5-0.8B-Japanese-SFT on Apple M5 (4 rows)
 
 - HF model card Takenoko12345678/Qwen3.5-0.8B-Japanese-SFT-GGUF: Apple M5, llama-bench, generation 128 tokens. Q8_0: CPU 4 threads 78 tok/s, Metal GPU 123 tok/s. Q4_K_M: CPU 92 tok/s, GPU 169 tok/s. Figures are approximate (約). 0.8 B Japanese SFT; new model page.
