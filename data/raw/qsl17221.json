@@ -282,7 +282,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2086.65",
       "ttft_s": null
@@ -308,7 +308,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2123.63",
       "ttft_s": null
@@ -334,7 +334,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2560.58",
       "ttft_s": null
@@ -360,7 +360,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2526.98",
       "ttft_s": null
@@ -386,7 +386,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1318.94",
       "ttft_s": null
@@ -412,7 +412,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1309.40",
       "ttft_s": null
@@ -438,7 +438,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1566.10",
       "ttft_s": null
@@ -464,7 +464,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1534.41",
       "ttft_s": null
@@ -490,7 +490,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1914.26",
       "ttft_s": null
@@ -516,7 +516,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1887.62",
       "ttft_s": null
@@ -542,7 +542,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2119.20",
       "ttft_s": null
@@ -568,7 +568,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "2540.23",
       "ttft_s": null
@@ -594,7 +594,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "422.97",
       "ttft_s": null
@@ -620,7 +620,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1117.99",
       "ttft_s": null
@@ -646,7 +646,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1822.21",
       "ttft_s": null
@@ -672,7 +672,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1811.35",
       "ttft_s": null
@@ -698,7 +698,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1115.89",
       "ttft_s": null
@@ -724,7 +724,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1131.43",
       "ttft_s": null
@@ -750,7 +750,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1217.92",
       "ttft_s": null
@@ -776,7 +776,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1534.72",
       "ttft_s": null
@@ -802,7 +802,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1519.86",
       "ttft_s": null
@@ -828,7 +828,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1757.90",
       "ttft_s": null
@@ -854,7 +854,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf 4A10.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/4A10.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/4A10.md",
       "tg_tokens": 256,
       "tps": "1816.33",
       "ttft_s": null
@@ -880,7 +880,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "377.98",
       "ttft_s": null
@@ -906,7 +906,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "395.12",
       "ttft_s": null
@@ -932,7 +932,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "278.73",
       "ttft_s": null
@@ -958,7 +958,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "249.99",
       "ttft_s": null
@@ -984,7 +984,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "238.21",
       "ttft_s": null
@@ -1010,7 +1010,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "239.82",
       "ttft_s": null
@@ -1036,7 +1036,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "337.17",
       "ttft_s": null
@@ -1062,7 +1062,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 3096,
       "tps": "369.19",
       "ttft_s": null
@@ -1088,7 +1088,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "401.26",
       "ttft_s": null
@@ -1114,7 +1114,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "413.54",
       "ttft_s": null
@@ -1140,7 +1140,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "469.62",
       "ttft_s": null
@@ -1166,7 +1166,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "433.77",
       "ttft_s": null
@@ -1192,7 +1192,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "656.60",
       "ttft_s": null
@@ -1218,7 +1218,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 1024,
       "tps": "607.98",
       "ttft_s": null
@@ -1244,7 +1244,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 512,
       "tps": "424.58",
       "ttft_s": null
@@ -1270,7 +1270,7 @@
       "retrieved": "2026-09-27",
       "scope": null,
       "source_name": "qiulang/vllm-sglang-perf qwen3-final.md (via vLLM discussion #17221)",
-      "source_url": "https://github.com/qiulang/vllm-sglang-perf/blob/main/qwen3-final.md",
+      "source_url": "https://raw.githubusercontent.com/qiulang/vllm-sglang-perf/main/qwen3-final.md",
       "tg_tokens": 1024,
       "tps": "423.26",
       "ttft_s": null
