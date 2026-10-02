@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-02: vLLM #59655 mine (18 rows)
+
+- vLLM #59655 (PR): NVFP4 DeepSeek V4.1 Flash checkpoints silently mis-quantize the bundled MXFP4 MTP/DSpark draft experts, so every draft token is rejected (acceptance length 1.00) and speculation is pure overhead. GB300 TP4, DSpark k=5, MT-Bench 80 prompts greedy, vllm bench serve output tok/s, all arms run on each of three nodes (node spread up to ~25%): v0.30.0 -> fixed at concurrency 1: 114 -> 250 / 273 / 280 (2.19x / 2.39x / 2.45x); at concurrency 8: 773 -> 1471, 796 -> 1554, 766 -> 1595 (1.90x / 1.95x / 2.08x). Native deepseek-ai checkpoint arm lands -13.1% to +0.4% off the PR (author's rotated back-to-back runs: +2.5%, node noise). Median TPOT at c1 8.49 -> 3.28 ms, native 3.06 ms. GSM8K accuracy unchanged either way. 18 rows, one new A/B group with interpretive note (page now 149 of 149).
+
 ## 2026-10-01: llama.cpp discussions #10879 re-mine + Steam Deck and Strix Halo data (27 rows net)
 
 - llama.cpp discussions #10879 (Vulkan performance thread): upstream edited two comments the dataset was anchored to. The RX 5700 XT rows moved to a surviving comment (439.42 / 70.13 t/s, llama-bench pp512/tg128, RX 5700 XT, RADV NAVI10); three rows whose source comment was deleted were dropped.
