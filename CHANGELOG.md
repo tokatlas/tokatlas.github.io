@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59778 Qwen3.8-Flash-Next GB10 skinny GEMM (8 rows, 1 new A/B group)
+
+- vLLM PR #59778 (closed): "Tune the Qwen3.8-Flash-Next skinny GEMMs for GB10 (sm_121)". Enables the CuTe skinny-GEMM table for sm_121 (GB10) on Qwen3.8-Flash-Next-NVFP4, MTP, single GB10 TP=1, ISL 2048/OSL 256.
+- The source reports aiperf TPOT in ms/token (lower is better), n=3 per arm, not tok/s. The raw TPOT is stored as the value with the unit noted on each row, because the converted tok/s does not appear verbatim in the source and so cannot be quote-verified. Baseline (no table) vs with-table: bs=1 k=3 48.14 -> 44.86 (-6.8%), bs=1 k=1 47.70 -> 46.32 (-2.9%), bs=2 k=3 55.28 -> 54.28 (-1.8%), bs=4 k=3 73.43 -> 72.64 (-1.1%). The gain is largest at low batch (small M) and shrinks as batch approaches the kernel's M<=16 limit; 84% of the gain is the LM head.
+- 8 rows (4 configs x 2 arms), new GB10 A/B group. Dataset 3774 -> 3782, A/B groups 196 -> 197. Quote-verified 4357 -> 4365.
+
 ## 2026-10-02: vLLM #59740 "Other hardware" table (18 rows, 1 new A/B group)
 
 - vLLM PR #59740 (MTP draft-vocab list): mined the "Other hardware" table (Qwen3.6-35B-A3B-NVFP4 BF16 head on RTX 5090; Qwen3.8-Flash-Next-NVFP4 on GB200 TP1/TP2). 32k draft-vocab list vs full-vocab stock arm, 56 prompts, 384 output tokens, absolute decode tok/s.

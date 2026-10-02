@@ -1586,6 +1586,28 @@ between builds of the same backend, see the
                         "than on GB200 because the lm_head read is a bigger "
                         "share of the step on this GPU. GSM8K 241 both "
                         "ways.")
+        if (venue, issue) == ("vLLM", "59778"):
+            if hw == "GB10":
+                return ("CuTe skinny-GEMM table for GB10 (sm_121) on "
+                        "Qwen3.8-Flash-Next-NVFP4 (MTP, TP=1, ISL "
+                        "2048/OSL 256): the table cuts aiperf TPOT "
+                        "(ms/token, lower is better) hardest at low batch. "
+                        "At bs=1, k=3 it drops "
+                        f"{val(rows,'vllm-59778-gb10-b1k3-base','tps')} -> "
+                        f"{val(rows,'vllm-59778-gb10-b1k3-tuned','tps')} "
+                        f"({pct(rows,'vllm-59778-gb10-b1k3-base','vllm-59778-gb10-b1k3-tuned','tps'):.1f}%), "
+                        "and the effect shrinks as batch grows toward the "
+                        "kernel's M<=16 limit: bs=1 k=1 "
+                        f"{val(rows,'vllm-59778-gb10-b1k1-base','tps')} -> "
+                        f"{val(rows,'vllm-59778-gb10-b1k1-tuned','tps')}, "
+                        "bs=2 k=3 "
+                        f"{val(rows,'vllm-59778-gb10-b2k3-base','tps')} -> "
+                        f"{val(rows,'vllm-59778-gb10-b2k3-tuned','tps')}, "
+                        "bs=4 k=3 "
+                        f"{val(rows,'vllm-59778-gb10-b4k3-base','tps')} -> "
+                        f"{val(rows,'vllm-59778-gb10-b4k3-tuned','tps')}. "
+                        "n=3 per arm (3.1 sigma at the headline point); "
+                        "84% of the gain is the LM head.")
         if (venue, issue) == ("vLLM", "59653"):
             dec = ", ".join(
                 f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "
