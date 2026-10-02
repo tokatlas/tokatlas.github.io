@@ -2314,6 +2314,35 @@ between builds of the same backend, see the
                     f"reports PP 1149.66 tok/s on the single card vs 855.54 "
                     "with the tensor split across two B70s over PCIe gen4 x16 "
                     "(-25.6%); both fall to ~668-870 by 64k tokens.")
+        if (venue, issue) == ("llama.cpp", "23313") and hw == "Arc Pro B70":
+            if model == "llama 7B":
+                return ("llama 7B Q4_0, fa A/B, on an Arc Pro B70 passed "
+                        "through to a Proxmox VM (Xeon E5-2699 v4, 64 GB "
+                        "DDR4), SYCL F16 build. fa 0 -> 1: prefill "
+                        f"{val(rows,'lc-disc-23313-c18467211-llama7b-fa0','pp_tps'):g} -> "
+                        f"{val(rows,'lc-disc-23313-c18467211-llama7b-fa1','pp_tps'):g} "
+                        "tok/s (2.47x), generation "
+                        f"{val(rows,'lc-disc-23313-c18467211-llama7b-fa0','tps')} -> "
+                        f"{val(rows,'lc-disc-23313-c18467211-llama7b-fa1','tps')} "
+                        "(+3.8%). FA is worth more than 2x prefill on this "
+                        "card at 512 tokens; the VM overhead is unmeasured "
+                        "(no bare-metal numbers from the same post).")
+            if model == "Qwen3.8-27B":
+                return ("qwen35 27B Q6_K, latest SYCL, n_ubatch 1024. "
+                        "Prompt-depth decay at fixed pp2048/tg256: "
+                        f"{val(rows,'lc-disc-23313-c18629941-d0','pp_tps'):g} / "
+                        f"{val(rows,'lc-disc-23313-c18629941-d0','tps')} at no "
+                        "depth, "
+                        f"{val(rows,'lc-disc-23313-c18629941-d8192','pp_tps'):g} / "
+                        f"{val(rows,'lc-disc-23313-c18629941-d8192','tps')} at "
+                        "d8192, "
+                        f"{val(rows,'lc-disc-23313-c18629941-d16384','pp_tps'):g} / "
+                        f"{val(rows,'lc-disc-23313-c18629941-d16384','tps')} at "
+                        "d16384. The mtp-bench rows are multi-token-prediction "
+                        "spec decode per prompt type: code_python 40.9 tok/s "
+                        "(acceptance 0.936) down to long_code_review 28.0 "
+                        "(0.653); throughput tracks acceptance, and even the "
+                        "best cell is ~1.9x the 21.32 bare tg256.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}

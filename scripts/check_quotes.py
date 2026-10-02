@@ -277,10 +277,19 @@ def main():
                                      str(r.get("quote") or ""))):
                 # pages render the test cell as "pp 512" / "tg 128"
                 spaced = tok[:2] + " " + tok[2:]
-                if tok not in text and spaced not in text:
-                    print("%s (%s): test token %r not in cached source"
-                          % (name, r["id"], tok))
-                    errors += 1
+                if tok in text or spaced in text:
+                    continue
+                # client-rendered comments: fall back to the REST API body
+                if cid and isinstance(key, tuple) and key[0] == "thread":
+                    ck = (root, cid)
+                    if ck not in api_cache:
+                        api_cache[ck] = api_comment_text(root, cid)
+                    body = api_cache[ck]
+                    if tok in body or spaced in body:
+                        continue
+                print("%s (%s): test token %r not in cached source"
+                      % (name, r["id"], tok))
+                errors += 1
             if name in LITERAL_FILES:
                 nt = norm(text)
                 for frag in str(r.get("quote") or "").split("; "):
