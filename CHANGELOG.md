@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-02: vLLM #59740 re-mine after PR description rewrite (8 rows)
+
+- vLLM PR #59740 (MTP draft-vocab list) was rewritten by the author: the old headline table (41.38/51.05/51.2/51.24/106.6/117.1/117.6) is gone. CI's cold-cache quote check caught the drift. Re-mined the 8 rows from the new headline (Qwen3.8-Flash-Next-NVFP4, 1x DGX Spark GB10, 3 draft tokens, 12 prompts, 384 output tokens): full (stock) 41.41/107.1, 32k list 50.89/117.5 (+22.9% / +9.7%), forced equal AL 3.00 full 39.96/106.6, forced equal AL 3.00 32k 51.65/119.5. Dropped the 32k-corpus and 64k-gen arms (no longer in the source); A/B note rewritten around the forced-AL comparison. Row count unchanged (8 -> 8).
+
 ## 2026-10-02: HF card MiMo-V2.6-Flash-RL-UNCENSORED on Gorgon Halo (4 rows)
 
 - HF model card cafonez/MiMo-V2.6-Flash-RL-UNCENSORED-Gorgon-GGUF: Framework Desktop (Gorgon Halo, Ryzen AI Max+ PRO 495 / Radeon 8065S, 192 GB LPDDR5X), llama.cpp Vulkan via ROCmFPX main (fused gate/up expert tensors, from PR #33), llama-bench -fa 1 -b 2048 -ub 2048, 3 runs. 309.8B MoE at 4.29 bpw (MXFP4 experts, Q5_K attention/dense/MTP). pp2048 484.9, decode 23.6; at 32K context pp2048 258.7, decode 22.1. New A/B group for the context-depth decay.
