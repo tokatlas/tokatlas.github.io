@@ -2746,6 +2746,31 @@ between builds of the same backend, see the
                         "The card notes mlx-dspark with the DFlash2 drafter "
                         "decodes 15-19 tok/s at 24-27k context where the MTP "
                         "path measured 6-7.")
+        if (venue, issue) == ("llama.cpp", "29869"):
+            return ("Metal has no tensor API on M1-M4, so the 2-16 row mat-muls "
+                    "that speculative decoding issues ran the mat-vec kernels "
+                    "and slowed per draft row; on master DFlash2 was at or "
+                    "below serial. The PR's few-row MMA kernels reverse it: "
+                    "DFlash2 decode goes "
+                    f"{val(rows,'lc-29869-m3u-dflash-code-master','tps')} to "
+                    f"{val(rows,'lc-29869-m3u-dflash-code-pr','tps')} tok/s on "
+                    "code "
+                    f"({pct(rows,'lc-29869-m3u-dflash-code-master','lc-29869-m3u-dflash-code-pr','tps'):+.0f}%) "
+                    f"and {val(rows,'lc-29869-m3u-dflash-prose-master','tps')} "
+                    "to "
+                    f"{val(rows,'lc-29869-m3u-dflash-prose-pr','tps')} on "
+                    "prose "
+                    f"({pct(rows,'lc-29869-m3u-dflash-prose-master','lc-29869-m3u-dflash-prose-pr','tps'):+.0f}%), "
+                    "while serial decode is flat "
+                    f"({val(rows,'lc-29869-m3u-serial-code-master','tps')} to "
+                    f"{val(rows,'lc-29869-m3u-serial-code-pr','tps')} code, "
+                    f"{val(rows,'lc-29869-m3u-serial-prose-master','tps')} to "
+                    f"{val(rows,'lc-29869-m3u-serial-prose-pr','tps')} prose) "
+                    "and the serial llama-bench path does not regress "
+                    f"(pp512 {val(rows,'lc-29869-m3u-bench-master','pp_tps')} "
+                    f"to {val(rows,'lc-29869-m3u-bench-pr','pp_tps')}, "
+                    f"tg128 {val(rows,'lc-29869-m3u-bench-master','tps')} to "
+                    f"{val(rows,'lc-29869-m3u-bench-pr','tps')}).")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
