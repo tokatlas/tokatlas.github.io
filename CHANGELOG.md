@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card Davidmg0815 Qwen3.8-Flash-Next MTP-256exp CPU spec decode (3 rows, 1 new A/B group, 1 new hardware)
+
+- HF model card Davidmg0815/Qwen3.8-Flash-Next-MTP-256exp-GGUF: field note on MTP draft-mtp speculative decoding (--spec-type draft-mtp) on the Qwen3.8-Flash-Next 176B MoE pruned 512 -> 256 experts (GSQ-RCO), main model IQ1_M + a separate Q8_0 MTP head loaded as its own model via -md. Found via hf_scan.py (re-examined a previously-parked card; its GPU section is an unnamed 2x 20 GB setup with a prose loss, so the clean finding is the CPU section).
+- CPU, 8 threads, ctx 4096, one code prompt, temperature 0, thinking off, 160 tokens (author: "indications, not benchmarks"): serial decode (no speculation) 3.49, unsloth 512-expert head 5.61 (+61%, 81.7% draft acceptance 98/120), pruned 256-expert head 5.13 (+47%, 74.8% acceptance 95/127) tok/s. The MTP head is a clear win on CPU; the card's GPU setup shows only a small code gain and a prose loss, so the 3 CPU rows are the clean result. New hardware "8 threads" (CPU, threads-only).
+- Dataset 3819 -> 3822, hardware 369 -> 370, quote-verified 4402 -> 4405.
+
 ## 2026-10-02: llama.cpp #29875 AMD Ryzen 7 7735HS entropy-gated speculative decoding (6 rows, 1 new A/B group, 1 new hardware, 1 new model)
 
 - llama.cpp issue #29875 (feature request, open, 0 comments): proposes `--spec-draft-entropy-max`, a Shannon-entropy-gated early-exit for speculative drafting (halt drafting when the draft distribution's entropy exceeds a threshold, instead of the existing top-1 `--spec-draft-p-min` gate). Author benchmarked it head-to-head on an AMD Ryzen 7 7735HS (8 CPU threads), Qwen2.5-3B target + Qwen2.5-0.5B draft, K=8 draft budget, 128+ tokens; unmerged working branch feat/entropy-gated-speculation (44/44 ctest).
