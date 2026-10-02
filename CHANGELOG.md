@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card CleverBadger Swift 1.5 Qwen3.8 27B Badger Mixed M5 Pro (4 rows, 1 new A/B group, 1 new model)
+
+- HF model card CleverBadger/Swift-1.5-Qwen3.8-27B-Badger-Mixed-GGUF: a Q4/Q6/Q8 mixed-precision build of the Swift 1.5 fine-tune of Qwen3.8 27B (base ukisai/Swift-1.5-Qwen3.8-27b), a 27B vision model, designed for 48 GB Apple Silicon. Runs through Splash with Metal and DFlash2, full 262144-token window.
+- Mac performance table on a 48 GB M5 Pro MacBook Pro (20 GPU cores): weighted per-request 32.58, median per-request 34.42, thinking 32.43, code 67.52 tok/s (request-level, prompt+generation mixed, one request each); median TTFT 1.93 s. New model, existing hardware, one new A/B group (4-arm config sweep by metric).
+- Dataset 3809 -> 3813, models 184 -> 185, quote-verified 4392 -> 4396.
+
 ## 2026-10-02: llama.cpp #29869 M3 Ultra (60-core GPU) DFlash2 spec decode few-row MMA (10 rows, 1 new A/B group, 1 new hardware)
 
 - llama.cpp PR #29869 (open): "metal: few-row MMA mat-mul and batched copies for speculative decoding". On Apple GPUs without the tensor API (M1-M4), speculative decoding runs mat-muls with 2..16 src1 rows, whose time grows per row; this PR adds dedicated few-row MMA kernels (Q4_0/Q8_0/Q5_K own kernels, rest generic), MUL_MAT+ADD fusion, and batched f32 copies. Measured on an Apple M3 Ultra (60-core GPU), macOS 15.7.9, Qwen3.8-27B Q4_0 target + DFlash2 Q8_0 drafter, -ngl 99 -fa on -c 8192 -np 1, 64 generated tokens, median of 5 requests, mean of 2 server runs; plus a llama-bench -fa 1 pp512/tg128 no-regression check.
