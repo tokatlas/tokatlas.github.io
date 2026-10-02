@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59740 per-domain 64k-list table (36 rows, 1 new A/B group)
+
+- vLLM PR #59740 (MTP draft-vocab list): mined the "Acceptance and speed by domain, 64k list" table (Qwen3.8-Flash-Next-NVFP4, MTP 3-draft-token, BS1, 16 prompts per domain, 256 output tokens; full-vocab stock arm vs 64k list arm). 8 domains (Spec-Bench multi-turn, translation, summarization, QA, math, RAG; HumanEval code; BFCL tool calling) plus pooled, on GB10 (DGX Spark) and GB200 (new hardware for the dataset).
+- The 64k list beats the stock arm on every domain: GB10 pooled 40.2 -> 50.8 (+26.6%, best QA +32%, weakest math +26%), GB200 pooled 459 -> 489 (+6.7%, best translation +16%, weakest math +4%). The GB200 gain is far smaller because on GB200 the lm_head read is a small share of the step, so the list's AL loss on mixed traffic outweighs the head-traffic saving (the 32k list is a net loss on GB200 TP1).
+- New GB200 A/B group; the GB10 group gains the per-domain rows alongside the headline. 36 rows, dataset 3720 -> 3756, hardware 365 -> 366, A/B groups 194 -> 195. Quote-verified 4303 -> 4339.
+
 ## 2026-10-02: vLLM #59740 re-mine after PR description rewrite (8 rows)
 
 - vLLM PR #59740 (MTP draft-vocab list) was rewritten by the author: the old headline table (41.38/51.05/51.2/51.24/106.6/117.1/117.6) is gone. CI's cold-cache quote check caught the drift. Re-mined the 8 rows from the new headline (Qwen3.8-Flash-Next-NVFP4, 1x DGX Spark GB10, 3 draft tokens, 12 prompts, 384 output tokens): full (stock) 41.41/107.1, 32k list 50.89/117.5 (+22.9% / +9.7%), forced equal AL 3.00 full 39.96/106.6, forced equal AL 3.00 32k 51.65/119.5. Dropped the 32k-corpus and 64k-gen arms (no longer in the source); A/B note rewritten around the forced-AL comparison. Row count unchanged (8 -> 8).
