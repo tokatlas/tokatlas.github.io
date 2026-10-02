@@ -189,8 +189,9 @@ def main():
                     if cid in cids:
                         found.add(cid)
                         cid_page[(root, cid)] = url
-                if found == cids:
-                    break
+                # no early break: a comment's anchor can appear on an
+                # early page while its body renders on a later one, so
+                # the union must cover the whole thread
                 m = NEXT_PAGE_RE.search(raw)
                 url = ("https://github.com" + htmllib.unescape(m.group(1))
                        if m else None)
@@ -203,6 +204,28 @@ def main():
         text_cache = {}
         raw_cache = {}
         numcache = {}
+        api_cache = {}
+
+        def api_comment_text(rt, cidv):
+            m = re.match(r"https://github\.com/([^/]+)/([^/]+)/discussions/(\d+)$", rt)
+            if not m:
+                return ""
+            owner, repo, num = m.groups()
+            page = 1
+            while page <= 10:
+                u = ("https://api.github.com/repos/%s/%s/discussions/%s"
+                     "/comments?per_page=100&page=%d" % (owner, repo, num, page))
+                try:
+                    data = json.loads(fetch(u))
+                except Exception:
+                    return ""
+                if not data:
+                    return ""
+                for c in data:
+                    if str(c.get("id")) == cidv:
+                        return c.get("body") or ""
+                page += 1
+            return ""
         for r, root, cid in rows:
             if cid and root in thread_raw:
                 key = ("thread", root)
@@ -237,6 +260,16 @@ def main():
                         and not _num_present(float(n), aux_nums)
                         and not (k == "power_w"
                                  and _in_published_watt_range(float(n), text))):
+                    # discussion comment bodies can be client-rendered and
+                    # absent from every server-rendered page; fall back to
+                    # the REST API copy of the comment
+                    if cid and isinstance(key, tuple) and key[0] == "thread":
+                        ck = (root, cid)
+                        if ck not in api_cache:
+                            api_cache[ck] = api_comment_text(root, cid)
+                        body = api_cache[ck]
+                        if n in body or _num_present(float(n), _numbers(body)):
+                            continue
                     print("%s (%s): %s %r not in cached source"
                           % (name, r["id"], k, n))
                     errors += 1

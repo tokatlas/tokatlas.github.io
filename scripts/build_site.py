@@ -2094,6 +2094,52 @@ between builds of the same backend, see the
                         "parity); with MTP ROCm 19.38 vs Vulkan 22.38 "
                         "(+15.5%). MTP nearly doubles both backends; the "
                         "backend gap only shows up once speculation is on.")
+            if hw == "RX 6800":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Flash-attention A/B on a desktop RX 6800 under "
+                        "Vulkan (Mesa RADV 26.2.2 with RADV_PERFTEST=nogttspill, "
+                        "build f1cee99, -ngl 100). fa=0 -> fa=1: decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%), prefill "
+                        f"{val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%). Reporter: vs the "
+                        "older scoreboard entry (build 4b385bf) tg128 is up 6% "
+                        "(no FA) and 10% (FA) while pp512 is down 6-9%. On the "
+                        "same card ROCm gets pp512 1510/1739 and tg128 "
+                        "86.0/93.6 (no FA/FA): Vulkan generates ~18% faster on "
+                        "RDNA2, ROCm only wins prefill with FA on.")
+            if hw == "Arc(TM) B390":
+                s0 = next(i for i in rows if i.endswith("fa0-short"))
+                s1 = next(i for i in rows if i.endswith("fa1-short"))
+                l0 = next(i for i in rows if i.endswith("fa0-long"))
+                l1 = next(i for i in rows if i.endswith("fa1-long"))
+                return ("Flash attention on an Arc B390 (Vulkan, coopmat, "
+                        "build b10903). Short context: fa=0 -> fa=1 prefill "
+                        f"{val(rows,s0,'pp_tps')} -> {val(rows,s1,'pp_tps')} "
+                        f"tok/s ({pct(rows,s0,s1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,s0,'tps')} -> {val(rows,s1,'tps')} tok/s "
+                        f"({pct(rows,s0,s1,'tps'):+.1f}%). Long context "
+                        "(pp8192/tg2048): prefill "
+                        f"{val(rows,l0,'pp_tps')} -> {val(rows,l1,'pp_tps')} "
+                        f"tok/s ({pct(rows,l0,l1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,l0,'tps')} -> {val(rows,l1,'tps')} tok/s "
+                        f"({pct(rows,l0,l1,'tps'):+.1f}%). FA costs little at "
+                        "512 tokens but collapses prefill by more than half at "
+                        "8192 on this chip; decode is flat either way.")
+            if hw == "Arc(TM) 140V":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Flash-attention A/B on a Lunar Lake Arc 140V iGPU "
+                        "(Vulkan, coopmat, build b10941, -ngl -1). fa=0 -> "
+                        f"fa=1: prefill {val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%). FA is roughly "
+                        "neutral here; the reporter notes the big xe2 prefill "
+                        "jump came earlier, from coopmat matrix cores, not FA.")
             if model == "Qwen3.8-27B-AD":
                 bare = next(i for i in rows if i.endswith("-bare"))
                 mtp = next(i for i in rows if i.endswith("-mtp"))
@@ -2108,6 +2154,136 @@ between builds of the same backend, see the
                         "ROCm 14.09 vs Vulkan 16.98 (+20.5%). Same pattern "
                         "as the sibling 27B: bare backends at parity, MTP "
                         "widens the gap.")
+        if (venue, issue) == ("llama.cpp", "15021"):
+            if hw == "RX 6800":
+                off = next(i for i in rows if i.endswith("fa0"))
+                on = next(i for i in rows if i.endswith("fa1"))
+                return ("Flash-attention A/B on a desktop RX 6800 under ROCm "
+                        "7.2.4 (gfx1030, build f1cee99, -ngl 99). fa=0 -> "
+                        f"fa=1: prefill {val(rows,off,'pp_tps')} -> "
+                        f"{val(rows,on,'pp_tps')} tok/s "
+                        f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
+                        f"({pct(rows,off,on,'tps'):+.1f}%). Cross-backend on "
+                        "the same card and commit: Vulkan (RADV 26.2.2) gets "
+                        "pp512 1594/1598 and tg128 101.5/106.5 (no FA/FA), so "
+                        "Vulkan still leads generation on RDNA2 while ROCm "
+                        "only wins prefill with FA on.")
+            if hw == "Radeon AI PRO R9700":
+                ids = list(rows)
+                fa0 = next(i for i in ids if i.endswith("fa0"))
+                fa1 = next(i for i in ids if i.endswith("fa1"))
+                p8 = next(i for i in ids if i.endswith("pp8192"))
+                is_rocm = "rocm" in fa0
+                if is_rocm:
+                    return ("ROCm (TheRock 10.1, gfx1201) on an R9700, "
+                            f"llama.cpp 8ea2902. fa=0 -> fa=1: prefill "
+                            f"{val(rows,fa0,'pp_tps')} -> "
+                            f"{val(rows,fa1,'pp_tps')} tok/s "
+                            f"({pct(rows,fa0,fa1,'pp_tps'):+.1f}%), decode "
+                            f"{val(rows,fa0,'tps')} -> {val(rows,fa1,'tps')} "
+                            f"tok/s ({pct(rows,fa0,fa1,'tps'):+.1f}%). ROCm "
+                            "falls off hard with prompt length: pp512 "
+                            f"{val(rows,fa1,'pp_tps')} -> pp8192 "
+                            f"{val(rows,p8,'pp_tps')} tok/s "
+                            f"({pct(rows,fa1,p8,'pp_tps'):+.1f}%). Reporter: "
+                            "at pp512 the backends are 8% apart, by pp8192 "
+                            "54% (Vulkan 4235.87 at pp8192).")
+                return ("Vulkan (Mesa RADV 26.1.8) on an R9700, llama.cpp "
+                        f"8ea2902. fa=0 -> fa=1: prefill "
+                        f"{val(rows,fa0,'pp_tps'):g} -> "
+                        f"{val(rows,fa1,'pp_tps'):g} tok/s "
+                        f"({pct(rows,fa0,fa1,'pp_tps'):+.1f}%), decode "
+                        f"{val(rows,fa0,'tps'):g} -> {val(rows,fa1,'tps'):g} tok/s "
+                        f"({pct(rows,fa0,fa1,'tps'):+.1f}%). Vulkan is steady "
+                        "with prompt length: pp512 "
+                        f"{val(rows,fa1,'pp_tps')} -> pp8192 "
+                        f"{val(rows,p8,'pp_tps')} tok/s "
+                        f"({pct(rows,fa1,p8,'pp_tps'):+.1f}%), so at pp8192 "
+                        "Vulkan is +54% over ROCm (2755.01) while at pp512 "
+                        "they are within 8%. Decode also favors Vulkan "
+                        "(~+8%). Reporter notes the ordering inverts on MoE "
+                        "models (ROCm +8.5% at 57k ctx on a 35B-A3B).")
+        if (venue, issue) == ("llama.cpp", "15013"):
+            off = next(i for i in rows if i.endswith("fa0"))
+            on = next(i for i in rows if i.endswith("fa1"))
+            return ("P102-100 mining card (Pascal GP104, 5 GB, no display) on "
+                    "llama.cpp CUDA b11312. fa=0 -> fa=1: prefill "
+                    f"{val(rows,off,'pp_tps')} -> {val(rows,on,'pp_tps')} tok/s "
+                    f"({pct(rows,off,on,'pp_tps'):+.1f}%), decode "
+                    f"{val(rows,off,'tps')} -> {val(rows,on,'tps')} tok/s "
+                    f"({pct(rows,off,on,'tps'):+.1f}%). A 5 GB Pascal mining part, usable "
+                    "for 7B Q4_0 at ~46 tok/s decode.")
+        if (venue, issue) == ("llama.cpp", "4167"):
+            if hw == "M5 Ultra":
+                f16 = next(i for i in rows if i.endswith("quant-f16"))
+                q8 = next(i for i in rows if i.endswith("quant-q8_0"))
+                q4 = next(i for i in rows if i.endswith("quant-q4_0"))
+                return ("llama.cpp 0.3.0 Metal quant ladder on an M5 Ultra "
+                        "(36 CPU / 80 GPU cores, 256 GB). Decode F16 -> Q8_0 -> "
+                        f"Q4_0: {val(rows,f16,'tps')} -> {val(rows,q8,'tps')} "
+                        f"-> {val(rows,q4,'tps')} tok/s "
+                        f"({val(rows,q4,'tps')/val(rows,f16,'tps'):.1f}x F16), "
+                        "while prefill barely moves: "
+                        f"{val(rows,f16,'pp_tps')} -> {val(rows,q8,'pp_tps')} "
+                        f"-> {val(rows,q4,'pp_tps')} tok/s. Decode is "
+                        "bandwidth-bound (scales with bytes), prefill is "
+                        "compute-bound on this chip.")
+            if hw == "M6":
+                f16 = next(i for i in rows if i.endswith("quant-f16"))
+                q8 = next(i for i in rows if i.endswith("quant-q8_0"))
+                q4 = next(i for i in rows if i.endswith("quant-q4_0"))
+                return ("llama.cpp b11312 Metal quant ladder on a Mac mini M6 "
+                        "(12-core GPU, 32 GB, reporter quotes ~170 GB/s). "
+                        "Decode F16 -> Q8_0 -> Q4_0: "
+                        f"{val(rows,f16,'tps')} -> {val(rows,q8,'tps')} -> "
+                        f"{val(rows,q4,'tps')} tok/s "
+                        f"({val(rows,q4,'tps')/val(rows,f16,'tps'):.1f}x F16); "
+                        "prefill is flat across quants "
+                        f"({val(rows,f16,'pp_tps')} -> "
+                        f"{val(rows,q4,'pp_tps')} tok/s). Same "
+                        "bandwidth-decode / compute-prefill split as the M5 "
+                        "Ultra, at a much smaller absolute rate.")
+            if model == "Qwen3.8-27B":
+                return ("DFlash2 speculative decoding (xsn/dflash2 branch, "
+                        "--spec-draft-n-max 7) vs plain generation on an M2 "
+                        "Max, dense 27B IQ3_S, 256-token generations. Code: "
+                        f"{val(rows,'lc-disc-4167-c18631101-code-off','tps')} "
+                        "-> "
+                        f"{val(rows,'lc-disc-4167-c18631101-code-dflash','tps')} "
+                        f"tok/s "
+                        f"({pct(rows,'lc-disc-4167-c18631101-code-off','lc-disc-4167-c18631101-code-dflash','tps'):+.1f}%); "
+                        "math "
+                        f"{val(rows,'lc-disc-4167-c18631101-math-off','tps')} -> "
+                        f"{val(rows,'lc-disc-4167-c18631101-math-dflash','tps')} "
+                        f"({pct(rows,'lc-disc-4167-c18631101-math-off','lc-disc-4167-c18631101-math-dflash','tps'):+.1f}%); "
+                        "prose "
+                        f"{val(rows,'lc-disc-4167-c18631101-prose-off','tps')} -> "
+                        f"{val(rows,'lc-disc-4167-c18631101-prose-dflash','tps')} "
+                        f"({pct(rows,'lc-disc-4167-c18631101-prose-off','lc-disc-4167-c18631101-prose-dflash','tps'):+.1f}%). "
+                        "Spec decode loses on every prompt type despite 76% "
+                        "acceptance and 6.22/7 mean accepted length on code: "
+                        "the drafter cost exceeds the savings on Metal.")
+            if model == "Qwen3.6-35B-A3B":
+                return ("DFlash2 spec decode on the same M2 Max, MoE 35B-A3B "
+                        "IQ3_S (only 3B active per token). Code: "
+                        f"{val(rows,'lc-disc-4167-c18631101-code-off','tps')} "
+                        "-> "
+                        f"{val(rows,'lc-disc-4167-c18631101-code-dflash','tps')} "
+                        f"tok/s "
+                        f"({pct(rows,'lc-disc-4167-c18631101-code-off','lc-disc-4167-c18631101-code-dflash','tps'):+.1f}%); "
+                        "math "
+                        f"{val(rows,'lc-disc-4167-c18631101-math-off','tps')} -> "
+                        f"{val(rows,'lc-disc-4167-c18631101-math-dflash','tps')} "
+                        f"({pct(rows,'lc-disc-4167-c18631101-math-off','lc-disc-4167-c18631101-math-dflash','tps'):+.1f}%); "
+                        "prose "
+                        f"{val(rows,'lc-disc-4167-c18631101-prose-off','tps')} -> "
+                        f"{val(rows,'lc-disc-4167-c18631101-prose-dflash','tps')} "
+                        f"({pct(rows,'lc-disc-4167-c18631101-prose-off','lc-disc-4167-c18631101-prose-dflash','tps'):+.1f}%). "
+                        "The MoE loses harder than the dense 27B: the target "
+                        "step is cheap precisely because few params are "
+                        "active, so a ~1B drafter eats a larger share of what "
+                        "it saves (reporter's analysis).")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}

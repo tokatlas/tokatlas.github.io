@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: llama.cpp performance threads, 9 new comments mined (42 rows)
+
+- llama.cpp discussions #10879 (Vulkan) and #15021 (ROCm): fresh scoreboard comments. A desktop RX 6800 (RADV 26.2.2 with nogttspill vs ROCm 7.2.4, same commit f1cee99): fa A/B on both backends, and a cross-backend table for gpt-oss 20B / Qwen3.8-27B IQ4_XS / Gemma 4 12B; Vulkan generates ~18% faster on RDNA2, ROCm only wins prefill with FA on. An R9700 (RDNA4) comment shows ROCm falling off hard with prompt length (pp512 5039.78 -> pp8192 2755.01) while Vulkan stays steady (5411.28 -> 4235.87), a 54% gap at 8k that inverts on MoE. New hardware pages: Arc B390 (FA collapses pp8192 by -57%), Arc 140V (FA neutral), P102-100 mining card (Pascal, 5 GB, 46.45 tok/s 7B decode).
+- llama.cpp discussions #4167 (Apple Silicon): first llama.cpp Metal numbers for an M5 Ultra (36/80, 256 GB): 7B decode 73.60 -> 119.01 -> 179.10 tok/s across F16/Q8_0/Q4_0 with prefill flat, and a Mac mini M6 (11.59 -> 21.01 -> 35.74 tok/s). A DFlash2 spec-decode test on an M2 Max loses on every prompt type on both a dense 27B (prose 10.29 -> 6.13, -40%) and a 35B-A3B MoE (prose 51.02 -> 30.79, -40%) despite 76% acceptance, because the drafter costs more than it saves on Metal.
+- 42 rows, 11 new build A/B groups with interpretive notes (page now 172 of 172). check_quotes now walks full discussion pagination and falls back to the GitHub REST API for comment bodies that are client-rendered and absent from every server-rendered page (the DFlash2 comment).
+
 ## 2026-10-02: vLLM #59701 mine (8 rows)
 
 - vLLM #59701 (PR): migration of GPT-NeoX/Phi/Seed-OSS/Jais2 to the Transformers modeling backend. 1x B200 per model, vllm bench throughput 1024/256 x 1000 prompts, main vs branch, one run per cell: pythia-12b 2,912 -> 2,911, phi-2 5,144 -> 5,155, Seed-OSS-36B-Base 1,540 -> 1,542, Jais-2-8B-Chat 5,324 -> 5,359 tok/s; author states the +-1% spread is noise (parity checks). 8 rows, 4 new model pages, 4 new A/B groups (page now 162 of 162).
