@@ -1625,6 +1625,21 @@ between builds of the same backend, see the
                     "noise, not a speedup or regression, and gsm8k agrees "
                     "within noise: this is a parity check, recorded as "
                     "one.")
+        if (venue, issue) == ("vLLM", "59594"):
+            return ("KV-cache layout fallback fix (BLNHC -> BLHNC when a "
+                    "connector needs head-major pages), RTX PRO 6000 TP2, "
+                    "Qwen3.8-Flash-Next, 8K in / 1K out. Throughput is "
+                    "flat across all ten concurrency cells: MTP3 c4 "
+                    f"{val(rows,'vllm-59594-pro6000-mtp-blnhc-c4','tps')} vs "
+                    f"{val(rows,'vllm-59594-pro6000-mtp-blhnc-c4','tps')} "
+                    "(-2%, worst cell), c32 "
+                    f"{val(rows,'vllm-59594-pro6000-mtp-blnhc-c32','tps')} "
+                    f"vs {val(rows,'vllm-59594-pro6000-mtp-blhnc-c32','tps')} "
+                    "(+1%, best); no-spec cells all within +-1%; p50 TPOT "
+                    "identical. The point is functional: under BLNHC every "
+                    "TP1-prefill pull failed the Mooncake handshake "
+                    "(local=39739392 vs remote=1605632), BLHNC fixes it "
+                    "for free.")
         if (venue, issue) == ("llama.cpp", "29768"):
             return ("CUDA graph warmup fix: recapture a changed graph once "
                     "instead of resetting warmup at every padded-KV length "

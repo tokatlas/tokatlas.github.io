@@ -11,8 +11,8 @@
 <main>
 
 <h1>H200</h1>
-<p>19 records across 5 models
-(quants: BF16, MXFP4, Q4_0, as-published, unspecified).</p>
+<p>20 records across 6 models
+(quants: BF16, FP8, MXFP4, Q4_0, as-published, unspecified).</p>
 <table><tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th><th>tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th><th>date</th><th>class</th><th>flags</th><th>source</th></tr><tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/deepseek-v4-1-flash/">DeepSeek-V4.1-Flash</a> <span class="dim"></span></td><td>unspecified</td><td>vllm</td><td class="num">4031.5</td><td class="num">–</td><td class="num">–</td><td>10000</td><td>2026-09-30</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/pull/59355" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/deepseek-v4-1-flash/">DeepSeek-V4.1-Flash</a> <span class="dim"></span></td><td>unspecified</td><td>vllm</td><td class="num">3972</td><td class="num">–</td><td class="num">–</td><td>10000</td><td>2026-09-30</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/pull/59355" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/deepseek-v4-1-flash/">DeepSeek-V4.1-Flash</a> <span class="dim"></span></td><td>MXFP4</td><td>vllm</td><td class="num">2648</td><td class="num">–</td><td class="num">–</td><td>512</td><td>2026-09-30</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/pull/59488" rel="nofollow">source</a></td></tr>
@@ -28,17 +28,18 @@
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/gpt-oss-120b/">gpt-oss 120B</a> <span class="dim">120B MoE</span></td><td>as-published</td><td>vLLM</td><td class="num">231.22</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-03</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/issues/37441" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/llama-7b/">llama 7B</a> <span class="dim"></span></td><td>Q4_0</td><td>llama.cpp (CUDA)</td><td class="num">337.6</td><td class="num">–</td><td class="num">–</td><td>tg128</td><td>2025-11-15</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/ggml-org/llama.cpp/discussions/15013#discussioncomment-14978771" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/llama-7b/">llama 7B</a> <span class="dim"></span></td><td>Q4_0</td><td>llama.cpp (CUDA)</td><td class="num">307.79</td><td class="num">–</td><td class="num">–</td><td>tg128</td><td>2025-11-15</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/ggml-org/llama.cpp/discussions/15013#discussioncomment-14978771" rel="nofollow">source</a></td></tr>
+<tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/qwen3-coder-480b-a35b-instruct-fp8/">Qwen3-Coder-480B-A35B-Instruct-FP8</a> <span class="dim"></span></td><td>FP8</td><td>vLLM</td><td class="num">583</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-10-01</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/issues/59607" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/qwen3-5-9b/">Qwen3.5-9B</a> <span class="dim"></span></td><td>BF16</td><td>vLLM</td><td class="num">2069.343</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-10-01</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/issues/59520" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/qwen3-5-9b/">Qwen3.5-9B</a> <span class="dim"></span></td><td>BF16</td><td>vLLM</td><td class="num">1859.655</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-10-01</td><td><span class="badge b-com">community</span></td><td><span class="badge b-flag">contradiction</span></td><td><a href="https://github.com/vllm-project/vllm/issues/59520" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/qwen3-5-9b/">Qwen3.5-9B</a> <span class="dim"></span></td><td>BF16</td><td>vLLM</td><td class="num">1536.536</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-10-01</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/issues/59520" rel="nofollow">source</a></td></tr>
 <tr><td><a href="/hardware/h200/">H200</a></td><td><a href="/models/qwen3-5-9b/">Qwen3.5-9B</a> <span class="dim"></span></td><td>BF16</td><td>vLLM</td><td class="num">1426.638</td><td class="num">–</td><td class="num">–</td><td>–</td><td>2026-10-01</td><td><span class="badge b-com">community</span></td><td>–</td><td><a href="https://github.com/vllm-project/vllm/issues/59520" rel="nofollow">source</a></td></tr></table>
-<p class="dim">All rows cite their source. Provenance: <span class="badge b-com">community</span> 2736 <span class="badge b-src">sourced</span> 746</p>
+<p class="dim">All rows cite their source. Provenance: <span class="badge b-com">community</span> 2757 <span class="badge b-src">sourced</span> 746</p>
 <p><a href="/hardware/">← all hardware</a></p>
 </main>
 <footer>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-02 00:16 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-02 00:24 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

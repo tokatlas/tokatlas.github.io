@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59594 + #59607 mine (21 rows)
+
+- vLLM #59594 (PR): KV-cache layout fallback fix (BLNHC -> BLHNC when a KV connector needs head-major pages). RTX PRO 6000 TP2, Qwen3.8-Flash-Next, 8K in / 1K out, output tok/s at c=1/4/16/32/64 with and without MTP3 speculation: all ten cells within +-2% (worst -2% at MTP c4), p50 TPOT identical; the fix is functional (BLNHC fails the Mooncake handshake at TP1 prefill, local=39739392 vs remote=1605632). 20 rows, parity A/B group.
+- vLLM #59607 (issue): Xid 31 MMU fault under CUDA-graph replay in the EP16 FP8 MoE path, Qwen3-Coder-480B-A35B-Instruct-FP8 (new model page) on 2x8 H200 over RoCE; --enforce-eager workaround measured ~583 tok/s at conc 16 with TPOT ~80 ms vs the 30-50 ms target (cudagraph single-node reference TPOT ~16 ms). 1 row, no A/B arm.
+- One new build A/B group with interpretive note (page now 158 of 158).
+
 ## 2026-10-02: llama.cpp #29772 + vLLM #59600 + #59606 + #59514 + #59679 mine (17 rows)
 
 - llama.cpp #29772 (PR): Vulkan FWHT extended from block width 512 to 8192. Radeon 860M (RDNA 3.5), Bonsai 2 27B Q2_0: tg64 7.26 -> 8.17, pp512 59.2 -> 66.4, pp2048 55.8 -> 62.2 t/s (+12 to 13%), KLD unchanged; the width-8192 op drops 76.4 ms -> 2.0 ms. 2 rows.
