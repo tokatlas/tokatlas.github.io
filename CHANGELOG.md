@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-02: HF model cards mined (40 rows, 6 new A/B groups)
+
+- Four fresh HF model cards with measured performance sections:
+- cafonez GLM-5.3-Flash Gorgon GGUF: GLM-5.3-Flash (320.8B MoE) Q5K-IQ3S mix (3.84 bpw) on a Gorgon Halo (Radeon 8065S, 192 GB) with the ROCmFPX Vulkan build. llama-bench -fa 1 -b 2048 -ub 2048: prefill 256.4, decode 17.4 t/s; at 32K context 95.9 / 15.0. Plain llama.cpp master runs the file at the same decode speed, slower prefill.
+- lackonendes PAW-27B-X3.1: Qwen3.8-27B 3.5 bpw trellis-quantized build (llama-paw CUDA fork) on one RTX 3090 at full 262144 context: generation with the DFlash2 drafter, coding 129.09 / new code 73.74 tok/s vs 30.16 no-drafter; prompt processing 982.87 short, up to 1268.67 (peak) on an 8k-token prompt.
+- agentionai Qwen3.8-Flash-Next Gyro GGUF (rotor formats, agentionai/llama.cpp): R9700 pp512 1246 / tg128 57.8, 2x R9700 919 / 37.6 (one card beats two), RTX 5090 CUDA pp512 296 / tg128 101-118 plus content-stratified decode at 16k (prose 99, JSON 106, code 101, copied 108) and context-fill decay (118/106/91/72 at empty/8k/32k/64k); Strix Halo 8060S Gyro-S 250 / 31.7, Gyro-M 249 / 26.4, AP-Q4_K_XL 309 / 27.2. MTP drafting: R9700 generating code 56.9 -> 70.6 (+24%), copying 57.5 -> 86.1 (+50%); Strix Halo prose 32 -> 39, code 32 -> 52, JSON 32 -> 58, editing/copying 32 -> 61.
+- VisualInference Qwen3.8-27B AEON 6-bit MLX (vision tower preserved, native MTP drafter): Mac mini M4 Pro 48 GB, serial 11.4 tok/s (~100% of the streaming-bandwidth roofline), MTP coding 21.5 (block 4), document QA at 13k ctx 16.9, creative prose 15.9 (block 3), prefill ~105-110.
+- 40 rows, 6 new build A/B groups with interpretive notes (page now 181 of 181), two new hardware pages (Radeon 8065S, 2x R9700). The abliterated Gyro re-release was skipped: same measurements restated.
+
+
 ## 2026-10-02: llama.cpp #23313 tail comments mined (14 rows)
 
 - llama.cpp discussion #23313 (Intel Arc thread): two late comments. c18467211 (cbelcher): Arc Pro B70 VFIO-passthrough into a Proxmox VM (Xeon E5-2699 v4, 64 GB DDR4), SYCL F16 build, llama 7B Q4_0 fa A/B: prefill 1324.76 -> 3271.16 tok/s (2.47x), generation 107.11 -> 111.13 (+3.8%). c18629941 (NickM-27): qwen35 27B Q6_K (Qwen3.8-27B), latest SYCL, prompt-depth decay at fixed pp2048/tg256: 1212.47/21.32 at no depth, 1029.24/19.60 at d8192, 968.59/18.15 at d16384; plus mtp-bench (MTP spec decode) per prompt type: code_python 40.9 tok/s (acceptance 0.936) down to long_code_review 28.0 (0.653), best cell ~1.9x the bare 21.32. 14 rows, 2 new A/B groups with notes (page now 175 of 175). check_quotes: the pp/tg test-token check now also falls back to the REST API body for client-rendered comments (same path as the number check).

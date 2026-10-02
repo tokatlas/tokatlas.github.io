@@ -2343,6 +2343,103 @@ between builds of the same backend, see the
                         "(acceptance 0.936) down to long_code_review 28.0 "
                         "(0.653); throughput tracks acceptance, and even the "
                         "best cell is ~1.9x the 21.32 bare tg256.")
+        if (venue, issue) == ("HF", "?"):
+            if hw == "Radeon 8065S" and model == "GLM-5.3-Flash":
+                return ("GLM-5.3-Flash (320.8B MoE) Q5K-IQ3S mix on a Gorgon Halo "
+                        "(Radeon 8065S, 192 GB) with the ROCmFPX Vulkan build. "
+                        "Context-depth decay at fixed pp2048: prefill "
+                        f"{val(rows,'hf3-glm53flash-8065s-pp2048','pp_tps')} drops to "
+                        f"{val(rows,'hf3-glm53flash-8065s-pp2048-d32k','pp_tps')} at "
+                        "32K context, decode "
+                        f"{val(rows,'hf3-glm53flash-8065s-tg','tps')} to "
+                        f"{val(rows,'hf3-glm53flash-8065s-tg-d32k','tps')} tok/s. "
+                        "Plain llama.cpp master runs the file at the same decode "
+                        "speed but slower prefill.")
+            if hw == "RTX 3090" and model == "Qwen3.8-27B":
+                return ("PAW-27B-X3.1: a 3.5 bpw trellis-quantized Qwen3.8-27B "
+                        "run on one RTX 3090 with the llama-paw CUDA fork, full "
+                        "262144-token context. The DFlash2 drafter is the "
+                        "speed story: coding "
+                        f"{val(rows,'hf3-qwen3827b-paw-3090-coding-draft','tps')} "
+                        f"vs {val(rows,'hf3-qwen3827b-paw-3090-nodraft','tps')} "
+                        "no-drafter "
+                        f"({pct(rows,'hf3-qwen3827b-paw-3090-nodraft','hf3-qwen3827b-paw-3090-coding-draft','tps'):+.0f}%), "
+                        "new code "
+                        f"{val(rows,'hf3-qwen3827b-paw-3090-newcode-draft','tps')}. "
+                        "Prompt processing "
+                        f"{val(rows,'hf3-qwen3827b-paw-3090-pp-short','pp_tps')} on short prompts, "
+                        f"{val(rows,'hf3-qwen3827b-paw-3090-pp-8k','pp_tps')} peak on an "
+                        "8k-token prompt.")
+            if hw == "Radeon AI PRO R9700" and model == "Qwen3.8-Flash-Next":
+                return ("Gyro rotor quantization on one R9700 with the agentionai "
+                        "llama.cpp Vulkan build: llama-bench batch 1, "
+                        f"pp512 {val(rows,'hf3-qwen38flashnext-gyro-r9700-1x','pp_tps')} / "
+                        f"tg128 {val(rows,'hf3-qwen38flashnext-gyro-r9700-1x','tps')} tok/s. "
+                        "Content-stratified decode with the MTP draft (Qwen "
+                        "sampling, thinking on): generating code "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-code-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-code-on','tps')} "
+                        f"({pct(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-code-off','hf3-qwen38flashnext-gyro-r9700-mtp-code-on','tps'):+.0f}%), "
+                        "copying supplied code "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-copy-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-copy-on','tps')} "
+                        f"({pct(rows,'hf3-qwen38flashnext-gyro-r9700-mtp-copy-off','hf3-qwen38flashnext-gyro-r9700-mtp-copy-on','tps'):+.0f}%), "
+                        "the predictable-output workload where drafting pays "
+                        "most.")
+            if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next":
+                return ("Gyro-S on one RTX 5090 with the agentionai CUDA kernels "
+                        "(q8_0 KV, n-gram table on disk). llama-bench batch 1: "
+                        f"pp512 {val(rows,'hf3-qwen38flashnext-gyro-5090-1x','pp_tps')}, "
+                        "tg128 published as a 101-118 range "
+                        f"({val(rows,'hf3-qwen38flashnext-gyro-5090-1x','tps')} stored). "
+                        "Content-stratified decode at 16k context, greedy: "
+                        f"prose {val(rows,'hf3-qwen38flashnext-gyro-5090-prose','tps')}, "
+                        f"JSON {val(rows,'hf3-qwen38flashnext-gyro-5090-json','tps')}, "
+                        f"code {val(rows,'hf3-qwen38flashnext-gyro-5090-code','tps')}, "
+                        f"copied text {val(rows,'hf3-qwen38flashnext-gyro-5090-copy','tps')} tok/s. "
+                        "Context-fill decay: "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx0','tps')} empty, "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx8k','tps')} at 8k, "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx32k','tps')} at 32k, "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx64k','tps')} at 64k.")
+            if hw == "Radeon 8060S" and model == "Qwen3.8-Flash-Next":
+                return ("Gyro rotor quantization on Strix Halo (Radeon 8060S), "
+                        "balanced power, agentionai Vulkan build. llama-bench "
+                        "batch 1: "
+                        f"Gyro-S {val(rows,'hf3-qwen38flashnext-gyro-8060s-gyros','pp_tps')} / "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-gyros','tps')}, "
+                        f"Gyro-M {val(rows,'hf3-qwen38flashnext-gyro-8060s-gyrom','pp_tps')} / "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-gyrom','tps')}, "
+                        f"AP-Q4_K_XL {val(rows,'hf3-qwen38flashnext-gyro-8060s-apq4','pp_tps')} / "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-apq4','tps')} (pp512 / tg128). "
+                        "Gyro-S keeps the stock format's speed on Vulkan and "
+                        "beats AP-Q4_K_XL on decode. Greedy content decode with "
+                        "MTP drafting: prose "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-prose-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-prose-on','tps')}, "
+                        f"code {val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-code-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-code-on','tps')}, "
+                        f"JSON {val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-json-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-json-on','tps')}, "
+                        f"editing/copying {val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-edit-copy-off','tps')} -> "
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-8060s-mtp-edit-copy-on','tps')} tok/s; "
+                        "the draft costs ~3.8 GiB extra GPU memory.")
+            if hw == "M4 Pro (48 GB)" and model == "Qwen3.8-27B":
+                return ("AEON abliterated Qwen3.8-27B, 6-bit MLX (vision tower "
+                        "preserved) on a Mac mini M4 Pro 48 GB (~273 GB/s), "
+                        "mlx-vlm with the native MTP drafter. Serial decode "
+                        f"{val(rows,'hf3-qwen3827b-aeon-mlx-serial','tps')} tok/s, "
+                        f"~100% of the chip's streaming-bandwidth roofline. "
+                        "MTP drafting raises it by workload: coding (block 4) "
+                        f"{val(rows,'hf3-qwen3827b-aeon-mlx-coding','tps')}, "
+                        f"document QA at 13k ctx (block 3) "
+                        f"{val(rows,'hf3-qwen3827b-aeon-mlx-docqa','tps')}, "
+                        f"creative prose (block 3) "
+                        f"{val(rows,'hf3-qwen3827b-aeon-mlx-prose','tps')} tok/s; "
+                        f"prefill ~{val(rows,'hf3-qwen3827b-aeon-mlx-prefill','pp_tps')}. "
+                        "The card notes mlx-dspark with the DFlash2 drafter "
+                        "decodes 15-19 tok/s at 24-27k context where the MTP "
+                        "path measured 6-7.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
@@ -2360,7 +2457,11 @@ between builds of the same backend, see the
                             sorted(rs, key=lambda r: (cfg_token(r), r["id"])))
         note = ab_note(venue, issue, hw, model, by_id)
         note_html = (f"<p><strong>Note:</strong> {note}</p>" if note else "")
-        ab_sections.append(f"""<h3>{esc(model)} on {esc(hw)} ({esc(backend)}) - {esc(venue)} <a href=\"{esc(url)}\" rel=\"nofollow\">#{esc(issue)}</a></h3>
+        if issue.isdigit():
+            link = f'<a href=\"{esc(url)}\" rel=\"nofollow\">#{esc(issue)}</a>'
+        else:
+            link = f'<a href=\"{esc(url)}\" rel=\"nofollow\">{esc(url)}</a>'
+        ab_sections.append(f"""<h3>{esc(model)} on {esc(hw)} ({esc(backend)}) - {esc(venue)} {link}</h3>
 <table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr>{rows_html}</table>
 {note_html}""")
     write("notes/build-ab.html", page("Build A/B notes", f"""
