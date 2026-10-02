@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-02: HF card Dargoth Qwen3.6-35B-A3B RTX 5090 quant blend (5 rows, 1 new A/B group)
+
+- HF model card Dargoth/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-Final-Experimental-GGUF: a custom per-tensor requantizer (Q4_K/Q6_K/Q8_0/NVFP4 blend, each tensor's format chosen by measured element-wise quantization error) of the Hermes3.6-35B-A3B fine-tune of Qwen3.6-35B-A3B, dequantized from the Q8_0 source in memory (no F16/BF16 intermediate). The card's claim is a perplexity-quality win at Q4_K_M-class size, not a speed record.
+- Measured llama-bench pp512/tg128 on a single RTX 5090 (32 GB), llama.cpp CUDA build, back-to-back in one session (run-to-run variance ~5%). Five quant variants: Q4_K_M 8316/281, NVFP4 8855/250, Q4_blend2 8566/247, Q4_blend4 8137/258, Q4_blend5 8123/258 (pp512/tg128). Decode speeds cluster 247-281 tok/s; NVFP4 has the fastest prefill (8855) but the slowest decode (250).
+- 5 rows (one per quant), new RTX 5090 Qwen3.6-35B-A3B llama.cpp (CUDA) A/B group (quant sweep). Dataset 3794 -> 3799, quote-verified 4377 -> 4382.
+- Also this cycle: fresh issue/PR pulse clean (llama.cpp #29858-#29863, vLLM #59789-#59803; #59800/#59802 [Perf] kernel/op microbenchmarks in microseconds parked per convention), discussion pulse clean (0 new comments on all 6 threads). Watermarks advanced -> llama.cpp #29863, vLLM #59803, ExLlamaV2 #821.
+
 ## 2026-10-02: HF card LemesoftNostalgic Ornith-1.5-35B-A3B 2 x RTX 3060 (1 row, 1 new model, 1 new hardware)
 
 - HF model card LemesoftNostalgic/Ornith-1.5-35B-A3B-GGUF: an imatrix IQ4_XS quant of ornith-ai/Ornith-1.5-35B-A3B, sized for a 24GB-VRAM-budget rig (2 x RTX 3060). Measured on 2 x RTX 3060 (full-GPU, tensor split), MTP --spec-type draft-mtp n-max 3, mmproj, max ctx 180224, 10 CPU threads.

@@ -12,7 +12,7 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 93 comparable cases so far. For regressions and improvements
+side by side. 94 comparable cases so far. For regressions and improvements
 between builds of the same backend, see the
 <a href="/notes/build-ab.html">build A/B notes</a>.</p>
 <h3>deci 70B on RTX 5060 Ti (IQ4_XS - 4.25 bpw)</h3>
@@ -335,6 +335,10 @@ sampling, and context differences, not just the backend itself.</p><h3>qwen35moe
 <ul><li><strong>llama.cpp (SYCL)</strong>: 81.84 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/23313#discussioncomment-18195362" rel="nofollow">source</a></li><li><strong>llama.cpp</strong>: 81.68 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/23313#discussioncomment-18195362" rel="nofollow">source</a></li><li><strong>llama.cpp (SYCL)</strong>: 81.67 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/23313#discussioncomment-18195362" rel="nofollow">source</a></li><li><strong>llama.cpp</strong>: 81.63 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/23313#discussioncomment-18195362" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen3.6-35B-A3B on RTX 5090 (NVFP4)</h3>
+<ul><li><strong>vLLM</strong>: 2072 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>vLLM</strong>: 1968 tok/s (95%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>vLLM</strong>: 1257 tok/s (61%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>vLLM</strong>: 1180 tok/s (57%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>vLLM</strong>: 394.6 tok/s (19%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>vLLM</strong>: 357.8 tok/s (17%) <span class="badge b-com">community</span> <a href="https://github.com/vllm-project/vllm/pull/59740" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 250 tok/s (12%) <span class="badge b-com">community</span> <a href="https://huggingface.co/Dargoth/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-Final-Experimental-GGUF" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>Qwen3.6-35B-A3B-APEX-MTP-I-Balanced on Radeon 8060S (Q5_K_M)</h3>
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 80.89 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 69.47 tok/s (86%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 66.86 tok/s (83%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 56.41 tok/s (70%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
@@ -393,6 +397,6 @@ sampling, and context differences, not just the backend itself.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-02 16:52 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-02 17:30 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>
