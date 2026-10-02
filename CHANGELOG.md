@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: llama.cpp #29875 AMD Ryzen 7 7735HS entropy-gated speculative decoding (6 rows, 1 new A/B group, 1 new hardware, 1 new model)
+
+- llama.cpp issue #29875 (feature request, open, 0 comments): proposes `--spec-draft-entropy-max`, a Shannon-entropy-gated early-exit for speculative drafting (halt drafting when the draft distribution's entropy exceeds a threshold, instead of the existing top-1 `--spec-draft-p-min` gate). Author benchmarked it head-to-head on an AMD Ryzen 7 7735HS (8 CPU threads), Qwen2.5-3B target + Qwen2.5-0.5B draft, K=8 draft budget, 128+ tokens; unmerged working branch feat/entropy-gated-speculation (44/44 ctest).
+- Three gating strategies compared on two tasks: code (longest common subsequence, 134 tokens) static 11.71 / p_min 0.6 14.83 / entropy gate 16.50 tok/s (acceptance 57.29% / 78.99% / 88.46%); riddle/divergent reasoning (130 tokens) static 6.70 / p_min 0.6 12.91 / entropy gate 13.19 tok/s (27.78% / 71.57% / 84.62%). Entropy gate is +11.3% over p_min 0.6 and +40.9% over static on code; ~1.97x wall-clock over static on the riddle. New model "Qwen2.5 3B" (target), new hardware "AMD Ryzen 7 7735HS",
+- Dataset 3813 -> 3819, models 185 -> 186, hardware 368 -> 369, quote-verified 4396 -> 4402.
+
 ## 2026-10-02: HF card CleverBadger Swift 1.5 Qwen3.8 27B Badger Mixed M5 Pro (4 rows, 1 new A/B group, 1 new model)
 
 - HF model card CleverBadger/Swift-1.5-Qwen3.8-27B-Badger-Mixed-GGUF: a Q4/Q6/Q8 mixed-precision build of the Swift 1.5 fine-tune of Qwen3.8 27B (base ukisai/Swift-1.5-Qwen3.8-27b), a 27B vision model, designed for 48 GB Apple Silicon. Runs through Splash with Metal and DFlash2, full 262144-token window.
