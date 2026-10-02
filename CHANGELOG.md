@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: HF card Luigi Gemma-4-E2B meeting agent (1 row) + Gyro tps-in-quote fix
+
+- HF model card Luigi/gemma-4-E2B-meeting-agent-zh-GGUF: OPPO Reno7 (Dimensity 900), CPU only, llama.cpp 8 threads. Real-speed replay of a 2 h 08 zh-TW meeting (lag 67 s median, 115 s max, no drift). Effective speed 16 tok/s prefill, 4.5 tok/s decode. QAT Q4_0 meeting-agent fine-tune, 8k context restart. Numbers are the effective replay speed, not a clean llama-bench run.
+- Fixed 3 Gyro rows (r9700-1x, r9700-mtp-copy-off, 2xr9700) whose HF3 re-mine truncated the tps value at the last digit (57.8, 57.5, 37.6); added the throughput/prose line carrying each value as a verbatim fragment.
+- 1 new row (dataset 3711 -> 3712, hardware 364 -> 365). Quote-verified 4294 -> 4295.
+
 ## 2026-10-02: Strix Halo llama 7B Q4_0 (6 rows, 3 new A/B groups)
 
 - llama.cpp discussions #10879 (@ddpasa): AMD Strix Halo (Ryzen AI Max+ 395 CPU, Radeon 8060S iGPU), llama 7B Q4_0, llama-bench pp512/tg128, fa=0 vs fa=1. CPU 16 threads: pp 300.27 -> 340.11, tg 27.68 -> 29.52. ROCm ngl 100: pp 1313.76 -> 1456.15, tg 47.36 -> 51.33. Vulkan ngl 100: pp 1487.08 -> 1704.30, tg 51.81 -> 54.38.
