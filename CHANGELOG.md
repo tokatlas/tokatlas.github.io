@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-02: vLLM #59740 "Other hardware" table (18 rows, 1 new A/B group)
+
+- vLLM PR #59740 (MTP draft-vocab list): mined the "Other hardware" table (Qwen3.6-35B-A3B-NVFP4 BF16 head on RTX 5090; Qwen3.8-Flash-Next-NVFP4 on GB200 TP1/TP2). 32k draft-vocab list vs full-vocab stock arm, 56 prompts, 384 output tokens, absolute decode tok/s.
+- Cross-hardware comparison: the 32k list is a clear win on RTX 5090 (BS1 357.8 -> 394.6 +10.3%, BS4 1180 -> 1257, BS8 1968 -> 2072) but a net loss on GB200 TP1 (BS1 448 -> 435, BS16 3827 -> 3510) and TP2 (BS1 466 -> 434). The reason is the lm_head read share: it is a bigger fraction of the step on RTX 5090 / GB10, so the head-traffic saving dominates; on GB200 the list's AL loss on mixed traffic outweighs it. New RTX 5090 A/B group; GB200 group gains the 32k TP1/TP2 rows alongside the per-domain 64k rows.
+- 18 rows, dataset 3756 -> 3774, A/B groups 195 -> 196. Quote-verified 4339 -> 4357.
+
 ## 2026-10-02: vLLM #59740 per-domain 64k-list table (36 rows, 1 new A/B group)
 
 - vLLM PR #59740 (MTP draft-vocab list): mined the "Acceptance and speed by domain, 64k list" table (Qwen3.8-Flash-Next-NVFP4, MTP 3-draft-token, BS1, 16 prompts per domain, 256 output tokens; full-vocab stock arm vs 64k list arm). 8 domains (Spec-Bench multi-turn, translation, summarization, QA, math, RAG; HumanEval code; BFCL tool calling) plus pooled, on GB10 (DGX Spark) and GB200 (new hardware for the dataset).
