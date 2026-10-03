@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-03: HF card Davidmg0815 Qwen3.8-Flash-Next MTP-256exp GPU section, 2x 20 GB CUDA (9 rows, 1 new hardware)
+
+- HF model card Davidmg0815/Qwen3.8-Flash-Next-MTP-256exp-GGUF, GPU section (the CPU section of this card was mined earlier as "8 threads"). The 176B MoE (pruned 512 -> 256 experts, GSQ-RCO) with a separate 256-expert Q8_0 MTP head, run as a 3-slot llama-server on a 2x 20 GB CUDA box (tensor-split 45,55), KV q5_1, temperature 0, 400-token runs, one run per cell. The author flags the cells as "indications, not benchmarks"; the GPU is not named (recorded as the literal "2\u00d7 20 GB").
+- The 3x64K 256-head n-max sweep (9 rows): no-head baseline 61.5 tok/s for code and prose alike (context not stated); n-max 1 code 55.4 / prose 49.4; n-max 2 code 67.1 / prose 50.3; n-max 3 code 70.5 / prose 59.6 (unstable, CUDA OOM); n-max 3 p-min 0.6 code 58.9 / prose 41.2. Code and German prose are separate rows. New hardware "2\u00d7 20 GB".
+- Finding: the MTP head helps code but not German prose, and both effects are n-max-sensitive. Code peaks at n-max 3 (70.5, +15% vs baseline) but that arm is unstable (CUDA OOM under three parallel 54k prompts); n-max 2 is the stable choice (code +9%, prose -18%). Prose drops hardest at p-min 0.6 (41.2, -33%). The CPU section of this card remains the cleaner MTP win.
+- Dataset 3884 -> 3893, hardware 377 -> 378, quote-verified 4467 -> 4476.
+
 ## 2026-10-03: vLLM #59846 DeepSeek-V4.1-Flash KV-cache A/B on 4x RTX PRO 6000 Blackwell (SM120) (14 rows, 1 new hardware)
 
 - vLLM PR #59846 (open): "[Perf][DSv4.1] SM120: decode DeepSeek-V4.1's own KV records with FlashInfer's DSv4.1 sparse attention". nvfp4_ds_mla (a mixed fp8+nvfp4 KV cache) was rejected on SM120 before; this PR widens the SM90+ gate to accept it. TP4 on 4x RTX PRO 6000 Blackwell, DeepSeek-V4.1-Flash FP8, 8k in / 1k out serving.
