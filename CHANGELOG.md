@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-03: HF card nightmedia Qwen3.8-27B-MindMeld-AREX MLX quant sweep on MacBook Pro 128GB (5 rows, 1 new hardware)
+
+- Found via hf_scan.py (an expanded pass over all 396 fresh candidates; this card was parked earlier for vague hardware and is now mined with the literal label the card gives).
+- HF model card nightmedia/Qwen3.8-27B-MindMeld-AREX-mxfp8-mlx: a MindMeld-AREX merge of Qwen3.8-27B (27B) run under MLX. The card reports an MLX quant sweep (Perplexity / Peak Memory / Tokens/sec) for the main model across five quantizations on a 128 GB MacBook Pro (M-chip not stated in the card): mxfp8 209, q8-hi 213, qx86-hi 210, qx64-hi 204, mxfp4 206 tok/s. Five rows. The card also benchmarks the parent Qwen3.6-27B-MindMeld and AREX-2 as components (not mined).
+- Finding: the five MLX quantizations cluster within a 4.4% band (204-213 tok/s), so the quant is a memory decision, not a speed one: q8-hi is fastest (213) but needs 37.3 GB, and mxfp4 is the leanest (21.3 GB) at 206 tok/s.
+- New hardware "MacBook Pro 128GB" (literal; the card names the RAM but not the M-chip) and a new A/B group (MacBook Pro 128GB, Qwen3.8-27B, MLX) with a note. Dataset 3931 -> 3936, hardware 378 -> 379, models 194 (unchanged: Qwen3.8-27B pre-exists), quote-verified 4514 -> 4519.
+
 ## 2026-10-03: llama.cpp #29892 RDNA4 Vulkan prefill regression + #29901 CUDA lightning-indexer tiling (6 rows, 2 new A/B groups)
 
 - llama.cpp #29892 (open issue): "Vulkan ~12% prefill regression on RDNA4 (RX 9070 XT) since #29182 (MoE-aware mul_mat_id tile selection)". Qwen3.6-35B-A3B UD-IQ3_S (256 experts, top-8), llama-bench pp2048 @ d48000, -b 4096 -fa 1, all-VRAM. Four rows: two -ub arms (1024/2048) x parent (da89bb3cc, no #29182) vs master (bed0a8566, with #29182). At -ub 1024 prefill regresses 2154.41 -> 1875.05 tok/s (-13.0%); at -ub 2048 it is flat (2075.07 -> 2073.69, inside the +/-94-124 noise floor); token generation is unaffected (107.3 vs 107.1 t/s all-VRAM per the report) and reverting restores 2145.6.
