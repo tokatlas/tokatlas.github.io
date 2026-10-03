@@ -2691,6 +2691,18 @@ between builds of the same backend, see the
                         f"{val(rows,'hf3-glm53flash-8065s-tg-d32k','tps')} tok/s. "
                         "Plain llama.cpp master runs the file at the same decode "
                         "speed but slower prefill.")
+            if hw == "10\u00d7 MI100" and model == "GLM-5.3-Flash":
+                return ("e-waste edition of GLM-5.3-Flash (321B/18B MoE, "
+                        "glm5-next arch) on 10x MI100 (gfx908), llama.cpp fork, "
+                        "ROCm, llama-bench -p 2048 -n 128, no spec decode, -fa off. "
+                        "Quant-width comparison (not a before/after): Q4_K_XL "
+                        f"{val(rows,'hf3-glm53flash-mi100-q4kxl','pp_tps')} prefill / "
+                        f"{val(rows,'hf3-glm53flash-mi100-q4kxl','tps')} decode vs Q3_K_M "
+                        f"{val(rows,'hf3-glm53flash-mi100-q3km','pp_tps')} / "
+                        f"{val(rows,'hf3-glm53flash-mi100-q3km','tps')} t/s. "
+                        "The card: 3-bit is not faster than 4-bit on this GPU class "
+                        "because K-quant dequantization, not bandwidth, is the decode "
+                        "bottleneck (why the e-waste editions drop i-quants).")
             if hw == "Radeon 8065S" and model == "MiMo-V2.6-Flash-RL":
                 return ("MiMo-V2.6-Flash-RL-UNCENSORED (309.8B MoE) at "
                         "4.29 bpw (MXFP4 experts, Q5_K attention/dense/MTP) "
