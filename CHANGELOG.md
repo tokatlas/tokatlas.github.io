@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: vLLM #59878 FlashInfer attention sinks on SM8x (2 rows, 1 new hardware, 1 new A/B group)
+
+- vLLM PR #59878 (open): "Support FlashInfer attention sinks on SM8x". Routes every layer with sinks through FlashInfer's fa2 sink wrappers on SM8x, so a sink model such as gpt-oss-20b with a BF16 KV cache selects FLASHINFER instead of TRITON_ATTN by backend priority (and an FP8 KV cache now has a backend on SM80/SM86, where Triton's FP8 KV needs SM89+). Depends on FlashInfer #6021 (BatchDecodeWithAttentionSinkWrapper).
+- vllm bench throughput on sm_80 (two GPUs, averaged, run back to back in opposite orders), gpt-oss-20b, BF16 KV cache, 200 prompts, 1024 in / 256 out. Two rows: TRITON_ATTN 11,283 vs FLASHINFER 11,546 tok/s (+2.3%). The batch-1 latency gap is in decode (FlashInfer decode attention kernel 9.07 us/layer vs Triton 4.73); prefill matches, and batch-32 latency is 2.76% lower.
+- New hardware "sm_80" (compute capability 8.0, Ampere; the exact GPU is not named in the PR, and the runs are averaged over two sm_80 GPUs) and a new A/B group (sm_80, gpt-oss 20B, vLLM) with a note. Dataset 3936 -> 3938, hardware 379 -> 380, models 194 (unchanged: gpt-oss 20B pre-exists), quote-verified 4519 -> 4521.
+
 ## 2026-10-03: HF card nightmedia Qwen3.8-27B-MindMeld-AREX MLX quant sweep on MacBook Pro 128GB (5 rows, 1 new hardware)
 
 - Found via hf_scan.py (an expanded pass over all 396 fresh candidates; this card was parked earlier for vague hardware and is now mined with the literal label the card gives).
