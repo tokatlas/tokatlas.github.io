@@ -2948,6 +2948,24 @@ between builds of the same backend, see the
                         f"({fast:g} tok/s) is the fastest, roughly 2x faster; "
                         "armv9.2_1/2 are not loaded (no SME). All five measured "
                         "variants are listed.")
+        if (venue, issue) == ("llama.cpp", "29887"):
+            h = "4090" if hw == "RTX 4090" else "5090"
+            m = "lc-29887-%s-master" % h
+            pc = "lc-29887-%s-fitcache" % h
+            fc = "lc-29887-%s-cmoecache" % h
+            s = ("MoE expert GPU cache (port of qvac-fabric): host experts run "
+                 "on the GPU with an LRU cache and only misses are uploaded; "
+                 "small batches (<=32 tokens), larger batches bypass the cache. "
+                 "Three arms, the master --fit baseline (no cache), a 6.4 GB "
+                 "partial cache (--fit --moe-cache-mib 6544), and the full -cmoe "
+                 "cache. SPEED-Bench qualitative decode goes %s to %s tok/s "
+                 "(%+.0f%%) with the full cache (partial %s)" % (val(rows, m, "tps"),
+                  val(rows, fc, "tps"), pct(rows, m, fc, "tps"), val(rows, pc, "tps")))
+            if hw == "RTX 4090":
+                s += ("; prompt processing dips as whole layers move to the "
+                      "cache (pp2048 %d to %d)" % (val(rows, m, "pp_tps"),
+                                                   val(rows, fc, "pp_tps")))
+            return s + "."
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
