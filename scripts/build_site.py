@@ -2698,6 +2698,28 @@ between builds of the same backend, see the
                         "74.8% acceptance). The card's GPU setup (2x 20 GB) shows "
                         "only a small code gain and a prose loss, so the CPU rows "
                         "are the clean win.")
+            if hw == "2\u00d7 20 GB" and model == "Qwen3.8-Flash-Next":
+                return ("GPU field note (2x 20 GB CUDA, 3-slot llama-server, KV "
+                        "q5_1, one run per cell): the same MTP head helps code but "
+                        "not German prose, and the size of both effects is n-max-"
+                        "sensitive. No-head baseline is "
+                        f"{val(rows,'davidmg-qwen38flash-gpu-nospec','tps')} tok/s for "
+                        "both workloads (its context is not stated). At 3x64K the "
+                        "256-head n-max 2 arm lifts code to "
+                        f"{val(rows,'davidmg-qwen38flash-gpu-nmax2-code','tps')} "
+                        f"({pct(rows,'davidmg-qwen38flash-gpu-nospec','davidmg-qwen38flash-gpu-nmax2-code','tps'):+.0f}% vs baseline) "
+                        f"but prose falls to {val(rows,'davidmg-qwen38flash-gpu-nmax2-prose','tps')} "
+                        f"({pct(rows,'davidmg-qwen38flash-gpu-nospec','davidmg-qwen38flash-gpu-nmax2-prose','tps'):+.0f}%); "
+                        "n-max 3 pushes code highest "
+                        f"({val(rows,'davidmg-qwen38flash-gpu-nmax3-code','tps')}, "
+                        f"{pct(rows,'davidmg-qwen38flash-gpu-nospec','davidmg-qwen38flash-gpu-nmax3-code','tps'):+.0f}%) "
+                        "but is unstable (CUDA OOM under three parallel 54k prompts), "
+                        "and p-min 0.6 at n-max 3 drops prose hardest "
+                        f"({val(rows,'davidmg-qwen38flash-gpu-nmax3pmin-prose','tps')}, "
+                        f"{pct(rows,'davidmg-qwen38flash-gpu-nospec','davidmg-qwen38flash-gpu-nmax3pmin-prose','tps'):+.0f}%). "
+                        "Author flags every cell as a single-run indication, not a "
+                        "benchmark; the CPU section of this card is the cleaner MTP "
+                        "win.")
             if hw == "Radeon 8065S" and model == "GLM-5.3-Flash":
                 return ("GLM-5.3-Flash (320.8B MoE) Q5K-IQ3S mix on a Gorgon Halo "
                         "(Radeon 8065S, 192 GB) with the ROCmFPX Vulkan build. "
