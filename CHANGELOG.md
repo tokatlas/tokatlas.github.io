@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-03: HF scan batch: 2 tsaipifong MXFP4 cards on R9700 (12 rows, 2 new A/B groups)
+
+- Found via hf_scan.py (2 fresh cards, both tsaipifong MXFP4 GGUFs benchmarked on an AMD Radeon AI PRO R9700 32 GB USB4 eGPU with llama.cpp b11214 ROCm).
+- Swift-1.5-Qwen3.8-27b MXFP4 (a Swift-1.5 fine-tune of Qwen3.8 27b, MTP layer kept for self-spec decode): 3 output-head variants (A Q6_K / B Q8_0 / C Q4_K) x plain/MTP n-max 3, six rows. MTP is a clear win over plain on every variant (variant A 33.3 -> 58.1, +74%); the head matters little (the Q4_K-head C build is fastest for both plain 33.8 and MTP 60.7, the Q8_0-head B build slowest). 2k prefill ~1206-1215 tok/s.
+- Ornith-1.5-35B-A3B MXFP4 (~35B total / ~3B active MoE, MTP layer kept): the llama.cpp column of a WHIRL-vs-llama.cpp comparison (the card's focus is the WHIRL engine, which leads 1.4-2.8x). Six rows: CLI llama-bench tg256 119.7, 800-token Chinese coding 118.8, 128 tokens after a 16k context 107.5, file editing with draft-mtp,ngram-mod n-max 1 239.3, 4-concurrent aggregate 191.9 tok/s, and prefill at 131k tokens (-ub 2048) 2239 tok/s.
+- Two new A/B groups on the R9700 (Swift 1.5 and Ornith-1.5-35B-A3B), each with a note. Dataset 3893 -> 3905, hardware 378 (unchanged: R9700 pre-exists), models 190 (unchanged: both models pre-exist), quote-verified 4476 -> 4488.
+
 ## 2026-10-03: HF card Davidmg0815 Qwen3.8-Flash-Next MTP-256exp GPU section, 2x 20 GB CUDA (9 rows, 1 new hardware)
 
 - HF model card Davidmg0815/Qwen3.8-Flash-Next-MTP-256exp-GGUF, GPU section (the CPU section of this card was mined earlier as "8 threads"). The 176B MoE (pruned 512 -> 256 experts, GSQ-RCO) with a separate 256-expert Q8_0 MTP head, run as a 3-slot llama-server on a 2x 20 GB CUDA box (tensor-split 45,55), KV q5_1, temperature 0, 400-token runs, one run per cell. The author flags the cells as "indications, not benchmarks"; the GPU is not named (recorded as the literal "2\u00d7 20 GB").
