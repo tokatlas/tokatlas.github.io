@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: llama.cpp #29910 Q2_K VGPR spill (MI50/gfx1152) + #29911 MUL_MAT_ID F32 (RTX 3060) (28 rows, 3 new hardware)
+
+- llama.cpp PR #29910 (open): "ggml-cuda: fix a mountain of VGPR spills on Q2_K". The Q2_K mmq path spills massively (164 VGPRs on gfx906, 1387 on RDNA3); the fix uses a gentler unroll and removes an unneeded temporary loop. pp2048 -b 2048 -r 10, -ub 16-512 sweep on two AMD parts: MI50 (gfx906, DP4A) and gfx1152 (RDNA 3.5, MMA), Meta-Llama-3-8B-Instruct Q2_K. 24 rows (6 -ub x master/optimized x 2 GPUs). On MI50 the spill count drops 164 to 0 and prefill climbs across the sweep (ub64 +140%, ub512 +179%); on gfx1152 spills drop 1387 to 0 but the gain is only at low -ub (ub16 +34%), flat at high -ub.
+- llama.cpp PR #29911 (open): "cuda/vulkan: do not reject MUL_MAT_ID with GGML_PREC_F32 for quantized weights". The flag was honored only by F16/BF16 paths, so a quantized MoE (Mistral Small 4 sets it on ffn_moe_down) ran every ffn_down_exps mul_mat_id on the CPU and copied the full expert matrix VRAM->host per token (232 x 570 MB D2H transfers). The fix gates the rejection on !ggml_is_quantized(src0). Interleaved A/B swapping only libggml-cuda.so on an RTX 3060 12 GB: decode ~4.8-5.4 -> ~18.7-19.4 t/s (~3.6x), D2H transfers 232 -> 0, output byte-identical. 4 rows (before/after x 2 runs).
+- Three new hardware strings: MI50, gfx1152, and "RTX 3060 12 GB" (the source writes "12 GB" with a space, distinct from the existing "RTX 3060 12GB"). Two new A/B groups with notes (MI50 and gfx1152 for #29910; RTX 3060 12 GB for #29911). Dataset 3940 -> 3968, hardware 380 -> 383, models 194 (unchanged: Meta-Llama-3-8B-Instruct and Mistral Small 4 119B pre-exist), quote-verified 4523 -> 4551.
+
 ## 2026-10-03: llama.cpp #29908 Vulkan decode on Arc Pro B50 (2 rows)
 
 - llama.cpp #29908 (open issue): "Vulkan: decode MUL_MAT_VEC ~5-7x slower in-model than isolated on Arc Pro B50". The report benchmarks Qwen3.8-27B on an Arc Pro B50 (Vulkan, -ngl 99, -c 4096) and finds in-model MUL_MAT_VEC nodes run 5-7x slower than the identical ops measured in isolation via test-backend-ops perf. Two whole-model decode baselines: GSQ-RCO IQ3_XXS 10.1 t/s (tg128) and Q3_K_M 10.2 t/s. The isolated probe shows ~60-119 GB/s effective bandwidth, in-model drops to ~9-18 GB/s.
