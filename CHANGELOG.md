@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-03: HF scan batch: 4 PAW/clef cards (12 rows, 1 new model, 1 new A/B group)
+
+- Found via hf_scan.py (4 fresh cards, all Qwen-family GGUFs from two authors: lackonendes PAW trellis quants and Livesport clef-flash).
+- PAW-27B-X3 (Qwen3.8-27B, 3.5 bpw X3, 1x RTX 3090, llama-paw CUDA fork, 262144 ctx): prefill 1076.5/512, 1215.4/8k, 563.0/211k; decode 33.5 at tg128, 19.9 at 211k depth; verified spec decode 100.45 at 8k code context (output hash-identical). Six rows. These merge into the existing RTX 3090 Qwen3.8-27B A/B group, which now holds 14 arms across the three PAW editions (X3.1, PAW-27B, X3); the group note was rewritten to cover all three.
+- PAW-27B (Qwen3.8-27B, ~2.17 bpw, 1x RTX 3090, MTP drafter, 256k ctx): the MTP head lifts short-context decode 22.7 -> 78.4 (+245%), 47.8 at 191k. Three rows (same A/B group).
+- PAW-35B-A3B (Qwen3.6-35B-A3B, 1.54 bpw, 1x RTX 3090): decode 133.7 mixed, 182.7 code. Two rows, one new A/B group (two workloads, not a before/after; note added).
+- clef-flash (Cloudflare/clef-flash, Q5_K_M-dyn, 1x Quadro RTX 4000 8 GB): ~1100 tok/s on 16,384-token requests. One row, new model "clef-flash".
+- Dataset 3856 -> 3868, hardware 375 (unchanged: RTX 3090 and Quadro RTX 4000 pre-exist), models 189 -> 190 (clef-flash), quote-verified 4439 -> 4451.
+
 ## 2026-10-03: llama.cpp #29884 CPU backend variant sweep, Dimensity 9400 (5 rows, 1 new A/B group)
 
 - llama.cpp issue #29884: the aarch64 `ggml_backend_score()` selects a CPU backend variant by feature bit-flags, not throughput, so on Android the SVE2 (armv9) variant wins on every ARMv9 mobile SoC even though it is ~2x slower for prompt processing. The reporter benchmarked all 7 CPU backend variants in isolation (`llama-bench -p 512 -r 3`, pp512) on a MediaTek Dimensity 9400 (MT6991), Android 16, Qwen3-Embedding-0.6B Q8_0.
