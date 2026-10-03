@@ -1494,6 +1494,22 @@ between builds of the same backend, see the
                     "sweep points (no single point moves more than 1%); the "
                     "mask kernel alone is 1.06x to 2.50x faster on MI355X. "
                     "GSM8K unchanged within error.")
+        if (venue, issue) == ("vLLM", "59852"):
+            A = "vllm-59852-mi355x-4k1k-c64-allgather"
+            B = "vllm-59852-mi355x-4k1k-c64-morifp4"
+            return ("MoRI FP4 dispatch for DeepSeek V4.1 a4w4 on MI355X "
+                    "(TP1 DP2 expert-parallel, aiter MoE backend, DSpark spec "
+                    "decode synthetic acceptance 3.51): total tok/s at c64 "
+                    "(4096 in / 1024 out, 640 prompts), one cold run each. "
+                    f"baseline allgather/reducescatter {val(rows,A,'tps'):g} "
+                    f"vs MoRI FP4 dispatch {val(rows,B,'tps'):g} "
+                    f"({pct(rows,A,B,'tps'):+.1f}%), "
+                    f"TTFT {val(rows,A,'ttft_s')}s -> {val(rows,B,'ttft_s')}s. "
+                    "The per-layer EP2 dispatch+combine is 1.33x to 1.49x "
+                    "faster than MoRI BF16 at 384-8192 tokens/rank, but the "
+                    "end-to-end gain stays small on EP2 because top-6 sends "
+                    "nearly every token to both ranks over a single xGMI link. "
+                    "GSM8K 0.896 -> 0.897, within error.")
         if (venue, issue) == ("vLLM", "59732"):
             segs = []
             for key, label, concs in (("8k1k", "8192/1024", ("4", "16", "64")),
