@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: HF card SixVolts GLM-5.3-Flash e-waste edition, 10x MI100 (2 rows, 1 new hardware)
+
+- HF model card SixVolts/GLM-5.3-Flash-ewaste-edition-GGUF: imatrix K-quant GGUFs of GLM-5.3-Flash (321B total / 18B active, glm5-next arch) benchmarked with llama-bench -p 2048 -n 128 (no speculative decoding, -fa off) on the author's 10x MI100 (gfx908) e-waste box, a fork of llama.cpp (glm5next arch name). Found via hf_scan.py (new card). The GPU backend is not named in the card; ROCm is the gfx908 default and is recorded as such.
+- Two quant rows, one A/B group (quant-width, not a before/after): Q4_K_XL 780 prefill / 33.8 decode, Q3_K_M 730 / 32.2 tok/s. The card's finding: 3-bit is not faster than 4-bit on this GPU class because K-quant dequantization, not bandwidth, is the decode bottleneck (why the e-waste editions drop i-quants). New hardware "10\u00d7 MI100".
+- Dataset 3868 -> 3870, hardware 375 -> 376, quote-verified 4451 -> 4453.
+
 ## 2026-10-03: HF scan batch: 4 PAW/clef cards (12 rows, 1 new model, 1 new A/B group)
 
 - Found via hf_scan.py (4 fresh cards, all Qwen-family GGUFs from two authors: lackonendes PAW trellis quants and Livesport clef-flash).
