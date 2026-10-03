@@ -3019,6 +3019,29 @@ between builds of the same backend, see the
                       "cache (pp2048 %d to %d)" % (val(rows, m, "pp_tps"),
                                                    val(rows, fc, "pp_tps")))
             return s + "."
+        if (venue, issue) == ("llama.cpp", "29892"):
+            p1 = "lc-29892-ub1024-parent"
+            m1 = "lc-29892-ub1024-master"
+            p2 = "lc-29892-ub2048-parent"
+            m2 = "lc-29892-ub2048-master"
+            return ("#29182 (vulkan: MOE-aware mat_mul_id tile selection) regressed "
+                    f"pp2048 @ d48000 on RDNA4 (RX 9070 XT, Qwen3.6-35B-A3B IQ3_S, 256 "
+                    f"experts top-8). At -ub 1024 prefill drops {val(rows,p1,'pp_tps'):g} to "
+                    f"{val(rows,m1,'pp_tps'):g} tok/s ({pct(rows,p1,m1,'pp_tps'):+.1f}%) "
+                    f"parent vs master; at -ub 2048 it is flat "
+                    f"({val(rows,p2,'pp_tps'):g} to {val(rows,m2,'pp_tps'):g}, inside the "
+                    f"+/-94-124 noise floor). Token generation is unaffected (107.3 vs "
+                    f"107.1 t/s all-VRAM per the report); reverting restores 2145.6.")
+        if (venue, issue) == ("llama.cpp", "29901"):
+            b = "lc-29901-prod6000-base"
+            p = "lc-29901-prod6000-pr"
+            return ("cuda: tile the lightning indexer over keys and tokens for the "
+                    f"4-head case (qwen4exp, port of the Vulkan shader). Prefill at "
+                    f"128k ctx on RTX PRO 6000 goes {val(rows,b,'pp_tps'):g} to "
+                    f"{val(rows,p,'pp_tps'):g} tok/s ({pct(rows,b,p,'pp_tps'):+.1f}%), "
+                    f"TG unchanged; the indexer kernel itself is 2.5x faster "
+                    f"(6.4 vs 16.4 ms at kv 65536, nb 2048) and drops from 9.6% to "
+                    f"4.0% of GPU time in nsys.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
