@@ -1,5 +1,5 @@
 {
- "count": 3938,
+ "count": 3940,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -26140,6 +26140,50 @@
    "source_url": "https://github.com/vllm-project/vllm/pull/59878",
    "tg_tokens": 256,
    "tps": "11546",
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": 1,
+   "ctx": 4096,
+   "date": "2026-10-03",
+   "flags": [],
+   "hardware": "Arc Pro B50",
+   "id": "lc-29908-arcpro-b50-iq3xxs",
+   "model": "Qwen3.8-27B",
+   "notes": "Whole-model decode tg128 on Arc Pro B50 (Vulkan, -ngl 99). The issue is a bug report on in-model vs isolated MUL_MAT_VEC cost; this is the whole-model decode baseline.",
+   "power_w": null,
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "GSQ-RCO IQ3_XXS",
+   "quote": "Qwen3.8-27B; Arc Pro B50; 10.1 t/s",
+   "retrieved": "2026-10-03",
+   "source_name": "llama.cpp #29908",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29908",
+   "tg_tokens": 128,
+   "tps": "10.1",
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": 1,
+   "ctx": 4096,
+   "date": "2026-10-03",
+   "flags": [],
+   "hardware": "Arc Pro B50",
+   "id": "lc-29908-arcpro-b50-q3km",
+   "model": "Qwen3.8-27B",
+   "notes": "Full-model Q3_K_M decode on Arc Pro B50 (Vulkan, -ngl 99), used to rule out quant type as the cause of the in-model slowdown.",
+   "power_w": null,
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "Q3_K_M",
+   "quote": "Qwen3.8-27B; Arc Pro B50; Q3_K_M (pure K-quants) decodes at the same 10.2 t/s",
+   "retrieved": "2026-10-03",
+   "source_name": "llama.cpp #29908",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29908",
+   "tg_tokens": 128,
+   "tps": "10.2",
    "ttft_s": null
   },
   {

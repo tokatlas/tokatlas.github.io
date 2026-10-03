@@ -1,5 +1,5 @@
 {
- "count": 1156,
+ "count": 1158,
  "records": [
   {
    "backend": "llama.cpp",
@@ -24605,6 +24605,48 @@
    "retrieved": "2026-10-03",
    "quote": "gpt-oss-20b; All runs are on sm_80; Throughput, 200 prompts, 1024 in / 256 out | 11,283 tok/s | 11,546 tok/s | 2.34% higher",
    "notes": "vLLM PR #59878 (open): routes attention sinks through FlashInfer fa2 wrappers on SM8x, so gpt-oss-20b with a BF16 KV cache selects FLASHINFER instead of TRITON_ATTN by backend priority. vllm bench throughput, 200 prompts, 1024 in / 256 out, BF16 KV cache, averaged over two sm_80 GPUs back to back in opposite orders; tps is total tok/s (input+output); batch-1 decode kernel 9.07 us/layer vs Triton 4.73, so the batch-1 latency gap is in decode and prefill matches; config=flashinfer"
+  },
+  {
+   "id": "lc-29908-arcpro-b50-iq3xxs",
+   "model": "Qwen3.8-27B",
+   "quant": "GSQ-RCO IQ3_XXS",
+   "hardware": "Arc Pro B50",
+   "backend": "llama.cpp (Vulkan)",
+   "ctx": 4096,
+   "batch": 1,
+   "tps": "10.1",
+   "pp_tokens": null,
+   "tg_tokens": 128,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-03",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29908",
+   "source_name": "llama.cpp #29908",
+   "retrieved": "2026-10-03",
+   "quote": "Qwen3.8-27B; Arc Pro B50; 10.1 t/s",
+   "notes": "Whole-model decode tg128 on Arc Pro B50 (Vulkan, -ngl 99). The issue is a bug report on in-model vs isolated MUL_MAT_VEC cost; this is the whole-model decode baseline."
+  },
+  {
+   "id": "lc-29908-arcpro-b50-q3km",
+   "model": "Qwen3.8-27B",
+   "quant": "Q3_K_M",
+   "hardware": "Arc Pro B50",
+   "backend": "llama.cpp (Vulkan)",
+   "ctx": 4096,
+   "batch": 1,
+   "tps": "10.2",
+   "pp_tokens": null,
+   "tg_tokens": 128,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-03",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29908",
+   "source_name": "llama.cpp #29908",
+   "retrieved": "2026-10-03",
+   "quote": "Qwen3.8-27B; Arc Pro B50; Q3_K_M (pure K-quants) decodes at the same 10.2 t/s",
+   "notes": "Full-model Q3_K_M decode on Arc Pro B50 (Vulkan, -ngl 99), used to rule out quant type as the cause of the in-model slowdown."
   }
  ],
  "source": {
