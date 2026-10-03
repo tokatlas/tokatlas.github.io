@@ -2912,6 +2912,43 @@ between builds of the same backend, see the
                         "The card notes mlx-dspark with the DFlash2 drafter "
                         "decodes 15-19 tok/s at 24-27k context where the MTP "
                         "path measured 6-7.")
+            if hw == "RTX PRO 6000 Blackwell Max-Q" and model == "Qwen3.8-27B-TURBO":
+                return ("Concurrency sweep (scale_and_context.py, aggregate "
+                        "tok/s) for Qwen3.8-27B TURBO NVFP4-W4A16 (modelopt FP4, "
+                        "native MTP head n=1), vLLM 0.27.1 + GDN decode backport "
+                        "(PR #41966), KV fp8, 262144 max ctx, single 96 GB Max-Q. "
+                        "Throughput scales to a peak of "
+                        f"{val(rows,'deluxetiky-qwen38turbo-vllm-c8','tps')} tok/s at "
+                        "c8, then drops to "
+                        f"{val(rows,'deluxetiky-qwen38turbo-vllm-c16','tps')} at c16 "
+                        f"({pct(rows,'deluxetiky-qwen38turbo-vllm-c8','deluxetiky-qwen38turbo-vllm-c16','tps'):+.0f}%) "
+                        "under the 160%-of-roofline over-subscription; c1 is "
+                        f"{val(rows,'deluxetiky-qwen38turbo-vllm-c1','tps')} tok/s.")
+            if hw == "RTX PRO 6000 Blackwell Max-Q" and model == "Agnes-3.0-Flash":
+                return ("Concurrency sweep (scale_and_context.py, aggregate "
+                        "tok/s) for Agnes-3.0-Flash BF16 (66.2 GB), SGLang 0.5.19 "
+                        "+ checkpoint sglang_patch, NEXTN spec-decode (steps=3 "
+                        "draft=4), KV fp8, 262144 max ctx, single 96 GB Max-Q. "
+                        "Plateaus at "
+                        f"{val(rows,'deluxetiky-agnes-sglang-c8','tps')} tok/s "
+                        f"(c4 {val(rows,'deluxetiky-agnes-sglang-c4','tps')} to "
+                        f"c8 {val(rows,'deluxetiky-agnes-sglang-c8','tps')}) and "
+                        "collapses to "
+                        f"{val(rows,'deluxetiky-agnes-sglang-c16','tps')} at c16 "
+                        f"({pct(rows,'deluxetiky-agnes-sglang-c8','deluxetiky-agnes-sglang-c16','tps'):+.0f}%) "
+                        "under over-subscription; c1 is "
+                        f"{val(rows,'deluxetiky-agnes-sglang-c1','tps')} tok/s.")
+            if hw == "M4 Max (64 GB)" and model == "ELYZA-Thinking-1.0-llm-jp-4-32b-a3b":
+                return ("ELYZA-Thinking-1.0 (Japanese 4th-gen 32B MoE, 3B active), "
+                        "4-bit MLX (group 64, 4.501 bpw), mlx-lm 0.32.0, Apple M4 "
+                        "Max 64 GB, 4096 ctx, greedy. Two sample prompts, not a "
+                        "sweep: the math prompt (reasoning_effort=medium) runs "
+                        f"{val(rows,'rariruluis-elyza-m4max-medium','tps')} tok/s "
+                        "and the code prompt (reasoning_effort=low) "
+                        f"{val(rows,'rariruluis-elyza-m4max-low','tps')} tok/s "
+                        f"({pct(rows,'rariruluis-elyza-m4max-medium','rariruluis-elyza-m4max-low','tps'):+.0f}%, "
+                        "confounded by the different prompts); the author flags "
+                        "both as small sanity checks, not a benchmark.")
         if (venue, issue) == ("llama.cpp", "29869"):
             return ("Metal has no tensor API on M1-M4, so the 2-16 row mat-muls "
                     "that speculative decoding issues ran the mat-vec kernels "
