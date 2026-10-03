@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: vLLM #59852 MoRI FP4 dispatch for DeepSeek V4.1 a4w4 on MI355X (2 rows, 1 new A/B group)
+
+- vLLM PR #59852 (open): "[ROCm][MoE] Enable MoRI FP4 dispatch for DeepSeek V4.1 a4w4" (VLLM_ROCM_USE_AITER_MOE_A4W4_DSV4=1, stacked on #59596). 2x MI355X, TP1 DP2 expert-parallel, MoE backend aiter, DSpark speculative decoding (synthetic acceptance 3.51); vllm bench serve --random-input-len 4096 --random-output-len 1024 --num-prompts 640 --max-concurrency 64, cold, one run each.
+- Two arms (baseline allgather/reducescatter all2all path vs MoRI FP4 dispatch): total tok/s 16146 -> 16648 (+3.1%) and mean TTFT 1.56 s -> 1.52 s at c64. The per-layer EP2 dispatch+combine kernel is 1.33x to 1.49x faster than MoRI BF16 at 384-8192 tokens/rank, but the end-to-end gain stays small on EP2 because top-6 sends nearly every token to both ranks over a single xGMI link. GSM8K 0.896 -> 0.897 (within error). The kernel table is parked (component benchmark).
+- New A/B group (MI355X, DeepSeek-V4.1-Flash) with a note. Dataset 3911 -> 3913, hardware 378 (unchanged: MI355X pre-exists), models 190 (unchanged: DeepSeek-V4.1-Flash pre-exists), quote-verified 4494 -> 4496.
+
 ## 2026-10-03: llama.cpp #29887 MoE expert GPU cache on RTX 4090 and RTX 5090 (6 rows, 2 new A/B groups)
 
 - llama.cpp PR #29887 (open): "MoE expert GPU cache" (port of qvac-fabric's --moe-cache-mib). Qwen3.8-Flash-Next Q4_0 (93.7 GiB, 65.4 GiB of experts), SPEED-Bench qualitative (11 categories x 3 samples, --osl 512, temp 0, no MTP), llama-server -fa on -c 32768 -b 2048 -ub 2048 -t 16, CPU on the GPU NUMA node (EPYC 7742), PCIe 4.0 x16. Host experts run on the GPU with an LRU cache; only misses are uploaded (small batches <=32 tokens), larger batches bypass the cache.
