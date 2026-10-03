@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-03: vLLM #59846 DeepSeek-V4.1-Flash KV-cache A/B on 4x RTX PRO 6000 Blackwell (SM120) (14 rows, 1 new hardware)
+
+- vLLM PR #59846 (open): "[Perf][DSv4.1] SM120: decode DeepSeek-V4.1's own KV records with FlashInfer's DSv4.1 sparse attention". nvfp4_ds_mla (a mixed fp8+nvfp4 KV cache) was rejected on SM120 before; this PR widens the SM90+ gate to accept it. TP4 on 4x RTX PRO 6000 Blackwell, DeepSeek-V4.1-Flash FP8, 8k in / 1k out serving.
+- The throughput table is malformed (an empty column plus a duplicated fp8_ds_mla header), so only the two clearly-labeled columns are mined: the V4 record (before this PR) vs nvfp4_ds_mla, at 7 concurrency levels (14 rows). New hardware "4\u00d7 RTX PRO 6000 Blackwell" (SM120).
+- Finding: throughput is unchanged within 2% (no regression) at every concurrency except c32 nvfp4 (+17%, one run, not claimed per the PR). The PR's real win is capacity: nvfp4_ds_mla fits 305,319 KV tokens vs 214,991 for the V4 record (+42%) at the same throughput.
+- Dataset 3870 -> 3884, hardware 376 -> 377, quote-verified 4453 -> 4467.
+
 ## 2026-10-03: HF card SixVolts GLM-5.3-Flash e-waste edition, 10x MI100 (2 rows, 1 new hardware)
 
 - HF model card SixVolts/GLM-5.3-Flash-ewaste-edition-GGUF: imatrix K-quant GGUFs of GLM-5.3-Flash (321B total / 18B active, glm5-next arch) benchmarked with llama-bench -p 2048 -n 128 (no speculative decoding, -fa off) on the author's 10x MI100 (gfx908) e-waste box, a fork of llama.cpp (glm5next arch name). Found via hf_scan.py (new card). The GPU backend is not named in the card; ROCm is the gfx908 default and is recorded as such.
