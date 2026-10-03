@@ -1149,6 +1149,24 @@ between builds of the same backend, see the
                     f"{val(rows,'vllm-58887-mi355x-fix-c4','tps')} tok/s, "
                     f"c32 goes {val(rows,'vllm-58887-mi355x-main-c32','tps')} to "
                     f"{val(rows,'vllm-58887-mi355x-fix-c32','tps')} tok/s.")
+        if (venue, issue) == ("vLLM", "59846"):
+            return ("DeepSeek-V4.1-Flash, TP4 on 4x RTX PRO 6000 Blackwell "
+                    "(SM120), vLLM, FP8 model. KV-cache dtype A/B: the V4 record "
+                    "(before this PR) vs nvfp4_ds_mla, which SM120 rejected before "
+                    "and now accepts. Aggregate output tok/s, 8k in / 1k out, by "
+                    "concurrency: at c64, V4 "
+                    f"{val(rows,'vllm-59846-sm120-v4rec-c64','tps')} vs nvfp4 "
+                    f"{val(rows,'vllm-59846-sm120-nvfp4-c64','tps')} tok/s. "
+                    "Throughput is unchanged within 2% (no regression) at every "
+                    "concurrency except c32 nvfp4 ("
+                    f"{val(rows,'vllm-59846-sm120-nvfp4-c32','tps')} vs V4 "
+                    f"{val(rows,'vllm-59846-sm120-v4rec-c32','tps')}, one run, "
+                    "not claimed per the PR). The PR's real win is capacity: "
+                    "nvfp4_ds_mla fits 305,319 KV tokens vs 214,991 for the V4 "
+                    "record (+42%) at the same throughput. The source table is "
+                    "malformed (an empty column plus a duplicated fp8_ds_mla "
+                    "header); only the clearly-labeled V4-before and nvfp4 "
+                    "columns are mined.")
         if (venue, issue) == ("vLLM", "58944"):
             return ("Swaps the sharded latent-MoE up-projection tail from the "
                     "hipBLASLt addmm_ path to aiter's in-place atomic GEMM, "
