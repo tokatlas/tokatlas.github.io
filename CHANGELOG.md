@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-03: promzeus/gh0stx-glm46-gb10-GGUF GLM-4.6 355B MoE on GB10 (6 rows)
+
+- HF card promzeus/gh0stx-glm46-gb10-GGUF: GLM-4.6 (355B-A32B MoE) abliterated, IQ2_XXS+Q5_K mix (2.26 bpw) on GB10 (DGX Spark, 128 GB unified memory), llama.cpp CUDA. MTP speculative decode sweep: no-spec 11.45, MTP n-max 1 (113k ctx, q4_0 KV) 17.14, n-max 2 (32k, q8_0) 14.36, n-max 3 (32k, q8_0) 12.17 tok/s. Depth decay: 57.6k prefill 197 / decode 4.10, 111.9k prefill 125 / decode 3.61 (MTP). 6 rows, 1 new model (GLM-4.6), 1 new A/B group with note.
+- ResonateX-T1-125M-Talking-GGUF drift fix: HF card updated (TPU v6e 53,225 -> A100-SXM4-40GB 162,214 tok/s). Re-mined the row. Hardware page renamed tpu-v6e -> a100-sxm4-40gb. Dataset 3925 -> 3931, models 195 -> 196, quote-verified 4508 -> 4514.
+
 ## 2026-10-03: llama.cpp #29924 n-gram spec decode truncation fix (11 rows) + drift fixes (#59894 re-mine, #29869 re-mine, #59740 delete)
 
 - llama.cpp PR #29924 (open): "Fix n-gram drafts rejected at temp>0 after truncation". After context truncation all n-gram drafts were silently rejected at temp>0, forcing a fallback to the base model. The fix re-evaluates n-gram acceptance post-truncation. RTX 5090, 8 seeds, median t/s. Llama 3.1 8B: 509.6 (pre-PR) -> 375.1 (bug) -> 500.7 (fix, recovers 33% of the gap). Qwen3.6-35B-A3B: n-gram 227.8 -> 292.8 (+29%), MTP-1 301.7 -> 333.9, MTP-2 187.0 -> 329.4, MTP-prob 307.6 -> 344.1. 11 rows (3 Llama + 8 Qwen), 2 new A/B groups with notes.

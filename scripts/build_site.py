@@ -2916,6 +2916,24 @@ between builds of the same backend, see the
                         f"{val(rows,'nightmedia-qwen38-27b-mac128-mxfp4','tps')} tok/s, "
                         "so the quant choice trades capacity for a sub-5% "
                         "speed difference.")
+            if hw == "GB10" and model == "GLM-4.6":
+                return ("GLM-4.6 (355B-A32B MoE) abliterated, IQ2_XXS+Q5_K mix "
+                        "(2.26 bpw), llama.cpp CUDA on GB10 (DGX Spark, 128 GB). "
+                        "MTP speculative decode vs no-spec at 32k ctx (q8_0 KV): "
+                        f"no-spec {val(rows,'hf-promzeus-glm46-gb10-nospec','tps')} tok/s, "
+                        "MTP n-max 2 "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp2','tps')} "
+                        f"({pct(rows,'hf-promzeus-glm46-gb10-nospec','hf-promzeus-glm46-gb10-mtp2','tps'):+.0f}%), "
+                        "n-max 3 "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp3','tps')} "
+                        f"({pct(rows,'hf-promzeus-glm46-gb10-nospec','hf-promzeus-glm46-gb10-mtp3','tps'):+.0f}%). "
+                        "N-max 1 at 113k ctx (q4_0 KV) hits "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp1','tps')} tok/s "
+                        "(80-94% draft acceptance). Depth decay: prefill "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-57k','pp_tps')} at 57.6k "
+                        f"({val(rows,'hf-promzeus-glm46-gb10-57k','tps')} tok/s decode), "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-112k','pp_tps')} at 111.9k "
+                        f"({val(rows,'hf-promzeus-glm46-gb10-112k','tps')} tok/s MTP decode).")
         if (venue, issue) == ("llama.cpp", "29869"):
             return ("Metal has no tensor API on M1-M4, so the 2-16 row mat-muls "
                     "that speculative decoding issues ran the mat-vec kernels "
