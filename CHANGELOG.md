@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-03: llama.cpp #29908 Vulkan decode on Arc Pro B50 (2 rows)
+
+- llama.cpp #29908 (open issue): "Vulkan: decode MUL_MAT_VEC ~5-7x slower in-model than isolated on Arc Pro B50". The report benchmarks Qwen3.8-27B on an Arc Pro B50 (Vulkan, -ngl 99, -c 4096) and finds in-model MUL_MAT_VEC nodes run 5-7x slower than the identical ops measured in isolation via test-backend-ops perf. Two whole-model decode baselines: GSQ-RCO IQ3_XXS 10.1 t/s (tg128) and Q3_K_M 10.2 t/s. The isolated probe shows ~60-119 GB/s effective bandwidth, in-model drops to ~9-18 GB/s.
+- Dataset 3938 -> 3940, hardware 380 (unchanged: Arc Pro B50 pre-exists), models 194 (unchanged), quote-verified 4521 -> 4523.
+
 ## 2026-10-03: Drift fix: agentionai Qwen3.8-Flash-Next-Gyro card re-quoted (26 rows, 1 value correction)
 
 - The agentionai/Qwen3.8-Flash-Next-Gyro-GGUF card page drifted: the RTX 5090 prefill value moved 296 -> 795 tok/s and the old whole-card-content quote is no longer verbatim on the rendered page (cold-cache CI check_quotes failed with 27 fragment errors).
