@@ -6,6 +6,11 @@
 - The optimization is prefill-focused and modest: rms-norm runs in the per-token norm path, so gains concentrate in prefill (llama-bench pp) and decode (tg) is roughly neutral. fa0 prefill moves +1.2% to +2.6% on the 26B/35B/9B models and +19.4% on the small Qwen3-0.6B B70 prefill (21235 -> 25347 tok/s, a small-model outlier where the norm path is a larger fraction); decode is flat to +0.9%. Five before/after A/B groups (4 fa/build arms each): Gemma4 26B A4B Q4_K on B70 Arc Pro (pp8192 only), Qwen3.6-35B-A3B Q4_K on B70 Arc Pro, Qwen3-0.6B Q4_K on B70 Arc Pro (pp512 + tg128), Qwen3-0.6B Q4_K on RTX 4060 Ti (pp1024 + tg128), Qwen3.5-9B BF16 on RTX 4060 Ti.
 - New hardware variants "B70 Arc Pro" (distinct word order from the existing "Arc Pro B70") and plain "RTX 4060 Ti" (the dataset previously had only "RTX 4060 Ti 16GB"). Models and the Vulkan backend pre-exist. Dataset 3825 -> 3845, hardware 372 -> 374, quote-verified 4408 -> 4428.
 
+## 2026-10-03: vLLM #59824 DSpark adaptive verification on Kimi-K3 MI355X (6 rows, 1 new A/B group)
+
+- vLLM PR #59824 (open): "[ROCm][Kimi-K3] Support DSpark adaptive verification on MI355X". `speculative_config.enable_adaptive_verification` trims each verify request to 1..k+1 tokens on the device using the DSpark confidence head; the PR enables it for Kimi-K3 on ROCm (removing the three SSM/GDN varlen gates). Benchmarked on Kimi-K3 FP4 TP8, MI355X, fresh servers: 16k-token code prompts, 1024 output tokens.
+- Output tok/s, adaptive off (static K=7) vs on: c10 453.4 -> 485.5 (+7.1%, 1 run), c12 499.3 -> 510.9 (+2.3%), c14 515.1 -> 529.7 (+2.8%, 3 runs). Trimming only kicks in at conc >= 8; KV cache capacity drops ~9.8% (3.31M -> 2.99M tok). Six rows (3 conc x off/on), one new A/B group. The gains are against static K=7, not the best static K per concurrency (the PR notes this). Dataset 3845 -> 3851, quote-verified 4428 -> 4434.
+
 ## 2026-10-02: HF card ResonateX T1 TPU v6e training throughput (1 row, first TPU row)
 
 - HF model card ResonatexIntegratedTechnologies/ResonateX-T1-125M-Talking-GGUF: training telemetry for the 125.3M-parameter ResonateX T1 talking model. This is the first TPU row in the dataset (hardware "TPU v6e", backend "training (TPU)"). Found via hf_scan.py (previously parked as a training-throughput card; mined now to close out the scan).
