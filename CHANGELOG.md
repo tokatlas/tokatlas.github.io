@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-03: llama.cpp #29924 n-gram spec decode truncation fix (11 rows) + drift fixes (#59894 re-mine, #29869 re-mine, #59740 delete)
+
+- llama.cpp PR #29924 (open): "Fix n-gram drafts rejected at temp>0 after truncation". After context truncation all n-gram drafts were silently rejected at temp>0, forcing a fallback to the base model. The fix re-evaluates n-gram acceptance post-truncation. RTX 5090, 8 seeds, median t/s. Llama 3.1 8B: 509.6 (pre-PR) -> 375.1 (bug) -> 500.7 (fix, recovers 33% of the gap). Qwen3.6-35B-A3B: n-gram 227.8 -> 292.8 (+29%), MTP-1 301.7 -> 333.9, MTP-2 187.0 -> 329.4, MTP-prob 307.6 -> 344.1. 11 rows (3 Llama + 8 Qwen), 2 new A/B groups with notes.
+- Drift fixes: vLLM #59894 PR description rewritten (new table format, all 8 rows re-mined with updated tps/ttft_s; 32k/256 ttft set to None, now reports TPOT). llama.cpp #29869 PR description rewritten (new table format, all 10 rows re-mined with updated values). vLLM #59740 PR description completely rewritten (old per-domain and Other-hardware tables gone, replaced by SPEED-Bench percentage tables; all 62 rows deleted, 3 A/B note blocks removed). Hardware 384 -> 382, dataset 3976 -> 3925, quote-verified 4559 -> 4508.
+
 ## 2026-10-03: vLLM #59894 DSV4.1-Flash DEP4 decoder-replay cut-layer split on B200 x4 (8 rows)
 
 - vLLM PR #59894 (open): "[Perf][DSV4.1] Decoder replay: trim the cut layer's query side and FFN". The decoder SWA bounded replay (#58132) runs the cut layer (layer 20 on DSV4.1-Flash) on every row, but the trimmed replay rows only read its KV, so the PR makes the cut layer split by default: its query side and FFN feed only the replay layers. DSV4.1-Flash DEP4 on B200 x4, vllm bench serve random data, main -> PR. Total tok/s improves at all prefill points (8k/1 C16 234,696 -> 242,486, 32k/1 C16 235,399 -> 244,063, 128k/1 C4 204,020 -> 218,421) and output tok/s at 32k/256 C32 754 -> 833; TTFT drops 3.2-11.7% across the board (549 -> 531 ms at 8k/1, 2,201 -> 1,944 ms at 32k/256). GSM8K 0.9629 -> 0.9651, within noise. 8 rows (4 points x main/PR).
