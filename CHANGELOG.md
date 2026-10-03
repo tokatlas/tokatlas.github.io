@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: llama.cpp #29892 RDNA4 Vulkan prefill regression + #29901 CUDA lightning-indexer tiling (6 rows, 2 new A/B groups)
+
+- llama.cpp #29892 (open issue): "Vulkan ~12% prefill regression on RDNA4 (RX 9070 XT) since #29182 (MoE-aware mul_mat_id tile selection)". Qwen3.6-35B-A3B UD-IQ3_S (256 experts, top-8), llama-bench pp2048 @ d48000, -b 4096 -fa 1, all-VRAM. Four rows: two -ub arms (1024/2048) x parent (da89bb3cc, no #29182) vs master (bed0a8566, with #29182). At -ub 1024 prefill regresses 2154.41 -> 1875.05 tok/s (-13.0%); at -ub 2048 it is flat (2075.07 -> 2073.69, inside the +/-94-124 noise floor); token generation is unaffected (107.3 vs 107.1 t/s all-VRAM per the report) and reverting restores 2145.6.
+- llama.cpp PR #29901 (open): "cuda: tile the lightning indexer over keys and tokens for 4 heads" (port of the Vulkan shader by @0cc4m). RTX PRO 6000, qwen4exp (4-head lightning-indexer arch), prod config, prefill @ 128k ctx. Two rows (base before tiling vs pr after): prefill 3867 -> 4038 tok/s (+4.4%), TG unchanged; the indexer kernel itself is 2.5x faster (6.4 vs 16.4 ms at kv 65536, nb 2048) and drops from 9.6% to 4.0% of GPU time in nsys. New model Qwen4-exp (the arch name; the weights are unnamed in the report).
+- Two new A/B groups (Radeon RX 9070 XT Vulkan, RTX PRO 6000 CUDA), each with a note. Dataset 3925 -> 3931, hardware 378 (unchanged: both GPUs pre-exist), models 193 -> 194 (Qwen4-exp new), quote-verified 4508 -> 4514.
+
 ## 2026-10-03: HF scan batch: deluxetiky RTX PRO 6000 Max-Q concurrency sweep + rariruluis ELYZA M4 Max (12 rows, 3 new models)
 
 - Found via hf_scan.py (2 fresh cards).
