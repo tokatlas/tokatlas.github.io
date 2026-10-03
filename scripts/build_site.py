@@ -1523,6 +1523,23 @@ between builds of the same backend, see the
                     "The batch-1 latency gap is in decode (FlashInfer decode "
                     "attention kernel 9.07 us/layer vs Triton 4.73); prefill "
                     "matches, and batch-32 latency is 2.76% lower.")
+        if (venue, issue) == ("vLLM", "59894"):
+            A8 = "vllm-59894-b200x4-8k1c16-main"
+            B8 = "vllm-59894-b200x4-8k1c16-pr"
+            A32 = "vllm-59894-b200x4-32k256c32-main"
+            B32 = "vllm-59894-b200x4-32k256c32-pr"
+            return ("Decoder SWA bounded replay (#58132) now splits the cut "
+                    "layer (20 on DSV4.1-Flash) by default, so trimmed replay "
+                    "rows only run the KV side. DSV4.1-Flash DEP4, B200 x4, "
+                    "vllm bench serve, main -> PR. Total tok/s 8k in / 1 out "
+                    f"C16: {val(rows,A8,'tps'):g} -> {val(rows,B8,'tps'):g} "
+                    f"({pct(rows,A8,B8,'tps'):+.1f}%), TTFT "
+                    f"{val(rows,A8,'ttft_s'):.0f} -> {val(rows,B8,'ttft_s'):.0f} ms. "
+                    "Output tok/s 32k in / 256 out C32: "
+                    f"{val(rows,A32,'tps'):g} -> {val(rows,B32,'tps'):g} "
+                    f"({pct(rows,A32,B32,'tps'):+.1f}%), TTFT "
+                    f"{val(rows,A32,'ttft_s'):.0f} -> {val(rows,B32,'ttft_s'):.0f} ms. "
+                    "GSM8K 0.9629 -> 0.9651, within noise.")
         if (venue, issue) == ("vLLM", "59732"):
             segs = []
             for key, label, concs in (("8k1k", "8192/1024", ("4", "16", "64")),
