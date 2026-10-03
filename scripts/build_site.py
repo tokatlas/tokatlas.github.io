@@ -3070,6 +3070,47 @@ between builds of the same backend, see the
                     f"TG unchanged; the indexer kernel itself is 2.5x faster "
                     f"(6.4 vs 16.4 ms at kv 65536, nb 2048) and drops from 9.6% to "
                     f"4.0% of GPU time in nsys.")
+        if (venue, issue) == ("llama.cpp", "29910"):
+            if hw == "MI50":
+                m64 = "lc-29910-mi50-ub64-master"
+                o64 = "lc-29910-mi50-ub64-optimized"
+                m512 = "lc-29910-mi50-ub512-master"
+                o512 = "lc-29910-mi50-ub512-optimized"
+                return ("Q2_K mmq VGPR-spill fix (gentler unroll, drop an unneeded "
+                        "temporary loop), pp2048 -b 2048 -r 10 on MI50 (gfx906, DP4A). "
+                        "The spill count drops 164 to 0 and prefill climbs across the "
+                        f"-ub sweep: ub64 {val(rows,m64,'pp_tps'):g} to "
+                        f"{val(rows,o64,'pp_tps'):g} tok/s "
+                        f"({pct(rows,m64,o64,'pp_tps'):+.0f}%), ub512 "
+                        f"{val(rows,m512,'pp_tps'):g} to {val(rows,o512,'pp_tps'):g} "
+                        f"({pct(rows,m512,o512,'pp_tps'):+.0f}%). Prefill-only A/B; "
+                        "the full -ub 16-512 sweep is listed.")
+            if hw == "gfx1152":
+                m16 = "lc-29910-gfx1152-ub16-master"
+                o16 = "lc-29910-gfx1152-ub16-optimized"
+                m512 = "lc-29910-gfx1152-ub512-master"
+                o512 = "lc-29910-gfx1152-ub512-optimized"
+                return ("Q2_K mmq VGPR-spill fix (gentler unroll, drop an unneeded "
+                        "temporary loop), pp2048 -b 2048 -r 10 on gfx1152 (RDNA 3.5, "
+                        "MMA). Spills drop 1387 to 0, but the prefill gain is only at "
+                        f"low -ub (ub16 {val(rows,m16,'pp_tps'):g} to "
+                        f"{val(rows,o16,'pp_tps'):g}, {pct(rows,m16,o16,'pp_tps'):+.0f}%"
+                        f"); at -ub 512 master and optimized are within noise "
+                        f"({val(rows,m512,'pp_tps'):g} vs {val(rows,o512,'pp_tps'):g}). "
+                        "Prefill-only A/B; the full -ub 16-512 sweep is listed.")
+        if (venue, issue) == ("llama.cpp", "29911"):
+            b1 = "lc-29911-3060-before-r1"
+            a1 = "lc-29911-3060-after-r1"
+            b2 = "lc-29911-3060-before-r2"
+            a2 = "lc-29911-3060-after-r2"
+            return ("MUL_MAT_ID with GGML_PREC_F32 on quantized weights was rejected "
+                    "by CUDA/Vulkan, offloading every ffn_down_exps mul_mat_id to the "
+                    "CPU and copying the full expert matrix VRAM->host per token. "
+                    f"Interleaved A/B swapping only libggml-cuda.so on Mistral Small 4 "
+                    f"(119B, IQ4_XS): decode {val(rows,b1,'tps')} to {val(rows,a1,'tps')} "
+                    f"tok/s (run 1) and {val(rows,b2,'tps')} to {val(rows,a2,'tps')} "
+                    f"(run 2), ~3.6x faster; the 570 MB D2H transfers drop 232 to 0 "
+                    "and the output is byte-identical.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
