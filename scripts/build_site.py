@@ -2829,6 +2829,17 @@ between builds of the same backend, see the
                 s += (", decode %s to %s tok/s (%+.1f%%)" % (tg_b, tg_a, (tg_a - tg_b) / tg_b * 100)
                       if tg_b is not None else ".")
             return s
+        if (venue, issue) == ("llama.cpp", "29884"):
+            if hw == "Dimensity 9400":
+                fast = val(rows, "lc-29884-d9400-armv8.6_1", "pp_tps")
+                sel = val(rows, "lc-29884-d9400-armv9.0_1", "pp_tps")
+                return ("CPU backend variant sweep, Dimensity 9400 (MT6991), "
+                        "Android 16, Qwen3-Embedding-0.6B Q8_0, llama-bench -p 512 "
+                        "-r 3, each variant run in isolation. The aarch64 score "
+                        f"function selects armv9.0_1 ({sel:g} tok/s) but armv8.6_1 "
+                        f"({fast:g} tok/s) is the fastest, roughly 2x faster; "
+                        "armv9.2_1/2 are not loaded (no SME). All five measured "
+                        "variants are listed.")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
