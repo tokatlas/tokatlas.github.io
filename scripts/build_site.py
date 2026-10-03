@@ -2794,6 +2794,22 @@ between builds of the same backend, see the
                     f"to {val(rows,'lc-29869-m3u-bench-pr','pp_tps')}, "
                     f"tg128 {val(rows,'lc-29869-m3u-bench-master','tps')} to "
                     f"{val(rows,'lc-29869-m3u-bench-pr','tps')}).")
+        if (venue, issue) == ("llama.cpp", "29882"):
+            ids = list(rows.keys())
+            def arm(fa, after):
+                cands = [i for i in ids if ("-fa%d-" % fa) in i]
+                return (next(i for i in cands if not i.endswith("b11369"))
+                        if after else next(i for i in cands if i.endswith("b11369")))
+            fb, fa2 = arm(0, False), arm(0, True)
+            pp_b, pp_a = val(rows, fb, "pp_tps"), val(rows, fa2, "pp_tps")
+            tg_b, tg_a = val(rows, fb, "tps"), val(rows, fa2, "tps")
+            s = ("Vulkan rms-norm subgroup-reduction opt, before (build 11369) vs "
+                 "after; fa0/fa1 = flash-attention off/on; ngl -1, r 5, Windows. ")
+            if pp_b is not None:
+                s += "fa0 prefill %s to %s tok/s (%+.1f%%)" % (pp_b, pp_a, (pp_a - pp_b) / pp_b * 100)
+                s += (", decode %s to %s tok/s (%+.1f%%)" % (tg_b, tg_a, (tg_a - tg_b) / tg_b * 100)
+                      if tg_b is not None else ".")
+            return s
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
