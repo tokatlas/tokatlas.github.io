@@ -6486,7 +6486,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-03",
    "source_name": "Silicon Score benchmark audit",
-   "source_url": "https://huggingface.co/inferencerlabs/Qwen3.5-397B-A17B-MLX-4.1bit",
+   "source_url": "https://siliconscore.com/benchmarks.json",
    "tps": 40.2,
    "ttft_s": null
   },

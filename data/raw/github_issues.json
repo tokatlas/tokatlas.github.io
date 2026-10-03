@@ -19725,7 +19725,7 @@
    "provenance": "community",
    "source_name": "HF model card: Luigi/gemma-4-E2B-meeting-agent-zh-GGUF",
    "source_url": "https://huggingface.co/Luigi/gemma-4-E2B-meeting-agent-zh-GGUF",
-   "quote": "Gemma-4-E2B meeting agent (zh-TW), Q4_0 GGUF; Live on an OPPO Reno7 (Dimensity 900, CPU only, llama.cpp, 8 threads). A 2 h 08 meeting was replayed at real speed: the lag after each ~4 min window was 67 s median and 115 s max, with no drift. Effective speed was 16 tok/s of prefill and 4.5 tok/s of decode.",
+   "quote": "gemma-4-E2B-meeting-agent-zh-GGUF; Live on an OPPO Reno7 (Dimensity 900, CPU only, llama.cpp, 8 threads). A 2 h 08 meeting was replayed at real speed: the lag after each ~4 min window was 67 s median and 115 s max, with no drift. Effective speed was 16 tok/s of prefill and 4.5 tok/s of decode.",
    "notes": "Real-speed replay of a 2 h 08 zh-TW meeting on the phone (no drift; lag 67 s median, 115 s max per ~4 min window). Effective speed 16 tok/s prefill, 4.5 tok/s decode. llama.cpp, 8 threads, CPU only (Dimensity 900). QAT Q4_0 meeting-agent fine-tune, 8k context restart. Numbers are the effective replay speed, not a clean llama-bench run.",
    "retrieved": "2026-10-02"
   },
