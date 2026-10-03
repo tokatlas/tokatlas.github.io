@@ -1510,6 +1510,19 @@ between builds of the same backend, see the
                     "end-to-end gain stays small on EP2 because top-6 sends "
                     "nearly every token to both ranks over a single xGMI link. "
                     "GSM8K 0.896 -> 0.897, within error.")
+        if (venue, issue) == ("vLLM", "59878"):
+            A = "vllm-59878-sm80-1k256-triton"
+            B = "vllm-59878-sm80-1k256-flashinfer"
+            return ("FlashInfer fa2 sink wrappers routed on SM8x for "
+                    "gpt-oss-20b with a BF16 KV cache, so the sink model now "
+                    "selects FLASHINFER instead of TRITON_ATTN by backend "
+                    "priority: total tok/s at 1024 in / 256 out (200 prompts), "
+                    "averaged over two sm_80 GPUs. "
+                    f"TRITON_ATTN {val(rows,A,'tps'):g} vs FLASHINFER "
+                    f"{val(rows,B,'tps'):g} ({pct(rows,A,B,'tps'):+.1f}%). "
+                    "The batch-1 latency gap is in decode (FlashInfer decode "
+                    "attention kernel 9.07 us/layer vs Triton 4.73); prefill "
+                    "matches, and batch-32 latency is 2.76% lower.")
         if (venue, issue) == ("vLLM", "59732"):
             segs = []
             for key, label, concs in (("8k1k", "8192/1024", ("4", "16", "64")),

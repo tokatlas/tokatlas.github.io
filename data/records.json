@@ -1,5 +1,5 @@
 {
- "count": 3936,
+ "count": 3938,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -26096,6 +26096,50 @@
    "source_url": "https://huggingface.co/nightmedia/Qwen3.8-27B-MindMeld-AREX-mxfp8-mlx",
    "tg_tokens": null,
    "tps": "206",
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 1,
+   "ctx": 1024,
+   "date": "2026-10-03",
+   "flags": [],
+   "hardware": "sm_80",
+   "id": "vllm-59878-sm80-1k256-triton",
+   "model": "gpt-oss 20B",
+   "notes": "vLLM PR #59878 (open): routes attention sinks through FlashInfer fa2 wrappers on SM8x, so gpt-oss-20b with a BF16 KV cache selects FLASHINFER instead of TRITON_ATTN by backend priority. vllm bench throughput, 200 prompts, 1024 in / 256 out, BF16 KV cache, averaged over two sm_80 GPUs back to back in opposite orders; tps is total tok/s (input+output); batch-1 decode kernel 9.07 us/layer vs Triton 4.73, so the batch-1 latency gap is in decode and prefill matches; config=triton",
+   "power_w": null,
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "gpt-oss-20b; All runs are on sm_80; Throughput, 200 prompts, 1024 in / 256 out | 11,283 tok/s | 11,546 tok/s | 2.34% higher",
+   "retrieved": "2026-10-03",
+   "source_name": "vLLM PR #59878",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59878",
+   "tg_tokens": 256,
+   "tps": "11283",
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 1,
+   "ctx": 1024,
+   "date": "2026-10-03",
+   "flags": [],
+   "hardware": "sm_80",
+   "id": "vllm-59878-sm80-1k256-flashinfer",
+   "model": "gpt-oss 20B",
+   "notes": "vLLM PR #59878 (open): routes attention sinks through FlashInfer fa2 wrappers on SM8x, so gpt-oss-20b with a BF16 KV cache selects FLASHINFER instead of TRITON_ATTN by backend priority. vllm bench throughput, 200 prompts, 1024 in / 256 out, BF16 KV cache, averaged over two sm_80 GPUs back to back in opposite orders; tps is total tok/s (input+output); batch-1 decode kernel 9.07 us/layer vs Triton 4.73, so the batch-1 latency gap is in decode and prefill matches; config=flashinfer",
+   "power_w": null,
+   "pp_tokens": null,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "gpt-oss-20b; All runs are on sm_80; Throughput, 200 prompts, 1024 in / 256 out | 11,283 tok/s | 11,546 tok/s | 2.34% higher",
+   "retrieved": "2026-10-03",
+   "source_name": "vLLM PR #59878",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59878",
+   "tg_tokens": 256,
+   "tps": "11546",
    "ttft_s": null
   },
   {
