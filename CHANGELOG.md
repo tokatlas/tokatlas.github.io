@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-03: vLLM #59894 DSV4.1-Flash DEP4 decoder-replay cut-layer split on B200 x4 (8 rows)
+
+- vLLM PR #59894 (open): "[Perf][DSV4.1] Decoder replay: trim the cut layer's query side and FFN". The decoder SWA bounded replay (#58132) runs the cut layer (layer 20 on DSV4.1-Flash) on every row, but the trimmed replay rows only read its KV, so the PR makes the cut layer split by default: its query side and FFN feed only the replay layers. DSV4.1-Flash DEP4 on B200 x4, vllm bench serve random data, main -> PR. Total tok/s improves at all prefill points (8k/1 C16 234,696 -> 242,486, 32k/1 C16 235,399 -> 244,063, 128k/1 C4 204,020 -> 218,421) and output tok/s at 32k/256 C32 754 -> 833; TTFT drops 3.2-11.7% across the board (549 -> 531 ms at 8k/1, 2,201 -> 1,944 ms at 32k/256). GSM8K 0.9629 -> 0.9651, within noise. 8 rows (4 points x main/PR).
+- New model string DSV4.1-Flash (the source abbreviation, distinct from the existing DeepSeek-V4.1-Flash) and hardware B200 x4 (the source writes "B200 x4", 4 GPUs). Dataset 3968 -> 3976, hardware 383 -> 384, models 194 -> 195, quote-verified 4551 -> 4559.
+
 ## 2026-10-03: llama.cpp #29910 Q2_K VGPR spill (MI50/gfx1152) + #29911 MUL_MAT_ID F32 (RTX 3060) (28 rows, 3 new hardware)
 
 - llama.cpp PR #29910 (open): "ggml-cuda: fix a mountain of VGPR spills on Q2_K". The Q2_K mmq path spills massively (164 VGPRs on gfx906, 1387 on RDNA3); the fix uses a gentler unroll and removes an unneeded temporary loop. pp2048 -b 2048 -r 10, -ub 16-512 sweep on two AMD parts: MI50 (gfx906, DP4A) and gfx1152 (RDNA 3.5, MMA), Meta-Llama-3-8B-Instruct Q2_K. 24 rows (6 -ub x master/optimized x 2 GPUs). On MI50 the spill count drops 164 to 0 and prefill climbs across the sweep (ub64 +140%, ub512 +179%); on gfx1152 spills drop 1387 to 0 but the gain is only at low -ub (ub16 +34%), flat at high -ub.
