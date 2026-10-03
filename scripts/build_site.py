@@ -2949,6 +2949,21 @@ between builds of the same backend, see the
                         f"({pct(rows,'rariruluis-elyza-m4max-medium','rariruluis-elyza-m4max-low','tps'):+.0f}%, "
                         "confounded by the different prompts); the author flags "
                         "both as small sanity checks, not a benchmark.")
+            if hw == "MacBook Pro 128GB" and model == "Qwen3.8-27B":
+                return ("MLX quant sweep of the MindMeld-AREX merge "
+                        "(Qwen3.8-27B) on a 128 GB MacBook Pro (M-chip not "
+                        "stated in the card). All five quantizations land "
+                        "within a 4.4% band (204-213 tok/s): q8-hi tops it "
+                        f"at {val(rows,'nightmedia-qwen38-27b-mac128-q8hi','tps')} tok/s, "
+                        "the card's default mxfp8 runs "
+                        f"{val(rows,'nightmedia-qwen38-27b-mac128-mxfp8','tps')} tok/s, "
+                        "qx64-hi trails at "
+                        f"{val(rows,'nightmedia-qwen38-27b-mac128-qx64hi','tps')} tok/s. "
+                        "The real lever is memory: q8-hi needs 37.3 GB while "
+                        "mxfp4 fits in 21.3 GB at "
+                        f"{val(rows,'nightmedia-qwen38-27b-mac128-mxfp4','tps')} tok/s, "
+                        "so the quant choice trades capacity for a sub-5% "
+                        "speed difference.")
         if (venue, issue) == ("llama.cpp", "29869"):
             return ("Metal has no tensor API on M1-M4, so the 2-16 row mat-muls "
                     "that speculative decoding issues ran the mat-vec kernels "
