@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-03: llama.cpp #29887 MoE expert GPU cache on RTX 4090 and RTX 5090 (6 rows, 2 new A/B groups)
+
+- llama.cpp PR #29887 (open): "MoE expert GPU cache" (port of qvac-fabric's --moe-cache-mib). Qwen3.8-Flash-Next Q4_0 (93.7 GiB, 65.4 GiB of experts), SPEED-Bench qualitative (11 categories x 3 samples, --osl 512, temp 0, no MTP), llama-server -fa on -c 32768 -b 2048 -ub 2048 -t 16, CPU on the GPU NUMA node (EPYC 7742), PCIe 4.0 x16. Host experts run on the GPU with an LRU cache; only misses are uploaded (small batches <=32 tokens), larger batches bypass the cache.
+- Two GPUs (RTX 4090, RTX 5090), three config arms each (the master --fit baseline with no cache, a 6.4 GB partial cache --moe-cache-mib 6544, and the full -cmoe cache): six rows. Decode goes 25.0 -> 40.7 tok/s (+63%) on the 4090 and 30.8 -> 67.8 (+120%) on the 5090 with the full cache; the partial cache lands close (39.4 / 54.5). The 4090-only prompt table shows the trade-off: pp2048 dips 1388 -> 1080 as whole layers move to the cache.
+- Two new A/B groups (RTX 4090, RTX 5090), each with a note. Dataset 3905 -> 3911, hardware 378 (unchanged: RTX 4090 and RTX 5090 pre-exist), models 190 (unchanged: Qwen3.8-Flash-Next pre-exists), quote-verified 4488 -> 4494.
+
 ## 2026-10-03: HF scan batch: 2 tsaipifong MXFP4 cards on R9700 (12 rows, 2 new A/B groups)
 
 - Found via hf_scan.py (2 fresh cards, both tsaipifong MXFP4 GGUFs benchmarked on an AMD Radeon AI PRO R9700 32 GB USB4 eGPU with llama.cpp b11214 ROCm).
