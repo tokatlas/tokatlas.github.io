@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-03: Drift fix: agentionai Qwen3.8-Flash-Next-Gyro card re-quoted (26 rows, 1 value correction)
+
+- The agentionai/Qwen3.8-Flash-Next-Gyro-GGUF card page drifted: the RTX 5090 prefill value moved 296 -> 795 tok/s and the old whole-card-content quote is no longer verbatim on the rendered page (cold-cache CI check_quotes failed with 27 fragment errors).
+- Re-pointed all 26 gyro rows to short stable per-row quotes (model name + hardware + the row's own values, each fragment verified verbatim on the freshly fetched page) and corrected the 5090 pp_tps from 296 to 795. No other values changed; dataset size, hardware count, and model count are unchanged.
+
 ## 2026-10-03: vLLM #59878 FlashInfer attention sinks on SM8x (2 rows, 1 new hardware, 1 new A/B group)
 
 - vLLM PR #59878 (open): "Support FlashInfer attention sinks on SM8x". Routes every layer with sinks through FlashInfer's fa2 sink wrappers on SM8x, so a sink model such as gpt-oss-20b with a BF16 KV cache selects FLASHINFER instead of TRITON_ATTN by backend priority (and an FP8 KV cache now has a backend on SM80/SM86, where Triton's FP8 KV needs SM89+). Depends on FlashInfer #6021 (BatchDecodeWithAttentionSinkWrapper).
