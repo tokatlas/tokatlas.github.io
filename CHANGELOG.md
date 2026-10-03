@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-03: HF scan batch: deluxetiky RTX PRO 6000 Max-Q concurrency sweep + rariruluis ELYZA M4 Max (12 rows, 3 new models)
+
+- Found via hf_scan.py (2 fresh cards).
+- deluxetiky/agnes-vs-qwen38-benchmark: single-GPU serving benchmark on one NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition 96 GB, 262144 max ctx, KV fp8. A concurrency sweep (scale_and_context.py, aggregate tok/s) of two models, ten rows. Qwen3.8-27B TURBO NVFP4-W4A16 (modelopt FP4, native MTP head n=1) under vLLM 0.27.1 + a GDN decode backport (PR #41966): 106.3 / 209.8 / 274.5 / 765.6 / 581.0 tok/s at c1/c2/c4/c8/c16, peaking at c8 (765.6) then dropping 24% at c16 (the 160%-of-roofline over-subscription). Agnes-3.0-Flash BF16 (66.2 GB) under SGLang 0.5.19 + a checkpoint patch, NEXTN spec-decode (steps=3 draft=4): 35.2 / 59.0 / 123.7 / 125.6 / 71.6, plateauing around 125 (c4-c8) then collapsing 43% at c16. New models Qwen3.8-27B-TURBO and Agnes-3.0-Flash; hardware pre-exists.
+- rariruluis/ELYZA-Thinking-1.0-llm-jp-4-32b-a3b-mlx-4bit: ELYZA-Thinking-1.0 (Japanese 4th-gen 32B MoE, 3B active), 4-bit MLX (group 64, 4.501 bpw), mlx-lm 0.32.0, Apple M4 Max 64 GB, 4096 ctx, greedy. Two sample prompts, two rows: math (reasoning_effort=medium) 114 tok/s, code (reasoning_effort=low) 129 tok/s; the author flags both as small sanity checks, not a benchmark. New model ELYZA-Thinking-1.0-llm-jp-4-32b-a3b; hardware pre-exists.
+- Three new A/B groups (Qwen3.8-27B-TURBO vLLM, Agnes-3.0-Flash SGLang, ELYZA MLX), each with a note. Dataset 3913 -> 3925, hardware 378 (unchanged), models 190 -> 193, quote-verified 4496 -> 4508.
+
 ## 2026-10-03: vLLM #59852 MoRI FP4 dispatch for DeepSeek V4.1 a4w4 on MI355X (2 rows, 1 new A/B group)
 
 - vLLM PR #59852 (open): "[ROCm][MoE] Enable MoRI FP4 dispatch for DeepSeek V4.1 a4w4" (VLLM_ROCM_USE_AITER_MOE_A4W4_DSV4=1, stacked on #59596). 2x MI355X, TP1 DP2 expert-parallel, MoE backend aiter, DSpark speculative decoding (synthetic acceptance 3.51); vllm bench serve --random-input-len 4096 --random-output-len 1024 --num-prompts 640 --max-concurrency 64, cold, one run each.
