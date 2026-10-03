@@ -1623,6 +1623,25 @@ between builds of the same backend, see the
                         "every delta is within its 95% CI, which includes "
                         "zero, and mean TTFT rises 0.35-0.65 ms, inside the "
                         "A/A noise floor.")
+        if (venue, issue) == ("vLLM", "59824"):
+            if hw == "MI355X":
+                return ("DSpark adaptive verification on Kimi-K3 FP4 TP8, "
+                        "MI355X ROCm. enable_adaptive_verification trims each "
+                        "verify request to 1..k+1 tokens on the device using the "
+                        "DSpark confidence head; off is the static K=7 baseline. "
+                        "Output tok/s, off -> on: "
+                        f"c10 {val(rows,'vllm-59824-c10-off','tps'):g} -> "
+                        f"{val(rows,'vllm-59824-c10-on','tps'):g} "
+                        f"({pct(rows,'vllm-59824-c10-off','vllm-59824-c10-on','tps'):+.1f}%), "
+                        f"c12 {val(rows,'vllm-59824-c12-off','tps'):g} -> "
+                        f"{val(rows,'vllm-59824-c12-on','tps'):g} "
+                        f"({pct(rows,'vllm-59824-c12-off','vllm-59824-c12-on','tps'):+.1f}%), "
+                        f"c14 {val(rows,'vllm-59824-c14-off','tps'):g} -> "
+                        f"{val(rows,'vllm-59824-c14-on','tps'):g} "
+                        f"({pct(rows,'vllm-59824-c14-off','vllm-59824-c14-on','tps'):+.1f}%). "
+                        "KV cache capacity drops ~9.8% (3.31M -> 2.99M tok); the "
+                        "gains are against static K=7, not the best static K per "
+                        "concurrency, and trimming only kicks in at conc >= 8.")
         if (venue, issue) == ("vLLM", "59653"):
             dec = ", ".join(
                 f"c{c} {val(rows,f'vllm-59653-mi350x-dec-c{c}-off','tps'):g} -> "
