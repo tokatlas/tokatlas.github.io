@@ -12,11 +12,11 @@
 - Single row: average training throughput 53,225 tok/s over 22,100 steps (3.83 h), 1 TPU v6e worker via Google Colab, 724.2M tokens (5.78 tok/param). The card notes throughput stabilized at ~53K tok/s after warm-up. tps is the average training rate (training, not inference); the per-stage curriculum table is left in notes.
 - Dataset 3824 -> 3825, hardware 371 -> 372, models 187 -> 188, backends 26 -> 27, quote-verified 4407 -> 4408.
 
-## 2026-10-02: HF card Livesport rune-26b-a4b-v3 2x Quadro RTX 4000 prefill (2 rows, 1 new A/B group, 1 new hardware, 1 new model)
+## 2026-10-02: HF card Livesport rune-26b-a4b-v3 2x Quadro RTX 4000 prefill (2 rows, 1 new hardware, 1 new model; re-mined 10-03 after card rewrite)
 
-- HF model card Livesport/rune-26b-a4b-v3-GGUF: prompt-processing (prefill) throughput on 2x Quadro RTX 4000 8 GB with llama.cpp build 8212c78, one request at a time, median of 3, on the IQ3_M 26B MoE (gemma4 arch, 128 experts / 8 active, 262144 ctx) with a q8_0 KV cache. Found via hf_scan.py (new card, 2 tok/s mentions).
-- Two prefill arms at a 2k-token prompt: -ub 512 (update/buffer batch 512) 2,098 tok/s, -ub 256 1,696 tok/s (a 19% prefill cost from the smaller update batch). New hardware "2x Quadro RTX 4000" and new model "rune-26b-a4b-v3". The card's latency table is per-question seconds (decode-side, KV-cache reuse) and is left unmined as tok/s.
-- Dataset 3822 -> 3824, hardware 370 -> 371, models 186 -> 187, quote-verified 4405 -> 4407.
+- HF model card Livesport/rune-26b-a4b-v3-GGUF: prompt-processing (prefill) throughput on 2x Quadro RTX 4000 8 GB, IQ3_S-dyn 26B MoE (gemma4 arch) + q8_0 KV cache. Found via hf_scan.py (new card). New hardware "2x Quadro RTX 4000" and new model "rune-26b-a4b-v3".
+- Re-mined 2026-10-03: the card was rewritten and dropped the original -ub 512/256 prompt-batch sweep (2,098 / 1,696 tok/s). It now reports prefill for the IQ3_S-dyn quant (the production quant; the card notes it processes prompts at the same speed as the previous IQ3_M): llama-server ~2,000-token prompt 2,098 tok/s (llama-bench pp2048 cross-check 2,049-2,065) and a 14,478-token prompt 1,904 tok/s (essentially flat vs the ~2,000-token rate, no long-context prefill cliff). Two rows, no A/B. The card's latency table is per-question seconds (decode-side, KV-cache reuse) and is left unmined as tok/s.
+- Dataset 3822 -> 3824, hardware 370 -> 371, models 186 -> 187, quote-verified 4405 -> 4407 (row count unchanged by the re-mine).
 
 ## 2026-10-02: HF card Davidmg0815 Qwen3.8-Flash-Next MTP-256exp CPU spec decode (3 rows, 1 new A/B group, 1 new hardware)
 
