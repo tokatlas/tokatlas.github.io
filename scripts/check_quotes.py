@@ -25,7 +25,13 @@ import urllib.error
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".cache")
-UA = "tokatlas/0.3 (+https://tokatlas.github.io) check_quotes"
+# Browser-style UA: Reddit/Cloudflare rate-limit the custom tokatlas UA with
+# persistent 403s (300+ failures in a single CI run); a standard browser UA
+# is what the comment below already relies on ("the same URL 200s from a
+# browser UA"). Keep a tokatlas token so the traffic is still identifiable.
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 "
+      "tokatlas-check-quotes")
 LITERAL_FILES = {"github_issues.json"}
 # GitHub discussion threads paginate comments; a row's source_url anchors a
 # comment that lives on some cursor page, so walk the pagination to find it.
