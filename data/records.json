@@ -84157,7 +84157,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 11.9,
    "ttft_s": null
@@ -84182,7 +84182,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 22.4,
    "ttft_s": null
@@ -84207,7 +84207,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 4.6,
    "ttft_s": null
@@ -84232,7 +84232,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 10.9,
    "ttft_s": null
@@ -84257,7 +84257,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 27.7,
    "ttft_s": null
@@ -84282,7 +84282,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 46.5,
    "ttft_s": null
@@ -84307,7 +84307,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 24.7,
    "ttft_s": null
@@ -84332,7 +84332,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 31.5,
    "ttft_s": null
@@ -84357,7 +84357,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 20.1,
    "ttft_s": null
@@ -84382,7 +84382,7 @@
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "neurall/llama.cpp fork README (MoE expert cache benchmark, discussion #29429)",
-   "source_url": "https://github.com/neurall/llama.cpp",
+   "source_url": "https://raw.githubusercontent.com/neurall/llama.cpp/142568af7f/README.md",
    "tg_tokens": null,
    "tps": 32.6,
    "ttft_s": null
