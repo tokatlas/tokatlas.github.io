@@ -51,11 +51,16 @@ AUX_SOURCES = {
 }
 
 
+def _is_reddit(url):
+    return "reddit.com" in url
+
+
 def fetch(url):
     os.makedirs(CACHE, exist_ok=True)
     key = hashlib.sha256(url.encode()).hexdigest()
     path = os.path.join(CACHE, key)
     if not os.path.exists(path):
+        reddit = _is_reddit(url)
         body = None
         for attempt in range(3):
             req = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -66,16 +71,18 @@ def fetch(url):
             except urllib.error.HTTPError as e:
                 # 403 here is Cloudflare rate-limiting (llmconfigurator.com etc), not
                 # a real forbidden: the same URL 200s from a browser UA. Back off
-                # longer than 502/503/504 to clear the rate-limit window.
+                # longer than 502/503/504 to clear the rate-limit window. Reddit
+                # rate-limits by IP with a persistent 403; use a longer backoff.
                 if e.code in (403, 502, 503, 504) and attempt < 2:
-                    time.sleep(10 * (attempt + 1))
+                    delay = 15 * (attempt + 1) if reddit else 10 * (attempt + 1)
+                    time.sleep(delay)
                     continue
                 raise
         tmp = path + ".tmp"
         with open(tmp, "wb") as f:
             f.write(body)
         os.replace(tmp, path)
-        time.sleep(0.25)
+        time.sleep(2.0 if reddit else 0.25)
     with open(path, "rb") as f:
         return f.read().decode("utf-8", "replace")
 
