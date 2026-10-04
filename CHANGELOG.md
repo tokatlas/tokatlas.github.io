@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-04: DuoNeural/Qwen3.5-9B-TAP-DPQ-v7-GGUF quantization sweep on RTX 3090 (6 rows)
+
+- HF card DuoNeural/Qwen3.5-9B-TAP-DPQ-v7-GGUF: Qwen3.5-9B (64-layer hybrid DeltaNet+MHA) with TAP-DPQ v7 post-training quantization on RTX 3090 24GB, llama.cpp CUDA, ctx 16384. Quantization sweep: FP16 baseline 78.2, Q4_K_M 112.5, IQ3_XXS 138.7, IQ2_M 145.2, IQ2_XXS 156.4, IQ1_S 168.1 t/s. 6 rows, 3 new quant strings (IQ3_XXS, IQ2_M, IQ1_S), 1 new A/B group.
+- vLLM #59852 drift fix: PR rewritten with percentage improvements (1.8-11.0% higher than allgather/reducescatter at c32-c192), no absolute tok/s remain. 2 rows deleted, A/B note removed. Dataset 3933 -> 3935 (after #59852 deletion and DuoNeural addition), hardware 382, models 196, quote-verified 4512 -> 4518.
+
 ## 2026-10-03: promzeus/gh0stx-glm46-gb10-GGUF GLM-4.6 355B MoE on GB10 (6 rows)
 
 - HF card promzeus/gh0stx-glm46-gb10-GGUF: GLM-4.6 (355B-A32B MoE) abliterated, IQ2_XXS+Q5_K mix (2.26 bpw) on GB10 (DGX Spark, 128 GB unified memory), llama.cpp CUDA. MTP speculative decode sweep: no-spec 11.45, MTP n-max 1 (113k ctx, q4_0 KV) 17.14, n-max 2 (32k, q8_0) 14.36, n-max 3 (32k, q8_0) 12.17 tok/s. Depth decay: 57.6k prefill 197 / decode 4.10, 111.9k prefill 125 / decode 3.61 (MTP). 6 rows, 1 new model (GLM-4.6), 1 new A/B group with note.
