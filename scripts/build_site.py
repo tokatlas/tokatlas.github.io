@@ -3200,6 +3200,34 @@ between builds of the same backend, see the
                         "MTP-prob "
                         f"{val(rows,'lc-29924-q36-ngram-mtpprob-tot','tps')} -> "
                         f"{val(rows,'lc-29924-q36-ngram-mtpprob-fix','tps')}.")
+        if (venue, issue) == ("llama.cpp", "29875"):
+            if hw == "AMD Ryzen 7 7735HS" and model == "Qwen2.5 3B":
+                return ("Speculative decoding on CPU (llama.cpp issue #29875). Qwen2.5 3B "
+                        "Q8_0 on AMD Ryzen 7 7735HS, two evaluation tasks (code, riddle), "
+                        "static baseline vs pmin06/entropy15 draft thresholds. code: "
+                        f"{val(rows,'lc-29875-ryzen-code-static','tps')} -> "
+                        f"{val(rows,'lc-29875-ryzen-code-entropy15','tps')} tok/s "
+                        f"({pct(rows,'lc-29875-ryzen-code-static','lc-29875-ryzen-code-entropy15','tps'):+.0f}%); "
+                        "riddle: "
+                        f"{val(rows,'lc-29875-ryzen-riddle-static','tps')} -> "
+                        f"{val(rows,'lc-29875-ryzen-riddle-entropy15','tps')} tok/s "
+                        f"({pct(rows,'lc-29875-ryzen-riddle-static','lc-29875-ryzen-riddle-entropy15','tps'):+.0f}%). "
+                        "The entropy15 threshold is the best on both tasks; the sparser "
+                        "riddle task benefits more from spec-decode than the code task.")
+        if (venue, issue) == ("?", "?"):
+            if hw == "GB10" and model == "GLM-4.6":
+                return ("HF card promzeus/gh0stx-glm46-gb10-GGUF (GLM-4.6 355B MoE on GB10). "
+                        "MTP speculative decoding: no-spec "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-nospec','tps')}, MTP nmax1 "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp1','tps')} "
+                        f"({pct(rows,'hf-promzeus-glm46-gb10-nospec','hf-promzeus-glm46-gb10-mtp1','tps'):+.0f}%), "
+                        "nmax2 "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp2','tps')}, nmax3 "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-mtp3','tps')} tok/s (nmax1 is the "
+                        "best; longer drafts do not help). Context depth: "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-57k','tps')} @57k, "
+                        f"{val(rows,'hf-promzeus-glm46-gb10-112k','tps')} @112k tok/s (the "
+                        "355B MoE decays as context grows).")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
