@@ -428,6 +428,25 @@ between builds of the same backend, see the
                         "The 85%-in-VRAM 4-GPU box gains little on the first run; the "
                         "3-GPU (66% VRAM) placement is the best ratio.")
             return None
+        if (venue, issue) == ("llama.cpp", "29935"):
+            if hw == "2x RTX 3080 20GB" and model == "qwen3.5-arch 27B":
+                return ("llama.cpp perf issue #29935 (CUDA fattn KV streaming on sm86, "
+                        "context-decay report). qwen3.5-arch 27B NVFP4 on 2x RTX 3080 20GB, "
+                        "-fa on (tensor split), MTP3 spec (verify batch 4), local build 836d571 "
+                        "(b11379 + 2 commits, fattn identical), single request. Decode decays "
+                        "with context; q8_0 KV decays faster than f16 KV because the VEC path is "
+                        "gated to batch==1, so at the MTP3 verify batch 4 quantized KV takes the "
+                        "MMA path plus a whole-cache f16 conversion. f16 KV "
+                        f"{val(rows,'lc-29935-2x3080-qwen35arch27b-f16-30k','tps')} -> "
+                        f"{val(rows,'lc-29935-2x3080-qwen35arch27b-f16-90k','tps')} tok/s "
+                        f"({pct(rows,'lc-29935-2x3080-qwen35arch27b-f16-30k','lc-29935-2x3080-qwen35arch27b-f16-90k','tps'):+.0f}% from 30K to 90K); "
+                        "q8_0 KV "
+                        f"{val(rows,'lc-29935-2x3080-qwen35arch27b-q8-30k','tps')} -> "
+                        f"{val(rows,'lc-29935-2x3080-qwen35arch27b-q8-90k','tps')} tok/s "
+                        f"({pct(rows,'lc-29935-2x3080-qwen35arch27b-q8-30k','lc-29935-2x3080-qwen35arch27b-q8-90k','tps'):+.0f}%). "
+                        "Step-time slopes ~0.075 (f16) vs ~0.081 ms/1K tok (q8_0); official "
+                        "b11379 f16 48.2 @30K for reference.")
+            return None
         if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
             fa0 = next(i for i in rows if i.endswith("fa0"))
             fa1 = next(i for i in rows if i.endswith("fa1"))
