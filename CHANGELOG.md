@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: llama.cpp issue #29949 MoE expert cache GPU LRU, Qwen3.8-Flash-Next (9 rows)
+
+- llama.cpp issue #29949 (community, feature request with working implementation): MoE expert cache with GPU-resident LRU, where cache decisions and copies run on the GPU inside the compute graph. Qwen3.8-Flash-Next 125B, UD-IQ3_XXS and UD-IQ4_XS. 7900 XTX 24GB (ROCm), 48 layers pooled: UD-IQ3_XXS no pool 9.7 -> 160 slots 37.2 tok/s (+285%), MTP-Q8 on top 11.3 / 44.8; UD-IQ4_XS reverse placement (8 native + 40 pooled) 72 slots 31.2, 40 slots 28.8, 40 slots + MTP-Q4 30.5 tok/s. 2x RTX 3090 48GB (CUDA), UD-IQ4_XS 320 slots: EN plain 50.4 -> EN + MTP-Q8 61.1 tok/s (+21%). 9 rows (7 x 7900 XTX + 2 x 2x RTX 3090), 1 new hardware (7900 XTX), 2 new A/B groups with notes. Dataset 3977 -> 3986, hardware 386 -> 387.
+
 ## 2026-10-04: llama.cpp #29936 Vulkan Intel prefill regression fix, B70 Arc Pro (4 rows)
 
 - llama.cpp PR #29936 (community, open): "vulkan: Fix Intel prefill regression on MoE models". A git-bisect shows PR #29182 halved Intel MoE prefill by steering the tile selector away from the tuned l_warptile config (the new rows-per-expert logic now defaults to smaller tiles). B70 Arc Pro on Windows, gemma4 26B.A4B Q4_K_M, pp8192 prefill: without flash attn (fa 0) b11017 3147.38 -> b11352 1526.29 t/s (-52%), with flash attn (fa 1) 1230.41 -> 879.92 (-28%). 4 rows (b11017/b11352 x fa0/fa1), 1 new A/B group with note. No new hardware/model/backend (B70 Arc Pro, gemma4 26B.A4B, Vulkan pre-exist). Dataset 3973 -> 3977, quote-verified 4556 -> 4560.

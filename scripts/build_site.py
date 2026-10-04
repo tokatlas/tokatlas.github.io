@@ -465,6 +465,32 @@ between builds of the same backend, see the
                         f"{val(rows,'lc-29936-b70arc-b11352-fa1','pp_tps')} t/s "
                         f"({pct(rows,'lc-29936-b70arc-b11017-fa1','lc-29936-b70arc-b11352-fa1','pp_tps'):+.0f}%).")
             return None
+        if (venue, issue) == ("llama.cpp", "29949"):
+            if hw == "7900 XTX" and model == "Qwen3.8-Flash-Next":
+                return ("llama.cpp issue #29949 (MoE expert cache with GPU-resident LRU; "
+                        "feature request with working impl, commit 9d7cf288a). 7900 XTX 24GB, "
+                        "Qwen3.8-Flash-Next. UD-IQ3_XXS, 48 layers pooled: no pool "
+                        f"{val(rows,'lc-29949-7900xtx-iq3xxs-nopool','tps')} -> 160 slots "
+                        f"{val(rows,'lc-29949-7900xtx-iq3xxs-160s','tps')} tok/s "
+                        f"({pct(rows,'lc-29949-7900xtx-iq3xxs-nopool','lc-29949-7900xtx-iq3xxs-160s','tps'):+.0f}%); "
+                        "MTP-Q8 on top: "
+                        f"{val(rows,'lc-29949-7900xtx-iq3xxs-nopool-mtp','tps')} (no pool) and "
+                        f"{val(rows,'lc-29949-7900xtx-iq3xxs-160s-mtp','tps')} (160 slots) tok/s. "
+                        "UD-IQ4_XS reverse placement (8 native + 40 pooled): 72 slots "
+                        f"{val(rows,'lc-29949-7900xtx-iq4xs-72s','tps')} tok/s (77.9% hit); "
+                        "40 slots "
+                        f"{val(rows,'lc-29949-7900xtx-iq4xs-40s','tps')} tok/s; "
+                        "40 slots + MTP-Q4 "
+                        f"{val(rows,'lc-29949-7900xtx-iq4xs-40s-mtp','tps')} tok/s.")
+            if hw == "2x RTX 3090" and model == "Qwen3.8-Flash-Next":
+                return ("llama.cpp issue #29949 (MoE expert cache with GPU-resident LRU). "
+                        "2x RTX 3090 48GB, Qwen3.8-Flash-Next, UD-IQ4_XS, 48 layers pooled, "
+                        "320 slots (34.7 GiB pool). EN plain "
+                        f"{val(rows,'lc-29949-2x3090-iq4xs-plain','tps')} -> EN + MTP-Q8 "
+                        f"{val(rows,'lc-29949-2x3090-iq4xs-mtp','tps')} tok/s "
+                        f"({pct(rows,'lc-29949-2x3090-iq4xs-plain','lc-29949-2x3090-iq4xs-mtp','tps'):+.0f}%); "
+                        "93.6% hit rate plain, 96.0% with MTP.")
+            return None
         if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
             fa0 = next(i for i in rows if i.endswith("fa0"))
             fa1 = next(i for i in rows if i.endswith("fa1"))
