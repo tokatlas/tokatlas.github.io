@@ -91,6 +91,8 @@ def flag_badges(flags):
 
 
 def record_row(r):
+    tps = f"{r['tps']}" if r.get("tps") is not None else "–"
+    pp = f"{r['pp_tps']}" if r.get("pp_tps") is not None else "–"
     ttft = f"{r['ttft_s']}" if r.get("ttft_s") is not None else "–"
     pw = f"{r['power_w']}" if r.get("power_w") is not None else "–"
     # ctx is a real context depth; when it is null but the test shape is
@@ -101,7 +103,8 @@ def record_row(r):
             f"<td><a href=\"/models/{slug(r['model'])}/\">{esc(r['model'])}</a> "
             f"<span class=\"dim\">{esc(r.get('params'))}</span></td>"
             f"<td>{esc(r.get('quant'))}</td><td>{esc(r.get('backend'))}</td>"
-            f"<td class=\"num\">{esc(r.get('tps'))}</td>"
+            f"<td class=\"num\">{esc(tps)}</td>"
+            f"<td class=\"num\">{esc(pp)}</td>"
             f"<td class=\"num\">{esc(pw)}</td>"
             f"<td class=\"num\">{esc(ttft)}</td>"
             f"<td>{esc(ctx)}</td><td>{esc(date)}</td>"
@@ -111,8 +114,8 @@ def record_row(r):
 
 
 TABLE_HEAD = ("<tr><th>hardware</th><th>model</th><th>quant</th><th>backend</th>"
-              "<th>tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th><th>date</th>"
-              "<th>class</th><th>flags</th><th>source</th></tr>")
+              "<th>tok/s</th><th>pp tok/s</th><th>W</th><th>ttft s</th><th>ctx/tg</th>"
+              "<th>date</th><th>class</th><th>flags</th><th>source</th></tr>")
 
 
 def records_table(rows):
