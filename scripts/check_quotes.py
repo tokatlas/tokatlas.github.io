@@ -82,7 +82,7 @@ def fetch(url):
         with open(tmp, "wb") as f:
             f.write(body)
         os.replace(tmp, path)
-        time.sleep(2.0 if reddit else 0.25)
+        time.sleep(5.0 if reddit else 0.25)
     with open(path, "rb") as f:
         return f.read().decode("utf-8", "replace")
 
