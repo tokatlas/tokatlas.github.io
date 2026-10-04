@@ -61,8 +61,10 @@ def fetch(url):
     path = os.path.join(CACHE, key)
     if not os.path.exists(path):
         reddit = _is_reddit(url)
+        max_attempts = 5 if reddit else 3
+        backoffs = [30, 60, 120, 180] if reddit else [10, 20]
         body = None
-        for attempt in range(3):
+        for attempt in range(max_attempts):
             req = urllib.request.Request(url, headers={"User-Agent": UA})
             try:
                 with urllib.request.urlopen(req, timeout=60) as r:
@@ -73,16 +75,15 @@ def fetch(url):
                 # a real forbidden: the same URL 200s from a browser UA. Back off
                 # longer than 502/503/504 to clear the rate-limit window. Reddit
                 # rate-limits by IP with a persistent 403; use a longer backoff.
-                if e.code in (403, 502, 503, 504) and attempt < 2:
-                    delay = 15 * (attempt + 1) if reddit else 10 * (attempt + 1)
-                    time.sleep(delay)
+                if e.code in (403, 502, 503, 504) and attempt < max_attempts - 1:
+                    time.sleep(backoffs[attempt])
                     continue
                 raise
         tmp = path + ".tmp"
         with open(tmp, "wb") as f:
             f.write(body)
         os.replace(tmp, path)
-        time.sleep(5.0 if reddit else 0.25)
+        time.sleep(10.0 if reddit else 0.25)
     with open(path, "rb") as f:
         return f.read().decode("utf-8", "replace")
 
