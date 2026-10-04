@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: llama.cpp #29936 Vulkan Intel prefill regression fix, B70 Arc Pro (4 rows)
+
+- llama.cpp PR #29936 (community, open): "vulkan: Fix Intel prefill regression on MoE models". A git-bisect shows PR #29182 halved Intel MoE prefill by steering the tile selector away from the tuned l_warptile config (the new rows-per-expert logic now defaults to smaller tiles). B70 Arc Pro on Windows, gemma4 26B.A4B Q4_K_M, pp8192 prefill: without flash attn (fa 0) b11017 3147.38 -> b11352 1526.29 t/s (-52%), with flash attn (fa 1) 1230.41 -> 879.92 (-28%). 4 rows (b11017/b11352 x fa0/fa1), 1 new A/B group with note. No new hardware/model/backend (B70 Arc Pro, gemma4 26B.A4B, Vulkan pre-exist). Dataset 3973 -> 3977, quote-verified 4556 -> 4560.
+
 ## 2026-10-04: akopytko/Qwen3.8-27B-NVFP4-GGUF Qwen3.8-27B on RTX 5090 (2 rows)
 
 - HF card akopytko/Qwen3.8-27B-NVFP4-GGUF: Qwen3.8-27B (27B) with akopytko's Blackwell-native NVFP4 quant (no per-tensor scales, quant-time MSE scale search, runs on current llama.cpp, Blackwell GPUs RTX 50 series/B200/B300) on one RTX 5090 (stock 575 W). Default flags -b 2048 -ub 512: tg128 decode 87.45 / pp2048 prefill 6258.74 t/s. The embedded MTP draft head (--spec-type draft-mtp --spec-draft-n-max 8 --spec-draft-p-min 0.8) lifts decode to 152 t/s (+74% at 0.75 draft acceptance). The card's unsloth NVFP4 reference runs 87.69 tg128 / 6018.71 pp2048 on the same card, so the edge over it is on prefill, not decode. 2 rows (default + MTP), 1 new A/B group with note. Dataset 3971 -> 3973, quote-verified 4554 -> 4556.

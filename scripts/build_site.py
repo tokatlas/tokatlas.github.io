@@ -447,6 +447,21 @@ between builds of the same backend, see the
                         "Step-time slopes ~0.075 (f16) vs ~0.081 ms/1K tok (q8_0); official "
                         "b11379 f16 48.2 @30K for reference.")
             return None
+        if (venue, issue) == ("llama.cpp", "29936"):
+            if hw == "B70 Arc Pro" and model == "gemma4 26B.A4B":
+                return ("llama.cpp PR #29936 (Vulkan Intel prefill regression fix; a "
+                        "git-bisect shows #29182 halved Intel MoE prefill by steering the "
+                        "tile selector away from the tuned l_warptile config). B70 Arc Pro "
+                        "(Windows), gemma4 26B.A4B Q4_K_M, pp8192 prefill. Without flash "
+                        "attn (fa 0): b11017 "
+                        f"{val(rows,'lc-29936-b70arc-b11017-fa0','pp_tps')} -> b11352 "
+                        f"{val(rows,'lc-29936-b70arc-b11352-fa0','pp_tps')} t/s "
+                        f"({pct(rows,'lc-29936-b70arc-b11017-fa0','lc-29936-b70arc-b11352-fa0','pp_tps'):+.0f}%); "
+                        "with flash attn (fa 1): "
+                        f"{val(rows,'lc-29936-b70arc-b11017-fa1','pp_tps')} -> "
+                        f"{val(rows,'lc-29936-b70arc-b11352-fa1','pp_tps')} t/s "
+                        f"({pct(rows,'lc-29936-b70arc-b11017-fa1','lc-29936-b70arc-b11352-fa1','pp_tps'):+.0f}%).")
+            return None
         if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
             fa0 = next(i for i in rows if i.endswith("fa0"))
             fa1 = next(i for i in rows if i.endswith("fa1"))
