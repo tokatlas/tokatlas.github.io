@@ -385,6 +385,49 @@ between builds of the same backend, see the
         return (y - x) / x * 100
 
     def ab_note(venue, issue, hw, model, rows):
+        if (venue, issue) == ("llama.cpp", "29429"):
+            if hw == "2x RTX 3090" and model == "GLM-5.3-Flash":
+                return ("neurall/llama.cpp fork (VRAM-filling MoE expert cache, builds on "
+                        "csantiago78 PR #27861) vs stock llama.cpp. GLM-5.3-Flash 3.0-bit "
+                        "(106 GB) on 2x RTX 3090 (3700X, 125 GB DDR4), short chat, single "
+                        "stream, temp 0, model in RAM. decode "
+                        f"{val(rows,'lc-29429-2x3090-glm53-3.0bit-stock','tps')} -> "
+                        f"{val(rows,'lc-29429-2x3090-glm53-3.0bit-fork','tps')} tok/s "
+                        f"({pct(rows,'lc-29429-2x3090-glm53-3.0bit-stock','lc-29429-2x3090-glm53-3.0bit-fork','tps'):+.0f}%). "
+                        "The model is ~2.2x the 48 GB VRAM, so stock leaves most expert work "
+                        "on the CPU; the fork's live expert cache plus parallel CPU misses "
+                        "recovers it.")
+            if hw == "2x RTX 3090" and model == "MiMo-V2.6-Flash":
+                return ("neurall/llama.cpp fork (MoE expert cache) vs stock. MiMo-V2.6-Flash "
+                        "IQ3_XXS (132 GB, bigger than the 125 GB RAM) on 2x RTX 3090 (3700X), "
+                        "short chat, single stream, temp 0. decode "
+                        f"{val(rows,'lc-29429-2x3090-mimo26-iq3xxs-stock','tps')} -> "
+                        f"{val(rows,'lc-29429-2x3090-mimo26-iq3xxs-fork','tps')} tok/s "
+                        f"({pct(rows,'lc-29429-2x3090-mimo26-iq3xxs-stock','lc-29429-2x3090-mimo26-iq3xxs-fork','tps'):+.0f}%), "
+                        "the largest gain in the table: the model is bigger than RAM, so "
+                        "stock streams experts over the PCIe link and the fork's cache "
+                        "turns the idle second GPU into live compute.")
+            if hw == "2x RTX 3090" and model == "Qwen3.8-Flash-Next":
+                return ("neurall/llama.cpp fork (MoE expert cache) vs stock. Qwen3.8-Flash-Next "
+                        "UD-IQ4_XS (88 GB) on 2x RTX 3090 (3700X, 125 GB DDR4), short chat, "
+                        "single stream, temp 0. decode "
+                        f"{val(rows,'lc-29429-2x3090-qwen38next-udiq4xs-stock','tps')} -> "
+                        f"{val(rows,'lc-29429-2x3090-qwen38next-udiq4xs-fork','tps')} tok/s "
+                        f"({pct(rows,'lc-29429-2x3090-qwen38next-udiq4xs-stock','lc-29429-2x3090-qwen38next-udiq4xs-fork','tps'):+.0f}%).")
+            if hw == "4x RTX 3090" and model == "GLM-5.3-Flash":
+                return ("neurall/llama.cpp fork (MoE expert cache) vs stock, on a rented 4x "
+                        "RTX 3090 box (EPYC 7B12, 256 GB DDR4; raw logs not kept). "
+                        "GLM-5.3-Flash 3.0-bit (117.5 GB). 4 GPUs, warm run: decode "
+                        f"{val(rows,'lc-29429-4x3090-glm53-4gpu-stock','tps')} -> "
+                        f"{val(rows,'lc-29429-4x3090-glm53-4gpu-fork','tps')} tok/s "
+                        f"({pct(rows,'lc-29429-4x3090-glm53-4gpu-stock','lc-29429-4x3090-glm53-4gpu-fork','tps'):+.0f}%); "
+                        "3 of the 4 GPUs (best ratio): "
+                        f"{val(rows,'lc-29429-4x3090-glm53-3of4-stock','tps')} -> "
+                        f"{val(rows,'lc-29429-4x3090-glm53-3of4-fork','tps')} tok/s "
+                        f"({pct(rows,'lc-29429-4x3090-glm53-3of4-stock','lc-29429-4x3090-glm53-3of4-fork','tps'):+.0f}%). "
+                        "The 85%-in-VRAM 4-GPU box gains little on the first run; the "
+                        "3-GPU (66% VRAM) placement is the best ratio.")
+            return None
         if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
             fa0 = next(i for i in rows if i.endswith("fa0"))
             fa1 = next(i for i in rows if i.endswith("fa1"))

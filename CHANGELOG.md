@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: neurall/llama.cpp fork MoE expert cache A/B benchmark, discussion #29429 (10 rows)
+
+- neurall/llama.cpp fork (community, VRAM-filling MoE expert cache, builds on csantiago78 PR #27861) vs stock llama.cpp, from the fork README (discussion #29429, "Show and tell: MoE expert cache"). Machine A (2x RTX 3090, Ryzen 7 3700X, 125 GB DDR4-3200), short chat, single stream, temp 0, model in RAM: GLM-5.3-Flash 3.0-bit (106 GB) 11.9 -> 22.4 tok/s (1.9x), MiMo-V2.6-Flash IQ3_XXS (132 GB, bigger than the 125 GB RAM) 4.6 -> 10.9 tok/s (2.4x), Qwen3.8-Flash-Next UD-IQ4_XS (88 GB) 27.7 -> 46.5 tok/s (1.7x). Machine D (rented 4x RTX 3090, EPYC 7B12, 256 GB DDR4, raw logs not kept), GLM-5.3-Flash 3.0-bit (117.5 GB): 4 GPUs warm run 24.7 -> 31.5 tok/s (1.3x, -t 16 reaches 33.8), 3 of the 4 GPUs (best ratio) 20.1 -> 32.6 tok/s (1.6x). The fork fills VRAM with a pinned expert cache and parallelizes CPU misses, so big-MoE models that fit in RAM but not VRAM recover most of their expert work to the GPU. 10 rows (3 models x stock/fork on 2x 3090 + 2 GPU configs x stock/fork on 4x 3090), 1 new hardware (4x RTX 3090), 1 new model (MiMo-V2.6-Flash), 4 new A/B groups with notes. Dataset 3957 -> 3967, hardware 384 -> 385, models 198 -> 199, quote-verified 4540 -> 4550.
+
 ## 2026-10-04: llama.cpp discussions #29930 Qwen3.8-Flash-Next 177B on RTX 5070 via expert streaming (1 row)
 
 - llama.cpp discussion #29930 (community, show-and-tell): Qwen3.8-Flash-Next 177B (UD-IQ3_XXS) running at ~11.5 tok/s on one RTX 5070 12GB + 32GB DDR4-2400 (Ryzen 5 5600GT, Windows) via a hashyy fork's page-locked hot-expert tier (expert streaming from system RAM to the 12GB card). Up from ~7 tok/s on the inherited setup; 10.41 tok/s over a 10k-token generation (16 min). 1 row, no new hardware/model (RTX 5070 and Qwen3.8-Flash-Next already present). Dataset 3956 -> 3957, quote-verified 4539 -> 4540.
