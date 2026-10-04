@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: vLLM #59916 gather-based DCP prefill benchmark on 4x B300 (10 rows)
+
+- vLLM PR #59916 (community): gather-based DCP for MLA models that can't run DCP natively. Measured prefill throughput on GLM-5.3-NVFP4 on 4x B300 (32 GiB/GPU KV budget), prefix-pooled 60K shared + 6K unique, OSL 1, concurrency 8. At TP1xPCP4 gather DCP4 does 141.6K tok/s, matching KVPP (143.0K, -1.0%) and 2.8x replicated (51.3K), holding 2.40M KV tokens vs KVPP 2.18M; at TP4 gather DCP4 (61.4K) is 1.55x native DCP4 (39.6K); at PP2xTP2 gather DCP2 (101.5K) matches KVPP (100.5K). 10 rows (TP1xPCP4/TP4/PP2xTP2 x replicated/KVPP/native/gather), 1 new hardware (4x B300), 1 new A/B group with note. Values are prefill rate in K tok/s.
+
 ## 2026-10-04: capyctl/FrogNano-4B-2609-MLX-4bit FrogNano-4B-2609 on RTX 4090 Laptop GPU (5 rows)
 
 - HF card capyctl/FrogNano-4B-2609-MLX-4bit: FrogNano-4B-2609, 4-bit MLX affine (group 64) via TensorFold 0.6.3 CUDA engine on one RTX 4090 Laptop GPU (16 GB), greedy, thinking on. Single-stream decode 52.4 tok/s (median of 3); a --parallel 8 serving sweep aggregates 50.4 (1 stream) to 319.1 (8 streams) tok/s (+533% aggregate), while per-stream throughput declines 50.6 to 40.3 tok/s as streams share the card. Decode holds about 49-50 tok/s single-stream from 0.5k to 32k context; the card's BF16 vLLM baseline is 59.9 single-stream. 5 rows (single + c1/c2/c4/c8), 1 new model (FrogNano-4B-2609), 1 new hardware (RTX 4090 Laptop GPU), 1 new backend (TensorFold (CUDA)), 1 new A/B group with note.

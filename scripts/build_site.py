@@ -664,6 +664,22 @@ between builds of the same backend, see the
                     f"tok/s ({pct(rows,c,p2,'tps'):+.0f}%) on the same B300 offline batch, "
                     "the default startup with breakable cudagraph auto-enabled being "
                     "the slow arm.")
+        if (venue, issue) == ("vLLM", "59916"):
+            g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
+            k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
+            rep = "vllm-59916-b300x4-glm53-tp1pcp4-replicated"
+            t4g = "vllm-59916-b300x4-glm53-tp4-gatherdcp4"
+            t4n = "vllm-59916-b300x4-glm53-tp4-nativedcp4"
+            return (f"Gather-based DCP on 4x B300, GLM-5.3-NVFP4 prefix-pooled "
+                    f"prefill (60K shared + 6K unique, OSL 1, concurrency 8): at "
+                    f"TP1\u00d7PCP4 gather DCP4 does {val(rows,g,'pp_tps'):.1f}K tok/s, "
+                    f"matching KVPP ({val(rows,k,'pp_tps'):.1f}K, "
+                    f"{pct(rows,k,g,'pp_tps'):+.1f}%) and "
+                    f"{val(rows,g,'pp_tps')/val(rows,rep,'pp_tps'):.1f}x replicated "
+                    f"({val(rows,rep,'pp_tps'):.1f}K), holding 2.40M KV tokens vs KVPP "
+                    f"2.18M; at TP4 gather DCP4 ({val(rows,t4g,'pp_tps'):.1f}K) is "
+                    f"{val(rows,t4g,'pp_tps')/val(rows,t4n,'pp_tps'):.2f}x native DCP4 "
+                    f"({val(rows,t4n,'pp_tps'):.1f}K).")
         if (venue, issue) == ("vLLM", "58578"):
             if "Qwen3.8" in model:
                 c, p2 = "vllm-58578-b70-qwen38-dvfull", "vllm-58578-b70-qwen38-dvred"
