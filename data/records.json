@@ -1,5 +1,5 @@
 {
- "count": 3956,
+ "count": 3957,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -83860,6 +83860,31 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18711544",
    "tg_tokens": 128,
    "tps": 54.38,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-10-04",
+   "flags": [],
+   "hardware": "RTX 5070",
+   "id": "lc-disc-29930-chttps://github.com/ggml-org/llama.cpp/discussions/29930-qwen38flashnext-UD-IQ3_XXS",
+   "model": "Qwen3.8-Flash-Next",
+   "notes": "up from ~7 tok/s on inherited setup; 14-15 tok/s in conversation, 10.15 tok/s on a 4892-token coding prompt, 10.41 tok/s over 10k tokens (16 min); methodology and benchmark scripts in the hashyy fork repo",
+   "params": null,
+   "power_w": null,
+   "pp_tokens": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "UD-IQ3_XXS",
+   "quote": "RTX 5070 12GB + 32GB DDR4-2400, Ryzen 5 5600GT, Windows; Qwen3.8-Flash-Next 177B (UD-IQ3_XXS), expert-streaming fork (hashyy); benchmark about 11.5 tok/s",
+   "ram_gb": null,
+   "retrieved": "2026-10-04",
+   "source_name": "llama.cpp discussions #29930 (show-and-tell, RTX 5070 expert streaming)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29930",
+   "tg_tokens": null,
+   "tps": 11.5,
    "ttft_s": null
   },
   {

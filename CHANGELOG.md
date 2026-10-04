@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: llama.cpp discussions #29930 Qwen3.8-Flash-Next 177B on RTX 5070 via expert streaming (1 row)
+
+- llama.cpp discussion #29930 (community, show-and-tell): Qwen3.8-Flash-Next 177B (UD-IQ3_XXS) running at ~11.5 tok/s on one RTX 5070 12GB + 32GB DDR4-2400 (Ryzen 5 5600GT, Windows) via a hashyy fork's page-locked hot-expert tier (expert streaming from system RAM to the 12GB card). Up from ~7 tok/s on the inherited setup; 10.41 tok/s over a 10k-token generation (16 min). 1 row, no new hardware/model (RTX 5070 and Qwen3.8-Flash-Next already present). Dataset 3956 -> 3957, quote-verified 4539 -> 4540.
+
 ## 2026-10-04: vLLM #59916 gather-based DCP prefill benchmark on 4x B300 (10 rows)
 
 - vLLM PR #59916 (community): gather-based DCP for MLA models that can't run DCP natively. Measured prefill throughput on GLM-5.3-NVFP4 on 4x B300 (32 GiB/GPU KV budget), prefix-pooled 60K shared + 6K unique, OSL 1, concurrency 8. At TP1xPCP4 gather DCP4 does 141.6K tok/s, matching KVPP (143.0K, -1.0%) and 2.8x replicated (51.3K), holding 2.40M KV tokens vs KVPP 2.18M; at TP4 gather DCP4 (61.4K) is 1.55x native DCP4 (39.6K); at PP2xTP2 gather DCP2 (101.5K) matches KVPP (100.5K). 10 rows (TP1xPCP4/TP4/PP2xTP2 x replicated/KVPP/native/gather), 1 new hardware (4x B300), 1 new A/B group with note. Values are prefill rate in K tok/s.
