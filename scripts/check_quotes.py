@@ -58,8 +58,11 @@ def fetch(url):
                     body = r.read()
                 break
             except urllib.error.HTTPError as e:
-                if e.code in (502, 503, 504) and attempt < 2:
-                    time.sleep(5 * (attempt + 1))
+                # 403 here is Cloudflare rate-limiting (llmconfigurator.com etc), not
+                # a real forbidden: the same URL 200s from a browser UA. Back off
+                # longer than 502/503/504 to clear the rate-limit window.
+                if e.code in (403, 502, 503, 504) and attempt < 2:
+                    time.sleep(10 * (attempt + 1))
                     continue
                 raise
         tmp = path + ".tmp"
