@@ -1,5 +1,5 @@
 {
- "count": 3931,
+ "count": 3929,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -24239,50 +24239,6 @@
    "tg_tokens": 512,
    "tps": "67.8",
    "ttft_s": null
-  },
-  {
-   "backend": "vLLM",
-   "batch": 64,
-   "ctx": 4096,
-   "date": "2026-10-03",
-   "flags": [],
-   "hardware": "MI355X",
-   "id": "vllm-59852-mi355x-4k1k-c64-allgather",
-   "model": "DeepSeek-V4.1-Flash",
-   "notes": "vLLM PR #59852 (open): MoRI FP4 dispatch for DeepSeek V4.1 a4w4 (VLLM_ROCM_USE_AITER_MOE_A4W4_DSV4=1), 2x MI355X, TP1 DP2 expert-parallel, MoE backend aiter, DSpark spec decode (synthetic acceptance 3.51); vllm bench serve --random-input-len 4096 --random-output-len 1024 --num-prompts 640 --max-concurrency 64, cold, one run; tps is total tok/s (input+output); baseline allgather/reducescatter all2all path, total 16146 tok/s, TTFT 1.56 s, TPOT 18.3 ms; config=allgather",
-   "power_w": null,
-   "pp_tokens": null,
-   "provenance": "community",
-   "quant": "FP4",
-   "quote": "DeepSeek-V4.1-Flash DEP2 on MI355X; allgather_reducescatter | 16,146 | 1.56 s | 18.3 ms",
-   "retrieved": "2026-10-03",
-   "source_name": "vLLM PR #59852",
-   "source_url": "https://github.com/vllm-project/vllm/pull/59852",
-   "tg_tokens": 1024,
-   "tps": "16146",
-   "ttft_s": "1.56"
-  },
-  {
-   "backend": "vLLM",
-   "batch": 64,
-   "ctx": 4096,
-   "date": "2026-10-03",
-   "flags": [],
-   "hardware": "MI355X",
-   "id": "vllm-59852-mi355x-4k1k-c64-morifp4",
-   "model": "DeepSeek-V4.1-Flash",
-   "notes": "vLLM PR #59852 (open): MoRI FP4 dispatch for DeepSeek V4.1 a4w4 (VLLM_ROCM_USE_AITER_MOE_A4W4_DSV4=1), 2x MI355X, TP1 DP2 expert-parallel, MoE backend aiter, DSpark spec decode (synthetic acceptance 3.51); vllm bench serve --random-input-len 4096 --random-output-len 1024 --num-prompts 640 --max-concurrency 64, cold, one run; tps is total tok/s (input+output); MoRI FP4 dispatch (this PR), total 16648 tok/s, TTFT 1.52 s, TPOT 17.7 ms (+3% vs baseline); config=morifp4",
-   "power_w": null,
-   "pp_tokens": null,
-   "provenance": "community",
-   "quant": "FP4",
-   "quote": "DeepSeek-V4.1-Flash DEP2 on MI355X; MoRI, FP4 dispatch | 16,648 | 1.52 s | 17.7 ms",
-   "retrieved": "2026-10-03",
-   "source_name": "vLLM PR #59852",
-   "source_url": "https://github.com/vllm-project/vllm/pull/59852",
-   "tg_tokens": 1024,
-   "tps": "16648",
-   "ttft_s": "1.52"
   },
   {
    "backend": "vLLM",
