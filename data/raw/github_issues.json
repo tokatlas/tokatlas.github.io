@@ -1,5 +1,5 @@
 {
- "count": 1178,
+ "count": 1180,
  "records": [
   {
    "backend": "llama.cpp",
@@ -25189,6 +25189,54 @@
    "retrieved": "2026-10-04",
    "quote": "2x RTX 3080 20GB (sm86, `-sm tensor`), Windows, model = qwen3.5-arch 27B NVFP4; | local 836d571 | q8_0 | 48.7 | 39.4 | ~0.081 ms / 1K tok (conversion pass visible) |",
    "notes": "perf issue #29935 (CUDA fattn KV streaming on sm86, context-decay report); local build 836d571 (= b11379 + 2 commits, fattn identical); 2x RTX 3080 20GB, qwen3.5-arch 27B NVFP4, -fa on (tensor split), MTP3 spec (verify batch 4), single request; official b11379 f16 48.2 @30K for reference; decode tok/s at 90K context, q8_0 KV; step-time slope ~0.081 ms/1K tok (conversion pass visible), decays faster than f16; config=q8-90k"
+  },
+  {
+   "id": "hf5-qwen3827b-nvfp4-5090-default",
+   "model": "Qwen3.8-27B",
+   "params": "27B",
+   "quant": "NVFP4",
+   "hardware": "RTX 5090",
+   "ram_gb": 32,
+   "backend": "llama.cpp (CUDA)",
+   "ctx": 128,
+   "batch": 1,
+   "tps": 87.45,
+   "pp_tps": 6258.74,
+   "pp_tokens": 2048,
+   "tg_tokens": 128,
+   "ttft_s": null,
+   "power_w": 575,
+   "date": "2026-10-04",
+   "provenance": "community",
+   "source_url": "https://huggingface.co/akopytko/Qwen3.8-27B-NVFP4-GGUF",
+   "source_name": "HF model card: akopytko/Qwen3.8-27B-NVFP4-GGUF",
+   "retrieved": "2026-10-04",
+   "quote": "Qwen3.8-27B NVFP4 GGUF Fast; For benchmarks, we used RTX 5090 running at stock 575 W; this NVFP4  6258.74 +/- 15.37  6432.25 +/- 143.73  87.45 +/- 0.27",
+   "notes": "akopytko Blackwell-native NVFP4 (no per-tensor scales, quant-time MSE scale search), runs on current llama.cpp, Blackwell GPUs (RTX 50 series/B200/B300); default flags -b 2048 -ub 512, tg128 decode / pp2048 prefill; unsloth NVFP4 reference on the same card 87.69 tg128 / 6018.71 pp2048; config=akopytko-nvfp4-5090-default"
+  },
+  {
+   "id": "hf5-qwen3827b-nvfp4-5090-mtp",
+   "model": "Qwen3.8-27B",
+   "params": "27B",
+   "quant": "NVFP4",
+   "hardware": "RTX 5090",
+   "ram_gb": 32,
+   "backend": "llama.cpp (CUDA)",
+   "ctx": null,
+   "batch": 1,
+   "tps": 152,
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": 575,
+   "date": "2026-10-04",
+   "provenance": "community",
+   "source_url": "https://huggingface.co/akopytko/Qwen3.8-27B-NVFP4-GGUF",
+   "source_name": "HF model card: akopytko/Qwen3.8-27B-NVFP4-GGUF",
+   "retrieved": "2026-10-04",
+   "quote": "Qwen3.8-27B NVFP4 GGUF Fast; For benchmarks, we used RTX 5090 running at stock 575 W; we observed 152 t/s decode at 0.75 draft acceptance on a typical prompt",
+   "notes": "akopytko NVFP4 with embedded MTP draft head, --spec-type draft-mtp --spec-draft-n-max 8 --spec-draft-p-min 0.8; 152 t/s decode at 0.75 draft acceptance on a typical prompt; config=akopytko-nvfp4-5090-mtp"
   }
  ],
  "source": {

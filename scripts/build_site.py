@@ -2824,6 +2824,18 @@ between builds of the same backend, see the
                         f"{val(rows,'hf3-qwen3827b-pawx3-tg211k','tps')} at 211k depth; "
                         "verified spec decode "
                         f"{val(rows,'hf3-qwen3827b-pawx3-spec8k','tps')} at 8k code context.")
+            if hw == "RTX 5090" and model == "Qwen3.8-27B":
+                return ("akopytko Blackwell-native NVFP4 (no per-tensor scales, "
+                        "quant-time MSE scale search) on one RTX 5090 (stock 575 W), "
+                        "current llama.cpp, default flags -b 2048 -ub 512. "
+                        f"tg128 decode {val(rows,'hf5-qwen3827b-nvfp4-5090-default','tps')} / "
+                        f"pp2048 prefill {val(rows,'hf5-qwen3827b-nvfp4-5090-default','pp_tps')}; "
+                        "the embedded MTP draft head (--spec-type draft-mtp, n-max 8, "
+                        f"p-min 0.8) lifts decode to {val(rows,'hf5-qwen3827b-nvfp4-5090-mtp','tps')} "
+                        f"tok/s ({pct(rows,'hf5-qwen3827b-nvfp4-5090-default','hf5-qwen3827b-nvfp4-5090-mtp','tps'):+.0f}% "
+                        "at 0.75 draft acceptance). The card's unsloth NVFP4 reference "
+                        "runs 87.69 tg128 / 6018.71 pp2048 on the same card, so the "
+                        "edge over it is on prefill, not decode.")
             if hw == "RTX 3090" and model == "Qwen3.6-35B-A3B":
                 return ("PAW 1.54 bpw trellis of Qwen3.6-35B-A3B on a single "
                         "RTX 3090, llama.cpp CUDA. Decode by workload: mixed "

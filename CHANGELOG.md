@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-04: akopytko/Qwen3.8-27B-NVFP4-GGUF Qwen3.8-27B on RTX 5090 (2 rows)
+
+- HF card akopytko/Qwen3.8-27B-NVFP4-GGUF: Qwen3.8-27B (27B) with akopytko's Blackwell-native NVFP4 quant (no per-tensor scales, quant-time MSE scale search, runs on current llama.cpp, Blackwell GPUs RTX 50 series/B200/B300) on one RTX 5090 (stock 575 W). Default flags -b 2048 -ub 512: tg128 decode 87.45 / pp2048 prefill 6258.74 t/s. The embedded MTP draft head (--spec-type draft-mtp --spec-draft-n-max 8 --spec-draft-p-min 0.8) lifts decode to 152 t/s (+74% at 0.75 draft acceptance). The card's unsloth NVFP4 reference runs 87.69 tg128 / 6018.71 pp2048 on the same card, so the edge over it is on prefill, not decode. 2 rows (default + MTP), 1 new A/B group with note. Dataset 3971 -> 3973, quote-verified 4554 -> 4556.
+
 ## 2026-10-04: llama.cpp issue #29935 CUDA fattn KV streaming on sm86, context-decay A/B (4 rows)
 
 - llama.cpp issue #29935 (community, perf report): CUDA fattn KV streaming on Ampere (sm86) decays ~2x off physics at long context because the VEC path is gated to batch==1, so at the MTP3 verify batch 4 quantized KV always takes the MMA path plus a whole-cache f16 conversion. qwen3.5-arch 27B NVFP4 on 2x RTX 3080 20GB, -fa on (tensor split), MTP3 spec (verify batch 4), single request, local build 836d571 (= b11379 + 2 commits, fattn identical). Decode tok/s decays with context: f16 KV 50.6 @30K -> 44.0 @90K (-13%), q8_0 KV 48.7 @30K -> 39.4 @90K (-19%); the q8_0 KV decays faster (step-time slope ~0.081 vs ~0.075 ms/1K tok) because of the f16 conversion pass. Official b11379 f16 48.2 @30K for reference. 4 rows (f16/q8_0 KV x 30K/90K context), 1 new hardware (2x RTX 3080 20GB), 1 new model (qwen3.5-arch 27B), 1 new A/B group with note. Dataset 3967 -> 3971, hardware 385 -> 386, models 199 -> 200, quote-verified 4550 -> 4554.
