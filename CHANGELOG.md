@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-04: capyctl/FrogNano-4B-2609-MLX-4bit FrogNano-4B-2609 on RTX 4090 Laptop GPU (5 rows)
+
+- HF card capyctl/FrogNano-4B-2609-MLX-4bit: FrogNano-4B-2609, 4-bit MLX affine (group 64) via TensorFold 0.6.3 CUDA engine on one RTX 4090 Laptop GPU (16 GB), greedy, thinking on. Single-stream decode 52.4 tok/s (median of 3); a --parallel 8 serving sweep aggregates 50.4 (1 stream) to 319.1 (8 streams) tok/s (+533% aggregate), while per-stream throughput declines 50.6 to 40.3 tok/s as streams share the card. Decode holds about 49-50 tok/s single-stream from 0.5k to 32k context; the card's BF16 vLLM baseline is 59.9 single-stream. 5 rows (single + c1/c2/c4/c8), 1 new model (FrogNano-4B-2609), 1 new hardware (RTX 4090 Laptop GPU), 1 new backend (TensorFold (CUDA)), 1 new A/B group with note.
+
+## 2026-10-04: DuoNeural/LFM2.5-8B-A1B-TAP-DPQ-v7-GGUF quantization sweep on RTX 4080 Super (6 rows)
+
+- HF card DuoNeural/LFM2.5-8B-A1B-TAP-DPQ-v7-GGUF: LFM2.5-8B-A1B with TAP-DPQ v7 post-training quantization on RTX 4080 Super, llama.cpp CUDA, ctx 8192. Decode: baseline (fp16) 118.5, Q4_K_M 172.4, IQ3_XXS 196.2, IQ2_M 208.5, IQ2_XXS 224.1, IQ1_S 241.8 t/s. 6 rows, 1 new model (LFM2.5-8B-A1B), 1 new hardware (RTX 4080 Super).
+
 ## 2026-10-04: DuoNeural/Qwen3.5-9B-TAP-DPQ-v7-GGUF quantization sweep on RTX 3090 (6 rows)
 
 - HF card DuoNeural/Qwen3.5-9B-TAP-DPQ-v7-GGUF: Qwen3.5-9B (64-layer hybrid DeltaNet+MHA) with TAP-DPQ v7 post-training quantization on RTX 3090 24GB, llama.cpp CUDA, ctx 16384. Quantization sweep: FP16 baseline 78.2, Q4_K_M 112.5, IQ3_XXS 138.7, IQ2_M 145.2, IQ2_XXS 156.4, IQ1_S 168.1 t/s. 6 rows, 3 new quant strings (IQ3_XXS, IQ2_M, IQ1_S), 1 new A/B group.

@@ -2627,6 +2627,19 @@ between builds of the same backend, see the
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
+            if hw == "RTX 4090 Laptop GPU" and model == "FrogNano-4B-2609":
+                return ("TensorFold 0.6.3 CUDA engine, 4-bit MLX affine (group 64), "
+                        "one RTX 4090 Laptop GPU (16 GB), greedy, thinking on. "
+                        "Single-stream decode is "
+                        f"{val(rows,'capyctl-frognano-tf-single','tps')} tok/s; the "
+                        "--parallel 8 sweep scales aggregate throughput "
+                        f"{val(rows,'capyctl-frognano-tf-c1','tps')} to "
+                        f"{val(rows,'capyctl-frognano-tf-c8','tps')} tok/s from 1 to 8 "
+                        f"streams ({pct(rows,'capyctl-frognano-tf-c1','capyctl-frognano-tf-c8','tps'):+.0f}% "
+                        "aggregate), while per-stream throughput declines 50.6 to 40.3 "
+                        "tok/s as the streams share the card. Decode holds about 49-50 "
+                        "tok/s single-stream from 0.5k to 32k context; the BF16 vLLM "
+                        "baseline runs 59.9 single-stream.")
             if hw == "2\u00d7 Quadro RTX 4000" and model == "rune-26b-a4b-v3":
                 return ("Prompt processing (prefill) on 2x Quadro RTX 4000 8 GB, "
                         "llama.cpp 8212c78, 2k-token prompt, IQ3_M 26B MoE + q8_0 "
