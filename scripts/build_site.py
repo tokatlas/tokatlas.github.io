@@ -3145,6 +3145,60 @@ between builds of the same backend, see the
                         f"({val(rows,'hf-promzeus-glm46-gb10-57k','tps')} tok/s decode), "
                         f"{val(rows,'hf-promzeus-glm46-gb10-112k','pp_tps')} at 111.9k "
                         f"({val(rows,'hf-promzeus-glm46-gb10-112k','tps')} tok/s MTP decode).")
+            if hw == "10× MI100" and model == "GLM-5.3-Flash":
+                return ("Q3_K_M vs Q4_K_XL on 10x MI100 (ROCm, llama.cpp fork). "
+                        "llama-bench pp2048/tg128, no spec decode, FA off. "
+                        f"Q3_K_M: pp {val(rows,'hf-glm53-flash-10xmi100-q3km','pp_tps')}, "
+                        f"tg {val(rows,'hf-glm53-flash-10xmi100-q3km','tps')} tok/s. "
+                        f"Q4_K_XL: pp {val(rows,'hf-glm53-flash-10xmi100-q4kxl','pp_tps')}, "
+                        f"tg {val(rows,'hf-glm53-flash-10xmi100-q4kxl','tps')} tok/s. "
+                        "Q4_K_XL is slightly faster on both axes despite larger size.")
+            if hw == "2× 20 GB" and model == "Qwen3.8-Flash-Next":
+                return ("MTP draft-mtp speculative decoding sweep on 2x RTX 2080 Ti "
+                        "(2x 20 GB, CUDA). No-spec baseline "
+                        f"{val(rows,'hf-qwen38flashnext-2x20gb-nospec','tps')} tok/s. "
+                        "Prose: n_max 1 "
+                        f"{val(rows,'hf-qwen38flashnext-2x20gb-nmax1-prose','tps')}, "
+                        f"n_max 2 {val(rows,'hf-qwen38flashnext-2x20gb-nmax2-prose','tps')}, "
+                        f"n_max 3 {val(rows,'hf-qwen38flashnext-2x20gb-nmax3-prose','tps')}, "
+                        f"n_max 3 + pmin {val(rows,'hf-qwen38flashnext-2x20gb-nmax3pmin-prose','tps')} tok/s. "
+                        "Code: n_max 1 "
+                        f"{val(rows,'hf-qwen38flashnext-2x20gb-nmax1-code','tps')}, "
+                        f"n_max 2 {val(rows,'hf-qwen38flashnext-2x20gb-nmax2-code','tps')}, "
+                        f"n_max 3 {val(rows,'hf-qwen38flashnext-2x20gb-nmax3-code','tps')}, "
+                        f"n_max 3 + pmin {val(rows,'hf-qwen38flashnext-2x20gb-nmax3pmin-code','tps')} tok/s. "
+                        "Code benefits more from MTP than prose; pmin hurts both.")
+            if hw == "GB10" and model == "Ornith-1.5-397B-A17B":
+                return ("ik_llama.cpp DFlash drafter n_max sweep on GB10 (DGX Spark). "
+                        f"n_max 0 (no spec) {val(rows,'hf-ornith15-397b-gb10-dflash-nmax0','tps')} tok/s. "
+                        f"n_max 2 {val(rows,'hf-ornith15-397b-gb10-dflash-nmax2','tps')}, "
+                        f"n_max 3 {val(rows,'hf-ornith15-397b-gb10-dflash-nmax3','tps')}, "
+                        f"n_max 4 {val(rows,'hf-ornith15-397b-gb10-dflash-nmax4','tps')}, "
+                        f"n_max 5 {val(rows,'hf-ornith15-397b-gb10-dflash-nmax5','tps')} tok/s. "
+                        "n_max 4 is the sweet spot (+32% over no-spec); n_max 5 "
+                        "regresses due to draft overhead exceeding acceptance gains.")
+            if hw == "M5 Pro" and model == "Swift 1.5":
+                return ("Splash (Metal) with DFlash2 on 48 GB M5 Pro MacBook Pro "
+                        "(20 GPU cores), Q4/Q6/Q8 mixed quant. "
+                        f"Code {val(rows,'hf-swift15-m5pro-code','tps')}, "
+                        f"median {val(rows,'hf-swift15-m5pro-median','tps')}, "
+                        f"thinking {val(rows,'hf-swift15-m5pro-thinking','tps')}, "
+                        f"weighted {val(rows,'hf-swift15-m5pro-weighted','tps')} tok/s. "
+                        "Code is ~2x the median; thinking tasks are the slowest.")
+            if hw == "RTX 5090" and model == "Qwen3.6-35B-A3B":
+                return ("Quant comparison on RTX 5090 (CUDA), llama-bench "
+                        "pp512/tg128, custom per-tensor requantization. "
+                        f"Q4_K_M: pp {val(rows,'hf-qwen36-35b-5090-q4km','pp_tps')}, "
+                        f"tg {val(rows,'hf-qwen36-35b-5090-q4km','tps')} tok/s (fastest decode). "
+                        f"NVFP4: pp {val(rows,'hf-qwen36-35b-5090-nvfp4','pp_tps')}, "
+                        f"tg {val(rows,'hf-qwen36-35b-5090-nvfp4','tps')} (fastest prefill). "
+                        f"Q4_blend2: pp {val(rows,'hf-qwen36-35b-5090-q4blend2','pp_tps')}, "
+                        f"tg {val(rows,'hf-qwen36-35b-5090-q4blend2','tps')}. "
+                        f"Q4_blend4: pp {val(rows,'hf-qwen36-35b-5090-q4blend4','pp_tps')}, "
+                        f"tg {val(rows,'hf-qwen36-35b-5090-q4blend4','tps')}. "
+                        f"Q4_blend5: pp {val(rows,'hf-qwen36-35b-5090-q4blend5','pp_tps')}, "
+                        f"tg {val(rows,'hf-qwen36-35b-5090-q4blend5','tps')} tok/s. "
+                        "Q4_K_M wins decode; NVFP4 wins prefill; blends trade between.")
         if (venue, issue) == ("llama.cpp", "29869"):
             return ("Metal has no tensor API on M1-M4, so the 2-16 row mat-muls "
                     "that speculative decoding issues ran the mat-vec kernels "
