@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: vLLM PR #60091, host-sync removal in ROCm sparse prefill on MI350X (2 rows)
+
+- vLLM PR #60091 (sourced): passing output_size to repeat_interleave in combine_topk_swa_indices removes 160 host syncs per prefill step on gfx950. MI350X TP=4 with expert parallelism, DeepSeek-V4.1-Flash, means of 3-5 reps with interleaved rotated arms and disjoint ranges: prompt 31,440 -> 32,443 tok/s (+3.2%), aggregate output at concurrency 64 1,717 -> 1,763 tok/s (+2.7%), median TTFT at conc 1 340.7 -> 321.1 ms, TPOT 33.34 -> 32.47 ms. About 20 ms saved per prefill step. 2 rows, 1 A/B group with note.
+- Dataset 4163 -> 4165, quote-verified 4746 -> 4748.
+
 ## 2026-10-05: Lidenburg moe-expert-caching fork README, three-tier expert cache on RTX 5080 (4 rows)
 
 - Lidenburg/llama.cpp moe-expert-caching branch README (community): three-tier GPU/RAM/disk expert cache (LFU with aging, io_uring + O_DIRECT disk tier) vs stock --n-cpu-moe at matched VRAM. RTX 5080 (PCIe Gen 4) + Ryzen 3900X, 32 GB DDR4, slow SATA SSD, 256k ctx, approximate published numbers: Qwen3.6-35B-A3B UD-Q4_K_M ~50 -> ~80 tok/s (+60%), Qwen3-Coder-Next UD-IQ4_XS ~30 -> ~50 tok/s (+66%, needs 28.7 GB pinned RAM). Opposite verdict to mfethe1's RTX 5060 Ti matched-budget test: pinning hot experts in host RAM beats per-miss host reads over PCIe. 4 rows, 2 A/B groups with notes. New hardware: RTX 5080 (PCIe Gen 4) + Ryzen 3900X. The 12 GB VRAM rows in the same table stay parked (GPU not named).

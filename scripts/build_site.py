@@ -3734,6 +3734,24 @@ between builds of the same backend, see the
                             f"({pct(rows,a,b,'pp_tps'):+.0f}%). Still present at "
                             "b11425 (the author re-ran b10405 vs b11425: -17% to -19%). "
                             "Token generation is unchanged.")
+        if (venue, issue) == ("vLLM", "60091"):
+            if hw == "MI350X" and model == "DeepSeek-V4.1-Flash":
+                return ("vLLM PR #60091 passes output_size to the two "
+                        "repeat_interleave calls in the ROCm "
+                        "combine_topk_swa_indices, removing 160 host syncs per prefill "
+                        "step (40 layers) on gfx950. MI350X TP=4 with expert "
+                        "parallelism, DeepSeek-V4.1-Flash, mean of 3-5 reps, arms "
+                        "interleaved in rotated order with disjoint ranges: prompt "
+                        f"throughput {val(rows,'vllm-60091-mi350x-dsv41-main','pp_tps')} "
+                        f"-> {val(rows,'vllm-60091-mi350x-dsv41-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'vllm-60091-mi350x-dsv41-main','vllm-60091-mi350x-dsv41-pr','pp_tps'):+.1f}%), "
+                        "aggregate output at concurrency 64 "
+                        f"{val(rows,'vllm-60091-mi350x-dsv41-main','tps')} -> "
+                        f"{val(rows,'vllm-60091-mi350x-dsv41-pr','tps')} tok/s (+2.7%), "
+                        "median TTFT at conc 1 340.7 -> 321.1 ms (-5.7%), median TPOT "
+                        "33.34 -> 32.47 ms. About 20 ms saved per prefill step, roughly "
+                        "120 microseconds per removed sync. Outputs bit-identical, "
+                        "GSM8K 0.9014 vs 0.9083 (SE 0.008).")
         if (venue, issue) == ("vLLM", "60070"):
             if hw == "4x NVIDIA B200" and model == "GLM-5.2-NVFP4":
                 return ("vLLM PR #60070 removes a per-decode-step FillFunctor launch "

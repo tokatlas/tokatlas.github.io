@@ -1,5 +1,5 @@
 {
- "count": 1269,
+ "count": 1271,
  "records": [
   {
    "backend": "llama.cpp",
@@ -27357,6 +27357,52 @@
    "retrieved": "2026-10-05",
    "quote": "RTX 5080 (PCIe Gen 4), Ryzen 3900X, 32 GB DDR4 RAM; Qwen3-Coder-Next-UD-IQ4_XS.gguf; -ncmoe 37 15,091 MiB 28.4 GB ~30 t/s",
    "notes": "Lidenburg moe-expert-caching fork (three-tier GPU/RAM/disk expert cache, LFU with aging, Linux, io_uring + O_DIRECT disk tier), RTX 5080 (PCIe Gen 4) + Ryzen 3900X, 32 GB DDR4, decade-old SATA SSD ~500 MB/s, llama-cli -fa on -ctk q8_0 -ctv q8_0 -c 256000 --jinja -ngl 99 -t 11 -n 1000, short prompt, published as approximate t/s; stock --n-cpu-moe 37 at matched VRAM, 15091 MiB, 28.4 GB RAM; published ~30 t/s; config=lid-codernext-ncmoe"
+  },
+  {
+   "id": "vllm-60091-mi350x-dsv41-main",
+   "model": "DeepSeek-V4.1-Flash",
+   "params": "?",
+   "quant": "unspecified",
+   "hardware": "MI350X",
+   "backend": "vLLM",
+   "ctx": "16384",
+   "batch": "64",
+   "tps": "1717",
+   "pp_tps": "31440",
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "sourced",
+   "source_url": "https://github.com/vllm-project/vllm/pull/60091",
+   "source_name": "vLLM PR #60091",
+   "retrieved": "2026-10-05",
+   "quote": "MI350X (gfx950), DeepSeek-V4.1-Flash, TP=4 with expert parallelism; 8192 \u00b1 25 % in, rate inf prompt tok/s 31,440 32,443 +3.2 %; 8K/1K \u00b1 25 %, concurrency 64 output tok/s 1,717 1,763 +2.7 %",
+   "notes": "vLLM PR #60091 on MI350X (gfx950), DeepSeek-V4.1-Flash TP=4 with expert parallelism, VLLM_ROCM_USE_AITER=1, max_num_batched_tokens 16384, mean of 3-5 reps per arm, main and PR swapped in place and interleaved in rotated order, ranges disjoint in every row; main: prompt 31440 tok/s at rate inf, aggregate output 1717 tok/s at concurrency 64 (8K/1K), median TTFT 340.7 ms at conc 1 / 8192 in, 608.7 ms at conc 64, median TPOT 33.34 ms; config=60091-main"
+  },
+  {
+   "id": "vllm-60091-mi350x-dsv41-pr",
+   "model": "DeepSeek-V4.1-Flash",
+   "params": "?",
+   "quant": "unspecified",
+   "hardware": "MI350X",
+   "backend": "vLLM",
+   "ctx": "16384",
+   "batch": "64",
+   "tps": "1763",
+   "pp_tps": "32443",
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "sourced",
+   "source_url": "https://github.com/vllm-project/vllm/pull/60091",
+   "source_name": "vLLM PR #60091",
+   "retrieved": "2026-10-05",
+   "quote": "MI350X (gfx950), DeepSeek-V4.1-Flash, TP=4 with expert parallelism; 8192 \u00b1 25 % in, rate inf prompt tok/s 31,440 32,443 +3.2 %; 8K/1K \u00b1 25 %, concurrency 64 output tok/s 1,717 1,763 +2.7 %",
+   "notes": "vLLM PR #60091 on MI350X (gfx950), DeepSeek-V4.1-Flash TP=4 with expert parallelism, VLLM_ROCM_USE_AITER=1, max_num_batched_tokens 16384, mean of 3-5 reps per arm, main and PR swapped in place and interleaved in rotated order, ranges disjoint in every row; PR (pass output_size to repeat_interleave, removes 160 host syncs per prefill step): prompt 32443 tok/s (+3.2%), aggregate output 1763 tok/s (+2.7%), median TTFT 321.1 ms at conc 1 (-5.7%), 572.2 ms at conc 64 (-6.0%), median TPOT 32.47 ms (-2.6%); about 20 ms saved per prefill step; GSM8K 0.9014 vs 0.9083; config=60091-pr"
   }
  ],
  "source": {
