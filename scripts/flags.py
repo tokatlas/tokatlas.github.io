@@ -9,7 +9,7 @@ Rules (conservative, documented in data/schema.md):
   same (model, hardware, quant, backend, ctx, settings) whose tps differ by
   more than 10% relative to the group max. Estimates are reference values,
   not claims. 'settings' is a machine-readable build/settings signature
-  (batch, pp/tg test shape, threads/ngl/config tokens in notes), so
+  (batch, pp/tg test shape, threads/ngl/fa/config tokens in notes), so
   build-to-build or setting-to-setting differences group separately instead
   of flagging each other (they are a regression signal, shown in analysis).
 - outlier: within a (model, hardware, quant, ctx, settings) group of >=3
@@ -50,7 +50,7 @@ def settings_of(r):
     """
     notes = str(r.get("notes") or "")
     parts = [str(r.get("batch") or "")]
-    parts.extend(re.findall(r"(?:threads|ngl|config)\s*=\s*([^\s;]+)", notes))
+    parts.extend(re.findall(r"(?:threads|ngl|fa|config)\s*=\s*([^\s;]+)", notes))
     m = re.search(r"run\s+(\d+)\s+of\s+(\d+)", notes)
     if m:
         parts.append("run" + m.group(1) + "of" + m.group(2))
