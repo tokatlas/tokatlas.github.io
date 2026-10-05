@@ -2985,6 +2985,16 @@ between builds of the same backend, see the
                         f"tok/s. Prefill at 131k tokens (-ub 2048) is "
                         f"{val(rows,'hf3-ornith15-35b-r9700-pp131k','pp_tps')} "
                         "tok/s.")
+            if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next" and backend == "Strata":
+                return ("Strata rc1 (all experts cached, greedy, MTP draft "
+                        "always on) on RTX 5090. Decode by content: prose "
+                        f"{val(rows,'hf6-gyro-5090-strata-prose','tps')}, JSON "
+                        f"{val(rows,'hf6-gyro-5090-strata-json','tps')}, code "
+                        f"{val(rows,'hf6-gyro-5090-strata-code','tps')} tok/s. "
+                        f"Prefill {val(rows,'hf6-gyro-5090-strata-prefill','pp_tps')} "
+                        "tok/s on a 16k-token prompt. Strata is AgentionAI's "
+                        "experimental runtime; MTP is always on, so these are "
+                        "not directly comparable to the llama.cpp rows above.")
             if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next":
                 return ("Gyro-S on one RTX 5090 with the agentionai CUDA kernels "
                         "(q8_0 KV, n-gram table on disk). llama-bench batch 1: "
@@ -3011,16 +3021,6 @@ between builds of the same backend, see the
                         f"Gyro-M pp2048 {val(rows,'hf6-gyro-a6000-gyro-m','pp_tps')} / "
                         f"tg128 {val(rows,'hf6-gyro-a6000-gyro-m','tps')} tok/s. "
                         "Gyro-M trades 3% decode for slightly lower prefill.")
-            if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next" and backend == "Strata":
-                return ("Strata rc1 (all experts cached, greedy, MTP draft "
-                        "always on) on RTX 5090. Decode by content: prose "
-                        f"{val(rows,'hf6-gyro-5090-strata-prose','tps')}, JSON "
-                        f"{val(rows,'hf6-gyro-5090-strata-json','tps')}, code "
-                        f"{val(rows,'hf6-gyro-5090-strata-code','tps')} tok/s. "
-                        f"Prefill {val(rows,'hf6-gyro-5090-strata-prefill','pp_tps')} "
-                        "tok/s on a 16k-token prompt. Strata is AgentionAI's "
-                        "experimental runtime; MTP is always on, so these are "
-                        "not directly comparable to the llama.cpp rows above.")
             if hw == "Radeon 8060S" and model == "Qwen3.8-Flash-Next":
                 return ("Gyro rotor quantization on Strix Halo (Radeon 8060S), "
                         "balanced power, agentionai Vulkan build. llama-bench "
