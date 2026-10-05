@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: Lidenburg moe-expert-caching fork README, three-tier expert cache on RTX 5080 (4 rows)
+
+- Lidenburg/llama.cpp moe-expert-caching branch README (community): three-tier GPU/RAM/disk expert cache (LFU with aging, io_uring + O_DIRECT disk tier) vs stock --n-cpu-moe at matched VRAM. RTX 5080 (PCIe Gen 4) + Ryzen 3900X, 32 GB DDR4, slow SATA SSD, 256k ctx, approximate published numbers: Qwen3.6-35B-A3B UD-Q4_K_M ~50 -> ~80 tok/s (+60%), Qwen3-Coder-Next UD-IQ4_XS ~30 -> ~50 tok/s (+66%, needs 28.7 GB pinned RAM). Opposite verdict to mfethe1's RTX 5060 Ti matched-budget test: pinning hot experts in host RAM beats per-miss host reads over PCIe. 4 rows, 2 A/B groups with notes. New hardware: RTX 5080 (PCIe Gen 4) + Ryzen 3900X. The 12 GB VRAM rows in the same table stay parked (GPU not named).
+- Dataset 4159 -> 4163, hardware 400 -> 401, quote-verified 4742 -> 4746.
+
 ## 2026-10-05: llama.cpp discussion #24528, mfethe1 matched-budget cache-vs-resident on RTX 5060 Ti (2 rows)
 
 - llama.cpp discussion #24528 (community): mfethe1's matched-budget A/B, single RTX 5060 Ti 16 GB + Ryzen 7 3700X, Qwen3-30B-A3B Q4_K_M, same binary (leloch moe-cache branch e3096b0) both arms, ~12.5 GiB VRAM spent on the expert cache or on resident layers. Resident dominates: prefill 149.6 vs 64.0 tok/s, decode 35.4 vs 19.7 tok/s (+80%). The cache arm reached an 85.3% steady-state hit rate with zero evictions and still lost: misses cost full CPU round-trips, hits pay bookkeeping, and cold prefill gets nothing from the cache. 2 rows, 1 A/B group with note.

@@ -388,6 +388,32 @@ between builds of the same backend, see the
         return (y - x) / x * 100
 
     def ab_note(venue, issue, hw, model, rows, backend=""):
+        if (venue, issue) == ("llama.cpp", "?"):
+            if hw == "RTX 5080 (PCIe Gen 4) + Ryzen 3900X" and model == "Qwen3.6-35B-A3B":
+                return ("Three-tier expert cache (VRAM + pinned RAM + io_uring disk "
+                        "reads) vs stock --n-cpu-moe at matched VRAM, RTX 5080 + "
+                        "Ryzen 3900X, 32 GB DDR4, slow SATA SSD. Qwen3.6-35B-A3B "
+                        "UD-Q4_K_M at 256k ctx: "
+                        f"{val(rows,'lc-lid-qwen36-ncmoe','tps')} tok/s stock vs "
+                        f"{val(rows,'lc-lid-qwen36-cache','tps')} tok/s with the cache "
+                        f"({pct(rows,'lc-lid-qwen36-ncmoe','lc-lid-qwen36-cache','tps'):+.0f}%, "
+                        "published as approximate numbers). Unlike mfethe1's "
+                        "matched-budget test on an RTX 5060 Ti, here the cache beats "
+                        "residency: the fork keeps hot experts in pinned RAM instead of "
+                        "re-reading them from the host over PCIe per miss, and the "
+                        "LFU-with-aging policy keeps the VRAM tier's hit rate high "
+                        "enough that the bookkeeping stays amortized.")
+            if hw == "RTX 5080 (PCIe Gen 4) + Ryzen 3900X" and model == "Qwen3-Coder-Next":
+                return ("Same three-tier expert cache and machine as the Qwen3.6 "
+                        "comparison: Qwen3-Coder-Next UD-IQ4_XS at 256k ctx, "
+                        f"{val(rows,'lc-lid-codernext-ncmoe','tps')} tok/s with stock "
+                        f"--n-cpu-moe 37 vs {val(rows,'lc-lid-codernext-cache','tps')} "
+                        f"tok/s with the cache at 110 VRAM + 402 pinned-RAM experts "
+                        f"({pct(rows,'lc-lid-codernext-ncmoe','lc-lid-codernext-cache','tps'):+.0f}%, "
+                        "published as approximate numbers). The model needs 28.7 GB of "
+                        "pinned RAM to reach that rate on a 16 GB card, and the author "
+                        "notes disk reads on cache misses are the bottleneck on his "
+                        "SATA SSD.")
         if (venue, issue) == ("llama.cpp", "29429"):
             if hw == "2x RTX 3090" and model == "GLM-5.3-Flash":
                 return ("neurall/llama.cpp fork (VRAM-filling MoE expert cache, builds on "
