@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: Gyro HF card drift fix, vllm-59916 PR drift fix
+
+- agentionai/Qwen3.8-Flash-Next-Gyro-GGUF card rewritten: RTX 5090 main table now 2,914 pp2048 / 110 tg128 (was 795/101); content-stratified decode unified to "about 120 tok/s" (was 99/106/101/108); context-fill decay now 111/109/94 (was 118/106/91/72, 64k dropped); table rows gained (pp512)/(pp2048) annotations. 12 records updated, 1 removed (ctx64k). Dataset 3986 -> 3985.
+- vllm PR #59916 updated again: TP1xPCP4+gather DCP4 142.3K (was 140.2), TP4+gather DCP4 61.7K (was 61.1), PP2xTP2+gather DCP2 101.4K (was 100.1). 3 records updated.
+
 ## 2026-10-04: llama.cpp issue #29949 MoE expert cache GPU LRU, Qwen3.8-Flash-Next (9 rows)
 
 - llama.cpp issue #29949 (community, feature request with working implementation): MoE expert cache with GPU-resident LRU, where cache decisions and copies run on the GPU inside the compute graph. Qwen3.8-Flash-Next 125B, UD-IQ3_XXS and UD-IQ4_XS. 7900 XTX 24GB (ROCm), 48 layers pooled: UD-IQ3_XXS no pool 9.7 -> 160 slots 37.2 tok/s (+285%), MTP-Q8 on top 11.3 / 44.8; UD-IQ4_XS reverse placement (8 native + 40 pooled) 72 slots 31.2, 40 slots 28.8, 40 slots + MTP-Q4 30.5 tok/s. 2x RTX 3090 48GB (CUDA), UD-IQ4_XS 320 slots: EN plain 50.4 -> EN + MTP-Q8 61.1 tok/s (+21%). 9 rows (7 x 7900 XTX + 2 x 2x RTX 3090), 1 new hardware (7900 XTX), 2 new A/B groups with notes. Dataset 3977 -> 3986, hardware 386 -> 387.

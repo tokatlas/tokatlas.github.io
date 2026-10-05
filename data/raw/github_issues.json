@@ -1,5 +1,5 @@
 {
- "count": 1193,
+ "count": 1192,
  "records": [
   {
    "backend": "llama.cpp",
@@ -18403,7 +18403,7 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; AMD Radeon AI PRO R9700, 32 GB (one card) Gyro-S 1,246 57.8",
+   "quote": "Qwen3.8-Flash-Next; AMD Radeon AI PRO R9700, 32 GB (one card) Gyro-S 1,246 (pp512) 57.8",
    "notes": "config=pp512-tg128 | llama-bench batch 1, no speculative decoding; measured by a tester with the agentionai Vulkan build."
   },
   {
@@ -18513,7 +18513,7 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; 2\u00d7 R9700, layers split across the cards Gyro-S 919 37.6",
+   "quote": "Qwen3.8-Flash-Next; 2\u00d7 R9700, layers split across the cards Gyro-S 919 (pp512) 37.6",
    "notes": "config=pp512-tg128 | One card is faster than two: splitting layers makes the cards take turns."
   },
   {
@@ -18522,8 +18522,8 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "101",
-   "pp_tps": "795",
+   "tps": 110,
+   "pp_tps": 2914,
    "pp_tokens": 512,
    "tg_tokens": 128,
    "ctx": null,
@@ -18535,8 +18535,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; NVIDIA RTX 5090, 32 GB (CUDA, see below) Gyro-S 795 101",
-   "notes": "config=pp512-tg128 | Decode published as a 101-118 range; lower bound stored. llama-bench batch 1."
+   "quote": "Qwen3.8-Flash-Next; NVIDIA RTX 5090, 32 GB (CUDA, agentionai/llama.cpp main, see below) Gyro-S 2,914 (pp2048) 110",
+   "notes": "config=pp2048-tg128 | llama-bench batch 1, no speculative decoding; agentionai CUDA kernels, 862f7bb, q8_0 KV, n-gram on disk."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-prose",
@@ -18544,7 +18544,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "99",
+   "tps": 120,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18557,8 +18557,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; prose 99, JSON 106, code 101, copied text 108",
-   "notes": "config=content-prose | Content-stratified decode, 16k context."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; about 120 tok/s for prose, JSON, code and copied text",
+   "notes": "config=content-prose | Content-stratified decode, 16k context, greedy."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-json",
@@ -18566,7 +18566,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "106",
+   "tps": 120,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18579,8 +18579,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; prose 99, JSON 106, code 101, copied text 108",
-   "notes": "config=content-json | Content-stratified decode, 16k context."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; about 120 tok/s for prose, JSON, code and copied text",
+   "notes": "config=content-json | Content-stratified decode, 16k context, greedy."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-code",
@@ -18588,7 +18588,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "101",
+   "tps": 120,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18601,8 +18601,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; prose 99, JSON 106, code 101, copied text 108",
-   "notes": "config=content-code | Content-stratified decode, 16k context."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; about 120 tok/s for prose, JSON, code and copied text",
+   "notes": "config=content-code | Content-stratified decode, 16k context, greedy."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-copy",
@@ -18610,7 +18610,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "108",
+   "tps": 120,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18623,8 +18623,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; prose 99, JSON 106, code 101, copied text 108",
-   "notes": "config=content-copy | Content-stratified decode, 16k context."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; about 120 tok/s for prose, JSON, code and copied text",
+   "notes": "config=content-copy | Content-stratified decode, 16k context, greedy."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-ctx0",
@@ -18632,7 +18632,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "118",
+   "tps": 111,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18645,8 +18645,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; 118 (empty), 106 (8k), 91 (32k), 72 (64k)",
-   "notes": "config=ctxfill-empty | Context-fill decay series."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; 111 (empty), 109 (8k), 94 (32k) tok/s",
+   "notes": "config=ctxfill-empty | Context-fill decay series, 16k context, q8_0 KV."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-ctx8k",
@@ -18654,7 +18654,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "106",
+   "tps": 109,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18667,8 +18667,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; 118 (empty), 106 (8k), 91 (32k), 72 (64k)",
-   "notes": "config=ctxfill-8k | Context-fill decay series."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; 111 (empty), 109 (8k), 94 (32k) tok/s",
+   "notes": "config=ctxfill-8k | Context-fill decay series, 16k context, q8_0 KV."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-5090-ctx32k",
@@ -18676,7 +18676,7 @@
    "quant": "Gyro-S",
    "hardware": "RTX 5090",
    "backend": "llama.cpp (CUDA)",
-   "tps": "91",
+   "tps": 94,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": null,
@@ -18689,30 +18689,8 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; 118 (empty), 106 (8k), 91 (32k), 72 (64k)",
-   "notes": "config=ctxfill-32k | Context-fill decay series."
-  },
-  {
-   "id": "hf3-qwen38flashnext-gyro-5090-ctx64k",
-   "model": "Qwen3.8-Flash-Next",
-   "quant": "Gyro-S",
-   "hardware": "RTX 5090",
-   "backend": "llama.cpp (CUDA)",
-   "tps": "72",
-   "pp_tps": null,
-   "pp_tokens": null,
-   "tg_tokens": null,
-   "ctx": null,
-   "batch": null,
-   "ram_gb": null,
-   "date": "2026-10-02",
-   "params": "agentionai/llama.cpp CUDA kernels (in testing), q8_0 KV cache, n-gram table on disk",
-   "provenance": "community",
-   "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
-   "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
-   "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; RTX 5090; 118 (empty), 106 (8k), 91 (32k), 72 (64k)",
-   "notes": "config=ctxfill-64k | Context-fill decay series."
+   "quote": "Qwen3.8-Flash-Next; RTX 5090; 111 (empty), 109 (8k), 94 (32k) tok/s",
+   "notes": "config=ctxfill-32k | Context-fill decay series, 16k context, q8_0 KV."
   },
   {
    "id": "hf3-qwen38flashnext-gyro-8060s-gyros",
@@ -18733,7 +18711,7 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; AMD Strix Halo (Radeon 8060S), balanced power Gyro-S 250 31.7",
+   "quote": "Qwen3.8-Flash-Next; AMD Strix Halo (Radeon 8060S), balanced power Gyro-S 250 (pp512) 31.7",
    "notes": "config=pp512-tg128-gyros | llama-bench batch 1, no drafting."
   },
   {
@@ -18755,7 +18733,7 @@
    "source_url": "https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF",
    "source_name": "HF model card: agentionai Qwen3.8-Flash-Next Gyro GGUF",
    "retrieved": "2026-10-02",
-   "quote": "Qwen3.8-Flash-Next; AMD Strix Halo (Radeon 8060S), balanced power Gyro-M 249 26.4",
+   "quote": "Qwen3.8-Flash-Next; AMD Strix Halo (Radeon 8060S), balanced power Gyro-M 249 (pp512) 26.4",
    "notes": "config=pp512-tg128-gyrom | Gyro-M is the 48 GB class file; ~37 GiB at 64k context."
   },
   {
@@ -24945,10 +24923,10 @@
    "notes": "prefix-pooled prefill 60K shared + 6K unique, OSL 1, concurrency 8; pp_tps is prefill rate in K tok/s (thousand tokens/s); config=TP1\u00d7PCP4 + gather DCP4 (this PR, -dcp 4 auto gather); KV 2.40M tokens; 36-prefix rate 118.7K; matches KVPP throughput with more KV capacity than KVPP",
    "params": null,
    "power_w": null,
-   "pp_tps": "140.2",
+   "pp_tps": 142.3,
    "provenance": "community",
    "quant": "NVFP4",
-   "quote": "Prefill throughput on GLM-5.3-NVFP4 (4x B300, 32 GiB/GPU KV budget); TP1\u00d7PCP4 + gather DCP4 | 2.40M | 140.2K | 118.7K",
+   "quote": "GLM-5.3-NVFP4, 4x B300; TP1\u00d7PCP4 + gather DCP4 | 2.40M | 142.3K | 120.8K",
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "vLLM PR #59916 (DCP gather benchmark)",
@@ -25014,10 +24992,10 @@
    "notes": "prefix-pooled prefill 60K shared + 6K unique, OSL 1, concurrency 8; pp_tps is prefill rate in K tok/s (thousand tokens/s); config=TP4 + gather DCP4 (this PR, -dcp 4 auto gather); KV 2.40M tokens",
    "params": null,
    "power_w": null,
-   "pp_tps": "61.1",
+   "pp_tps": 61.7,
    "provenance": "community",
    "quant": "NVFP4",
-   "quote": "Prefill throughput on GLM-5.3-NVFP4 (4x B300, 32 GiB/GPU KV budget); TP4 + gather DCP4 | 2.40M | 61.1K",
+   "quote": "GLM-5.3-NVFP4, 4x B300; TP4 + gather DCP4 | 2.40M | 61.7K",
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "vLLM PR #59916 (DCP gather benchmark)",
@@ -25083,10 +25061,10 @@
    "notes": "prefix-pooled prefill 60K shared + 6K unique, OSL 1, concurrency 8; pp_tps is prefill rate in K tok/s (thousand tokens/s); config=PP2\u00d7TP2 + gather DCP2 (this PR, -dcp 2 auto gather)",
    "params": null,
    "power_w": null,
-   "pp_tps": "100.1",
+   "pp_tps": 101.4,
    "provenance": "community",
    "quant": "NVFP4",
-   "quote": "Prefill throughput on GLM-5.3-NVFP4 (4x B300, 32 GiB/GPU KV budget); PP2\u00d7TP2 + gather DCP2 | 100.1K",
+   "quote": "GLM-5.3-NVFP4, 4x B300; PP2\u00d7TP2 + gather DCP2 | 101.4K",
    "ram_gb": null,
    "retrieved": "2026-10-04",
    "source_name": "vLLM PR #59916 (DCP gather benchmark)",

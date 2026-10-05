@@ -55,35 +55,54 @@ def _is_reddit(url):
     return "reddit.com" in url
 
 
+# Re-fetch cached responses older than this (seconds) to catch source-page
+# drift (e.g. a PR description edited in place). 7 days balances freshness
+# against CI runtime: the 888 unique URLs take ~20 min to fetch cold.
+CACHE_MAX_AGE = 7 * 24 * 3600  # 7 days
+
+
+def _download(url, reddit):
+    # Reddit blocks by IP with a persistent 403 that no backoff clears (5
+    # attempts over 390 s per URL made each run take 3+ hours for 29 URLs),
+    # so a Reddit URL gets one attempt. Other hosts keep the retry/backoff
+    # for transient Cloudflare 403s and 5xx.
+    max_attempts = 1 if reddit else 3
+    backoffs = [10, 20]
+    for attempt in range(max_attempts):
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 502, 503, 504) and attempt < max_attempts - 1:
+                time.sleep(backoffs[attempt])
+                continue
+            raise
+
+
 def fetch(url):
     os.makedirs(CACHE, exist_ok=True)
     key = hashlib.sha256(url.encode()).hexdigest()
     path = os.path.join(CACHE, key)
-    if not os.path.exists(path):
+    cached = os.path.exists(path)
+    stale = cached and time.time() - os.path.getmtime(path) > CACHE_MAX_AGE
+    if not cached or stale:
         reddit = _is_reddit(url)
-        max_attempts = 5 if reddit else 3
-        backoffs = [30, 60, 120, 180] if reddit else [10, 20]
-        body = None
-        for attempt in range(max_attempts):
-            req = urllib.request.Request(url, headers={"User-Agent": UA})
-            try:
-                with urllib.request.urlopen(req, timeout=60) as r:
-                    body = r.read()
-                break
-            except urllib.error.HTTPError as e:
-                # 403 here is Cloudflare rate-limiting (llmconfigurator.com etc), not
-                # a real forbidden: the same URL 200s from a browser UA. Back off
-                # longer than 502/503/504 to clear the rate-limit window. Reddit
-                # rate-limits by IP with a persistent 403; use a longer backoff.
-                if e.code in (403, 502, 503, 504) and attempt < max_attempts - 1:
-                    time.sleep(backoffs[attempt])
-                    continue
+        try:
+            body = _download(url, reddit)
+        except Exception as e:  # noqa: BLE001
+            if not cached:
                 raise
-        tmp = path + ".tmp"
-        with open(tmp, "wb") as f:
-            f.write(body)
-        os.replace(tmp, path)
-        time.sleep(10.0 if reddit else 0.25)
+            # A failed refresh must not discard a copy that was verified
+            # before; keep checking against it and say so.
+            print("warning: refresh of %s failed (%s); using cached copy"
+                  % (url, e))
+        else:
+            tmp = path + ".tmp"
+            with open(tmp, "wb") as f:
+                f.write(body)
+            os.replace(tmp, path)
+            time.sleep(10.0 if reddit else 0.25)
     with open(path, "rb") as f:
         return f.read().decode("utf-8", "replace")
 

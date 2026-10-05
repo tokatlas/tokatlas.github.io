@@ -2944,19 +2944,15 @@ between builds of the same backend, see the
             if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next":
                 return ("Gyro-S on one RTX 5090 with the agentionai CUDA kernels "
                         "(q8_0 KV, n-gram table on disk). llama-bench batch 1: "
-                        f"pp512 {val(rows,'hf3-qwen38flashnext-gyro-5090-1x','pp_tps')}, "
-                        "tg128 published as a 101-118 range "
-                        f"({val(rows,'hf3-qwen38flashnext-gyro-5090-1x','tps')} stored). "
+                        f"pp2048 {val(rows,'hf3-qwen38flashnext-gyro-5090-1x','pp_tps')}, "
+                        f"tg128 {val(rows,'hf3-qwen38flashnext-gyro-5090-1x','tps')} tok/s. "
                         "Content-stratified decode at 16k context, greedy: "
-                        f"prose {val(rows,'hf3-qwen38flashnext-gyro-5090-prose','tps')}, "
-                        f"JSON {val(rows,'hf3-qwen38flashnext-gyro-5090-json','tps')}, "
-                        f"code {val(rows,'hf3-qwen38flashnext-gyro-5090-code','tps')}, "
-                        f"copied text {val(rows,'hf3-qwen38flashnext-gyro-5090-copy','tps')} tok/s. "
+                        f"about {val(rows,'hf3-qwen38flashnext-gyro-5090-prose','tps')} tok/s "
+                        "for prose, JSON, code and copied text. "
                         "Context-fill decay: "
                         f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx0','tps')} empty, "
                         f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx8k','tps')} at 8k, "
-                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx32k','tps')} at 32k, "
-                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx64k','tps')} at 64k.")
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx32k','tps')} at 32k.")
             if hw == "Radeon 8060S" and model == "Qwen3.8-Flash-Next":
                 return ("Gyro rotor quantization on Strix Halo (Radeon 8060S), "
                         "balanced power, agentionai Vulkan build. llama-bench "
