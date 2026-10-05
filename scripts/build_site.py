@@ -3469,6 +3469,20 @@ between builds of the same backend, see the
                         f"{val(rows,'lc29973-tr-t32','tps')}, 16-thread no-SMT masks "
                         f"{val(rows,'lc29973-tr-mask-nosmt','tps')}, full 32-core mask "
                         f"{val(rows,'lc29973-tr-mask-full','tps')} tok/s.")
+        if (venue, issue) == ("llama.cpp", "29930"):
+            if hw == "RTX 5070 + Ryzen 5 5600GT" and model == "Qwen3.8-Flash-Next":
+                return ("Expert streaming on a 12 GB card with 32 GB DDR4-2400 over "
+                        "PCIe Gen3: the author's hashyy setup (fixed Windows I/O "
+                        "queue depth, one file handle per worker, page-locked hot "
+                        "expert tier) lifts decode from roughly "
+                        f"{val(rows,'lc29930-5070-inherited','tps')} tok/s on the "
+                        f"inherited setup to about {val(rows,'lc29930-5070-streaming-bench','tps')} "
+                        f"tok/s ({pct(rows,'lc29930-5070-inherited','lc29930-5070-streaming-bench','tps'):+.0f}%) "
+                        "on the published benchmark. Real-work runs: 10.15 tok/s over "
+                        "4892 tokens on a long coding prompt, 10.41 tok/s over 10k "
+                        "tokens in a video-verified run, 14-15 tok/s in normal "
+                        "conversation (stored low end). The author notes Strata would "
+                        "not work here: it targets 64 GB+ RAM builds.")
         if (venue, issue) == ("llama.cpp", "30006"):
             if hw == "Dimensity 9400" and model == "Qwen3.5-0.8B":
                 return ("Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux): "

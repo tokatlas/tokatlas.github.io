@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #29930, Qwen3.8-Flash-Next 177B expert streaming on RTX 5070 + 32 GB DDR4 (5 rows)
+
+- llama.cpp discussion #29930 (community): Qwen3.8-Flash-Next 177B UD-IQ3_XXS streamed from 32 GB DDR4-2400 on RTX 5070 12 GB + Ryzen 5 5600GT (PCIe Gen3, Windows). The author's hashyy expert-streaming setup (fixed Windows I/O queue depth, one file handle per worker, page-locked hot-expert tier) measures about 11.5 tok/s vs roughly 7 tok/s on the inherited setup (+64%); long coding prompt 4892 tokens at 10.15 tok/s, video-verified 10k-token run at 10.41 tok/s, normal conversation 14-15 tok/s (stored low end). 5 rows, 1 A/B group with note. New hardware: RTX 5070 + Ryzen 5 5600GT.
+- Dataset 4071 -> 4076, hardware 394 -> 395, quote-verified 4654 -> 4659.
+
 ## 2026-10-05: llama.cpp discussion #29973, MinGW vs MSVC CPU decode collapse on Zen 2 (21 rows)
 
 - llama.cpp discussion #29973 (community): Threadripper PRO 3975WX (Zen 2, 32C/64T, AVX2, 128 GB DDR4-2667), Qwen3.8-Flash-Next 177B UD-Q3_K_XL, pure CPU. Same source tag b11160: MSVC release tg128 6.83 vs MinGW gcc 16.2.0 1.27 tok/s (-81%), ISA-independent (znver2 1.27 vs haswell multi-variant 1.28), prefill barely affected (-5.8%): gcc codegen on the MoE expert-gather decode path. Release builds differ too: cuda12-legacy build CPU-only 35.52/8.87 vs vulkan build 31.46/8.28 (pp/tg). llama-server: -tb 24 lifts long-prompt prefill 41.50 -> 54.46 tok/s; MTP --spec-draft-p-min 0.30 8.94 vs default 8.12 tok/s, p-min 0.50 slower despite 62.1% acceptance, ngram-mod hybrid 8.27, ngram-only 6.86. Thread/affinity sweep: decode peaks at -t 20 (6.83), -t 32 6.21, no-SMT 16-thread masks 6.22, full mask 5.85. Quadro P2000 full offload is a loss: pp 14.36, tg 2.86. 21 rows, 1 A/B group with note (20 rows) + 1 offload row. New hardware: Threadripper PRO 3975WX, Threadripper PRO 3975WX + Quadro P2000.
