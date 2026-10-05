@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: SaturnHeaven Qwen3.8-Flash-Next RANMA EXL3, host-RAM MoE tiers + emulated 16 GiB card (12 rows)
+
+- HF card SaturnHeaven/Qwen3.8-Flash-Next-RANMA-EXL3-GGUF (community): ranma.cpp (ranma_20261005, HIP/ROCm fork that keeps routed experts in host RAM) on a Radeon AI PRO R9700. llama-bench TG128 warm-cache: EXL3 3.05 bpw 53.5 (128 GB RAM) / 52.4 (64 GB), 4.05 bpw 49.6 / 47.7 tok/s; halving the host RAM pool costs about 2-4 percent. MTP smart decode beats plain decode on every arm (3.05 bpw 53.5 -> 60.8 tok/s low end of the published preset range). RX 9070 XT rows are emulated on the R9700 with the expert cache capped to a 16 GiB budget: 43.2 / 37.0 tok/s, about 18-22 percent below the real card at the same RAM tier; MTP at 4.05 bpw drops to 29.1 tok/s, under the 3.05 bpw arm. 12 rows, 2 A/B groups with notes. New hardware: RX 9070 XT (emulated). New backend: ranma.cpp (ROCm).
+- Dataset 4038 -> 4050, hardware 391 -> 392, backends 29 -> 30, quote-verified 4621 -> 4633.
+
 ## 2026-10-05: HF cards, Tiel-Coder ROCmFP4 on Strix Halo + Agens-Volundr-32B context decay (7 rows)
 
 - HF card ramon-balaguer/Tiel-Coder-35B-A3B-ROCmFP4-GGUF (community): on a Radeon 8060S (gfx1151, 96 GiB unified, Ryzen AI Max+ 395), the ROCmFPX engine + ROCmFP4 requant runs 86.6 tok/s effective generation over a 17-task code battery vs 69.0 tok/s for stock llama.cpp + DFlash on the UD-Q4_K_XL file (+25%); the native MTP head n2 is 77.4 tok/s; plain decode via llama-swap published as a range, 117-125 tok/s (stored low end). 4 rows, 1 A/B group with note. New model: Tiel-Coder.

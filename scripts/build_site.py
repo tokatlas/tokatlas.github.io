@@ -2797,6 +2797,35 @@ between builds of the same backend, see the
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
+            if (hw == "Radeon AI PRO R9700" and model == "Qwen3.8-Flash-Next"
+                    and backend == "ranma.cpp (ROCm)"):
+                return ("ranma.cpp keeps routed experts in host RAM and streams them "
+                        "over PCIe, so the RAM tier is a first-class variable. TG128 "
+                        f"warm-cache decode: 3.05 bpw {val(rows,'hf-ranma-r9700-128gb-bench-305','tps')} "
+                        f"(128 GB) vs {val(rows,'hf-ranma-r9700-64gb-bench-305','tps')} tok/s (64 GB); "
+                        f"4.05 bpw {val(rows,'hf-ranma-r9700-128gb-bench-405','tps')} vs "
+                        f"{val(rows,'hf-ranma-r9700-64gb-bench-405','tps')} tok/s: halving "
+                        "the host RAM pool costs about 2 percent at 3.05 bpw and 4 "
+                        "percent at 4.05 bpw; the VRAM expert "
+                        "cache absorbs the difference. MTP smart decode beats plain "
+                        f"decode on every arm: 3.05 bpw {val(rows,'hf-ranma-r9700-128gb-bench-305','tps')} -> "
+                        f"{val(rows,'hf-ranma-r9700-128gb-mtp-305','tps')} tok/s "
+                        f"({pct(rows,'hf-ranma-r9700-128gb-bench-305','hf-ranma-r9700-128gb-mtp-305','tps'):+.0f}% "
+                        "at the low end of the published preset range). MTP narrows the "
+                        "quant gap: at 4.05 bpw the MTP arms are within about 1 percent "
+                        "of each other across RAM tiers.")
+            if hw == "RX 9070 XT (emulated)" and model == "Qwen3.8-Flash-Next":
+                return ("Not a real RX 9070 XT: the author emulates a 16 GiB card by "
+                        "limiting the R9700's expert cache to its budget. TG128 warm "
+                        f"decode {val(rows,'hf-ranma-9070xt-emul-64gb-bench-305','tps')} "
+                        f"(3.05 bpw) / {val(rows,'hf-ranma-9070xt-emul-64gb-bench-405','tps')} tok/s "
+                        "(4.05 bpw), about 18-22 percent below the real R9700 at the "
+                        "same 64 GB tier. MTP "
+                        f"still helps but less at 4.05 bpw: {val(rows,'hf-ranma-9070xt-emul-64gb-mtp-405','tps')} "
+                        "tok/s low end (range 29.1-30.8), under the 3.05 bpw arm's "
+                        f"{val(rows,'hf-ranma-9070xt-emul-64gb-mtp-305','tps')} - a "
+                        "tight expert cache punishes the bigger quant's bandwidth "
+                        "demand even with speculation.")
             if hw == "Radeon 8060S" and model == "Tiel-Coder":
                 return ("Strix Halo (Ryzen AI Max+ 395, 96 GiB unified): the ROCmFPX "
                         "engine with a ROCmFP4 requant beats stock llama.cpp on the "
