@@ -3902,6 +3902,65 @@ between builds of the same backend, see the
                         "quantization hurts perplexity more than K: q8_0-K + turbo4-V "
                         f"({val(rows,'lc20969-5070ti-zk-q8-t4','tps')} tg) scores worse PPL "
                         "than turbo4-K + q8_0-V despite using more VRAM.")
+            if hw == "2x RTX 5060 Ti" and model == "Llama 3.1 8B":
+                return ("animehacker TurboQuant fork on 2x RTX 5060 Ti (SM 120), "
+                        "Llama 3.1 8B Q5_K_M, 8K context, 4 concurrent: stock f16 KV "
+                        f"{val(rows,'lc20969-5060ti-df-l31-b','tps')} tok/s vs tq3_0 "
+                        f"K+V {val(rows,'lc20969-5060ti-df-l31-t','tps')} tok/s, a "
+                        f"{pct(rows,'lc20969-5060ti-df-l31-b','lc20969-5060ti-df-l31-t','tps'):+.0f}% "
+                        "collapse. The animehacker kernels target Ampere; on Blackwell "
+                        "SM 120 the author sees the same ~5x penalty on every model "
+                        "tested and asks whether the spiritbuun or Madreag forks do "
+                        "better on this hardware (they do: Madreag's optimized CUDA "
+                        "path matches q8_0 at short context on SM 120).")
+            if hw == "2x RTX 5060 Ti" and model == "Qwen 2.5 14B":
+                return ("Same 2x RTX 5060 Ti animehacker-fork test, Qwen 2.5 14B "
+                        "Q5_K_M at 8K context, 4 concurrent: "
+                        f"{val(rows,'lc20969-5060ti-df-q14-b','tps')} tok/s with f16 KV "
+                        f"vs {val(rows,'lc20969-5060ti-df-q14-t','tps')} with tq3_0, "
+                        f"{pct(rows,'lc20969-5060ti-df-q14-b','lc20969-5060ti-df-q14-t','tps'):+.0f}%, "
+                        "the same Ampere-kernels-on-Blackwell penalty as the other "
+                        "models in the sweep.")
+            if hw == "2x RTX 5060 Ti" and model == "Qwen 2.5 32B":
+                return ("Same 2x RTX 5060 Ti animehacker-fork test, Qwen 2.5 32B "
+                        "Q4_K_M at 8K context, 4 concurrent: "
+                        f"{val(rows,'lc20969-5060ti-df-q32-b','tps')} tok/s with f16 KV "
+                        f"vs {val(rows,'lc20969-5060ti-df-q32-t','tps')} with tq3_0, "
+                        f"{pct(rows,'lc20969-5060ti-df-q32-b','lc20969-5060ti-df-q32-t','tps'):+.0f}%. "
+                        "Defilan also measured a VRAM crossover on this hardware: tq3_0 "
+                        "uses *more* VRAM below 32K context (16K: 22.8 vs 8.0 GB) and "
+                        "less above (65K: 8.4 vs 14.3 GB).")
+            if hw == "2x EVGA RTX 3080 Ti 12GB" and model == "Qwen3.5-9B":
+                return ("seanrasch pushed Qwen3.5-9B Q4_K_M to its native 256K context "
+                        "on dual RTX 3080 Ti 12 GB with turbo2 K+V cache: decode is "
+                        f"flat at {val(rows,'lc20969-3080ti-sr-128k','tps')} / "
+                        f"{val(rows,'lc20969-3080ti-sr-160k','tps')} / "
+                        f"{val(rows,'lc20969-3080ti-sr-256k','tps')} tok/s at 128K / "
+                        "160K / 256K while full-context prefill falls "
+                        f"{val(rows,'lc20969-3080ti-sr-128k','pp_tps')} -> "
+                        f"{val(rows,'lc20969-3080ti-sr-256k','pp_tps')} tok/s with "
+                        "O(n^2) attention. 10 GB of VRAM stays free at 256K, so the "
+                        "context limit is the model, not the hardware; a single 12 GB "
+                        "card tops out at 96K with any turbo config.")
+            if hw == "DGX Spark" and model == "Qwen3.5 35B":
+                return ("AmesianX fork on DGX Spark (SM 121 GB10): the author reports "
+                        "turbo KV *faster* than q8_0 on Blackwell decode, "
+                        f"{val(rows,'lc20969-spark-ax-35b-q80','tps')} tok/s q8_0 vs "
+                        f"{val(rows,'lc20969-spark-ax-35b-turbo','tps')} turbo "
+                        f"({pct(rows,'lc20969-spark-ax-35b-q80','lc20969-spark-ax-35b-turbo','tps'):+.1f}%), "
+                        "the opposite sign from WaveboSF's spiritbuun-fork numbers on "
+                        "a desktop RTX 5090 (-25 to -46%): the fork's fused flash "
+                        "attention path, not the architecture, decides whether turbo "
+                        "KV helps on Blackwell.")
+            if hw == "DGX Spark" and model == "Qwen3.5-27B":
+                return ("Prompt processing with tbqp3-K/tbq3-V KV on DGX Spark (SM 121 "
+                        "native build), Qwen3.5-27B heretic-v3 i1-Q3_K_M: "
+                        f"{val(rows,'lc20969-spark-ax-27b-f16pp','pp_tps')} tok/s with "
+                        f"f16 KV vs {val(rows,'lc20969-spark-ax-27b-tbqpp','pp_tps')} "
+                        f"with turbo ({pct(rows,'lc20969-spark-ax-27b-f16pp','lc20969-spark-ax-27b-tbqpp','pp_tps'):+.0f}%). "
+                        "The author stresses this is the SM 121 native build; the "
+                        "v1.2 release binaries defaulted to SM 52 and lost 50-75% of "
+                        "prompt processing to JIT emulation on other hardware.")
         if (venue, issue) == ("vLLM", "60091"):
             if hw == "MI350X" and model == "DeepSeek-V4.1-Flash":
                 return ("vLLM PR #60091 passes output_size to the two "

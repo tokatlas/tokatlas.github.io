@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #20969, Defilan 5060 Ti + seanrasch 256K + AmesianX DGX Spark (13 rows)
+
+- llama.cpp discussion #20969 (community), three more measured posts.
+- Defilan, 2x RTX 5060 Ti (SM 120) with the animehacker fork, 8K ctx, 4 concurrent: Ampere-tuned kernels on Blackwell cost ~5x decode on every model (Llama 3.1 8B 50 -> 8.4, Qwen 2.5 14B 28 -> 5.3, Qwen 2.5 32B 14.3 -> 5.5 tok/s with tq3_0 KV); VRAM crossover at 32K. 6 rows.
+- seanrasch, dual EVGA RTX 3080 Ti 12 GB, Qwen3.5-9B Q4_K_M turbo2 KV: native 256K context runs with decode flat at ~105 tok/s from 128K to 256K while prefill falls 2027 -> 1423 tok/s; 10 GB VRAM still free at 256K. 3 rows.
+- AmesianX, DGX Spark (SM 121): turbo KV *faster* than q8_0 on Blackwell decode (50.1 -> 63.5 tok/s on Qwen3.5-35B, opposite sign of the spiritbuun fork on RTX 5090); tbqp3/tbq3 prompt processing 94 -> 80 tok/s on Qwen3.5-27B i1-Q3_K_M with the native build. 4 rows. 6 A/B groups with notes.
+- Parked: sjoerdmaessen 16412852 (hardware only as "same hardware"), primoco 16423353 (no hardware named).
+- Dataset 4239 -> 4252, quote-verified 4822 -> 4835.
+
 ## 2026-10-05: llama.cpp discussion #20969, zekrom-vale 5070 Ti + Madreag CUDA fork (42 rows)
 
 - llama.cpp discussion #20969 (community), two more measured posts.
