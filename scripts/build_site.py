@@ -2223,6 +2223,22 @@ between builds of the same backend, see the
                     f"{val(rows,'vllm-59973-gb10-bf16-c1','tps')} tok/s; "
                     "the PR reports +21.7% (FP8) and +29.2% (NVFP4) at c=1 "
                     "but only gives absolute c=4 values per category.")
+        if (venue, issue) == ("vLLM", "60068"):
+            return ("MRV2 opt-in confidence stop for autoregressive drafting "
+                    "(Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench, "
+                    "one run per arm). Stock uses 3 drafts with BF16 head; "
+                    "fixed 6 and confidence stop use the NVFP4 head from "
+                    f"#59973. At c=1: stock "
+                    f"{val(rows,'vllm-60068-gb10-stock-c1','tps')} -> "
+                    f"fixed 6 {val(rows,'vllm-60068-gb10-fixed6-c1','tps')} "
+                    f"({pct(rows,'vllm-60068-gb10-stock-c1','vllm-60068-gb10-fixed6-c1','tps'):+.1f}%) -> "
+                    f"stop {val(rows,'vllm-60068-gb10-stop-c1','tps')} "
+                    f"({pct(rows,'vllm-60068-gb10-fixed6-c1','vllm-60068-gb10-stop-c1','tps'):+.1f}% vs fixed 6). "
+                    f"At c=4: fixed 6 {val(rows,'vllm-60068-gb10-fixed6-c4','tps')} -> "
+                    f"stop {val(rows,'vllm-60068-gb10-stop-c4','tps')} "
+                    f"({pct(rows,'vllm-60068-gb10-fixed6-c4','vllm-60068-gb10-stop-c4','tps'):+.1f}%). "
+                    "The stop gives up AL (fewer drafts) and wins on step "
+                    "time; gain is largest where acceptance is low.")
         if (venue, issue) == ("llama.cpp", "29639"):
             return ("Vulkan sparse flash attention extended to "
                     "quantized K/V (Qwen3.8-Flash-Next QSA, q8_0 KV, "

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05: vLLM PR #60068 MRV2 confidence stop for autoregressive drafting (5 rows)
+
+- vLLM PR #60068 (community, open): "[MRV2][Spec Decode] Opt-in confidence stop for autoregressive drafting". Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench, one run per arm. Stock 3 drafts (BF16 head) 38.4 tok/s (c=1); fixed 6 drafts (NVFP4 head) 47.0 (c=1, +22%), 31.8 (c=4); confidence stop @0.6 max 6 (NVFP4 head) 51.5 (c=1, +9.6% vs fixed 6), 32.6 (c=4, +2.5%). 5 rows, 1 new A/B group with note. No new hardware/model/backend. Dataset 3989 -> 3994, quote-verified 4572 -> 4577.
+
 ## 2026-10-05: vLLM PR #59973 quantized draft lm_head for MTP spec-decode (4 rows)
 
 - vLLM PR #59973 (community, open): "Opt-in quantized draft lm_head for drafters that share the target head". Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench 4 users x 32 prompts, greedy, 256 output tokens, full vocabulary. BF16 draft head (stock) 35.6 tok/s (c=1), 26.0 tok/s (c=4); FP8 draft head +9.0% at c=4 (28.3 tok/s); NVFP4 draft head +13.1% at c=4 (29.4 tok/s). 4 rows, 1 new A/B group with note. No new hardware/model/backend. Dataset 3985 -> 3989, quote-verified 4568 -> 4572.
