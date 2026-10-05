@@ -18,6 +18,20 @@ jobs:
           set -euo pipefail
           tag="release-$(date -u +%Y-%m-%d)"
           gh release view "$tag" >/dev/null 2>&1 && exit 0
+          # Notes = changelog entries from the last 7 days only; the full
+          # CHANGELOG.md exceeds the 125000-char release body limit.
+          cutoff=$(date -u -d '7 days ago' +%Y-%m-%d)
+          awk -v cutoff="$cutoff" '
+            /^## [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]:/ {
+              keep = (substr($0, 4, 10) >= cutoff)
+            }
+            keep' CHANGELOG.md > notes.md
+          # Hard cap at 120000 chars on line boundaries as a safety net.
+          awk 'total + length($0) + 1 <= 120000 { print; total += length($0) + 1 }' \
+            notes.md > notes.capped && mv notes.capped notes.md
+          if [ ! -s notes.md ]; then
+            echo "No changelog entries in the last 7 days." > notes.md
+          fi
           gh release create "$tag" --title "Weekly release $(date -u +%Y-%m-%d)" \
-            --notes-file CHANGELOG.md --latest=false
+            --notes-file notes.md --latest=false
           echo "created $tag"
