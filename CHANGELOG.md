@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-05: llama.cpp #30006 Mali coopmat + #30000 RTX 5060 Ti Q8_0 Vulkan regression + vLLM #60070 persistent MLA counter (16 rows)
+
+- llama.cpp issue #30006 (community): on a Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux, llama.cpp 6c59c40), VK_KHR_cooperative_matrix is a ~2.4x prefill pessimization. Qwen3.5-0.8B Q4_K_M, llama-bench -p 512 -n 32: coopmat on pp512 53.30 -> coopmat off 125.78 t/s (+136%), decode unchanged (36.40 -> 36.62); coopmat off + f16 off 117.27, integer-dot off 54.53, host-memory pref 54.04. CPU arm (-ngl 0) pp512 51.19 / decode 2.95, matching coopmat-on GPU prefill (author's hypothesis: coopmat mul_mm fails shared-memory validation at 32 KB and prefill runs at matvec speed). 6 rows (5 Vulkan + 1 CPU), 1 A/B group with note. No new hardware (Dimensity 9400 pre-exists).
+- llama.cpp issue #30000 (community, Steve Flaherty): git-bisect on an RTX 5060 Ti 16 GB (NV_coopmat2) pins a Q8_0 Vulkan prefill regression to #25773 (91f6a6cf3): pp512 Qwen3-Embedding-8B 2798 -> 2348 (-16%), Qwen3-Reranker-8B 2790 -> 2337 (-16%), granite-4.2-8b 2955 -> 2437 (-18%); still present at b11425 (-17% to -19%); tg128 granite 41.9 -> 42.1 (unchanged). 8 rows, 3 A/B groups with notes. New models: Qwen3-Embedding-8B, Qwen3-Reranker-8B, granite-4.2-8b.
+- vLLM PR #60070 (community, open): persistent FlashInfer multi-CTA-KV counter buffer in sparse MLA decode removes a per-step FillFunctor launch (3,900 -> 0 in the Nsight trace). GLM-5.2-NVFP4 on 4x NVIDIA B200 TP4, BS=1, ISL=4, OSL=2048: output throughput 126.095 -> 132.066 tok/s (+4.7%), TPOT -4.5%, like-with-like on the same FlashInfer build. 2 rows, 1 A/B group with note. New hardware: 4x NVIDIA B200. New model: GLM-5.2-NVFP4.
+- Dataset 4015 -> 4031, hardware 389 -> 390, models 201 -> 206, quote-verified 4598 -> 4614.
+
 ## 2026-10-05: vLLM #60008 Hybrid Mamba prefix caching (8 rows)
 
 - vLLM issue #60008 (community): Hybrid Mamba prefix caching align mode vs off. Nemotron-3.5-Lightning NVFP4 on 4x GB200 (DP4/EP4), 8K-in/1K-out, median of 6 paired rounds. PC off: 317/2178/7174/10371 tok/s (c=1/8/32/64). PC on: 277/1879/5476/9109 tok/s. 8 rows, 1 A/B group. New hardware: 4x GB200. New model: Nemotron-3.5-Lightning. Dataset 4007 -> 4015, quote-verified 4590 -> 4598.

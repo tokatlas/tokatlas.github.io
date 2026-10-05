@@ -3388,6 +3388,44 @@ between builds of the same backend, see the
                         f"{val(rows,'hf-promzeus-glm46-gb10-57k','tps')} @57k, "
                         f"{val(rows,'hf-promzeus-glm46-gb10-112k','tps')} @112k tok/s (the "
                         "355B MoE decays as context grows).")
+        if (venue, issue) == ("llama.cpp", "30006"):
+            if hw == "Dimensity 9400" and model == "Qwen3.5-0.8B":
+                return ("Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux): "
+                        "VK_KHR_cooperative_matrix is a prefill pessimization. "
+                        f"pp512 coopmat on {val(rows,'lc-30006-d9400-coopmat-on','pp_tps')} "
+                        f"-> coopmat off {val(rows,'lc-30006-d9400-coopmat-off','pp_tps')} "
+                        f"tok/s ({pct(rows,'lc-30006-d9400-coopmat-on','lc-30006-d9400-coopmat-off','pp_tps'):+.0f}%), "
+                        "decode unchanged. The author's hypothesis: the coopmat mul_mm "
+                        "variant fails its shared-memory validation on this device "
+                        "(32 KB shared memory) and prefill falls back to matvec speed; "
+                        "the CPU arm (pp512 "
+                        f"{val(rows,'lc-30006-d9400-cpu','pp_tps')} tok/s) matches the "
+                        "coopmat-on GPU arm, consistent with that. Disabling f16 on top "
+                        "of coopmat is slightly worse, and integer-dot or host-memory "
+                        "toggles change nothing, so coopmat is the only lever.")
+        if (venue, issue) == ("llama.cpp", "30000") and hw == "RTX 5060 Ti":
+            if model in ("Qwen3-Embedding-8B", "Qwen3-Reranker-8B", "granite-4.2-8b"):
+                pre = [r for r in rows.values() if r["id"].endswith("b6d9c82")]
+                post = [r for r in rows.values() if r["id"].endswith("b91f6a6")]
+                if pre and post:
+                    a, b = pre[0]["id"], post[0]["id"]
+                    return ("Bisected regression: #25773 (91f6a6cf3, spec constant for "
+                            "matmul A-type) made Q8_0 Vulkan prefill slower on this "
+                            f"NV_coopmat2 card: pp512 {val(rows,a,'pp_tps')} -> "
+                            f"{val(rows,b,'pp_tps')} tok/s "
+                            f"({pct(rows,a,b,'pp_tps'):+.0f}%). Still present at "
+                            "b11425 (the author re-ran b10405 vs b11425: -17% to -19%). "
+                            "Token generation is unchanged.")
+        if (venue, issue) == ("vLLM", "60070"):
+            if hw == "4x NVIDIA B200" and model == "GLM-5.2-NVFP4":
+                return ("vLLM PR #60070 removes a per-decode-step FillFunctor launch "
+                        "(3,900 launches in the baseline trace, 0 patched) by owning a "
+                        "persistent FlashInfer multi-CTA-KV counter buffer. "
+                        f"Output throughput {val(rows,'vllm-60070-4xb200-baseline','tps')} "
+                        f"-> {val(rows,'vllm-60070-4xb200-patched','tps')} tok/s "
+                        f"({pct(rows,'vllm-60070-4xb200-baseline','vllm-60070-4xb200-patched','tps'):+.1f}%) "
+                        "at BS=1, ISL=4, OSL=2048; TPOT -4.5%. Both arms on the same "
+                        "FlashInfer build (like-with-like).")
         return None
 
     venue_order = {"llama.cpp": 0, "vLLM": 1, "ExLlamaV2": 2, "HF": 3}
