@@ -387,7 +387,7 @@ between builds of the same backend, see the
             return None
         return (y - x) / x * 100
 
-    def ab_note(venue, issue, hw, model, rows):
+    def ab_note(venue, issue, hw, model, rows, backend=""):
         if (venue, issue) == ("llama.cpp", "29429"):
             if hw == "2x RTX 3090" and model == "GLM-5.3-Flash":
                 return ("neurall/llama.cpp fork (VRAM-filling MoE expert cache, builds on "
@@ -2996,7 +2996,31 @@ between builds of the same backend, see the
                         "Context-fill decay: "
                         f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx0','tps')} empty, "
                         f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx8k','tps')} at 8k, "
-                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx32k','tps')} at 32k.")
+                        f"{val(rows,'hf3-qwen38flashnext-gyro-5090-ctx32k','tps')} at 32k. "
+                        "CUDA kernel update (2026-10-04): decode "
+                        f"{val(rows,'hf6-gyro-5090-cuda-decode','tps')} "
+                        f"(pp2048 {val(rows,'hf6-gyro-5090-cuda-decode','pp_tps')}), "
+                        f"MTP JSON {val(rows,'hf6-gyro-5090-cuda-mtp-json','tps')}, "
+                        f"code {val(rows,'hf6-gyro-5090-cuda-mtp-code','tps')}, "
+                        f"copy {val(rows,'hf6-gyro-5090-cuda-mtp-copy','tps')} tok/s.")
+            if hw == "RTX A6000" and model == "Qwen3.8-Flash-Next":
+                return ("Gyro rotor quantization on RTX A6000 48 GB (CUDA, "
+                        "agentionai/llama.cpp main). llama-bench batch 1: "
+                        f"Gyro-S pp2048 {val(rows,'hf6-gyro-a6000-gyro-s','pp_tps')} / "
+                        f"tg128 {val(rows,'hf6-gyro-a6000-gyro-s','tps')} tok/s; "
+                        f"Gyro-M pp2048 {val(rows,'hf6-gyro-a6000-gyro-m','pp_tps')} / "
+                        f"tg128 {val(rows,'hf6-gyro-a6000-gyro-m','tps')} tok/s. "
+                        "Gyro-M trades 3% decode for slightly lower prefill.")
+            if hw == "RTX 5090" and model == "Qwen3.8-Flash-Next" and backend == "Strata":
+                return ("Strata rc1 (all experts cached, greedy, MTP draft "
+                        "always on) on RTX 5090. Decode by content: prose "
+                        f"{val(rows,'hf6-gyro-5090-strata-prose','tps')}, JSON "
+                        f"{val(rows,'hf6-gyro-5090-strata-json','tps')}, code "
+                        f"{val(rows,'hf6-gyro-5090-strata-code','tps')} tok/s. "
+                        f"Prefill {val(rows,'hf6-gyro-5090-strata-prefill','pp_tps')} "
+                        "tok/s on a 16k-token prompt. Strata is AgentionAI's "
+                        "experimental runtime; MTP is always on, so these are "
+                        "not directly comparable to the llama.cpp rows above.")
             if hw == "Radeon 8060S" and model == "Qwen3.8-Flash-Next":
                 return ("Gyro rotor quantization on Strix Halo (Radeon 8060S), "
                         "balanced power, agentionai Vulkan build. llama-bench "
@@ -3309,7 +3333,7 @@ between builds of the same backend, see the
         url = rs[0].get("source_url") or ""
         rows_html = "".join(ab_row(r) for r in
                             sorted(rs, key=lambda r: (cfg_token(r), r["id"])))
-        note = ab_note(venue, issue, hw, model, by_id)
+        note = ab_note(venue, issue, hw, model, by_id, backend)
         note_html = (f"<p><strong>Note:</strong> {note}</p>" if note else "")
         if issue.isdigit():
             link = f'<a href=\"{esc(url)}\" rel=\"nofollow\">#{esc(issue)}</a>'
