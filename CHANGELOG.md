@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #20969, zekrom-vale 5070 Ti + Madreag CUDA fork (42 rows)
+
+- llama.cpp discussion #20969 (community), two more measured posts.
+- zekrom-vale, RTX 5070 Ti + Cydonia-24B v4.3 IQ4_XS at 16K (llama-bench pp2048/tg128): full q8_0/turbo3/turbo4 K/V matrix, all within ~2.5% of the q8_0 baseline 2670.64/56.28; turbo4-K + q8_0-V saves ~340 MiB at PPL 4.97 vs 4.94; V quantization hurts perplexity more than K on this model. 6 rows, 1 A/B group with note.
+- Madreag/turbo3-cuda release/cuda-optimized, base-fork vs optimized-fork A/B across 4 GPUs (llama-bench tg128 at depth): RTX 5090 + Qwen 3.5 27B Q6_K, turbo2 beats q8_0 by +5.4% at 32K (58.61 vs 55.60) at 7.5x compression, kernel rewrite alone worth +13-46% (8 rows); RTX 3090 + Qwen 3.5 9B Q8_0, turbo4 32K 35.63 -> 60.28 (+69%, largest gain), 12 rows; RTX 4090M, turbo4 32K 34.5 -> 52.4 (+52%), 8 rows; RTX 3090 Ti (OC), turbo2 81.58 at 32K beats q8_0 77.44 and reaches 72.79 at 64K where q8_0 OOMs, 8 rows. Short-context decode identical across all KV types (weight-loading bound); differences appear only at 32K+ depth. 4 A/B groups with notes.
+- Dataset 4197 -> 4239, quote-verified 4780 -> 4822.
+
 ## 2026-10-05: llama.cpp discussion #20969, TurboQuant KV-cache throughput batch (29 rows)
 
 - llama.cpp discussion #20969 (community): three measured throughput posts from the TurboQuant thread, all llama-bench pp512/tg128 on llama.cpp CUDA forks.
