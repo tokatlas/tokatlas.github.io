@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-05: HDZucht Mac mini M6 benchmark repo (11 rows)
+
+- New source: github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks, a 16-model decode sweep on a 32 GB Mac mini M6 (LM Studio / MLX / Splash engines, 3 runs per cell, prose/code/JSON prompt types).
+- Mined 11 rows: Splash speculative-decoding arms (Qwen3.6-35B-A3B-Splash 69.6 prose EN up to 234.1 JSON, Ornith-Splash 61.5, Qwen3.8-27B-Splash 20.2 up to 67.7), GGUF baselines (Ornith 43.7, Qwen3.8-27B 11.8), Nemotron-3-Nano-Omni flat 45 tok/s, Nemotron-3.5-Lightning UD-Q3_K_XL 42.3, Qwen 3.5 9B MLX 30.3, and the AREX-2 fine-tune A/B: 6.8-8.0 tok/s under LM Studio vs 22-37 under Splash with the base-model DFlash2 draft (3-5x on a fine-tune, draft matched by architecture).
+- New backend string "Splash"; new models Qwen3.6-35B-A3B-Splash, Ornith-1.5-35B-A3B-Splash, Swift-Qwen3.8-27B, Nemotron-3-Nano-Omni, AREX-2. Values stored at the prose EN column with the full published spread in the notes.
+- Dataset 4323 -> 4334, quote-verified 4884 -> 4895.
+
 ## 2026-10-05: llmcheck re-sync, M6 Mac Mini batch (10 rows)
 
 - llmcheck.net reclassified 8 entries from estimated to measured and added 2 new ones. Mined 10 measured rows: first M6 Mac Mini numbers (Qwen3.6-35B-A3B 4-bit MLX 64 tok/s, Nemotron-3.5-Lightning Q4_K_M llama.cpp 45, Gemma 4 26B-A4B QAT 48, Gemma 4 12B QAT 19, Gemma-4-31B QAT 8, muse-glimmer 30B 9, gpt-oss 20B 45, all LM Studio on 32 GB M6), Qwen3.6-35B-A3B 4-bit on M5 Max 128 GB (126 tok/s, omlx.ai), and Qwen 3 30B-A3B 4-bit on M4 Max 128 GB from arXiv 2601.19139 (MLX 110 vs llama.cpp 90 tok/s).
