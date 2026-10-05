@@ -3565,6 +3565,27 @@ between builds of the same backend, see the
                         "gets the model onto an M1 Pro 16 GB at 13 tok/s. Disk-backed "
                         "expert streaming trades roughly 1 tok/s per GB freed in this "
                         "band.")
+        if (venue, issue) == ("llama.cpp", "28248"):
+            if hw == "RTX 5070 Ti 16 GB + RTX 4060 Ti 16 GB" and model == "DeepSeek-V4-Flash-Vision-Exp":
+                return ("Persistent VRAM expert pool (-mec) across two unequal GPUs, "
+                        "RTX 5070 Ti (PCIe 5.0 x16) + RTX 4060 Ti (PCIe 4.0 x4), all "
+                        "experts on CPU at baseline. Pooling 48 experts per device "
+                        "lifts decode from "
+                        f"{val(rows,'lc28248-dualgpu-mec-0-baseline','tps')} to "
+                        f"{val(rows,'lc28248-dualgpu-mec-48','tps')} tok/s "
+                        f"({pct(rows,'lc28248-dualgpu-mec-0-baseline','lc28248-dualgpu-mec-48','tps'):+.0f}%) "
+                        "at 85-93% window hit. The pool only pays where the PCIe rail "
+                        "is fast: -mec 48,0 (pool on the 5070 Ti only) reaches just "
+                        f"{val(rows,'lc28248-dualgpu-mec-48-0','tps')} tok/s, while "
+                        "per-device sizing helps a little (48,56: "
+                        f"{val(rows,'lc28248-dualgpu-mec-48-56','tps')}). The best arm "
+                        "is auto-scaling: asking for 128 slots per device, the fork's "
+                        "budget logic scales to ~47/~58 and lands at "
+                        f"{val(rows,'lc28248-dualgpu-mec-128-128','tps')} tok/s decode / "
+                        f"{val(rows,'lc28248-dualgpu-mec-128-128','pp_tps')} tok/s prefill, "
+                        "about 14% over the hand-picked 48-slot config: over-requesting "
+                        "degrades gracefully, while aggressive manual sizing caused a "
+                        "shared-memory spill the author measured at ~5%.")
         if (venue, issue) == ("llama.cpp", "29965"):
             if hw == "Radeon 780M" and model == "GLM-4.7-Flash":
                 return ("Vulkan flash-attention head grouping on a Radeon 780M APU "

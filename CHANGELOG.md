@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #28248, persistent VRAM expert pool across two unequal GPUs (6 rows)
+
+- llama.cpp discussion #28248 (community): TmDagger's fix-moe-pool-rail fork, RTX 5070 Ti 16 GB (PCIe 5.0 x16) + RTX 4060 Ti 16 GB (PCIe 4.0 x4), Windows 11, 128 GB DDR4-3200, DeepSeek-V4-Flash-Vision-Exp UD-IQ3_XXS at 262k ctx, all experts on CPU at baseline. Persistent per-device VRAM expert pool (-mec): baseline 5.36 tok/s, -mec 48 both devices 9.09 (+70%), pool on the fast-rail GPU only 6.10, per-device 48/56 9.71, auto-scaled 128/128 (~47/~58 slots) best at 10.32 tok/s decode / 49.5 prefill (+93% vs baseline). Auto-scaling beats hand-picked slots by ~14%; aggressive manual sizing costs ~5% via shared-memory spill. 6 rows, 1 A/B group with note. New hardware: RTX 5070 Ti 16 GB + RTX 4060 Ti 16 GB. New model: DeepSeek-V4-Flash-Vision-Exp.
+- Dataset 4135 -> 4141, hardware 398 -> 399, models 208 -> 209, quote-verified 4718 -> 4724.
+
 ## 2026-10-05: llama.cpp #29965, Vulkan flash-attention head grouping on Radeon 780M (2 rows)
 
 - llama.cpp #29965 (community): Radeon 780M (gfx1103, RADV Mesa 26.2.4), GLM-4.7-Flash Q4_K_M, 32K context, Vulkan. qk_ratio 20 exceeds the coopmat1 max_gqa of 16 so upstream runs with GQA off and every head re-reads the KV cache: 8.83 tok/s baseline vs 12.91 tok/s with heads grouped to the largest divisor under the limit (+46%), plus a published +15-19% at 8K and unchanged prefill. Group floor of 4 heads: smaller groups drop split_k to 1. 2 rows, 1 A/B group with note.
