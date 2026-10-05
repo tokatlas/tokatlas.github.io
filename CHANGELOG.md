@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llmcheck re-sync, M6 Mac Mini batch (10 rows)
+
+- llmcheck.net reclassified 8 entries from estimated to measured and added 2 new ones. Mined 10 measured rows: first M6 Mac Mini numbers (Qwen3.6-35B-A3B 4-bit MLX 64 tok/s, Nemotron-3.5-Lightning Q4_K_M llama.cpp 45, Gemma 4 26B-A4B QAT 48, Gemma 4 12B QAT 19, Gemma-4-31B QAT 8, muse-glimmer 30B 9, gpt-oss 20B 45, all LM Studio on 32 GB M6), Qwen3.6-35B-A3B 4-bit on M5 Max 128 GB (126 tok/s, omlx.ai), and Qwen 3 30B-A3B 4-bit on M4 Max 128 GB from arXiv 2601.19139 (MLX 110 vs llama.cpp 90 tok/s).
+- Dataset 4313 -> 4323, quote-verified 4882 -> 4884.
+
 ## 2026-10-05: Lidenburg expert-cache fork, 12 GB VRAM arms (4 rows)
 
 - The moe-expert-caching README benchmark table was rewritten and now names the test machine (RTX 5080 PCIe Gen 4, Ryzen 3900X) for the previously parked 12 GB VRAM rows. Mined 4 rows: Qwen3.6-35B-A3B 66 tok/s cached vs 40 stock (+65%), Qwen3-Coder-Next 27 vs 17 (+58%, disk tier active at 55/402/55 experts). Both A/B notes extended with the 12 GB arms.
