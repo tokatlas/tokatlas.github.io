@@ -3594,6 +3594,24 @@ between builds of the same backend, see the
                         "Conclusion from the author: MTP helps only while the draft "
                         "head stays GPU-resident; buying draft VRAM with expert-cache "
                         "capacity can erase the gain.")
+            if hw == "RTX 5060 Ti" and model == "Qwen3 30B A3B":
+                return ("Matched-budget test: same ~12.5 GiB of VRAM on an RTX 5060 Ti, "
+                        "spent either on the VRAM expert cache or on resident layers, "
+                        "Qwen3-30B-A3B Q4_K_M, same binary both arms. Residency wins "
+                        "outright: prefill "
+                        f"{val(rows,'lc24528-5060ti-matched-resident','pp_tps')} vs "
+                        f"{val(rows,'lc24528-5060ti-matched-cache','pp_tps')} tok/s and "
+                        "decode "
+                        f"{val(rows,'lc24528-5060ti-matched-resident','tps')} vs "
+                        f"{val(rows,'lc24528-5060ti-matched-cache','tps')} tok/s "
+                        f"({pct(rows,'lc24528-5060ti-matched-cache','lc24528-5060ti-matched-resident','tps'):+.0f}% "
+                        "for resident). The cache arm hit 85.3% of expert lookups at "
+                        "steady state with zero evictions and still lost: the misses "
+                        "cost full CPU round-trips and the hits pay bookkeeping, while "
+                        "resident weights serve every token at the same byte cost. "
+                        "Prefill gains nothing from the cache (0/8 hits cold), so budget "
+                        "spent on the cache is budget not spent on layers that would "
+                        "accelerate every prompt token.")
             if hw == "GTX 1080 Ti" and model == "Qwen3.6-35B-A3B":
                 return ("MoE-cache budget sweep on the leloch moe-cache-pr branch, "
                         "single GTX 1080 Ti 11 GB, Qwen3.6-35B-A3B UD-Q8_K_XL, experts "

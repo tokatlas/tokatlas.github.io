@@ -1,5 +1,5 @@
 {
- "count": 99,
+ "count": 101,
  "records": [
   {
    "id": "lc29973-tr-msvc-b11160",
@@ -2361,6 +2361,52 @@
    "retrieved": "2026-10-05",
    "quote": "RTX 5070 Ti 16 GB; Qwen3.8-Flash-Next UD-IQ3_XXS; | Q8_0/Q5_1 / 64 | MTP1, GPU 50/50 | 58.90 tok/s | +1.1% |",
    "notes": "GenerelSchwerz/llama.cpp 6673d4043 on Linux, RTX 5070 Ti 16 GB, Qwen3.8-Flash-Next UD-IQ3_XXS, 1024 tokens from the same 158-token chat prompt in every arm, c32k b2048 ub512, expert cache 64 GiB unless noted; draft placement decides whether MTP pays: q8_0 KV / q5_1 draft KV, cache64, MTP1 GPU-resident, accepts 393/629 (62.5%), peak 14493 MiB; total request time -1.4%; config=mtp-q8q5-64-m1"
+  },
+  {
+   "id": "lc24528-5060ti-matched-cache",
+   "model": "Qwen3 30B A3B",
+   "params": "30B-A3B",
+   "quant": "Q4_K_M",
+   "hardware": "RTX 5060 Ti",
+   "backend": "llama.cpp (CUDA)",
+   "ctx": null,
+   "batch": 1,
+   "tps": "19.7",
+   "pp_tps": "64.0",
+   "pp_tokens": "512",
+   "tg_tokens": "128",
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/24528#discussioncomment-18243371",
+   "source_name": "llama.cpp discussion #24528",
+   "retrieved": "2026-10-05",
+   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | cache | `-ngl 99 --n-cpu-moe 48 --moe-cache 12288` | ~12.4 GiB | 64.0 \u00b1 0.3 t/s | 19.7 \u00b1 0.1 t/s |",
+   "notes": "mfethe1's matched-budget A/B on a single RTX 5060 Ti 16 GB + Ryzen 7 3700X (DDR4), CUDA 12.9, Windows 11, Qwen3-30B-A3B Q4_K_M (17.28 GiB, 48 layers, 128 experts/layer), leloch moe-cache branch e3096b0 same build both arms, -mg 0 -sm none fa on t 8 KV f16, ABBA order 3 reps, both arms at ~12.5 GiB VRAM; cache arm -ngl 99 --n-cpu-moe 48 --moe-cache 12288: 85.3% steady-state expert hit rate (124860/146312), zero evictions, still loses decode by 1.80x and prefill by 2.34x; config=matched-cache"
+  },
+  {
+   "id": "lc24528-5060ti-matched-resident",
+   "model": "Qwen3 30B A3B",
+   "params": "30B-A3B",
+   "quant": "Q4_K_M",
+   "hardware": "RTX 5060 Ti",
+   "backend": "llama.cpp (CUDA)",
+   "ctx": null,
+   "batch": 1,
+   "tps": "35.4",
+   "pp_tps": "149.6",
+   "pp_tokens": "512",
+   "tg_tokens": "128",
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/24528#discussioncomment-18243371",
+   "source_name": "llama.cpp discussion #24528",
+   "retrieved": "2026-10-05",
+   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | resident | `-ngl 33 --moe-cache off` | ~12.5 GiB | 149.6 \u00b1 0.1 t/s | 35.4 \u00b1 0.4 t/s |",
+   "notes": "mfethe1's matched-budget A/B on a single RTX 5060 Ti 16 GB + Ryzen 7 3700X (DDR4), CUDA 12.9, Windows 11, Qwen3-30B-A3B Q4_K_M (17.28 GiB, 48 layers, 128 experts/layer), leloch moe-cache branch e3096b0 same build both arms, -mg 0 -sm none fa on t 8 KV f16, ABBA order 3 reps, both arms at ~12.5 GiB VRAM; resident arm -ngl 33 --moe-cache off: same VRAM budget spent on resident layers instead of the cache; resident weights serve 100% of tokens with zero misses; config=matched-resident"
   }
  ],
  "source": "github discussions"
