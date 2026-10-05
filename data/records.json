@@ -20185,7 +20185,7 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 8,
    "ctx": 131072,
    "date": "2026-10-01",
    "flags": [],
@@ -20209,7 +20209,7 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 8,
    "ctx": 131072,
    "date": "2026-10-01",
    "flags": [],
@@ -20233,7 +20233,7 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 6,
    "ctx": 130560,
    "date": "2026-10-01",
    "flags": [],
@@ -20257,7 +20257,7 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 6,
    "ctx": 130560,
    "date": "2026-10-01",
    "flags": [],
@@ -20281,12 +20281,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 4,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl4-off",
    "model": "qwen35",
@@ -20307,12 +20305,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 4,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl4-on",
    "model": "qwen35",
@@ -20333,12 +20329,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 2,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl2-off",
    "model": "qwen35",
@@ -20359,12 +20353,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 2,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl2-on",
    "model": "qwen35",
@@ -20385,13 +20377,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 1,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction",
-    "outlier"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl1-off",
    "model": "qwen35",
@@ -20412,13 +20401,10 @@
   },
   {
    "backend": "llama.cpp",
-   "batch": null,
+   "batch": 1,
    "ctx": 131072,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction",
-    "outlier"
-   ],
+   "flags": [],
    "hardware": "RTX 5090",
    "id": "lc-29768-rtx5090-npl1-on",
    "model": "qwen35",
