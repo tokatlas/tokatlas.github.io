@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05: vLLM PR #59973 quantized draft lm_head for MTP spec-decode (4 rows)
+
+- vLLM PR #59973 (community, open): "Opt-in quantized draft lm_head for drafters that share the target head". Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench 4 users x 32 prompts, greedy, 256 output tokens, full vocabulary. BF16 draft head (stock) 35.6 tok/s (c=1), 26.0 tok/s (c=4); FP8 draft head +9.0% at c=4 (28.3 tok/s); NVFP4 draft head +13.1% at c=4 (29.4 tok/s). 4 rows, 1 new A/B group with note. No new hardware/model/backend. Dataset 3985 -> 3989, quote-verified 4568 -> 4572.
+
 ## 2026-10-05: Gyro HF card drift fix, vllm-59916 PR drift fix
 
 - agentionai/Qwen3.8-Flash-Next-Gyro-GGUF card rewritten: RTX 5090 main table now 2,914 pp2048 / 110 tg128 (was 795/101); content-stratified decode unified to "about 120 tok/s" (was 99/106/101/108); context-fill decay now 111/109/94 (was 118/106/91/72, 64k dropped); table rows gained (pp512)/(pp2048) annotations. 12 records updated, 1 removed (ctx64k). Dataset 3986 -> 3985.

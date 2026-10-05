@@ -2207,6 +2207,22 @@ between builds of the same backend, see the
                     "98.7 ms. GPQA Diamond single-run 0.899 vs "
                     "0.884 (stderr about 0.02), RULER niah 1.00 at "
                     "64k and 128k both arms.")
+        if (venue, issue) == ("vLLM", "59973"):
+            return ("Opt-in quantized draft lm_head for MTP spec-decode "
+                    "(Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, "
+                    "SPEED-Bench 4 users x 32 prompts, greedy, 256 output "
+                    "tokens, full vocabulary). At c=4, quantizing the draft "
+                    f"lm_head from BF16 to FP8 gives "
+                    f"{val(rows,'vllm-59973-gb10-bf16-c4','tps')} -> "
+                    f"{val(rows,'vllm-59973-gb10-fp8-c4','tps')} tok/s "
+                    f"({pct(rows,'vllm-59973-gb10-bf16-c4','vllm-59973-gb10-fp8-c4','tps'):+.1f}%), "
+                    f"NVFP4 gives {val(rows,'vllm-59973-gb10-bf16-c4','tps')} -> "
+                    f"{val(rows,'vllm-59973-gb10-nvfp4-c4','tps')} tok/s "
+                    f"({pct(rows,'vllm-59973-gb10-bf16-c4','vllm-59973-gb10-nvfp4-c4','tps'):+.1f}%). "
+                    f"At c=1 the BF16 baseline is "
+                    f"{val(rows,'vllm-59973-gb10-bf16-c1','tps')} tok/s; "
+                    "the PR reports +21.7% (FP8) and +29.2% (NVFP4) at c=1 "
+                    "but only gives absolute c=4 values per category.")
         if (venue, issue) == ("llama.cpp", "29639"):
             return ("Vulkan sparse flash attention extended to "
                     "quantized K/V (Qwen3.8-Flash-Next QSA, q8_0 KV, "
