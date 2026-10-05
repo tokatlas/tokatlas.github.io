@@ -517,6 +517,60 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc-29949-2x3090-iq4xs-plain','lc-29949-2x3090-iq4xs-mtp','tps'):+.0f}%); "
                         "93.6% hit rate plain, 96.0% with MTP.")
             return None
+        if (venue, issue) == ("llama.cpp", "30021"):
+            if model == "Granite 3.0 3B":
+                return ("Full GCN MMQ config re-tune (llama.cpp #30021) on an "
+                        "A800M, Granite 3.0 3B pp2048 prefill, master vs PR by "
+                        "ub: Q8_0 ub16 "
+                        f"{val(rows,'lc30021-a800m-q8_0-ub16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30021-a800m-q8_0-ub16-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30021-a800m-q8_0-ub16-master','lc30021-a800m-q8_0-ub16-pr','pp_tps'):+.0f}%); "
+                        "IQ4_XS ub16 "
+                        f"{val(rows,'lc30021-a800m-iq4_xs-ub16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30021-a800m-iq4_xs-ub16-pr','pp_tps')} "
+                        f"({pct(rows,'lc30021-a800m-iq4_xs-ub16-master','lc30021-a800m-iq4_xs-ub16-pr','pp_tps'):+.0f}%) "
+                        f"and ub48 {val(rows,'lc30021-a800m-iq4_xs-ub48-master','pp_tps')} -> "
+                        f"{val(rows,'lc30021-a800m-iq4_xs-ub48-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30021-a800m-iq4_xs-ub48-master','lc30021-a800m-iq4_xs-ub48-pr','pp_tps'):+.0f}%). "
+                        "Every other ub point is within +-1%: the retune "
+                        "targets the small-ub regime where the old configs "
+                        "picked the wrong J.")
+            if model == "Meta Llama 3 8B":
+                return ("Same GCN MMQ re-tune (llama.cpp #30021), IQ4_NL "
+                        "Meta Llama 3 8B pp2048 prefill by ub: ub16 "
+                        f"{val(rows,'lc30021-a800m-iq4_nl-ub16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30021-a800m-iq4_nl-ub16-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30021-a800m-iq4_nl-ub16-master','lc30021-a800m-iq4_nl-ub16-pr','pp_tps'):+.0f}%) "
+                        f"and ub48 {val(rows,'lc30021-a800m-iq4_nl-ub48-master','pp_tps')} -> "
+                        f"{val(rows,'lc30021-a800m-iq4_nl-ub48-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
+                        "flat within +-0.2% at every other ub.")
+            return None
+        if (venue, issue) == ("llama.cpp", "30018"):
+            if model == "Gemma 4 E4B":
+                return ("Decode regression on Arc B580 (Vulkan) bisected to "
+                        "0bb496db (#29622, embd+raw batch support), Gemma-4-E4B "
+                        "Q4_0, llama-bench -p 512 -n 128: parent 2ca15f54 "
+                        f"{val(rows,'lc30018-b580-gemma4-before','tps')} -> "
+                        f"{val(rows,'lc30018-b580-gemma4-after','tps')} tok/s decode "
+                        f"({pct(rows,'lc30018-b580-gemma4-before','lc30018-b580-gemma4-after','tps'):+.1f}%), "
+                        f"prefill {val(rows,'lc30018-b580-gemma4-before','pp_tps')} -> "
+                        f"{val(rows,'lc30018-b580-gemma4-after','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30018-b580-gemma4-before','lc30018-b580-gemma4-after','pp_tps'):+.1f}%). "
+                        "Bisect points bf79dbb "
+                        f"{val(rows,'lc30018-b580-gemma4-bf79dbb','tps')} and a7fb71f "
+                        f"{val(rows,'lc30018-b580-gemma4-a7fb71f','tps')} tok/s isolate "
+                        "the single regressing commit. Cause: gemma scales input "
+                        "embeddings by sqrt(n_embd); #29622 turned that constant "
+                        "into per-batch scale_rows work, which hurts b1 decode. "
+                        "Qwen3-14B (no input scale) is unaffected.")
+            if model == "Qwen3 14B":
+                return ("Control arm for the #29622 regression on Arc B580: "
+                        "Qwen3-14B decodes "
+                        f"{val(rows,'lc30018-b580-qwen314b-before','tps')} tok/s on "
+                        "both sides of the boundary (no input-embedding scale, "
+                        "no regression).")
+            return None
         if (venue, issue) == ("llama.cpp", "10879") and any("c18711544" in i for i in rows):
             fa0 = next(i for i in rows if i.endswith("fa0"))
             fa1 = next(i for i in rows if i.endswith("fa1"))
@@ -2248,6 +2302,14 @@ between builds of the same backend, see the
                     "relative +28.7%. The FP8 arm is measured against a "
                     "different stock node, so no absolute FP8 value is "
                     "recorded.")
+        if (venue, issue) == ("vLLM", "60110"):
+            return ("Kimi-K3 MLA decode on a 8x MI355X node (vLLM ROCm, "
+                    "AITER, InferenceX agentic c14, 14 concurrent users). "
+                    "Folding q_b_proj and W_UK into one GEMM lifts output "
+                    f"throughput {val(rows,'vllm-60110-mi355x-kimik3-before','tps')} -> "
+                    f"{val(rows,'vllm-60110-mi355x-kimik3-after','tps')} tok/s "
+                    f"({pct(rows,'vllm-60110-mi355x-kimik3-before','vllm-60110-mi355x-kimik3-after','tps'):+.1f}%) "
+                    "with gsm8k unchanged (0.9583 -> 0.9598 flexible-extract).")
         if (venue, issue) == ("vLLM", "60068"):
             return ("MRV2 opt-in confidence stop for autoregressive drafting "
                     "(Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench, "

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-05: GCN MMQ retune + Arc B580 regression bisect + Kimi-K3 GEMM fold (56 rows)
+
+- llama.cpp PR #30021 (community), GCN MMQ config re-tune on an A800M: pp2048 prefill master-vs-PR by ub, 48 rows. Q8_0 Granite 3.0 3B ub16 345.34 -> 613.21 (+77.6%), IQ4_XS ub16 +8.9% and ub48 +20.0%, IQ4_NL Llama 3 8B ub16 +12.2% / ub48 +11.5%; flat elsewhere. 2 A/B groups with notes.
+- llama.cpp issue #30018 (community), decode regression bisected on Intel Arc B580 (Vulkan): #29622 costs Gemma 4 E4B Q4_0 5.0% decode (90.7 -> 86.2) while lifting prefill +3.8% (3323 -> 3449); bisect points isolate the single commit; Qwen3 14B control arm unaffected at 40.0 both sides. 6 rows, 2 A/B groups with notes.
+- vLLM PR #60110 (sourced), Kimi-K3 on 8x MI355X (AITER, InferenceX agentic c14): folding q_b_proj + W_UK into one GEMM lifts output throughput 685.62 -> 702.87 tok/s (+2.5%) at unchanged gsm8k. 2 rows, 1 A/B group.
+- Parked: vLLM #60122 (benchmark GPUs not named, only CUDA_VISIBLE_DEVICES).
+- Dataset 4233 -> 4289, quote-verified 4802 -> 4858.
+
 ## 2026-10-05: Source drift re-sync, llmcheck + Gyro card + vLLM #59973 (net -19 rows)
 
 - llmcheck.net re-sync: the live benchmarks.json moved again (196 values updated, 37 entries removed from the site, 23 new entries added). Records now mirror the current 244-entry JSON exactly.
