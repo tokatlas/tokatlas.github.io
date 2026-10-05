@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-05: vLLM #59916 third drift, records track the re-measured table (0 new rows)
+
+- The PR body was rewritten for the third time: gather-DCP rows re-measured (PP2xTP2 101.4 -> 101.7K, TP1xPCP4 142.3 -> 144.8K, TP4 61.7 -> 61.9K tok/s; author notes ~1% day-to-day variation).
+- Wayback pinning was attempted but archive.org and archive.ph both refused (rate limit / timeout). Decision: records track the author's current published numbers, with the revision recorded in each note; the A/B note regenerated from the new values.
+- Cache entry for the PR page was force-refreshed; quote-verified 4835.
+
 ## 2026-10-05: llama.cpp discussion #20969, Defilan 5060 Ti + seanrasch 256K + AmesianX DGX Spark (13 rows)
 
 - llama.cpp discussion #20969 (community), three more measured posts.
