@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: TurboQuant KV quantization evaluation on M1 Pro (3 rows)
+
+- devYRPauli/turboquant-m1pro-evaluation README (community): corrected 2026-10-05 speed table, MacBook Pro M1 Pro 16 GB, Qwen2.5-3B-Instruct at 16K context. 4-bit MLX with FP16 KV: 2.0 tok/s effective (39.9 s wall); with Hybrid K5/V4 quantized KV: 1.1 tok/s (71.4 s wall, -45%). The quantized cache is only 1.29x smaller than FP16 as stored (one byte per element, not packed bits) and peaks 168.6 MB higher because dequantized K/V returns float32. Ollama Q4_K_M GGUF reference on the same page: 37.5 tok/s decode-only, 49.3 s wall. 3 rows, 1 A/B group with note.
+- Dataset 4165 -> 4168, quote-verified 4748 -> 4751.
+
 ## 2026-10-05: vLLM PR #60091, host-sync removal in ROCm sparse prefill on MI350X (2 rows)
 
 - vLLM PR #60091 (sourced): passing output_size to repeat_interleave in combine_topk_swa_indices removes 160 host syncs per prefill step on gfx950. MI350X TP=4 with expert parallelism, DeepSeek-V4.1-Flash, means of 3-5 reps with interleaved rotated arms and disjoint ranges: prompt 31,440 -> 32,443 tok/s (+3.2%), aggregate output at concurrency 64 1,717 -> 1,763 tok/s (+2.7%), median TTFT at conc 1 340.7 -> 321.1 ms, TPOT 33.34 -> 32.47 ms. About 20 ms saved per prefill step. 2 rows, 1 A/B group with note.

@@ -3454,6 +3454,22 @@ between builds of the same backend, see the
                         "The entropy15 threshold is the best on both tasks; the sparser "
                         "riddle task benefits more from spec-decode than the code task.")
         if (venue, issue) == ("?", "?"):
+            if hw == "M1 Pro" and model == "Qwen2.5 3B":
+                return ("TurboQuant KV-cache quantization on an M1 Pro 16 GB, "
+                        "Qwen2.5-3B-Instruct 4-bit MLX at 16K context, effective rate "
+                        "(generated tokens over total request time, prefill included): "
+                        f"FP16 KV {val(rows,'tq-m1pro-mlx-fp16kv','tps')} tok/s in "
+                        "39.9 s wall vs Hybrid K5/V4 quantized KV "
+                        f"{val(rows,'tq-m1pro-mlx-hybrid-kv','tps')} tok/s in 71.4 s "
+                        f"wall ({pct(rows,'tq-m1pro-mlx-fp16kv','tq-m1pro-mlx-hybrid-kv','tps'):+.0f}%). "
+                        "The quantized cache stores 435.6 MB vs 563.4 MB for FP16 "
+                        "(1.29x, not the 4x a packed-bits formula predicts, because "
+                        "mlx-optiq 0.0.1 stores one byte per element) and peaks "
+                        "*higher* than FP16 (3245.4 vs 3076.8 MB) since dequantized "
+                        "K/V returns float32. Dequantizing the full cache every step "
+                        "in unfused MLX ops costs more than the smaller cache saves. "
+                        "For reference the same page measured Ollama Q4_K_M GGUF at "
+                        "37.5 tok/s decode-only (49.3 s wall), a different metric.")
             if hw == "GB10" and model == "GLM-4.6":
                 return ("HF card promzeus/gh0stx-glm46-gb10-GGUF (GLM-4.6 355B MoE on GB10). "
                         "MTP speculative decoding: no-spec "
