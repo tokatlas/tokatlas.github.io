@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #24528, expert-caching fork shootout (40 rows)
+
+- llama.cpp discussion #24528 (community): three measured clusters. (1) 2x RTX 3090 + Ryzen 9950X, 192 GB DDR5-3600, Qwen3.8-Flash-Next across 4 quants x 3 KV quants x branches: thecodacus (expert cache + async prefetch + CUDA-pinned host RAM) wins every matchup, IQ4_XS q8_0/q5_1 41.2 vs upstream 26.8 tok/s (+54%), gap widens to +84% at UD-Q6_K_XL with f16 KV (23.6 vs 12.8); TheTom dips below upstream at IQ4_XS/q8_0-q5_1 (24.3 vs 26.8), GenerelSchwerz collapses to 11.9 (MTP regression). 27 rows. (2) Same rig, DeepSeek V4 Flash UD-Q8_K_XL with DSpark MTP: leloch 13.57 vs upstream 6.88 tok/s at 65k ctx (+97%), edge shrinks to +46% at 1M ctx (10.96 vs 7.53); TheTom +85% at 65k, +29% at 1M. 9 rows. (3) Metal on-demand expert loading from disk: Qwen3 30B A3B Q6_K on M3 Pro 36 GB, resident 38.1 tok/s -> 27.5 (-28%) saving 11 GB -> 22.1 (-42%) saving 16.6 GB; runs on M1 Pro 16 GB at 13 tok/s. 4 rows. 3 A/B groups with notes. New hardware: M3 Pro 36GB, M1 Pro 16GB.
+- Dataset 4076 -> 4116, hardware 395 -> 397, quote-verified 4659 -> 4699.
+
 ## 2026-10-05: llama.cpp discussion #29930, Qwen3.8-Flash-Next 177B expert streaming on RTX 5070 + 32 GB DDR4 (5 rows)
 
 - llama.cpp discussion #29930 (community): Qwen3.8-Flash-Next 177B UD-IQ3_XXS streamed from 32 GB DDR4-2400 on RTX 5070 12 GB + Ryzen 5 5600GT (PCIe Gen3, Windows). The author's hashyy expert-streaming setup (fixed Windows I/O queue depth, one file handle per worker, page-locked hot-expert tier) measures about 11.5 tok/s vs roughly 7 tok/s on the inherited setup (+64%); long coding prompt 4892 tokens at 10.15 tok/s, video-verified 10k-token run at 10.41 tok/s, normal conversation 14-15 tok/s (stored low end). 5 rows, 1 A/B group with note. New hardware: RTX 5070 + Ryzen 5 5600GT.

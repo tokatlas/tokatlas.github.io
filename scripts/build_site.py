@@ -3483,6 +3483,54 @@ between builds of the same backend, see the
                         "tokens in a video-verified run, 14-15 tok/s in normal "
                         "conversation (stored low end). The author notes Strata would "
                         "not work here: it targets 64 GB+ RAM builds.")
+        if (venue, issue) == ("llama.cpp", "24528"):
+            if hw == "2x RTX 3090" and model == "Qwen3.8-Flash-Next":
+                return ("Expert-caching fork shootout on 2x RTX 3090 (x8+x8) + Ryzen "
+                        "9950X, 192 GB DDR5-3600, every row with MTP and per-branch "
+                        "tuned parameters. thecodacus (expert cache + async prefetch + "
+                        "CUDA-pinned host RAM) wins every matchup: "
+                        f"{val(rows,'lc24528-3090-qwen-iq4xs-q80-q51-thecodacus','tps')} vs "
+                        f"{val(rows,'lc24528-3090-qwen-iq4xs-q80-q51-upstream','tps')} tok/s at "
+                        "IQ4_XS with q8_0/q5_1 KV "
+                        f"({pct(rows,'lc24528-3090-qwen-iq4xs-q80-q51-upstream','lc24528-3090-qwen-iq4xs-q80-q51-thecodacus','tps'):+.0f}%), "
+                        "and the gap widens as the weights get heavier: UD-Q6_K_XL with "
+                        f"f16 KV {val(rows,'lc24528-3090-qwen-ud-q6kxl-f16-f16-thecodacus','tps')} vs "
+                        f"{val(rows,'lc24528-3090-qwen-ud-q6kxl-f16-f16-upstream','tps')} tok/s "
+                        "(+84%). The other forks split: TheTom lands below upstream at "
+                        f"IQ4_XS/q8_0-q5_1 ({val(rows,'lc24528-3090-qwen-iq4xs-q80-q51-thetom','tps')} vs "
+                        f"{val(rows,'lc24528-3090-qwen-iq4xs-q80-q51-upstream','tps')} tok/s) "
+                        "and GenerelSchwerz collapses to "
+                        f"{val(rows,'lc24528-3090-qwen-iq4xs-q80-q51-generelschwerz','tps')} tok/s "
+                        "(an MTP regression the author flags). KV quant choice moves the "
+                        "baseline more than the fork gap at some quants: upstream IQ4_XS "
+                        "runs 26.8 tok/s with both q8_0/q5_1 and f16 KV but 27.3 with "
+                        "q8_0/q8_0.")
+            if hw == "2x RTX 3090" and model == "DeepSeek-V4-Flash":
+                return ("Same 2x RTX 3090 rig, DeepSeek V4 Flash UD-Q8_K_XL (161 GB "
+                        "incl DSpark) with DSpark MTP and q8_0 KV: the expert-cache "
+                        "forks roughly double upstream decode at 65k context, "
+                        f"{val(rows,'lc24528-3090-dsv4-c65535-leloch','tps')} tok/s (leloch) and "
+                        f"{val(rows,'lc24528-3090-dsv4-c65535-thetom','tps')} tok/s (TheTom) vs "
+                        f"{val(rows,'lc24528-3090-dsv4-c65535-upstream','tps')} tok/s upstream "
+                        f"({pct(rows,'lc24528-3090-dsv4-c65535-upstream','lc24528-3090-dsv4-c65535-leloch','tps'):+.0f}% "
+                        "for leloch). The advantage shrinks with context: at 1M the "
+                        f"leloch edge is {val(rows,'lc24528-3090-dsv4-c1048576-leloch','tps')} vs "
+                        f"{val(rows,'lc24528-3090-dsv4-c1048576-upstream','tps')} tok/s (+46%) "
+                        "and TheTom falls to +29%. Upstream itself gets slightly faster "
+                        "with a bigger context window here (6.88 to 7.53 tok/s), so the "
+                        "forks lose ground while upstream gains none of it.")
+            if hw == "M3 Pro 36GB" and model == "Qwen3 30B A3B":
+                return ("Metal on-demand expert loading straight from disk, Qwen3-30B-A3B "
+                        "Q6_K on an M3 Pro 36 GB: fully resident runs at "
+                        f"{val(rows,'lc24528-m3pro-resident','tps')} tok/s; streaming experts "
+                        "to free 11 GB costs "
+                        f"{pct(rows,'lc24528-m3pro-resident','lc24528-m3pro-stream11','tps'):+.0f}% "
+                        f"({val(rows,'lc24528-m3pro-stream11','tps')} tok/s) and freeing 16.6 GB "
+                        f"costs {pct(rows,'lc24528-m3pro-resident','lc24528-m3pro-stream16','tps'):+.0f}% "
+                        f"({val(rows,'lc24528-m3pro-stream16','tps')} tok/s). The same trick "
+                        "gets the model onto an M1 Pro 16 GB at 13 tok/s. Disk-backed "
+                        "expert streaming trades roughly 1 tok/s per GB freed in this "
+                        "band.")
         if (venue, issue) == ("llama.cpp", "30006"):
             if hw == "Dimensity 9400" and model == "Qwen3.5-0.8B":
                 return ("Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux): "
