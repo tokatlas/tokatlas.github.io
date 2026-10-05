@@ -2239,6 +2239,22 @@ between builds of the same backend, see the
                     f"({pct(rows,'vllm-60068-gb10-fixed6-c4','vllm-60068-gb10-stop-c4','tps'):+.1f}%). "
                     "The stop gives up AL (fewer drafts) and wins on step "
                     "time; gain is largest where acceptance is low.")
+        if (venue, issue) == ("vLLM", "60008"):
+            return ("Hybrid Mamba prefix caching align mode vs off "
+                    "(Nemotron-3.5-Lightning NVFP4, 4x GB200 DP4/EP4, "
+                    "8K-in/1K-out, median of 6 paired rounds). Total "
+                    "throughput: PC off "
+                    f"{val(rows,'vllm-60008-4xgb200-pcoff-c1','tps')} (c=1), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcoff-c8','tps')} (c=8), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcoff-c32','tps')} (c=32), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcoff-c64','tps')} (c=64); "
+                    "PC on "
+                    f"{val(rows,'vllm-60008-4xgb200-pcon-c1','tps')} (c=1), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcon-c8','tps')} (c=8), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcon-c32','tps')} (c=32), "
+                    f"{val(rows,'vllm-60008-4xgb200-pcon-c64','tps')} (c=64) "
+                    "tok/s. Align mode costs 13-24% throughput but is "
+                    "required for correct Mamba state alignment.")
         if (venue, issue) == ("llama.cpp", "29639"):
             return ("Vulkan sparse flash attention extended to "
                     "quantized K/V (Qwen3.8-Flash-Next QSA, q8_0 KV, "

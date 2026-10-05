@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05: vLLM #60008 Hybrid Mamba prefix caching (8 rows)
+
+- vLLM issue #60008 (community): Hybrid Mamba prefix caching align mode vs off. Nemotron-3.5-Lightning NVFP4 on 4x GB200 (DP4/EP4), 8K-in/1K-out, median of 6 paired rounds. PC off: 317/2178/7174/10371 tok/s (c=1/8/32/64). PC on: 277/1879/5476/9109 tok/s. 8 rows, 1 A/B group. New hardware: 4x GB200. New model: Nemotron-3.5-Lightning. Dataset 4007 -> 4015, quote-verified 4590 -> 4598.
+
 ## 2026-10-05: Gyro card additional data: A6000, CUDA kernel update, Strata rc1 (10 rows)
 
 - agentionai/Qwen3.8-Flash-Next-Gyro-GGUF (community): additional unmined data from the card. RTX A6000: Gyro-S 740 pp2048 / 57.4 decode, Gyro-M 720 pp2048 / 52.3 decode. RTX 5090 CUDA kernel update (2026-10-04): decode 113, MTP JSON 210 / code 180 / copy 218, prefill ~3000. Strata rc1 (new backend): prose 140, JSON 221, code 209 tok/s, prefill 4883 tok/s (16k prompt). 10 rows, 2 new A/B groups. New backend: Strata. Dataset 3997 -> 4007, quote-verified 4580 -> 4590.
