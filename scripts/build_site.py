@@ -2912,6 +2912,18 @@ between builds of the same backend, see the
                         "at 0.75 draft acceptance). The card's unsloth NVFP4 reference "
                         "runs 87.69 tg128 / 6018.71 pp2048 on the same card, so the "
                         "edge over it is on prefill, not decode.")
+            if hw == "H200 NVL" and model == "Qwen3.8-27B":
+                return ("Qui-Linta13 IQ2_M fused MTP on H200 NVL, -ngl 99, "
+                        "flash attention, F16 KV, 256 gen tokens, median of 3. "
+                        f"Baseline (no spec-decode, prose) "
+                        f"{val(rows,'hf6-qui-linta13-iq2m-baseline','tps')} tok/s. "
+                        "MTP n_max 2 on code gives "
+                        f"{val(rows,'hf6-qui-linta13-iq2m-mtp-n2','tps')} tok/s "
+                        f"({pct(rows,'hf6-qui-linta13-iq2m-baseline','hf6-qui-linta13-iq2m-mtp-n2','tps'):+.0f}%). "
+                        "Split noMTP-IQ2_M + draft-Q8_0 (n_max 2, prose) reaches "
+                        f"{val(rows,'hf6-qui-linta13-iq2m-split-draft','tps')} tok/s "
+                        f"({pct(rows,'hf6-qui-linta13-iq2m-baseline','hf6-qui-linta13-iq2m-split-draft','tps'):+.0f}%). "
+                        "Spec-decode gain varies by prompt type (code > prose > chat).")
             if hw == "RTX 3090" and model == "Qwen3.6-35B-A3B":
                 return ("PAW 1.54 bpw trellis of Qwen3.6-35B-A3B on a single "
                         "RTX 3090, llama.cpp CUDA. Decode by workload: mixed "

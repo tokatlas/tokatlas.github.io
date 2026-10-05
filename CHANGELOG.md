@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05: Qui-Linta13/Qwen3.8-27B-Uncensored-GGUF IQ2_M spec-decode (3 rows)
+
+- HF model card Qui-Linta13/Qwen3.8-27B-Uncensored-GGUF (community): IQ2_M fused MTP on H200 NVL, -ngl 99, flash attention, F16 KV, 256 gen tokens, median of 3. Baseline (no spec, prose) 75.4 tok/s; MTP n_max 2 (code) 99.8 (+32%); split noMTP-IQ2_M + draft-Q8_0 (n_max 2, prose) 97.7 (+30%). 3 rows, 1 new A/B group with note. New hardware: H200 NVL. Dataset 3994 -> 3997, quote-verified 4577 -> 4580.
+
 ## 2026-10-05: vLLM PR #60068 MRV2 confidence stop for autoregressive drafting (5 rows)
 
 - vLLM PR #60068 (community, open): "[MRV2][Spec Decode] Opt-in confidence stop for autoregressive drafting". Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, SPEED-Bench, one run per arm. Stock 3 drafts (BF16 head) 38.4 tok/s (c=1); fixed 6 drafts (NVFP4 head) 47.0 (c=1, +22%), 31.8 (c=4); confidence stop @0.6 max 6 (NVFP4 head) 51.5 (c=1, +9.6% vs fixed 6), 32.6 (c=4, +2.5%). 5 rows, 1 new A/B group with note. No new hardware/model/backend. Dataset 3989 -> 3994, quote-verified 4572 -> 4577.
