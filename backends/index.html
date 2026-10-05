@@ -12,7 +12,7 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 96 comparable cases so far. For regressions and improvements
+side by side. 99 comparable cases so far. For regressions and improvements
 between builds of the same backend, see the
 <a href="/notes/build-ab.html">build A/B notes</a>.</p>
 <h3>deci 70B on RTX 5060 Ti (IQ4_XS - 4.25 bpw)</h3>
@@ -399,12 +399,24 @@ sampling, and context differences, not just the backend itself.</p><h3>Qwopus3.6
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 22.38 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 19.38 tok/s (87%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 11.23 tok/s (50%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 10.94 tok/s (49%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Sakura-Qwen3.8-Flash-Next on Radeon 8060S (IQ3_XXS)</h3>
+<ul><li><strong>llama.cpp (Vulkan)</strong>: 22.7 tok/s (100%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-ISTA-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 4.9 tok/s (22%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-ISTA-3bit-352E-GGUF" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Sakura-Qwen3.8-Flash-Next-Swift on Radeon 8060S (IQ2_XS)</h3>
+<ul><li><strong>llama.cpp (Vulkan)</strong>: 37.6 tok/s (100%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-2.5bit-352E-32GB-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 35.2 tok/s (94%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-2.5bit-352E-32GB-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 24 tok/s (64%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-2.5bit-352E-32GB-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 21.6 tok/s (57%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-2.5bit-352E-32GB-GGUF" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Sakura-Qwen3.8-Flash-Next-Swift on Radeon 8060S (IQ3_XXS)</h3>
+<ul><li><strong>llama.cpp (Vulkan)</strong>: 34.5 tok/s (100%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 33.6 tok/s (97%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 33.4 tok/s (97%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 32.8 tok/s (95%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 21 tok/s (61%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 5 tok/s (14%) <span class="badge b-com">community</span> <a href="https://huggingface.co/webmp3/Sakura-Qwen3.8-Flash-Next-Swift-3bit-352E-GGUF" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p>
 </main>
 <footer>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-05 22:37 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-05 22:49 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

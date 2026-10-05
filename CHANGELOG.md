@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-05: webmp3 Sakura expert-pruned cards on Strix Halo (20 rows)
+
+- Five webmp3 Hugging Face cards measured on a 64 GB AMD Strix Halo (Radeon 8060S, Windows):
+  - Sakura-Qwen3.8-Flash-Next-Swift 3-bit (IQ3_XXS) and 2.5-bit (IQ2_XS): shared MTP sidecar on a fork build lifts decode from about 21 -> 34.5 (+64%) and about 24 -> 37.6 (+57%) tok/s; IQ2_XS beats IQ3_XXS because its ~26 GiB resident weights fit the dedicated carve-out; on ROCm IQ3_XXS collapses to about 5 tok/s while IQ2_XS still does 21.6. 10 rows.
+  - Sakura-Qwen3.8-Flash-Next-ISTA-Darwin-R3 (31.4/236 with MTP) and ISTA base cut (22.7/186 official Vulkan, ROCm collapse about 4.9). 3 rows.
+  - Sakura-MiMo-V2.6-Flash-MOPD-P160 (IQ2_XS) with MiMo SSD Streaming: context sweep 16k/24k/32k (9 -> 6.6 -> 5.6 tok/s low end of published ranges) and ubatch sweep ub512/1024/2048 (decode 9.6 -> 5.9 while prefill 12.7 -> 22.3); full 512-expert MiMo-V2.6-Flash-RL reference pages from NVMe at 2.6 tok/s. 7 rows. 2 A/B groups with notes.
+- Dataset 4289 -> 4309, quote-verified 4858 -> 4878.
+
 ## 2026-10-05: GCN MMQ retune + Arc B580 regression bisect + Kimi-K3 GEMM fold (56 rows)
 
 - llama.cpp PR #30021 (community), GCN MMQ config re-tune on an A800M: pp2048 prefill master-vs-PR by ub, 48 rows. Q8_0 Granite 3.0 3B ub16 345.34 -> 613.21 (+77.6%), IQ4_XS ub16 +8.9% and ub48 +20.0%, IQ4_NL Llama 3 8B ub16 +12.2% / ub48 +11.5%; flat elsewhere. 2 A/B groups with notes.
