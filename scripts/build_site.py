@@ -3504,7 +3504,13 @@ between builds of the same backend, see the
                         "(an MTP regression the author flags). KV quant choice moves the "
                         "baseline more than the fork gap at some quants: upstream IQ4_XS "
                         "runs 26.8 tok/s with both q8_0/q5_1 and f16 KV but 27.3 with "
-                        "q8_0/q8_0.")
+                        "q8_0/q8_0. Two later branches beat thecodacus at IQ4_XS: "
+                        f"csantiago78's PR reaches {val(rows,'lc24528-3090-csantiago-493','tps')} "
+                        f"tok/s at 3500 tokens ({val(rows,'lc24528-3090-csantiago-combined','tps')} "
+                        "with the author's combined patch set, MTP not yet integrated), and "
+                        f"simlu's branch holds {val(rows,'lc24528-3090-simlu-qwen-tg1000','tps')} "
+                        f"tok/s at tg1000 ({val(rows,'lc24528-3090-simlu-qwen-tg500','tps')} at "
+                        "tg500) on IQ4_XS-PLEQ4 at 1M context.")
             if hw == "2x RTX 3090" and model == "DeepSeek-V4-Flash":
                 return ("Same 2x RTX 3090 rig, DeepSeek V4 Flash UD-Q8_K_XL (161 GB "
                         "incl DSpark) with DSpark MTP and q8_0 KV: the expert-cache "
@@ -3518,7 +3524,35 @@ between builds of the same backend, see the
                         f"{val(rows,'lc24528-3090-dsv4-c1048576-upstream','tps')} tok/s (+46%) "
                         "and TheTom falls to +29%. Upstream itself gets slightly faster "
                         "with a bigger context window here (6.88 to 7.53 tok/s), so the "
-                        "forks lose ground while upstream gains none of it.")
+                        "forks lose ground while upstream gains none of it. simlu's "
+                        f"newer branch matches the leader: {val(rows,'lc24528-3090-simlu-dsv4-tg500','tps')} "
+                        f"tok/s at tg500 and {val(rows,'lc24528-3090-simlu-dsv4-tg1000','tps')} at "
+                        "tg1000 (256k ctx), about level with leloch's 13.57 at 65k.")
+            if hw == "2x RTX 3090" and model == "GLM-5.3-Flash":
+                return ("simlu expert-cache branch on the 2x RTX 3090 rig, GLM-5.3-Flash "
+                        f"Q4_K_M at 256k context with q8_0 KV and no draft model: "
+                        f"{val(rows,'lc24528-3090-simlu-glm-tg500','tps')} tok/s at tg500 and "
+                        f"{val(rows,'lc24528-3090-simlu-glm-tg1000','tps')} tok/s at tg1000. "
+                        "Decode is flat to slightly up with generation length here, so "
+                        "the expert cache is not thrashing over a long run; the author "
+                        "notes attention on one GPU and the draft on the other is the "
+                        "layout that matters on two cards.")
+            if hw == "2x RTX 3090 + EPYC 7663" and model == "Qwen3.8-Flash-Next":
+                return ("Rented 2x RTX 3090 box (two NUMA nodes, no P2P, 2x EPYC 7663, "
+                        "640 GB DDR4 ECC), Qwen3.8-Flash-Next UD-IQ4_XS with a shared "
+                        "Q8_0 MTP draft. The csantiago78 reconstruction climbs with "
+                        f"length: {val(rows,'lc24528-epyc-csantiago-partial','tps')} tok/s mid-run "
+                        f"at 3493 tokens to {val(rows,'lc24528-epyc-csantiago-full','tps')} tok/s over "
+                        "the full 8513-token generation as the expert cache warms. "
+                        "GenerelSchwerz's own moe-cache branch beats it on the same "
+                        f"machine: {val(rows,'lc24528-epyc-gs-mtp2','tps')} tok/s decode with "
+                        f"{val(rows,'lc24528-epyc-gs-mtp2','pp_tps')} tok/s prefill at 256k "
+                        f"capacity ({pct(rows,'lc24528-epyc-csantiago-full','lc24528-epyc-gs-mtp2','tps'):+.0f}% "
+                        "vs the csantiago full-run number), with the draft layers pinned "
+                        "to the second GPU to avoid a device crossing at the shared head. "
+                        "Cross-machine note: the same csantiago branch hit 49.3 tok/s on "
+                        "a desktop 2x RTX 3090 (Ryzen 9950X) with a different patch set, "
+                        "so these are not controlled A/Bs.")
             if hw == "M3 Pro 36GB" and model == "Qwen3 30B A3B":
                 return ("Metal on-demand expert loading straight from disk, Qwen3-30B-A3B "
                         "Q6_K on an M3 Pro 36 GB: fully resident runs at "

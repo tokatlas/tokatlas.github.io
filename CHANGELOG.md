@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #24528 late comments, csantiago78 / simlu expert-cache branches (11 rows)
+
+- llama.cpp discussion #24528 (community): follow-up comments. Volunteer-1's rig (2x RTX 3090 + Ryzen 9950X): csantiago78 PR #27861 branch 49.3 tok/s at 3500 tokens on Qwen3.8-Flash-Next IQ4_XS (new top, above thecodacus 41.2), combined patch set 42 tok/s at 3000 tokens without MTP; simlu branch tg500/tg1000: DeepSeek-V4-Flash UD-Q8_K_XL 13.20/13.12 (matches leloch), Qwen3.8-Flash-Next IQ4_XS-PLEQ4 at 1M ctx 37.7/38.8, GLM-5.3-Flash Q4_K_M 7.72/7.90 (flat with length). Rented server (2x RTX 3090 + 2x EPYC 7663, 640 GB): csantiago reconstruction 39.55 -> 41.01 tok/s as the cache warms over 8513 tokens; GenerelSchwerz moe-cache branch 62.02 tok/s decode / 73.97 prefill at 256k capacity (+51% vs csantiago on the same box). 11 rows, 2 new A/B groups with notes (GLM-5.3-Flash, EPYC 7663 server), 2 existing notes extended. New hardware: 2x RTX 3090 + EPYC 7663.
+- Dataset 4116 -> 4127, hardware 397 -> 398, quote-verified 4699 -> 4710.
+
 ## 2026-10-05: llama.cpp discussion #24528, expert-caching fork shootout (40 rows)
 
 - llama.cpp discussion #24528 (community): three measured clusters. (1) 2x RTX 3090 + Ryzen 9950X, 192 GB DDR5-3600, Qwen3.8-Flash-Next across 4 quants x 3 KV quants x branches: thecodacus (expert cache + async prefetch + CUDA-pinned host RAM) wins every matchup, IQ4_XS q8_0/q5_1 41.2 vs upstream 26.8 tok/s (+54%), gap widens to +84% at UD-Q6_K_XL with f16 KV (23.6 vs 12.8); TheTom dips below upstream at IQ4_XS/q8_0-q5_1 (24.3 vs 26.8), GenerelSchwerz collapses to 11.9 (MTP regression). 27 rows. (2) Same rig, DeepSeek V4 Flash UD-Q8_K_XL with DSpark MTP: leloch 13.57 vs upstream 6.88 tok/s at 65k ctx (+97%), edge shrinks to +46% at 1M ctx (10.96 vs 7.53); TheTom +85% at 65k, +29% at 1M. 9 rows. (3) Metal on-demand expert loading from disk: Qwen3 30B A3B Q6_K on M3 Pro 36 GB, resident 38.1 tok/s -> 27.5 (-28%) saving 11 GB -> 22.1 (-42%) saving 16.6 GB; runs on M1 Pro 16 GB at 13 tok/s. 4 rows. 3 A/B groups with notes. New hardware: M3 Pro 36GB, M1 Pro 16GB.
