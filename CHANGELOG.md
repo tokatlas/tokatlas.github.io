@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #20969, TurboQuant KV-cache throughput batch (29 rows)
+
+- llama.cpp discussion #20969 (community): three measured throughput posts from the TurboQuant thread, all llama-bench pp512/tg128 on llama.cpp CUDA forks.
+- sztlink, RTX 4090 + Qwen3-30B-A3B Q4_K_M (AmesianX v1.2.0): baseline KV sweep f16 1130.8/225.9, q8_0 1132.8/223.2, q4_0 1087.8/211.0 pp/tg tok/s (tbq KV types not benchable in that build). 3 rows.
+- WaveboSF, RTX 4090 + i9-14900K + Llama 3.1 8B Q4_K_M (spiritbuun fork): FA build flags worth +7.4% prefill (9365 -> 10060 pp512); q8_0-K + turbo4-V is the best KV config, +8.4% prefill at -6.2% decode (10903/140.0); symmetric turbo3/turbo4 cost 14-17% decode. v2 build adds layer-adaptive mode which *raises* decode (q8_0+turbo4 136.4 -> 139.8). 13 rows.
+- WaveboSF, RTX 5090 + 9950X3D + Llama 3.1 8B Q4_K_M: Blackwell handles TurboQuant decode far worse than Ada, q8_0+turbo4 -29.4% vs -6-9% on the 4090, symmetric turbo3 -45.6%; CUDA 13.2 sm_120a identical to 12.8 sm_120. 10 rows. 3 A/B groups with notes.
+- Dataset 4168 -> 4197, quote-verified 4751 -> 4780.
+
 ## 2026-10-05: TurboQuant KV quantization evaluation on M1 Pro (3 rows)
 
 - devYRPauli/turboquant-m1pro-evaluation README (community): corrected 2026-10-05 speed table, MacBook Pro M1 Pro 16 GB, Qwen2.5-3B-Instruct at 16K context. 4-bit MLX with FP16 KV: 2.0 tok/s effective (39.9 s wall); with Hybrid K5/V4 quantized KV: 1.1 tok/s (71.4 s wall, -45%). The quantized cache is only 1.29x smaller than FP16 as stored (one byte per element, not packed bits) and peaks 168.6 MB higher because dequantized K/V returns float32. Ollama Q4_K_M GGUF reference on the same page: 37.5 tok/s decode-only, 49.3 s wall. 3 rows, 1 A/B group with note.
