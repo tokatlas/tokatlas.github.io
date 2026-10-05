@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-05: Gyro card additional data: A6000, CUDA kernel update, Strata rc1 (10 rows)
+
+- agentionai/Qwen3.8-Flash-Next-Gyro-GGUF (community): additional unmined data from the card. RTX A6000: Gyro-S 740 pp2048 / 57.4 decode, Gyro-M 720 pp2048 / 52.3 decode. RTX 5090 CUDA kernel update (2026-10-04): decode 113, MTP JSON 210 / code 180 / copy 218, prefill ~3000. Strata rc1 (new backend): prose 140, JSON 221, code 209 tok/s, prefill 4883 tok/s (16k prompt). 10 rows, 2 new A/B groups. New backend: Strata. Dataset 3997 -> 4007, quote-verified 4580 -> 4590.
+
 ## 2026-10-05: Qui-Linta13/Qwen3.8-27B-Uncensored-GGUF IQ2_M spec-decode (3 rows)
 
 - HF model card Qui-Linta13/Qwen3.8-27B-Uncensored-GGUF (community): IQ2_M fused MTP on H200 NVL, -ngl 99, flash attention, F16 KV, 256 gen tokens, median of 3. Baseline (no spec, prose) 75.4 tok/s; MTP n_max 2 (code) 99.8 (+32%); split noMTP-IQ2_M + draft-Q8_0 (n_max 2, prose) 97.7 (+30%). 3 rows, 1 new A/B group with note. New hardware: H200 NVL. Dataset 3994 -> 3997, quote-verified 4577 -> 4580.
