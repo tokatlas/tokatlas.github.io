@@ -19593,7 +19593,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19617,7 +19617,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19641,12 +19641,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-qwen35-1tg-master",
    "model": "Qwen3.5-2B",
@@ -19667,12 +19665,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-qwen35-1tg-patch",
    "model": "Qwen3.5-2B",
@@ -19693,7 +19689,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19717,7 +19713,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19741,12 +19737,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-qwen35-2tg-master",
    "model": "Qwen3.5-2B",
@@ -19767,12 +19761,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-qwen35-2tg-patch",
    "model": "Qwen3.5-2B",
@@ -19793,7 +19785,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19817,7 +19809,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19841,7 +19833,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19865,7 +19857,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19889,7 +19881,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19913,7 +19905,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -19937,12 +19929,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-lfm2-1tg-master",
    "model": "LFM2-2.6B",
@@ -19963,12 +19953,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 1,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-lfm2-1tg-patch",
    "model": "LFM2-2.6B",
@@ -19989,7 +19977,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -20013,7 +20001,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -20037,12 +20025,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-lfm2-2tg-master",
    "model": "LFM2-2.6B",
@@ -20063,12 +20049,10 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 2,
    "ctx": 4096,
    "date": "2026-10-01",
-   "flags": [
-    "contradiction"
-   ],
+   "flags": [],
    "hardware": "IQ-9075",
    "id": "lc-29779-lfm2-2tg-patch",
    "model": "LFM2-2.6B",
@@ -20089,7 +20073,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -20113,7 +20097,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -20137,7 +20121,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
@@ -20161,7 +20145,7 @@
   },
   {
    "backend": "llama.cpp (Hexagon)",
-   "batch": null,
+   "batch": 4,
    "ctx": 4096,
    "date": "2026-10-01",
    "flags": [],
