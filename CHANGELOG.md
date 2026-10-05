@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-05: source deletion, GenerelSchwerz MTP + zekrom KV matrix (13 rows removed)
+
+- Both source comments were deleted by their authors (they had been hidden in the UI since 2026-10-05 22:50 and are now gone from the REST list too): llama.cpp discussion #24528 comment 18532257 (GenerelSchwerz MTP draft-placement sweep on RTX 5070 Ti, 7 rows) and #20969 comment 16399706 (zekrom-vale Cydonia-24B v4.3 KV matrix on 5070Ti, 6 rows).
+- Records and their two A/B notes removed per the drift policy (a record must stay verifiable against its source). The "5070Ti" hardware page and the Cydonia-24B v4.3 model page had no other records and are gone.
+- Dataset 4334 -> 4321, quote-verified 4895 -> 4882.
+
 ## 2026-10-05: HDZucht Mac mini M6 benchmark repo (11 rows)
 
 - New source: github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks, a 16-model decode sweep on a 32 GB Mac mini M6 (LM Studio / MLX / Splash engines, 3 runs per cell, prose/code/JSON prompt types).
