@@ -2797,6 +2797,30 @@ between builds of the same backend, see the
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
         if (venue, issue) == ("HF", "?"):
+            if hw == "Radeon 8060S" and model == "Tiel-Coder":
+                return ("Strix Halo (Ryzen AI Max+ 395, 96 GiB unified): the ROCmFPX "
+                        "engine with a ROCmFP4 requant beats stock llama.cpp on the "
+                        "same battery. Effective generation speed "
+                        f"{val(rows,'hf-tielcoder-8060s-stock-dflash','tps')} tok/s "
+                        f"(stock + DFlash, UD-Q4_K_XL) -> "
+                        f"{val(rows,'hf-tielcoder-8060s-fpx-dflash','tps')} tok/s "
+                        f"(ROCmFPX + DFlash n4, ROCmFP4), "
+                        f"{pct(rows,'hf-tielcoder-8060s-stock-dflash','hf-tielcoder-8060s-fpx-dflash','tps'):+.0f}%; "
+                        "the native MTP head is slower than DFlash on the same file "
+                        f"({val(rows,'hf-tielcoder-8060s-fpx-mtp','tps')} tok/s) but "
+                        "scored 17/17 vs 16/17 (author: battery noise is about 3 "
+                        "tasks, so treat that as noise). Plain decode via llama-swap "
+                        "is published as a range, 117-125 tok/s. The ROCmFPX fork is "
+                        "required to read the file; stock llama.cpp cannot load it.")
+            if hw == "48 GB GPU" and model == "Agens-Volundr-32B-Preview":
+                return ("Context decay on an unnamed 48 GB card (Q4_K_M, -ngl 99, FA): "
+                        f"decode {val(rows,'hf-volundr-48gb-ctx1k','tps')} (1K) -> "
+                        f"{val(rows,'hf-volundr-48gb-ctx8k','tps')} (8K) -> "
+                        f"{val(rows,'hf-volundr-48gb-ctx32k','tps')} tok/s (32K), "
+                        f"{pct(rows,'hf-volundr-48gb-ctx1k','hf-volundr-48gb-ctx32k','tps'):+.0f}% "
+                        "1K to 32K. Prefill decays much harder: 2218 tok/s at 1K vs "
+                        "about 620 tok/s at 32K because the model selects blocks per "
+                        "prompt token. Card model is not stated on the card.")
             if hw == "RTX 4090 Laptop GPU" and model == "FrogNano-4B-2609":
                 return ("TensorFold 0.6.3 CUDA engine, 4-bit MLX affine (group 64), "
                         "one RTX 4090 Laptop GPU (16 GB), greedy, thinking on. "

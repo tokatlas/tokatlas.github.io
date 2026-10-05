@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-05: HF cards, Tiel-Coder ROCmFP4 on Strix Halo + Agens-Volundr-32B context decay (7 rows)
+
+- HF card ramon-balaguer/Tiel-Coder-35B-A3B-ROCmFP4-GGUF (community): on a Radeon 8060S (gfx1151, 96 GiB unified, Ryzen AI Max+ 395), the ROCmFPX engine + ROCmFP4 requant runs 86.6 tok/s effective generation over a 17-task code battery vs 69.0 tok/s for stock llama.cpp + DFlash on the UD-Q4_K_XL file (+25%); the native MTP head n2 is 77.4 tok/s; plain decode via llama-swap published as a range, 117-125 tok/s (stored low end). 4 rows, 1 A/B group with note. New model: Tiel-Coder.
+- HF card Blockway/Agens-Volundr-32B-Preview-GGUF (community): Q4_K_M on one unnamed 48 GB GPU, -ngl 99 + FA: decode 32.3 (1K) -> 27.4 (8K) -> 25.0 tok/s (32K), prefill 2218 tok/s at 1K but about 620 tok/s at 32K (block selection per prompt token). 3 rows, 1 A/B group with note. New hardware: 48 GB GPU. New model: Agens-Volundr-32B-Preview.
+- Dataset 4031 -> 4038, hardware 390 -> 391, models 206 -> 208, quote-verified 4614 -> 4621.
+
 ## 2026-10-05: llama.cpp #30006 Mali coopmat + #30000 RTX 5060 Ti Q8_0 Vulkan regression + vLLM #60070 persistent MLA counter (16 rows)
 
 - llama.cpp issue #30006 (community): on a Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux, llama.cpp 6c59c40), VK_KHR_cooperative_matrix is a ~2.4x prefill pessimization. Qwen3.5-0.8B Q4_K_M, llama-bench -p 512 -n 32: coopmat on pp512 53.30 -> coopmat off 125.78 t/s (+136%), decode unchanged (36.40 -> 36.62); coopmat off + f16 off 117.27, integer-dot off 54.53, host-memory pref 54.04. CPU arm (-ngl 0) pp512 51.19 / decode 2.95, matching coopmat-on GPU prefill (author's hypothesis: coopmat mul_mm fails shared-memory validation at 32 KB and prefill runs at matvec speed). 6 rows (5 Vulkan + 1 CPU), 1 A/B group with note. No new hardware (Dimensity 9400 pre-exists).
