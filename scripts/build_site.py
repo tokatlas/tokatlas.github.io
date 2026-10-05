@@ -3565,6 +3565,22 @@ between builds of the same backend, see the
                         "gets the model onto an M1 Pro 16 GB at 13 tok/s. Disk-backed "
                         "expert streaming trades roughly 1 tok/s per GB freed in this "
                         "band.")
+        if (venue, issue) == ("llama.cpp", "30001"):
+            if hw == "RTX 4090" and model == "Qwen2.5-7B":
+                return ("Native q8_0-q4_0 FlashAttention kernel vs the default f16 "
+                        "fallback, RTX 4090, Qwen2.5-7B Q4_0 with q8_0 KV, same commit "
+                        "A/B. The win scales with KV depth: "
+                        f"{val(rows,'lc30001-4090-kv4096-default','tps')} vs "
+                        f"{val(rows,'lc30001-4090-kv4096-native','tps')} tok/s at 4k "
+                        f"({pct(rows,'lc30001-4090-kv4096-default','lc30001-4090-kv4096-native','tps'):+.0f}%), "
+                        f"{val(rows,'lc30001-4090-kv16384-default','tps')} vs "
+                        f"{val(rows,'lc30001-4090-kv16384-native','tps')} at 16k, "
+                        f"{val(rows,'lc30001-4090-kv32768-default','tps')} vs "
+                        f"{val(rows,'lc30001-4090-kv32768-native','tps')} at 32k (+26%). "
+                        "The fallback penalty grows because the K/V dequant work scales "
+                        "with cache size while the decode matvec does not; the author "
+                        "measured the binary cost at +0.47 MiB for the single quant pair "
+                        "instead of the rejected ALL_QUANTS build.")
         if (venue, issue) == ("llama.cpp", "30006"):
             if hw == "Dimensity 9400" and model == "Qwen3.5-0.8B":
                 return ("Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux): "

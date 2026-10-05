@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp #30001, native q8_0-q4_0 FlashAttention kernel A/B (6 rows)
+
+- llama.cpp #30001 (community): RTX 4090, Qwen2.5-7B Q4_0 with q8_0 KV, same-commit A/B of decode vs KV depth. Default build (f16 K/V fallback) vs native q8_0-q4_0 FA kernel: 4k 149.39 -> 163.51 tok/s (+9.5%), 16k 110.87 -> 136.26 (+22.9%), 32k 88.07 -> 110.98 (+26.0%). The penalty scales with cache size; binary cost +0.47 MiB for the single quant pair. 6 rows, 1 A/B group with note.
+- Dataset 4127 -> 4133, quote-verified 4710 -> 4716.
+
 ## 2026-10-05: llama.cpp discussion #24528 late comments, csantiago78 / simlu expert-cache branches (11 rows)
 
 - llama.cpp discussion #24528 (community): follow-up comments. Volunteer-1's rig (2x RTX 3090 + Ryzen 9950X): csantiago78 PR #27861 branch 49.3 tok/s at 3500 tokens on Qwen3.8-Flash-Next IQ4_XS (new top, above thecodacus 41.2), combined patch set 42 tok/s at 3000 tokens without MTP; simlu branch tg500/tg1000: DeepSeek-V4-Flash UD-Q8_K_XL 13.20/13.12 (matches leloch), Qwen3.8-Flash-Next IQ4_XS-PLEQ4 at 1M ctx 37.7/38.8, GLM-5.3-Flash Q4_K_M 7.72/7.90 (flat with length). Rented server (2x RTX 3090 + 2x EPYC 7663, 640 GB): csantiago reconstruction 39.55 -> 41.01 tok/s as the cache warms over 8513 tokens; GenerelSchwerz moe-cache branch 62.02 tok/s decode / 73.97 prefill at 256k capacity (+51% vs csantiago on the same box). 11 rows, 2 new A/B groups with notes (GLM-5.3-Flash, EPYC 7663 server), 2 existing notes extended. New hardware: 2x RTX 3090 + EPYC 7663.
