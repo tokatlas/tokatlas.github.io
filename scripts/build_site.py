@@ -3565,6 +3565,21 @@ between builds of the same backend, see the
                         "gets the model onto an M1 Pro 16 GB at 13 tok/s. Disk-backed "
                         "expert streaming trades roughly 1 tok/s per GB freed in this "
                         "band.")
+            if hw == "GTX 1080 Ti" and model == "Qwen3.6-35B-A3B":
+                return ("MoE-cache budget sweep on the leloch moe-cache-pr branch, "
+                        "single GTX 1080 Ti 11 GB, Qwen3.6-35B-A3B UD-Q8_K_XL, experts "
+                        "on CPU. Every cache budget regresses against the "
+                        "hard-disabled path: "
+                        f"{val(rows,'lc24528-1080ti-cache-off','tps')} tok/s with the cache "
+                        "off, and the regression scales with budget size, down to "
+                        f"{val(rows,'lc24528-1080ti-cache-4096','tps')} tok/s at 4096 MB "
+                        f"({pct(rows,'lc24528-1080ti-cache-off','lc24528-1080ti-cache-4096','tps'):+.0f}%). "
+                        "Even the smallest budgets stay below baseline (32 MB: "
+                        f"{val(rows,'lc24528-1080ti-cache-32','tps')} tok/s, -3%). On an "
+                        "old Pascal card with a slow host path, the pool's bookkeeping "
+                        "and copy traffic cost more than the host-to-VRAM expert fetches "
+                        "it replaces; the author's note is that this is outside the "
+                        "hardware regime where the cache was expected to help.")
         if (venue, issue) == ("llama.cpp", "28248"):
             if hw == "RTX 5070 Ti 16 GB + RTX 4060 Ti 16 GB" and model == "DeepSeek-V4-Flash-Vision-Exp":
                 return ("Persistent VRAM expert pool (-mec) across two unequal GPUs, "

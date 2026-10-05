@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #24528, moe-cache budget sweep on GTX 1080 Ti (8 rows)
+
+- llama.cpp discussion #24528 (community): batot1's regression test of the leloch moe-cache-pr branch (8853f0535) on a single GTX 1080 Ti 11 GB (sm_61), Qwen3.6-35B-A3B UD-Q8_K_XL, 8k ctx, experts on CPU. Every VRAM cache budget regresses against the hard-disabled cache path: 19.32 tok/s with the cache off, 13.25 tok/s at a 4096 MB budget (-31%), 18.72 tok/s even at 32 MB (-3%). Regression scales with budget size; old Pascal host path makes the pool cost more than the expert fetches it replaces. 8 rows, 1 A/B group with note. New hardware: GTX 1080 Ti.
+- Dataset 4141 -> 4149, hardware 399 -> 400, quote-verified 4724 -> 4732.
+
 ## 2026-10-05: llama.cpp discussion #28248, persistent VRAM expert pool across two unequal GPUs (6 rows)
 
 - llama.cpp discussion #28248 (community): TmDagger's fix-moe-pool-rail fork, RTX 5070 Ti 16 GB (PCIe 5.0 x16) + RTX 4060 Ti 16 GB (PCIe 4.0 x4), Windows 11, 128 GB DDR4-3200, DeepSeek-V4-Flash-Vision-Exp UD-IQ3_XXS at 262k ctx, all experts on CPU at baseline. Persistent per-device VRAM expert pool (-mec): baseline 5.36 tok/s, -mec 48 both devices 9.09 (+70%), pool on the fast-rail GPU only 6.10, per-device 48/56 9.71, auto-scaled 128/128 (~47/~58 slots) best at 10.32 tok/s decode / 49.5 prefill (+93% vs baseline). Auto-scaling beats hand-picked slots by ~14%; aggressive manual sizing costs ~5% via shared-memory spill. 6 rows, 1 A/B group with note. New hardware: RTX 5070 Ti 16 GB + RTX 4060 Ti 16 GB. New model: DeepSeek-V4-Flash-Vision-Exp.
