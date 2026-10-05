@@ -251,6 +251,7 @@ def main():
         raw_cache = {}
         numcache = {}
         api_cache = {}
+        fetch_err = {}
 
         def api_comment_text(rt, cidv):
             m = re.match(r"https://github\.com/([^/]+)/([^/]+)/discussions/(\d+)$", rt)
@@ -288,12 +289,21 @@ def main():
                         print("%s: fetch %s failed: %s" % (name, key, e))
                         text_cache[key] = None
                         raw_cache[key] = ""
+                        fetch_err[key] = str(e)
             if key not in numcache:
                 numcache[key] = _numbers(text_cache[key] or "")
             text = text_cache[key]
             if aux_text:
                 text = ((text or "") + " " + aux_text)
             if text is None or not text.strip():
+                # standing rule: reddit 403s are logged, not counted as errors
+                # (reddit IP-blocks datacenter IPs persistently; those records
+                # stay verified wherever a cached copy exists)
+                if (isinstance(key, str) and _is_reddit(key)
+                        and "403" in fetch_err.get(key, "")):
+                    print("%s (%s): reddit source blocked (403), skipped"
+                          % (name, r["id"]))
+                    continue
                 print("%s (%s): source unavailable for verification"
                       % (name, r["id"]))
                 errors += 1

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-05: Source drift re-sync, llmcheck + Gyro card + vLLM #59973 (net -19 rows)
+
+- llmcheck.net re-sync: the live benchmarks.json moved again (196 values updated, 37 entries removed from the site, 23 new entries added). Records now mirror the current 244-entry JSON exactly.
+- Gyro card re-sync: agentionai rewrote the Qwen3.8-Flash-Next-Gyro-GGUF speed section. 19 rows whose values the card dropped were removed (2x R9700 split, 5090 content/ctx-fill series, 8060S AP-Q4_K_XL and MTP off-arms, R9700 copy arms); 16 rows re-quoted to the new table; the Strix Halo rows move to hardware "AMD Strix Halo" (the card no longer names the 8060S); new Strata Gyro-M prose row (114 tok/s). A/B notes rewritten.
+- vLLM #59973 re-sync: PR body rewritten again. c=1 stock 35.6 -> 35.7, c=4 stock 26.0 -> 25.9, NVFP4 c=4 29.4 -> 29.6 tok/s; the FP8 c=4 arm lost its absolute value (measured against a different node) and was removed. Note rewritten.
+- Dataset 4252 -> 4233, quote-verified 4835 -> 4802.
+
 ## 2026-10-05: vLLM #59916 third drift, records track the re-measured table (0 new rows)
 
 - The PR body was rewritten for the third time: gather-DCP rows re-measured (PP2xTP2 101.4 -> 101.7K, TP1xPCP4 142.3 -> 144.8K, TP4 61.7 -> 61.9K tok/s; author notes ~1% day-to-day variation).
