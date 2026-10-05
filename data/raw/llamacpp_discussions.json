@@ -2096,7 +2096,7 @@
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-F16",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "F16",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2115,12 +2115,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, F16 PP   [t/s]: 1401.85; F16 TG   [t/s]: 41.02",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra [^2] | 800 | 76 | 1401.85 | 41.02 | 1248.59 | 66.64 | 1238.48 | 94.27; M2 Ultra (76 GPU)",
+   "notes": "fa=0 config=8e672ef"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q8_0",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q8_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2139,12 +2139,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q8_0 PP   [t/s]: 1248.59; Q8_0 TG   [t/s]: 66.64",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra [^2] | 800 | 76 | 1401.85 | 41.02 | 1248.59 | 66.64 | 1238.48 | 94.27; M2 Ultra (76 GPU)",
+   "notes": "fa=0 config=8e672ef"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q4_0",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q4_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2163,12 +2163,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q4_0 PP   [t/s]: 1238.48; Q4_0 TG   [t/s]: 94.27",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra [^2] | 800 | 76 | 1401.85 | 41.02 | 1248.59 | 66.64 | 1238.48 | 94.27; M2 Ultra (76 GPU)",
+   "notes": "fa=0 config=8e672ef"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-F16-2",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "F16",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2187,12 +2187,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, F16 PP   [t/s]: 1525.95; F16 TG   [t/s]: 43.15",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 86ed72d2 + FA | 800 | 76 | 1525.95 | 43.15 | 1368.18 | 73.11 | 1391.78 | 108.80; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=86ed72d2"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q8_0-2",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q8_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2211,12 +2211,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q8_0 PP   [t/s]: 1368.18; Q8_0 TG   [t/s]: 73.11",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 86ed72d2 + FA | 800 | 76 | 1525.95 | 43.15 | 1368.18 | 73.11 | 1391.78 | 108.80; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=86ed72d2"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q4_0-2",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q4_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2235,12 +2235,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q4_0 PP   [t/s]: 1391.78; Q4_0 TG   [t/s]: 108.80",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 86ed72d2 + FA | 800 | 76 | 1525.95 | 43.15 | 1368.18 | 73.11 | 1391.78 | 108.80; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=86ed72d2"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-F16-3",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "F16",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2259,12 +2259,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, F16 PP   [t/s]: 1561.35; F16 TG   [t/s]: 43.24",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 5c0eb5ef5 + FA | 800 | 76 | 1561.35 | 43.24 | 1386.97 | 73.35 | 1412.42 | 109.41; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=5c0eb5ef5"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q8_0-3",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q8_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2283,12 +2283,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q8_0 PP   [t/s]: 1386.97; Q8_0 TG   [t/s]: 73.35",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 5c0eb5ef5 + FA | 800 | 76 | 1561.35 | 43.24 | 1386.97 | 73.35 | 1412.42 | 109.41; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=5c0eb5ef5"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q4_0-3",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q4_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2307,12 +2307,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q4_0 PP   [t/s]: 1412.42; Q4_0 TG   [t/s]: 109.41",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra 5c0eb5ef5 + FA | 800 | 76 | 1561.35 | 43.24 | 1386.97 | 73.35 | 1412.42 | 109.41; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=5c0eb5ef5"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-F16-4",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "F16",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2331,12 +2331,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, F16 PP   [t/s]: 1627.82; F16 TG   [t/s]: 49.55",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra c1d0e7a00 + FA | 800 | 76 | 1627.82 | 49.55 | 1486.51 | 82.83 | 1488.81 | 125.21; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=c1d0e7a00"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q8_0-4",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q8_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2355,12 +2355,12 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q8_0 PP   [t/s]: 1486.51; Q8_0 TG   [t/s]: 82.83",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra c1d0e7a00 + FA | 800 | 76 | 1627.82 | 49.55 | 1486.51 | 82.83 | 1488.81 | 125.21; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=c1d0e7a00"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-aspublished-Q4_0-4",
-   "model": "as-published",
+   "model": "Llama 2 7B",
    "params": null,
    "quant": "Q4_0",
    "hardware": "M2 Ultra (76 GPU)",
@@ -2379,8 +2379,8 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/4167",
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
-   "quote": "M2 Ultra (76 GPU), as-published, Q4_0 PP   [t/s]: 1488.81; Q4_0 TG   [t/s]: 125.21",
-   "notes": null
+   "quote": "Llama 2 7B; M2 Ultra c1d0e7a00 + FA | 800 | 76 | 1627.82 | 49.55 | 1486.51 | 82.83 | 1488.81 | 125.21; M2 Ultra (76 GPU)",
+   "notes": "fa=1 config=c1d0e7a00"
   },
   {
    "id": "lc-disc-4167-chttps://github.com/ggml-org/llama.cpp/discussions/4167-llama7bmostly-F16",
