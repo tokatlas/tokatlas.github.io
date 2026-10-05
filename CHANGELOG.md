@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #24528, MTP draft placement on RTX 5070 Ti (7 rows)
+
+- llama.cpp discussion #24528 (community): GenerelSchwerz's MTP placement sweep, RTX 5070 Ti 16 GB, Qwen3.8-Flash-Next UD-IQ3_XXS, 1024-token generations, expert-cache size as the pressure knob. Cache64 (draft GPU-resident): no-MTP 59.46 tok/s, MTP1 61.72 (+3.8%), MTP2 60.26 (+1.3%). Cache94 (draft forced to CPU): no-MTP 63.31 (fastest overall), MTP1 49.63 (-21.6%) at nearly identical acceptance. q8_0-KV/q5_1-draft control: 58.26 vs 58.90 (+1.1%). MTP helps only while the draft head stays GPU-resident. 7 rows, 1 A/B group with note. Records use anchored comment URLs; check_quotes verifies them via its REST-API comment fallback.
+- Dataset 4150 -> 4157, quote-verified 4733 -> 4740.
+
 ## 2026-10-05: llama.cpp discussion #24528, csantiago pp figure + GenerelSchwerz 80k reference run (1 row, 1 update)
 
 - llama.cpp discussion #24528 (community): two follow-ups from GenerelSchwerz's rented-server comments. The csantiago78 reconstruction full-run record gains its published prompt processing figure (30.83 t/s on a 380-token prompt). New row: the earlier 80k-capacity moe-cache run, 10,781 tokens at 65.00 tok/s with 55.89% MTP2 acceptance on 21,000/18,000 MiB cache budgets, above the 256k run (62.02) though flagged uncontrolled by the author. EPYC A/B note extended.
