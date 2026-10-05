@@ -3565,6 +3565,22 @@ between builds of the same backend, see the
                         "gets the model onto an M1 Pro 16 GB at 13 tok/s. Disk-backed "
                         "expert streaming trades roughly 1 tok/s per GB freed in this "
                         "band.")
+        if (venue, issue) == ("llama.cpp", "29965"):
+            if hw == "Radeon 780M" and model == "GLM-4.7-Flash":
+                return ("Vulkan flash-attention head grouping on a Radeon 780M APU "
+                        "(gfx1103), GLM-4.7-Flash Q4_K_M at 32K context. The model's "
+                        "20 query heads per KV head exceed the coopmat1 max_gqa of 16, "
+                        "so upstream disables GQA mode and every head re-reads the "
+                        "whole KV cache: "
+                        f"{val(rows,'lc29965-780m-groups-off','tps')} tok/s. Grouping "
+                        "heads to the largest divisor of the ratio that fits under the "
+                        "limit lifts decode to "
+                        f"{val(rows,'lc29965-780m-groups-on','tps')} tok/s "
+                        f"({pct(rows,'lc29965-780m-groups-off','lc29965-780m-groups-on','tps'):+.0f}%), "
+                        "with a further +15-19% at 8K and unchanged prefill. The "
+                        "author's group floor of 4 heads matters: smaller groups push "
+                        "split_k down to 1 and each workgroup ends up reading the "
+                        "entire cache alone.")
         if (venue, issue) == ("llama.cpp", "30001"):
             if hw == "RTX 4090" and model == "Qwen2.5-7B":
                 return ("Native q8_0-q4_0 FlashAttention kernel vs the default f16 "

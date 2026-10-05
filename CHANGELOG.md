@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp #29965, Vulkan flash-attention head grouping on Radeon 780M (2 rows)
+
+- llama.cpp #29965 (community): Radeon 780M (gfx1103, RADV Mesa 26.2.4), GLM-4.7-Flash Q4_K_M, 32K context, Vulkan. qk_ratio 20 exceeds the coopmat1 max_gqa of 16 so upstream runs with GQA off and every head re-reads the KV cache: 8.83 tok/s baseline vs 12.91 tok/s with heads grouped to the largest divisor under the limit (+46%), plus a published +15-19% at 8K and unchanged prefill. Group floor of 4 heads: smaller groups drop split_k to 1. 2 rows, 1 A/B group with note.
+- Dataset 4133 -> 4135, quote-verified 4716 -> 4718.
+
 ## 2026-10-05: llama.cpp #30001, native q8_0-q4_0 FlashAttention kernel A/B (6 rows)
 
 - llama.cpp #30001 (community): RTX 4090, Qwen2.5-7B Q4_0 with q8_0 KV, same-commit A/B of decode vs KV depth. Default build (f16 K/V fallback) vs native q8_0-q4_0 FA kernel: 4k 149.39 -> 163.51 tok/s (+9.5%), 16k 110.87 -> 136.26 (+22.9%), 32k 88.07 -> 110.98 (+26.0%). The penalty scales with cache size; binary cost +0.47 MiB for the single quant pair. 6 rows, 1 A/B group with note.

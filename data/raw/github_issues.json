@@ -1,5 +1,5 @@
 {
- "count": 1263,
+ "count": 1265,
  "records": [
   {
    "backend": "llama.cpp",
@@ -27219,6 +27219,50 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/issues/30001",
    "source_name": "llama.cpp #30001",
    "retrieved": "2026-10-05"
+  },
+  {
+   "id": "lc29965-780m-groups-off",
+   "model": "GLM-4.7-Flash",
+   "quant": "Q4_K_M",
+   "hardware": "Radeon 780M",
+   "backend": "llama.cpp (Vulkan)",
+   "ctx": "32768",
+   "batch": 1,
+   "tps": "8.83",
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29965",
+   "source_name": "llama.cpp #29965",
+   "retrieved": "2026-10-05",
+   "quote": "Radeon 780M; GLM-4.7-Flash; On a Radeon 780M with GLM-4.7-Flash Q4_K_M, token generation improves from 8.83 to 12.91 t/s at 32K context (+46%) and by 15-19% at 8K. Prompt processing is unchanged.",
+   "notes": "Radeon 780M (gfx1103, RADV Mesa 26.2.4), CachyOS, llama.cpp Vulkan coopmat1 path, GLM-4.7-Flash Q4_K_M at 32K context; GLM-4.7-Flash has qk_ratio 20 > max_gqa 16 so GQA mode is off by default and every head reads the whole KV cache; baseline (branch cb7934c52 vs baseline 1fb7ef3e3), heads not grouped; config=fa-gqa-groups-off"
+  },
+  {
+   "id": "lc29965-780m-groups-on",
+   "model": "GLM-4.7-Flash",
+   "quant": "Q4_K_M",
+   "hardware": "Radeon 780M",
+   "backend": "llama.cpp (Vulkan)",
+   "ctx": "32768",
+   "batch": 1,
+   "tps": "12.91",
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-05",
+   "provenance": "community",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/29965",
+   "source_name": "llama.cpp #29965",
+   "retrieved": "2026-10-05",
+   "quote": "Radeon 780M; GLM-4.7-Flash; On a Radeon 780M with GLM-4.7-Flash Q4_K_M, token generation improves from 8.83 to 12.91 t/s at 32K context (+46%) and by 15-19% at 8K. Prompt processing is unchanged.",
+   "notes": "Radeon 780M (gfx1103, RADV Mesa 26.2.4), CachyOS, llama.cpp Vulkan coopmat1 path, GLM-4.7-Flash Q4_K_M at 32K context; GLM-4.7-Flash has qk_ratio 20 > max_gqa 16 so GQA mode is off by default and every head reads the whole KV cache; heads grouped to the largest divisor of qk_ratio at or below max_gqa (group floor 4 heads); the author also measured +15-19% at 8K and unchanged prefill; config=fa-gqa-groups-on"
   }
  ],
  "source": {
