@@ -2620,7 +2620,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly F16 | pp512 | 201.34 \u00b1 0.21; llama 7B mostly F16 | tg128 | 6.72 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7644774-llama7bmostly-Q8_0",
@@ -2644,7 +2644,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q8_0 | pp512 | 181.40 \u00b1 0.05; llama 7B mostly Q8_0 | tg128 | 12.21 \u00b1 0.04",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7644774-llama7bmostly-Q4_0",
@@ -2668,7 +2668,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q4_0 | pp512 | 179.57 \u00b1 0.04; llama 7B mostly Q4_0 | tg128 | 21.91 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7644774-llama7bmostly-F16-2",
@@ -4108,7 +4108,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3; llama 7B mostly Q8_0 | pp512 | 187.52 \u00b1 0.15; llama 7B mostly Q8_0 | tg128 | 12.27 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7677748-llama7bmostly-Q4_0",
@@ -4132,7 +4132,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3; llama 7B mostly Q4_0 | pp512 | 186.75 \u00b1 0.08; llama 7B mostly Q4_0 | tg128 | 21.34 \u00b1 0.59",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7711079-llama7bmostly-F16",
@@ -4348,7 +4348,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q4_0 | pp512 | 117.96 \u00b1 0.51; llama 7B mostly Q4_0 | tg128 | 14.15 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7737353-llama7bmostly-Q8_0",
@@ -4372,7 +4372,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q8_0 | pp512 | 117.25 \u00b1 0.04; llama 7B mostly Q8_0 | tg128 | 7.91 \u00b1 0.00",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7737353-llama7bmostly-F16",
@@ -4540,7 +4540,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q8_0 | pp512 | 76.90 \u00b1 0.80; llama 7B mostly Q8_0 | tg128 | 5.31 \u00b1 0.05",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7764006-llama7bmostly-Q4_0",
@@ -4564,7 +4564,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q4_0 | pp512 | 85.24 \u00b1 0.74; llama 7B mostly Q4_0 | tg128 | 8.61 \u00b1 0.00",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7804807-llama7bmostly-F16",
@@ -4948,7 +4948,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q4_0 | pp512 | 115.67 \u00b1 0.88; llama 7B mostly Q4_0 | tg128 | 14.13 \u00b1 0.04",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c13208048-llama7bmostly-Q8_0",
@@ -4972,7 +4972,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q8_0 | pp512 | 121.73 \u00b1 1.43; llama 7B mostly Q8_0 | tg128 | 7.69 \u00b1 0.12",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c13208048-llama7b-Q4_0",
@@ -5404,7 +5404,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q4_0 | pp512 | 107.81 \u00b1 0.10; llama 7B mostly Q4_0 | tg128 | 14.19 \u00b1 0.05",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7861106-llama7bmostly-Q8_0",
@@ -5428,7 +5428,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1; llama 7B mostly Q8_0 | pp512 | 108.21 \u00b1 0.27; llama 7B mostly Q8_0 | tg128 | 7.92 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7876137-llama7bmostly-Q8_0",
@@ -5524,7 +5524,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M1 Pro; llama 7B mostly Q4_0 | pp512 | 205.41 \u00b1 0.83; llama 7B mostly Q4_0 | tg128 | 30.60 \u00b1 0.29",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7877105-llama7bmostly-F16",
@@ -5908,7 +5908,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3 Max 10+4; llama 7B mostly F16 | pp512 | 589.41 \u00b1 0.31; llama 7B mostly F16 | tg128 | 19.54 \u00b1 0.12",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7931329-llama7bmostly-Q8_0",
@@ -5932,7 +5932,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3 Max 10+4; llama 7B mostly Q8_0 | pp512 | 566.40 \u00b1 3.32; llama 7B mostly Q8_0 | tg128 | 34.30 \u00b1 0.24",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7931329-llama7bmostly-Q4_0",
@@ -5956,7 +5956,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3 Max 10+4; llama 7B mostly Q4_0 | pp512 | 567.59 \u00b1 0.53; llama 7B mostly Q4_0 | tg128 | 56.85 \u00b1 0.37",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c7965958-llama7bmostly-F16",
@@ -6196,7 +6196,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q8_0 | pp512 | 147.27 \u00b1 0.53; llama 7B mostly Q8_0 | tg128 | 12.18 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c8034638-llama7bmostly-Q4_0",
@@ -6220,7 +6220,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M2; llama 7B mostly Q4_0 | pp512 | 145.91 \u00b1 0.05; llama 7B mostly Q4_0 | tg128 | 21.70 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c8086260-llama7bmostly-F16",
@@ -6580,7 +6580,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3; llama 7B mostly F16 | pp512 | 3022.37  \u00b1 94.50; llama 7B mostly F16 | tg128 | 23.93 \u00b1 0.00",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c8196421-llama7bmostly-Q8_0-2",
@@ -6604,7 +6604,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M3; llama 7B mostly Q8_0 | pp512 | 1688.37 \u00b1 51.25; llama 7B mostly Q8_0 | tg128 | 42.43 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c8196421-llama7bmostly-Q4_0-2",
@@ -6844,7 +6844,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M4; llama 7B mostly F16 | pp512 | 230.18 \u00b1 0.16; llama 7B mostly F16 | tg128 | 7.43 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c11202046-llama7bmostly-Q8_0",
@@ -6868,7 +6868,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M4; llama 7B mostly Q8_0 | pp512 | 223.64 \u00b1 0.05; llama 7B mostly Q8_0 | tg128 | 13.54 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c11202046-llama7bmostly-Q4_0",
@@ -6892,7 +6892,7 @@
    "source_name": "llama.cpp discussions #4167 (performance thread, Apple Silicon)",
    "retrieved": "2026-09-27",
    "quote": "M4; llama 7B mostly Q4_0 | pp512 | 221.29 \u00b1 0.04; llama 7B mostly Q4_0 | tg128 | 24.11 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-4167-c11462237-llama7bmostly-F16",
@@ -27316,7 +27316,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3090; llama 7B Q4_0 | pp512 | 5405.83 \u00b1 5.80; llama 7B Q4_0 | tg128 | 151.04 \u00b1 0.24",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c13968120-llama7b-Q4_0-2",
@@ -27340,7 +27340,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3090; llama 7B Q4_0 | pp512 | 5932.44 \u00b1 10.87; llama 7B Q4_0 | tg128 | 155.36 \u00b1 0.09",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c13968120-llama7b-Q4_0-3",
@@ -27364,7 +27364,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 14751.98 \u00b1 136.24; llama 7B Q4_0 | tg128 | 239.62 \u00b1 0.37",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c13968120-llama7b-Q4_0-4",
@@ -27388,7 +27388,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 16041.54 \u00b1 85.27; llama 7B Q4_0 | tg128 | 248.57 \u00b1 0.05",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c13972383-llama7b-Q4_0",
@@ -27700,7 +27700,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "A100; llama 7B Q4_0 | pp512 | 2698.95 \u00b1 33.63; llama 7B Q4_0 | pp1024 | 2614.09 \u00b1 0.51; llama 7B Q4_0 | pp2048 | 2501.37 \u00b1 0.22; llama 7B Q4_0 | pp4096 | 2312.87 \u00b1 0.16; llama 7B Q4_0 | pp8192 | 1997.14 \u00b1 0.17; llama 7B Q4_0 | pp16384 | 1568.06 \u00b1 0.61; llama 7B Q4_0 | pp32768 | 1014.71 \u00b1 18.82; llama 7B Q4_0 | tg128 | 141.32 \u00b1 1.87; llama 7B Q4_0 | tg256 | 140.42 \u00b1 0.62; llama 7B Q4_0 | tg512 | 135.18 \u00b1 0.29; llama 7B Q4_0 | tg1024 | 132.47 \u00b1 0.58; llama 7B Q4_0 | tg2048 | 129.09 \u00b1 0.12",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17838548-llama7b-Q4_0-2",
@@ -27724,7 +27724,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "A100; llama 7B Q4_0 | pp512 | 3016.29 \u00b1 30.51; llama 7B Q4_0 | pp1024 | 2966.77 \u00b1 7.45; llama 7B Q4_0 | pp2048 | 2901.18 \u00b1 2.75; llama 7B Q4_0 | pp4096 | 2738.75 \u00b1 4.77; llama 7B Q4_0 | pp8192 | 2457.51 \u00b1 7.97; llama 7B Q4_0 | pp16384 | 2021.53 \u00b1 4.60; llama 7B Q4_0 | pp32768 | 1482.42 \u00b1 0.88; llama 7B Q4_0 | tg128 | 155.72 \u00b1 0.96; llama 7B Q4_0 | tg256 | 152.81 \u00b1 1.51; llama 7B Q4_0 | tg512 | 148.71 \u00b1 1.20; llama 7B Q4_0 | tg1024 | 143.72 \u00b1 0.41; llama 7B Q4_0 | tg2048 | 137.10 \u00b1 1.02",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17940386-llama7b-Q4_0",
@@ -27748,7 +27748,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3080; llama 7B Q4_0 | pp512 | 2875.02 \u00b1 85.93; llama 7B Q4_0 | tg128 | 90.60 \u00b1 0.20",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17940386-llama7b-Q4_0-2",
@@ -27772,7 +27772,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3080; llama 7B Q4_0 | pp512 | 3275.48 \u00b1 85.45; llama 7B Q4_0 | tg128 | 93.42 \u00b1 0.34",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c18108605-llama7b-Q4_0",
@@ -28756,7 +28756,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 6663.79 \u00b1 211.62; llama 7B Q4_0 | tg128 | 157.84 \u00b1 1.07",
-   "notes": "threads=99; 150.0 W measured GPU power 140-160 W during the run (midpoint 150.0 W, approximate)"
+   "notes": "threads=99; 150.0 W measured GPU power 140-160 W during the run (midpoint 150.0 W, approximate); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c18458510-llama7b-Q4_0-2",
@@ -28780,7 +28780,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 7603.20 \u00b1 230.26; llama 7B Q4_0 | tg128 | 164.31 \u00b1 0.71",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c18520153-llama7b-Q4_0",
@@ -29236,7 +29236,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "A4000; llama 7B Q4_0 | pp512 | 309.30 \u00b1 0.05; llama 7B Q4_0 | pp1024 | 294.86 \u00b1 0.42; llama 7B Q4_0 | pp2048 | 274.91 \u00b1 0.26; llama 7B Q4_0 | tg128 | 23.63 \u00b1 0.00; llama 7B Q4_0 | tg256 | 22.90 \u00b1 0.02; llama 7B Q4_0 | tg512 | 21.61 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14149404-llama7b-Q4_0-2",
@@ -29260,7 +29260,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "A4000; llama 7B Q4_0 | pp512 | 311.55 \u00b1 0.19; llama 7B Q4_0 | pp1024 | 300.80 \u00b1 0.20; llama 7B Q4_0 | pp2048 | 280.92 \u00b1 0.15; llama 7B Q4_0 | tg128 | 23.76 \u00b1 0.01; llama 7B Q4_0 | tg256 | 23.73 \u00b1 0.01; llama 7B Q4_0 | tg512 | 23.44 \u00b1 0.01",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14150776-llama7b-Q4_0",
@@ -30124,7 +30124,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "RTX PRO 4000 Blackwell; llama 7B Q4_0 | pp512 | 3628.68 \u00b1 42.39; llama 7B Q4_0 | tg128 | 89.73 \u00b1 0.08",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c16909094-llama7b-Q4_0-2",
@@ -30148,7 +30148,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "RTX PRO 4000 Blackwell; llama 7B Q4_0 | pp512 | 4078.52 \u00b1 15.41; llama 7B Q4_0 | tg128 | 92.54 \u00b1 0.03",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c16909094-llama7b-Q4_0-3",
@@ -30220,7 +30220,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "A100; llama 7B Q4_0 | pp512 | 1175.43 \u00b1 13.69; llama 7B Q4_0 | tg128 | 128.41 \u00b1 0.10",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-15013-c17054190-llama7b-Q4_0",
@@ -30340,7 +30340,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "Quadro RTX 5000; llama 7B Q4_0 | pp512 | 216.34 \u00b1 0.58; llama 7B Q4_0 | tg128 | 16.74 \u00b1 0.00",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17054190-llama7b-Q4_0-6",
@@ -30364,7 +30364,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "Quadro RTX 5000; llama 7B Q4_0 | pp512 | 218.32 \u00b1 0.06; llama 7B Q4_0 | tg128 | 17.84 \u00b1 0.00",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17054190-llama7b-Q4_0-7",
@@ -30388,7 +30388,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "Quadro RTX 5000; llama 7B Q4_0 | pp512 | 545.12 \u00b1 1.57; llama 7B Q4_0 | tg128 | 34.71 \u00b1 0.06",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17054190-llama7b-Q4_0-8",
@@ -30412,7 +30412,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "Quadro RTX 5000; llama 7B Q4_0 | pp512 | 549.43 \u00b1 0.57; llama 7B Q4_0 | tg128 | 36.11 \u00b1 0.03",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17059084-llama7b-Q4_0",
@@ -30436,7 +30436,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "V100; llama 7B Q4_0 | pp512 | 354.07 \u00b1 0.03; llama 7B Q4_0 | tg128 | 99.84 \u00b1 0.07",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15013-c17059084-llama7b-Q4_0-2",
@@ -30460,7 +30460,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "V100; llama 7B Q4_0 | pp512 | 380.40 \u00b1 0.03; llama 7B Q4_0 | tg128 | 109.49 \u00b1 0.12",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15013-c17059084-llama7b-Q4_0-3",
@@ -30532,7 +30532,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 5056.95 \u00b1 58.31; llama 7B Q4_0 | tg128 | 112.36 \u00b1 8.00",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17067742-llama7b-Q4_0-2",
@@ -30556,7 +30556,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 5007.90 \u00b1 72.08; llama 7B Q4_0 | tg128 | 117.16 \u00b1 0.57",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17067742-llama7b-Q4_0-3",
@@ -30580,7 +30580,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 6667.06 \u00b1 123.40; llama 7B Q4_0 | tg128 | 156.49 \u00b1 0.98",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c17067742-llama7b-Q4_0-4",
@@ -30604,7 +30604,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 7641.89 \u00b1 275.60; llama 7B Q4_0 | tg128 | 158.14 \u00b1 4.70",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14196402-llama7b-Q4_0",
@@ -30676,7 +30676,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 703.27 \u00b1 3.21; llama 7B Q4_0 | tg128 | 50.20 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15013-c14196835-llama7b-Q4_0-2",
@@ -30700,7 +30700,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 735.19 \u00b1 3.72; llama 7B Q4_0 | tg128 | 51.08 \u00b1 0.00",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15013-c14200008-llama7b-Q4_0",
@@ -30820,7 +30820,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 10712.64 \u00b1 135.22; llama 7B Q4_0 | pp1024 | 9831.51 \u00b1 120.33; llama 7B Q4_0 | pp2048 | 8534.83 \u00b1 94.59; llama 7B Q4_0 | pp4096 | 6939.80 \u00b1 24.46; llama 7B Q4_0 | pp8192 | 5036.04 \u00b1 6.41; llama 7B Q4_0 | pp16384 | 3012.11 \u00b1 1.49; llama 7B Q4_0 | tg128 | 167.53 \u00b1 1.89; llama 7B Q4_0 | tg256 | 166.85 \u00b1 0.19; llama 7B Q4_0 | tg512 | 163.54 \u00b1 0.09; llama 7B Q4_0 | tg1024 | 159.41 \u00b1 0.17; llama 7B Q4_0 | tg2048 | 150.76 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14234178-llama7b-Q4_0-2",
@@ -30844,7 +30844,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 12416.64 \u00b1 153.67; llama 7B Q4_0 | pp1024 | 12362.39 \u00b1 96.52; llama 7B Q4_0 | pp2048 | 11764.82 \u00b1 198.87; llama 7B Q4_0 | pp4096 | 11016.56 \u00b1 151.08; llama 7B Q4_0 | pp8192 | 9918.19 \u00b1 27.37; llama 7B Q4_0 | pp16384 | 8449.90 \u00b1 5.87; llama 7B Q4_0 | tg128 | 169.74 \u00b1 2.16; llama 7B Q4_0 | tg256 | 170.65 \u00b1 0.06; llama 7B Q4_0 | tg512 | 167.57 \u00b1 0.18; llama 7B Q4_0 | tg1024 | 162.95 \u00b1 0.10; llama 7B Q4_0 | tg2048 | 154.41 \u00b1 0.06",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14234178-llama7b-Q4_0-3",
@@ -30868,7 +30868,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 11773.24 \u00b1 91.37; llama 7B Q4_0 | pp1024 | 10885.59 \u00b1 89.51; llama 7B Q4_0 | pp2048 | 9388.77 \u00b1 8.90; llama 7B Q4_0 | pp4096 | 7400.17 \u00b1 3.67; llama 7B Q4_0 | pp8192 | 5216.83 \u00b1 0.57; llama 7B Q4_0 | pp16384 | 3050.56 \u00b1 0.83; llama 7B Q4_0 | tg128 | 167.52 \u00b1 1.75; llama 7B Q4_0 | tg256 | 166.90 \u00b1 0.22; llama 7B Q4_0 | tg512 | 163.71 \u00b1 0.09; llama 7B Q4_0 | tg1024 | 159.68 \u00b1 0.17; llama 7B Q4_0 | tg2048 | 151.05 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14234178-llama7b-Q4_0-4",
@@ -30892,7 +30892,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 14017.58 \u00b1 118.81; llama 7B Q4_0 | pp1024 | 14209.33 \u00b1 21.17; llama 7B Q4_0 | pp2048 | 13843.49 \u00b1 134.12; llama 7B Q4_0 | pp4096 | 13251.65 \u00b1 133.79; llama 7B Q4_0 | pp8192 | 12011.00 \u00b1 38.03; llama 7B Q4_0 | pp16384 | 10170.22 \u00b1 6.53; llama 7B Q4_0 | tg128 | 170.12 \u00b1 2.22; llama 7B Q4_0 | tg256 | 171.05 \u00b1 0.04; llama 7B Q4_0 | tg512 | 167.87 \u00b1 0.21; llama 7B Q4_0 | tg1024 | 163.23 \u00b1 0.12; llama 7B Q4_0 | tg2048 | 154.68 \u00b1 0.04",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14234178-llama7b-Q4_0-5",
@@ -30916,7 +30916,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 10712.64 \u00b1 135.22; llama 7B Q4_0 | pp1024 | 9831.51 \u00b1 120.33; llama 7B Q4_0 | pp2048 | 8534.83 \u00b1 94.59; llama 7B Q4_0 | pp4096 | 6939.80 \u00b1 24.46; llama 7B Q4_0 | pp8192 | 5036.04 \u00b1 6.41; llama 7B Q4_0 | pp16384 | 3012.11 \u00b1 1.49; llama 7B Q4_0 | tg128 | 167.53 \u00b1 1.89; llama 7B Q4_0 | tg256 | 166.85 \u00b1 0.19; llama 7B Q4_0 | tg512 | 163.54 \u00b1 0.09; llama 7B Q4_0 | tg1024 | 159.41 \u00b1 0.17; llama 7B Q4_0 | tg2048 | 150.76 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14234178-llama7b-Q4_0-6",
@@ -30940,7 +30940,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 4090; llama 7B Q4_0 | pp512 | 12416.64 \u00b1 153.67; llama 7B Q4_0 | pp1024 | 12362.39 \u00b1 96.52; llama 7B Q4_0 | pp2048 | 11764.82 \u00b1 198.87; llama 7B Q4_0 | pp4096 | 11016.56 \u00b1 151.08; llama 7B Q4_0 | pp8192 | 9918.19 \u00b1 27.37; llama 7B Q4_0 | pp16384 | 8449.90 \u00b1 5.87; llama 7B Q4_0 | tg128 | 169.74 \u00b1 2.16; llama 7B Q4_0 | tg256 | 170.65 \u00b1 0.06; llama 7B Q4_0 | tg512 | 167.57 \u00b1 0.18; llama 7B Q4_0 | tg1024 | 162.95 \u00b1 0.10; llama 7B Q4_0 | tg2048 | 154.41 \u00b1 0.06",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14244491-llama7b-Q4_0",
@@ -31156,7 +31156,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "H100; llama 7B Q4_0 | pp512 | 7350.98 \u00b1 63.64; llama 7B Q4_0 | pp1024 | 7277.24 \u00b1 3.96; llama 7B Q4_0 | pp2048 | 6976.45 \u00b1 8.06; llama 7B Q4_0 | pp4096 | 6370.87 \u00b1 11.90; llama 7B Q4_0 | pp8192 | 5298.29 \u00b1 4.18; llama 7B Q4_0 | pp16384 | 3836.34 \u00b1 6.00; llama 7B Q4_0 | pp32784 | 2435.55 \u00b1 3.19; llama 7B Q4_0 | tg128 | 219.23 \u00b1 0.55; llama 7B Q4_0 | tg256 | 215.16 \u00b1 0.89; llama 7B Q4_0 | tg512 | 208.08 \u00b1 0.40; llama 7B Q4_0 | tg1024 | 206.23 \u00b1 0.86; llama 7B Q4_0 | tg2048 | 200.75 \u00b1 0.09; llama 7B Q4_0 | tg4096 | 189.94 \u00b1 0.45",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14322934-llama7b-Q4_0-2",
@@ -31180,7 +31180,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "H100; llama 7B Q4_0 | pp512 | 8457.52 \u00b1 18.97; llama 7B Q4_0 | pp1024 | 8513.08 \u00b1 13.55; llama 7B Q4_0 | pp2048 | 8442.74 \u00b1 29.20; llama 7B Q4_0 | pp4096 | 8110.29 \u00b1 7.67; llama 7B Q4_0 | pp8192 | 7335.59 \u00b1 8.79; llama 7B Q4_0 | pp16384 | 6214.56 \u00b1 4.93; llama 7B Q4_0 | pp32784 | 4837.63 \u00b1 2.62; llama 7B Q4_0 | tg128 | 229.85 \u00b1 0.07; llama 7B Q4_0 | tg256 | 230.12 \u00b1 0.09; llama 7B Q4_0 | tg512 | 227.18 \u00b1 0.37; llama 7B Q4_0 | tg1024 | 207.57 \u00b1 0.66; llama 7B Q4_0 | tg2048 | 213.82 \u00b1 0.35; llama 7B Q4_0 | tg4096 | 200.16 \u00b1 0.21",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14322969-llama7b-Q4_0",
@@ -31204,7 +31204,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "H100; llama 7B Q4_0 | pp512 | 9918.34 \u00b1 176.97; llama 7B Q4_0 | pp1024 | 9794.27 \u00b1 76.14; llama 7B Q4_0 | pp2048 | 9366.63 \u00b1 50.02; llama 7B Q4_0 | pp4096 | 8568.65 \u00b1 3.37; llama 7B Q4_0 | pp8192 | 7152.63 \u00b1 2.61; llama 7B Q4_0 | pp16384 | 5331.01 \u00b1 1.40; llama 7B Q4_0 | pp32784 | 3456.25 \u00b1 1.25; llama 7B Q4_0 | tg128 | 267.81 \u00b1 1.54; llama 7B Q4_0 | tg256 | 263.37 \u00b1 0.26; llama 7B Q4_0 | tg512 | 255.22 \u00b1 0.18; llama 7B Q4_0 | tg1024 | 253.44 \u00b1 0.25; llama 7B Q4_0 | tg2048 | 247.29 \u00b1 0.14; llama 7B Q4_0 | tg4096 | 236.07 \u00b1 0.10",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14322969-llama7b-Q4_0-2",
@@ -31228,7 +31228,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "H100; llama 7B Q4_0 | pp512 | 11263.29 \u00b1 98.34; llama 7B Q4_0 | pp1024 | 11454.74 \u00b1 8.49; llama 7B Q4_0 | pp2048 | 11331.01 \u00b1 10.68; llama 7B Q4_0 | pp4096 | 10935.28 \u00b1 34.86; llama 7B Q4_0 | pp8192 | 10340.75 \u00b1 4.30; llama 7B Q4_0 | pp16384 | 9211.07 \u00b1 2.62; llama 7B Q4_0 | pp32784 | 7407.12 \u00b1 6.49; llama 7B Q4_0 | tg128 | 280.74 \u00b1 1.17; llama 7B Q4_0 | tg256 | 280.73 \u00b1 0.03; llama 7B Q4_0 | tg512 | 277.60 \u00b1 0.51; llama 7B Q4_0 | tg1024 | 274.97 \u00b1 0.41; llama 7B Q4_0 | tg2048 | 264.73 \u00b1 0.31; llama 7B Q4_0 | tg4096 | 248.77 \u00b1 0.19",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14323205-llama7b-Q4_0",
@@ -31444,7 +31444,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3080; llama 7B Q4_0 | pp512 | 2970.97 \u00b1 14.10; llama 7B Q4_0 | pp1024 | 2776.18 \u00b1 10.49; llama 7B Q4_0 | pp2048 | 2553.65 \u00b1 5.01; llama 7B Q4_0 | pp4096 | 2213.43 \u00b1 4.22; llama 7B Q4_0 | tg128 | 90.78 \u00b1 0.08; llama 7B Q4_0 | tg256 | 90.62 \u00b1 0.15; llama 7B Q4_0 | tg512 | 87.45 \u00b1 0.16; llama 7B Q4_0 | tg1024 | 85.32 \u00b1 0.20; llama 7B Q4_0 | tg2048 | 81.04 \u00b1 0.16",
-   "notes": "threads=99; 149.0 W measured nvidia-smi power.draw, short runs (approximate)"
+   "notes": "threads=99; 149.0 W measured nvidia-smi power.draw, short runs (approximate); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15321427-llama7b-Q4_0-2",
@@ -31468,7 +31468,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 3080; llama 7B Q4_0 | pp512 | 3211.59 \u00b1 49.51; llama 7B Q4_0 | pp1024 | 3219.32 \u00b1 45.43; llama 7B Q4_0 | pp2048 | 3076.62 \u00b1 10.88; llama 7B Q4_0 | pp4096 | 2905.61 \u00b1 3.25; llama 7B Q4_0 | tg128 | 92.45 \u00b1 0.32; llama 7B Q4_0 | tg256 | 92.72 \u00b1 0.22; llama 7B Q4_0 | tg512 | 90.96 \u00b1 0.11; llama 7B Q4_0 | tg1024 | 88.24 \u00b1 0.06; llama 7B Q4_0 | tg2048 | 83.41 \u00b1 0.28",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15568954-llama7b-Q4_0",
@@ -31876,7 +31876,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "NVIDIA RTX 3500; llama 7B Q4_0 | pp512 | 1406.43 \u00b1 52.64; llama 7B Q4_0 | tg128 | 30.23 \u00b1 0.23",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14463481-llama7b-Q4_0-2",
@@ -31900,7 +31900,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "NVIDIA RTX 3500; llama 7B Q4_0 | pp512 | 1610.14 \u00b1 32.13; llama 7B Q4_0 | tg128 | 28.75 \u00b1 0.21",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14463481-llama7b-Q4_0-3",
@@ -31996,7 +31996,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "V100; llama 7B Q4_0 | pp512 | 2973.78 \u00b1 3.62; llama 7B Q4_0 | tg128 | 134.76 \u00b1 0.02",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14472498-gemma312b-Q4_K - Medium",
@@ -32260,7 +32260,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 14142.08 \u00b1 52.87; llama 7B Q4_0 | tg128 | 277.21 \u00b1 0.96",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14525481-llama7b-Q4_0-2",
@@ -32620,7 +32620,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 15915.61 \u00b1 274.93; llama 7B Q4_0 | tg128 | 283.69 \u00b1 0.42",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14905268-llama7b-Q4_0",
@@ -32644,7 +32644,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 15094.35 \u00b1 131.34; llama 7B Q4_0 | tg128 | 266.70 \u00b1 1.24",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14905268-llama7b-Q4_0-2",
@@ -32668,7 +32668,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "GeForce RTX 5090; llama 7B Q4_0 | pp512 | 13143.45 \u00b1 88.72; llama 7B Q4_0 | tg128 | 280.28 \u00b1 1.13",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c14905345-llama7b-Q4_0",
@@ -33172,7 +33172,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "V100; llama 7B Q4_0 | pp512 | 767.12 \u00b1 1.59; llama 7B Q4_0 | tg128 | 58.33 \u00b1 0.00",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15088555-llama7b-Q4_0-4",
@@ -33196,7 +33196,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "V100; llama 7B Q4_0 | pp512 | 788.45 \u00b1 4.06; llama 7B Q4_0 | tg128 | 62.06 \u00b1 0.00",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15095402-llama7b-Q4_0",
@@ -33220,7 +33220,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 476.77 \u00b1 1.09; llama 7B Q4_0 | tg128 | 50.17 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15095402-llama7b-Q4_0-2",
@@ -33244,7 +33244,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 492.20 \u00b1 0.70; llama 7B Q4_0 | tg128 | 50.66 \u00b1 0.02",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15095402-llama7b-Q4_0-3",
@@ -33268,7 +33268,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 1006.05 \u00b1 0.57; llama 7B Q4_0 | tg128 | 51.54 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15095402-llama7b-Q4_0-4",
@@ -33292,7 +33292,7 @@
    "source_name": "llama.cpp discussions #15013 (performance thread, NVIDIA CUDA)",
    "retrieved": "2026-09-27",
    "quote": "P100; llama 7B Q4_0 | pp512 | 1076.52 \u00b1 1.13; llama 7B Q4_0 | tg128 | 52.24 \u00b1 0.00",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15013-c15160999-llama7b-Q4_0",
@@ -34324,7 +34324,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7600 XT; llama 7B Q4_0 | pp512 | 606.24 \u00b1 0.31; llama 7B Q4_0 | tg128 | 52.84 \u00b1 0.44",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c13964669-llama7b-Q4_0-4",
@@ -34348,7 +34348,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7600 XT; llama 7B Q4_0 | pp512 | 612.33 \u00b1 0.53; llama 7B Q4_0 | tg128 | 53.70 \u00b1 0.33",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c13972703-llama7b-Q4_0",
@@ -34372,7 +34372,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 1803.65 \u00b1 2.54; llama 7B Q4_0 | tg128 | 74.66 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15021-c13972703-llama7b-Q4_0-2",
@@ -34396,7 +34396,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 1256.86 \u00b1 0.55; llama 7B Q4_0 | tg128 | 70.83 \u00b1 0.02",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15021-c13972703-llama7b-Q4_0-3",
@@ -34516,7 +34516,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 2817.81 \u00b1 26.69; llama 7B Q4_0 | tg128 | 112.18 \u00b1 0.45",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14432902-llama7b-Q4_0-2",
@@ -34540,7 +34540,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3053.77 \u00b1 17.38; llama 7B Q4_0 | tg128 | 110.70 \u00b1 0.08",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14019297-llama7b-Q4_0",
@@ -34588,7 +34588,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3633.86 \u00b1 10.29; llama 7B Q4_0 | tg128 | 145.23 \u00b1 0.10",
-   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=100"
   },
   {
    "id": "lc-disc-15021-c14045285-llama7b-Q4_0",
@@ -34612,7 +34612,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3386.75 \u00b1 5.33; llama 7B Q4_0 | tg128 | 128.25 \u00b1 0.24",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14045285-llama7b-Q4_0-2",
@@ -34636,7 +34636,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3674.25 \u00b1 11.35; llama 7B Q4_0 | tg128 | 124.61 \u00b1 0.06",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14073230-llama7b-Q4_0",
@@ -34732,7 +34732,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3473.24 \u00b1 12.30; llama 7B Q4_0 | tg128 | 132.17 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14091623-llama7b-Q4_0-2",
@@ -34756,7 +34756,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3698.73 \u00b1 17.60; llama 7B Q4_0 | tg128 | 127.43 \u00b1 0.04",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14113551-llama7b-Q4_0",
@@ -34780,7 +34780,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 6900 XT; llama 7B Q4_0 | pp512 | 1824.47 \u00b1 1.02; llama 7B Q4_0 | tg128 | 83.02 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99 sm=none"
   },
   {
    "id": "lc-disc-15021-c14113551-llama7b-Q4_0-2",
@@ -35068,7 +35068,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1063.60 \u00b1 32.40; llama 7B Q4_0 | tg128 | 43.79 \u00b1 0.05",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c17979194-llama7b-Q4_0-2",
@@ -35092,7 +35092,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1143.51 \u00b1 30.27; llama 7B Q4_0 | tg128 | 49.10 \u00b1 0.23",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c18122692-llama7b-Q4_0",
@@ -35236,7 +35236,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; gemma4 31B Q8_0 | pp512 | 920.55 \u00b1 2.70; gemma4 31B Q8_0 | tg128 | 22.97 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=layer ngl=99"
   },
   {
    "id": "lc-disc-15021-c18122692-gemma431b-Q8_0-2",
@@ -35356,7 +35356,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 2908.66 \u00b1 8.00; llama 7B Q4_0 | tg128 | 83.63 \u00b1 0.36",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14203563-llama7b-Q4_0-2",
@@ -35380,7 +35380,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 1341.03 \u00b1 0.28; llama 7B Q4_0 | tg128 | 85.43 \u00b1 0.03",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14203563-llama7b-Q4_0-3",
@@ -35452,7 +35452,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 3750.46 \u00b1 544.36; llama 7B Q4_0 | tg128 | 86.16 \u00b1 0.12",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14908936-llama7b-Q4_0-2",
@@ -35476,7 +35476,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4543.73 \u00b1 47.67; llama 7B Q4_0 | tg128 | 89.51 \u00b1 0.20",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14300982-llama7b-Q4_0",
@@ -35500,7 +35500,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 3538.39 \u00b1 513.67; llama 7B Q4_0 | tg128 | 87.43 \u00b1 0.30",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14300982-llama7b-Q4_0-2",
@@ -35524,7 +35524,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4131.22 \u00b1 6.50; llama 7B Q4_0 | tg128 | 87.57 \u00b1 0.99",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16016014-llama7b-Q4_0",
@@ -35548,7 +35548,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 3845.97 \u00b1 870.69; llama 7B Q4_0 | tg128 | 94.32 \u00b1 0.25",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16016014-llama7b-Q4_0-2",
@@ -35572,7 +35572,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 5025.74 \u00b1 12.64; llama 7B Q4_0 | tg128 | 97.27 \u00b1 0.69",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16016175-llama7b-Q4_0",
@@ -35596,7 +35596,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 3840.62 \u00b1 864.42; llama 7B Q4_0 | tg128 | 98.11 \u00b1 0.38",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16016175-llama7b-Q4_0-2",
@@ -35620,7 +35620,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 5009.54 \u00b1 25.99; llama 7B Q4_0 | tg128 | 102.44 \u00b1 0.09",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16498281-llama7b-Q4_0",
@@ -35836,7 +35836,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9060 XT; llama 7B Q4_0 | pp512 | 2056.43 \u00b1 2.23; llama 7B Q4_0 | tg128 | 71.95 \u00b1 1.32",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14397076-llama7b-Q4_0-4",
@@ -35860,7 +35860,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9060 XT; llama 7B Q4_0 | pp512 | 1840.64 \u00b1 3.76; llama 7B Q4_0 | tg128 | 72.24 \u00b1 0.13",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14482499-llama7b-Q4_0",
@@ -35884,7 +35884,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 351.36 \u00b1 0.67; llama 7B Q4_0 | tg128 | 47.97 \u00b1 0.33",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14482499-llama7b-Q4_0-2",
@@ -35908,7 +35908,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 366.08 \u00b1 1.44; llama 7B Q4_0 | tg128 | 48.97 \u00b1 0.15",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14490924-llama7b-Q4_0",
@@ -35932,7 +35932,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4065.43 \u00b1 5.08; llama 7B Q4_0 | tg128 | 89.90 \u00b1 0.22",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14490924-llama7b-Q4_0-2",
@@ -35956,7 +35956,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4027.14 \u00b1 4.65; llama 7B Q4_0 | tg128 | 89.17 \u00b1 0.17",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14599306-llama7b-Q4_0",
@@ -35980,7 +35980,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4055.36 \u00b1 11.83; llama 7B Q4_0 | tg128 | 93.26 \u00b1 0.22",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14599306-llama7b-Q4_0-2",
@@ -36004,7 +36004,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4029.45 \u00b1 10.03; llama 7B Q4_0 | tg128 | 88.96 \u00b1 0.10",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14690824-llama7b-Q4_0",
@@ -36316,7 +36316,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 890M; llama 7B Q4_0 | pp512 | 163.25 \u00b1 13.86; llama 7B Q4_0 | tg128 | 12.97 \u00b1 1.63",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14807647-llama7b-Q4_0-2",
@@ -36508,7 +36508,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; dev=ROCM0; llama 7B Q4_0 | pp512 | 1253.30 \u00b1 76.39; llama 7B Q4_0 | tg128 | 129.33 \u00b1 0.10",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15825763-llama7b-Q4_0-2",
@@ -36532,7 +36532,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; dev=ROCM0; llama 7B Q4_0 | pp512 | 1155.75 \u00b1 1.66; llama 7B Q4_0 | tg128 | 134.46 \u00b1 0.07",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15825763-llama7b-Q4_0-3",
@@ -36556,7 +36556,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; dev=VULKAN0; llama 7B Q4_0 | pp512 | 3292.37 \u00b1 27.90; llama 7B Q4_0 | tg128 | 154.32 \u00b1 0.24",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15825763-llama7b-Q4_0-4",
@@ -36580,7 +36580,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; dev=VULKAN0; llama 7B Q4_0 | pp512 | 3453.79 \u00b1 47.32; llama 7B Q4_0 | tg128 | 161.46 \u00b1 0.27",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15958764-llama7b-Q4_0",
@@ -36604,7 +36604,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 1313.10 \u00b1 3.53; llama 7B Q4_0 | tg128 | 129.69 \u00b1 0.13",
-   "notes": "threads=100"
+   "notes": "threads=100; fa=0 ngl=100"
   },
   {
    "id": "lc-disc-15021-c15958764-llama7b-Q4_0-2",
@@ -36628,7 +36628,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 1151.72 \u00b1 1.08; llama 7B Q4_0 | tg128 | 134.87 \u00b1 0.06",
-   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=100"
   },
   {
    "id": "lc-disc-15021-c15958764-llama7b-Q4_0-3",
@@ -36748,7 +36748,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 890M; llama 7B Q4_0 | pp512 | 121.84 \u00b1 0.05; llama 7B Q4_0 | tg128 | 18.24 \u00b1 0.01",
-   "notes": "threads=100"
+   "notes": "threads=100; fa=0 ngl=100"
   },
   {
    "id": "lc-disc-15021-c16010668-llama7b-Q4_0-2",
@@ -36772,7 +36772,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 890M; llama 7B Q4_0 | pp512 | 110.39 \u00b1 0.08; llama 7B Q4_0 | tg128 | 19.08 \u00b1 0.01",
-   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=100; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=100"
   },
   {
    "id": "lc-disc-15021-c16191303-llama7b-Q4_0",
@@ -36844,7 +36844,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3164.42 \u00b1 29.55; llama 7B Q4_0 | tg128 | 161.53 \u00b1 0.09",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16191303-llama7b-Q4_0-4",
@@ -36868,7 +36868,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3374.48 \u00b1 12.33; llama 7B Q4_0 | tg128 | 170.44 \u00b1 0.07",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16191303-llama7b-Q4_0-5",
@@ -36988,7 +36988,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3245.11 \u00b1 107.60; llama 7B Q4_0 | tg128 | 134.46 \u00b1 0.27",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16218055-llama7b-Q4_0-2",
@@ -37012,7 +37012,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 3321.11 \u00b1 85.61; llama 7B Q4_0 | tg128 | 139.81 \u00b1 0.40",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16218055-llama7b-Q4_0-3",
@@ -37060,7 +37060,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 7900 XTX; llama 7B Q4_0 | pp512 | 6287.12 \u00b1 324.69; llama 7B Q4_0 | tg128 | 278.22 \u00b1 13.25",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16312072-llama7b-Q4_0",
@@ -37108,7 +37108,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4753.07 \u00b1 57.42; llama 7B Q4_0 | tg128 | 106.70 \u00b1 0.08",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16312072-llama7b-Q4_0-3",
@@ -37156,7 +37156,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4661.14 \u00b1 53.96; llama 7B Q4_0 | tg128 | 109.81 \u00b1 0.30",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16413942-llama7b-Q4_0",
@@ -37180,7 +37180,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4766.48 \u00b1 51.84; llama 7B Q4_0 | tg128 | 108.45 \u00b1 0.49",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16413942-llama7b-Q4_0-2",
@@ -37204,7 +37204,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 1728.29 \u00b1 26.50; llama 7B Q4_0 | tg128 | 32.78 \u00b1 1.77",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16436823-llama7b-Q4_0",
@@ -37228,7 +37228,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1106.09 \u00b1 17.99; llama 7B Q4_0 | pp1024 | 943.35 \u00b1 31.11; llama 7B Q4_0 | pp2048 | 825.25 \u00b1 0.63; llama 7B Q4_0 | pp4096 | 678.23 \u00b1 1.59; llama 7B Q4_0 | pp8192 | 457.73 \u00b1 0.57; llama 7B Q4_0 | pp16384 | 285.17 \u00b1 0.16; llama 7B Q4_0 | pp32768 | 149.55 \u00b1 0.68; llama 7B Q4_0 | tg128 | 44.15 \u00b1 0.03; llama 7B Q4_0 | tg256 | 44.06 \u00b1 0.08; llama 7B Q4_0 | tg512 | 40.62 \u00b1 0.01; llama 7B Q4_0 | tg1024 | 34.24 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16436823-llama7b-Q4_0-2",
@@ -37324,7 +37324,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4732.96 \u00b1 59.88; llama 7B Q4_0 | tg128 | 106.63 \u00b1 0.30",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c16865527-llama7b-Q4_0",
@@ -37492,7 +37492,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4336.99 \u00b1 9.52; llama 7B Q4_0 | tg128 | 102.55 \u00b1 0.25",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c14975200-llama7b-Q4_0-2",
@@ -37516,7 +37516,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4244.92 \u00b1 8.97; llama 7B Q4_0 | tg128 | 98.13 \u00b1 0.17",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15084265-llama7b-Q4_0",
@@ -37540,7 +37540,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 5055.19 \u00b1 109.58; llama 7B Q4_0 | tg128 | 101.27 \u00b1 0.27",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15084265-llama7b-Q4_0-2",
@@ -37564,7 +37564,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon RX 9070 XT; llama 7B Q4_0 | pp512 | 4903.51 \u00b1 96.36; llama 7B Q4_0 | tg128 | 97.28 \u00b1 0.13",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15089622-llama7b-Q4_0",
@@ -37588,7 +37588,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 908.35 \u00b1 2.08; llama 7B Q4_0 | tg128 | 46.51 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15089622-llama7b-Q4_0-2",
@@ -37612,7 +37612,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1012.79 \u00b1 2.51; llama 7B Q4_0 | tg128 | 50.59 \u00b1 0.02",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15089622-llama7b-Q4_0-3",
@@ -37852,7 +37852,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1352.52 \u00b1 2.06; llama 7B Q4_0 | tg128 | 46.46 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15234500-llama7b-Q4_0-2",
@@ -37876,7 +37876,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 1576.59 \u00b1 3.20; llama 7B Q4_0 | tg128 | 50.57 \u00b1 0.01",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15257105-llama7b-Q4_0",
@@ -37948,7 +37948,7 @@
    "source_name": "llama.cpp discussions #15021 (performance thread, AMD ROCm)",
    "retrieved": "2026-09-27",
    "quote": "Radeon 8060S; llama 7B Q4_0 | pp512 | 998.73 \u00b1 0.60; llama 7B Q4_0 | tg128 | 50.30 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-15021-c15926380-llama7b-Q4_0",
@@ -38068,7 +38068,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A770; llama 7B Q4_0 | pp512 | 912.36 \u00b1 3.15; llama 7B Q4_0 | tg128 | 34.47 \u00b1 0.15",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=0 ngl=99"
   },
   {
    "id": "lc-disc-23313-c17015806-llama7b-Q4_0-2",
@@ -38116,7 +38116,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc B580; llama 7B Q4_0 | pp512 | 1721.91 \u00b1 35.90; llama 7B Q4_0 | tg128 | 65.67 \u00b1 0.46",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-23313-c17077818-llama7b-Q4_0-2",
@@ -38140,7 +38140,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc B580; llama 7B Q4_0 | pp512 | 2063.52 \u00b1 3.52; llama 7B Q4_0 | tg128 | 73.76 \u00b1 0.13",
-   "notes": "threads=99"
+   "notes": "threads=99; ngl=99"
   },
   {
    "id": "lc-disc-23313-c17083412-llama7b-Q4_0",
@@ -38428,7 +38428,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1581.29 \u00b1 43.72; llama 7B Q4_0 | tg128 | 53.56 \u00b1 14.29",
-   "notes": "threads=-1"
+   "notes": "threads=-1; fa=0 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17176270-llama7b-Q4_0-8",
@@ -38452,7 +38452,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc Pro B60; llama 7B Q4_0 | pp512 | 1667.43 \u00b1 11.14; llama 7B Q4_0 | tg128 | 65.94 \u00b1 0.47",
-   "notes": "threads=-1"
+   "notes": "threads=-1; fa=0 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17176270-llama7b-Q4_0-9",
@@ -38692,7 +38692,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 478.53 \u00b1 0.65; llama 7B Q4_0 | tg128 | 18.19 \u00b1 0.02",
-   "notes": "threads=-1"
+   "notes": "threads=-1; fa=0 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17197062-llama7b-Q4_0-2",
@@ -38716,7 +38716,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 351.23 \u00b1 0.62; llama 7B Q4_0 | tg128 | 19.12 \u00b1 0.05",
-   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17197062-llama7b-Q4_0-3",
@@ -38740,7 +38740,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 220.98 \u00b1 0.30; llama 7B Q4_0 | tg128 | 18.16 \u00b1 0.05",
-   "notes": "threads=-1"
+   "notes": "threads=-1; fa=0 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17197062-llama7b-Q4_0-4",
@@ -38764,7 +38764,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 216.06 \u00b1 0.11; llama 7B Q4_0 | tg128 | 19.70 \u00b1 0.02",
-   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c17197062-llama7b-Q4_0-5",
@@ -38884,7 +38884,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 276.43 \u00b1 0.23; llama 7B Q4_0 | tg128 | 16.17 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-23313-c17285273-llama7b-Q4_0-2",
@@ -38908,7 +38908,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 347.28 \u00b1 0.06; llama 7B Q4_0 | tg128 | 14.95 \u00b1 0.01",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-23313-c17285273-llama7b-Q4_0-3",
@@ -38932,7 +38932,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 170.14 \u00b1 0.26; llama 7B Q4_0 | tg128 | 15.97 \u00b1 0.01",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99"
   },
   {
    "id": "lc-disc-23313-c17285273-llama7b-Q4_0-4",
@@ -38956,7 +38956,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A380; llama 7B Q4_0 | pp512 | 201.62 \u00b1 0.06; llama 7B Q4_0 | tg128 | 14.96 \u00b1 0.00",
-   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99"
   },
   {
    "id": "lc-disc-23313-c17285273-llama7b-Q4_0-5",
@@ -39316,7 +39316,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 528.15 \u00b1 0.76; muse-glimmer 30B Q4_K - Small | tg128 | 13.66 \u00b1 0.03",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99 sm=layer"
   },
   {
    "id": "lc-disc-23313-c18057036-museglimmer30b-Q4_K - Small-2",
@@ -39340,7 +39340,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 598.60 \u00b1 0.46; muse-glimmer 30B Q4_K - Small | tg128 | 12.57 \u00b1 0.02",
-   "notes": "threads=99; run 2 of 3 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 2 of 3 in this comment (separate llama-bench run; build/flags differ); fa=0 ngl=99 sm=layer"
   },
   {
    "id": "lc-disc-23313-c18057036-museglimmer30b-Q4_K - Small-3",
@@ -39364,7 +39364,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 445.85 \u00b1 0.69; muse-glimmer 30B Q4_K - Small | tg128 | 8.69 \u00b1 0.01",
-   "notes": "threads=99; run 3 of 3 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=99; run 3 of 3 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=99 sm=tensor"
   },
   {
    "id": "lc-disc-23313-c18057036-museglimmer30b-Q4_K - Small-4",
@@ -39532,7 +39532,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc A770; dev=SYCL0/SYCL1; muse-glimmer 30B Q4_K - Small | pp512 | 547.77 \u00b1 0.75; muse-glimmer 30B Q4_K - Small | tg128 | 9.82 \u00b1 0.02",
-   "notes": "threads=99"
+   "notes": "threads=99; fa=1 ngl=99 sm=tensor"
   },
   {
    "id": "lc-disc-23313-c18057036-qwen3527b-Q4_K - Medium",
@@ -40780,7 +40780,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc Pro B70; qwen35 27B Q6_K | pp512 | 1035.09 \u00b1 3.09; qwen35 27B Q6_K | tg128 | 18.91 \u00b1 0.01",
-   "notes": "threads=-1"
+   "notes": "threads=-1; fa=0 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c18195166-qwen3527b-Q6_K-2",
@@ -40804,7 +40804,7 @@
    "source_name": "llama.cpp discussions #23313 (performance thread, Intel SYCL)",
    "retrieved": "2026-09-27",
    "quote": "Arc Pro B70; qwen35 27B Q6_K | pp512 | 688.23 \u00b1 0.50; qwen35 27B Q6_K | tg128 | 18.86 \u00b1 0.01",
-   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ)"
+   "notes": "threads=-1; run 2 of 2 in this comment (separate llama-bench run; build/flags differ); fa=1 ngl=-1"
   },
   {
    "id": "lc-disc-23313-c18176229-llama7b-Q4_0",
