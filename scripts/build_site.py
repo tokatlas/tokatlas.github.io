@@ -3441,6 +3441,34 @@ between builds of the same backend, see the
                         f"{val(rows,'hf-promzeus-glm46-gb10-57k','tps')} @57k, "
                         f"{val(rows,'hf-promzeus-glm46-gb10-112k','tps')} @112k tok/s (the "
                         "355B MoE decays as context grows).")
+        if (venue, issue) == ("llama.cpp", "29973"):
+            if hw == "Threadripper PRO 3975WX" and model == "Qwen3.8-Flash-Next":
+                return ("CPU-only Zen 2 workstation (32C/64T, AVX2, DDR4-2667 at "
+                        "about 46.6 GB/s), Qwen3.8-Flash-Next 177B UD-Q3_K_XL. "
+                        "Build matters more than any runtime knob: the same source "
+                        "tag built with MinGW gcc 16.2.0 decodes "
+                        f"{val(rows,'lc29973-tr-mingw-znver2','tps')} tok/s vs "
+                        f"{val(rows,'lc29973-tr-msvc-b11160','tps')} tok/s under MSVC "
+                        f"({pct(rows,'lc29973-tr-msvc-b11160','lc29973-tr-mingw-znver2','tps'):+.0f}%), "
+                        "and the collapse is ISA-independent (znver2 and haswell "
+                        "multi-variant builds land within 0.01 tok/s of each other), "
+                        "pointing at gcc codegen in the MoE expert-gather decode path. "
+                        "Even the release builds differ: the CUDA build used CPU-only "
+                        f"beats the Vulkan build used CPU-only "
+                        f"{val(rows,'lc29973-tr-relcuda-cpu','tps')} vs "
+                        f"{val(rows,'lc29973-tr-relvulkan-cpu','tps')} tok/s decode. "
+                        "On the server side, -tb 24 lifts long-prompt prefill to "
+                        f"{val(rows,'lc29973-tr-t20-tb24-long','pp_tps')} tok/s "
+                        f"({val(rows,'lc29973-tr-t16-long','pp_tps')} at -t 16), and "
+                        "tuned MTP (--spec-draft-p-min 0.30) beats the default "
+                        f"{val(rows,'lc29973-tr-spec-pmin030','tps')} vs "
+                        f"{val(rows,'lc29973-tr-spec-pmin0','tps')} tok/s; ngram-mod "
+                        "hybrid is worse than tuned MTP "
+                        f"({val(rows,'lc29973-tr-spec-mtp-ngram','tps')} tok/s). "
+                        "Decode peaks at -t 20 (6.83), SMT siblings hurt: -t 32 "
+                        f"{val(rows,'lc29973-tr-t32','tps')}, 16-thread no-SMT masks "
+                        f"{val(rows,'lc29973-tr-mask-nosmt','tps')}, full 32-core mask "
+                        f"{val(rows,'lc29973-tr-mask-full','tps')} tok/s.")
         if (venue, issue) == ("llama.cpp", "30006"):
             if hw == "Dimensity 9400" and model == "Qwen3.5-0.8B":
                 return ("Mali-G925-Immortalis MC12 (Dimensity 9400, Android 16 Termux): "

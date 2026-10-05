@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #29973, MinGW vs MSVC CPU decode collapse on Zen 2 (21 rows)
+
+- llama.cpp discussion #29973 (community): Threadripper PRO 3975WX (Zen 2, 32C/64T, AVX2, 128 GB DDR4-2667), Qwen3.8-Flash-Next 177B UD-Q3_K_XL, pure CPU. Same source tag b11160: MSVC release tg128 6.83 vs MinGW gcc 16.2.0 1.27 tok/s (-81%), ISA-independent (znver2 1.27 vs haswell multi-variant 1.28), prefill barely affected (-5.8%): gcc codegen on the MoE expert-gather decode path. Release builds differ too: cuda12-legacy build CPU-only 35.52/8.87 vs vulkan build 31.46/8.28 (pp/tg). llama-server: -tb 24 lifts long-prompt prefill 41.50 -> 54.46 tok/s; MTP --spec-draft-p-min 0.30 8.94 vs default 8.12 tok/s, p-min 0.50 slower despite 62.1% acceptance, ngram-mod hybrid 8.27, ngram-only 6.86. Thread/affinity sweep: decode peaks at -t 20 (6.83), -t 32 6.21, no-SMT 16-thread masks 6.22, full mask 5.85. Quadro P2000 full offload is a loss: pp 14.36, tg 2.86. 21 rows, 1 A/B group with note (20 rows) + 1 offload row. New hardware: Threadripper PRO 3975WX, Threadripper PRO 3975WX + Quadro P2000.
+- Dataset 4050 -> 4071, hardware 392 -> 394, quote-verified 4633 -> 4654.
+
 ## 2026-10-05: SaturnHeaven Qwen3.8-Flash-Next RANMA EXL3, host-RAM MoE tiers + emulated 16 GiB card (12 rows)
 
 - HF card SaturnHeaven/Qwen3.8-Flash-Next-RANMA-EXL3-GGUF (community): ranma.cpp (ranma_20261005, HIP/ROCm fork that keeps routed experts in host RAM) on a Radeon AI PRO R9700. llama-bench TG128 warm-cache: EXL3 3.05 bpw 53.5 (128 GB RAM) / 52.4 (64 GB), 4.05 bpw 49.6 / 47.7 tok/s; halving the host RAM pool costs about 2-4 percent. MTP smart decode beats plain decode on every arm (3.05 bpw 53.5 -> 60.8 tok/s low end of the published preset range). RX 9070 XT rows are emulated on the R9700 with the expert cache capped to a 16 GiB budget: 43.2 / 37.0 tok/s, about 18-22 percent below the real card at the same RAM tier; MTP at 4.05 bpw drops to 29.1 tok/s, under the 3.05 bpw arm. 12 rows, 2 A/B groups with notes. New hardware: RX 9070 XT (emulated). New backend: ranma.cpp (ROCm).
