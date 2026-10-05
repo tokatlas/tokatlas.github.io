@@ -3550,6 +3550,12 @@ between builds of the same backend, see the
                         f"capacity ({pct(rows,'lc24528-epyc-csantiago-full','lc24528-epyc-gs-mtp2','tps'):+.0f}% "
                         "vs the csantiago full-run number), with the draft layers pinned "
                         "to the second GPU to avoid a device crossing at the shared head. "
+                        "An earlier 80k-capacity run on the same box with much larger "
+                        f"cache budgets reached {val(rows,'lc24528-epyc-gs-mtp2-80k','tps')} "
+                        "tok/s over 10,781 tokens (55.89% MTP2 acceptance), above the "
+                        "256k run, though the author flags it as uncontrolled (bigger "
+                        "budgets, draft device not pinned). Cache budget looks like the "
+                        "dominant lever over context capacity here. "
                         "Cross-machine note: the same csantiago branch hit 49.3 tok/s on "
                         "a desktop 2x RTX 3090 (Ryzen 9950X) with a different patch set, "
                         "so these are not controlled A/Bs.")

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: llama.cpp discussion #24528, csantiago pp figure + GenerelSchwerz 80k reference run (1 row, 1 update)
+
+- llama.cpp discussion #24528 (community): two follow-ups from GenerelSchwerz's rented-server comments. The csantiago78 reconstruction full-run record gains its published prompt processing figure (30.83 t/s on a 380-token prompt). New row: the earlier 80k-capacity moe-cache run, 10,781 tokens at 65.00 tok/s with 55.89% MTP2 acceptance on 21,000/18,000 MiB cache budgets, above the 256k run (62.02) though flagged uncontrolled by the author. EPYC A/B note extended.
+- Dataset 4149 -> 4150, quote-verified 4732 -> 4733.
+
 ## 2026-10-05: llama.cpp discussion #24528, moe-cache budget sweep on GTX 1080 Ti (8 rows)
 
 - llama.cpp discussion #24528 (community): batot1's regression test of the leloch moe-cache-pr branch (8853f0535) on a single GTX 1080 Ti 11 GB (sm_61), Qwen3.6-35B-A3B UD-Q8_K_XL, 8k ctx, experts on CPU. Every VRAM cache budget regresses against the hard-disabled cache path: 19.32 tok/s with the cache off, 13.25 tok/s at a 4096 MB budget (-31%), 18.72 tok/s even at 32 MB (-3%). Regression scales with budget size; old Pascal host path makes the pool cost more than the expert fetches it replaces. 8 rows, 1 A/B group with note. New hardware: GTX 1080 Ti.
