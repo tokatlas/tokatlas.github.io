@@ -11023,7 +11023,7 @@
    "hardware": "RTX 5070 Ti Laptop 12 GB",
    "id": "lc-29620-rtx5070ti-cpu-mtp-c16k",
    "model": "Qwen3-27B",
-   "notes": "pure --cpu-mtp on final commits, acceptance 78.1 pct, +27 pct gen over MTP-off; VRAM peak 10 944 MiB; config=cpu-mtp",
+   "notes": "pure --cpu-mtp on final commits, acceptance 78.1 pct, +27 pct gen over MTP-off; VRAM peak 10 944 MiB; config=cpu-mtp-final",
    "params": "27B",
    "power_w": null,
    "pp_tps": null,
@@ -12664,7 +12664,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, draft n_max 2 (control); arm=master (config=master)",
+   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, draft n_max 2 (control); arm=master (config=control",
    "provenance": "community",
    "quote": "Setup: RX 7900 XTX, Windows 11, AMD proprietary driver 26.8.1 (LLPC), master `da89bb3`.; `llama-bench -p N -n 0`, ms per batch (ThinkingCap-Qwen3.8-27B):; `llama-server`, Q4_K_S, 64k ctx, KV `q4_0`, MTP draft, t/s per client (average of 4 runs):; | 1 slot, draft `n_max` 2 (control) | 81.5 | 78.9 |",
    "retrieved": "2026-09-29",
@@ -12687,7 +12687,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, draft n_max 2 (control); arm=pr (config=pr)",
+   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, draft n_max 2 (control); arm=pr (config=control",
    "provenance": "community",
    "quote": "Setup: RX 7900 XTX, Windows 11, AMD proprietary driver 26.8.1 (LLPC), master `da89bb3`.; `llama-bench -p N -n 0`, ms per batch (ThinkingCap-Qwen3.8-27B):; `llama-server`, Q4_K_S, 64k ctx, KV `q4_0`, MTP draft, t/s per client (average of 4 runs):; | 1 slot, draft `n_max` 2 (control) | 81.5 | 78.9 |",
    "retrieved": "2026-09-29",
@@ -12802,7 +12802,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, n_max 5; arm=master (config=master)",
+   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, n_max 5; arm=master (config=nmax5",
    "provenance": "community",
    "quote": "Setup: RX 7900 XTX, Windows 11, AMD proprietary driver 26.8.1 (LLPC), master `da89bb3`.; `llama-bench -p N -n 0`, ms per batch (ThinkingCap-Qwen3.8-27B):; `llama-server`, Q4_K_S, 64k ctx, KV `q4_0`, MTP draft, t/s per client (average of 4 runs):; | 1 slot, `n_max` 5 | 26.7 | 92.4 |",
    "retrieved": "2026-09-29",
@@ -12825,7 +12825,7 @@
    "params": null,
    "ram_gb": null,
    "tg_tokens": null,
-   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, n_max 5; arm=pr (config=pr)",
+   "notes": "Vulkan MMVQ 4-row policy kept only at 8 columns on RDNA3 proprietary driver; Windows 11, AMD proprietary driver 26.8.1 (LLPC), master da89bb3; llama-server 64k ctx, KV q4_0, MTP draft, t/s per client, average of 4 runs; 1 slot, n_max 5; arm=pr (config=nmax5",
    "provenance": "community",
    "quote": "Setup: RX 7900 XTX, Windows 11, AMD proprietary driver 26.8.1 (LLPC), master `da89bb3`.; `llama-bench -p N -n 0`, ms per batch (ThinkingCap-Qwen3.8-27B):; `llama-server`, Q4_K_S, 64k ctx, KV `q4_0`, MTP draft, t/s per client (average of 4 runs):; | 1 slot, `n_max` 5 | 26.7 | 92.4 |",
    "retrieved": "2026-09-29",
@@ -16372,7 +16372,7 @@
    "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Sparse (`0`) | 1,426.638 | 1,859.655 | **+30.35%**",
    "tps": "1859.655",
    "pp_tps": null,
-   "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Sparse (retention 0); Triton GDN decode path, +30.35% vs CUDA; config=gdn-triton"
+   "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Sparse (retention 0); Triton GDN decode path, +30.35% vs CUDA; config=sparse"
   },
   {
    "id": "vllm-59520-h200-dense-cuda",
@@ -16418,7 +16418,7 @@
    "quote": "The original two-H200 sequential comparison found that selecting the standard Triton path; Every arm used Qwen/Qwen3.5-9B revision; BF16, Model Runner V2, seed 42; Dense (`None`) | 1,536.536 | 2,069.343 | **+34.68%**",
    "tps": "2069.343",
    "pp_tps": null,
-   "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Dense (retention None); Triton GDN decode path, +34.68% vs CUDA; config=gdn-triton"
+   "notes": "Qwen3.5-9B BF16 on 2x H200 TP2, non-spec decode throughput bench, 200 prefix-repetition requests, 204,800 output tokens per arm, prefix cache retention Dense (retention None); Triton GDN decode path, +34.68% vs CUDA; config=dense"
   },
   {
    "id": "vllm-59548-l4-a-default",
