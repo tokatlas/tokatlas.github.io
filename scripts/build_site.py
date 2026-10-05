@@ -402,7 +402,13 @@ between builds of the same backend, see the
                         "residency: the fork keeps hot experts in pinned RAM instead of "
                         "re-reading them from the host over PCIe per miss, and the "
                         "LFU-with-aging policy keeps the VRAM tier's hit rate high "
-                        "enough that the bookkeeping stays amortized.")
+                        "enough that the bookkeeping stays amortized. Shrinking the "
+                        "budget to 16 GB RAM + 12 GB VRAM keeps the advantage: "
+                        f"{val(rows,'lc-lid-qwen36-ncmoe-12gb','tps')} tok/s stock "
+                        f"(--n-cpu-moe 30) vs {val(rows,'lc-lid-qwen36-cache-12gb','tps')} "
+                        "tok/s with the cache at 70 VRAM + 186 pinned-RAM experts "
+                        "(+65% published): the cache degrades gracefully as the VRAM "
+                        "tier shrinks from 120 to 70 experts.")
             if hw == "RTX 5080 (PCIe Gen 4) + Ryzen 3900X" and model == "Qwen3-Coder-Next":
                 return ("Same three-tier expert cache and machine as the Qwen3.6 "
                         "comparison: Qwen3-Coder-Next UD-IQ4_XS at 256k ctx, "
@@ -413,7 +419,12 @@ between builds of the same backend, see the
                         "published as approximate numbers). The model needs 28.7 GB of "
                         "pinned RAM to reach that rate on a 16 GB card, and the author "
                         "notes disk reads on cache misses are the bottleneck on his "
-                        "SATA SSD.")
+                        "SATA SSD. At the 12 GB VRAM target the disk tier switches on "
+                        "(55/402/55 experts VRAM/RAM/disk): "
+                        f"{val(rows,'lc-lid-codernext-ncmoe-12gb','tps')} tok/s stock "
+                        f"(--n-cpu-moe 41) vs {val(rows,'lc-lid-codernext-cache-12gb','tps')} "
+                        "tok/s with the cache (+58% published) - the relative win "
+                        "survives, but the absolute rate halves versus the 16 GB arm.")
         if (venue, issue) == ("llama.cpp", "29429"):
             if hw == "2x RTX 3090" and model == "GLM-5.3-Flash":
                 return ("neurall/llama.cpp fork (VRAM-filling MoE expert cache, builds on "

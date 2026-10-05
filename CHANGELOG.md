@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-05: Lidenburg expert-cache fork, 12 GB VRAM arms (4 rows)
+
+- The moe-expert-caching README benchmark table was rewritten and now names the test machine (RTX 5080 PCIe Gen 4, Ryzen 3900X) for the previously parked 12 GB VRAM rows. Mined 4 rows: Qwen3.6-35B-A3B 66 tok/s cached vs 40 stock (+65%), Qwen3-Coder-Next 27 vs 17 (+58%, disk tier active at 55/402/55 experts). Both A/B notes extended with the 12 GB arms.
+- Dataset 4309 -> 4313, quote-verified 4878 -> 4882.
+
 ## 2026-10-05: webmp3 Sakura expert-pruned cards on Strix Halo (20 rows)
 
 - Five webmp3 Hugging Face cards measured on a 64 GB AMD Strix Halo (Radeon 8060S, Windows):
