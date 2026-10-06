@@ -1339,6 +1339,22 @@ between builds of the same backend, see the
                         "path; the c32 TTFT win is the reduced per-request "
                         "registration overhead.")
             return None
+        if (venue, issue) == ("vLLM", "60187"):
+            return ("The MTP drafter ran its attention without RoPE on the "
+                    "official 1.0 config, which lowered MTP acceptance; the PR "
+                    "restores RoPE on the MTP layer (main-model layers stay "
+                    "NoPE). 16x A100-SXM4-40GB, TP=8, K-EXAONE-236B-A23B FP8, "
+                    "concurrency 16: MTP acceptance rises 85.01% -> 88.28% on "
+                    "GSM8K (output "
+                    f"{val(rows,'vllm-60187-a100x16-gsm8k-main','tps'):.0f} -> "
+                    f"{val(rows,'vllm-60187-a100x16-gsm8k-pr','tps'):.0f} tok/s, "
+                    f"{pct(rows,'vllm-60187-a100x16-gsm8k-main','vllm-60187-a100x16-gsm8k-pr','tps'):+.1f}%) "
+                    "and 67.86% -> 73.07% on MT-Bench (output "
+                    f"{val(rows,'vllm-60187-a100x16-mtb-main','tps'):.0f} -> "
+                    f"{val(rows,'vllm-60187-a100x16-mtb-pr','tps'):.0f} tok/s, "
+                    f"{pct(rows,'vllm-60187-a100x16-mtb-main','vllm-60187-a100x16-mtb-pr','tps'):+.1f}%). "
+                    "RoPE accounts for most of the acceptance gap; the MTP layer "
+                    "was trained with RoPE.")
         if (venue, issue) == ("vLLM", "59916"):
             g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
             k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
