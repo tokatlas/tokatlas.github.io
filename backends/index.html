@@ -12,11 +12,15 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 101 comparable cases so far. For regressions and improvements
+side by side. 103 comparable cases so far. For regressions and improvements
 between builds of the same backend, see the
 <a href="/notes/build-ab.html">build A/B notes</a>.</p>
 <h3>AREX-2 on M6 (Q4_K_M)</h3>
 <ul><li><strong>Splash</strong>: 22 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks" rel="nofollow">source</a></li><li><strong>LM Studio</strong>: 6.8 tok/s (31%) <span class="badge b-com">community</span> <a href="https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Bonsai 2 27B on Arc B580 (PTQ1_0)</h3>
+<ul><li><strong>llama.cpp (SYCL)</strong>: 250 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (SYCL)</strong>: 90 tok/s (36%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (SYCL)</strong>: 44 tok/s (18%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (SYCL)</strong>: 42 tok/s (17%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (SYCL)</strong>: 36 tok/s (14%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (PrismML SYCL fork)</strong>: 21 tok/s (8%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li><li><strong>llama.cpp (PrismML SYCL fork)</strong>: 8 tok/s (3%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29643" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>deci 70B on RTX 5060 Ti (IQ4_XS - 4.25 bpw)</h3>
@@ -375,6 +379,10 @@ sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-2
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 35.59 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/issues/28274" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 16 tok/s (45%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/issues/28274" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-27B on RTX 5090 (Q6_K)</h3>
+<ul><li><strong>llama.cpp (focus-llama)</strong>: 102.7 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29531" rel="nofollow">source</a></li><li><strong>llama.cpp</strong>: 76.2 tok/s (74%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/29531" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-27B on RX 6800 (IQ4_XS)</h3>
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 28.4 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18706574" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 26.1 tok/s (92%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18706574" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
@@ -425,6 +433,6 @@ sampling, and context differences, not just the backend itself.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-06 00:15 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-06 00:29 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

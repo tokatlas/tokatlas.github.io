@@ -557,6 +557,59 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
                         "flat within +-0.2% at every other ub.")
             return None
+        if (venue, issue) == ("llama.cpp", "29643"):
+            if model == "Bonsai 2 27B":
+                return ("Xe2 XMX kernels for ternary weights and q4_0 KV-cache "
+                        "attention on Arc B580, 128K context: the branch reaches "
+                        f"{val(rows,'lc-disc-29643-bonsai-branch','tps')} tok/s plain "
+                        f"generation and {val(rows,'lc-disc-29643-bonsai-branch','pp_tps')} tok/s "
+                        "prompt reading vs "
+                        f"{val(rows,'lc-disc-29643-bonsai-fork','tps')} / "
+                        f"{val(rows,'lc-disc-29643-bonsai-fork','pp_tps')} tok/s on "
+                        "PrismML's fork SYCL support on the same card and flags. At "
+                        "32K context the gap widens: "
+                        f"{val(rows,'lc-disc-29643-bonsai-branch32k','tps')} vs "
+                        f"{val(rows,'lc-disc-29643-bonsai-fork32k','tps')} tok/s. "
+                        "MTP drafting lifts generation to 90 tok/s writing new code "
+                        "and 250-370 tok/s on code edits; a 115K-token history costs "
+                        f"almost nothing ({val(rows,'lc-disc-29643-bonsai-hist115k','tps')} tok/s).")
+            if model == "Gemma 4 12B":
+                return ("The same XMX q4_0 KV attention plus a q4_0 small-batch GEMM "
+                        "generalise to Gemma 4 12B QAT with Google's assistant "
+                        "drafter on Arc B580: "
+                        f"{val(rows,'lc-disc-29643-gemma412b-old','tps')} -> "
+                        f"{val(rows,'lc-disc-29643-gemma412b-new','tps')} tok/s "
+                        "(published as about 40 to 100 t/s).")
+            return None
+        if (venue, issue) == ("llama.cpp", "29861"):
+            if model == "Bonsai":
+                return ("Cross-backend tensor+mode-split (GPU + ANE via IOSurface "
+                        "buffer sharing) on a Mac Mini M4 16GB, bonsai-llama.cpp "
+                        "fork, PQ2_0: prompt processing "
+                        f"{val(rows,'lc-disc-29861-macmini-bonsai-before','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29861-macmini-bonsai-after','pp_tps')} tok/s "
+                        "with decode unchanged (mode-split keeps decode on the GPU).")
+            if model == "Qwen3.8-Flash-Next":
+                return ("Same cross-backend idea on a Ryzen 8845HS (Radeon iGPU + "
+                        "XDNA NPU), Qwen3.8-Flash-Next UD-IQ1_S: prompt processing "
+                        f"{val(rows,'lc-disc-29861-8845hs-qwen38-before','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29861-8845hs-qwen38-after','pp_tps')} tok/s "
+                        "with GPU/NPU tensor+mode-split, decode unchanged. A related "
+                        "ROCm/Vulkan tensor-split PoC on the same chip recovered 80% "
+                        "of the ROCm-over-Vulkan prefill advantage while keeping "
+                        "Vulkan decode speed (relative figure only, not recorded).")
+            return None
+        if (venue, issue) == ("llama.cpp", "29531"):
+            if model == "Qwen3.8-27B":
+                return ("Declarative Attention (focus-llama): keeps the full 230K "
+                        "context but attends only a 3-40K hot window, offloading the "
+                        "rest of the KV cache and refilling on demand. Identical 1 "
+                        "hour coding session on an RTX 5090, Q6_K: "
+                        f"{val(rows,'lc-disc-29531-5090-qwen3827b-vanilla','tps')} -> "
+                        f"{val(rows,'lc-disc-29531-5090-qwen3827b-focus','tps')} t/s "
+                        "(+35% published). The sparse gather kernel supports f16 and "
+                        "q4_0 KV caches; other KV quants fall back to the dense path.")
+            return None
         if (venue, issue) == ("llama.cpp", "29964"):
             if model == "Qwen3.8":
                 return ("Pipeline-parallelism patch for MoE weights in host RAM on "
@@ -596,7 +649,7 @@ between builds of the same backend, see the
                         "shows -20% for this model as an artifact (per-test "
                         "contexts trigger the upload-all-experts path); on the "
                         "server it is at parity.")
-            if model == "Qwen3.5-35B":
+            if model == "Qwen3.5 35B":
                 return ("Topology regression bisect, model fully in VRAM, 52421-token "
                         "prompt, c=65536: #29184 broke the constant-graph assumption "
                         "for models with shared experts on CUDA, halving prefill "
