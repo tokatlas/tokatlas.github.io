@@ -784,6 +784,23 @@ between builds of the same backend, see the
                         "Context size and -ub 256 were ruled out; the suspect is "
                         "the GDN kernel tuning that landed in the window.")
             return None
+        if (venue, issue) == ("llama.cpp", "30042"):
+            if model == "GLM-5.3-Flash":
+                return ("Removes the obsolete gather path in the glm5-next sparse "
+                        "attention (gather_mla_rows), leaving one dense FA path. "
+                        f"RTX PRO 6000, UD-IQ1_S, -ub 16, decode. With FA on: "
+                        f"{val(rows,'lc30042-rtxpro6000-faon-8192-before','tps')} -> "
+                        f"{val(rows,'lc30042-rtxpro6000-faon-8192-after','tps')} tok/s "
+                        f"({pct(rows,'lc30042-rtxpro6000-faon-8192-before','lc30042-rtxpro6000-faon-8192-after','tps'):+.0f}%) "
+                        f"at 8192, {val(rows,'lc30042-rtxpro6000-faon-32768-before','tps')} -> "
+                        f"{val(rows,'lc30042-rtxpro6000-faon-32768-after','tps')} tok/s "
+                        f"({pct(rows,'lc30042-rtxpro6000-faon-32768-before','lc30042-rtxpro6000-faon-32768-after','tps'):+.0f}%) "
+                        f"at 32768; with FA off at 32768 it is flat at "
+                        f"{val(rows,'lc30042-rtxpro6000-faoff-32768-after','tps')} tok/s "
+                        "(the -ub <= 16 edge case). The FA speedup comes from the "
+                        "gathered matmuls: the MLA latent is shared by the 64 "
+                        "heads but was reread per head, while FA loads it once.")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
