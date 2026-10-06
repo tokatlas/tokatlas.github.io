@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 11 (+252 rows)
+
+- Next 60 of the 915-trace corpus (March 9 era) mined: 151 traces, 252 rows. New models HY-MT1.5-1.8B, Qwen3-VL-8B-Instruct, Qwen3.5-2B-Claude-4.6-Opus-Reasoning-Distilled.
+- Dataset passes 6000 measured rows: 5812 -> 6064. Drift watch (vllm-59916/59973/60226, Gyro) all green.
+
 ## 2026-10-06: oMLX traces batch 10 (+279 rows)
 
 - Next 60 of the 915-trace corpus (March 9 era) mined: 161 traces, 279 rows on M4 Pro, M5, M1/M2. New models Qwen3.5-2B, Qwen3.5-4B-OptiQ.
