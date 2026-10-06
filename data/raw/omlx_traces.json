@@ -23,7 +23,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 1k 897.8 52.3 66.3 GB current",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 66.3 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 66.3 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-gmlxlf27-ctx4096",
@@ -47,7 +47,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 4k 935.9 47.9 66.7 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 66.7 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 66.7 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-gmlxlf27-ctx8192",
@@ -71,7 +71,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 8k 920.4 47.4 67.0 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 67.0 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 67.0 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-gmlxlf27-ctx16384",
@@ -95,7 +95,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 16k 862.3 43.1 67.7 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 67.7 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 67.7 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-gmlxlf27-ctx32768",
@@ -119,7 +119,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 32k 746.1 36.4 69.1 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 69.1 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 69.1 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-gmlxlf27-ctx65536",
@@ -143,7 +143,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gmlxlf27",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-122B-A10B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 64k 570.2 27.7 71.9 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 71.9 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 71.9 GB at this context; identical duplicate traces of the same session: vlb9nyb0, vx4ljpey, cavk7p1r, lhzzunu0, 43mgnpxt; config=80c"
   },
   {
    "id": "omlx-glkostsz-ctx1024",
@@ -167,7 +167,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/glkostsz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-397B-A17B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 6bit; 1k 454.0 28.5 302.7 GB current",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 302.7 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 302.7 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514; config=80c"
   },
   {
    "id": "omlx-glkostsz-ctx4096",
@@ -191,7 +191,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/glkostsz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-397B-A17B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 6bit; 4k 487.1 27.2 302.9 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 302.9 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 302.9 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514; config=80c"
   },
   {
    "id": "omlx-glkostsz-ctx8192",
@@ -215,7 +215,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/glkostsz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-397B-A17B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 6bit; 8k 484.9 26.0 303.3 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 303.3 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 303.3 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514; config=80c"
   },
   {
    "id": "omlx-glkostsz-ctx16384",
@@ -239,7 +239,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/glkostsz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-397B-A17B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 6bit; 16k 462.0 23.6 304.0 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 304.0 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 304.0 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514; config=80c"
   },
   {
    "id": "omlx-glkostsz-ctx32768",
@@ -263,7 +263,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/glkostsz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-397B-A17B on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 6bit; 32k 422.5 20.2 305.5 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 305.5 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 305.5 GB at this context; identical duplicate traces of the same session: 0ogsu5db, au03cy2k, q66jpzr6, rb7hx514; config=80c"
   },
   {
    "id": "omlx-pmdh45qm-ctx1024",
@@ -287,7 +287,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/pmdh45qm",
    "retrieved": "2026-10-06",
    "quote": "MiniMax-M2.5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 8bit; 1k 600.4 34.2 227.2 GB current",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 227.2 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 227.2 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr; config=80c"
   },
   {
    "id": "omlx-pmdh45qm-ctx4096",
@@ -311,7 +311,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/pmdh45qm",
    "retrieved": "2026-10-06",
    "quote": "MiniMax-M2.5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 8bit; 4k 707.9 30.1 228.2 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 228.2 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 228.2 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr; config=80c"
   },
   {
    "id": "omlx-pmdh45qm-ctx8192",
@@ -335,7 +335,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/pmdh45qm",
    "retrieved": "2026-10-06",
    "quote": "MiniMax-M2.5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 8bit; 8k 663.9 25.9 229.1 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 229.1 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 229.1 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr; config=80c"
   },
   {
    "id": "omlx-pmdh45qm-ctx16384",
@@ -359,7 +359,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/pmdh45qm",
    "retrieved": "2026-10-06",
    "quote": "MiniMax-M2.5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 8bit; 16k 564.2 21.1 231.1 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 231.1 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 231.1 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr; config=80c"
   },
   {
    "id": "omlx-pmdh45qm-ctx32768",
@@ -383,7 +383,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/pmdh45qm",
    "retrieved": "2026-10-06",
    "quote": "MiniMax-M2.5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 8bit; 32k 427.8 14.6 235.0 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 235.0 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 235.0 GB at this context; identical duplicate traces of the same session: 6f5a4eko, rf82ex1p, jye2fo4m, s15twedr; config=80c"
   },
   {
    "id": "omlx-ped6lbh2-ctx1024",
@@ -407,7 +407,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ped6lbh2",
    "retrieved": "2026-10-06",
    "quote": "GLM-5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 1k 186.0 16.6 391.8 GB current",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 391.8 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 391.8 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k; config=80c"
   },
   {
    "id": "omlx-ped6lbh2-ctx4096",
@@ -431,7 +431,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ped6lbh2",
    "retrieved": "2026-10-06",
    "quote": "GLM-5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 4k 180.1 13.8 394.1 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 394.1 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 394.1 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k; config=80c"
   },
   {
    "id": "omlx-ped6lbh2-ctx8192",
@@ -455,7 +455,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ped6lbh2",
    "retrieved": "2026-10-06",
    "quote": "GLM-5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 8k 154.2 13.1 396.7 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 396.7 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 396.7 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k; config=80c"
   },
   {
    "id": "omlx-ped6lbh2-ctx16384",
@@ -479,7 +479,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ped6lbh2",
    "retrieved": "2026-10-06",
    "quote": "GLM-5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 16k 117.3 12.0 402.7 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 402.7 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 402.7 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k; config=80c"
   },
   {
    "id": "omlx-ped6lbh2-ctx32768",
@@ -503,7 +503,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ped6lbh2",
    "retrieved": "2026-10-06",
    "quote": "GLM-5 on M3 Ultra (80c); M3 Ultra (80c) · 512 GB · 4bit; 32k 77.3 10.4 415.4 GB view",
-   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 415.4 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k"
+   "notes": "oMLX community benchmark on M3 Ultra (80c) 512 GB; peak memory 415.4 GB at this context; identical duplicate traces of the same session: w2ncir8g, dig8n87z, 314vh14k; config=80c"
   },
   {
    "id": "omlx-hizr47ls-ctx1024",
@@ -527,7 +527,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/hizr47ls",
    "retrieved": "2026-10-06",
    "quote": "Huihui-Qwen3.8-27B-abliterated-MTPLX-Q8 on M5 Max (40c); M5 Max (40c) · 64 GB · 8bit; 1k tokens 804.0 PP tok/s 49.8 TG tok/s 1274 TTFT (ms) 33.8 Peak mem",
-   "notes": "MTPLX build with MTP heads enabled; oMLX community benchmark trace, single run at 1k context; peak memory 33.8 GB; TTFT 1274 ms; duplicate traces of the same session: none"
+   "notes": "MTPLX build with MTP heads enabled; oMLX community benchmark trace, single run at 1k context; peak memory 33.8 GB; TTFT 1274 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-y73j2owy-ctx131072",
@@ -551,7 +551,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/y73j2owy",
    "retrieved": "2026-10-06",
    "quote": "Qwen3-Coder-Next-6bit on M5 Max (40c); M5 Max (40c) · 128 GB · 6bit; 128k tokens 1,588 PP tok/s 51.3 TG tok/s 82528 TTFT (ms) 65.5 Peak mem",
-   "notes": "oMLX community benchmark trace, single run at 128k context; peak memory 65.5 GB; TTFT 82528 ms; duplicate traces of the same session: none"
+   "notes": "oMLX community benchmark trace, single run at 128k context; peak memory 65.5 GB; TTFT 82528 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-gkk8vpx0-ctx1024",
@@ -575,7 +575,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gkk8vpx0",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-9B-MLX-4bit on M4 (10c); M4 (10c) · 16 GB · 4bit; 1k 225.0 19.0 5.8 GB view",
-   "notes": "oMLX community benchmark trace; peak memory 5.8 GB at this context; duplicate traces of the same session: rxbp96yc"
+   "notes": "oMLX community benchmark trace; peak memory 5.8 GB at this context; duplicate traces of the same session: rxbp96yc; config=10c"
   },
   {
    "id": "omlx-gkk8vpx0-ctx4096",
@@ -599,7 +599,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/gkk8vpx0",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.5-9B-MLX-4bit on M4 (10c); M4 (10c) · 16 GB · 4bit; 4k 239.4 19.4 6.2 GB current",
-   "notes": "oMLX community benchmark trace; peak memory 6.2 GB at this context; duplicate traces of the same session: rxbp96yc"
+   "notes": "oMLX community benchmark trace; peak memory 6.2 GB at this context; duplicate traces of the same session: rxbp96yc; config=10c"
   },
   {
    "id": "omlx-5aiww3ow-ctx1024",
@@ -623,7 +623,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/5aiww3ow",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 1k 277.9 46.8 22.7 GB view",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 22.7 GB at this context; duplicate traces of the same session: h0jneyhw"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 22.7 GB at this context; duplicate traces of the same session: h0jneyhw; config=64c"
   },
   {
    "id": "omlx-5aiww3ow-ctx4096",
@@ -647,7 +647,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/5aiww3ow",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 4k 286.4 41.7 26.5 GB current",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.5 GB at this context; duplicate traces of the same session: h0jneyhw"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.5 GB at this context; duplicate traces of the same session: h0jneyhw; config=64c"
   },
   {
    "id": "omlx-81yp3qxz-ctx4096",
@@ -671,7 +671,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/81yp3qxz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 4k 285.3 42.0 26.6 GB current",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.6 GB at this context; duplicate traces of the same session: vxygr040"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.6 GB at this context; duplicate traces of the same session: vxygr040; config=64c"
   },
   {
    "id": "omlx-81yp3qxz-ctx16384",
@@ -695,7 +695,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/81yp3qxz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 16k 268.6 44.2 28.6 GB view",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 28.6 GB at this context; duplicate traces of the same session: vxygr040"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 28.6 GB at this context; duplicate traces of the same session: vxygr040; config=64c"
   },
   {
    "id": "omlx-yrplfaht-ctx4096",
@@ -719,7 +719,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/yrplfaht",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 4k 286.9 39.9 26.6 GB current",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.6 GB at this context; duplicate traces of the same session: fgxc9kks"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 26.6 GB at this context; duplicate traces of the same session: fgxc9kks; config=64c"
   },
   {
    "id": "omlx-yrplfaht-ctx16384",
@@ -743,7 +743,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/yrplfaht",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-MTPLX-Optimized-Speed-oMLX on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 16k 273.6 43.0 28.6 GB view",
-   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 28.6 GB at this context; duplicate traces of the same session: fgxc9kks"
+   "notes": "community MTPLX build with MTP heads; oMLX community benchmark trace; peak memory 28.6 GB at this context; duplicate traces of the same session: fgxc9kks; config=64c"
   },
   {
    "id": "omlx-r9z3owfy-ctx4096",
@@ -767,7 +767,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/r9z3owfy",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-Uncensored-OptiQ-4bit on M5 Pro (20c); M5 Pro (20c) · 64 GB · 4bit; 4k 507.3 14.2 21.2 GB view",
-   "notes": "oMLX community benchmark trace; peak memory 21.2 GB at this context; duplicate traces of the same session: hyn7bzvn"
+   "notes": "oMLX community benchmark trace; peak memory 21.2 GB at this context; duplicate traces of the same session: hyn7bzvn; config=20c"
   },
   {
    "id": "omlx-r9z3owfy-ctx16384",
@@ -791,7 +791,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/r9z3owfy",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-Uncensored-OptiQ-4bit on M5 Pro (20c); M5 Pro (20c) · 64 GB · 4bit; 16k 453.9 13.7 21.8 GB current",
-   "notes": "oMLX community benchmark trace; peak memory 21.8 GB at this context; duplicate traces of the same session: hyn7bzvn"
+   "notes": "oMLX community benchmark trace; peak memory 21.8 GB at this context; duplicate traces of the same session: hyn7bzvn; config=20c"
   },
   {
    "id": "omlx-93i8c9sx-ctx1024",
@@ -815,7 +815,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/93i8c9sx",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (48c); M1 Ultra (48c) · 64 GB · 4bit; 1k 228.6 29.0 16.6 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 16.6 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 16.6 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i; config=48c"
   },
   {
    "id": "omlx-93i8c9sx-ctx4096",
@@ -839,7 +839,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/93i8c9sx",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (48c); M1 Ultra (48c) · 64 GB · 4bit; 4k 245.4 28.3 20.1 GB current",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 20.1 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 20.1 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i; config=48c"
   },
   {
    "id": "omlx-93i8c9sx-ctx8192",
@@ -863,7 +863,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/93i8c9sx",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (48c); M1 Ultra (48c) · 64 GB · 4bit; 8k 239.8 27.7 20.9 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 20.9 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 20.9 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i; config=48c"
   },
   {
    "id": "omlx-93i8c9sx-ctx16384",
@@ -887,7 +887,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/93i8c9sx",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (48c); M1 Ultra (48c) · 64 GB · 4bit; 16k 229.0 26.0 22.3 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 22.3 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 22.3 GB at this context; duplicate traces of the same session: c31tq5pg, ev03nt9i; config=48c"
   },
   {
    "id": "omlx-izpi8f74-ctx1024",
@@ -911,7 +911,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/izpi8f74",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 1k 273.8 42.2 19.4 GB current",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 19.4 GB at this context; duplicate traces of the same session: ewfym865"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 19.4 GB at this context; duplicate traces of the same session: ewfym865; config=64c"
   },
   {
    "id": "omlx-izpi8f74-ctx4096",
@@ -935,7 +935,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/izpi8f74",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-fp16-mtp on M1 Ultra (64c); M1 Ultra (64c) · 64 GB · 4bit; 4k 291.4 43.0 23.1 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 23.1 GB at this context; duplicate traces of the same session: ewfym865"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 23.1 GB at this context; duplicate traces of the same session: ewfym865; config=64c"
   },
   {
    "id": "omlx-b9kw2q58-ctx1024",
@@ -959,7 +959,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/b9kw2q58",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 1k 210.2 27.9 33.7 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 33.7 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 33.7 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5; config=40c"
   },
   {
    "id": "omlx-b9kw2q58-ctx4096",
@@ -983,7 +983,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/b9kw2q58",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 4k 214.3 25.8 37.3 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 37.3 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 37.3 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5; config=40c"
   },
   {
    "id": "omlx-b9kw2q58-ctx65536",
@@ -1007,7 +1007,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/b9kw2q58",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 64k 149.6 15.4 43.1 GB current",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 43.1 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 43.1 GB at this context; duplicate traces of the same session: d8hclmdc, xc8piny5; config=40c"
   },
   {
    "id": "omlx-ta01qzx6-ctx199680",
@@ -1031,7 +1031,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ta01qzx6",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ5e-mtp on M5 Max (40c); M5 Max (40c) · 128 GB · 5bit; 195k tokens 2,176 PP tok/s 50.0 TG tok/s 91925 TTFT (ms) 96.5 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.5 GB; TTFT 91925 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.5 GB; TTFT 91925 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-lorkjlol-ctx1024",
@@ -1055,7 +1055,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/lorkjlol",
    "retrieved": "2026-10-06",
    "quote": "gemma-4-26b-a4b-it-UD-MLX-3bit on M5 Pro (20c); M5 Pro (20c) · 48 GB · 3bit; 1k 1,877 67.9 12.1 GB current",
-   "notes": "oMLX community benchmark trace; peak memory 12.1 GB at this context; duplicate traces of the same session: 7vi3j31s"
+   "notes": "oMLX community benchmark trace; peak memory 12.1 GB at this context; duplicate traces of the same session: 7vi3j31s; config=20c"
   },
   {
    "id": "omlx-lorkjlol-ctx4096",
@@ -1079,7 +1079,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/lorkjlol",
    "retrieved": "2026-10-06",
    "quote": "gemma-4-26b-a4b-it-UD-MLX-3bit on M5 Pro (20c); M5 Pro (20c) · 48 GB · 3bit; 4k 1,958 61.9 12.3 GB view",
-   "notes": "oMLX community benchmark trace; peak memory 12.3 GB at this context; duplicate traces of the same session: 7vi3j31s"
+   "notes": "oMLX community benchmark trace; peak memory 12.3 GB at this context; duplicate traces of the same session: 7vi3j31s; config=20c"
   },
   {
    "id": "omlx-ghd4mymd-ctx4096",
@@ -1103,7 +1103,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ghd4mymd",
    "retrieved": "2026-10-06",
    "quote": "mlx-community--Qwen3.8-27B-8bit on M5 Pro (20c); M5 Pro (20c) · 64 GB · 8bit; 4k 471.0 9.7 29.7 GB current",
-   "notes": "mlx-community quantized weights; oMLX community benchmark trace; peak memory 29.7 GB at this context; duplicate traces of the same session: p9ujrg1n"
+   "notes": "mlx-community quantized weights; oMLX community benchmark trace; peak memory 29.7 GB at this context; duplicate traces of the same session: p9ujrg1n; config=20c"
   },
   {
    "id": "omlx-ghd4mymd-ctx16384",
@@ -1127,7 +1127,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ghd4mymd",
    "retrieved": "2026-10-06",
    "quote": "mlx-community--Qwen3.8-27B-8bit on M5 Pro (20c); M5 Pro (20c) · 64 GB · 8bit; 16k 435.6 9.3 30.3 GB view",
-   "notes": "mlx-community quantized weights; oMLX community benchmark trace; peak memory 30.3 GB at this context; duplicate traces of the same session: p9ujrg1n"
+   "notes": "mlx-community quantized weights; oMLX community benchmark trace; peak memory 30.3 GB at this context; duplicate traces of the same session: p9ujrg1n; config=20c"
   },
   {
    "id": "omlx-3oc0icev-ctx32768",
@@ -1151,7 +1151,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/3oc0icev",
    "retrieved": "2026-10-06",
    "quote": "GLM-5.3-Flash-MLX-4bit-MTP on M5 Ultra (64c); M5 Ultra (64c) · 256 GB · 4bit; 32k tokens 1,950 PP tok/s 85.6 TG tok/s 16806 TTFT (ms) 174.5 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 32k context; peak memory 174.5 GB; TTFT 16806 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 32k context; peak memory 174.5 GB; TTFT 16806 ms; duplicate traces of the same session: none; config=64c"
   },
   {
    "id": "omlx-ibm0l1ax-ctx65536",
@@ -1175,7 +1175,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/ibm0l1ax",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-mtp on M5 Ultra (64c); M5 Ultra (64c) · 96 GB · 4bit; 64k tokens 1,119 PP tok/s 89.3 TG tok/s 58544 TTFT (ms) 23.1 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 64k context; peak memory 23.1 GB; TTFT 58544 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 64k context; peak memory 23.1 GB; TTFT 58544 ms; duplicate traces of the same session: none; config=64c"
   },
   {
    "id": "omlx-9ey95s4r-ctx32768",
@@ -1199,7 +1199,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/9ey95s4r",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ4e-mtp on M5 Ultra (64c); M5 Ultra (64c) · 96 GB · 4bit; 32k tokens 1,299 PP tok/s 96.9 TG tok/s 25219 TTFT (ms) 20.8 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 32k context; peak memory 20.8 GB; TTFT 25219 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 32k context; peak memory 20.8 GB; TTFT 25219 ms; duplicate traces of the same session: none; config=64c"
   },
   {
    "id": "omlx-o0qtu8rz-ctx1024",
@@ -1223,7 +1223,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/o0qtu8rz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 1k 217.3 33.4 33.9 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 33.9 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 33.9 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0; config=40c"
   },
   {
    "id": "omlx-o0qtu8rz-ctx4096",
@@ -1247,7 +1247,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/o0qtu8rz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 4k 220.0 25.7 37.3 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 37.3 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 37.3 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0; config=40c"
   },
   {
    "id": "omlx-o0qtu8rz-ctx65536",
@@ -1271,7 +1271,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/o0qtu8rz",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-27B-oQ8e-mtp on M3 Max (40c); M3 Max (40c) · 128 GB · 8bit; 64k 142.9 18.2 43.0 GB current",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 43.0 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 43.0 GB at this context; duplicate traces of the same session: ijsokdxs, lr6txaa0; config=40c"
   },
   {
    "id": "omlx-mxe30jah-ctx1024",
@@ -1295,7 +1295,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/mxe30jah",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ4e-mtp on M3 Ultra (60c); M3 Ultra (60c) · 256 GB · 4bit; 1k 650.7 87.7 99.1 GB current",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 99.1 GB at this context; duplicate traces of the same session: ws73upph"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 99.1 GB at this context; duplicate traces of the same session: ws73upph; config=60c"
   },
   {
    "id": "omlx-mxe30jah-ctx4096",
@@ -1319,7 +1319,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/mxe30jah",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ4e-mtp on M3 Ultra (60c); M3 Ultra (60c) · 256 GB · 4bit; 4k 730.0 71.3 100.9 GB view",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 100.9 GB at this context; duplicate traces of the same session: ws73upph"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace; peak memory 100.9 GB at this context; duplicate traces of the same session: ws73upph; config=60c"
   },
   {
    "id": "omlx-1pcoe9m2-ctx199680",
@@ -1343,7 +1343,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/1pcoe9m2",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ5e-mtp on M5 Max (40c); M5 Max (40c) · 128 GB · 5bit; 195k tokens 1,970 PP tok/s 45.8 TG tok/s 101514 TTFT (ms) 96.7 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.7 GB; TTFT 101514 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.7 GB; TTFT 101514 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-0pf7d2jx-ctx199680",
@@ -1367,7 +1367,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/0pf7d2jx",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ5e-mtp on M5 Max (40c); M5 Max (40c) · 128 GB · 5bit; 195k tokens 1,976 PP tok/s 45.2 TG tok/s 101217 TTFT (ms) 96.6 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.6 GB; TTFT 101217 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.6 GB; TTFT 101217 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-mu464l99-ctx199680",
@@ -1391,7 +1391,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/mu464l99",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ5e-mtp on M5 Max (40c); M5 Max (40c) · 128 GB · 5bit; 195k tokens 1,921 PP tok/s 45.7 TG tok/s 104095 TTFT (ms) 96.1 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.1 GB; TTFT 104095 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.1 GB; TTFT 104095 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-w3b5y9x6-ctx199680",
@@ -1415,7 +1415,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/w3b5y9x6",
    "retrieved": "2026-10-06",
    "quote": "Qwen3.8-Flash-Next-oQ5e-mtp on M5 Max (40c); M5 Max (40c) · 128 GB · 5bit; 195k tokens 2,061 PP tok/s 49.4 TG tok/s 97049 TTFT (ms) 96.5 Peak mem",
-   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.5 GB; TTFT 97049 ms; duplicate traces of the same session: none"
+   "notes": "MTP speculative decoding enabled; oMLX community benchmark trace, single run at 195k context; peak memory 96.5 GB; TTFT 97049 ms; duplicate traces of the same session: none; config=40c"
   },
   {
    "id": "omlx-w1xonjvm-ctx1024",
@@ -1439,7 +1439,7 @@
    "source_name": "oMLX community benchmark trace: https://omlx.ai/benchmarks/performance/w1xonjvm",
    "retrieved": "2026-10-06",
    "quote": "mlx-community--Qwen3.8-27B-4bit on M2 Max (30c); M2 Max (30c) · 64 GB · 4bit; 1k tokens 115.0 PP tok/s 20.0 TG tok/s 8905 TTFT (ms) 16.0 Peak mem",
-   "notes": "mlx-community quantized weights; oMLX community benchmark trace, single run at 1k context; peak memory 16.0 GB; TTFT 8905 ms; duplicate traces of the same session: none"
+   "notes": "mlx-community quantized weights; oMLX community benchmark trace, single run at 1k context; peak memory 16.0 GB; TTFT 8905 ms; duplicate traces of the same session: none; config=30c"
   }
  ]
 }
