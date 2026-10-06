@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 13 (+178 rows)
+
+- 99 leftover candidate traces mined (no new fetch needed): community builds of Ornith-1.5-35B-A3B (BigBang MTP, oQ6e MTP), LFM2.5-8B-A1B, Qwen3.8-Flash-Next-REAP-288 (oQ4e, MTP+PLE), Qwen3.5-122B-A10B 6bit, gemma4 26B.A4B QAT, and more.
+- Dataset 6254 -> 6432.
+
 ## 2026-10-06: oMLX traces batch 12 (+190 rows)
 
 - Next 60 of the corpus mined; the crawl has now reached today's traces (2026-10-06, e.g. Qwen3.8-27B oQ8e MTP on M3 Max 128 GB), so the March-to-present sweep is nearly complete.
