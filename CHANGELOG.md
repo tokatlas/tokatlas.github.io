@@ -1,5 +1,47 @@
 # Changelog
 
+## 2026-10-06: vLLM + llama.cpp performance PRs (Blackwell, ROCm, Hopper, Metal, Vulkan) (155 rows)
+
+- Overall 2026-10-06 work (this and the four entries below): dataset 4321 -> 4563, quote-verified 4882 -> 5212.
+- vLLM #60226 (community, SPEED-Bench harness): context-aware sparse NVFP4 lm_head baseline on GB10, Qwen3.6-35B-A3B NVFP4 + MTP k=3 with FP8 KV; stock NVFP4-head decode 117.8 tok/s at c=1 and 73.4 at c=4 (PR arms published as +7.7%/+3.7%). 2 rows, 1 A/B group.
+- vLLM #60220 (sourced): FlashMLA sparse fp8 workspace staging enables MNBT=32K serving on 8xH100 (new hardware), GLM-5.3-Flash FP8, total tok/s from vllm bench serve. 8 rows.
+- vLLM #60216 (sourced): ROCm fused AITER MonoKernel GLM-5 sparse-layer decode on 8x MI355X (new hardware); c16 rows document the crossover. 12 rows.
+- vLLM #60187 (sourced): K-EXAONE-236B-A23B MTP RoPE bugfix on 16x A100-SXM4-40GB (new hardware). 4 rows, 1 A/B group.
+- vLLM #60161 + llama.cpp #30035 + #30036: 92 rows (gather-DCP re-measure, Qwen3.5-family generation/prompt sweeps across backends); A/B notes.
+- vLLM #60159 (sourced): Kimi-K3 native merge_attn_states on 8x MI355X, 4 rows. #60158: DiffusionGemma-26B-A4B on B300, FA4 hd512 vs Triton, 2 rows. #60153: gfx942 mHC seam kernel on 4x MI325X (new hardware), DSV4.1-Flash off/on A/B, 4 rows. #60122 unparked: DeepSeek-V3.1 on 4x NVIDIA GB300 (new hardware), batch-invariant TRITON_MLA vs main, 4 rows.
+- llama.cpp #30048: Strix Halo Vulkan 2M-ctx prefill, Qwen3.5-2B UD-Q4_K_XL 213.69 t/s at 1M tokens, 1 row. #30047: Metal few-row MMA MUL_MAT_ID, Qwen3.6-35B-A3B Q4_K_M on Apple M3 Ultra, seq 1-16 (flat to seq8, +7% at seq16), 12 rows, 1 A/B group. #30042: glm5-next gather-path removal on RTX PRO 6000, 6 rows. #30039: Vulkan RDNA1 gfx1010 prompt-processing regression on RX 5700 XT, 2 rows. #30033: 2x Intel B70 (new hardware) Qwen3.8-Flash-Next UD-IQ3_XXS, PR #29622 regression A/B, 2 rows.
+- New hardware: 8x MI355X, 8xH100, 16x A100-SXM4-40GB, 4x MI325X, 4x NVIDIA GB300, 2x Intel B70.
+
+## 2026-10-06: Hugging Face cards (REAP expert pruning, quant A/B, MTP) (61 rows)
+
+- kueizen Marco REAP expert-pruning sweeps (Marco-Mini-Instruct, Marco-Nano-Instruct), 18 records; kueizen Qwen3.6-35B-A3B-REAP-GGUF sweep on RTX 3090, 9 rows.
+- local-inference-lab GLM-5.3-Flash vLLM card on 2x RTX PRO 6000 Blackwell Max-Q (new hardware), c1/c8 decode with MTP k=3, 2 rows.
+- firetussin Qwen3.8-27B-pi RCO allocation-transfer quant A/B on A100 PCIe 80 GB (new hardware), IQ3_XXS vs IQ2_M, 2 records.
+- ddalcu Qwen3.8-Flash-Next mlx-serve mixed 4/8-bit pack on M4 Max 128 GB (serial 60, MTP 78, prefill 730), 3 rows.
+- AEON-7 Qwen3.6-27B merge on M4 Pro 48 GB (FP4/8-bit/MTP sweep) and Dankpaws Swift 1.5 Flash-Next on M5 Ultra (mlx-serve vs IQ3_XXS), 20 rows.
+- Schiltmans DFlash2-ft5 drafter card on M4 Pro Metal (6 rows) + Sakura ISTA-Darwin-R3 (1 row); dropped 19 duplicates of already-mined webmp3 cards.
+
+## 2026-10-06: llmcheck.net re-sync to v2026-10-05 (net -97 rows)
+
+- Endpoint moved to /data/benchmarks.json (new single-array format with a per-row provenance field); quotes regenerated from the new format.
+- Re-sync reclassified rows between measured and estimated (moving estimates to reference/), dropped duplicate rows, and re-synced drifted values. Net effect on the measured record set: -97 rows.
+- GPT-oss 20B on M6 reclassified estimate -> community (HDZucht source); Muse Glimmer 30B M6 reclassified estimated -> measured.
+
+## 2026-10-06: historical llama.cpp discussion mining (123 rows)
+
+- #29964 pipeline-parallel MoE patch on 3x RTX PRO 4000 Blackwell (Qwen3.8/DeepSeek-V4-Flash/MiMo bisect + ncmoe + noise checks), 20 rows; plus eapache 4500+3060 -ncmoe 1:1 A/B.
+- #29885 MoE expert-residency prefill A/B on GTX 1080 (265 vs 30 tok/s), 2 rows.
+- #29643 SYCL Arc B580 XMX (9 rows) plus a plain-decode 26.4 t/s at 115K clarification; #29861 cross-backend NPU splits (4); #29531 focus-llama DA (2); #29662 Ghostlink RPC (1).
+- #29037 FiTuna autotune (6), #29387 DFlash2 spec-dec on L4 (8), #29253 RPC graph cache (6), #29249 Sarge 4070LP (2), #29072 780M MMVQ (2).
+- KVMem 256K (2), Bosgame M5 Flash-Next tuning (20, new hardware), 400k-ctx 5060 Ti (1), NVFP4 5090 PoC (9), 4-GPU WDDM (4), expert-pool 4080S (14).
+- #29621 xyz-llama fork on RTX 4070 Ti SUPER (4 rows, xyzkv2/XYZ_ENGINE/late-build A/B) and #28766 JigSawPT DSV4.1 port on RTX 5090 expert streaming (4 rows incl. measured ceilings).
+
+## 2026-10-06: megathread config tokenization (contradictions 542 -> 220)
+
+- Tokenized ngl/fa/config settings on 254 megathread #10879 rows and 157 rows from #4167/#15013/#15021/#23313, so same-model-different-config rows stop being flagged as contradictions.
+- Fixed 12 as-published placeholder records in #4167 (model Llama 2 7B, OP-table quotes, fa/build config tokens); set batch=npl on 24 lc-29779 and the lc-29768 sequence-sweep rows; added distinguishing config tokens (control/nmax5, think/notthink, sparse/dense, cpu-mtp-final).
+- Contradiction flags 542 -> 220 (no record-count change).
+
 ## 2026-10-05: source deletion, GenerelSchwerz MTP + zekrom KV matrix (13 rows removed)
 
 - Both source comments were deleted by their authors (they had been hidden in the UI since 2026-10-05 22:50 and are now gone from the REST list too): llama.cpp discussion #24528 comment 18532257 (GenerelSchwerz MTP draft-placement sweep on RTX 5070 Ti, 7 rows) and #20969 comment 16399706 (zekrom-vale Cydonia-24B v4.3 KV matrix on 5070Ti, 6 rows).
