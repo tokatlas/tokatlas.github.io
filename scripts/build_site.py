@@ -3397,6 +3397,29 @@ between builds of the same backend, see the
                     "(~31 GiB resident > dedicated carve-out) but holds 21.6 tok/s "
                     "on the 2.5-bit cut. See the Sakura-Qwen3.8-Flash-Next-Swift "
                     "rows for the full MTP n-max and -b sweep.")
+        if (venue, issue) == ("HF", "?") and hw == "RTX 3090" and model == "Marco-Mini-Instruct":
+            return ("REAP expert-pruning sweep (kueizen), llama-bench on one RTX 3090, "
+                    "all layers on GPU, Q4_K_M. REAP removes 5-70% of the 256 experts: "
+                    "REAP05 keeps 244 (9.33 GB) down to REAP70 keeping 77 (3.10 GB). "
+                    "Decode (tg128) stays in the 256-316 tok/s band because a MoE runs "
+                    f"8 active experts per token whatever the total - REAP50 peaks at "
+                    f"{val(rows,'hf1-marcomini-reap50','tps'):.0f} tok/s; REAP05's "
+                    f"{val(rows,'hf1-marcomini-reap05','tps'):.0f} tok/s was measured in a "
+                    "separate session and is flagged an outlier. Prefill (pp512) climbs "
+                    f"from {val(rows,'hf1-marcomini-reap05','pp_tps'):.0f} (REAP05) to "
+                    f"{val(rows,'hf1-marcomini-reap70','pp_tps'):.0f} (REAP70) as experts are "
+                    "pruned, since fewer resident experts means less prefill compute. "
+                    "Pruning buys file size, not decode speed.")
+        if (venue, issue) == ("HF", "?") and hw == "RTX 3090" and model == "Marco-Nano-Instruct":
+            return ("REAP expert-pruning sweep (kueizen), llama-bench on one RTX 3090, "
+                    "all layers on GPU, Q4_K_M. REAP removes 5-70% of the 232 experts: "
+                    "REAP05 keeps 220 (4.77 GB) down to REAP70 keeping 70 (1.66 GB). "
+                    "Decode (tg128) stays in the 241-302 tok/s band (REAP15 lowest at "
+                    f"{val(rows,'hf1-marcnano-reap15','tps'):.0f} tok/s) because a MoE runs 8 "
+                    "active experts per token whatever the total. Prefill (pp512) climbs "
+                    f"from {val(rows,'hf1-marcnano-reap05','pp_tps'):.0f} (REAP05) to "
+                    f"{val(rows,'hf1-marcnano-reap70','pp_tps'):.0f} (REAP70) as experts are "
+                    "pruned. Pruning buys file size, not decode speed.")
         if (venue, issue) == ("HF", "?"):
             if hw == "M4 Max (128 GB)" and model == "Qwen3.8-Flash-Next":
                 return ("mlx-serve 26.8.11 on M4 Max 128 GB, ~75 GB resident, "
