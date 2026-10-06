@@ -388,6 +388,10 @@ between builds of the same backend, see the
         return (y - x) / x * 100
 
     def ab_note(venue, issue, hw, model, rows, backend=""):
+        def has_suf(*sufs):
+            return all(any(i.endswith(s) for i in rows) for s in sufs)
+        def has_ids(*ids):
+            return all(i in rows for i in ids)
         if (venue, issue) == ("llama.cpp", "?"):
             if hw == "RTX 5080 (PCIe Gen 4) + Ryzen 3900X" and model == "Qwen3.6-35B-A3B":
                 return ("Three-tier expert cache (VRAM + pinned RAM + io_uring disk "
@@ -3095,7 +3099,7 @@ between builds of the same backend, see the
                     "with GPU utilization at only 24-37% during q8_0 decode "
                     "(memory/latency-bound, 4x A6000, ctx 1048576).")
         if (venue, issue) == ("llama.cpp", "10879"):
-            if hw == "AMD Custom GPU 0932":
+            if hw == "AMD Custom GPU 0932" and has_suf("fa0", "fa1"):
                 ids = sorted(rows)
                 off = next(i for i in ids if i.endswith("fa0"))
                 on = next(i for i in ids if i.endswith("fa1"))
@@ -3159,7 +3163,7 @@ between builds of the same backend, see the
                         "same card ROCm gets pp512 1510/1739 and tg128 "
                         "86.0/93.6 (no FA/FA): Vulkan generates ~18% faster on "
                         "RDNA2, ROCm only wins prefill with FA on.")
-            if hw == "Radeon RX 9060 XT":
+            if hw == "Radeon RX 9060 XT" and has_suf("fa0", "fa1"):
                 off = next(i for i in rows if i.endswith("fa0"))
                 on = next(i for i in rows if i.endswith("fa1"))
                 return ("Flash-attention A/B on a Radeon RX 9060 XT "
@@ -3226,7 +3230,7 @@ between builds of the same backend, see the
                         "as the sibling 27B: bare backends at parity, MTP "
                         "widens the gap.")
         if (venue, issue) == ("llama.cpp", "15021"):
-            if hw == "RX 6800":
+            if hw == "RX 6800" and has_suf("fa0", "fa1"):
                 off = next(i for i in rows if i.endswith("fa0"))
                 on = next(i for i in rows if i.endswith("fa1"))
                 return ("Flash-attention A/B on a desktop RX 6800 under ROCm "
@@ -3240,7 +3244,7 @@ between builds of the same backend, see the
                         "pp512 1594/1598 and tg128 101.5/106.5 (no FA/FA), so "
                         "Vulkan still leads generation on RDNA2 while ROCm "
                         "only wins prefill with FA on.")
-            if hw == "Radeon RX 9060 XT":
+            if hw == "Radeon RX 9060 XT" and has_suf("fa0", "fa1"):
                 off = next(i for i in rows if i.endswith("fa0"))
                 on = next(i for i in rows if i.endswith("fa1"))
                 return ("Flash-attention A/B on a Radeon RX 9060 XT "
@@ -3259,7 +3263,7 @@ between builds of the same backend, see the
                         "pp512 is up 86% (no FA) and 104% (FA), tg128 level "
                         "(no FA) and up 7% (FA); the card has a 128-bit bus, "
                         "not 256-bit.")
-            if hw == "Radeon AI PRO R9700":
+            if hw == "Radeon AI PRO R9700" and has_suf("fa0", "fa1", "pp8192"):
                 ids = list(rows)
                 fa0 = next(i for i in ids if i.endswith("fa0"))
                 fa1 = next(i for i in ids if i.endswith("fa1"))
@@ -3294,7 +3298,7 @@ between builds of the same backend, see the
                         "they are within 8%. Decode also favors Vulkan "
                         "(~+8%). Reporter notes the ordering inverts on MoE "
                         "models (ROCm +8.5% at 57k ctx on a 35B-A3B).")
-            if hw == "V620":
+            if hw == "V620" and has_suf("fa0", "fa1"):
                 off = next(i for i in rows if i.endswith("fa0"))
                 on = next(i for i in rows if i.endswith("fa1"))
                 return ("AMD Radeon Pro V620 (gfx1030, 32 GB) on ROCm v10, "
@@ -3310,7 +3314,7 @@ between builds of the same backend, see the
                         "-1.2%) but decode falls to 71.38 tok/s (-27.7%), so a "
                         "second 32 GB card costs rather than helps a 3.56 GiB "
                         "model that already fits on one.")
-            if hw == "2x V620":
+            if hw == "2x V620" and has_suf("fa0", "fa1"):
                 off = next(i for i in rows if i.endswith("fa0"))
                 on = next(i for i in rows if i.endswith("fa1"))
                 return ("Two V620 (gfx1030) in parallel on ROCm v10, "
@@ -3330,6 +3334,8 @@ between builds of the same backend, see the
             on5 = "lc-disc-15013-c18693775-fa1"
             off10 = "lc-disc-15013-c18695871-fa0"
             on10 = "lc-disc-15013-c18695871-fa1"
+            if not has_ids(off5, on5, off10, on10):
+                return None
             return ("P102-100 mining card (Pascal GP104, no display) on "
                     "llama.cpp CUDA b11312, llama 7B Q4_0. fa=0 -> fa=1 on the "
                     "stock 5 GB BIOS: prefill "
@@ -3344,7 +3350,7 @@ between builds of the same backend, see the
                     f"({pct(rows,off10,on10,'tps'):+.1f}%). Doubling VRAM barely "
                     "moves speed (within ~1%): the 3.56 GiB model fits in either.")
         if (venue, issue) == ("llama.cpp", "4167"):
-            if hw == "M5 Ultra":
+            if hw == "M5 Ultra" and has_suf("quant-f16", "quant-q8_0", "quant-q4_0"):
                 f16 = next(i for i in rows if i.endswith("quant-f16"))
                 q8 = next(i for i in rows if i.endswith("quant-q8_0"))
                 q4 = next(i for i in rows if i.endswith("quant-q4_0"))
@@ -3358,7 +3364,7 @@ between builds of the same backend, see the
                         f"-> {val(rows,q4,'pp_tps')} tok/s. Decode is "
                         "bandwidth-bound (scales with bytes), prefill is "
                         "compute-bound on this chip.")
-            if hw == "M6":
+            if hw == "M6" and has_suf("quant-f16", "quant-q8_0", "quant-q4_0"):
                 f16 = next(i for i in rows if i.endswith("quant-f16"))
                 q8 = next(i for i in rows if i.endswith("quant-q8_0"))
                 q4 = next(i for i in rows if i.endswith("quant-q4_0"))
@@ -3373,7 +3379,9 @@ between builds of the same backend, see the
                         f"{val(rows,q4,'pp_tps')} tok/s). Same "
                         "bandwidth-decode / compute-prefill split as the M5 "
                         "Ultra, at a much smaller absolute rate.")
-            if model == "Qwen3.8-27B":
+            if model == "Qwen3.8-27B" and has_ids(
+                    "lc-disc-4167-c18631101-code-off",
+                    "lc-disc-4167-c18631101-code-dflash"):
                 mp = "lc-disc-4167-c18555918-"
                 return ("Qwen3.8-27B dense IQ3_S on M2 Max (30 GPU, 32 GB) "
                         "Metal, llama.cpp. Plain bench: pp4096 "
@@ -3455,7 +3463,9 @@ between builds of the same backend, see the
                     "with the tensor split across two B70s over PCIe gen4 x16 "
                     "(-25.6%); both fall to ~668-870 by 64k tokens.")
         if (venue, issue) == ("llama.cpp", "23313") and hw == "Arc Pro B70":
-            if model == "llama 7B":
+            if model == "llama 7B" and has_ids(
+                    "lc-disc-23313-c18467211-llama7b-fa0",
+                    "lc-disc-23313-c18467211-llama7b-fa1"):
                 return ("llama 7B Q4_0, fa A/B, on an Arc Pro B70 passed "
                         "through to a Proxmox VM (Xeon E5-2699 v4, 64 GB "
                         "DDR4), SYCL F16 build. fa 0 -> 1: prefill "
@@ -3467,7 +3477,10 @@ between builds of the same backend, see the
                         "(+3.8%). FA is worth more than 2x prefill on this "
                         "card at 512 tokens; the VM overhead is unmeasured "
                         "(no bare-metal numbers from the same post).")
-            if model == "Qwen3.8-27B":
+            if model == "Qwen3.8-27B" and has_ids(
+                    "lc-disc-23313-c18629941-d0",
+                    "lc-disc-23313-c18629941-d8192",
+                    "lc-disc-23313-c18629941-d16384"):
                 return ("qwen35 27B Q6_K, latest SYCL, n_ubatch 1024. "
                         "Prompt-depth decay at fixed pp2048/tg256: "
                         f"{val(rows,'lc-disc-23313-c18629941-d0','pp_tps'):g} / "
@@ -3483,7 +3496,7 @@ between builds of the same backend, see the
                         "(acceptance 0.936) down to long_code_review 28.0 "
                         "(0.653); throughput tracks acceptance, and even the "
                         "best cell is ~1.9x the 21.32 bare tg256.")
-        if (venue, issue) == ("llama.cpp", "23313") and hw == "Arc A770":
+        if (venue, issue) == ("llama.cpp", "23313") and hw == "Arc A770" and has_suf("fa0", "fa1"):
             off = next(i for i in rows if i.endswith("fa0"))
             on = next(i for i in rows if i.endswith("fa1"))
             return ("Intel Arc A770, i7-13700K, Ubuntu 24.04, 64 GB DDR5, "

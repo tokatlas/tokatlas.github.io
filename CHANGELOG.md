@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06: megathread build tokenization (contradictions 220 -> 114)
+
+- Tokenized the llama.cpp performance megathreads (#10879 Vulkan, #15013 CUDA, #15021 ROCm, #23313 SYCL, #4167 Apple Silicon) with the llama.cpp build number each post reports (the `build: <commit> (NNNN)` line), added as `config=bNNNNN` tokens on 1296 rows. Same-model-different-build rows no longer masquerade as contradictions; the remaining 114 flags are same-build variance or posts without a stated build.
+- The build tokens also form per-(chip, model) build-progression tables on the Build A/B notes page (353 -> 562 groups, 3194 records).
+- Contradiction flags 220 -> 114, outlier flags 14 -> 7 (no record-count change).
+
 ## 2026-10-06: llama.cpp #30051, FA-on prompt-processing cliff on Google Axion (6 rows)
 
 - llama.cpp issue #30051 (community): Gemma 4 E4B Q4_0 pp-only llama-bench on a Google Axion CPU (Neoverse V2 with SVE2, new hardware), llama.cpp b11443. With flash attention on, going from 63 to 64 queries makes prefill slower (126.69 -> 91.37 t/s at 8 threads, 247.07 -> 135.10 at 16) because from 64 queries the tiled FA path runs the scalar simd_gemm fallback (SVE builds are excluded from the generic kernel); with FA off the same step is faster (121.03 -> 129.01). 6 rows, 1 A/B group with note.
