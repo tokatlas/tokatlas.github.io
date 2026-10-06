@@ -154,6 +154,7 @@ def main():
         hw[r["hardware"]].append(r)
         models[r["model"]].append(r)
         backends[(mkey(r["model"]), r["hardware"], r["quant"])].append(r)
+    n_hw, n_models = len(hw), len(models)
 
     # Guard: one page per key at <prefix>/<slug>/, so two keys with the same
     # slug would overwrite each other and hide rows. Fail the build instead.
@@ -5037,7 +5038,7 @@ Promise.all([fetch('/data/records.json').then(r => r.json()),
     write("lookup.html", page("Lookup", lookup_body))
 
     print("done: %d records -> %d hardware pages, %d model pages, %d backend notes"
-          % (len(records), len(hw), len(models), len(multi)))
+          % (len(records), n_hw, n_models, len(multi)))
 
 
 if __name__ == "__main__":
