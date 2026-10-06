@@ -1,5 +1,5 @@
 {
- "count": 4505,
+ "count": 4507,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -41665,6 +41665,48 @@
    "source_url": "https://huggingface.co/kueizen/Marco-Nano-Instruct-REAP-GGUF",
    "tg_tokens": 128,
    "tps": 302
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": 1,
+   "ctx": 8192,
+   "date": "2026-10-06",
+   "flags": [],
+   "hardware": "A100 PCIe 80 GB",
+   "id": "hf1-firetussin-pi-rco",
+   "model": "Qwen3.8-27B-pi",
+   "notes": "firetussin RCO allocation-transfer quant (experimental, 3.00 BPW, 10.094 GB); llama.cpp CUDA, FA on, q8_0 K/V, 8K ctx, single-run, Vast A100 ($2.46/2.09h); config=rco; prefill +15% vs matched IQ2_M control, decode flat.",
+   "pp_tokens": 512,
+   "pp_tps": 1088,
+   "provenance": "community",
+   "quant": "IQ3_XXS",
+   "quote": "One on-demand NVIDIA A100 PCIe 80 GB was used for about 2.092 hours; Qwen3.8-27B-pi RCO allocation transfer; the transfer model processed a 512-token prompt at 1,088 tok/s and generated at 48.8 tok/s",
+   "retrieved": "2026-10-06",
+   "source_name": "HF model card: firetussin/Qwen3.8-27B-pi-RCO-allocation-transfer-GGUF",
+   "source_url": "https://huggingface.co/firetussin/Qwen3.8-27B-pi-RCO-allocation-transfer-GGUF",
+   "tg_tokens": null,
+   "tps": 48.8
+  },
+  {
+   "backend": "llama.cpp (CUDA)",
+   "batch": 1,
+   "ctx": 8192,
+   "date": "2026-10-06",
+   "flags": [],
+   "hardware": "A100 PCIe 80 GB",
+   "id": "hf1-firetussin-pi-iq2m",
+   "model": "Qwen3.8-27B-pi",
+   "notes": "firetussin same-source/same-imatrix conventional IQ2_M control (10.004 GB); llama.cpp CUDA, FA on, q8_0 K/V, 8K ctx, single-run, Vast A100; config=iq2m; baseline for the RCO transfer comparison.",
+   "pp_tokens": 512,
+   "pp_tps": 945,
+   "provenance": "community",
+   "quant": "IQ2_M",
+   "quote": "One on-demand NVIDIA A100 PCIe 80 GB was used for about 2.092 hours; Qwen3.8-27B-pi RCO allocation transfer; The matched IQ2_M control measured 945 tok/s and 48.9 tok/s respectively",
+   "retrieved": "2026-10-06",
+   "source_name": "HF model card: firetussin/Qwen3.8-27B-pi-RCO-allocation-transfer-GGUF",
+   "source_url": "https://huggingface.co/firetussin/Qwen3.8-27B-pi-RCO-allocation-transfer-GGUF",
+   "tg_tokens": null,
+   "tps": 48.9
   },
   {
    "backend": "llama.cpp",

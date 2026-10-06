@@ -3420,6 +3420,19 @@ between builds of the same backend, see the
                     f"from {val(rows,'hf1-marcnano-reap05','pp_tps'):.0f} (REAP05) to "
                     f"{val(rows,'hf1-marcnano-reap70','pp_tps'):.0f} (REAP70) as experts are "
                     "pruned. Pruning buys file size, not decode speed.")
+        if (venue, issue) == ("HF", "?") and hw == "A100 PCIe 80 GB" and model == "Qwen3.8-27B-pi":
+            return ("RCO allocation-transfer quant A/B (firetussin, experimental), same "
+                    "Pi BF16 source and imatrix, llama.cpp CUDA, FA, q8_0 KV, 8K ctx, "
+                    "single-run on a Vast A100 PCIe 80 GB. Prefill (pp512) is faster on "
+                    "the IQ3_XXS RCO transfer "
+                    f"{val(rows,'hf1-firetussin-pi-rco','pp_tps'):.0f} vs the conventional "
+                    f"IQ2_M control {val(rows,'hf1-firetussin-pi-iq2m','pp_tps'):.0f} "
+                    "(+15%), even though it is the higher-precision file; the RCO "
+                    "allocation is meant to keep hot tensors precise, which shows up in "
+                    "prefill, not decode. Decode is flat "
+                    f"({val(rows,'hf1-firetussin-pi-rco','tps')} vs "
+                    f"{val(rows,'hf1-firetussin-pi-iq2m','tps')} tok/s) since it is "
+                    "bandwidth-bound on the same 27B weights.")
         if (venue, issue) == ("HF", "?"):
             if hw == "M4 Max (128 GB)" and model == "Qwen3.8-Flash-Next":
                 return ("mlx-serve 26.8.11 on M4 Max 128 GB, ~75 GB resident, "
