@@ -680,6 +680,37 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-disc-29072-780m-gemma26a4b-after','tps')} t/s "
                     "(+12.2% published, single same-prompt speed test; a maintainer "
                     "asked for repeated runs and a selector-only ablation).")
+        if (venue, issue) == ("llama.cpp", "29621"):
+            if model == "Ternary-Bonsai-2-27B":
+                return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
+                        "weights, ~161k context, lossless block-verified draft: "
+                        "the stock build with the xyzkv2 2-bit rotated KV cache "
+                        f"decodes {val(rows,'lc29621-4070tis-xyzkv2','tps')} tok/s "
+                        "(2.82 tokens per round) and the optional CUDA speculative "
+                        "runtime (XYZ_ENGINE=1) reaches "
+                        f"{val(rows,'lc29621-4070tis-xyzengine','tps')} tok/s. "
+                        "Later build on the same card (2.94 tokens per round): "
+                        f"xyzkv2 {val(rows,'lc29621-4070tis-xyzkv2-r2','tps')} tok/s "
+                        "at 7.5 GiB KV versus "
+                        f"{val(rows,'lc29621-4070tis-q40-r2','tps')} tok/s at 9.0 GiB "
+                        "with q4_0 KV - about 11% faster and 1.5 GiB smaller, "
+                        "the gap is all cache reads.")
+            return None
+        if (venue, issue) == ("llama.cpp", "28766"):
+            if model == "DeepSeek-V4.1-Flash":
+                return ("DSV4.1 port (b10269) on one RTX 5090, 31.8 GiB VRAM + "
+                        "125.7 GiB RAM, MXFP4 experts, 189 GiB of engram tables "
+                        "on disk: new-content decode is disk-bound at "
+                        f"{val(rows,'lc28766-5090-dsv41-new','tps')} tok/s (20% "
+                        "compute / 26% PCIe / 54% NVMe per remap), "
+                        f"{val(rows,'lc28766-5090-dsv41-cached','tps')} tok/s with "
+                        "the expert cache resident (105 GiB working set). "
+                        "Measured ceilings: "
+                        f"{val(rows,'lc28766-5090-dsv41-ceil-nomiss','tps')} tok/s "
+                        "with zero disk misses (oracle routing) and "
+                        f"{val(rows,'lc28766-5090-dsv41-ceil-resident','tps')} tok/s "
+                        "if everything were resident.")
+            return None
         if (venue, issue) == ("llama.cpp", "29643"):
             if model == "Bonsai 2 27B":
                 return ("Xe2 XMX kernels for ternary weights and q4_0 KV-cache "
