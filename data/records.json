@@ -1,5 +1,5 @@
 {
- "count": 4322,
+ "count": 4324,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -4856,6 +4856,52 @@
    "retrieved": "2026-10-05",
    "source_name": "llama.cpp discussion #20969",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16419773",
+   "tg_tokens": null,
+   "tps": null,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp",
+   "batch": null,
+   "ctx": 92160,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "GTX 1080 8GB",
+   "id": "lc-disc-29885-gtx1080-qwen36-pp-gpu",
+   "model": "Qwen3.6-35B-A3B",
+   "notes": "40K-token agentic prompt, cold prefill 151s, TTFT ~155s; experts on GPU; config=experts-gpu",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 265,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "Measured on GTX 1080 8GB, Qwen3.6-35B-A3B, `-c 92160`; Cold: 151s prefill -> first token at ~155s; keep experts on GPU, let KV follow the layers - pushing 20 MoE layers to CPU collapsed prefill 265->30 tok/s",
+   "retrieved": "2026-10-06",
+   "source_name": "llama.cpp discussion #29885 (qqkzlm)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29885",
+   "tg_tokens": null,
+   "tps": null,
+   "ttft_s": 155
+  },
+  {
+   "backend": "llama.cpp",
+   "batch": null,
+   "ctx": 92160,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "GTX 1080 8GB",
+   "id": "lc-disc-29885-gtx1080-qwen36-pp-cpu20",
+   "model": "Qwen3.6-35B-A3B",
+   "notes": "same prompt/box with 20 MoE layers pushed to CPU; config=20-moe-cpu",
+   "params": null,
+   "power_w": null,
+   "pp_tps": 30,
+   "provenance": "community",
+   "quant": "unspecified",
+   "quote": "Measured on GTX 1080 8GB, Qwen3.6-35B-A3B, `-c 92160`; Cold: 151s prefill -> first token at ~155s; keep experts on GPU, let KV follow the layers - pushing 20 MoE layers to CPU collapsed prefill 265->30 tok/s",
+   "retrieved": "2026-10-06",
+   "source_name": "llama.cpp discussion #29885 (qqkzlm)",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29885",
    "tg_tokens": null,
    "tps": null,
    "ttft_s": null
@@ -103625,5 +103671,5 @@
    "ttft_s": 1.2
   }
  ],
- "retrieved": "2026-10-05"
+ "retrieved": "2026-10-06"
 }

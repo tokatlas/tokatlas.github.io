@@ -557,6 +557,18 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
                         "flat within +-0.2% at every other ub.")
             return None
+        if (venue, issue) == ("llama.cpp", "29885"):
+            if model == "Qwen3.6-35B-A3B":
+                return ("MoE offload lesson on a GTX 1080 8GB (40K-token agentic "
+                        "prompt, 92k ctx): keeping experts on GPU while the KV cache "
+                        "follows the layers gives "
+                        f"{val(rows,'lc-disc-29885-gtx1080-qwen36-pp-gpu','pp_tps')} tok/s "
+                        "prefill (cold TTFT ~155s); pushing 20 MoE layers to CPU "
+                        f"collapses prefill to {val(rows,'lc-disc-29885-gtx1080-qwen36-pp-cpu20','pp_tps')} "
+                        "tok/s, an ~8.8x drop that no KV-cache persistence can fix. "
+                        "The disk-restored KV prefix checkpoint itself reads back in "
+                        "2.1s, cutting post-restart TTFT from ~155s to ~6s.")
+            return None
         if (venue, issue) == ("llama.cpp", "30018"):
             if model == "Gemma 4 E4B":
                 return ("Decode regression on Arc B580 (Vulkan) bisected to "

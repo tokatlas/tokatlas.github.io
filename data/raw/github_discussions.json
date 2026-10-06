@@ -1,5 +1,5 @@
 {
- "count": 172,
+ "count": 174,
  "records": [
   {
    "id": "lc29973-tr-msvc-b11160",
@@ -3962,6 +3962,50 @@
    "retrieved": "2026-10-05",
    "quote": "Output is completely normal on our local build (SM 121 native, DGX Spark GB10); Qwen3.5-27B-heretic-v3.i1-Q3_K_M.gguf; On our SM 121 native build, tbqp3/tbq3 prompt processing drops only ~15% vs f16 (94\u219280 t/s)",
    "notes": "AmesianX fork on DGX Spark (SM 121 native build), Qwen3.5-27B heretic-v3 i1-Q3_K_M, prompt processing with tbqp3-K/tbq3-V vs f16 KV, author reports only ~15% pp drop with the native build (release binaries had wrong SM targets and JIT-emulated far slower); tbqp3/tbq3 KV prompt processing 80 tok/s; config=ax-27b-tbqpp"
+  },
+  {
+   "id": "lc-disc-29885-gtx1080-qwen36-pp-gpu",
+   "model": "Qwen3.6-35B-A3B",
+   "hardware": "GTX 1080 8GB",
+   "quant": "unspecified",
+   "backend": "llama.cpp",
+   "ctx": 92160,
+   "batch": null,
+   "tps": null,
+   "pp_tps": 265,
+   "ttft_s": 155,
+   "power_w": null,
+   "tg_tokens": null,
+   "params": null,
+   "date": "2026-10",
+   "notes": "40K-token agentic prompt, cold prefill 151s, TTFT ~155s; experts on GPU; config=experts-gpu",
+   "quote": "Measured on GTX 1080 8GB, Qwen3.6-35B-A3B, `-c 92160`; Cold: 151s prefill -> first token at ~155s; keep experts on GPU, let KV follow the layers - pushing 20 MoE layers to CPU collapsed prefill 265->30 tok/s",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29885",
+   "source_name": "llama.cpp discussion #29885 (qqkzlm)",
+   "provenance": "community",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "id": "lc-disc-29885-gtx1080-qwen36-pp-cpu20",
+   "model": "Qwen3.6-35B-A3B",
+   "hardware": "GTX 1080 8GB",
+   "quant": "unspecified",
+   "backend": "llama.cpp",
+   "ctx": 92160,
+   "batch": null,
+   "tps": null,
+   "pp_tps": 30,
+   "ttft_s": null,
+   "power_w": null,
+   "tg_tokens": null,
+   "params": null,
+   "date": "2026-10",
+   "notes": "same prompt/box with 20 MoE layers pushed to CPU; config=20-moe-cpu",
+   "quote": "Measured on GTX 1080 8GB, Qwen3.6-35B-A3B, `-c 92160`; Cold: 151s prefill -> first token at ~155s; keep experts on GPU, let KV follow the layers - pushing 20 MoE layers to CPU collapsed prefill 265->30 tok/s",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29885",
+   "source_name": "llama.cpp discussion #29885 (qqkzlm)",
+   "provenance": "community",
+   "retrieved": "2026-10-06"
   }
  ],
  "source": "github discussions"
