@@ -3081,6 +3081,31 @@ between builds of the same backend, see the
                     f"({pct(rows,off,on,'tps'):+.1f}%). FA helps both, decode "
                     "more than prefill here (the opposite of the B70, where "
                     "FA was 2.47x on prefill).")
+        if (venue, issue) == ("HF", "?") and hw == "M4 Pro" and model == "Ternary-Bonsai-2-27B":
+            return ("DFlash2 drafter quants on Metal (PrismML fork, 32k window, "
+                    "bench5.py): plain decode without a drafter is fastest at "
+                    f"{val(rows,'hf-schiltmans-ft5-none','tps')} tok/s - the "
+                    "fork's Metal DFlash2 path is slower than no drafter at all. "
+                    "Among drafters, ft5 Q8_0 reaches "
+                    f"{val(rows,'hf-schiltmans-ft5-ft5-q80','tps')} tok/s "
+                    "(acceptance 0.432) vs "
+                    f"{val(rows,'hf-schiltmans-ft5-stock-q80','tps')} tok/s for the "
+                    "stock z-lab Q8_0 (0.395); ft5 Q4_K_M keeps nearly all of it at "
+                    "56% of the size and Q2_K matches the stock acceptance at a "
+                    "third. CUDA is the intended platform; the author has not "
+                    "measured these GGUFs there.")
+        if (venue, issue) == ("HF", "?") and model == "Qwen3.8-Flash-Next" and hw == "Radeon 8060S":
+            return ("Sakura K352 expert-pruned Qwen3.8-Flash-Next variants on one "
+                    "64 GB Strix Halo, 32k ctx, KV q8_0. With the shared MTP head "
+                    "(danielhanchen qwen4exp/mtp fork) the ISTA-Darwin-R3 3-bit cut "
+                    f"reaches {val(rows,'hf-webmp3-istadarwin3b-mtp','tps')} tok/s "
+                    f"decode / {val(rows,'hf-webmp3-istadarwin3b-mtp','pp_tps')} "
+                    "prefill, slightly under the Swift 1.5 cut's 34.5 tok/s; "
+                    "without speculation on official b11259 the plain ISTA 3-bit "
+                    "cut decodes at 22.7 tok/s. ROCm collapses on the 3-bit files "
+                    "(~31 GiB resident > dedicated carve-out) but holds 21.6 tok/s "
+                    "on the 2.5-bit cut. See the Sakura-Qwen3.8-Flash-Next-Swift "
+                    "rows for the full MTP n-max and -b sweep.")
         if (venue, issue) == ("HF", "?"):
             if hw == "Radeon 8060S" and model == "Sakura-Qwen3.8-Flash-Next-Swift":
                 return ("Expert-pruned Qwen3.8-Flash-Next cuts on one 64 GB Strix "
