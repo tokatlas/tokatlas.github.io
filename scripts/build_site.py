@@ -801,6 +801,20 @@ between builds of the same backend, see the
                         "gathered matmuls: the MLA latent is shared by the 64 "
                         "heads but was reread per head, while FA loads it once.")
             return None
+        if (venue, issue) == ("llama.cpp", "30047"):
+            if model == "Qwen3.6-35B-A3B":
+                return ("Few-row MMA MUL_MAT_ID kernels on Apple M3 Ultra "
+                        "(60-core GPU), Qwen3.6-35B-A3B Q4_K_M, llama-batched-bench "
+                        "-npp 512 -ntg 32. Decode is flat at seq 1-8 "
+                        f"({val(rows,'lc30047-q36a3b-seq8-master','tps')} -> "
+                        f"{val(rows,'lc30047-q36a3b-seq8-pr','tps')} tok/s, "
+                        f"{pct(rows,'lc30047-q36a3b-seq8-master','lc30047-q36a3b-seq8-pr','tps'):+.0f}%) "
+                        "because those batches stay on the mat-vec kernel; at seq 16 "
+                        "the down projection drops to 0.5 tokens per expert and moves "
+                        f"onto the new MMA kernel, taking {val(rows,'lc30047-q36a3b-seq16-master','tps')} -> "
+                        f"{val(rows,'lc30047-q36a3b-seq16-pr','tps')} tok/s "
+                        f"({pct(rows,'lc30047-q36a3b-seq16-master','lc30047-q36a3b-seq16-pr','tps'):+.0f}%).")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
