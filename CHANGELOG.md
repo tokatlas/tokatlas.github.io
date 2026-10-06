@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06: vLLM #60250 + #60248, ROCm norm fusion and Kimi-K3 stream overlap (4 rows)
+
+- vLLM #60250 (sourced): `rms_norm_gated` custom op enabled by default on ROCm for unquantized models; Qwen3.8-27B BF16 on a single MI355X, `vllm bench serve` random 1024/1024 c=64, output throughput 2752.5 -> 2762.8 tok/s (+0.37%), median TTFT 1074.2 -> 1084.0 ms. 2 rows, 1 A/B group.
+- vLLM #60248 (sourced): Kimi-K3 ROCm stream overlap (MoE router with routed down-projection, MLA frontend with output gate), decode-gated to at most 128 tokens; p90 interactivity 163.94 -> 172.89 tok/s (+8.95) on a single MI355X over a 60-minute scored comparison. 2 rows, 1 A/B group.
+- Dataset 4569 -> 4573.
+
 ## 2026-10-06: megathread build tokenization (contradictions 220 -> 114)
 
 - Tokenized the llama.cpp performance megathreads (#10879 Vulkan, #15013 CUDA, #15021 ROCm, #23313 SYCL, #4167 Apple Silicon) with the llama.cpp build number each post reports (the `build: <commit> (NNNN)` line), added as `config=bNNNNN` tokens on 1296 rows. Same-model-different-build rows no longer masquerade as contradictions; the remaining 114 flags are same-build variance or posts without a stated build.
