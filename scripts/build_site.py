@@ -769,6 +769,21 @@ between builds of the same backend, see the
                         f"{val(rows,'lc30036-llama318b-q80-tg128-t16-master','tps')} -> "
                         f"{val(rows,'lc30036-llama318b-q80-tg128-t16-pr','tps')} tok/s).")
             return None
+        if (venue, issue) == ("llama.cpp", "30039"):
+            if model == "Qwen3.5-9B":
+                return ("Vulkan RDNA1 (gfx1010) prompt-processing regression, "
+                        "b10455 versus b11429 (v0.6.0), Qwen3.5-9B hybrid "
+                        "GDN/full-attention fine-tune Q4_K_M, 10890-token "
+                        "prompt, single cold-start request: PP "
+                        f"{val(rows,'lc30039-rx5700xt-b10455','pp_tps')} -> "
+                        f"{val(rows,'lc30039-rx5700xt-b11429','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30039-rx5700xt-b10455','lc30039-rx5700xt-b11429','pp_tps'):+.0f}%), "
+                        "while decode is flat (tg "
+                        f"{val(rows,'lc30039-rx5700xt-b10455','tps')} -> "
+                        f"{val(rows,'lc30039-rx5700xt-b11429','tps')} tok/s). "
+                        "Context size and -ub 256 were ruled out; the suspect is "
+                        "the GDN kernel tuning that landed in the window.")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
