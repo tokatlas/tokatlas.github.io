@@ -680,6 +680,19 @@ between builds of the same backend, see the
                     f"{val(rows,'lc-disc-29072-780m-gemma26a4b-after','tps')} t/s "
                     "(+12.2% published, single same-prompt speed test; a maintainer "
                     "asked for repeated runs and a selector-only ablation).")
+        if (venue, issue) == ("llama.cpp", "30033"):
+            if model == "Qwen3.8-Flash-Next":
+                return ("Regression bisect on 2x Intel B70 (VM, 32 Ryzen 9 5950X "
+                        "threads), UD-IQ3_XXS, -c 196608, llama-server via "
+                        "llama-swap with -fa on -sm layer -ctxcp 3: tg "
+                        f"{val(rows,'lc30033-b70x2-29612','tps')} -> "
+                        f"{val(rows,'lc30033-b70x2-29622','tps')} tok/s and pp "
+                        f"{val(rows,'lc30033-b70x2-29612','pp_tps')} -> "
+                        f"{val(rows,'lc30033-b70x2-29622','pp_tps')} tok/s from PR "
+                        "#29612 to #29622 (first bad commit 0bb496d, b11400); "
+                        "the reporter observes the same regression through "
+                        "#29971.")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
@@ -1151,6 +1164,39 @@ between builds of the same backend, see the
                     f"tok/s ({pct(rows,c,p2,'tps'):+.0f}%) on the same B300 offline batch, "
                     "the default startup with breakable cudagraph auto-enabled being "
                     "the slow arm.")
+        if (venue, issue) == ("vLLM", "60159"):
+            if model == "Kimi-K3":
+                return ("Native ROCm merge_attn_states kernel versus the Triton "
+                        "fallback, Kimi-K3 on 8x MI355X TP=8, FP8 KV cache, "
+                        "concurrency 16: at 60k-in / 600-out output "
+                        f"{val(rows,'vllm-60159-mi355x8-triton-60k','tps')} -> "
+                        f"{val(rows,'vllm-60159-mi355x8-native-60k','tps')} tok/s "
+                        f"({pct(rows,'vllm-60159-mi355x8-triton-60k','vllm-60159-mi355x8-native-60k','tps'):+.1f}%), at 128k-in / "
+                        f"1k-out {val(rows,'vllm-60159-mi355x8-triton-128k','tps')} -> "
+                        f"{val(rows,'vllm-60159-mi355x8-native-128k','tps')} tok/s "
+                        f"({pct(rows,'vllm-60159-mi355x8-triton-128k','vllm-60159-mi355x8-native-128k','tps'):+.1f}%): "
+                        "the merge kernel itself is 4.1x / 4.3x faster, but it is "
+                        "only 0.26% / 0.42% of total kernel time, so end-to-end "
+                        "throughput and mean TTFT move within run-to-run noise. "
+                        "Unit level: 2592 timed cases per GPU, median 2.39x "
+                        "(MI325X gfx942) and 2.36x (MI355X gfx950), 0 slower.")
+            return None
+        if (venue, issue) == ("vLLM", "60158"):
+            if model == "DiffusionGemma-26B-A4B":
+                return ("FA4 hd512 Blackwell attention (d=dv=512, SM100/SM110) "
+                        "versus the Triton fallback on one B300, BF16 TP1, "
+                        "concurrency 1: block tok/s "
+                        f"{val(rows,'vllm-60158-b300-diffgemma-triton','tps')} "
+                        "-> "
+                        f"{val(rows,'vllm-60158-b300-diffgemma-fa4','tps')}-1206 "
+                        f"({pct(rows,'vllm-60158-b300-diffgemma-triton','vllm-60158-b300-diffgemma-fa4','tps'):+.0f}% "
+                        "to the published range's low end), mean end-to-end "
+                        "1.36 s -> 1.03-1.07 s, first block "
+                        f"{val(rows,'vllm-60158-b300-diffgemma-triton','ttft_s')} s "
+                        "-> 0.39-0.42 s. GSM8K 126/128 -> 125/128, a one-question "
+                        "flip within noise. Kernel level: the hd512 attention "
+                        "call is 80 us vs Triton's 658 us (k=8256, page 128).")
+            return None
         if (venue, issue) == ("vLLM", "60153"):
             return ("Routing the gfx942 mHC seam through one fused PyISA kernel "
                     "instead of the delayed AITER seam, 4x MI325X TP4, "
