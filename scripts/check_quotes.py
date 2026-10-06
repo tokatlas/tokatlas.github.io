@@ -83,14 +83,14 @@ def _download(url, reddit):
     # so a Reddit URL gets one attempt. Other hosts keep the retry/backoff
     # for transient Cloudflare 403s and 5xx.
     max_attempts = 1 if reddit else 3
-    backoffs = [10, 20]
+    backoffs = [10, 30]
     for attempt in range(max_attempts):
         req = urllib.request.Request(url, headers={"User-Agent": UA})
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 return r.read()
         except urllib.error.HTTPError as e:
-            if e.code in (403, 502, 503, 504) and attempt < max_attempts - 1:
+            if e.code in (403, 429, 502, 503, 504) and attempt < max_attempts - 1:
                 time.sleep(backoffs[attempt])
                 continue
             raise
