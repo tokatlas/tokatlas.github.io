@@ -1164,6 +1164,21 @@ between builds of the same backend, see the
                     f"tok/s ({pct(rows,c,p2,'tps'):+.0f}%) on the same B300 offline batch, "
                     "the default startup with breakable cudagraph auto-enabled being "
                     "the slow arm.")
+        if (venue, issue) == ("vLLM", "60122"):
+            if model == "DeepSeek-V3.1":
+                return ("Batch-invariant TRITON_MLA versus main, DeepSeek-V3.1 "
+                        "on 4x NVIDIA GB300 TP=4: at 1024-in / 128-out output "
+                        f"{val(rows,'vllm-60122-gb300x4-dsv31-main-mixed','tps')} -> "
+                        f"{val(rows,'vllm-60122-gb300x4-dsv31-pr-mixed','tps')} tok/s "
+                        f"({pct(rows,'vllm-60122-gb300x4-dsv31-main-mixed','vllm-60122-gb300x4-dsv31-pr-mixed','tps'):+.1f}%), at "
+                        "8192-in / 1-out the prefill rate falls "
+                        f"{val(rows,'vllm-60122-gb300x4-dsv31-main-prefill','pp_tps')} -> "
+                        f"{val(rows,'vllm-60122-gb300x4-dsv31-pr-prefill','pp_tps')} tok/s "
+                        f"({pct(rows,'vllm-60122-gb300x4-dsv31-main-prefill','vllm-60122-gb300x4-dsv31-pr-prefill','pp_tps'):+.1f}%): "
+                        "the per-row prefill cost of batch-invariant mode on a "
+                        "128-head model, with accuracy unchanged (gsm8k strict "
+                        "0.9553 -> 0.9591).")
+            return None
         if (venue, issue) == ("vLLM", "60159"):
             if model == "Kimi-K3":
                 return ("Native ROCm merge_attn_states kernel versus the Triton "
