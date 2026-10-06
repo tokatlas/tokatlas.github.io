@@ -557,6 +557,66 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
                         "flat within +-0.2% at every other ub.")
             return None
+        if (venue, issue) == ("llama.cpp", "28894") and model == "Qwen3.8-27B":
+            return ("KVMem keeps a 256K conversation mostly in system RAM and "
+                    "loads only a 32-36K window per question on an RTX 5060 Ti "
+                    "16GB (WSL2): first-pass prefill "
+                    f"{val(rows,'lc-disc-28894-qwen3827b-iq3','pp_tps')} tok/s "
+                    f"(IQ3_S) / {val(rows,'lc-disc-28894-qwen3827b-iq4','pp_tps')} "
+                    f"(IQ4_XS), decode across 33 tool requests "
+                    f"{val(rows,'lc-disc-28894-qwen3827b-iq3','tps')} / "
+                    f"{val(rows,'lc-disc-28894-qwen3827b-iq4','tps')} tok/s at "
+                    "262058/262144 tokens, peak VRAM 15.5-15.6 GB. Accuracy at a "
+                    "32K GPU window is within noise of full 256K history (85.6 vs "
+                    "86.6% LongMemEval-S).")
+        if (venue, issue) == ("llama.cpp", "28512") and model == "Qwen3.8-Flash-Next":
+            return ("Stack-level tuning of Flash-Next serving on a Bosgame M5 "
+                    "(Strix Halo, 128 GB, Vulkan/RADV), replaying ten real agent "
+                    "conversations: row-id hoisting for 512-expert models (+19% "
+                    "prefill, #28501), always drafting 3 tokens (p-min 0, +13% "
+                    "decode) and a trimmed-vocab FR-Spec draft head. File rewrite "
+                    "@8k decode "
+                    f"{val(rows,'lc-disc-28512-flashnext-filerewrite8k-before','tps')} -> "
+                    f"{val(rows,'lc-disc-28512-flashnext-filerewrite8k-now','tps')} "
+                    f"tok/s (63.2 at n-max 6), new code @8k "
+                    f"{val(rows,'lc-disc-28512-flashnext-newcode8k-before','tps')} -> "
+                    f"{val(rows,'lc-disc-28512-flashnext-newcode8k-now','tps')}; "
+                    "prefill 340 -> 510 tok/s at 8k. Median over the replays: 25 -> "
+                    "33 tok/s, TTFT on a fresh 18k prompt 67 -> 44 s.")
+        if (venue, issue) == ("llama.cpp", "28514") and model == "Qwen3.8-27B":
+            return ("NVFP4 prefill headroom on an RTX 5090 (sm_120a), pp16384: "
+                    f"stock {val(rows,'lc-disc-28514-5090-nvfp4-stock','pp_tps')} -> "
+                    f"{val(rows,'lc-disc-28514-5090-nvfp4-poc','pp_tps')} tok/s "
+                    "(+44.7%) with chunked gated-delta-net prefill, GEMM fusions "
+                    "and TMA-fed NVFP4 MMQ; hand-written W4A4 NInfer sits at 8,466. "
+                    "draft-mtp costs 23% prefill on the patched build (8,499 -> "
+                    "6,518 engine-reported) vs -9% on NInfer; keeping the MTP "
+                    "hand-off on device recovers 7,065 -> 7,550 under the profiler.")
+        if (venue, issue) == ("llama.cpp", "28363") and model == "Qwen3.8-Flash-Next":
+            return ("Fixed GPU expert pool (CUDA-resident packed experts, misses "
+                    "executed on CPU) at 16K context on an RTX 4080 Super 16 GiB: "
+                    f"control {val(rows,'lc-disc-28363-flashnext-control','tps')} -> "
+                    f"{val(rows,'lc-disc-28363-flashnext-pool4g','tps')} -> "
+                    f"{val(rows,'lc-disc-28363-flashnext-pool6g','tps')} -> "
+                    f"{val(rows,'lc-disc-28363-flashnext-pool8g','tps')} tok/s for "
+                    "0/4/6/8 GiB pools (+23.9% at 8 GiB). CUDA Graphs are essential: "
+                    f"graphs off drops the 8 GiB config to "
+                    f"{val(rows,'lc-disc-28363-flashnext-pool8g-nograph','tps')} "
+                    "tok/s. The gain shrinks to about +4.6% at 262K, where KV "
+                    "dominates: 5.776 tok/s at q8-q4 KV + 4 GiB pool vs 5.649 at "
+                    "q4-q4 + 6 GiB; crossing physical VRAM collapses the run to "
+                    "0.71 tok/s via Windows shared-memory paging.")
+        if (venue, issue) == ("llama.cpp", "28767") and model == "Qwen3.8-Flash-Next":
+            return ("Same 4-GPU rig (5070 + 2x5060 + 4060, PCIe x8/x4/x1/x1, "
+                    "DDR4-3200) on Windows vs Ubuntu: Q3_XXS full offload prefill "
+                    f"{val(rows,'lc-disc-28767-flashnext-q3xxs-win','pp_tps')} -> "
+                    f"{val(rows,'lc-disc-28767-flashnext-q3xxs-linux','pp_tps')} "
+                    "tok/s and Q4_XS partial offload decode 10 -> "
+                    f"{val(rows,'lc-disc-28767-flashnext-q4xs-linux','tps')} tok/s "
+                    "moving to Linux; the author's WDDM multi-GPU finding (4th GPU "
+                    "halves decode on Windows, unchanged on Ubuntu/WSL2) was "
+                    "reproduced on a separate 27B Q6 model, not named, so those "
+                    "rows are not recorded.")
         if (venue, issue) == ("llama.cpp", "29037"):
             pair = {"Qwen3-4B-Instruct": ("qwen34bi", "30"),
                     "SmolLM2-135M": ("smolm135", "240"),
