@@ -1,5 +1,5 @@
 {
- "count": 1560,
+ "count": 1562,
  "records": [
   {
    "backend": "llama.cpp",
@@ -34154,6 +34154,54 @@
    "retrieved": "2026-10-06",
    "quote": "GLM-5.3-Flash FP8 on 8xH100 (TP8, max_num_batched_tokens=32768; 65536/1024, c64 192/192 24263 25101",
    "notes": "GLM-5.3-Flash FP8, 8xH100 TP8, max_num_batched_tokens=16384 (existing baseline config, larger KV pool 2.66M vs 1.88M tokens), vllm bench serve random dataset (--ignore-eos), 65536 in / 1024 out, c64; total tok/s; config=c64-64k-mnbt16k"
+  },
+  {
+   "id": "vllm-60226-gb10-stock-c1",
+   "model": "Qwen3.6-35B-A3B",
+   "params": null,
+   "quant": "NVFP4",
+   "hardware": "GB10",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 1,
+   "tps": 117.8,
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": 256,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-06",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/pull/60226",
+   "source_name": "vLLM PR #60226",
+   "retrieved": "2026-10-06",
+   "quote": "GB10; Qwen3.6-35B-A3B; stock (NVFP4 head) 2.919 3.126 117.8 tok/s 73.4 tok/s 94.5%",
+   "notes": "Context-aware sparse LM head on a quantized NVFP4 lm_head, MTP k=3, SPEED-Bench 11 categories, greedy, 256 output tokens, FP8 KV; stock NVFP4 head (baseline), c=1; config=stock-c1"
+  },
+  {
+   "id": "vllm-60226-gb10-stock-c4",
+   "model": "Qwen3.6-35B-A3B",
+   "params": null,
+   "quant": "NVFP4",
+   "hardware": "GB10",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 4,
+   "tps": 73.4,
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": 256,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-06",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/pull/60226",
+   "source_name": "vLLM PR #60226",
+   "retrieved": "2026-10-06",
+   "quote": "GB10; Qwen3.6-35B-A3B; stock (NVFP4 head) 2.919 3.126 117.8 tok/s 73.4 tok/s 94.5%",
+   "notes": "Context-aware sparse LM head on a quantized NVFP4 lm_head, MTP k=3, SPEED-Bench 11 categories, greedy, 256 output tokens, FP8 KV; stock NVFP4 head (baseline), c=4; config=stock-c4"
   }
  ],
  "source": {

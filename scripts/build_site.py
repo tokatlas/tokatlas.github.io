@@ -2908,6 +2908,20 @@ between builds of the same backend, see the
                     f"({pct(rows,'vllm-60068-gb10-fixed6-c4','vllm-60068-gb10-stop-c4','tps'):+.1f}%). "
                     "The stop gives up AL (fewer drafts) and wins on step "
                     "time; gain is largest where acceptance is low.")
+        if (venue, issue) == ("vLLM", "60226"):
+            return ("Context-aware sparse LM head on an already-quantized "
+                    "NVFP4 lm_head (Qwen3.6-35B-A3B NVFP4, GB10, MTP k=3, "
+                    "FP8 KV, SPEED-Bench 11 categories, greedy, 256 output "
+                    "tokens). These are the stock NVFP4-head baseline rows, "
+                    f"decode {val(rows,'vllm-60226-gb10-stock-c1','tps')} "
+                    "tok/s at c=1 and "
+                    f"{val(rows,'vllm-60226-gb10-stock-c4','tps')} tok/s "
+                    "at c=4. The PR's 32k-list + 16k-dynamic-rows arm "
+                    "reports +7.7% at c=1 and +3.7% at c=4 (relative, not "
+                    "stored as derived rows); the 32k-list-only arm is "
+                    "+4.0% at c=1 and -1.4% at c=4. Measured before a "
+                    "final cleanup commit (re-validation running in the "
+                    "PR).")
         if (venue, issue) == ("vLLM", "60008"):
             return ("Hybrid Mamba prefix caching align mode vs off "
                     "(Nemotron-3.5-Lightning NVFP4, 4x GB200 DP4/EP4, "
