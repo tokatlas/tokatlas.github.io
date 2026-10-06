@@ -1403,6 +1403,35 @@ between builds of the same backend, see the
                     "at c4, +7.6% at c8. The c16 rows are the crossover: decode "
                     "steps above 8 tokens keep the regular layers, so the fused "
                     "path is off and throughput is flat (+0.9% / +0.4%).")
+        if (venue, issue) == ("vLLM", "60220"):
+            a64, b64 = ("vllm-60220-h100-c64-8k-mnbt32k",
+                        "vllm-60220-h100-c64-8k-mnbt16k")
+            a256, b256 = ("vllm-60220-h100-c256-8k-mnbt32k",
+                          "vllm-60220-h100-c256-8k-mnbt16k")
+            a16, b16 = ("vllm-60220-h100-c16-64k-mnbt32k",
+                        "vllm-60220-h100-c16-64k-mnbt16k")
+            a64l, b64l = ("vllm-60220-h100-c64-64k-mnbt32k",
+                          "vllm-60220-h100-c64-64k-mnbt16k")
+            return ("The fp8 mixed-batch path now stages the head-padded query "
+                    "and kernel output in the reserved workspace instead of "
+                    "allocating them per call, removing 4.25 GiB of per-call "
+                    "allocation at T=32768 that the startup memory profile "
+                    "misses; the previously OOMing "
+                    "max_num_batched_tokens=32768 config now serves "
+                    "(GLM-5.3-Flash FP8, 8xH100 TP8, total tok/s, vllm bench "
+                    f"serve random): 8K in / 1K out "
+                    f"{val(rows,b64,'tps'):.0f} -> {val(rows,a64,'tps'):.0f} at c64 "
+                    f"({pct(rows,b64,a64,'tps'):+.1f}%) and "
+                    f"{val(rows,b256,'tps'):.0f} -> {val(rows,a256,'tps'):.0f} at c256 "
+                    f"({pct(rows,b256,a256,'tps'):+.1f}%, the 32K config's KV "
+                    "cache reached 100%); 64K in / 1K out "
+                    f"{val(rows,b16,'tps'):.0f} -> {val(rows,a16,'tps'):.0f} at c16 "
+                    f"({pct(rows,b16,a16,'tps'):+.1f}%) and "
+                    f"{val(rows,b64l,'tps'):.0f} -> {val(rows,a64l,'tps'):.0f} at c64 "
+                    f"({pct(rows,b64l,a64l,'tps'):+.1f}%). The comparison is "
+                    "against the existing max_num_batched_tokens=16384 config, "
+                    "which has a larger KV pool (2.66M vs 1.88M tokens), so the "
+                    "author calls it a sanity check rather than a strict A/B.")
         if (venue, issue) == ("vLLM", "59916"):
             g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
             k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
