@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 7: corpus catch-up (+246 rows)
+
+- Listing crawl shows the oMLX corpus is 915 traces; fetched and mined the oldest 261 (March era): M3 Ultra 60c 256 GB, M2 Ultra, M2 Max, M5, M4 sessions with Qwen3.5-27B, Qwen3.5-397B-A17B, Qwen3.6-35B-A3B-Uncensored-Heretic, Qwen3.8-27B Abliterated/MLX-4bit/TensorFold, Qwen3.8-27B-TURBO-Fable merge (oQ3, new model), Qwen3.8-Flash-Next-Uncensored mixed mxfp4+mxfp8 MTP, GLM-5.3-Flash oQ4e, MiniCPM5-2B, clef, gpt-oss 20B 8bit, MiniMax M2.5.
+- Known-bug fix: known.txt is now derived from mined record ids instead of accumulating all listing ids.
+- Dataset 4733 -> 4979.
+
 ## 2026-10-06: oMLX traces batch 6: March corpus middle (+67 rows)
 
 - Collector pagination fixed: the SSR next-cursor is the base64 link without a trailing "prev" tag; following it reaches the full corpus (146 traces) instead of two wrapped pages. Mined the newly reachable March sessions on M3 Ultra (80c) 512 GB, M2 Max 96 GB and M2 Ultra 128 GB: Qwen3-Coder-Next, Qwen3.5-122B-A10B (4bit/8bit), Qwen3.5-27B-Claude-4.6-Opus-Distilled (new model), Qwen3.5-9B MXFP4, GLM-5 second session, gpt-oss 120B (4bit/8bit/MXFP4-Q8).
