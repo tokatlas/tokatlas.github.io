@@ -1120,6 +1120,22 @@ between builds of the same backend, see the
                     f"tok/s ({pct(rows,c,p2,'tps'):+.0f}%) on the same B300 offline batch, "
                     "the default startup with breakable cudagraph auto-enabled being "
                     "the slow arm.")
+        if (venue, issue) == ("vLLM", "60153"):
+            return ("Routing the gfx942 mHC seam through one fused PyISA kernel "
+                    "instead of the delayed AITER seam, 4x MI325X TP4, "
+                    "DeepSeek-V4.1-Flash, vllm bench serve c=2: at 262144-in / "
+                    "1024-out output "
+                    f"{val(rows,'vllm-60153-mi325x4-off-262k','tps')} -> "
+                    f"{val(rows,'vllm-60153-mi325x4-on-262k','tps')} tok/s "
+                    f"({pct(rows,'vllm-60153-mi325x4-off-262k','vllm-60153-mi325x4-on-262k','tps'):+.1f}%), "
+                    "mean TTFT "
+                    f"{val(rows,'vllm-60153-mi325x4-off-262k','ttft_s')} -> "
+                    f"{val(rows,'vllm-60153-mi325x4-on-262k','ttft_s')} ms; at 8192-in "
+                    "the gain is smaller, "
+                    f"{val(rows,'vllm-60153-mi325x4-off-8k','tps')} -> "
+                    f"{val(rows,'vllm-60153-mi325x4-on-8k','tps')} tok/s. "
+                    "The fused seam is 468 us per call vs the three-kernel "
+                    "319/291/174 us family it replaces.")
         if (venue, issue) == ("vLLM", "59916"):
             g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
             k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
