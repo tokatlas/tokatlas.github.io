@@ -61,6 +61,22 @@ def _is_reddit(url):
 CACHE_MAX_AGE = 7 * 24 * 3600  # 7 days
 
 
+def _force_refresh():
+    # URLs listed here (one per line, # comments allowed) are re-fetched even
+    # when a fresh cached copy exists: used right after a source rewrite is
+    # detected locally, so CI replaces its cached copy instead of waiting out
+    # CACHE_MAX_AGE. Remove entries once CI has saved the refreshed cache.
+    path = os.path.join(ROOT, "scripts", "force_refresh.txt")
+    if not os.path.exists(path):
+        return set()
+    with open(path) as f:
+        return {ln.strip() for ln in f
+                if ln.strip() and not ln.strip().startswith("#")}
+
+
+FORCE_REFRESH = _force_refresh()
+
+
 def _download(url, reddit):
     # Reddit blocks by IP with a persistent 403 that no backoff clears (5
     # attempts over 390 s per URL made each run take 3+ hours for 29 URLs),
@@ -85,7 +101,8 @@ def fetch(url):
     key = hashlib.sha256(url.encode()).hexdigest()
     path = os.path.join(CACHE, key)
     cached = os.path.exists(path)
-    stale = cached and time.time() - os.path.getmtime(path) > CACHE_MAX_AGE
+    stale = cached and (time.time() - os.path.getmtime(path) > CACHE_MAX_AGE
+                        or url in FORCE_REFRESH)
     if not cached or stale:
         reddit = _is_reddit(url)
         try:
