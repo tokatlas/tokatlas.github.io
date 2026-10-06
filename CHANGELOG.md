@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 15 (+170 rows)
+
+- Next 60 of the corpus mined (October-dated traces: DeepSeek-V4-Flash-0731 oQ8e MTP, Qwen3.6-35B-A3B in 4bit/mxfp4/oQ4-MTP/oQ8e-MTP, Qwen3.8-27B mxfp4, gpt-oss 20B MXFP4 variants, gemma4 E4B OptiQ).
+- Dataset 6612 -> 6782. Contradiction count rose to 201 as same-model/same-chip sessions from different community builds and prompts land in shared groups; all reviewed as honest variance.
+
 ## 2026-10-06: oMLX traces batch 14 (+180 rows)
 
 - Next 60 of the corpus mined (October-dated traces, e.g. Bonsai-27B 1bit, Ornith-1.5-35B-A3B 4bit, Qwen3.5-27B 4bit on M5 Max 128 GB).
