@@ -3179,6 +3179,43 @@ between builds of the same backend, see the
                     "on the 2.5-bit cut. See the Sakura-Qwen3.8-Flash-Next-Swift "
                     "rows for the full MTP n-max and -b sweep.")
         if (venue, issue) == ("HF", "?"):
+            if hw == "M4 Pro (48 GB)" and model == "Qwen3.6-27B-AEON-Ultimate-Uncensored":
+                return ("AEON-7 Qwen3.6-27B merge on M4 Pro 48 GB, mlx-vlm: the "
+                        "compact mxfp4 build decodes "
+                        f"{val(rows,'hf-aeon7-fp4-text','tps')} tok/s at "
+                        f"17 GB; the 8-bit max-fidelity build "
+                        f"{val(rows,'hf-aeon7-8bit-text','tps')} tok/s at "
+                        "29.85 GB. The native qwen3_5_mtp drafter (lossless, "
+                        "verified) is the real win: block size 3 hits "
+                        f"{val(rows,'hf-aeon7-fp4-mtp-bs3','tps')} tok/s (1.78x, "
+                        "94.7% draft accept) versus "
+                        f"{val(rows,'hf-aeon7-fp4-mtp-bs2','tps')} at bs=2 and "
+                        f"{val(rows,'hf-aeon7-fp4-mtp-bs4','tps')} at bs=4 "
+                        "(accept rate collapses to 86.9%). Per-category at bs=3: "
+                        f"{val(rows,'hf-aeon7-fp4-mtp3-chat','tps')} tok/s on chat "
+                        "(67.1% accept) to "
+                        f"{val(rows,'hf-aeon7-fp4-mtp3-math','tps')} on math "
+                        "(90.1%); the per-category baselines are flat 14.7-15.3 "
+                        "tok/s, so decode is bandwidth bound, not compute bound.")
+            if hw == "M5 Ultra" and model == "Swift 1.5 Qwen3.8-Flash-Next":
+                return ("mlx-serve 26.10.1 with the calibrated 4.7 bpw "
+                        "mixed-precision pack (4-bit experts, 8-bit spine, 32 GB "
+                        "n-gram table memory-mapped, pooled n-gram prefetch) "
+                        "versus the Swift llama.cpp IQ3_XXS build on the same "
+                        "M5 Ultra 96 GB Mac Studio, ctx 179200: prefill 25k "
+                        f"{val(rows,'hf-dankpaws-swift15-mlx-pp25k','pp_tps')} vs "
+                        f"{val(rows,'hf-dankpaws-swift15-ic3-pp25k','pp_tps')} "
+                        "tok/s, 95k "
+                        f"{val(rows,'hf-dankpaws-swift15-mlx-pp95k','pp_tps')} vs "
+                        f"{val(rows,'hf-dankpaws-swift15-ic3-pp95k','pp_tps')}; "
+                        "decode after 4k "
+                        f"{val(rows,'hf-dankpaws-swift15-mlx-d4k','tps')} vs "
+                        f"{val(rows,'hf-dankpaws-swift15-ic3-d4k','tps')}, after "
+                        "95k "
+                        f"{val(rows,'hf-dankpaws-swift15-mlx-d95k','tps')} vs "
+                        f"{val(rows,'hf-dankpaws-swift15-ic3-d95k','tps')} tok/s. "
+                        "Top-1 agreement with Swift BF16 is 91.0% for the pack "
+                        "versus 84.1% for IQ3_XXS.")
             if hw == "Radeon 8060S" and model == "Sakura-Qwen3.8-Flash-Next-Swift":
                 return ("Expert-pruned Qwen3.8-Flash-Next cuts on one 64 GB Strix "
                         "Halo (webmp3 cards, 32k ctx, KV q8_0). The shared MTP "
