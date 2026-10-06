@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 5 (+9 rows)
+
+- 4 more unique oMLX sessions (9 rows): Ornith-1.5-35B-A3B NVFP4 on M4 Max (4 collapsed sessions), Qwen3.5-122B-A10B oQ6e-mtp second M5 Max session, Qwen3.6-35B-A3B oQ6-mtp second M1 Max session, Qwen3.8-27B oQ4e-mtp on M1 Max 24c.
+- Dataset 4657 -> 4666.
+
 ## 2026-10-06: oMLX traces batch 4 (+19 rows)
 
 - 7 more unique oMLX sessions (19 rows): Qwen3.5-122B-A10B oQ6e-mtp on M5 Max, Qwen3.6-35B-A3B oQ6-mtp on M1 Max (2 sessions), Qwen3.8-35B-A3B-Distill oQ6e-mtp on M4 Pro (new model), Qwen3.8-27B oQ8e-mtp on M3 Ultra 256 GB, oQ4e-mtp on M4 Pro 48 GB, orcarouter Uncensored build on M4 Pro (4 sessions collapsed to 1), Qwen3.5-9B on M1 Pro 16 GB.
