@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 12 (+190 rows)
+
+- Next 60 of the corpus mined; the crawl has now reached today's traces (2026-10-06, e.g. Qwen3.8-27B oQ8e MTP on M3 Max 128 GB), so the March-to-present sweep is nearly complete.
+- Dataset 6064 -> 6254.
+
 ## 2026-10-06: oMLX traces batch 11 (+252 rows)
 
 - Next 60 of the 915-trace corpus (March 9 era) mined: 151 traces, 252 rows. New models HY-MT1.5-1.8B, Qwen3-VL-8B-Instruct, Qwen3.5-2B-Claude-4.6-Opus-Reasoning-Distilled.
