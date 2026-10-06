@@ -3195,6 +3195,19 @@ between builds of the same backend, see the
                     "on the 2.5-bit cut. See the Sakura-Qwen3.8-Flash-Next-Swift "
                     "rows for the full MTP n-max and -b sweep.")
         if (venue, issue) == ("HF", "?"):
+            if hw == "M4 Max (128 GB)" and model == "Qwen3.8-Flash-Next":
+                return ("mlx-serve 26.8.11 on M4 Max 128 GB, ~75 GB resident, "
+                        "mixed 4-bit experts / 8-bit rest pack: serial decode "
+                        f"{val(rows,'hf-ddalcu-q38fn-mlx-serial','tps')} tok/s, "
+                        "the native MTP head (lossless, opt-in) "
+                        f"{val(rows,'hf-ddalcu-q38fn-mlx-mtp','tps')} tok/s "
+                        f"({pct(rows,'hf-ddalcu-q38fn-mlx-serial','hf-ddalcu-q38fn-mlx-mtp','tps'):+.0f}%; "
+                        "+41% on code, a few percent slower on prose), "
+                        f"prefill ~{val(rows,'hf-ddalcu-q38fn-mlx-prefill','pp_tps')} tok/s; "
+                        "a 24.8k-token needle stays recovered with sparse "
+                        "attention. The card points to a re-quantized iQ-MLX "
+                        "4.7 bpw successor pack, kept here as the measured "
+                        "mixed 4/8-bit baseline.")
             if hw == "M4 Pro (48 GB)" and model == "Qwen3.6-27B-AEON-Ultimate-Uncensored":
                 return ("AEON-7 Qwen3.6-27B merge on M4 Pro 48 GB, mlx-vlm: the "
                         "compact mxfp4 build decodes "
