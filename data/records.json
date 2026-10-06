@@ -1,5 +1,5 @@
 {
- "count": 4462,
+ "count": 4463,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -95602,6 +95602,30 @@
    "source_url": "https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks",
    "tg_tokens": null,
    "tps": 9,
+   "ttft_s": null
+  },
+  {
+   "backend": "LM Studio",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "M6",
+   "id": "llmcheck-gpt-oss-20b-m6-unstated-lm-studio",
+   "model": "gpt-oss 20B",
+   "notes": "reclassified from estimate to community by llmcheck (HDZucht M6 card)",
+   "params": "21B-A3.6B",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "unstated",
+   "quote": "GPT-oss 20B,21B-A3.6B,unstated,M6,32,LM Studio,45,None,2026-10",
+   "ram_gb": 32,
+   "retrieved": "2026-10-06",
+   "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
+   "source_url": "https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks",
+   "tg_tokens": null,
+   "tps": 45,
    "ttft_s": null
   },
   {

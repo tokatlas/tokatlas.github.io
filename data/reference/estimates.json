@@ -1,5 +1,5 @@
 {
- "count": 526,
+ "count": 525,
  "note": "reference estimates only (source models, not measurements); excluded from record counts",
  "records": [
   {
@@ -4623,29 +4623,6 @@
    "source_url": "https://llmcheck.net/data/benchmarks.json",
    "tg_tokens": null,
    "tps": 97,
-   "ttft_s": null
-  },
-  {
-   "backend": "LM Studio",
-   "batch": null,
-   "ctx": null,
-   "date": "2026-10",
-   "hardware": "M6",
-   "id": "llmcheck-gpt-oss-20b-m6-unstated-lm-studio",
-   "model": "GPT-oss 20B",
-   "notes": "LLMCheck model-based estimate (bandwidth model)",
-   "params": "21B-A3.6B",
-   "power_w": null,
-   "pp_tps": null,
-   "provenance": "estimated",
-   "quant": "unstated",
-   "quote": "GPT-oss 20B,21B-A3.6B,unstated,M6,32,LM Studio,45,None,2026-10",
-   "ram_gb": 32,
-   "retrieved": "2026-10-05",
-   "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
-   "source_url": "https://llmcheck.net/data/benchmarks.json",
-   "tg_tokens": null,
-   "tps": 45,
    "ttft_s": null
   },
   {
