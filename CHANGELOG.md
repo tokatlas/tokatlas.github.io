@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 3 (+13 rows)
+
+- 6 more unique oMLX sessions (13 rows): GLM-5.3-Flash 4bit-MTP on M5 Ultra 256 GB (85.6 tok/s tg at 32k), Qwen3.8-27B oQ4e-mtp on M5 Ultra 96 GB (96.9 tok/s at 32k), Qwen3.8-Flash-Next oQ4e on M3 Ultra 256 GB and oQ5e repeat runs at 195k on M5 Max (45.2-49.4 tok/s), Qwen3.8-27B oQ8e second M3 Max session, mlx-community 4bit on M2 Max 64 GB.
+- Dataset 4625 -> 4638.
+
 ## 2026-10-06: oMLX traces batch 2: fresh 10-06 sessions (+26 rows)
 
 - 11 more unique oMLX sessions (26 rows) from the newest traces: Huihui-Qwen3.8-27B-abliterated Q8 and Qwen3-Coder-Next 6bit on M5 Max, Qwen3.8-27B oQ4e-fp16/oQ8e/8bit MTP builds on M1 Ultra/M3 Max/M5 Pro, Qwen3.8-Flash-Next oQ5e-mtp on M5 Max (195k ctx, 50.0 tok/s), Gemma 4 26B-A4B UD-MLX-3bit on M5 Pro (1958 pp at 4k), Qwen3.5-9B on M4; new models Qwen3.8-27B-MTPLX and Qwen3.8-27B-Uncensored.
