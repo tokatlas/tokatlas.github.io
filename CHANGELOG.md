@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 9 (+289 rows)
+
+- Next 60 of the 915-trace corpus (March 9 era) mined: 180 traces, 289 rows on M1 Max, M4, M5, M2/M3. New models Llama-3.2-3B-Instruct, Qwen3.5-35B-A3B-Heretic, GLM-4.7-Flash, Gemma 3 4B QAT build.
+- CI hardening: quote-verification fetches now retry 429s with backoff (was failing on cold-cache bursts from omlx.ai).
+- Dataset 5244 -> 5533.
+
 ## 2026-10-06: oMLX traces batch 8 (+265 rows)
 
 - Next 60 of the 915-trace corpus (March 8-9 era) mined: 193 traces, 265 rows on M4, M5, M1/M2 Max, M3/M4 Pro. New models Qwen2.5-Coder-14B-Instruct, Qwen3-Coder-30B-A3B-Instruct; small models Qwen3.5-0.8B/4B, Qwen3.5-35B-A3B, GLM-5 4.8bit.
