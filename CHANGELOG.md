@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: HF card RolanDorisTech Qwen3.8-9B-Distill MLX quant ladder (4 rows)
+
+- RolanDorisTech/Qwen3.8-9B-Distill-MLX-8bit card: community distill of Qwen3.8-2.4T-A95B into the Qwen3.5-9B architecture, oMLX dynamic quantization ladder (oQ4e/oQ5e/oQ6e/oQ8e) measured on M1 Max 64 GB: 43.0 / 37.1 / 33.3 / 28.7 gen tok/s with peak memory 5.471-9.679 GB (new model).
+- Dataset 4574 -> 4578.
+
 ## 2026-10-06: vLLM #59973 body rewrite re-sync (+1 row)
 
 - The author rewrote the vLLM #59973 body (quantized draft lm_head, Qwen3.8-Flash-Next NVFP4 + MTP k=3, one GB10). Re-synced the 3 dependent records to the current ABBA same-node table: stock BF16 draft head 35.6 tok/s c=1 and 27.2 c=4, NVFP4 draft head 30.4 c=4, and added the NVFP4 c=1 row (45.2 tok/s, +27.1%). FP8 arms are published relative-only and stay in the A/B note.

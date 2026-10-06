@@ -1,3 +1,2 @@
 # Re-fetch these URLs once in CI despite a fresh cache (source rewrite detected locally).
 # Remove entries after CI has saved the refreshed cache.
-https://github.com/vllm-project/vllm/pull/59973
