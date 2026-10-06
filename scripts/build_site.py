@@ -1386,6 +1386,23 @@ between builds of the same backend, see the
                     f"{pct(rows,'vllm-60187-a100x16-mtb-main','vllm-60187-a100x16-mtb-pr','tps'):+.1f}%). "
                     "RoPE accounts for most of the acceptance gap; the MTP layer "
                     "was trained with RoPE.")
+        if (venue, issue) == ("vLLM", "60216"):
+            o4 = "vllm-60216-mi355x8-c4-8k-off"
+            n4 = "vllm-60216-mi355x8-c4-8k-on"
+            o8 = "vllm-60216-mi355x8-c8-8k-off"
+            n8 = "vllm-60216-mi355x8-c8-8k-on"
+            return ("Fused AITER MonoKernel decode: with "
+                    "VLLM_ROCM_GLM_MONO_DECODE=1 each sparse MoE layer of a "
+                    "pure decode step runs as one kernel launch per GPU "
+                    "(indexer + both TP all-reduces). 8x MI355X, TP8, 8K in / "
+                    "1K out, out tok/s/GPU: "
+                    f"{val(rows,o4,'tps'):.2f} -> {val(rows,n4,'tps'):.2f} at c4 "
+                    f"({pct(rows,o4,n4,'tps'):+.1f}%), "
+                    f"{val(rows,o8,'tps'):.2f} -> {val(rows,n8,'tps'):.2f} at c8 "
+                    f"({pct(rows,o8,n8,'tps'):+.1f}%); 60K in / 600 out: +18.1% "
+                    "at c4, +7.6% at c8. The c16 rows are the crossover: decode "
+                    "steps above 8 tokens keep the regular layers, so the fused "
+                    "path is off and throughput is flat (+0.9% / +0.4%).")
         if (venue, issue) == ("vLLM", "59916"):
             g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
             k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
