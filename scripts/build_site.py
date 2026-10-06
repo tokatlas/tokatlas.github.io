@@ -693,6 +693,82 @@ between builds of the same backend, see the
                         "the reporter observes the same regression through "
                         "#29971.")
             return None
+        if (venue, issue) == ("llama.cpp", "30035"):
+            if model == "Llama-3.2-1B":
+                return ("q2_k NPU tile reduction (bpw 4.0 to 2.625, activation "
+                        "scale 1/32 to 1/256) on the IQ-9075 Hexagon NPU, "
+                        "tg64: the pure Q2_K model jumps "
+                        f"{val(rows,'lc30035-llama321b-pureq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-llama321b-pureq2k-pr','tps')} tok/s "
+                        f"({pct(rows,'lc30035-llama321b-pureq2k-master','lc30035-llama321b-pureq2k-pr','tps'):+.0f}%), "
+                        "the mixed Q2_K/Q3_K/Q4_K/Q6_K model "
+                        f"{val(rows,'lc30035-llama321b-mixedq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-llama321b-mixedq2k-pr','tps')} tok/s, while "
+                        "the Q4_0 reference stays flat "
+                        f"({val(rows,'lc30035-llama321b-refq40-master','tps')} -> "
+                        f"{val(rows,'lc30035-llama321b-refq40-pr','tps')} tok/s): "
+                        "the tile change only touches the q2_k kernel, so Q4_0 "
+                        "is the control.")
+            if model == "Llama-3.2-3B":
+                return ("Same q2_k tile reduction, Llama-3.2-3B tg64: pure "
+                        "Q2_K "
+                        f"{val(rows,'lc30035-llama323b-pureq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-llama323b-pureq2k-pr','tps')} tok/s, "
+                        "mixed Q2_K/Q3_K/Q6_K "
+                        f"{val(rows,'lc30035-llama323b-mixedq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-llama323b-mixedq2k-pr','tps')} tok/s. "
+                        "The 3B gain is smaller than the 1B: the larger model "
+                        "is less tile-bound.")
+            if model == "Qwen3.5-2B":
+                return ("Same q2_k tile reduction, Qwen3.5-2B tg64: the imatrix "
+                        "pure Q2_K "
+                        f"{val(rows,'lc30035-qwen352b-pureq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-qwen352b-pureq2k-pr','tps')} tok/s "
+                        "and the bartowski mixed Q2_K "
+                        f"{val(rows,'lc30035-qwen352b-mixedq2k-master','tps')} -> "
+                        f"{val(rows,'lc30035-qwen352b-mixedq2k-pr','tps')} tok/s, "
+                        "the smallest gains in the table since the 2B model is "
+                        "already close to the NPU's bandwidth limit.")
+            return None
+        if (venue, issue) == ("llama.cpp", "30036"):
+            if model == "Qwen3 4B":
+                return ("Q8_0 VNNI repack kernels (vpdpbusd 8x4/16x4 layouts) "
+                        "on a Ryzen 9 9950X, llama-bench: pp2048 at 16 threads "
+                        f"{val(rows,'lc30036-qwen34b-q80-pp2048-t16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30036-qwen34b-q80-pp2048-t16-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30036-qwen34b-q80-pp2048-t16-master','lc30036-qwen34b-q80-pp2048-t16-pr','pp_tps'):+.0f}%), "
+                        "and the gain holds across the thread sweep (4 threads "
+                        f"{val(rows,'lc30036-qwen34b-q80-pp2048-t4-master','pp_tps')} -> "
+                        f"{val(rows,'lc30036-qwen34b-q80-pp2048-t4-pr','pp_tps')} tok/s, "
+                        "3.2x); decode is unchanged (tg128 "
+                        f"{val(rows,'lc30036-qwen34b-q80-tg128-t16-master','tps')} -> "
+                        f"{val(rows,'lc30036-qwen34b-q80-tg128-t16-pr','tps')} tok/s) "
+                        "because it is memory-bound, not GEMM-bound.")
+            if model == "Qwen3-4B-Instruct-2507":
+                return ("Same Q8_0/Q4_0 VNNI repack kernels on a Ryzen 9 9950X, "
+                        "Qwen3-4B-Instruct-2507 Q4_0: pp2048 at 16 threads "
+                        f"{val(rows,'lc30036-qwen34binstruct2507-q40-pp2048-t16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30036-qwen34binstruct2507-q40-pp2048-t16-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30036-qwen34binstruct2507-q40-pp2048-t16-master','lc30036-qwen34binstruct2507-q40-pp2048-t16-pr','pp_tps'):+.0f}%), "
+                        "a smaller ratio than the Q8_0 arm because the 4-bit "
+                        "GEMM already packs tighter; decode is flat (tg128 "
+                        f"{val(rows,'lc30036-qwen34binstruct2507-q40-tg128-t16-master','tps')} -> "
+                        f"{val(rows,'lc30036-qwen34binstruct2507-q40-tg128-t16-pr','tps')} tok/s).")
+            if model == "llama-3-1-8b-instruct":
+                return ("Same VNNI repack kernels on a Ryzen 9 9950X, 8B "
+                        "model: the Q8_0 arm shows the largest prefill speedup "
+                        "(pp2048 at 16 threads "
+                        f"{val(rows,'lc30036-llama318b-q80-pp2048-t16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30036-llama318b-q80-pp2048-t16-pr','pp_tps')} tok/s, "
+                        f"{pct(rows,'lc30036-llama318b-q80-pp2048-t16-master','lc30036-llama318b-q80-pp2048-t16-pr','pp_tps'):+.0f}%) "
+                        "while the Q4_0 arm is "
+                        f"{val(rows,'lc30036-llama318b-q40-pp2048-t16-master','pp_tps')} -> "
+                        f"{val(rows,'lc30036-llama318b-q40-pp2048-t16-pr','pp_tps')} tok/s "
+                        f"({pct(rows,'lc30036-llama318b-q40-pp2048-t16-master','lc30036-llama318b-q40-pp2048-t16-pr','pp_tps'):+.0f}%); "
+                        "decode stays flat on both (tg128 Q8_0 "
+                        f"{val(rows,'lc30036-llama318b-q80-tg128-t16-master','tps')} -> "
+                        f"{val(rows,'lc30036-llama318b-q80-tg128-t16-pr','tps')} tok/s).")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "
@@ -1228,6 +1304,26 @@ between builds of the same backend, see the
                     f"{val(rows,'vllm-60153-mi325x4-on-8k','tps')} tok/s. "
                     "The fused seam is 468 us per call vs the three-kernel "
                     "319/291/174 us family it replaces.")
+        if (venue, issue) == ("vLLM", "60161"):
+            if model == "GLM-5.3":
+                return ("NIXL HiSparse DRAM region registration restricted to "
+                        "rank 0 instead of every rank, GLM-5.3 HiSparse "
+                        "decode on 64 H100 (4P/4D, DP4 x TP8, 288 GiB shared "
+                        "host pool, DeepEP LL): at concurrency 32 output "
+                        f"{val(rows,'vllm-60161-h100x64-c32-stock','tps')} -> "
+                        f"{val(rows,'vllm-60161-h100x64-c32-pr','tps')} tok/s "
+                        f"({pct(rows,'vllm-60161-h100x64-c32-stock','vllm-60161-h100x64-c32-pr','tps'):+.1f}%) "
+                        "and TTFT p99 "
+                        f"{val(rows,'vllm-60161-h100x64-c32-stock','ttft_s')} s "
+                        f"down to {val(rows,'vllm-60161-h100x64-c32-pr','ttft_s')} s; "
+                        "at concurrency 128 the decode is prefill-bound and the "
+                        "arms converge ("
+                        f"{val(rows,'vllm-60161-h100x64-c128-stock','tps')} vs "
+                        f"{val(rows,'vllm-60161-h100x64-c128-pr','tps')} tok/s). "
+                        "The PR removes 12469 NIC registrations from the cold "
+                        "path; the c32 TTFT win is the reduced per-request "
+                        "registration overhead.")
+            return None
         if (venue, issue) == ("vLLM", "59916"):
             g = "vllm-59916-b300x4-glm53-tp1pcp4-gatherdcp4"
             k = "vllm-59916-b300x4-glm53-tp1pcp4-kvpp"
