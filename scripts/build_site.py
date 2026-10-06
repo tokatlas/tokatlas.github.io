@@ -557,6 +557,69 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
                         "flat within +-0.2% at every other ub.")
             return None
+        if (venue, issue) == ("llama.cpp", "29037"):
+            pair = {"Qwen3-4B-Instruct": ("qwen34bi", "30"),
+                    "SmolLM2-135M": ("smolm135", "240"),
+                    "Midm-2.0-Mini": ("midm2mini", "40")}.get(model)
+            if pair:
+                slug, tgt = pair
+                return ("FiTuna auto-tuner on an Apple M3 Pro: pick the lightest "
+                        "quant (and minimum -ngl) that hits the "
+                        f"{tgt} tok/s target within a 5% perplexity-loss budget. "
+                        f"The Q8_0 default measured "
+                        f"{val(rows,f'lc-disc-29037-{slug}-q80','tps')} tok/s and "
+                        "failed; the passing config reached "
+                        f"{val(rows,f'lc-disc-29037-{slug}-pass','tps')} tok/s. "
+                        "Author notes run-to-run noise of about +-1.7 tok/s at a "
+                        "30 tok/s baseline, so near-miss verdicts are marginal.")
+            return None
+        if (venue, issue) == ("llama.cpp", "29387") and model == "Ternary-Bonsai-2-27B":
+            return ("DFlash2 speculative decoding (from #27816, cherry-picked onto "
+                    "PrismML's fork) on one L4, greedy, drafter Q4_K_M: decode goes "
+                    f"{val(rows,'lc-disc-29387-bonsai-gsm8k-plain','tps')} -> "
+                    f"{val(rows,'lc-disc-29387-bonsai-gsm8k-dflash','tps')} tok/s on "
+                    "GSM8K, 31.6 -> 68.4 on MBPP, 30.6 -> 67.8 on MATH-500 (2.15-2.22x) "
+                    f"and {val(rows,'lc-disc-29387-bonsai-mtbench-plain','tps')} -> "
+                    f"{val(rows,'lc-disc-29387-bonsai-mtbench-dflash','tps')} on "
+                    "MT-Bench turn 1 (1.37x). ngram-mod on the same sets was "
+                    "0.92-0.95x; draft-n-max 7 suits code/math, 3 suits open-ended "
+                    "text. Accuracy moved by at most one problem per set.")
+        if (venue, issue) == ("llama.cpp", "29253"):
+            if model == "Qwen3 4B":
+                return ("Per-UID RPC graph caching over 2.5G Ethernet between two "
+                        "GMKtec K12 boxes (Ryzen H255): tg32 "
+                        f"{val(rows,'lc-disc-29253-qwen34b-upstream','tps')} -> "
+                        f"{val(rows,'lc-disc-29253-qwen34b-graphcache','tps')} tok/s "
+                        f"(solo K12-1 baseline "
+                        f"{val(rows,'lc-disc-29253-qwen34b-solo','tps')} tok/s), pp64 "
+                        f"{val(rows,'lc-disc-29253-qwen34b-upstream','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29253-qwen34b-graphcache','pp_tps')} "
+                        "tok/s. Gemma-4-31B sees the bigger relative win: tg32 "
+                        "1.64 -> 4.11 tok/s, close to its 4.49 tok/s solo rate.")
+            if model == "Gemma-4-31B":
+                return ("Per-UID RPC graph caching over 2.5G Ethernet between two "
+                        "GMKtec K12 boxes (Ryzen H255), Gemma 4 31B Q4_0 (241 graphs "
+                        "reused): tg32 "
+                        f"{val(rows,'lc-disc-29253-gemma431b-upstream','tps')} -> "
+                        f"{val(rows,'lc-disc-29253-gemma431b-graphcache','tps')} tok/s, "
+                        f"vs {val(rows,'lc-disc-29253-gemma431b-solo','tps')} tok/s "
+                        f"solo; pp64 {val(rows,'lc-disc-29253-gemma431b-upstream','pp_tps')} "
+                        f"-> {val(rows,'lc-disc-29253-gemma431b-graphcache','pp_tps')} tok/s.")
+            return None
+        if (venue, issue) == ("llama.cpp", "29249") and model == "Qwen3-4B-Instruct-2507":
+            return ("Sarge harness (in-process Rust rule checker linked into "
+                    "llama-server) writing code with Qwen3-4B-Instruct-2507 Q4_K_M: "
+                    f"{val(rows,'lc-disc-29249-4070lp-gpu','tps')} tok/s on the 4070 "
+                    f"laptop card vs {val(rows,'lc-disc-29249-4070lp-cpu','tps')} "
+                    "tok/s on 4 CPU cores at -ngl 0. A rule check on a 2,250-token "
+                    "file costs about 70 s on CPU or a few seconds on the card.")
+        if (venue, issue) == ("llama.cpp", "29072") and model == "Gemma 4 26B-A4B":
+            return ("Conservative narrow-MoE MMVQ selector patch for RDNA3 UMA iGPUs "
+                    "(gfx1103) on Vulkan, Gemma 4 26B-A4B QAT-Q4_0 on a 780M: tg "
+                    f"{val(rows,'lc-disc-29072-780m-gemma26a4b-before','tps')} -> "
+                    f"{val(rows,'lc-disc-29072-780m-gemma26a4b-after','tps')} t/s "
+                    "(+12.2% published, single same-prompt speed test; a maintainer "
+                    "asked for repeated runs and a selector-only ablation).")
         if (venue, issue) == ("llama.cpp", "29643"):
             if model == "Bonsai 2 27B":
                 return ("Xe2 XMX kernels for ternary weights and q4_0 KV-cache "
