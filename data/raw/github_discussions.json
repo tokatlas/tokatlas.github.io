@@ -430,7 +430,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29973",
    "source_name": "llama.cpp discussion #29973",
    "retrieved": "2026-10-05",
-   "quote": "Threadripper PRO 3975WX; Quadro P2000; Qwen3.8-Flash-Next; GPU offload (`-ngl 999 -ncmoe 48 -nkvo 1`) | pp 14.36 (\u221274%), tg 2.86 (\u221258%)",
+   "quote": "Threadripper PRO 3975WX; Quadro P2000; Qwen3.8-Flash-Next; GPU offload (`-ngl 999 -ncmoe 48 -nkvo 1`) | pp 14.36 (−74%), tg 2.86 (−58%)",
    "notes": "Threadripper PRO 3975WX + Quadro P2000 5 GB (sm_61), unsloth cuda12-legacy build: full GPU offload is a big loss (per-layer activation transfer over PCIe swamps any gain on 5 GB Pascal); baseline CPU tg128 6.83"
   },
   {
@@ -502,7 +502,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29973",
    "source_name": "llama.cpp discussion #29973",
    "retrieved": "2026-10-05",
-   "quote": "Threadripper PRO 3975WX; Qwen3.8-Flash-Next; both reach 6.22\u20136.24",
+   "quote": "Threadripper PRO 3975WX; Qwen3.8-Flash-Next; both reach 6.22–6.24",
    "notes": "Threadripper PRO 3975WX, pure CPU, tg128 thread/affinity sweep (MSVC build, baseline 6.83 at -t 20); affinity masks 0x55555555 / 0xAAAAAAAA, 16 threads one per physical core, published range 6.22-6.24 (stored low end); config=mask-nosmt"
   },
   {
@@ -622,7 +622,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29930",
    "source_name": "llama.cpp discussion #29930",
    "retrieved": "2026-10-05",
-   "quote": "RTX 5070; Ryzen 5 5600GT; Qwen3.8-Flash-Next; In normal conversations I\u2019ve seen 14\u201315 tok/s",
+   "quote": "RTX 5070; Ryzen 5 5600GT; Qwen3.8-Flash-Next; In normal conversations I’ve seen 14–15 tok/s",
    "notes": "Qwen3.8-Flash-Next 177B UD-IQ3_XXS expert-streaming setup (hashyy, llama.cpp based) on RTX 5070 12 GB + Ryzen 5 5600GT + 32 GB DDR4-2400 (PCIe Gen3), Windows; gains from fixed Windows I/O queue depth, one file handle per worker, page-locked hot-expert tier; normal conversation use, published range 14-15 tok/s (stored low end); config=conversations"
   },
   {
@@ -2221,7 +2221,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/24528#discussioncomment-18243371",
    "source_name": "llama.cpp discussion #24528",
    "retrieved": "2026-10-05",
-   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | cache | `-ngl 99 --n-cpu-moe 48 --moe-cache 12288` | ~12.4 GiB | 64.0 \u00b1 0.3 t/s | 19.7 \u00b1 0.1 t/s |",
+   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | cache | `-ngl 99 --n-cpu-moe 48 --moe-cache 12288` | ~12.4 GiB | 64.0 ± 0.3 t/s | 19.7 ± 0.1 t/s |",
    "notes": "mfethe1's matched-budget A/B on a single RTX 5060 Ti 16 GB + Ryzen 7 3700X (DDR4), CUDA 12.9, Windows 11, Qwen3-30B-A3B Q4_K_M (17.28 GiB, 48 layers, 128 experts/layer), leloch moe-cache branch e3096b0 same build both arms, -mg 0 -sm none fa on t 8 KV f16, ABBA order 3 reps, both arms at ~12.5 GiB VRAM; cache arm -ngl 99 --n-cpu-moe 48 --moe-cache 12288: 85.3% steady-state expert hit rate (124860/146312), zero evictions, still loses decode by 1.80x and prefill by 2.34x; config=matched-cache"
   },
   {
@@ -2244,7 +2244,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/24528#discussioncomment-18243371",
    "source_name": "llama.cpp discussion #24528",
    "retrieved": "2026-10-05",
-   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | resident | `-ngl 33 --moe-cache off` | ~12.5 GiB | 149.6 \u00b1 0.1 t/s | 35.4 \u00b1 0.4 t/s |",
+   "quote": "single RTX 5060 Ti 16 GB; Qwen3-30B-A3B Q4_K_M; | resident | `-ngl 33 --moe-cache off` | ~12.5 GiB | 149.6 ± 0.1 t/s | 35.4 ± 0.4 t/s |",
    "notes": "mfethe1's matched-budget A/B on a single RTX 5060 Ti 16 GB + Ryzen 7 3700X (DDR4), CUDA 12.9, Windows 11, Qwen3-30B-A3B Q4_K_M (17.28 GiB, 48 layers, 128 experts/layer), leloch moe-cache branch e3096b0 same build both arms, -mg 0 -sm none fa on t 8 KV f16, ABBA order 3 reps, both arms at ~12.5 GiB VRAM; resident arm -ngl 33 --moe-cache off: same VRAM budget spent on resident layers instead of the cache; resident weights serve 100% of tokens with zero misses; config=matched-resident"
   },
   {
@@ -2266,7 +2266,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16403244",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B \u2014 first RTX 4090 (SM89 Ada) PPL data + throughput; | f16/f16 | 1130.8 | 225.9 |",
+   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B — first RTX 4090 (SM89 Ada) PPL data + throughput; | f16/f16 | 1130.8 | 225.9 |",
    "notes": "AmesianX TurboQuant v1.2.0 fork on RTX 4090 24GB (CUDA 12.8, Windows 11), Qwen3-30B-A3B Q4_K_M (17.28 GiB), llama-bench pp512/tg128 mean of 3 reps; llama-bench rejects tbq KV types in this build so only baseline KV caches measured; KV cache f16 (f16 baseline / q8_0 / q4_0 K and V); config=st-kv-f16"
   },
   {
@@ -2288,7 +2288,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16403244",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B \u2014 first RTX 4090 (SM89 Ada) PPL data + throughput; | q8_0/q8_0 | 1132.8 | 223.2 |",
+   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B — first RTX 4090 (SM89 Ada) PPL data + throughput; | q8_0/q8_0 | 1132.8 | 223.2 |",
    "notes": "AmesianX TurboQuant v1.2.0 fork on RTX 4090 24GB (CUDA 12.8, Windows 11), Qwen3-30B-A3B Q4_K_M (17.28 GiB), llama-bench pp512/tg128 mean of 3 reps; llama-bench rejects tbq KV types in this build so only baseline KV caches measured; KV cache q80 (f16 baseline / q8_0 / q4_0 K and V); config=st-kv-q80"
   },
   {
@@ -2310,7 +2310,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16403244",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B \u2014 first RTX 4090 (SM89 Ada) PPL data + throughput; | q4_0/q4_0 | 1087.8 | 211.0 |",
+   "quote": "RTX 4090 24GB, CUDA 12.8, Windows 11, AmesianX TurboQuant v1.2.0; Qwen3-30B-A3B — first RTX 4090 (SM89 Ada) PPL data + throughput; | q4_0/q4_0 | 1087.8 | 211.0 |",
    "notes": "AmesianX TurboQuant v1.2.0 fork on RTX 4090 24GB (CUDA 12.8, Windows 11), Qwen3-30B-A3B Q4_K_M (17.28 GiB), llama-bench pp512/tg128 mean of 3 reps; llama-bench rejects tbq KV types in this build so only baseline KV caches measured; KV cache q40 (f16 baseline / q8_0 / q4_0 K and V); config=st-kv-q40"
   },
   {
@@ -2376,7 +2376,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16436834",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | **q8_0 / turbo4** | **10,903 \u00b1 545** | **140.0 \u00b1 0.2** | +8.4% | \u22126.2% |",
+   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | **q8_0 / turbo4** | **10,903 ± 545** | **140.0 ± 0.2** | +8.4% | −6.2% |",
    "notes": "spiritbuun feature/turboquant-kv-cache @ 5047b3e9a on RTX 4090 24GB + i9-14900K (CUDA 12.4, Windows, VS 2022), Llama 3.1 8B Instruct Q4_K_M (4.58 GiB), llama-bench pp512/tg128; q8_0 K + turbo4 V: fastest prefill of any config (+8.4% vs f16) with only 6.2% decode cost, author's recommended config; config=wsf1-q8-t4"
   },
   {
@@ -2398,7 +2398,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16436834",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | q8_0 / turbo3 | 10,925 \u00b1 503 | 138.4 \u00b1 0.2 | +8.6% | \u22127.3% |",
+   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | q8_0 / turbo3 | 10,925 ± 503 | 138.4 ± 0.2 | +8.6% | −7.3% |",
    "notes": "spiritbuun feature/turboquant-kv-cache @ 5047b3e9a on RTX 4090 24GB + i9-14900K (CUDA 12.4, Windows, VS 2022), Llama 3.1 8B Instruct Q4_K_M (4.58 GiB), llama-bench pp512/tg128; q8_0 K + turbo3 V; config=wsf1-q8-t3"
   },
   {
@@ -2420,7 +2420,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16436834",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | turbo3 / turbo3 (adaptive=1) | 10,476 \u00b1 432 | 128.3 \u00b1 0.2 | +4.1% | \u221214.1% |",
+   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | turbo3 / turbo3 (adaptive=1) | 10,476 ± 432 | 128.3 ± 0.2 | +4.1% | −14.1% |",
    "notes": "spiritbuun feature/turboquant-kv-cache @ 5047b3e9a on RTX 4090 24GB + i9-14900K (CUDA 12.4, Windows, VS 2022), Llama 3.1 8B Instruct Q4_K_M (4.58 GiB), llama-bench pp512/tg128; symmetric turbo3 (adaptive=1); beats symmetric turbo4 at decode; config=wsf1-t3-t3"
   },
   {
@@ -2442,7 +2442,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16436834",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | turbo4 / turbo4 | 10,405 \u00b1 496 | 124.3 \u00b1 0.1 | +3.4% | \u221216.8% |",
+   "quote": "RTX 4090 24GB, i9-14900K, CUDA 12.4, Windows, VS 2022; Model:** Llama 3.1 8B Instruct Q4_K_M (4.58 GiB); | turbo4 / turbo4 | 10,405 ± 496 | 124.3 ± 0.1 | +3.4% | −16.8% |",
    "notes": "spiritbuun feature/turboquant-kv-cache @ 5047b3e9a on RTX 4090 24GB + i9-14900K (CUDA 12.4, Windows, VS 2022), Llama 3.1 8B Instruct Q4_K_M (4.58 GiB), llama-bench pp512/tg128; symmetric turbo4: worst decode of the matrix; config=wsf1-t4-t4"
   },
   {
@@ -2464,7 +2464,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 10,112.60   | 150.59",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 10,112.60   | 150.59",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, f16 KV baseline; config=wsf2-4090-off-f16"
   },
   {
@@ -2486,7 +2486,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 10,808.36   | 136.37",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 10,808.36   | 136.37",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, q8_0 K + turbo4 V; config=wsf2-4090-off-q8t4"
   },
   {
@@ -2508,7 +2508,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 10,154.79   | 122.68",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 10,154.79   | 122.68",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, symmetric turbo3; config=wsf2-4090-off-t3"
   },
   {
@@ -2530,7 +2530,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 10,384.88   | 123.95",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 10,384.88   | 123.95",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, symmetric turbo4; config=wsf2-4090-off-t4"
   },
   {
@@ -2552,7 +2552,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 10,794.80   | 134.73",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 10,794.80   | 134.73",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, q8_0 K + turbo3 V; config=wsf2-4090-off-q8t3"
   },
   {
@@ -2574,7 +2574,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 10,076.76   | 150.17",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 10,076.76   | 150.17",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1 (first 4 + last 4 layers at q8_0), f16 KV baseline; config=wsf2-4090-la1-f16"
   },
   {
@@ -2596,7 +2596,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 10,957.29   | 139.83",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 10,957.29   | 139.83",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, q8_0 K + turbo4 V: author's recommended config, decode recovers from 136.4 to 139.8; config=wsf2-4090-la1-q8t4"
   },
   {
@@ -2618,7 +2618,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 10,456.24   | 127.79",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 10,456.24   | 127.79",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, symmetric turbo3; config=wsf2-4090-la1-t3"
   },
   {
@@ -2640,7 +2640,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 10,571.92   | 129.26",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 10,571.92   | 129.26",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, symmetric turbo4; config=wsf2-4090-la1-t4"
   },
   {
@@ -2662,7 +2662,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 10,936.64   | 137.81",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 10,936.64   | 137.81",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, q8_0 K + turbo3 V; config=wsf2-4090-la1-q8t3"
   },
   {
@@ -2684,7 +2684,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 12,850.64   | 230.70",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 12,850.64   | 230.70",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, f16 KV baseline; config=wsf2-5090-off-f16"
   },
   {
@@ -2706,7 +2706,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 12,388.47   | 162.95",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 12,388.47   | 162.95",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, q8_0 K + turbo4 V: Blackwell loses 29% decode, vs 6-9% on Ada; author attributes it to TurboQuant's dequant path matching Ada int8 dp4a but not Blackwell fp8/fp4 tensor cores; config=wsf2-5090-off-q8t4"
   },
   {
@@ -2728,7 +2728,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 11,309.70   | 125.44",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 11,309.70   | 125.44",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, symmetric turbo3: -45.6% decode vs f16; config=wsf2-5090-off-t3"
   },
   {
@@ -2750,7 +2750,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 11,914.27   | 134.12",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 11,914.27   | 134.12",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, symmetric turbo4; config=wsf2-5090-off-t4"
   },
   {
@@ -2772,7 +2772,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 12,369.44   | 153.54",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 12,369.44   | 153.54",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=off, q8_0 K + turbo3 V; config=wsf2-5090-off-q8t3"
   },
   {
@@ -2794,7 +2794,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 12,761.21   | 231.93",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | f16 (default)     | 12,761.21   | 231.93",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, f16 KV baseline; config=wsf2-5090-la1-f16"
   },
   {
@@ -2816,7 +2816,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 12,352.17   | 173.43",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo4-V | 12,352.17   | 173.43",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, q8_0 K + turbo4 V; config=wsf2-5090-la1-q8t4"
   },
   {
@@ -2838,7 +2838,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 11,799.41   | 139.90",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo3 / turbo3   | 11,799.41   | 139.90",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, symmetric turbo3; config=wsf2-5090-la1-t3"
   },
   {
@@ -2860,7 +2860,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 11,739.74   | 144.22",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | turbo4 / turbo4   | 11,739.74   | 144.22",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, symmetric turbo4; config=wsf2-5090-la1-t4"
   },
   {
@@ -2882,7 +2882,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16447542",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "AMD 9950X3D \u00b7 64 GB DDR5 \u00b7 RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 12,420.45   | 161.79",
+   "quote": "AMD 9950X3D · 64 GB DDR5 · RTX 5090 (32 GB) + RTX 4090 (24 GB); Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB); | q8_0-K + turbo3-V | 12,420.45   | 161.79",
    "notes": "spiritbuun llama-cpp-turboquant-cuda v2, CUDA 12.8 FA flags on, AMD 9950X3D + 64 GB DDR5, Meta-Llama-3.1-8B-Instruct-Q4_K_M (4.58 GiB), llama-bench pp512/tg128; CUDA 13.2 sm_120a identical to CUDA 12.8 sm_120 within noise; LA=1, q8_0 K + turbo3 V; config=wsf2-5090-la1-q8t3"
   },
   {
@@ -2904,7 +2904,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16404751",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | q8_0 | 8.5 | 1.88\u00d7 | 63.40 | 55.60 | baseline |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
+   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | q8_0 | 8.5 | 1.88× | 63.40 | 55.60 | baseline |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
    "notes": "Madreag/turbo3-cuda release/cuda-optimized fork, RTX 5090, Qwen 3.5 27B Q6_K, llama-bench tg128 at 32K depth (-d 32768), pp512 from the prefill scaling table; q8_0 KV baseline, short-context tg128 63.40, prefill 3512 pp512 falling to 2839 at pp32768; config=md59-q8"
   },
   {
@@ -2926,7 +2926,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16404751",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo4 | 4.25 | 3.76\u00d7 | 63.70 | **56.73** | **+2.0%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
+   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo4 | 4.25 | 3.76× | 63.70 | **56.73** | **+2.0%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
    "notes": "Madreag/turbo3-cuda release/cuda-optimized fork, RTX 5090, Qwen 3.5 27B Q6_K, llama-bench tg128 at 32K depth (-d 32768), pp512 from the prefill scaling table; turbo4 KV 3.76x compression, +2.0% vs q8_0 at 32K, short-context 63.70; config=md59-t4"
   },
   {
@@ -2948,7 +2948,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16404751",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo3 | 3.125 | 5.12\u00d7 | 63.55 | **55.84** | **+0.4%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
+   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo3 | 3.125 | 5.12× | 63.55 | **55.84** | **+0.4%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
    "notes": "Madreag/turbo3-cuda release/cuda-optimized fork, RTX 5090, Qwen 3.5 27B Q6_K, llama-bench tg128 at 32K depth (-d 32768), pp512 from the prefill scaling table; turbo3 KV 5.12x compression, +0.4% vs q8_0 at 32K, short-context 63.55; config=md59-t3"
   },
   {
@@ -2970,7 +2970,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16404751",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | **turbo2** | **2.125** | **7.53\u00d7** | **65.50** | **58.61** | **+5.4%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
+   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | **turbo2** | **2.125** | **7.53×** | **65.50** | **58.61** | **+5.4%** |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
    "notes": "Madreag/turbo3-cuda release/cuda-optimized fork, RTX 5090, Qwen 3.5 27B Q6_K, llama-bench tg128 at 32K depth (-d 32768), pp512 from the prefill scaling table; turbo2 KV 7.53x compression, the 32K champion at +5.4% vs q8_0 despite compression, short-context 65.50; config=md59-t2"
   },
   {
@@ -2992,7 +2992,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16404751",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo1.5 | 2.00 | 8.0\u00d7 | 63.13 | 55.16 | -0.8% |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
+   "quote": "Key results (RTX 5090, Qwen 3.5 27B Q6_K); | turbo1.5 | 2.00 | 8.0× | 63.13 | 55.16 | -0.8% |; | pp512 | 3,512 | 3,548 | 3,547 | 3,649 | 3,577 |",
    "notes": "Madreag/turbo3-cuda release/cuda-optimized fork, RTX 5090, Qwen 3.5 27B Q6_K, llama-bench tg128 at 32K depth (-d 32768), pp512 from the prefill scaling table; turbo1.5 KV 8x compression, -0.8% vs q8_0 at 32K, short-context 63.13; config=md59-t15"
   },
   {
@@ -3938,7 +3938,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16419773",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Output is completely normal on our local build (SM 121 native, DGX Spark GB10); Qwen3.5-27B-heretic-v3.i1-Q3_K_M.gguf; On our SM 121 native build, tbqp3/tbq3 prompt processing drops only ~15% vs f16 (94\u219280 t/s)",
+   "quote": "Output is completely normal on our local build (SM 121 native, DGX Spark GB10); Qwen3.5-27B-heretic-v3.i1-Q3_K_M.gguf; On our SM 121 native build, tbqp3/tbq3 prompt processing drops only ~15% vs f16 (94→80 t/s)",
    "notes": "AmesianX fork on DGX Spark (SM 121 native build), Qwen3.5-27B heretic-v3 i1-Q3_K_M, prompt processing with tbqp3-K/tbq3-V vs f16 KV, author reports only ~15% pp drop with the native build (release binaries had wrong SM targets and JIT-emulated far slower); f16 KV prompt processing 94 tok/s; config=ax-27b-f16pp"
   },
   {
@@ -3960,7 +3960,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/20969#discussioncomment-16419773",
    "source_name": "llama.cpp discussion #20969",
    "retrieved": "2026-10-05",
-   "quote": "Output is completely normal on our local build (SM 121 native, DGX Spark GB10); Qwen3.5-27B-heretic-v3.i1-Q3_K_M.gguf; On our SM 121 native build, tbqp3/tbq3 prompt processing drops only ~15% vs f16 (94\u219280 t/s)",
+   "quote": "Output is completely normal on our local build (SM 121 native, DGX Spark GB10); Qwen3.5-27B-heretic-v3.i1-Q3_K_M.gguf; On our SM 121 native build, tbqp3/tbq3 prompt processing drops only ~15% vs f16 (94→80 t/s)",
    "notes": "AmesianX fork on DGX Spark (SM 121 native build), Qwen3.5-27B heretic-v3 i1-Q3_K_M, prompt processing with tbqp3-K/tbq3-V vs f16 KV, author reports only ~15% pp drop with the native build (release binaries had wrong SM targets and JIT-emulated far slower); tbqp3/tbq3 KV prompt processing 80 tok/s; config=ax-27b-tbqpp"
   },
   {
@@ -4484,7 +4484,7 @@
    "tg_tokens": null,
    "params": null,
    "date": "2026-09",
-   "notes": "generation with 115K tokens of conversation history; config=branch-115k-history",
+   "notes": "generation with 115K tokens of conversation history, MTP plus n-gram drafts (author clarification in the follow-up); config=branch-115k-history",
    "quote": "I've been working on the SYCL backend for Intel Arc B580 (Xe2), mostly for PrismML's ternary Bonsai 2 27B; Results on a B580 at 128K context: about 90 t/s writing new code, 250-370 t/s on code edits, 42 t/s plain, 44 t/s with 115K tokens of history",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29643",
    "source_name": "llama.cpp discussion #29643 (Torchit1)",
@@ -5607,7 +5607,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "q4_0 KV with 6 GiB pool at 262K; config=262k-q4q4-pool6g",
-   "quote": "My test box: RTX 4080 Super 16 GiB, i9-14900KF, 96 GiB DDR5-4000, Windows, Qwen3.8-Flash-Next 176.94B IQ4_XS-family GGUF (QWEN4EXP arch), pinned llama.cpp revision `4e97ac8`; q4-q4 KV + 6 GiB pool: 5.649 tok/s \u2014 the q8-q4 + 4 GiB combo is slightly faster while using less VRAM",
+   "quote": "My test box: RTX 4080 Super 16 GiB, i9-14900KF, 96 GiB DDR5-4000, Windows, Qwen3.8-Flash-Next 176.94B IQ4_XS-family GGUF (QWEN4EXP arch), pinned llama.cpp revision `4e97ac8`; q4-q4 KV + 6 GiB pool: 5.649 tok/s — the q8-q4 + 4 GiB combo is slightly faster while using less VRAM",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28363",
    "source_name": "llama.cpp discussion #28363 (zhaoyilun)",
    "provenance": "community",
@@ -5651,7 +5651,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "ISTA Qwen3.8-27B IQ3_S with MTP, vision on GPU, Q8 KV, 36K history window on GPU + 16K reserved; overall prefill 243 tok/s, last-512 decode 29 tok/s; config=iq3-mtp",
-   "quote": "RTX 5060 Ti 16GB, 32GB RAM (WSL2, ~19.5GB visible to Linux); **IQ3:** ISTA Qwen3.8-27B IQ3_S \u2014 MTP, vision on GPU, Q8 KV (36K history on GPU / 16K reserved for new tokens); 256K tool task (33 requests, ending at 262058 / 262144 tokens); | Prefill, first pass | 437 tok/s |; | Decode over the tool rounds | 30 tok/s |",
+   "quote": "RTX 5060 Ti 16GB, 32GB RAM (WSL2, ~19.5GB visible to Linux); **IQ3:** ISTA Qwen3.8-27B IQ3_S — MTP, vision on GPU, Q8 KV (36K history on GPU / 16K reserved for new tokens); 256K tool task (33 requests, ending at 262058 / 262144 tokens); | Prefill, first pass | 437 tok/s |; | Decode over the tool rounds | 30 tok/s |",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28894",
    "source_name": "llama.cpp discussion #28894 (wangleye)",
    "provenance": "community",
@@ -5673,7 +5673,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "Unsloth Qwen3.8-27B IQ4_XS with MTP, vision on CPU, Q5 KV, 32K window + 12K reserved; overall prefill 255 tok/s, last-512 decode 35 tok/s; config=iq4-mtp",
-   "quote": "RTX 5060 Ti 16GB, 32GB RAM (WSL2, ~19.5GB visible to Linux); **IQ4:** Unsloth Qwen3.8-27B IQ4_XS \u2014 MTP, vision on CPU, Q5 KV (32K / 12K); 256K tool task (33 requests, ending at 262058 / 262144 tokens); | Prefill, first pass | 466 tok/s |; | Decode over the tool rounds | 33 tok/s |",
+   "quote": "RTX 5060 Ti 16GB, 32GB RAM (WSL2, ~19.5GB visible to Linux); **IQ4:** Unsloth Qwen3.8-27B IQ4_XS — MTP, vision on CPU, Q5 KV (32K / 12K); 256K tool task (33 requests, ending at 262058 / 262144 tokens); | Prefill, first pass | 466 tok/s |; | Decode over the tool rounds | 33 tok/s |",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28894",
    "source_name": "llama.cpp discussion #28894 (wangleye)",
    "provenance": "community",
@@ -6245,7 +6245,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "pp16384 stock llama.cpp (6,122 +- 8); config=stock",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; | stock llama.cpp | 6,122 \u00b1 8 |",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; | stock llama.cpp | 6,122 ± 8 |",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6267,7 +6267,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "pp16384 with the PoC patch (chunked gated-delta-net prefill, GEMM fusions, TMA-fed NVFP4 MMQ), +44.7%; config=poc",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; | stock + PoC patch | 8,860 \u00b1 16 (+44.7%) |",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; | stock + PoC patch | 8,860 ± 16 (+44.7%) |",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6311,7 +6311,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "engine-reported prefill on the PoC build without MTP; config=poc-mtp-off",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; `--spec-type draft-mtp` cost 23% prefill (8,499 \u2192 6,518 engine-reported) vs NInfer's MTP at \u22129%",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; `--spec-type draft-mtp` cost 23% prefill (8,499 → 6,518 engine-reported) vs NInfer's MTP at −9%",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6333,7 +6333,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "engine-reported prefill on the PoC build with draft-mtp (-23%, host hand-off per ubatch); config=poc-mtp-on",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; `--spec-type draft-mtp` cost 23% prefill (8,499 \u2192 6,518 engine-reported) vs NInfer's MTP at \u22129%",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; `--spec-type draft-mtp` cost 23% prefill (8,499 → 6,518 engine-reported) vs NInfer's MTP at −9%",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6355,7 +6355,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "MTP prefill with host hand-off, under profiler; config=mtp-host-handoff",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; Three more commits keep the hand-off on device (device tensor + backend event); idle 15% \u2192 7.7%, 7,065 \u2192 7,550 under the profiler, output is identical",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; Three more commits keep the hand-off on device (device tensor + backend event); idle 15% → 7.7%, 7,065 → 7,550 under the profiler, output is identical",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6377,7 +6377,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "MTP prefill with device-side hand-off fix, under profiler; config=mtp-device-handoff",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; Three more commits keep the hand-off on device (device tensor + backend event); idle 15% \u2192 7.7%, 7,065 \u2192 7,550 under the profiler, output is identical",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; Three more commits keep the hand-off on device (device tensor + backend event); idle 15% → 7.7%, 7,065 → 7,550 under the profiler, output is identical",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6399,7 +6399,7 @@
    "params": null,
    "date": "2026-09",
    "notes": "tg128 before the patch, not yet A/B tested; config=tg-before",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; tg128 82.8 \u2192 78.9, not yet A/B tested",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; tg128 82.8 → 78.9, not yet A/B tested",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
    "provenance": "community",
@@ -6421,9 +6421,75 @@
    "params": null,
    "date": "2026-09",
    "notes": "tg128 after the patch, not yet A/B tested; config=tg-after",
-   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; tg128 82.8 \u2192 78.9, not yet A/B tested",
+   "quote": "RTX 5090 (sm_120a, 600 W), CUDA 13.3, Qwen3.8-27B NVFP4, `llama-bench -ub 1024 -p 16384 -r 3`, no drafter; tg128 82.8 → 78.9, not yet A/B tested",
    "source_url": "https://github.com/ggml-org/llama.cpp/discussions/28514",
    "source_name": "llama.cpp discussion #28514 (jesdga95)",
+   "provenance": "community",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "id": "lc-disc-29643-bonsai-plain115k",
+   "model": "Bonsai 2 27B",
+   "hardware": "Arc B580",
+   "quant": "PTQ1_0",
+   "backend": "llama.cpp (SYCL)",
+   "ctx": 131072,
+   "batch": null,
+   "tps": 26.4,
+   "pp_tps": null,
+   "ttft_s": null,
+   "power_w": null,
+   "tg_tokens": null,
+   "params": null,
+   "date": "2026-09",
+   "notes": "plain decode (no MTP) on the same 114.6K-token prompt as the history row, measured in the follow-up; MTP lifts it back to 43-44 tok/s; config=branch-plain-115k",
+   "quote": "I've been working on the SYCL backend for Intel Arc B580 (Xe2), mostly for PrismML's ternary Bonsai 2 27B; I measured plain decode on the same 114.6K-token prompt: 26.4 t/s",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29643#discussioncomment-18675258",
+   "source_name": "llama.cpp discussion #29643 (Torchit1)",
+   "provenance": "community",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "id": "lc-disc-29964-gemma426b-master",
+   "model": "Gemma 4 26B-A4B",
+   "hardware": "4500 + 3060",
+   "quant": "UD-Q4_K_XL",
+   "backend": "CUDA",
+   "ctx": null,
+   "batch": null,
+   "tps": null,
+   "pp_tps": 1100,
+   "ttft_s": null,
+   "power_w": null,
+   "tg_tokens": null,
+   "params": null,
+   "date": "2026-10",
+   "notes": "1:1 layer split, -ncmoe 999 (all MoE experts on CPU), prompt processing on master: 4500 peaks at RX ~10GiB/s, 3060 mostly idle; config=master-1to1",
+   "quote": "gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf; On master the 4500; 3060 is mostly idle, and I get about 1100 t/s pp",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29964#discussioncomment-18765235",
+   "source_name": "llama.cpp discussion #29964 (drrros)",
+   "provenance": "community",
+   "retrieved": "2026-10-06"
+  },
+  {
+   "id": "lc-disc-29964-gemma426b-pr29963",
+   "model": "Gemma 4 26B-A4B",
+   "hardware": "4500 + 3060",
+   "quant": "UD-Q4_K_XL",
+   "backend": "CUDA",
+   "ctx": null,
+   "batch": null,
+   "tps": null,
+   "pp_tps": 600,
+   "ttft_s": null,
+   "power_w": null,
+   "tg_tokens": null,
+   "params": null,
+   "date": "2026-10",
+   "notes": "1:1 layer split, -ncmoe 999, on PR #29963 branch: 3060 peaks at RX ~3GiB/s, 4500 mostly idle; disabling pipeline_parallel on the PR recovers full performance, so the penalty is the pipeline itself; 4:1-10:1 splits beat 1:1 but stay ~14% below the 4500-alone run; config=pr29963-1to1",
+   "quote": "gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf; With https://github.com/ggml-org/llama.cpp/pull/29963 the 3060 peaks at RX of about 3GiB/s, the 4500; 3060 peaks at RX of about 3GiB/s, the 4500 is mostly idle, and I get only 600 t/s pp",
+   "source_url": "https://github.com/ggml-org/llama.cpp/discussions/29964#discussioncomment-18765235",
+   "source_name": "llama.cpp discussion #29964 (drrros)",
    "provenance": "community",
    "retrieved": "2026-10-06"
   }

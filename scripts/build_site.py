@@ -695,7 +695,9 @@ between builds of the same backend, see the
                         f"{val(rows,'lc-disc-29643-bonsai-fork32k','tps')} tok/s. "
                         "MTP drafting lifts generation to 90 tok/s writing new code "
                         "and 250-370 tok/s on code edits; a 115K-token history costs "
-                        f"almost nothing ({val(rows,'lc-disc-29643-bonsai-hist115k','tps')} tok/s).")
+                        f"almost nothing ({val(rows,'lc-disc-29643-bonsai-hist115k','tps')} tok/s with "
+                        f"MTP, {val(rows,'lc-disc-29643-bonsai-plain115k','tps')} tok/s plain "
+                        "decode on the same prompt).")
             if model == "Gemma 4 12B":
                 return ("The same XMX q4_0 KV attention plus a q4_0 small-batch GEMM "
                         "generalise to Gemma 4 12B QAT with Google's assistant "
@@ -791,6 +793,16 @@ between builds of the same backend, see the
                         "106.8 GB/s (1.85x) with all three uploading at once; the "
                         "patch does not make uploads faster, it spreads them over "
                         "three links. Gain peaks at ubatch 2048 (+66%).")
+            if model == "Gemma 4 26B-A4B":
+                return ("Two-GPU -ncmoe 999 1:1 layer split on a 4500 + 3060 rig, "
+                        "prompt processing: master runs it all on the 4500 at "
+                        f"{val(rows,'lc-disc-29964-gemma426b-master','pp_tps')} tok/s "
+                        "(3060 mostly idle), while PR #29963's pipeline parallelism "
+                        f"halves it to {val(rows,'lc-disc-29964-gemma426b-pr29963','pp_tps')} "
+                        "tok/s (3060 at ~3GiB/s RX). Hard-disabling pipeline_parallel "
+                        "on the PR branch recovers full performance, so the penalty "
+                        "is the pipeline itself; 4:1, 6:1 and 10:1 splits beat 1:1 "
+                        "but stay ~14% below the 4500-alone run.")
             return None
         if (venue, issue) == ("llama.cpp", "29885"):
             if model == "Qwen3.6-35B-A3B":
