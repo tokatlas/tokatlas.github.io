@@ -267,7 +267,7 @@
   },
   {
    "id": "omlx-pmdh45qm-ctx1024",
-   "model": "MiniMax-M2.5",
+   "model": "MiniMax M2.5",
    "params": null,
    "quant": "8bit",
    "hardware": "M3 Ultra",
@@ -291,7 +291,7 @@
   },
   {
    "id": "omlx-pmdh45qm-ctx4096",
-   "model": "MiniMax-M2.5",
+   "model": "MiniMax M2.5",
    "params": null,
    "quant": "8bit",
    "hardware": "M3 Ultra",
@@ -315,7 +315,7 @@
   },
   {
    "id": "omlx-pmdh45qm-ctx8192",
-   "model": "MiniMax-M2.5",
+   "model": "MiniMax M2.5",
    "params": null,
    "quant": "8bit",
    "hardware": "M3 Ultra",
@@ -339,7 +339,7 @@
   },
   {
    "id": "omlx-pmdh45qm-ctx16384",
-   "model": "MiniMax-M2.5",
+   "model": "MiniMax M2.5",
    "params": null,
    "quant": "8bit",
    "hardware": "M3 Ultra",
@@ -363,7 +363,7 @@
   },
   {
    "id": "omlx-pmdh45qm-ctx32768",
-   "model": "MiniMax-M2.5",
+   "model": "MiniMax M2.5",
    "params": null,
    "quant": "8bit",
    "hardware": "M3 Ultra",
