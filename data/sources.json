@@ -49,6 +49,7 @@
   "retrieved": "2026-10-03",
   "url": "https://llmconfigurator.com/benchmarks.json"
  },
+ "omlx_traces": {},
  "qsl17221": "qiulang/vllm-sglang-perf (community benchmark, via vLLM discussion #17221)",
  "siliconscore": {
   "license": "not stated; used with per-row attribution (source_url on each row)",

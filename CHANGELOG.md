@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX community benchmark traces (21 rows, new source)
+
+- New source: oMLX community performance traces (omlx.ai/benchmarks/performance), first collector `~/ghost/omlx/omlx_scan.py`. 21 rows from 4 unique sessions on M3 Ultra (80c) 512 GB (new backend oMLX, new model MiniMax-M2.5): Qwen3.5-122B-A10B 4bit (6 ctx points, tg 52.3 at 1k), Qwen3.5-397B-A17B 6bit (tg 28.5 at 1k), MiniMax-M2.5 8bit (tg 34.2 at 1k), GLM-5 4bit (tg 16.6 at 1k); duplicate traces of the same session noted per row.
+- Dataset 4578 -> 4599.
+
 ## 2026-10-06: HF card RolanDorisTech Qwen3.8-9B-Distill MLX quant ladder (4 rows)
 
 - RolanDorisTech/Qwen3.8-9B-Distill-MLX-8bit card: community distill of Qwen3.8-2.4T-A95B into the Qwen3.5-9B architecture, oMLX dynamic quantization ladder (oQ4e/oQ5e/oQ6e/oQ8e) measured on M1 Max 64 GB: 43.0 / 37.1 / 33.3 / 28.7 gen tok/s with peak memory 5.471-9.679 GB (new model).
