@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: vLLM #59973 body rewrite re-sync (+1 row)
+
+- The author rewrote the vLLM #59973 body (quantized draft lm_head, Qwen3.8-Flash-Next NVFP4 + MTP k=3, one GB10). Re-synced the 3 dependent records to the current ABBA same-node table: stock BF16 draft head 35.6 tok/s c=1 and 27.2 c=4, NVFP4 draft head 30.4 c=4, and added the NVFP4 c=1 row (45.2 tok/s, +27.1%). FP8 arms are published relative-only and stay in the A/B note.
+- Dataset 4573 -> 4574.
+
 ## 2026-10-06: vLLM #60250 + #60248, ROCm norm fusion and Kimi-K3 stream overlap (4 rows)
 
 - vLLM #60250 (sourced): `rms_norm_gated` custom op enabled by default on ROCm for unquantized models; Qwen3.8-27B BF16 on a single MI355X, `vllm bench serve` random 1024/1024 c=64, output throughput 2752.5 -> 2762.8 tok/s (+0.37%), median TTFT 1074.2 -> 1084.0 ms. 2 rows, 1 A/B group.

@@ -1,5 +1,5 @@
 {
- "count": 1572,
+ "count": 1573,
  "records": [
   {
    "backend": "llama.cpp",
@@ -25120,7 +25120,7 @@
    "backend": "vLLM",
    "ctx": null,
    "batch": 1,
-   "tps": 35.7,
+   "tps": 35.6,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": 256,
@@ -25130,9 +25130,9 @@
    "provenance": "community",
    "source_url": "https://github.com/vllm-project/vllm/pull/59973",
    "source_name": "vLLM PR #59973",
-   "retrieved": "2026-10-05",
-   "quote": "GB10; Qwen3.8-Flash-Next; BF16 head (stock) 2.664 2.803 35.7 tok/s 36.7 tok/s 25.9 tok/s 73.7 ms 243",
-   "notes": "Opt-in quantized draft lm_head, MTP k=3, SPEED-Bench 4 users x 32 prompts, greedy, 256 output tokens, full vocabulary; BF16 draft head (stock), c=1; config=bf16-c1"
+   "retrieved": "2026-10-06",
+   "quote": "Decode at c=1 on GB10; Qwen3.8-Flash-Next-NVFP4; BF16 head (stock) 2.673 2.859 35.6 tok/s 36.9 tok/s 27.2 tok/s 73.7 ms 243",
+   "notes": "Qwen3.8-Flash-Next NVFP4 checkpoint (local-inference-lab @ada4da32) + MTP k=3 drafter, one GB10 (DGX Spark p4242-0073), FP8 KV, kv-cache-memory-bytes 8G, max-model-len 49152, max-num-seqs 8, vLLM nightly 0cbac6cd1 + PR (ABBA run at eef72b019d); opt-in quantized draft lm_head (draft_lm_head_quantization), SPEED-Bench 11 categories x 32 prompts, greedy, 256 output tokens, full vocabulary; ABBA same-node run, mean of two passes per arm; decode tok/s per user; stock BF16 draft head, c=1, 35.6 tok/s (ABBA passes 35.3 / 35.9); config=bf16-c1"
   },
   {
    "id": "vllm-59973-gb10-bf16-c4",
@@ -25144,7 +25144,7 @@
    "backend": "vLLM",
    "ctx": null,
    "batch": 4,
-   "tps": 25.9,
+   "tps": 27.2,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": 256,
@@ -25154,9 +25154,9 @@
    "provenance": "community",
    "source_url": "https://github.com/vllm-project/vllm/pull/59973",
    "source_name": "vLLM PR #59973",
-   "retrieved": "2026-10-05",
-   "quote": "GB10; Qwen3.8-Flash-Next; BF16 head (stock) 2.664 2.803 35.7 tok/s 36.7 tok/s 25.9 tok/s 73.7 ms 243",
-   "notes": "Opt-in quantized draft lm_head, MTP k=3, SPEED-Bench 4 users x 32 prompts, greedy, 256 output tokens, full vocabulary; BF16 draft head (stock), c=4; config=bf16-c4"
+   "retrieved": "2026-10-06",
+   "quote": "Decode at c=1 on GB10; Qwen3.8-Flash-Next-NVFP4; BF16 head (stock) 2.673 2.859 35.6 tok/s 36.9 tok/s 27.2 tok/s 73.7 ms 243; c=4 (writing, coding, math, RAG, summarization, multilingual), ABBA mean: 27.2 / 30.4 tok/s per user (stock / nvfp4), AL 2.837 / 2.825",
+   "notes": "Qwen3.8-Flash-Next NVFP4 checkpoint (local-inference-lab @ada4da32) + MTP k=3 drafter, one GB10 (DGX Spark p4242-0073), FP8 KV, kv-cache-memory-bytes 8G, max-model-len 49152, max-num-seqs 8, vLLM nightly 0cbac6cd1 + PR (ABBA run at eef72b019d); opt-in quantized draft lm_head (draft_lm_head_quantization), SPEED-Bench 11 categories x 32 prompts, greedy, 256 output tokens, full vocabulary; ABBA same-node run, mean of two passes per arm; decode tok/s per user; stock BF16 draft head, c=4 six-category average, 27.2 tok/s; config=bf16-c4"
   },
   {
    "id": "vllm-59973-gb10-nvfp4-c4",
@@ -25168,7 +25168,7 @@
    "backend": "vLLM",
    "ctx": null,
    "batch": 4,
-   "tps": 29.6,
+   "tps": 30.4,
    "pp_tps": null,
    "pp_tokens": null,
    "tg_tokens": 256,
@@ -25178,9 +25178,9 @@
    "provenance": "community",
    "source_url": "https://github.com/vllm-project/vllm/pull/59973",
    "source_name": "vLLM PR #59973",
-   "retrieved": "2026-10-05",
-   "quote": "GB10; Qwen3.8-Flash-Next; c=4 average decode is 25.9 / 29.6 tok/s per user (stock / nvfp4), AL 2.666 / 2.650",
-   "notes": "Opt-in quantized draft lm_head, MTP k=3, SPEED-Bench 4 users x 32 prompts, greedy, 256 output tokens, full vocabulary; NVFP4 draft head, c=4, per-category average; config=nvfp4-c4"
+   "retrieved": "2026-10-06",
+   "quote": "Decode at c=1 on GB10; Qwen3.8-Flash-Next-NVFP4; NVFP4 draft head 2.664 (-0.3%) 2.851 (-0.3%) 45.2 tok/s (+27.1%) 46.7 tok/s (+26.7%) 30.4 tok/s (+11.7%) 58.2 ms 243; c=4 (writing, coding, math, RAG, summarization, multilingual), ABBA mean: 27.2 / 30.4 tok/s per user (stock / nvfp4), AL 2.837 / 2.825",
+   "notes": "Qwen3.8-Flash-Next NVFP4 checkpoint (local-inference-lab @ada4da32) + MTP k=3 drafter, one GB10 (DGX Spark p4242-0073), FP8 KV, kv-cache-memory-bytes 8G, max-model-len 49152, max-num-seqs 8, vLLM nightly 0cbac6cd1 + PR (ABBA run at eef72b019d); opt-in quantized draft lm_head (draft_lm_head_quantization), SPEED-Bench 11 categories x 32 prompts, greedy, 256 output tokens, full vocabulary; ABBA same-node run, mean of two passes per arm; decode tok/s per user; NVFP4 draft head (draft_lm_head_quantization=nvfp4), c=4 six-category average, 30.4 tok/s (+11.7% over stock), AL 2.825; config=nvfp4-c4"
   },
   {
    "id": "vllm-60068-gb10-stock-c1",
@@ -34438,6 +34438,30 @@
    "retrieved": "2026-10-06",
    "quote": "[ROCm][Perf][Kimi-K3] Overlap MoE routing and MLA gate projections; MI355X (gfx950), current ROCm vLLM nightly; overlap v4: p90 interactivity 172.89 tok/s; gain: +8.95 tok/s",
    "notes": "Kimi-K3, single MI355X (gfx950), current ROCm vLLM nightly; p90 interactivity tok/s from the latest same-node/image/day full 60-minute scored comparison; both Kimi-K3 AMD stream overlaps enabled (VLLM_KIMI_K3_AMD_MOE_ROUTER_DOWN_PROJ_STREAM=1, VLLM_KIMI_K3_AMD_MLA_GATE_STREAM=1, decode-gated to at most 128 tokens); gain +8.95 tok/s over overlap off; weight quantization not stated; config=overlap-v4"
+  },
+  {
+   "id": "vllm-59973-gb10-nvfp4-c1",
+   "model": "Qwen3.8-Flash-Next",
+   "params": null,
+   "quant": "NVFP4",
+   "hardware": "GB10",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 1,
+   "tps": 45.2,
+   "pp_tps": null,
+   "pp_tokens": null,
+   "tg_tokens": 256,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-04",
+   "provenance": "community",
+   "source_url": "https://github.com/vllm-project/vllm/pull/59973",
+   "source_name": "vLLM PR #59973",
+   "retrieved": "2026-10-06",
+   "quote": "Decode at c=1 on GB10; Qwen3.8-Flash-Next-NVFP4; NVFP4 draft head 2.664 (-0.3%) 2.851 (-0.3%) 45.2 tok/s (+27.1%) 46.7 tok/s (+26.7%) 30.4 tok/s (+11.7%) 58.2 ms 243",
+   "notes": "Qwen3.8-Flash-Next NVFP4 checkpoint (local-inference-lab @ada4da32) + MTP k=3 drafter, one GB10 (DGX Spark p4242-0073), FP8 KV, kv-cache-memory-bytes 8G, max-model-len 49152, max-num-seqs 8, vLLM nightly 0cbac6cd1 + PR (ABBA run at eef72b019d); opt-in quantized draft lm_head (draft_lm_head_quantization), SPEED-Bench 11 categories x 32 prompts, greedy, 256 output tokens, full vocabulary; ABBA same-node run, mean of two passes per arm; decode tok/s per user; NVFP4 draft head (draft_lm_head_quantization=nvfp4), c=1, 45.2 tok/s (+27.1% over stock), AL 2.664 (-0.3%); config=nvfp4-c1"
   }
  ],
  "source": {
