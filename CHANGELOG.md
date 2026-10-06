@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 4 (+19 rows)
+
+- 7 more unique oMLX sessions (19 rows): Qwen3.5-122B-A10B oQ6e-mtp on M5 Max, Qwen3.6-35B-A3B oQ6-mtp on M1 Max (2 sessions), Qwen3.8-35B-A3B-Distill oQ6e-mtp on M4 Pro (new model), Qwen3.8-27B oQ8e-mtp on M3 Ultra 256 GB, oQ4e-mtp on M4 Pro 48 GB, orcarouter Uncensored build on M4 Pro (4 sessions collapsed to 1), Qwen3.5-9B on M1 Pro 16 GB.
+- Dataset 4638 -> 4657.
+
 ## 2026-10-06: oMLX traces batch 3 (+13 rows)
 
 - 6 more unique oMLX sessions (13 rows): GLM-5.3-Flash 4bit-MTP on M5 Ultra 256 GB (85.6 tok/s tg at 32k), Qwen3.8-27B oQ4e-mtp on M5 Ultra 96 GB (96.9 tok/s at 32k), Qwen3.8-Flash-Next oQ4e on M3 Ultra 256 GB and oQ5e repeat runs at 195k on M5 Max (45.2-49.4 tok/s), Qwen3.8-27B oQ8e second M3 Max session, mlx-community 4bit on M2 Max 64 GB.
