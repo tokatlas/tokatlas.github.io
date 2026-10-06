@@ -3453,6 +3453,17 @@ between builds of the same backend, see the
                     f"from {val(rows,'hf1-marcnano-reap05','pp_tps'):.0f} (REAP05) to "
                     f"{val(rows,'hf1-marcnano-reap70','pp_tps'):.0f} (REAP70) as experts are "
                     "pruned. Pruning buys file size, not decode speed.")
+        if (venue, issue) == ("HF", "?") and hw == "RTX 3090" and model == "Qwen3.6-35B-A3B":
+            return ("REAP expert-pruning sweep (kueizen), llama-bench on one RTX 3090, "
+                    "all layers on GPU, Q4_K_M. REAP removes 5-70% of the 256 experts: "
+                    "REAP05 keeps 244 (18.86 GB) down to REAP70 keeping 77 (6.96 GB). "
+                    "Decode (tg128) is flat, "
+                    f"{val(rows,'hf1-qwen3635ba3b-reap05','tps'):.0f}-"
+                    f"{val(rows,'hf1-qwen3635ba3b-reap70','tps'):.0f} tok/s, because only 8 "
+                    "experts run per token whatever the total. Prefill (pp512) climbs "
+                    f"from {val(rows,'hf1-qwen3635ba3b-reap05','pp_tps'):.0f} (REAP05) to "
+                    f"{val(rows,'hf1-qwen3635ba3b-reap70','pp_tps'):.0f} (REAP70) as "
+                    "experts are pruned. Pruning buys file size, not decode speed.")
         if (venue, issue) == ("HF", "?") and hw == "A100 PCIe 80 GB" and model == "Qwen3.8-27B-pi":
             return ("RCO allocation-transfer quant A/B (firetussin, experimental), same "
                     "Pi BF16 source and imatrix, llama.cpp CUDA, FA, q8_0 KV, 8K ctx, "
