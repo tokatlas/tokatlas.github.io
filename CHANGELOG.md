@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 10 (+279 rows)
+
+- Next 60 of the 915-trace corpus (March 9 era) mined: 161 traces, 279 rows on M4 Pro, M5, M1/M2. New models Qwen3.5-2B, Qwen3.5-4B-OptiQ.
+- Dataset 5533 -> 5812.
+
 ## 2026-10-06: oMLX traces batch 9 (+289 rows)
 
 - Next 60 of the 915-trace corpus (March 9 era) mined: 180 traces, 289 rows on M1 Max, M4, M5, M2/M3. New models Llama-3.2-3B-Instruct, Qwen3.5-35B-A3B-Heretic, GLM-4.7-Flash, Gemma 3 4B QAT build.
