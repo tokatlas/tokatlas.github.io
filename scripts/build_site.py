@@ -557,6 +557,65 @@ between builds of the same backend, see the
                         f"({pct(rows,'lc30021-a800m-iq4_nl-ub48-master','lc30021-a800m-iq4_nl-ub48-pr','pp_tps'):+.0f}%); "
                         "flat within +-0.2% at every other ub.")
             return None
+        if (venue, issue) == ("llama.cpp", "29964"):
+            if model == "Qwen3.8":
+                return ("Pipeline-parallelism patch for MoE weights in host RAM on "
+                        "3x RTX PRO 4000 Blackwell (EPYC 9274F, 384 GB DDR5). Stock "
+                        "master disables pipeline parallelism whenever any weights "
+                        "sit in host RAM, serializing all expert uploads through "
+                        "GPU0; the patch routes ops with host weights to each "
+                        "layer's own GPU. 52421-token prompt, fit, c=262144: "
+                        f"{val(rows,'lc-disc-29964-qwen38-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-qwen38-patched','pp_tps')} tok/s "
+                        "(1st request, 961 -> 1982 on the 2nd), decode 40.8 -> 41.6 "
+                        "tok/s. With only 2 GPUs the gain is smaller (pp16384 "
+                        f"{val(rows,'lc-disc-29964-qwen38-2gpu-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-qwen38-2gpu-patched','pp_tps')}) "
+                        "since there is less upload traffic to spread. The patch "
+                        "depends on CUDA_SCALE_LAUNCH_QUEUES=4x: at pp8192 the same "
+                        "patch drops to "
+                        f"{val(rows,'lc-disc-29964-qwen38-qnone','pp_tps')} tok/s "
+                        f"without it (vs {val(rows,'lc-disc-29964-qwen38-q4x','pp_tps')} "
+                        "with 4x queues).")
+            if model == "DeepSeek-V4-Flash":
+                return ("Same pipeline-parallel patch, fit layout, 52421-token "
+                        "prompt: "
+                        f"{val(rows,'lc-disc-29964-dsv4f-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-dsv4f-patched','pp_tps')} tok/s "
+                        "prefill (1st request, 629 -> 1321 on the 2nd), decode "
+                        "23.0 -> 23.1 tok/s. The patch's balanced fit layout also "
+                        "slices layers evenly across GPUs instead of piling all "
+                        "host weights on the last device.")
+            if model == "MiMo-V2.6-Flash":
+                return ("Same pipeline-parallel patch, fit, c=131072, 51341-token "
+                        "prompt: "
+                        f"{val(rows,'lc-disc-29964-mimo-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-mimo-patched','pp_tps')} tok/s "
+                        "prefill (1st request, 886 -> 1834 on the 2nd), decode "
+                        "33.6 -> 33.3 tok/s. The author notes llama-bench pp2048 "
+                        "shows -20% for this model as an artifact (per-test "
+                        "contexts trigger the upload-all-experts path); on the "
+                        "server it is at parity.")
+            if model == "Qwen3.5-35B":
+                return ("Topology regression bisect, model fully in VRAM, 52421-token "
+                        "prompt, c=65536: #29184 broke the constant-graph assumption "
+                        "for models with shared experts on CUDA, halving prefill "
+                        f"from 7131 (parent 4ebdf2c74) to {val(rows,'lc-disc-29964-qwen3535b-master','pp_tps')} "
+                        f"tok/s on master; the patch restores "
+                        f"{val(rows,'lc-disc-29964-qwen3535b-patched','pp_tps')} tok/s. "
+                        "Models without shared experts (gpt-oss) are unaffected.")
+            if model == "Qwen3.5-35B-A3B":
+                return ("All experts in host RAM (-ncmoe 999, no fit): the patch "
+                        "overlaps expert uploads with compute across the three GPUs. "
+                        f"pp8192: {val(rows,'lc-disc-29964-qwen3535ba3b-pp8192-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-qwen3535ba3b-pp8192-patched','pp_tps')} tok/s; "
+                        f"pp32768: {val(rows,'lc-disc-29964-qwen3535ba3b-pp32768-master','pp_tps')} -> "
+                        f"{val(rows,'lc-disc-29964-qwen3535ba3b-pp32768-patched','pp_tps')} tok/s. "
+                        "The author measured PCIe at 57.6 GB/s on one GPU and "
+                        "106.8 GB/s (1.85x) with all three uploading at once; the "
+                        "patch does not make uploads faster, it spreads them over "
+                        "three links. Gain peaks at ubatch 2048 (+66%).")
+            return None
         if (venue, issue) == ("llama.cpp", "29885"):
             if model == "Qwen3.6-35B-A3B":
                 return ("MoE offload lesson on a GTX 1080 8GB (40K-token agentic "
