@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 2: fresh 10-06 sessions (+26 rows)
+
+- 11 more unique oMLX sessions (26 rows) from the newest traces: Huihui-Qwen3.8-27B-abliterated Q8 and Qwen3-Coder-Next 6bit on M5 Max, Qwen3.8-27B oQ4e-fp16/oQ8e/8bit MTP builds on M1 Ultra/M3 Max/M5 Pro, Qwen3.8-Flash-Next oQ5e-mtp on M5 Max (195k ctx, 50.0 tok/s), Gemma 4 26B-A4B UD-MLX-3bit on M5 Pro (1958 pp at 4k), Qwen3.5-9B on M4; new models Qwen3.8-27B-MTPLX and Qwen3.8-27B-Uncensored.
+- Dataset 4599 -> 4625.
+
 ## 2026-10-06: oMLX community benchmark traces (21 rows, new source)
 
 - New source: oMLX community performance traces (omlx.ai/benchmarks/performance), first collector `~/ghost/omlx/omlx_scan.py`. 21 rows from 4 unique sessions on M3 Ultra (80c) 512 GB (new backend oMLX): Qwen3.5-122B-A10B 4bit (6 ctx points, tg 52.3 at 1k), Qwen3.5-397B-A17B 6bit (tg 28.5 at 1k), MiniMax M2.5 8bit (tg 34.2 at 1k), GLM-5 4bit (tg 16.6 at 1k); duplicate traces of the same session noted per row.
