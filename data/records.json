@@ -1,5 +1,5 @@
 {
- "count": 4540,
+ "count": 4541,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -42521,6 +42521,31 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "tg_tokens": 32,
    "tps": 372.0,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": 1,
+   "ctx": 1048576,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "Ryzen AI Max+ 395 (Strix Halo)",
+   "id": "lc30048-q35b-strixhalo",
+   "model": "Qwen3.5-2B",
+   "notes": "AMD Strix Halo (Ryzen AI Max+ 395, Radeon 8060S iGPU), llama.cpp Vulkan, Qwen3.5-2B UD-Q4_K_XL; long-context prefill from a 2M-ctx FA quantized-KV OOM repro (bug #30048): -fa 1 -ctk q8_0 -ctv q8_0 -c 2097152, ~1.89M-token prompt, -ub 512; pp_tps is the cumulative prompt-processing rate over the 1M tokens (n=1048576) processed before the 2 GiB combined K+V scratch allocation failed; -n 1, generation not run",
+   "params": null,
+   "power_w": null,
+   "pp_tokens": null,
+   "pp_tps": 213.69,
+   "provenance": "community",
+   "quant": "UD-Q4_K_XL",
+   "quote": "AMD Radeon 8060S / Ryzen AI Max+ 395 (Strix Halo); Qwen3.5-2B; prompt processing, n_tokens = 1048576, progress = 0.56, t = 4906.91 s / 213.69 tokens per second",
+   "ram_gb": null,
+   "retrieved": "2026-10-06",
+   "source_name": "llama.cpp issue #30048",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/30048",
+   "tg_tokens": null,
+   "tps": null,
    "ttft_s": null
   },
   {
