@@ -1,5 +1,5 @@
 {
- "count": 4321,
+ "count": 4322,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -92312,6 +92312,30 @@
    "source_url": "https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks",
    "tg_tokens": null,
    "tps": 8,
+   "ttft_s": null
+  },
+  {
+   "backend": "LM Studio",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "M6",
+   "id": "llmcheck-muse-glimmer-30b-m6-unstated-lm-studio",
+   "model": "muse-glimmer 30B",
+   "notes": "reclassified from estimate to measured by llmcheck (2026-10)",
+   "params": "30B",
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "community",
+   "quant": "unstated",
+   "quote": "Muse Glimmer 30B,30B,unstated,M6,32,LM Studio,9,None,2026-10",
+   "ram_gb": 32,
+   "retrieved": "2026-10-05",
+   "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
+   "source_url": "https://github.com/HDZucht/Mac-Mini-M6-LLM-benchmarks",
+   "tg_tokens": null,
+   "tps": 9,
    "ttft_s": null
   },
   {

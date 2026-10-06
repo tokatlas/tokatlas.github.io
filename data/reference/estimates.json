@@ -1,5 +1,5 @@
 {
- "count": 527,
+ "count": 526,
  "note": "reference estimates only (source models, not measurements); excluded from record counts",
  "records": [
   {
@@ -4623,29 +4623,6 @@
    "source_url": "https://llmcheck.net/data/benchmarks.json",
    "tg_tokens": null,
    "tps": 97,
-   "ttft_s": null
-  },
-  {
-   "backend": "LM Studio",
-   "batch": null,
-   "ctx": null,
-   "date": "2026-10",
-   "hardware": "M6",
-   "id": "llmcheck-muse-glimmer-30b-m6-unstated-lm-studio",
-   "model": "muse-glimmer 30B",
-   "notes": "LLMCheck model-based estimate (bandwidth model)",
-   "params": "30B",
-   "power_w": null,
-   "pp_tps": null,
-   "provenance": "estimated",
-   "quant": "unstated",
-   "quote": "Muse Glimmer 30B,30B,unstated,M6,32,LM Studio,9,None,2026-10",
-   "ram_gb": 32,
-   "retrieved": "2026-10-05",
-   "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
-   "source_url": "https://llmcheck.net/data/benchmarks.json",
-   "tg_tokens": null,
-   "tps": 9,
    "ttft_s": null
   },
   {
