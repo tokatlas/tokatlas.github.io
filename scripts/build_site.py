@@ -815,6 +815,23 @@ between builds of the same backend, see the
                         f"{val(rows,'lc30047-q36a3b-seq16-pr','tps')} tok/s "
                         f"({pct(rows,'lc30047-q36a3b-seq16-master','lc30047-q36a3b-seq16-pr','tps'):+.0f}%).")
             return None
+        if (venue, issue) == ("llama.cpp", "30051"):
+            if model == "Gemma 4 E4B":
+                return ("Flash attention on Google Axion (Neoverse V2 with "
+                        "SVE2) CPU, Gemma 4 E4B Q4_0, pp-only llama-bench at "
+                        "63 vs 64 tokens, llama.cpp b11443. With FA on, going "
+                        "from 63 to 64 queries makes prompt processing "
+                        f"slower: {val(rows,'lc30051-axion-fa1-t8-pp63','pp_tps')} -> "
+                        f"{val(rows,'lc30051-axion-fa1-t8-pp64','pp_tps')} t/s at 8 "
+                        f"threads and {val(rows,'lc30051-axion-fa1-t16-pp63','pp_tps')} -> "
+                        f"{val(rows,'lc30051-axion-fa1-t16-pp64','pp_tps')} t/s at 16, "
+                        "because from 64 queries the tiled flash-attention path "
+                        "runs the scalar simd_gemm fallback (SVE builds are "
+                        "excluded from the generic kernel). With FA off the "
+                        f"same step is faster: {val(rows,'lc30051-axion-fa0-t8-pp63','pp_tps')} -> "
+                        f"{val(rows,'lc30051-axion-fa0-t8-pp64','pp_tps')} t/s at 8 "
+                        "threads.")
+            return None
         if (venue, issue) == ("llama.cpp", "29621"):
             if model == "Ternary-Bonsai-2-27B":
                 return ("xyz-llama fork on RTX 4070 Ti SUPER 16 GB, PTQ1_0 "

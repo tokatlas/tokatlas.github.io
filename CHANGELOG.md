@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: llama.cpp #30051, FA-on prompt-processing cliff on Google Axion (6 rows)
+
+- llama.cpp issue #30051 (community): Gemma 4 E4B Q4_0 pp-only llama-bench on a Google Axion CPU (Neoverse V2 with SVE2, new hardware), llama.cpp b11443. With flash attention on, going from 63 to 64 queries makes prefill slower (126.69 -> 91.37 t/s at 8 threads, 247.07 -> 135.10 at 16) because from 64 queries the tiled FA path runs the scalar simd_gemm fallback (SVE builds are excluded from the generic kernel); with FA off the same step is faster (121.03 -> 129.01). 6 rows, 1 A/B group with note.
+- Dataset 4563 -> 4569.
+
 ## 2026-10-06: vLLM + llama.cpp performance PRs (Blackwell, ROCm, Hopper, Metal, Vulkan) (155 rows)
 
 - Overall 2026-10-06 work (this and the four entries below): dataset 4321 -> 4563, quote-verified 4882 -> 5212.
