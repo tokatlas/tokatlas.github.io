@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 6: March corpus middle (+67 rows)
+
+- Collector pagination fixed: the SSR next-cursor is the base64 link without a trailing "prev" tag; following it reaches the full corpus (146 traces) instead of two wrapped pages. Mined the newly reachable March sessions on M3 Ultra (80c) 512 GB, M2 Max 96 GB and M2 Ultra 128 GB: Qwen3-Coder-Next, Qwen3.5-122B-A10B (4bit/8bit), Qwen3.5-27B-Claude-4.6-Opus-Distilled (new model), Qwen3.5-9B MXFP4, GLM-5 second session, gpt-oss 120B (4bit/8bit/MXFP4-Q8).
+- Dataset 4666 -> 4733.
+
 ## 2026-10-06: oMLX traces batch 5 (+9 rows)
 
 - 4 more unique oMLX sessions (9 rows): Ornith-1.5-35B-A3B NVFP4 on M4 Max (4 collapsed sessions), Qwen3.5-122B-A10B oQ6e-mtp second M5 Max session, Qwen3.6-35B-A3B oQ6-mtp second M1 Max session, Qwen3.8-27B oQ4e-mtp on M1 Max 24c.
