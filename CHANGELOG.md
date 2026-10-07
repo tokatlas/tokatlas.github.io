@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 69 (+47 rows)
+
+- oMLX corpus sweep: 51 records mined (scan51, 60 traces fetched, 46 unmined candidates), 4 dropped (trace hlqpxcxp returned 404 after listing, only gemma-4-31B-it mxfp4 rows, retained in known.txt to avoid re-scan). Net +47. oMLX total 5279 -> 5326.
+- 1 new MAP entry: gemma-4-31B-it-mxfp4 (existing base).
+- known.txt = 3097. Dataset 10030 -> 10077.
+
 ## 2026-10-07: oMLX batch 68 (+48 rows, dataset crosses 10,000)
 
 - oMLX corpus sweep: 48 records mined (scan50, 60 traces fetched, 47 unmined candidates). oMLX total 5231 -> 5279.
