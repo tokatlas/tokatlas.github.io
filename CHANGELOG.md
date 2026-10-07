@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 28 (+60 rows)
+
+- Next listing-growth sweep (listing now 1,929 IDs, 1,441 candidates fetched, all handled): Qwen3.8-Flash-Next oQ4e MTP fp16, Qwen3.6-35B-A3B bf16, Qwen3.8-27B Uncensored oQ8e bf16 MTP, Qwopus3.8-27B-MTPLX, Huihui Claude-4.6-Opus abliterated, Llama-3-Groq-8B-Tool-Use, MiMo-V2.6-Distill-Qwen-9B OptiQ-4bit, plus two generic-named sessions (mlx-4bit, clef-flash-4bit).
+- Dataset 8091 -> 8151.
+
 ## 2026-10-07: oMLX traces batch 27 (+54 rows)
 
 - Next listing-growth sweep (listing now 1,884 IDs, 1,390 candidates fetched, all handled): Qwen3.8-27B oQ6e MTP and 4bit MTP (rapid-mlx), Qwen3.6-35B-A3B nvfp4, MiMo-V2.6-Qwen-9B-MTPLX, Swift Qwen3.8-27b oQ4e/oQ6e MTP, FrogNano-4B-2609 oQ4e MTP, Qwen3-8B 4bit.
