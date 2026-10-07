@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 60 (+53 rows)
+
+- scan42: fetched 60 new trace pages, 47 new candidates parsed and mined (53 records, some traces carry multiple context rows / duplicate sessions). New MAP entries: Qwen3.8-35B-A3B-Distill-Heretic-oQ4-fp16-mtp (new model Qwen3.8-35B-A3B-Distill-Heretic, oQ4, fp16 mtp build), Nemotron-Cascade-2-30B-A3B-4bit (new model Nemotron-Cascade-2-30B-A3B).
+- oMLX source total 4,874 rows. Dataset 9543 -> 9596, models 331 -> 333. known.txt = 2,678 (all candidates known, corpus swept again).
+
 ## 2026-10-07: vLLM #60445 Gemma4 KV-sharing fast prefill (+64 rows)
 
 - Mined the Suite 1 (default out-of-the-box) E2E serving benchmark on A100-SXM4-80GB: 5 Gemma4 models (E2B, E4B, 12B, 26B-A4B, 31B) across 4 scenarios (prefill_heavy in=1024, balanced in=512, decode_heavy in=128, long_context in=4096) and batch sizes 1-16. Stored the Base (main) arm total tokens/s (in+out) as pp_tps with ctx=in_len; PR arm + speedup in notes. E2B/E4B see up to 2.10x (KV-sharing fast prefill); 12B/26B/31B are parity (no kv_shared_layers). 64 rows, all models/hardware existing.
