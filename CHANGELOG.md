@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 19 (+148 rows)
+
+- Final known-corpus sweep (921 candidates now, listing still growing): Qwen3.8-27B TURBO-Fable oQ3.5, Qwen3.8-27B MPTLS FP16 builds, Tiel-Coder-35B-A3B oQ6e MTP, gemma-4-26B-A4B heretic mixed 4+6bit, and more.
+- Dataset 7306 -> 7454. All 915 corpus traces fetched and mined; new traces will appear as the listing grows.
+
 ## 2026-10-07: oMLX traces batch 18 (+156 rows)
 
 - Next 60 of the corpus mined (October-dated: KAT-Coder-V2.5-Dev, Tiel-Coder-35B-A3B, Nex-N2.5-mini-Uncensored, dsv4-flash-vision-exp, GLM-5.3-Flash Alis 6bit, Qwen3.6-27B 8bit, gemma-4-12b-it, plus MTP/abliiterated community builds).
