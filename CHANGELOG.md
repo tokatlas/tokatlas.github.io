@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 22 (+70 rows)
+
+- Next listing-growth sweep (listing now 1,719 IDs, 1,101 candidates fetched, all handled): Qwen3.8-Flash-Next-Uncensored base builds, DeepSeek-V4-Flash-0731 MXFP4, Qwen3.8-9B-Distill 8bit, Gemma 4 26B-A4B 8bit, Qwen3.5-4B/9B/2B variants (incl. OptiQ and MTP builds), Qwen3.8-27B-Uncensored 4bit.
+- Dataset 7710 -> 7780.
+
 ## 2026-10-07: oMLX traces batch 20-21 (+212 rows)
 
 - Two listing-growth sweeps (listing now 1,635 IDs, 1,041 candidates fetched, all handled): Qwen3.8-Flash-Next oQ4e/oQ5e MTP and Uncensored 100K MTP, Qwen3.8-27B TURBO-Fable oQ2.7 community merge, Qwen3.8-27B oQ6e/oQ8e MTP builds, Swift-1.5-Qwen3.8-27b oQ8e MTP, Muse-Glimmer-30B, DeepSeek-V4.1-Flash oQ4e MTP, Laguna-S-2.1 oQ4e, GLM-5.3-Flash Alis 6bit, Ornith-1.5-35B-A3B variants, Gemma 4 E4B, Qwen3.6-35B-A3B 4bit.
