@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 32 (+56 rows)
+
+- Next listing-growth sweep (listing now 2,003 IDs, 1,645 candidates fetched, all handled): Qwen3.8-9B-heretic-uncensored MTPLX, Qwen3.8-27B-MTPLX Optimized-Speed, Qwen3.8-27B bf16, Hy-MT2-1.8B 4bit, Qwen3.6-35B-A3B oQ6e MTP.
+- Dataset 8324 -> 8380.
+
 ## 2026-10-07: oMLX traces batch 31 (+61 rows)
 
 - Next listing-growth sweep (listing now 1,984 IDs, 1,594 candidates fetched, all handled): Qwen3.6-35B-A3B 5bit, GLM-5.3-Flash mixed 4/8bit MLX, plus mapped-model sessions.
