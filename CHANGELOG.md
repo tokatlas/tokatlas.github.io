@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 53 (+29 rows)
+
+- Next listing-growth sweep (listing now 2,533 IDs, 2,520 candidates fetched, all handled). No new model names; all mapped-model sessions.
+- Dataset 9302 -> 9331.
+
 ## 2026-10-07: oMLX traces batch 52 (+44 rows)
 
 - Next listing-growth sweep (listing now 2,504 IDs, 2,491 candidates fetched, all handled): Ternary-Bonsai-2-27B MLX 2bit, Qwen3.6-27B 6bit, DeepSeek-V4-Flash-0731 2.4bit mixed, Ling-3.0-tiny oQ6e fp16, MiniCPM5-2B oQ5 fp16.
