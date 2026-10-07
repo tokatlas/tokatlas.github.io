@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 41 (+53 rows)
+
+- Next listing-growth sweep (listing now 2,180 IDs, 2,096 candidates fetched, all handled): gpt-oss 20B MXFP4-Q8 (mlx-community), Qwen3-Coder-30B-A3B-Instruct MLX 4bit, plus mapped-model sessions.
+- Dataset 8832 -> 8885.
+
 ## 2026-10-07: oMLX traces batch 40 (+57 rows)
 
 - Next listing-growth sweep (listing now 2,172 IDs, 2,047 candidates fetched, all handled): Qwythos-9B-v2 MLX 8bit, Gemma 4 E4B 4bit, plus mapped-model sessions.
