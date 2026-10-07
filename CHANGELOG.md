@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 40 (+57 rows)
+
+- Next listing-growth sweep (listing now 2,172 IDs, 2,047 candidates fetched, all handled): Qwythos-9B-v2 MLX 8bit, Gemma 4 E4B 4bit, plus mapped-model sessions.
+- Dataset 8775 -> 8832.
+
 ## 2026-10-07: oMLX traces batch 39 (+54 rows)
 
 - Next listing-growth sweep (listing now 2,156 IDs, 1,998 candidates fetched, all handled): Qwen3.5-9B MLX 8bit, Hemmingway-1 oQ4e MTP, Qwen3.8-27B-Uncensored base, Qwen3.6-35B-A3B oQ5e fp16 MTP, Qwen3.5-35B-A3B 4bit, Muse Glimmer Abliterated MM oQ5e.
