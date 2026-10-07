@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 39 (+54 rows)
+
+- Next listing-growth sweep (listing now 2,156 IDs, 1,998 candidates fetched, all handled): Qwen3.5-9B MLX 8bit, Hemmingway-1 oQ4e MTP, Qwen3.8-27B-Uncensored base, Qwen3.6-35B-A3B oQ5e fp16 MTP, Qwen3.5-35B-A3B 4bit, Muse Glimmer Abliterated MM oQ5e.
+- Dataset 8721 -> 8775.
+
 ## 2026-10-07: oMLX traces batch 38 (+55 rows)
 
 - Next listing-growth sweep (listing now 2,144 IDs, 1,949 candidates fetched, all handled): Ornith-1.5-35B-A3B OptiQ-4bit, ThinkingCap Qwen3.8-27B 4bit DWQ, Mistral-Small-3.2-24B-Instruct-2506, Qwen3-Coder-30B-A3B-Instruct MLX 8bit, Jundot Qwen3.8-Flash-Next oQ4e MTP, clef oQ4e, Qwen3.6-27B-Coder-uncensored MXFP4, Qwen3.6-35B-A3B Claude-4.7-Opus-Reasoning-Distilled oQ4e MTP.
