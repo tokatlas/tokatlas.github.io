@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 45 (+34 rows)
+
+- Next listing-growth sweep (listing now 2,283 IDs, 2,272 candidates fetched, all handled): Gemma 4 31B 8bit, Qwen3.8-27B 8bit MTP MLX, Qwen3.6-27B oQ4e MTP, plus mapped-model sessions.
+- Dataset 9049 -> 9083.
+
 ## 2026-10-07: oMLX traces batch 44 (+64 rows)
 
 - Next listing-growth sweep (listing now 2,258 IDs, 2,243 candidates fetched, all handled): Qwen3.6-35B-A3B-Uncensored-Heretic oQ8 fp16 MTP, Qwen3.5-9B-GLM5.1-Distill-v1 4bit, Qwen3.8-Flash-Next MLX 4bit, Qwen3.8-27B oQ6 MTP, supergemma4-26b-abliterated-multimodal 4bit, Gemma 4 26B-A4B-it-uncensored oQ5 fp16, Gemma 4 Ortenzya-The-Creative-Wordsmith-31B-it-uncensored-heretic 8bit, Qwen3.6-35B-A3B oQ4 fp16 MTP.
