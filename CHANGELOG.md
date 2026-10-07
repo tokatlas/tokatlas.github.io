@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 66 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan48, 60 traces fetched, 47 unmined candidates). oMLX total 5132 -> 5180.
+- 7 new MAP entries: GLM-5.3-Flash-oQ4e-mtp, Ornith-1.5-35B-A3B-OptiQ-4bit-REAP-19B (base), Qwen3.8-27B-JANG_4D-CRACK (new model), Qwen3.8-27B-TURBO-Fable-Heretic (new model), Qwen3.8-Flash-Next-oQ2.5e-mtp, gemma-4-12b-coder-fable5-composer2.5 (new model), gemma-4-31B-it-oQ4e-mtp.
+- known.txt = 2960. Dataset 9883 -> 9931.
+
 ## 2026-10-07: oMLX batch 65 (+50 rows)
 
 - oMLX corpus sweep: 50 records mined (scan47, 60 traces fetched, 47 unmined candidates). oMLX total 5082 -> 5132.
