@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 33 (+52 rows)
+
+- Next listing-growth sweep (listing now 2,019 IDs, 1,696 candidates fetched, all handled): Nail Qwen3.6-35B-A3B 6bit, Qwen3.8-Flash-Next oQ4e fp16 MTP and REAP320 oQ3e-DWQ MTP Vision and Uncensored oQ6e MTP, MiMo-V2.6-Distill-Qwen-9B, MiMo-V2.6-Flash-RL 4bit MTP, Ornith-1.5-35B-A3B oQ3e MTP.
+- Dataset 8380 -> 8432.
+
 ## 2026-10-07: oMLX traces batch 32 (+56 rows)
 
 - Next listing-growth sweep (listing now 2,003 IDs, 1,645 candidates fetched, all handled): Qwen3.8-9B-heretic-uncensored MTPLX, Qwen3.8-27B-MTPLX Optimized-Speed, Qwen3.8-27B bf16, Hy-MT2-1.8B 4bit, Qwen3.6-35B-A3B oQ6e MTP.
