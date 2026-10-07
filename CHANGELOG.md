@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 61 (+52 rows)
+
+- scan43: listing 2,781 -> 2,809 IDs; fetched 60 new trace pages, 47 new candidates parsed and mined (52 records). New MAP entries: Jundot:gemma-4-31B-it-oQ4e-mtp (existing model gemma-4-31B-it, oQ4e, Jundot build), Ornith-1.5-9B-MLX-6bit (existing model Ornith-1.5-9B, 6bit).
+- oMLX source total 4,926 rows. Dataset 9596 -> 9648. known.txt = 2,725 (all candidates known, corpus swept again).
+
 ## 2026-10-07: oMLX traces batch 60 (+53 rows)
 
 - scan42: fetched 60 new trace pages, 47 new candidates parsed and mined (53 records, some traces carry multiple context rows / duplicate sessions). New MAP entries: Qwen3.8-35B-A3B-Distill-Heretic-oQ4-fp16-mtp (new model Qwen3.8-35B-A3B-Distill-Heretic, oQ4, fp16 mtp build), Nemotron-Cascade-2-30B-A3B-4bit (new model Nemotron-Cascade-2-30B-A3B).
