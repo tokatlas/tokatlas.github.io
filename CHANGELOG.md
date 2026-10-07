@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-07: HF card batch (8 cards, +12 rows)
+
+- hf_scan backlog (7 new hits). 12 rows across 8 model cards, all with named hardware + measured tps:
+  - d1-3B (LiquidAI 3B decision model, MLX 8-bit) on M3 Max 36 GB: decode 79.0 / prefill 746 (246-token image prompt).
+  - CYBER-FROST 3.8 (MLX 4-bit) on M3 Ultra 256 GB, TensorFold: 26k agentic warm decode 96.3 (cold prefill 1,012); short-reply bench 136.6 greedy.
+  - MiniCPM-V 4.6 (Huihui abliterated, 8-bit) on M1 Ultra 64 GB: ~140-180 decode, 144 on large-page OCR.
+  - Qwen3.8-27B Huihui abliterated (oQ4e, MTP) on M1 Ultra 64 GB: chat decode 48-49 / prefill ~280; 16K decode 37-38.
+  - Cyber-Tiel-Coder 35B (35B-A3B MoE, oQ6e) on M1 Ultra 64 GB: chat decode 107-116, prefill 4K ~1890 / 16K ~1640.
+  - Laguna M.1 (Q3, 256-expert MoE) on M3 Max 128 GB: ~26.5 tok/s.
+  - altar-1 (4-bit, ~330+ GB) on M3 Ultra 512 GB: ctx 128/2k/4k decode 13.7/12.6/13.0, prefill 86/205/194.
+  - Ornith-1.5-35B (35B-A3B MoE, Q4_K_M) on RTX 4090 24 GB, llama.cpp: 113.8 tok/s at 160K ctx with DFlash2 draft speculation.
+- 7 new models (d1-3B, CYBER-FROST-3.8, MiniCPM-V-4.6, CyberTiel-Coder-35B, Laguna-M.1, altar-1, Ornith-1.5-35B). Parked: ox-ox/Hy3-295B (chip unnamed, "128 GB Apple Silicon").
+- Dataset 9656 -> 9668. Models 333 -> 340.
+
 ## 2026-10-07: HF card Ternary-Bonsai-2-27B on RTX 4070 (+8 rows)
 
 - hf_scan hit: CaryPalmer/Ternary-Bonsai-2-27B-262k-GGUF. PrismML Ternary Bonsai 2 27B (1.58-bit ternary PTQ1_0) re-served via the ada-surgery fork (tiered KV cache, first ~113k in VRAM + pinned RAM, q8_0 KV, MTP spec decode) on one RTX 4070 12 GB. 8 rows (decode + cumulative prefill tok/s) across the full 262,144-token window: 4k 83/1100, 16k 106/1100, 32k 100/918, 64k 87/724, 112k 70/539, 131k 41/374, 180k 27/298, 258k 14.7/229. New backend "llama.cpp (ada-surgery fork)"; existing model Ternary-Bonsai-2-27B, hardware RTX 4070.
