@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 58 (+22 rows, final sweep)
+
+- scan40 closed out the corpus sweep: listing 2,597 IDs, 2,584 candidates fetched, all handled (known.txt = 2,584). 22 remaining candidates mined, most duplicate sessions of already-seen benchmarks (notes carry the duplicate trace IDs). New MAP entries: Qwen3.8-4B-Distill (new model), Qwen3.8-Flash-Next-Uncensored-TF-4bit-MTP, Qwen3.8-27B-Uncensored-MLX-8bit, GLM-5.3-Flash-Alis-MLX-4bit, MiniCPM5-2B-OptiQ-4bit.
+- oMLX source total 4,773 rows. Dataset 9406 -> 9428.
+
 ## 2026-10-07: GitHub mining batch (+33 rows)
 
 - Mined 6 GitHub issues: vLLM #60397 (MI355X DeepSeek-V4.1-Flash mono decode, TP2/TP4 c1-c8, +8), llama.cpp #30087 (RTX 4090 FE, Qwen3.8-27B UD-Q4_K_XL GDN half-warp kernel A/B, pp512/pp4096/tg128, +6), vLLM #60355 (2 x GB200 DeepSeek-V4.1-Flash fused CuTe DSL all-reduce, c1-c64 plus DSpark k=5 c1-c4, +10), vLLM #60387 (DGX Spark spec-decode reduced-vocab A/B, Llama 3.1 8B and EXAONE-4.5-33B, +2), vLLM #60390 (RTX PRO 6000 Qwen3.8-Flash-Next NVFP4 shared PLE table, 1-card ref + two 2-card configs, +3), llama.cpp #30105 (Radeon AI PRO R9700 Vulkan, Mistral Small 4 IQ4_XS FP32 kernel fix before/after, +4).
