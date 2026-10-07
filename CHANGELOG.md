@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 49 (+21 rows)
+
+- Next listing-growth sweep (listing now 2,396 IDs, 2,383 candidates fetched, all handled): Occamy-1.0 oQ8e, Nanbeige4.2-3B oQ4e, Gemma 4 E4B qat-OptiQ-4bit (mlx-community), Qwen3.8-27B TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored NM DAU oQ8e 1M.
+- Dataset 9173 -> 9194.
+
 ## 2026-10-07: oMLX traces batch 48 (+39 rows)
 
 - Next listing-growth sweep (listing now 2,375 IDs, 2,362 candidates fetched, all handled): Gemma 4 E4B 4bit (mlx-community and bare variants), plus mapped-model sessions.
