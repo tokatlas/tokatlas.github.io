@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 20-21 (+212 rows)
+
+- Two listing-growth sweeps (listing now 1,635 IDs, 1,041 candidates fetched, all handled): Qwen3.8-Flash-Next oQ4e/oQ5e MTP and Uncensored 100K MTP, Qwen3.8-27B TURBO-Fable oQ2.7 community merge, Qwen3.8-27B oQ6e/oQ8e MTP builds, Swift-1.5-Qwen3.8-27b oQ8e MTP, Muse-Glimmer-30B, DeepSeek-V4.1-Flash oQ4e MTP, Laguna-S-2.1 oQ4e, GLM-5.3-Flash Alis 6bit, Ornith-1.5-35B-A3B variants, Gemma 4 E4B, Qwen3.6-35B-A3B 4bit.
+- Dataset 7498 -> 7710.
+
+## 2026-10-07: vLLM #59916 drift re-sync (10 rows updated)
+
+- Author rewrote the PR body 2026-10-06 with fresh 4x B300 measurements; all 10 GLM-5.3-NVFP4 prefill rows re-synced (e.g. TP1xPCP4 gather DCP4 144.8K -> 146.0K, TP4 gather 61.9K -> 62.2K, PP2xTP2 KVPP 100.5K -> 102.1K).
+- force_refresh entry added so CI re-fetches the source; records track the current body.
+
+## 2026-10-07: llama.cpp #24528 +4 rows (GLM-5.3-Flash expert-cache A/B)
+
+- CPU-on-miss expert cache A/B on GLM-5.3-Flash UD-IQ3_XXS, ctx 204800, Threadripper PRO 3975WX (experts on CPU) + 2x RTX 5090: master no cache 18.5, master + #29887 copy cache 12.9, v2 CPU-on-miss 23.7, v2 + DFlash2 n=2 ub 1024 33.5 (3 boots).
+- New hardware string: Threadripper PRO 3975WX + 2x RTX 5090.
+- Anchored 6 #24528 rows (M3/M1 Pro streaming, 5060 Ti) to their comments, which drifted off the thread's first page.
+- Dataset 7494 -> 7498.
+
 ## 2026-10-07: vLLM #60296 +2 rows (R9700 fp8 attention A/B)
 
 - fp8 query attention for fp8 KV cache on Radeon AI PRO R9700 (gfx1201), gemma-4-12B-it FP8, TRITON_ATTN: prefill 7.7K prompt 1102 -> 4574 tok/s (4.15x), decode 33.38 -> 36.08 t/s (+8.1%). Baseline arm stored.
