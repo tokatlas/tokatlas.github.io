@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 67 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan49, 60 traces fetched, 47 unmined candidates). oMLX total 5180 -> 5231.
+- 2 new MAP entries (both existing bases): Qwen3.8-27B-8Bit, Shiftedx--Qwen3.8-27B-Abliterated-MLX-MXFP4-MTP.
+- known.txt = 3007. Dataset 9931 -> 9982.
+
 ## 2026-10-07: oMLX batch 66 (+48 rows)
 
 - oMLX corpus sweep: 48 records mined (scan48, 60 traces fetched, 47 unmined candidates). oMLX total 5132 -> 5180.
