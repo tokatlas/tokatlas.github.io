@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 44 (+64 rows)
+
+- Next listing-growth sweep (listing now 2,258 IDs, 2,243 candidates fetched, all handled): Qwen3.6-35B-A3B-Uncensored-Heretic oQ8 fp16 MTP, Qwen3.5-9B-GLM5.1-Distill-v1 4bit, Qwen3.8-Flash-Next MLX 4bit, Qwen3.8-27B oQ6 MTP, supergemma4-26b-abliterated-multimodal 4bit, Gemma 4 26B-A4B-it-uncensored oQ5 fp16, Gemma 4 Ortenzya-The-Creative-Wordsmith-31B-it-uncensored-heretic 8bit, Qwen3.6-35B-A3B oQ4 fp16 MTP.
+- Dataset 8985 -> 9049.
+
 ## 2026-10-07: oMLX traces batch 43 (+51 rows)
 
 - Next listing-growth sweep (listing now 2,249 IDs, 2,194 candidates fetched, all handled): Huihui Qwen3.8-Flash-Next abliterated oQ4e MTP, Qwen3.8-27B-aeon-ultimate-uncensored MXFP4 vision MTP, Qwen3.6-35B-A3B Uncensored-Genesis-Hermes-V13 dequantized oQ6e fp16 MTP, Qwen3.6-35B-A3B Uncensored-HauhauCS-Aggressive oQ4, Qwen3.8-27B TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored NM DAU oQ4e 1M, Gemma 4 12B 8bit, NVIDIA Nemotron 3.5 Lightning 4bit.
