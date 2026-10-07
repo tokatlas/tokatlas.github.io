@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 68 (+48 rows, dataset crosses 10,000)
+
+- oMLX corpus sweep: 48 records mined (scan50, 60 traces fetched, 47 unmined candidates). oMLX total 5231 -> 5279.
+- 5 new MAP entries: AX-Tiel-Coder-35B-A3B-MLX-AXQ-MXFP8-MTP (base Tiel-Coder-35B-A3B), Mellum2-12B-A2.5B-Instruct (new model), Qwen3.6-27B-MLX-4bit (base), Qwen3.8-3.6-27B-blend (new model), UI-Venus-2-9B (new model).
+- known.txt = 3054. Dataset 9982 -> 10030 (10,000+).
+
 ## 2026-10-07: oMLX batch 67 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan49, 60 traces fetched, 47 unmined candidates). oMLX total 5180 -> 5231.
