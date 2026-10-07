@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 30 (+55 rows)
+
+- Next listing-growth sweep (listing now 1,970 IDs, 1,543 candidates fetched, all handled): GLM-5.3-Flash-UNCENSORED oQ4e DFlash2 (17 traces), Swift-1.5-Qwen3.8-27b-oQ4e-mtp, Qwen3.6-35B-A3B OptiQ-4bit and 6bit and bf16-baseline, Qwen3.5-VL-9B 4bit CRACK, Qwen3-4B-Instruct-2507, Qwen3.5-4B 4bit.
+- Dataset 8208 -> 8263.
+
 ## 2026-10-07: oMLX traces batch 29 (+57 rows)
 
 - Next listing-growth sweep (listing now 1,936 IDs, 1,492 candidates fetched, all handled): DeepSeek-V4-Flash 4bit, FrogNano-4B-2609 oQ8e MTP, Qwen3.6-14B-A3B-FableVibes, Qwen3.6-35B-A3B 4bit DWQ, Qwen3.8-27B-MTPLX Speed, Gemma 4 26B-A4B 6bit, Mistral-Small-4-119B-2603, Devstral-Small-2-24B-Instruct-2512, Swift Qwen3.8-27b oQ4e fp16 MTP.
