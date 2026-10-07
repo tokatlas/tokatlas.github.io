@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 46 (+16 rows)
+
+- Next listing-growth sweep (listing now 2,299 IDs, 2,288 candidates fetched, all handled): Ornith-1.5-35B-A3B oQ8e and oQ2e MTP, DeepSeek-R1-Distill-Llama-70B 4bit, Bonsai-2-27B-CRACK-Ternary oMLX, Qwen3.6-35B-A3B oQ4e FP16 MTP MLX.
+- Dataset 9083 -> 9099.
+
 ## 2026-10-07: oMLX traces batch 45 (+34 rows)
 
 - Next listing-growth sweep (listing now 2,283 IDs, 2,272 candidates fetched, all handled): Gemma 4 31B 8bit, Qwen3.8-27B 8bit MTP MLX, Qwen3.6-27B oQ4e MTP, plus mapped-model sessions.
