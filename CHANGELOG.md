@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 62 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan44, 60 traces fetched, 47 unmined candidates). oMLX total 4926 -> 4977.
+- 1 new MAP entry (Qwen3.8-27B-oQ8e-mtp-fp16, 8-bit MTP build).
+- known.txt = 2772. Dataset 9676 -> 9727.
+
 ## 2026-10-07: GitHub pulse (#30112, #30115, #60464, +8 rows)
 
 - llama.cpp #30112 (multi-GPU MoE cache): 3 rows on 2x RTX 4090 (new hardware), Qwen3.8-Flash-Next Q4_0, SPEED-Bench osl 512 conc 1; master 34.78/440.7, --moe-cache-6544 60.38/402.0 (85.9% cache hit), -cmoe-15000 64.39/321.5 (95.8%); config tokens separate arms.
