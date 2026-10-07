@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-06: oMLX traces batch 17 (+188 rows)
+
+- Next 60 of the corpus mined (October-dated: DeepSeek-V4-Flash-0731 oQ4e MTP, MiMo-V2.6-Distill-Qwen-9B oQ4e/oQ6e, MiniCPM5-2B oQ4e, Ornith-1.0-9B 8bit, Qwen3-Next-80B-A3B-Thinking-Uncensored, Qwen3.6-27B 4bit, Qwen3.8-27B MTP variants, clef-flash 8bit).
+- Dataset 6962 -> 7150.
+
 ## 2026-10-06: oMLX traces batch 16 (+180 rows)
 
 - Next 60 of the corpus mined (October-dated: Qwen3.6-35B-A3B Genesis-Hermes dequant oQ8e MTP, Qwen3.8-Flash-Next oQ4/oQ6e MTP, DeepSeek-V4-Flash-0731 mxfp4 abliterated).
