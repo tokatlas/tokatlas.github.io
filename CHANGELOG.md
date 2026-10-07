@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: vLLM #60317 +15 rows (A100 gemma-4 prefill A/B)
+
+- Triton unified attention head_dim=512 / SWA optimization: vLLM engine prefill A/B on A100-SXM4-80GB, main vs PR branch, gemma-4-E2B/E4B/12B-it, ctx 2048/4096, batch 1/4/8. Baseline arm stored, PR arm and speedup in notes (1.04x-1.12x).
+- New hardware string: A100-SXM4-80GB.
+- Dataset 7477 -> 7492.
+
 ## 2026-10-07: llama.cpp issues +23 rows (M5 Max depth decay, RTX 5090 Blackwell fix, P100 split-mode)
 
 - #30074: Qwen3.8-Flash-Next IQ3_S on M5 Max, 175K/32K depth-decay table with n-gram spec decodes (26.9-89.4 t/s) plus the mlx-serve 252K reference (53.9 t/s).
