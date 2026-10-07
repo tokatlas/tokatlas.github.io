@@ -4825,12 +4825,17 @@ recorded as published.</p>
             k = (mkey(r["model"]), r["hardware"])
             if k in est_by_key:
                 prev = check_rows.get(k)
-                if prev is None or (r.get("tps") or 0) > (prev[0].get("tps") or 0):
+                try:
+                    cur = float(r.get("tps")) if r.get("tps") else 0.0
+                    old = float(prev[0].get("tps")) if prev is not None and prev[0].get("tps") else 0.0
+                except (TypeError, ValueError):
+                    cur = old = 0.0
+                if prev is None or cur > old:
                     check_rows[k] = (r, est_by_key[k])
     def overlap_lines(pairs, with_quant=False, label=True):
         lines, oos = [], []
         for (m, h), (mr, er) in sorted(pairs.items()):
-            delta = (er["tps"] - mr["tps"]) / mr["tps"] * 100
+            delta = (float(er["tps"]) - float(mr["tps"])) / float(mr["tps"]) * 100
             in_sample = abs(delta) < 0.5
             if not in_sample and label:
                 oos.append(abs(delta))
