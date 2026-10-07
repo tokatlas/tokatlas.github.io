@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 54 (+15 rows)
+
+- Next listing-growth sweep (listing now 2,548 IDs, 2,535 candidates fetched, all handled): Gemma 4 E2B 4bit, plus mapped-model sessions. Added 8 GB to the RAM lookup (a new machine size in the corpus).
+- Dataset 9331 -> 9346.
+
 ## 2026-10-07: oMLX traces batch 53 (+29 rows)
 
 - Next listing-growth sweep (listing now 2,533 IDs, 2,520 candidates fetched, all handled). No new model names; all mapped-model sessions.
