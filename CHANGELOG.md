@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 64 (+54 rows)
+
+- oMLX corpus sweep: 54 records mined (scan46, 60 traces fetched, 47 unmined candidates). oMLX total 5028 -> 5082.
+- 6 new MAP entries: Jundot--Qwen3.6-35B-A3B-oQ4e-mtp, MiMo-V2.6-Flash-MOPD (new model), MiMo-V2.6-Flash-RL-mxfp4, Qwen3.6-35B-A3B-MLX-mixed-9bit, Qwen3.6-35B-A3B-oQ5-fp16-mtp, Qwen3.6-35B-A3B-oQ8e-fp16-mtp.
+- known.txt = 2866. Dataset 9779 -> 9833.
+
 ## 2026-10-07: oMLX batch 63 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan45, 60 traces fetched, 47 unmined candidates). oMLX total 4977 -> 5028.
