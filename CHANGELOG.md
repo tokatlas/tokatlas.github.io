@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 56 (+7 rows)
+
+- Next listing-growth sweep (listing now 2,572 IDs, 2,559 candidates fetched, all handled). No new model names; all mapped-model sessions.
+- Dataset 9363 -> 9370.
+
 ## 2026-10-07: oMLX traces batch 55 (+17 rows)
 
 - Next listing-growth sweep (listing now 2,565 IDs, 2,552 candidates fetched, all handled): gemma-4-26B-A4B-it oQ4e MTP, plus mapped-model sessions.
