@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-07: llama.cpp issues +23 rows (M5 Max depth decay, RTX 5090 Blackwell fix, P100 split-mode)
+
+- #30074: Qwen3.8-Flash-Next IQ3_S on M5 Max, 175K/32K depth-decay table with n-gram spec decodes (26.9-89.4 t/s) plus the mlx-serve 252K reference (53.9 t/s).
+- #30077: RTX 5090, Qwen3 8B Q4_K_M, llama-bench tg128 A/B of the CUDA 12.8 q4_0/q5_0 V-dequant stack-frame fix (master vs branch, q4_0 and q8_0 K/V caches, 4 depths).
+- #30075: 2x Tesla P100, Qwen3.6-35B-A3B split-mode degeneration report (~130 t/s normal, ~36 t/s with MTP, approximate).
+- Dataset 7454 -> 7477.
+
 ## 2026-10-07: oMLX traces batch 19 (+148 rows)
 
 - Final known-corpus sweep (921 candidates now, listing still growing): Qwen3.8-27B TURBO-Fable oQ3.5, Qwen3.8-27B MPTLS FP16 builds, Tiel-Coder-35B-A3B oQ6e MTP, gemma-4-26B-A4B heretic mixed 4+6bit, and more.
