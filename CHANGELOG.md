@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-07: GitHub pulse (#30112, #30115, #60464, +8 rows)
+
+- llama.cpp #30112 (multi-GPU MoE cache): 3 rows on 2x RTX 4090 (new hardware), Qwen3.8-Flash-Next Q4_0, SPEED-Bench osl 512 conc 1; master 34.78/440.7, --moe-cache-6544 60.38/402.0 (85.9% cache hit), -cmoe-15000 64.39/321.5 (95.8%); config tokens separate arms.
+- llama.cpp #30115 (tiled Q4_K/Q6_K GET_ROWS): 1 row on Hexagon (new hardware), LFM2.5-2.6B Q4_K_M + DSpark draft speculation, decode 43.88 / prompt 57.49 tok/s.
+- vLLM #60464 (SM90 block-FP8 CUTLASS kernel dispatch by M size): 4 rows on H100 NVL, Qwen3-8B-FP8, output tok/s at concurrency (stock CUTLASS baseline; this PR +17-52%); chat/long x 16/64 concurrent.
+- 2 new hardware (2x RTX 4090, Hexagon). Qwen3-8B joined existing "Qwen3 8B" model via MODEL_MAP.
+- Dataset 9668 -> 9676.
+
 ## 2026-10-07: HF card batch (8 cards, +12 rows)
 
 - hf_scan backlog (7 new hits). 12 rows across 8 model cards, all with named hardware + measured tps:
