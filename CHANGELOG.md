@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 26 (+63 rows)
+
+- Next listing-growth sweep (listing now 1,865 IDs, 1,339 candidates fetched, all handled): Qwen3-VL-30B-A3B-Instruct 4bit, MiMo-V2.6-Distill-Qwen-9B oQ4e/oQ8e, NVIDIA Nemotron 3.5 Lightning 30B-A3B OptiQ-4bit, Ternary-Bonsai-27B 2bit.
+- Dataset 7974 -> 8037.
+
 ## 2026-10-07: oMLX traces batch 25 (+64 rows)
 
 - Next listing-growth sweep (listing now 1,833 IDs, 1,281 candidates fetched, all handled): Qwen3.6-35B-A3B oQ4e MTP and VQ-5.4bpw and Uncensored-Heretic-MTPLX, K2-Horizon 3.7B/7B, Muse Glimmer 4bit, Gemma 4 E2B, Qwen3-0.6B, Qwen3.8-27B Atlassian-v2-goose and 6bit, Llama-3.1-8B-Instruct, Qwen3.8-Flash-Next-REAP-288.
