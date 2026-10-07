@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: GitHub mining batch (+3 rows)
+
+- Mined 2 vLLM issues: #60426 (Kimi-K3, MI355X TP8 DCP1, fp8 KV cache, vllm bench ISL 100000 OSL 512 c1; interactivity 177.3 baseline, PR group-metadata reuse 184.1) and #60413 (Qwen3.8-27B-Quark-AWQ-MXFP4, AMD Strix Halo gfx1151, W4A8 MXFP4 GEMV kernel flag on; decode 12.45 MTP 0 / 22.45 MTP 3, single stream). vLLM rows store the measured arm; #60413 baseline (flag off) was pending at measurement time so the PR rows are stored with the baseline noted.
+- All hardware/models existing (MI355X, Kimi-K3, AMD Strix Halo, Qwen3.8-27B). Skipped: vLLM #60422 (RFC, no perf table), llama.cpp #30106 (MUL_MAT correctness fix, no tps), #30107 (TOP_K fix), #30108 (relative CPU latency regression note, no absolute tok/s).
+- Dataset 9428 -> 9431.
+
 ## 2026-10-07: oMLX traces batch 58 (+22 rows, final sweep)
 
 - scan40 closed out the corpus sweep: listing 2,597 IDs, 2,584 candidates fetched, all handled (known.txt = 2,584). 22 remaining candidates mined, most duplicate sessions of already-seen benchmarks (notes carry the duplicate trace IDs). New MAP entries: Qwen3.8-4B-Distill (new model), Qwen3.8-Flash-Next-Uncensored-TF-4bit-MTP, Qwen3.8-27B-Uncensored-MLX-8bit, GLM-5.3-Flash-Alis-MLX-4bit, MiniCPM5-2B-OptiQ-4bit.
