@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: vLLM #60470 (Cake FlashInfer routes, +1 row)
+
+- vLLM #60470 (opt-in Cake FlashInfer routes, KDA + MLA decode): 1 row on GB300, Kimi-K3 NVFP4, baseline total tok/s 8213 (this PR 8254, +0.5%, no speedup claimed); 1024/128 x200 @32, TP8 over 2 nodes x 4 GB300.
+- llama.cpp #30118 checked (tool-call leak bug report, not minable).
+- Watermarks: llama.cpp -> #30118, vLLM -> #60470. Dataset 9727 -> 9728.
+
 ## 2026-10-07: oMLX batch 62 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan44, 60 traces fetched, 47 unmined candidates). oMLX total 4926 -> 4977.

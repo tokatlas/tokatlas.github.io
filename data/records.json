@@ -1,5 +1,5 @@
 {
- "count": 9727,
+ "count": 9728,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -47480,6 +47480,25 @@
    "retrieved": "2026-10-07",
    "source_name": "vLLM issue #60464",
    "source_url": "https://github.com/vllm-project/vllm/issues/60464",
+   "tps": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 32,
+   "ctx": 1024,
+   "date": "2026-10-07",
+   "flags": [],
+   "hardware": "GB300",
+   "id": "vllm60470-gb300-kimik3",
+   "model": "Kimi-K3",
+   "notes": "vLLM PR #60470 opt-in Cake FlashInfer routes (KDA + MLA decode); baseline total tok/s (this PR 8254, +0.5%, no speedup claimed); 1024/128 x200 @32; Kimi-K3 NVFP4, TP8 over 2 nodes x 4 GB300",
+   "pp_tps": 8213,
+   "provenance": "community",
+   "quant": "NVFP4",
+   "quote": "Kimi-K3 NVFP4, TP8 over 2 nodes x 4 GB300; serving 1024/128 x200 @32: total tok/s, median TTFT, median TPOT | 8213 tok/s, 780.8 ms, 27.30 ms",
+   "retrieved": "2026-10-07",
+   "source_name": "vLLM issue #60470",
+   "source_url": "https://github.com/vllm-project/vllm/issues/60470",
    "tps": null
   },
   {
