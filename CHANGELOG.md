@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: vLLM #60445 Gemma4 KV-sharing fast prefill (+64 rows)
+
+- Mined the Suite 1 (default out-of-the-box) E2E serving benchmark on A100-SXM4-80GB: 5 Gemma4 models (E2B, E4B, 12B, 26B-A4B, 31B) across 4 scenarios (prefill_heavy in=1024, balanced in=512, decode_heavy in=128, long_context in=4096) and batch sizes 1-16. Stored the Base (main) arm total tokens/s (in+out) as pp_tps with ctx=in_len; PR arm + speedup in notes. E2B/E4B see up to 2.10x (KV-sharing fast prefill); 12B/26B/31B are parity (no kv_shared_layers). 64 rows, all models/hardware existing.
+- Dataset 9479 -> 9543. Watermark vLLM -> #60450.
+
 ## 2026-10-07: oMLX traces batch 59 (+48 rows)
 
 - scan41: listing grew to 2,767 IDs (+170); fetched 60 new trace pages (13 returned 404, deleted upstream), 47 new candidates parsed and mined (48 records). New MAP entries: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-oQ4e-mtp (existing model), Qwen3.5-35B-A3B-Uncensored-FernflowerAI-MLX-4bit (new model Qwen3.5-35B-A3B-Uncensored), Qwen3.6-35B-A3B-oQ4e-MTP, Qwen3.8-27B-oQ4, Qwen3.8-Flash-Next-Uncensored-oQ4e-mtp, Swift1.5-Qwen3.8-Flash-Next-oQ4e-mtp, ornith-1.5-35b-a3b-mtp-mlx-4bit.
