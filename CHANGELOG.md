@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: vLLM #60296 +2 rows (R9700 fp8 attention A/B)
+
+- fp8 query attention for fp8 KV cache on Radeon AI PRO R9700 (gfx1201), gemma-4-12B-it FP8, TRITON_ATTN: prefill 7.7K prompt 1102 -> 4574 tok/s (4.15x), decode 33.38 -> 36.08 t/s (+8.1%). Baseline arm stored.
+- Dataset 7492 -> 7494.
+
 ## 2026-10-07: vLLM #60317 +15 rows (A100 gemma-4 prefill A/B)
 
 - Triton unified attention head_dim=512 / SWA optimization: vLLM engine prefill A/B on A100-SXM4-80GB, main vs PR branch, gemma-4-E2B/E4B/12B-it, ctx 2048/4096, batch 1/4/8. Baseline arm stored, PR arm and speedup in notes (1.04x-1.12x).
