@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 48 (+39 rows)
+
+- Next listing-growth sweep (listing now 2,375 IDs, 2,362 candidates fetched, all handled): Gemma 4 E4B 4bit (mlx-community and bare variants), plus mapped-model sessions.
+- Dataset 9134 -> 9173.
+
 ## 2026-10-07: oMLX traces batch 47 (+35 rows)
 
 - Next listing-growth sweep (listing now 2,334 IDs, 2,323 candidates fetched, all handled): NeoHorse-1-4B and NeoHorse-1-9B oQ4e MTP, Swift Qwen3.8-Flash-Next oQ4e MTP, Ornith-1.5-35B-A3B refusal-ablated oQ8 MTP, Qwen3.8-35B-A3B-Distill MLX 8bit.
