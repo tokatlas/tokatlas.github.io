@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 52 (+44 rows)
+
+- Next listing-growth sweep (listing now 2,504 IDs, 2,491 candidates fetched, all handled): Ternary-Bonsai-2-27B MLX 2bit, Qwen3.6-27B 6bit, DeepSeek-V4-Flash-0731 2.4bit mixed, Ling-3.0-tiny oQ6e fp16, MiniCPM5-2B oQ5 fp16.
+- Dataset 9258 -> 9302.
+
 ## 2026-10-07: oMLX traces batch 51 (+39 rows)
 
 - Next listing-growth sweep (listing now 2,460 IDs, 2,447 candidates fetched, all handled): Qwen3.8-27B 4bit ms, Qwen2.5-VL-7B-Instruct 4bit, plus mapped-model sessions.
