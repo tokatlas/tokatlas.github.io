@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 57 (+3 rows)
+
+- Next listing-growth sweep (listing now 2,575 IDs, 2,562 candidates fetched, all handled): Jundot Qwen3.8-27B oQ8e MTP, plus mapped-model sessions.
+- Dataset 9370 -> 9373.
+
 ## 2026-10-07: oMLX traces batch 56 (+7 rows)
 
 - Next listing-growth sweep (listing now 2,572 IDs, 2,559 candidates fetched, all handled). No new model names; all mapped-model sessions.
