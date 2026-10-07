@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 59 (+48 rows)
+
+- scan41: listing grew to 2,767 IDs (+170); fetched 60 new trace pages (13 returned 404, deleted upstream), 47 new candidates parsed and mined (48 records). New MAP entries: NVIDIA-Nemotron-3.5-Lightning-30B-A3B-oQ4e-mtp (existing model), Qwen3.5-35B-A3B-Uncensored-FernflowerAI-MLX-4bit (new model Qwen3.5-35B-A3B-Uncensored), Qwen3.6-35B-A3B-oQ4e-MTP, Qwen3.8-27B-oQ4, Qwen3.8-Flash-Next-Uncensored-oQ4e-mtp, Swift1.5-Qwen3.8-Flash-Next-oQ4e-mtp, ornith-1.5-35b-a3b-mtp-mlx-4bit.
+- oMLX source total 4,821 rows. Dataset 9431 -> 9479, models 330 -> 331. known.txt = 2,631 (all candidates known, corpus swept again).
+
 ## 2026-10-07: GitHub mining batch (+3 rows)
 
 - Mined 2 vLLM issues: #60426 (Kimi-K3, MI355X TP8 DCP1, fp8 KV cache, vllm bench ISL 100000 OSL 512 c1; interactivity 177.3 baseline, PR group-metadata reuse 184.1) and #60413 (Qwen3.8-27B-Quark-AWQ-MXFP4, AMD Strix Halo gfx1151, W4A8 MXFP4 GEMV kernel flag on; decode 12.45 MTP 0 / 22.45 MTP 3, single stream). vLLM rows store the measured arm; #60413 baseline (flag off) was pending at measurement time so the PR rows are stored with the baseline noted.
