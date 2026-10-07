@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 63 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan45, 60 traces fetched, 47 unmined candidates). oMLX total 4977 -> 5028.
+- 7 new MAP entries: LFM2.5-2.6B-MLX-8bit, Qwen3.6-27B-UD-Q4_K_XL, Qwen3.6-35B-A3B-Fable-Holo3.1-Qwopus-KAT-Coder-C-qx86-hi (new model), Qwen3.6-35B-A3B-MLX-VL (base, VL build), Qwen3.8-27B-oQ5e-SAGE-PATHS, Qwen3.8-27B-pi-FP8, gemma-4-26B-A4B-it-qat-OptiQ-4bit.
+- known.txt = 2819. Dataset 9728 -> 9779.
+
 ## 2026-10-07: vLLM #60470 (Cake FlashInfer routes, +1 row)
 
 - vLLM #60470 (opt-in Cake FlashInfer routes, KDA + MLA decode): 1 row on GB300, Kimi-K3 NVFP4, baseline total tok/s 8213 (this PR 8254, +0.5%, no speedup claimed); 1024/128 x200 @32, TP8 over 2 nodes x 4 GB300.
