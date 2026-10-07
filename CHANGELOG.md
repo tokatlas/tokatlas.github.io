@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 47 (+35 rows)
+
+- Next listing-growth sweep (listing now 2,334 IDs, 2,323 candidates fetched, all handled): NeoHorse-1-4B and NeoHorse-1-9B oQ4e MTP, Swift Qwen3.8-Flash-Next oQ4e MTP, Ornith-1.5-35B-A3B refusal-ablated oQ8 MTP, Qwen3.8-35B-A3B-Distill MLX 8bit.
+- Dataset 9099 -> 9134.
+
 ## 2026-10-07: oMLX traces batch 46 (+16 rows)
 
 - Next listing-growth sweep (listing now 2,299 IDs, 2,288 candidates fetched, all handled): Ornith-1.5-35B-A3B oQ8e and oQ2e MTP, DeepSeek-R1-Distill-Llama-70B 4bit, Bonsai-2-27B-CRACK-Ternary oMLX, Qwen3.6-35B-A3B oQ4e FP16 MTP MLX.
