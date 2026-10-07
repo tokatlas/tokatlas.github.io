@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: GitHub mining batch (+33 rows)
+
+- Mined 6 GitHub issues: vLLM #60397 (MI355X DeepSeek-V4.1-Flash mono decode, TP2/TP4 c1-c8, +8), llama.cpp #30087 (RTX 4090 FE, Qwen3.8-27B UD-Q4_K_XL GDN half-warp kernel A/B, pp512/pp4096/tg128, +6), vLLM #60355 (2 x GB200 DeepSeek-V4.1-Flash fused CuTe DSL all-reduce, c1-c64 plus DSpark k=5 c1-c4, +10), vLLM #60387 (DGX Spark spec-decode reduced-vocab A/B, Llama 3.1 8B and EXAONE-4.5-33B, +2), vLLM #60390 (RTX PRO 6000 Qwen3.8-Flash-Next NVFP4 shared PLE table, 1-card ref + two 2-card configs, +3), llama.cpp #30105 (Radeon AI PRO R9700 Vulkan, Mistral Small 4 IQ4_XS FP32 kernel fix before/after, +4).
+- New hardware "2 x GB200"; new models "EXAONE-4.5-33B", "Mistral Small 4". A/B rows carry config tokens; vLLM rows store the baseline (main / full-vocab / unpatched) arm with the PR arm noted. Parked: #30091 (hardware unnamed in body).
+- Dataset 9373 -> 9406.
+
 ## 2026-10-07: oMLX traces batch 57 (+3 rows)
 
 - Next listing-growth sweep (listing now 2,575 IDs, 2,562 candidates fetched, all handled): Jundot Qwen3.8-27B oQ8e MTP, plus mapped-model sessions.
