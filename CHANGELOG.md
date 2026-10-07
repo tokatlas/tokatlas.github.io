@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 65 (+50 rows)
+
+- oMLX corpus sweep: 50 records mined (scan47, 60 traces fetched, 47 unmined candidates). oMLX total 5082 -> 5132.
+- 4 new MAP entries: AREX-2-5bit, GLM-5.3-Flash-MLX-oQ4-MTP, Gemma-4-Dark-Thoughts-V2-31B (new model), Qwen-AgentWorld-35B-A3B-oQ4.
+- known.txt = 2913. Dataset 9833 -> 9883.
+
 ## 2026-10-07: oMLX batch 64 (+54 rows)
 
 - oMLX corpus sweep: 54 records mined (scan46, 60 traces fetched, 47 unmined candidates). oMLX total 5028 -> 5082.
