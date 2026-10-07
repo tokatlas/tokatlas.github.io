@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 36 (+59 rows)
+
+- Next listing-growth sweep (listing now 2,074 IDs, 1,849 candidates fetched, all handled): Dirk Qwen3.8-27B oQ6e, Qwen3.6-35B-A3B MLX Serve 4bit, plus mapped-model sessions.
+- Dataset 8548 -> 8607.
+
 ## 2026-10-07: oMLX traces batch 35 (+57 rows)
 
 - Next listing-growth sweep (listing now 2,046 IDs, 1,798 candidates fetched, all handled): Qwen3.8-Flash-Next oQ8e MTP, Gemma 4 E4B oQ4e MTP, Qwen3.6-27B 8bit, plus mapped-model sessions.
