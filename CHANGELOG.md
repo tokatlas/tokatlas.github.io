@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-07: oMLX batch 70 (+35 rows)
+
+- oMLX corpus sweep: 39 records mined (scan52, 44 traces fetched, 33 unmined candidates), 4 dropped (trace u15zfhx0 returned 404 after listing; gemma-4-31B-it mxfp4 on M4 Max, duplicate of dropped hlqpxcxp; retained in known.txt). Net +35. oMLX total 5326 -> 5361.
+- 3 new MAP entries (all existing bases): Nemotron-Cascade-2-30B-A3B-mxfp8, Qwen3-Coder-Next-MLX-4bit, Swift1.5-Qwen3.8-Flash-Next-oQ4e-fp16-mtp.
+- known.txt = 3128. Dataset 10077 -> 10112.
+
 ## 2026-10-07: oMLX batch 69 (+47 rows)
 
 - oMLX corpus sweep: 51 records mined (scan51, 60 traces fetched, 46 unmined candidates), 4 dropped (trace hlqpxcxp returned 404 after listing, only gemma-4-31B-it mxfp4 rows, retained in known.txt to avoid re-scan). Net +47. oMLX total 5279 -> 5326.
