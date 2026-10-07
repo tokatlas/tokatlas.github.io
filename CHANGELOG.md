@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 43 (+51 rows)
+
+- Next listing-growth sweep (listing now 2,249 IDs, 2,194 candidates fetched, all handled): Huihui Qwen3.8-Flash-Next abliterated oQ4e MTP, Qwen3.8-27B-aeon-ultimate-uncensored MXFP4 vision MTP, Qwen3.6-35B-A3B Uncensored-Genesis-Hermes-V13 dequantized oQ6e fp16 MTP, Qwen3.6-35B-A3B Uncensored-HauhauCS-Aggressive oQ4, Qwen3.8-27B TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored NM DAU oQ4e 1M, Gemma 4 12B 8bit, NVIDIA Nemotron 3.5 Lightning 4bit.
+- Dataset 8934 -> 8985.
+
 ## 2026-10-07: oMLX traces batch 42 (+49 rows)
 
 - Next listing-growth sweep (listing now 2,214 IDs, 2,145 candidates fetched, all handled): Qwen3.8-27B AWQ-5.0bpw, Hermes-4-70B MLX 8bit, DeepSeek-Coder-V2-Lite-Instruct MLX 4bit, DeepHermes-3-Llama-3-8B-Preview 4bit, qwen3.5-4b-agentic-coder-v4 MLX 4bit, Qwen3.6-27B OptiQ-4bit.
