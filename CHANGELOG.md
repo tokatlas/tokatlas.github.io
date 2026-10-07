@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: oMLX traces batch 25 (+64 rows)
+
+- Next listing-growth sweep (listing now 1,833 IDs, 1,281 candidates fetched, all handled): Qwen3.6-35B-A3B oQ4e MTP and VQ-5.4bpw and Uncensored-Heretic-MTPLX, K2-Horizon 3.7B/7B, Muse Glimmer 4bit, Gemma 4 E2B, Qwen3-0.6B, Qwen3.8-27B Atlassian-v2-goose and 6bit, Llama-3.1-8B-Instruct, Qwen3.8-Flash-Next-REAP-288.
+- Dataset 7910 -> 7974.
+
 ## 2026-10-07: oMLX traces batch 24 (+64 rows)
 
 - Next listing-growth sweep (listing now 1,805 IDs, 1,221 candidates fetched, all handled): Qwen3.8-27B OBLITERATED OptiQ-4bit and V3-Sharp oQ4e MTP, DeepSeek-V4.1-Flash oQ3e-2b27-CED MTP, Qwen3.8-27B MLX 8bit, Qwen2.5-Coder-7B-Instruct 4bit, Ornith-1.5-35B-A3B oQ4e MTP, Laguna-S-2.1 oQ6e, Spark-X2.5-4B Abliterated Uncensored.
