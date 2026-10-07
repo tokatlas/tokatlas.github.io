@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-07: HF card Ternary-Bonsai-2-27B on RTX 4070 (+8 rows)
+
+- hf_scan hit: CaryPalmer/Ternary-Bonsai-2-27B-262k-GGUF. PrismML Ternary Bonsai 2 27B (1.58-bit ternary PTQ1_0) re-served via the ada-surgery fork (tiered KV cache, first ~113k in VRAM + pinned RAM, q8_0 KV, MTP spec decode) on one RTX 4070 12 GB. 8 rows (decode + cumulative prefill tok/s) across the full 262,144-token window: 4k 83/1100, 16k 106/1100, 32k 100/918, 64k 87/724, 112k 70/539, 131k 41/374, 180k 27/298, 258k 14.7/229. New backend "llama.cpp (ada-surgery fork)"; existing model Ternary-Bonsai-2-27B, hardware RTX 4070.
+- Dataset 9648 -> 9656. Backends 43 -> 44.
+
 ## 2026-10-07: oMLX traces batch 61 (+52 rows)
 
 - scan43: listing 2,781 -> 2,809 IDs; fetched 60 new trace pages, 47 new candidates parsed and mined (52 records). New MAP entries: Jundot:gemma-4-31B-it-oQ4e-mtp (existing model gemma-4-31B-it, oQ4e, Jundot build), Ornith-1.5-9B-MLX-6bit (existing model Ornith-1.5-9B, 6bit).
