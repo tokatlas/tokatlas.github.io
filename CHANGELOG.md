@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 91 (+50 rows)
+
+- oMLX corpus sweep: 50 records mined (scan73, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 5845 -> 5895.
+- 2 new MAP entries, 2 new models: Qwen3.6-35B-A3B-Heretic-Splash, Qwen3.6-35B-A3B-Uncensored-Genesis-Final-dequantized (distinct from non-dequantized, per the existing "-dequantized = distinct" convention).
+- Collector fix: omlx_scan.py table parser now tolerates "\u2014" (em dash) in the peak-memory cell (and pp/tg), setting the field to None; mine.py note reads "peak memory not reported" when peak_gb is None. First hit on trace bbz2z9cp (Qwen3.6-35B-A3B-Heretic-Splash, 9 rows with peak "\u2014").
+- known.txt = 3660. Models 358 -> 360. Dataset 10596 -> 10646.
+
 ## 2026-10-08: oMLX batch 90 (+19 rows)
 
 - oMLX corpus sweep: 19 records mined (scan72, 33 traces fetched, 19 unmined candidates). No 404 (SKIP set active). oMLX total 5826 -> 5845. No new models (MiniCPM5-2B bf16 variant mapped to existing base).
