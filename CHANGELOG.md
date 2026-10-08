@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 88 (+40 rows)
+
+- oMLX corpus sweep: 40 records mined (scan70, 54 traces fetched, 40 unmined candidates). No 404 (SKIP set active). oMLX total 5765 -> 5805. No new models (all mapped to existing bases).
+- 2 new MAP entries: Qwen3.8-27B-Alis-MLX-6bit (existing base, 6bit variant), Qwen3.8-27B-Q4-MTP.
+- known.txt = 3574. Dataset 10516 -> 10556.
+
 ## 2026-10-08: oMLX batch 87 (+8 rows)
 
 - oMLX corpus sweep: 8 records mined (scan69, 22 traces fetched, 8 unmined candidates). No 404 (SKIP set active). oMLX total 5757 -> 5765.
