@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 77 (+36 rows)
+
+- oMLX corpus sweep: 36 records mined (scan59, 50 traces fetched, 36 unmined candidates). No 404 (SKIP set active). oMLX total 5518 -> 5554.
+- 3 new MAP entries: DeepSeek-R1-0528-Qwen3-8B-MLX-8bit (new model), Huihui-Qwen3.8-27B-abliterated-oQ8e-mtp, Qwen3.8-Flash-Next-GSQ-RCO-Q2-mlx.
+- known.txt = 3323. Models 351 -> 352. Dataset 10269 -> 10305.
+
 ## 2026-10-08: oMLX batch 76 (+32 rows)
 
 - oMLX corpus sweep: 32 records mined (scan58, 46 traces fetched, 32 unmined candidates). No 404 (SKIP set active). oMLX total 5486 -> 5518.
