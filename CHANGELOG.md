@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 118 (+57 rows)
+
+- oMLX corpus sweep: 57 records mined (scan100, 60 traces fetched, 46 unmined candidates). New model mapping: Huihui-Qwen3.5-9B-abliterated (4bit); consolidated Ornith-1.5-9B 4bit, Swift-1.5-Qwen3.8-27b-oQ5e MTP. oMLX total 7095 -> 7152.
+- Dataset 11947 -> 12004. Models 405.
+
 ## 2026-10-08: oMLX batch 117 (+50 rows)
 
 - oMLX corpus sweep: 50 records mined (scan99, 60 traces fetched, 46 unmined candidates). New model mapping: Qwen3.6-35B-A3B-MLX-VL (oQ4 FP16); consolidated LFM2-24B-A2B 4bit, Llama 3.3 70B 8bit, Qwen3-0.6B Base, gemma-4-26B-A4B-it oQ5, gemma-4-31B-it 8bit. oMLX total 7045 -> 7095.
