@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 99 (+47 rows)
+
+- oMLX corpus sweep: 47 records mined (scan81, 57 traces fetched, 43 unmined candidates). No 404 (SKIP set active). oMLX total 6265 -> 6312.
+- 2 new MAP entries, 1 new model: Huihui-Ornith-1.5-35B-A3B-abliterated (Huihui build, distinct from base Abliterated). 1 mapped to existing base (DeepSeek-V4-Flash).
+- known.txt = 4025. Models 372 -> 373. Dataset 11016 -> 11063.
+
 ## 2026-10-08: oMLX batch 98 (+52 rows)
 
 - oMLX corpus sweep: 52 records mined (scan80, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6213 -> 6265.
