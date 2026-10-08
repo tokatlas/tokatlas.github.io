@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 89 (+21 rows)
+
+- oMLX corpus sweep: 21 records mined (scan71, 35 traces fetched, 21 unmined candidates). No 404 (SKIP set active). oMLX total 5805 -> 5826.
+- 7 new MAP entries: 3 new models (AliceAI-T5-35B-A0.6B, gemma-4-26B-A4B-it-heretic-ara [distinct from the "uncensored" variant], Qwable-v2), 4 mapped to existing bases (Huihui-Qwen3.8-27B-abliterated, Ling-3.0-tiny, Qwen3.8-4B-Distill, Qwen3.8-9B-Distill).
+- known.txt = 3595. Models 355 -> 358. Dataset 10556 -> 10577.
+
 ## 2026-10-08: oMLX batch 88 (+40 rows)
 
 - oMLX corpus sweep: 40 records mined (scan70, 54 traces fetched, 40 unmined candidates). No 404 (SKIP set active). oMLX total 5765 -> 5805. No new models (all mapped to existing bases).

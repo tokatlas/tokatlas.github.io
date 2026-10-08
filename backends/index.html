@@ -12,7 +12,7 @@
 
 <h1>Cross-backend notes</h1>
 <p>Where the same model and chip were recorded on more than one backend, we show them
-side by side. 104 comparable cases so far. For regressions and improvements
+side by side. 105 comparable cases so far. For regressions and improvements
 between builds of the same backend, see the
 <a href="/notes/build-ab.html">build A/B notes</a>.</p>
 <h3>AREX-2 on M6 (Q4_K_M)</h3>
@@ -403,6 +403,10 @@ sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-2
 <ul><li><strong>llama.cpp (Vulkan)</strong>: 16.98 tok/s (100%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 14.09 tok/s (83%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (Vulkan)</strong>: 10.76 tok/s (63%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li><li><strong>llama.cpp (ROCm)</strong>: 10.52 tok/s (62%) <span class="badge b-com">community</span> <a href="https://github.com/ggml-org/llama.cpp/discussions/10879#discussioncomment-18068837" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
 Differences between backends on the same model+chip can reflect build/version,
+sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-9B-Distill on M1 Max (oQ4e)</h3>
+<ul><li><strong>oMLX</strong>: 56.5 tok/s (100%) <span class="badge b-com">community</span> <a href="https://omlx.ai/benchmarks/performance/upolt5g2" rel="nofollow">source</a></li><li><strong>oMLX</strong>: 46.6 tok/s (82%) <span class="badge b-com">community</span> <a href="https://omlx.ai/benchmarks/performance/upolt5g2" rel="nofollow">source</a></li><li><strong>MLX</strong>: 43.0 tok/s (76%) <span class="badge b-com">community</span> <a href="https://huggingface.co/RolanDorisTech/Qwen3.8-9B-Distill-MLX-8bit" rel="nofollow">source</a></li></ul>
+<p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
+Differences between backends on the same model+chip can reflect build/version,
 sampling, and context differences, not just the backend itself.</p><h3>Qwen3.8-Flash-Next on RTX 5090 (Gyro-S)</h3>
 <ul><li><strong>Strata</strong>: 221 tok/s (100%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 218 tok/s (99%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 210 tok/s (95%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>Strata</strong>: 209 tok/s (95%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 180 tok/s (81%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>Strata</strong>: 140 tok/s (63%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>llama.cpp (CUDA)</strong>: 113 tok/s (51%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li><li><strong>Strata</strong>:  tok/s (0%) <span class="badge b-com">community</span> <a href="https://huggingface.co/agentionai/Qwen3.8-Flash-Next-Gyro-GGUF" rel="nofollow">source</a></li></ul>
 <p class="dim">Auto-generated comparison; relative % vs the fastest recorded backend.
@@ -437,6 +441,6 @@ sampling, and context differences, not just the backend itself.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-08 05:22 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-08 05:47 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>
