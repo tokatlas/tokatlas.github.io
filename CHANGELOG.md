@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 129 (+14 rows)
+
+- oMLX corpus sweep: 14 records mined (scan111, 28 traces fetched, 14 unmined candidates). New model mapping: Flash-Next (4bit MTP, name as published, likely Qwen3.8-Flash-Next shorthand). oMLX total 7455 -> 7469.
+- Dataset 12307 -> 12321. Models 413.
+
 ## 2026-10-08: oMLX batch 128 (+17 rows)
 
 - oMLX corpus sweep: 17 records mined (scan110, 19 traces fetched, 5 unmined candidates). gpt-oss 20B oQ4 consolidated to merged-canonical name; Qwen3.8-27B oQ8e/oQ4e MTP + 4bit, Qwen3.8-Flash-Next oQ4e MTP. oMLX total 7438 -> 7455.
