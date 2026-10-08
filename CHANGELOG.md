@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 84 (+30 rows)
+
+- oMLX corpus sweep: 30 records mined (scan66, 44 traces fetched, 30 unmined candidates). No 404 (SKIP set active). oMLX total 5691 -> 5721. No new models.
+- Caught a slug collision: Qwen3-14B-MLX-4bit initially mapped to a new "Qwen3-14B", which collided with the existing "Qwen3 14B" (spaced) on slug qwen3-14b. Mapped to the existing "Qwen3 14B" instead (3 records corrected in place).
+- known.txt = 3490. Dataset 10442 -> 10472.
+
 ## 2026-10-08: oMLX batch 83 (+32 rows)
 
 - oMLX corpus sweep: 32 records mined (scan65, 46 traces fetched, 32 unmined candidates). No 404 (SKIP set active). oMLX total 5659 -> 5691. No new models (all mapped to existing bases).
