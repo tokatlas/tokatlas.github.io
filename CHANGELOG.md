@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 120 (+53 rows)
+
+- oMLX corpus sweep: 53 records mined (scan102, 60 traces fetched, 46 unmined candidates). New model mappings: Qwen3.8-27B-TWIN-TURBO-Fable-Cold-Fusion-709-L-Uncensored (oQ8 MTP, DavidAU build), granite-4.2-30b (q4); consolidated Qwen2.5-Coder-14B-Instruct 4bit, Qwen3.6-35B-A3B 6bit, Qwen3.8-27B-Uncensored 8bit (orcarouter). oMLX total 7204 -> 7257.
+- Dataset 12056 -> 12109. Models 409.
+
 ## 2026-10-08: oMLX batch 119 (+52 rows)
 
 - oMLX corpus sweep: 52 records mined (scan101, 60 traces fetched, 46 unmined candidates). New model mappings: Qwen3-Coder-Next-REAM (3bit), Qwen3.8-9B-Distill-Uncensored-Heretic (Q6G64 MTP); consolidated Laguna-S-2.1 oQ5e, Qwen3.8-27B oQ4e. oMLX total 7152 -> 7204.
