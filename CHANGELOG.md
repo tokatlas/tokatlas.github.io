@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 74 (+29 rows)
+
+- oMLX corpus sweep: 29 records mined (scan56, 43 traces fetched, 29 unmined candidates). No 404 (SKIP set active). oMLX total 5446 -> 5475.
+- 3 new MAP entries (existing bases): Qwen3.8-27B-oQ6-mtp, Swift-1.5-Qwen3.8-27b-oQ8e-mtp, gemma-4-e2b-it-5bit.
+- known.txt = 3244. Dataset 10197 -> 10226.
+
 ## 2026-10-08: oMLX batch 73 (+35 rows)
 
 - oMLX corpus sweep: 35 records mined (scan55, 49 traces fetched, 35 unmined candidates). No 404 this batch -- the new (model,chip) SKIP set for the 404-prone signature (gemma-4-31B-it-mxfp4, M4 Max) worked. oMLX total 5411 -> 5446.
