@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 86 (+15 rows)
+
+- oMLX corpus sweep: 15 records mined (scan68, 29 traces fetched, 15 unmined candidates). No 404 (SKIP set active). oMLX total 5742 -> 5757. No new models (all mapped to existing bases).
+- known.txt = 3526. Dataset 10493 -> 10508.
+
 ## 2026-10-08: oMLX batch 85 (+21 rows)
 
 - oMLX corpus sweep: 21 records mined (scan67, 35 traces fetched, 21 unmined candidates). No 404 (SKIP set active). oMLX total 5721 -> 5742. No new models (all mapped to existing bases).
