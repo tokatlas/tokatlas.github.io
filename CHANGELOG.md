@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 96 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan78, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6112 -> 6163.
+- 5 new MAP entries, 2 new models: Qwopus3.6-27B-Coder (distinct from -Compat-MTP build), gemma-4-26B-A4B-it-heretic (distinct from -ara variant). 3 mapped to existing bases (Ling-3.0-tiny, Nex-N2.5-mini-Uncensored, Qwen3-VL-30B-A3B-Instruct).
+- known.txt = 3890. Models 367 -> 369. Dataset 10863 -> 10914.
+
 ## 2026-10-08: oMLX batch 95 (+54 rows)
 
 - oMLX corpus sweep: 54 records mined (scan77, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6058 -> 6112.
