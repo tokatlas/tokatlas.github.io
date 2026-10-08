@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 93 (+56 rows)
+
+- oMLX corpus sweep: 56 records mined (scan75, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 5951 -> 6007.
+- 4 new MAP entries, 2 new models: K2-Horizon-MoVA-36B-A4B, Qwen3.6-35B-A3B-OptiQ-4bit-REAP-19B (REAP-pruned variant, kept distinct). 2 mapped to existing bases (Ornith-1.5-9B, Qwen-AgentWorld-35B-A3B).
+- known.txt = 3752. Models 362 -> 364. Dataset 10702 -> 10758.
+
 ## 2026-10-08: oMLX batch 92 (+56 rows)
 
 - oMLX corpus sweep: 56 records mined (scan74, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 5895 -> 5951.
