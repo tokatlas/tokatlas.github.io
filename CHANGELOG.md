@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: HF card scan batch 2, 4 cards (+8 rows)
+
+- phntmwvs LFM2.5-8B-A1B-Hermes-Agentic-Coder-Abliterated-v3 MLX cards (4bit/8bit/BF16), M4 Pro (48 GB): generation 160.9 / 99.5 / 61.6 tok/s, prompt 146.2 / 281.4 / 142.1 tok/s, peak memory 5.4 / 9.6 / 17.0 GB. 6 rows.
+- mlx-community/pplx-decider-v1.1-27b-4bit (new model), M5 Max (128 GB) High Power, MLX over HTTP: prefill ~975 tok/s cool GPU, ~730 sustained, 1.4-1.6x llama.cpp Q8_0/Q4_K_M same machine. 2 rows.
+- Dataset 11841 -> 11849. Models 402.
+
 ## 2026-10-08: oMLX batch 115 (+94 rows)
 
 - oMLX corpus sweep: 94 records mined (scan97, 60 traces fetched, 92 unmined candidates, 47 distinct signatures). New model mappings: Gemma-4-31B-heretic-ara, LFM2.5-8B-A1B-Hermes-Agentic-Coder-Abliterated-v3, LFM2.5-8B-A1B MXFP4, LFM2.5-VL-3B, LFM2.5-VL-450M, Qwen3 14B 8bit, Qwen3.8-27B oQ2.7e MTP, Qwen3.8-Flash-Next-REAP320 oQ3e DWQ MTP Vision, Swift-Qwen3.8-27b-oQ3e, Maple Preview 2bit MLX, Qwen3-VL-2B-Instruct, Ornith-1.5-9B 4bit/8bit. oMLX total 6903 -> 6997.
