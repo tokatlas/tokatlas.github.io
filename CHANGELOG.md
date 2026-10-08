@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 98 (+52 rows)
+
+- oMLX corpus sweep: 52 records mined (scan80, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6213 -> 6265.
+- 4 new MAP entries, 2 new models: Qwen3.6-35B-A3B-MAYA, Swift-1.5-Qwen3.8-27b-oQ5e (distinct quant build, matching the oQ4e/oQ6e convention). 2 mapped to existing bases (Meta-Llama-3.1-8B-Instruct -> Llama 3.1 8B, Qwen3.5-4B).
+- known.txt = 3982. Models 370 -> 372. Dataset 10964 -> 11016.
+
 ## 2026-10-08: oMLX batch 97 (+50 rows)
 
 - oMLX corpus sweep: 50 records mined (scan79, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6163 -> 6213.
