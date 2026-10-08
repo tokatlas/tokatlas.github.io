@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 101 (+29 rows)
+
+- oMLX corpus sweep: 29 records mined (scan83, 40 traces fetched, 26 unmined candidates). No 404 (SKIP set active). oMLX total 6360 -> 6389.
+- 3 new MAP entries, 2 new models: Qwythos-9B-v3-Claude-Mythos-5-1M (v3, distinct from v2), Occamy-1.0-abliterated (abliterated variant). 1 mapped to existing base (Qwen2.5-Coder-14B-Instruct).
+- known.txt = 4097. Models 373 -> 375. Dataset 11111 -> 11140.
+
 ## 2026-10-08: oMLX batch 100 (+48 rows)
 
 - oMLX corpus sweep: 48 records mined (scan82, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6312 -> 6360.
