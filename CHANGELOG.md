@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 109 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan91, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6622 -> 6670.
+- 5 new MAP entries, 3 new models: Mellum-4b-base (Mellum v1, distinct from Mellum2), Qwen3.6-35B-A3B-MTPLX-Optimized-Speed (MTPLX build), gemma-4-26B-A4B-it-OptiQ-4bit-REAP-14B (REAP variant). 2 to existing (Qwen3.8-Flash-Next 2bit MTP; ThinkingCap-Qwen3.8-27B oQ8e MTP).
+- known.txt = 4374. Models 382 -> 385. Dataset 11373 -> 11421.
+
 ## 2026-10-08: oMLX batch 108 (+40 rows)
 
 - oMLX corpus sweep: 40 records mined (scan90, 54 traces fetched, 40 unmined candidates). No 404 (SKIP set active). oMLX total 6582 -> 6622.
