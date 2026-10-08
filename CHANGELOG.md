@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-08: GitHub pulse batch, 8 sources (+34 rows)
+
+- llama.cpp PR #30150 fixed-width concat threaded over all rows: pp512/tg128 A/B medians on Phytium D3000M (new hardware, ARM armv8.2a, +33% pp) and Intel(R) Core(TM) Ultra 9 285K (new hardware, +17.2% pp). 4 rows.
+- vLLM PR #60674 fused Gemma 4 Triton kernels: 1k prefill batch-4 A/B on A100-SXM4-80GB, Gemma 4 E2B 35480.8 -> 67488.9 tok/s (1.90x), E4B 22787.7 -> 34290.8 (1.50x). 4 rows.
+- vLLM PR #60657 fused HyperConnection kernels gfx1100: Qwen3.8-Flash-Next GPTQ W4A16 TP4 on 4x RX 7900 XTX (new hardware), c1 decode 72.5 -> 76.6 tok/s. 2 rows.
+- vLLM PR #60627 vectorized SM100 DCP Output/LSE consumer: GLM-5.2-NVFP4 TP4/DCP4 on 4x GB200, c1 46.576 -> 47.538 tok/s, c32 neutral. 4 rows.
+- vLLM PR #60615 n-gram lookup in front of MTP drafting: Qwen3.8-Flash-Next NVFP4 on GB10, c1 decode across copy probe / Blazedit / SPEED-Bench at T=0 and T=1, +28% / +17% / +4% (T=0). 12 rows.
+- vLLM PR #60570 persistent FlashInfer CUTLASS MoE workspace: Nemotron-3-Super-120B-A12B NVFP4 on an 8x B200 node (new hardware), c1 control 127.98 vs patched 128.07 (neutral), patched c64 5274.97 and c256 12686.38 tok/s (control OOMed at c64). 4 rows.
+- vLLM PR #60500 device-side image normalize: Nemotron-Parse (new model) on one H100, c=8 document parsing 772.7 -> 937.9 tok/s (+21%). 2 rows.
+- vLLM PR #60504 tuned Triton FusedMoE configs E=128: gemma-4-26B-A4B-it decode-heavy batch 4 on A100-SXM4-80GB, 4582.2 -> 5493.9 tok/s (1.20x). 2 rows.
+- Parked: vLLM #60532 (SM80 named only as compute capability), #60524/#60479 (batch-invariance tables, no serving tok/s), #60689/#60683/#60670/#60663/#60647/#60645/#60622/#60618/#60604/#60602/#60589/#60583/#60568/#60546/#60538/#60528/#60500-comment arms (relative-only or no absolute rates). llama.cpp #30165/#30157/#30139 (no absolute tok/s). ExLlamaV2: nothing above #822.
+- Dataset 11654 -> 11688. Hardware 425 -> 429, models 390 -> 392. Watermarks: llama.cpp -> #30165, vLLM -> #60689, ExLlamaV2 -> #822.
+
 ## 2026-10-08: oMLX batch 114 (+53 rows)
 
 - oMLX corpus sweep: 53 records mined (scan96, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6850 -> 6903.
