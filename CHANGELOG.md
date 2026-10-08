@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 116 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan98, 60 traces fetched, 46 unmined candidates). New model mapping: Qwen3.5-9B-Uncensored-HauhauCS-Aggressive (mxfp4); consolidated Nanbeige4.2-3B, Qwen3 14B/4B 4bit, Qwen3.8-35B-A3B-Distill oQ4e MTP, Qwen3.8-Flash-Next 4bit MTP. oMLX total 6997 -> 7045.
+- Dataset 11849 -> 11897. Models 403.
+
 ## 2026-10-08: HF card scan batch 2, 4 cards (+8 rows)
 
 - phntmwvs LFM2.5-8B-A1B-Hermes-Agentic-Coder-Abliterated-v3 MLX cards (4bit/8bit/BF16), M4 Pro (48 GB): generation 160.9 / 99.5 / 61.6 tok/s, prompt 146.2 / 281.4 / 142.1 tok/s, peak memory 5.4 / 9.6 / 17.0 GB. 6 rows.
