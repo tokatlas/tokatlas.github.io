@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: HF card scan batch, 2 cards (+29 rows)
+
+- nerkyor Coder390 GGUF-NInfer card, one RTX PRO 6000 Blackwell: NInfer vs llama.cpp aggregate throughput with built-in MTP across Q2/Q3/Q4 LynnStyle, Q6_K, Q8_0 (C4/C8, protocols differ per card); single-request 131.9 (NInfer MTP) vs 53.4 (llama.cpp no-spec) vs 97.2 C1 aggregate / 119.0 single-request (llama.cpp MTP); Q6_K NInfer C8 388.1; Q3 LynnStyle external Q8_0 MTP draft vs built-in Q4 head A/B (greedy 110.2 vs 112.2, T1 94.4 vs 95.6, acceptance ~66%/~52%). 19 rows.
+- quaedra/Welp-35B-A3B card (new model), one RTX 4080 Super 16 GB: llama-bench tg128/pp4096 table, Welp-35B-A3B 164/5111, Unsloth UD-IQ3_XXS 165/5165, Qwen3.8-27B UD-Q3_K_XL 47/2155 (131k), Bonsai 2 27B 85/2278; plus 262k-context deep run after 214k prompt: decode 107, prefill 2043. 10 rows.
+- Dataset 11718 -> 11747. Models 394.
+
 ## 2026-10-08: llama.cpp discussions #30069/#30071 (+30 rows)
 
 - llama.cpp discussion #30071 lukolszewski/llama.cpp-multigpu fork vs upstream df03399b8: Qwen3.8-Flash-Next UD-Q4_K_XL, 5 slots x 262k, q8_0 KV, layer split over six GPUs on consumer PCIe (4 via USB4 eGPU docks). 6x RTX 3090 (new hardware) and 6x RTX 4090 (new hardware): prefill 1-session 50k 568 -> 2127 (3090) / 1728 -> 7050 (4090), 250k 263 -> 2111 / 744 -> 7403, 5-session aggregate 250k 265 -> 2060 (3090) / 7241 (4090, no baseline); generation 1-session 50k 25.7 -> 41.9 / 46.2 -> 57.5, 250k 10.2 -> 33.7 / 21.0 -> 48.7, 5-session per-session 250k 2.3 -> 27.3 (3090) / 30.8 (4090, no baseline). New backend llama.cpp (multigpu fork). 22 rows.
