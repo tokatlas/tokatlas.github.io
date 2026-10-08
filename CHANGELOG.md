@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 72 (+32 rows)
+
+- oMLX corpus sweep: 36 records mined (scan54, 46 traces fetched, 33 unmined candidates), 4 dropped (trace 9si97uqi 404 after listing; gemma-4-31B-it mxfp4 M4 Max, 4th such 404 trace; retained in known.txt). Net +32. oMLX total 5379 -> 5411.
+- 1 new MAP entry (existing base): Ornith-1.5-35B-A3B-oQ4e-fixed-mtp.
+- Tooling: added a (model, chip) SKIP set to mine.py for the 404-prone signature (gemma-4-31B-it-mxfp4, M4 Max (40c)) so new IDs are skipped, not just the dropped ones.
+- known.txt = 3180. Dataset 10130 -> 10162.
+
 ## 2026-10-07: oMLX batch 71 (+18 rows)
 
 - oMLX corpus sweep: 22 records mined (scan53, 32 traces fetched, 20 unmined candidates), 4 dropped (trace gruplkic 404 after listing; gemma-4-31B-it mxfp4 M4 Max, 3rd such 404 trace; retained in known.txt). Net +18. oMLX total 5361 -> 5379.
