@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 80 (+38 rows)
+
+- oMLX corpus sweep: 38 records mined (scan62, 52 traces fetched, 38 unmined candidates). No 404 (SKIP set active). oMLX total 5586 -> 5624.
+- 2 new MAP entries: FrogNano-4B-2609-oQ8e-fp16-mtp (existing base), MiniCPM5-1B (new model, 4bit per family convention).
+- known.txt = 3393. Models 353 -> 354. Dataset 10337 -> 10375.
+
 ## 2026-10-08: oMLX batch 79 (+10 rows)
 
 - oMLX corpus sweep: 10 records mined (scan61, 24 traces fetched, 10 unmined candidates). No 404 (SKIP set active). oMLX total 5576 -> 5586.
