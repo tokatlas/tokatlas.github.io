@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 82 (+9 rows)
+
+- oMLX corpus sweep: 9 records mined (scan64, 23 traces fetched, 9 unmined candidates). No 404 (SKIP set active). oMLX total 5650 -> 5659.
+- 2 new MAP entries (existing bases): Qwen3.5-9B-oQ4e-mtp, gemma-4-26B-A4B-it-qat-4bit (QAT).
+- known.txt = 3428. Dataset 10401 -> 10410.
+
 ## 2026-10-08: oMLX batch 81 (+26 rows)
 
 - oMLX corpus sweep: 26 records mined (scan63, 40 traces fetched, 26 unmined candidates). No 404 (SKIP set active). oMLX total 5624 -> 5650.
