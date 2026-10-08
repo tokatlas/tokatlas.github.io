@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 110 (+50 rows)
+
+- oMLX corpus sweep: 50 records mined (scan92, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6670 -> 6720.
+- 5 new MAP entries, 1 new model: Qwen3.5-9B-Claude-4.6-HighIQ-INSTRUCT-HERETIC-UNCENSORED (mxfp8 fine-tune). 4 to existing (AREX-2 oQ8e fp16; muse-glimmer 30B 4bit OptiQ; NeoHorse-1-4B oQ4e; Qwen3.6-35B-A3B-MTPLX-Optimized-Speed FP16 build).
+- known.txt = 4420. Models 385 -> 386. Dataset 11421 -> 11471.
+
 ## 2026-10-08: oMLX batch 109 (+48 rows)
 
 - oMLX corpus sweep: 48 records mined (scan91, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6622 -> 6670.
