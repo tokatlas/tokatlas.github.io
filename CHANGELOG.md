@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 122 (+43 rows)
+
+- oMLX corpus sweep: 43 records mined (scan104, 54 traces fetched, 40 unmined candidates). No new models (NVIDIA Nemotron 3.5 Lightning oQ6e, Qwen3.8-9B-Distill-Uncensored-Heretic oQ4e MTP, Gemma 4 E4B 8bit consolidated). oMLX total 7308 -> 7351.
+- Dataset 12160 -> 12203.
+
 ## 2026-10-08: oMLX batch 121 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan103, 60 traces fetched, 46 unmined candidates). New model mappings: Qwen3.8-27B-OBLITERATED-Mythos-Class-Agentic (6bit), Qwen3.8-27B-UD-Q3_K_XL-DFlash2; consolidated Cyber-Tiel-Coder-35B-A3B oQ6e MTP, gemma-4-12B-it-qat oQ4e MTP, gemma-4-26B-A4B-it Unsloth UD 4bit. oMLX total 7257 -> 7308.
