@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 107 (+37 rows)
+
+- oMLX corpus sweep: 37 records mined (scan89, 50 traces fetched, 36 unmined candidates). No 404 (SKIP set active). oMLX total 6545 -> 6582.
+- 5 new MAP entries, 0 new models (all to existing bases): Cyber-Tiel-Coder-35B-A3B, GLM-5.3-Flash-UNCENSORED, Qwen3.8-27B (pi build), Qwen3.8-Flash-Next-Uncensored, GLM-5.3 (omlx-glm53 build).
+- known.txt = 4288. Models 381 (unchanged). Dataset 11296 -> 11333.
+
 ## 2026-10-08: oMLX batch 106 (+20 rows)
 
 - oMLX corpus sweep: 20 records mined (scan88, 33 traces fetched, 19 unmined candidates). No 404 (SKIP set active). oMLX total 6525 -> 6545.
