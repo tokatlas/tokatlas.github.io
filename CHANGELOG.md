@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 100 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan82, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6312 -> 6360.
+- 4 new MAP entries, all to existing bases (Ornith-1.5-35B-A3B-Abliterated, Ornith-1.5-35B-A3B, Qwen3.6-35B-A3B, Qwen3.8-27B). No new models (MAP approaching completeness).
+- known.txt = 4071. Models 373 (unchanged). Dataset 11063 -> 11111. Batch 100 milestone.
+
 ## 2026-10-08: oMLX batch 99 (+47 rows)
 
 - oMLX corpus sweep: 47 records mined (scan81, 57 traces fetched, 43 unmined candidates). No 404 (SKIP set active). oMLX total 6265 -> 6312.
