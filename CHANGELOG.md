@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 78 (+22 rows)
+
+- oMLX corpus sweep: 22 records mined (scan60, 36 traces fetched, 22 unmined candidates). No 404 (SKIP set active). oMLX total 5554 -> 5576.
+- 5 new MAP entries: FrogNano-4B-2609 (existing model, 4-bit quant), GLM-4.7-Flash-oQ4, Qwen3.6-35B-A3B-mxfp8, Qwen3.8-Flash-Next-MLX-oQ3-MTP, itrejomx--Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTPLX-6bit (new model).
+- known.txt = 3345. Models 352 -> 353. Dataset 10305 -> 10327.
+
 ## 2026-10-08: oMLX batch 77 (+36 rows)
 
 - oMLX corpus sweep: 36 records mined (scan59, 50 traces fetched, 36 unmined candidates). No 404 (SKIP set active). oMLX total 5518 -> 5554.
