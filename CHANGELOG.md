@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 95 (+54 rows)
+
+- oMLX corpus sweep: 54 records mined (scan77, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6058 -> 6112.
+- 8 new MAP entries, 2 new models: Cyber-Tiel-Coder-35B-A3B, Qwen3.8-Flash-Next-Dynamic. 6 mapped to existing bases (DeepSeek-V4.1-Flash, K2-Horizon-MoVA-36B-A4B, NVIDIA-Nemotron-3.5-Lightning-30B-A3B, Qwen3-Coder-Next, Qwen3.6-35B-A3B, Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled).
+- known.txt = 3844. Models 365 -> 367. Dataset 10809 -> 10863.
+
 ## 2026-10-08: oMLX batch 94 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan76, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6007 -> 6058.
