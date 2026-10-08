@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 114 (+53 rows)
+
+- oMLX corpus sweep: 53 records mined (scan96, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6850 -> 6903.
+- 2 new MAP entries, 1 new model: PaddleOCR-VL-1.6 (4bit, first OCR/VL model). 1 to existing (GLM-4.7-Flash 6bit).
+- known.txt = 4593. Models 389 -> 390. Dataset 11601 -> 11654.
+
 ## 2026-10-08: oMLX batch 113 (+48 rows)
 
 - oMLX corpus sweep: 48 records mined (scan95, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6802 -> 6850.
