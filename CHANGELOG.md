@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 130 (+18 rows)
+
+- oMLX corpus sweep: 18 records mined (scan112, 32 traces fetched, 18 unmined candidates). No new models (K2-Horizon-7B oQ8e, Qwen3-Coder-30B-A3B-Instruct 8bit consolidated). oMLX total 7469 -> 7487.
+- Dataset 12321 -> 12339.
+
 ## 2026-10-08: oMLX batch 129 (+14 rows)
 
 - oMLX corpus sweep: 14 records mined (scan111, 28 traces fetched, 14 unmined candidates). New model mapping: Flash-Next (4bit MTP, name as published, likely Qwen3.8-Flash-Next shorthand). oMLX total 7455 -> 7469.
