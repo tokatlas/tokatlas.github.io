@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: llama.cpp discussions #30069/#30071 (+30 rows)
+
+- llama.cpp discussion #30071 lukolszewski/llama.cpp-multigpu fork vs upstream df03399b8: Qwen3.8-Flash-Next UD-Q4_K_XL, 5 slots x 262k, q8_0 KV, layer split over six GPUs on consumer PCIe (4 via USB4 eGPU docks). 6x RTX 3090 (new hardware) and 6x RTX 4090 (new hardware): prefill 1-session 50k 568 -> 2127 (3090) / 1728 -> 7050 (4090), 250k 263 -> 2111 / 744 -> 7403, 5-session aggregate 250k 265 -> 2060 (3090) / 7241 (4090, no baseline); generation 1-session 50k 25.7 -> 41.9 / 46.2 -> 57.5, 250k 10.2 -> 33.7 / 21.0 -> 48.7, 5-session per-session 250k 2.3 -> 27.3 (3090) / 30.8 (4090, no baseline). New backend llama.cpp (multigpu fork). 22 rows.
+- llama.cpp discussion #30069 Arm scoreboard opener: Raspberry Pi 5 (BCM2712, new hardware, 2 GB), Qwen2.5-0.5B Q4_0 (new model), llama-bench pp512/tg128 at 1-4 threads, KleidiAI off: pp512 93.49 -> 289.92 t/s, tg128 32.42 -> 27.28 t/s. 8 rows.
+- Dataset 11688 -> 11718. Hardware 429 -> 432, models 393, backends 45.
+
 ## 2026-10-08: GitHub pulse batch, 8 sources (+34 rows)
 
 - llama.cpp PR #30150 fixed-width concat threaded over all rows: pp512/tg128 A/B medians on Phytium D3000M (new hardware, ARM armv8.2a, +33% pp) and Intel(R) Core(TM) Ultra 9 285K (new hardware, +17.2% pp). 4 rows.
