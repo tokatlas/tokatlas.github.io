@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 128 (+17 rows)
+
+- oMLX corpus sweep: 17 records mined (scan110, 19 traces fetched, 5 unmined candidates). gpt-oss 20B oQ4 consolidated to merged-canonical name; Qwen3.8-27B oQ8e/oQ4e MTP + 4bit, Qwen3.8-Flash-Next oQ4e MTP. oMLX total 7438 -> 7455.
+- Dataset 12290 -> 12307.
+
 ## 2026-10-08: oMLX batch 127 (+23 rows)
 
 - oMLX corpus sweep: 23 records mined (scan109, 37 traces fetched, 23 unmined candidates). No new models. oMLX total 7415 -> 7438.
