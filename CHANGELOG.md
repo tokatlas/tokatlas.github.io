@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 113 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan95, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6802 -> 6850.
+- 3 new MAP entries, 1 new model: Huihui-Qwen3.6-35B-A3B-Claude-4.6-Opus-abliterated (Huihui abliterated build, oQ8, MTP). 2 to existing (Qwen3.6-35B-A3B-OptiQ-4bit-REAP-19B identity; Qwythos-9B-v2 OptiQ 4bit).
+- known.txt = 4547. Models 388 -> 389. Dataset 11553 -> 11601.
+
 ## 2026-10-08: oMLX batch 112 (+44 rows)
 
 - oMLX corpus sweep: 44 records mined (scan94, 58 traces fetched, 44 unmined candidates). No 404 (SKIP set active). oMLX total 6758 -> 6802.
