@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 112 (+44 rows)
+
+- oMLX corpus sweep: 44 records mined (scan94, 58 traces fetched, 44 unmined candidates). No 404 (SKIP set active). oMLX total 6758 -> 6802.
+- 2 new MAP entries, 1 new model: Qwen3.8-27B-heretic-ara (Heretic/ara fine-tune, oQ3.5e, MTP). 1 to existing (Swift-1.5-Qwen3.8-27b, RCO; DWQ build).
+- First M6 chip traces (hardware "M6", consistent with existing; mine.py strips the "(12c)" suffix). 76 M6 records total.
+- known.txt = 4501. Models 387 -> 388. Dataset 11509 -> 11553.
+
 ## 2026-10-08: oMLX batch 111 (+38 rows)
 
 - oMLX corpus sweep: 38 records mined (scan93, 51 traces fetched, 37 unmined candidates). No 404 (SKIP set active). oMLX total 6720 -> 6758.
