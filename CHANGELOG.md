@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 123 (+35 rows)
+
+- oMLX corpus sweep: 35 records mined (scan105, 49 traces fetched, 35 unmined candidates). No new models (NVIDIA Nemotron 3.5 Lightning oQ6e MTP, Gemma 4 E2B it-qat 4bit consolidated). oMLX total 7351 -> 7386.
+- Dataset 12203 -> 12238.
+
 ## 2026-10-08: oMLX batch 122 (+43 rows)
 
 - oMLX corpus sweep: 43 records mined (scan104, 54 traces fetched, 40 unmined candidates). No new models (NVIDIA Nemotron 3.5 Lightning oQ6e, Qwen3.8-9B-Distill-Uncensored-Heretic oQ4e MTP, Gemma 4 E4B 8bit consolidated). oMLX total 7308 -> 7351.
