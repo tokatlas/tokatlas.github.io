@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 111 (+38 rows)
+
+- oMLX corpus sweep: 38 records mined (scan93, 51 traces fetched, 37 unmined candidates). No 404 (SKIP set active). oMLX total 6720 -> 6758.
+- 2 new MAP entries, 1 new model: Qwen3.8-Flash-Next-REAP-384 (REAP variant; existing were REAP-288 and REAP320). 1 to existing (Qwen3.8-27B 3bit MTP).
+- known.txt = 4457. Models 386 -> 387. Dataset 11471 -> 11509.
+
 ## 2026-10-08: oMLX batch 110 (+50 rows)
 
 - oMLX corpus sweep: 50 records mined (scan92, 60 traces fetched, 46 unmined candidates). No 404 (SKIP set active). oMLX total 6670 -> 6720.
