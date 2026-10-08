@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 75 (+11 rows)
+
+- oMLX corpus sweep: 11 records mined (scan57, 25 traces fetched, 11 unmined candidates). No 404 (SKIP set active). oMLX total 5475 -> 5486.
+- 3 new MAP entries: Muse-Glimmer-30B-6bit, Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-6Bit, supergemma4-26b-uncensored-mlx-4bit-v2 (new model).
+- known.txt = 3255. Models 349 -> 350. Dataset 10226 -> 10237.
+
 ## 2026-10-08: oMLX batch 74 (+29 rows)
 
 - oMLX corpus sweep: 29 records mined (scan56, 43 traces fetched, 29 unmined candidates). No 404 (SKIP set active). oMLX total 5446 -> 5475.
