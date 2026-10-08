@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 106 (+20 rows)
+
+- oMLX corpus sweep: 20 records mined (scan88, 33 traces fetched, 19 unmined candidates). No 404 (SKIP set active). oMLX total 6525 -> 6545.
+- 3 new MAP entries, 1 new model: a long Qwen3.8-27B-Coder390 EfficientThink fine-tune (nerkyor build, MTP + DFlash2 + fp16). 2 mapped to existing bases (Ornith-1.5-9B, gemma-4-26B-A4B-it).
+- known.txt = 4252. Models 380 -> 381. Dataset 11276 -> 11296.
+
 ## 2026-10-08: oMLX batch 105 (+41 rows)
 
 - oMLX corpus sweep: 41 records mined (scan87, 55 traces fetched, 41 unmined candidates). No 404 (SKIP set active). oMLX total 6484 -> 6525.
