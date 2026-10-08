@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 115 (+94 rows)
+
+- oMLX corpus sweep: 94 records mined (scan97, 60 traces fetched, 92 unmined candidates, 47 distinct signatures). New model mappings: Gemma-4-31B-heretic-ara, LFM2.5-8B-A1B-Hermes-Agentic-Coder-Abliterated-v3, LFM2.5-8B-A1B MXFP4, LFM2.5-VL-3B, LFM2.5-VL-450M, Qwen3 14B 8bit, Qwen3.8-27B oQ2.7e MTP, Qwen3.8-Flash-Next-REAP320 oQ3e DWQ MTP Vision, Swift-Qwen3.8-27b-oQ3e, Maple Preview 2bit MLX, Qwen3-VL-2B-Instruct, Ornith-1.5-9B 4bit/8bit. oMLX total 6903 -> 6997.
+- Dataset 11747 -> 11841. Models 394 -> 401.
+
 ## 2026-10-08: HF card scan batch, 2 cards (+29 rows)
 
 - nerkyor Coder390 GGUF-NInfer card, one RTX PRO 6000 Blackwell: NInfer vs llama.cpp aggregate throughput with built-in MTP across Q2/Q3/Q4 LynnStyle, Q6_K, Q8_0 (C4/C8, protocols differ per card); single-request 131.9 (NInfer MTP) vs 53.4 (llama.cpp no-spec) vs 97.2 C1 aggregate / 119.0 single-request (llama.cpp MTP); Q6_K NInfer C8 388.1; Q3 LynnStyle external Q8_0 MTP draft vs built-in Q4 head A/B (greedy 110.2 vs 112.2, T1 94.4 vs 95.6, acceptance ~66%/~52%). 19 rows.
