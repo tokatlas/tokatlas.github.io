@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 156 (+6 rows)
+
+- oMLX corpus sweep: 6 records mined (scan138, 20 traces fetched, 6 unmined candidates). New models: Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC, Swift-1.5-Qwen3.8-27b-Uncensored-oQ5e (MTP). oMLX total 8028 -> 8034.
+- Dataset 12880 -> 12886. Models 425.
+
 ## 2026-10-09: oMLX batch 155 (+27 rows)
 
 - oMLX corpus sweep: 27 records mined (scan137, 41 traces fetched, 27 unmined candidates). New models: LLama-3.1-128k-Darkest-Planet-Uncensored-16.5B (q5), Ornith-1.5-9B-Abliterated (mxfp4). Consolidated FrogNano-4B-2609 oQ6e MTP. oMLX total 8001 -> 8028.
