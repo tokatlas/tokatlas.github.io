@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 180 (+46 rows)
+
+- oMLX corpus sweep: 46 records mined (scan162, 60 traces fetched, 46 unmined candidates). No new models (AREX-2 8bit, Tiel-Coder-35B-A3B oQ4e fp16 MTP, gemma-4-26B-A4B-it mlx-community 6bit consolidated). oMLX total 8583 -> 8629.
+- Dataset 13435 -> 13481.
+
 ## 2026-10-09: oMLX batch 179 (+32 rows)
 
 - oMLX corpus sweep: 32 records mined (scan161, 46 traces fetched, 32 unmined candidates). New models: DeepSeek-V4-Flash-0731-Abliterated (Mixed 2bit-3bit g64), RavenX-CyberAgent-Qwen3.6-35B-A3B-Opus-4.7-OpenMythos-Pentester-BugHunter-RATH. Consolidated Ornith-1.5-9B oQ4e fp16. oMLX total 8551 -> 8583.
