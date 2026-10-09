@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 159 (+48 rows)
+
+- oMLX corpus sweep: 48 records mined (scan141, 60 traces fetched, 46 unmined candidates). New model: Ornith-1.5-35B-A3B-Vision-MTPLX (4bit). Consolidated Ornith-1.5-35B-A3B oQ6e fp16 MTP, Qwen3.8-Flash-Next-Uncensored REAP288 oQ3 MTP. oMLX total 8066 -> 8114.
+- Dataset 12918 -> 12966. Models 428.
+
 ## 2026-10-09: oMLX batch 158 (+28 rows)
 
 - oMLX corpus sweep: 28 records mined (scan140, 42 traces fetched, 28 unmined candidates). New models: Ornith-1.5-35B-MLX-VL (oQ6e/oQ8e), Ornith-Agents-A1-3.7-35B-A3B (oQ6 dare_ties_v4). Consolidated gemma-4-31B-it oQ8e MTP. oMLX total 8038 -> 8066.
