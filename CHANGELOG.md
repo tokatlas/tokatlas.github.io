@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 149 (+27 rows)
+
+- oMLX corpus sweep: 27 records mined (scan131, 41 traces fetched, 27 unmined candidates). New model: Signal-3.8-27B (oQ4e MTP). Consolidated Agnes-3.0-Flash oQ4e MTP. oMLX total 7899 -> 7926.
+- Dataset 12751 -> 12778. Models 421.
+
 ## 2026-10-09: oMLX batch 148 (+24 rows)
 
 - oMLX corpus sweep: 24 records mined (scan130, 38 traces fetched, 24 unmined candidates). New model: Qwen3-1.7B (4bit). Consolidated Qwen3.8-27B-aeon-ultimate-uncensored attention8 bf16recurrence vision mtplx build. oMLX total 7875 -> 7899.
