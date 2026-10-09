@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 191 (+50 rows)
+
+- oMLX corpus sweep: 50 records mined (scan173, 60 traces fetched, 46 unmined candidates). New model: Qwen3.8-Flash-Next-heretic-2 (oQ4e MTP). Consolidated DeepSeek-V4-Flash-Vision-Exp, Devstral-Small-2 4bit, Mellum2.1-Thinking 6bit. oMLX total 8974 -> 9024.
+- Dataset 13826 -> 13876. Models 450.
+
 ## 2026-10-09: oMLX batch 190 (+45 rows)
 
 - oMLX corpus sweep: 45 records mined (scan172, 59 traces fetched, 45 unmined candidates). No new models (GLM-5.3-Flash oQ8e MTP, Devstral-Small-2-24B-Instruct-2512 mxfp4 consolidated). oMLX total 8929 -> 8974.
