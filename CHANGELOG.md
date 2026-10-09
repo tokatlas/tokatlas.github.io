@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 165 (+18 rows)
+
+- oMLX corpus sweep: 18 records mined (scan147, 32 traces fetched, 41 unmined candidates). No new models. oMLX total 8270 -> 8288.
+- Dataset 13122 -> 13140.
+
 ## 2026-10-09: oMLX batch 164 (+23 rows)
 
 - oMLX corpus sweep: 23 records mined (scan146, 37 traces fetched, 23 unmined candidates). New model: Mellum2.1-12B-A2.5B-Thinking (mxfp4). Consolidated GLM-4.7-Flash 4bit, Qwen3.8-27B 3bit, Qwen3.6-35B-A3B Serve 4bit. oMLX total 8247 -> 8270.
