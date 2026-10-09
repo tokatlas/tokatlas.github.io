@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 154 (+8 rows)
+
+- oMLX corpus sweep: 8 records mined (scan136, 22 traces fetched, 8 unmined candidates). No new models. oMLX total 7993 -> 8001.
+- Dataset 12845 -> 12853.
+
 ## 2026-10-09: oMLX batch 153 (+12 rows)
 
 - oMLX corpus sweep: 12 records mined (scan135, 26 traces fetched, 12 unmined candidates). No new models. oMLX total 7981 -> 7993.
