@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-08: oMLX batch 131 (+23 rows)
+
+- oMLX corpus sweep: 23 records mined (scan113, 37 traces fetched, 23 unmined candidates). No new models (K2-Horizon-MoVA-36B-A4B 8bit, Qwen3.8-27B oQ6 consolidated). oMLX total 7487 -> 7510.
+- Dataset 12339 -> 12362.
+
 ## 2026-10-08: oMLX batch 130 (+18 rows)
 
 - oMLX corpus sweep: 18 records mined (scan112, 32 traces fetched, 18 unmined candidates). No new models (K2-Horizon-7B oQ8e, Qwen3-Coder-30B-A3B-Instruct 8bit consolidated). oMLX total 7469 -> 7487.
