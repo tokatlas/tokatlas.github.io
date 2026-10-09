@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 168 (+13 rows)
+
+- oMLX corpus sweep: 13 records mined (scan150, 27 traces fetched, 13 unmined candidates). No new models. oMLX total 8322 -> 8335.
+- Dataset 13174 -> 13187.
+
 ## 2026-10-09: oMLX batch 167 (+28 rows)
 
 - oMLX corpus sweep: 28 records mined (scan149, 42 traces fetched, 28 unmined candidates). New model: GLM-5.3-Flash-CYBER (oQ4e MTP). Consolidated MiniCPM5-1B 4bit, gemma-4-31B-it mlx-community 8bit. oMLX total 8294 -> 8322.
