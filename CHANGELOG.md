@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 143 (+37 rows)
+
+- oMLX corpus sweep: 37 records mined (scan125, 51 traces fetched, 37 unmined candidates). No new models (Ornith-1.5-35B-A3B-BigBang MTP zh 4bit consolidated). oMLX total 7712 -> 7749.
+- Dataset 12564 -> 12601.
+
 ## 2026-10-09: oMLX batch 142 (+44 rows)
 
 - oMLX corpus sweep: 44 records mined (scan124, 58 traces fetched, 44 unmined candidates). No new models. oMLX total 7668 -> 7712.
