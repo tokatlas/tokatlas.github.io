@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 146 (+36 rows)
+
+- oMLX corpus sweep: 36 records mined (scan128, 45 traces fetched, 31 unmined candidates). No new models (Muse Glimmer 30B Abliterated MM oQ5, Qwen3.8-27B oQ4e MTP consolidated). oMLX total 7829 -> 7865.
+- Dataset 12681 -> 12717.
+
 ## 2026-10-09: oMLX batch 145 (+47 rows)
 
 - oMLX corpus sweep: 47 records mined (scan127, 60 traces fetched, 46 unmined candidates). New models: AX-Qwen3.6-35B-A3B (AXQ 6bit MTP), Huihui-gemma-4-26B-A4B-it-abliterated, Huihui-gemma-4-31B-it-abliterated-v2 (oQ8e MTP). Consolidated Qwen3.8-27B-Abliterated oQ4e MTP, Muse Glimmer 30B Abliterated MM oQ4e, Laguna S/XS 2.1 oQ4e/oQ5e. oMLX total 7782 -> 7829.
