@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 182 (+52 rows)
+
+- oMLX corpus sweep: 52 records mined (scan164, 60 traces fetched, 46 unmined candidates). New model: Qwen2.5-Coder-1.5B (8bit). oMLX total 8680 -> 8732.
+- Dataset 13532 -> 13584. Models 444.
+
 ## 2026-10-09: oMLX batch 181 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan163, 60 traces fetched, 46 unmined candidates). No new models (KAT-Coder-V2.5-Dev OptiQ 4bit + REAP-18B, Qwen3.8-27B Jundot oQ4e MTP, Qwen3.5-4B oQ8e fp16 MTP consolidated). oMLX total 8629 -> 8680.
