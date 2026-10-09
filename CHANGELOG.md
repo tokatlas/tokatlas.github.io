@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 204 (+50 rows)
+
+- oMLX corpus sweep: 50 records mined (scan186, 57 traces fetched, 43 unmined candidates). New models: RavenXAiLabs-Chaos-Agent-Qwen3.8-27B-Frontier-Intelligence-Injected-OBLITERATED (4bit), Ternary-Bonsai-2-27B-Abliterated-v2 (PQ2_0 MTP). Consolidated Llama-3.2-3B-Instruct 8bit. oMLX total 9625 -> 9675.
+- Dataset 14477 -> 14527. Models 456.
+
 ## 2026-10-09: oMLX batch 203 (+52 rows)
 
 - oMLX corpus sweep: 52 records mined (scan185, 60 traces fetched, 46 unmined candidates). No new models. oMLX total 9573 -> 9625.
