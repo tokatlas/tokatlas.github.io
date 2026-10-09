@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 196 (+47 rows)
+
+- oMLX corpus sweep: 47 records mined (scan178, 60 traces fetched, 46 unmined candidates). New model: Selene-1-Mini-Llama-3.1-8B (q4). Consolidated Qwable-v2 oQ4e DWQ MTP Vision. RAM table extended for 18 GB Macs. oMLX total 9214 -> 9261.
+- Dataset 14066 -> 14113. Models 451.
+
 ## 2026-10-09: oMLX batch 195 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan177, 60 traces fetched, 46 unmined candidates). No new models (Gemma 4 26B-A4B nvfp4 qmax, Qwen2.5-14B Instruct 4bit, Qwen3.8-Flash-Next oQ4e coder ngram MTP consolidated). oMLX total 9163 -> 9214.
