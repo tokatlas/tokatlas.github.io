@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 198 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan180, 60 traces fetched, 46 unmined candidates). No new models (Laguna XS 2.1 oQ4e, Qwen3.5-4B-OptiQ 4bit consolidated). oMLX total 9308 -> 9359.
+- Dataset 14160 -> 14211.
+
 ## 2026-10-09: oMLX batch 197 (+47 rows)
 
 - oMLX corpus sweep: 47 records mined (scan179, 60 traces fetched, 46 unmined candidates). New model: GLM5.3FH (published shorthand, 6bit). oMLX total 9261 -> 9308.
