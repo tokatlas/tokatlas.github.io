@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 215 (+34 rows)
+
+- oMLX corpus sweep: 34 records mined (scan197, 39 traces fetched, 25 unmined candidates). New model: Nail-Qwen3.6-35B-A3B (4bit). oMLX total 10072 -> 10106.
+- Dataset 14924 -> 14958. Models 462.
+
 ## 2026-10-09: oMLX batch 214 (+57 rows)
 
 - oMLX corpus sweep: 57 records mined (scan196, 60 traces fetched, 46 unmined candidates). No new models (ThinkingCap-Qwen3.8-27B oQ6e MTP consolidated). oMLX total 10015 -> 10072.
