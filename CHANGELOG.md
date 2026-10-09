@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 171 (+10 rows)
+
+- oMLX corpus sweep: 10 records mined (scan153, 24 traces fetched, 10 unmined candidates). No new models (Nanbeige4.2-3B OptiQ 4bit, gemma-4-12b-it oQ4e fp16 MTP consolidated). oMLX total 8377 -> 8387.
+- Dataset 13229 -> 13239.
+
 ## 2026-10-09: oMLX batch 170 (+6 rows)
 
 - oMLX corpus sweep: 6 records mined (scan152, 20 traces fetched, 6 unmined candidates). No new models. oMLX total 8371 -> 8377.
