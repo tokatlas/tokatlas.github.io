@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 138 (+32 rows)
+
+- oMLX corpus sweep: 32 records mined (scan120, 46 traces fetched, 32 unmined candidates). New model mapping: Ling-3.0-flash (oQ4e MTP fp16). Consolidated Qwen3.8-27B-Uncensored oQ4e MTP, Tiel-Coder-35B-A3B oQ4e, Qwen3.8-27B AWQ 5.0bpw True2456 build. oMLX total 7587 -> 7619.
+- Dataset 12439 -> 12471. Models 415.
+
 ## 2026-10-09: oMLX batch 137 (+18 rows)
 
 - oMLX corpus sweep: 18 records mined (scan119, 31 traces fetched, 17 unmined candidates). New model mapping: 6-bit (name as published, model unnamed on page). oMLX total 7569 -> 7587.
