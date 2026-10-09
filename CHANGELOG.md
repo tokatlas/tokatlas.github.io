@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 150 (+23 rows)
+
+- oMLX corpus sweep: 23 records mined (scan132, 37 traces fetched, 23 unmined candidates). No new models. oMLX total 7926 -> 7949.
+- Dataset 12778 -> 12801.
+
 ## 2026-10-09: oMLX batch 149 (+27 rows)
 
 - oMLX corpus sweep: 27 records mined (scan131, 41 traces fetched, 27 unmined candidates). New model: Signal-3.8-27B (oQ4e MTP). Consolidated Agnes-3.0-Flash oQ4e MTP. oMLX total 7899 -> 7926.
