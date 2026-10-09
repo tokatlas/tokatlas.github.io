@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 185 (+17 rows)
+
+- oMLX corpus sweep: 17 records mined (scan167, 31 traces fetched, 17 unmined candidates). No new models (Qwen3.8-35B-A3B-Distill 4bit, Qwen3.8 oQ4e MTP consolidated). oMLX total 8788 -> 8805.
+- Dataset 13640 -> 13657.
+
 ## 2026-10-09: oMLX batch 184 (+17 rows)
 
 - oMLX corpus sweep: 17 records mined (scan166, 31 traces fetched, 17 unmined candidates). No new models. oMLX total 8771 -> 8788.
