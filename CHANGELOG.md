@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 214 (+57 rows)
+
+- oMLX corpus sweep: 57 records mined (scan196, 60 traces fetched, 46 unmined candidates). No new models (ThinkingCap-Qwen3.8-27B oQ6e MTP consolidated). oMLX total 10015 -> 10072.
+- Dataset 14867 -> 14924.
+
 ## 2026-10-09: oMLX batch 213 (+59 rows)
 
 - oMLX corpus sweep: 59 records mined (scan195, 60 traces fetched, 46 unmined candidates). New models: NVIDIA-Nemotron-3-Nano-30B-A3B (4bit), Qwen3.6-35B-A3B-Holo3-Qwopus-AgentWorld (qx64 hi), Qwen3.8-27B-Brainwaves-2M (qx64 hi). Consolidated Ornith-1.5-9B mxfp8, Qwen3.5-2B SpecPrefill oQ3.5. oMLX total 9956 -> 10015 (10k crossed).
