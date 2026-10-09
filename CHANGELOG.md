@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 190 (+45 rows)
+
+- oMLX corpus sweep: 45 records mined (scan172, 59 traces fetched, 45 unmined candidates). No new models (GLM-5.3-Flash oQ8e MTP, Devstral-Small-2-24B-Instruct-2512 mxfp4 consolidated). oMLX total 8929 -> 8974.
+- Dataset 13781 -> 13826.
+
 ## 2026-10-09: oMLX batch 189 (+21 rows)
 
 - oMLX corpus sweep: 21 records mined (scan171, 35 traces fetched, 21 unmined candidates). New model: gemma-4-31B-it-scotoma-2 (oQ4e MTP). Consolidated Qwen3.8-27B MLX/OptiQ 4bit, Qwen3-Coder-Next nightmedia mxfp8. oMLX total 8908 -> 8929.
