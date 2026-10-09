@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 155 (+27 rows)
+
+- oMLX corpus sweep: 27 records mined (scan137, 41 traces fetched, 27 unmined candidates). New models: LLama-3.1-128k-Darkest-Planet-Uncensored-16.5B (q5), Ornith-1.5-9B-Abliterated (mxfp4). Consolidated FrogNano-4B-2609 oQ6e MTP. oMLX total 8001 -> 8028.
+- Dataset 12853 -> 12880. Models 423.
+
 ## 2026-10-09: oMLX batch 154 (+8 rows)
 
 - oMLX corpus sweep: 8 records mined (scan136, 22 traces fetched, 8 unmined candidates). No new models. oMLX total 7993 -> 8001.
