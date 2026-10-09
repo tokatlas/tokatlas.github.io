@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 173 (+30 rows)
+
+- oMLX corpus sweep: 30 records mined (scan155, 44 traces fetched, 30 unmined candidates). No new models (Qwen3.6-35B-A3B oQ4e fp16 MTP, Qwopus3.8-27B-Flash-V2 oQ8e MTP, Swift-1.5-Qwen3.8-27b-oQ5e-fp16-mtp consolidated). oMLX total 8398 -> 8428.
+- Dataset 13250 -> 13280.
+
 ## 2026-10-09: oMLX batch 172 (+11 rows)
 
 - oMLX corpus sweep: 11 records mined (scan154, 25 traces fetched, 11 unmined candidates). New models: Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX (oQ6e MTP), gemma-4-12B-it-qat-uncensored-heretic (4bit), nightmedia-Qwen3.8-27B-MindMeld (qx64 hi). Consolidated Qwen3.6-35B-A3B-MAYA oQ4e fp16 MTP. oMLX total 8387 -> 8398.
