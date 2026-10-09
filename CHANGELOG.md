@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 208 (+33 rows)
+
+- oMLX corpus sweep: 33 records mined (scan190, 46 traces fetched, 32 unmined candidates). New model: Qwen3.5-9B-Claude-4.6-Opus-Reasoning-Distilled-v2 (4bit). Consolidated Cyber-Tiel-Coder-35B-A3B oQ4e, Mellum2.1-Thinking 6bit g64. oMLX total 9773 -> 9806.
+- Dataset 14625 -> 14658. Models 457.
+
 ## 2026-10-09: oMLX batch 207 (+41 rows)
 
 - oMLX corpus sweep: 41 records mined (scan189, 53 traces fetched, 39 unmined candidates). No new models (Qwen3.8-9B 4bit consolidated). oMLX total 9732 -> 9773.
