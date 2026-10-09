@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 203 (+52 rows)
+
+- oMLX corpus sweep: 52 records mined (scan185, 60 traces fetched, 46 unmined candidates). No new models. oMLX total 9573 -> 9625.
+- Dataset 14425 -> 14477.
+
 ## 2026-10-09: oMLX batch 202 (+59 rows)
 
 - oMLX corpus sweep: 59 records mined (scan184, 60 traces fetched, 46 unmined candidates). New models: Underdog-27B-1.1, gemma-4-31B-it-uncensored (oQ8e MTP). Consolidated Qwen3.8-27B-Uncensored oQ8e MTP. oMLX total 9514 -> 9573.
