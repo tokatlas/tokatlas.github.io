@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 148 (+24 rows)
+
+- oMLX corpus sweep: 24 records mined (scan130, 38 traces fetched, 24 unmined candidates). New model: Qwen3-1.7B (4bit). Consolidated Qwen3.8-27B-aeon-ultimate-uncensored attention8 bf16recurrence vision mtplx build. oMLX total 7875 -> 7899.
+- Dataset 12727 -> 12751. Models 420.
+
 ## 2026-10-09: oMLX batch 147 (+10 rows)
 
 - oMLX corpus sweep: 10 records mined (scan129, 24 traces fetched, 10 unmined candidates). No new models (Ornith-1.5-9B 8bit consolidated). oMLX total 7865 -> 7875.
