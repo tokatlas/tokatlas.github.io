@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 213 (+59 rows)
+
+- oMLX corpus sweep: 59 records mined (scan195, 60 traces fetched, 46 unmined candidates). New models: NVIDIA-Nemotron-3-Nano-30B-A3B (4bit), Qwen3.6-35B-A3B-Holo3-Qwopus-AgentWorld (qx64 hi), Qwen3.8-27B-Brainwaves-2M (qx64 hi). Consolidated Ornith-1.5-9B mxfp8, Qwen3.5-2B SpecPrefill oQ3.5. oMLX total 9956 -> 10015 (10k crossed).
+- Dataset 14808 -> 14867. Models 461.
+
 ## 2026-10-09: oMLX batch 212 (+55 rows)
 
 - oMLX corpus sweep: 55 records mined (scan194, 60 traces fetched, 46 unmined candidates). No new models (Qwen3.8-27B MTPLX Bare Speed consolidated). oMLX total 9901 -> 9956.
