@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 181 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan163, 60 traces fetched, 46 unmined candidates). No new models (KAT-Coder-V2.5-Dev OptiQ 4bit + REAP-18B, Qwen3.8-27B Jundot oQ4e MTP, Qwen3.5-4B oQ8e fp16 MTP consolidated). oMLX total 8629 -> 8680.
+- Dataset 13481 -> 13532.
+
 ## 2026-10-09: oMLX batch 180 (+46 rows)
 
 - oMLX corpus sweep: 46 records mined (scan162, 60 traces fetched, 46 unmined candidates). No new models (AREX-2 8bit, Tiel-Coder-35B-A3B oQ4e fp16 MTP, gemma-4-26B-A4B-it mlx-community 6bit consolidated). oMLX total 8583 -> 8629.
