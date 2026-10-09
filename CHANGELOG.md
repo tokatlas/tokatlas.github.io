@@ -2,8 +2,8 @@
 
 ## 2026-10-09: oMLX batch 195 (+51 rows)
 
-- oMLX corpus sweep: 51 records mined (scan177, 60 traces fetched, 46 unmined candidates). New model: gemma-4-26B-A4B (nvfp4 qmax). Consolidated Qwen2.5-14B Instruct 4bit, Qwen3.8-Flash-Next oQ4e coder ngram MTP. oMLX total 9163 -> 9214.
-- Dataset 14015 -> 14066. Models 451.
+- oMLX corpus sweep: 51 records mined (scan177, 60 traces fetched, 46 unmined candidates). No new models (Gemma 4 26B-A4B nvfp4 qmax, Qwen2.5-14B Instruct 4bit, Qwen3.8-Flash-Next oQ4e coder ngram MTP consolidated). oMLX total 9163 -> 9214.
+- Dataset 14015 -> 14066.
 
 ## 2026-10-09: oMLX batch 194 (+51 rows)
 
