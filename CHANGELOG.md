@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 197 (+47 rows)
+
+- oMLX corpus sweep: 47 records mined (scan179, 60 traces fetched, 46 unmined candidates). New model: GLM5.3FH (published shorthand, 6bit). oMLX total 9261 -> 9308.
+- Dataset 14113 -> 14160. Models 452.
+
 ## 2026-10-09: oMLX batch 196 (+47 rows)
 
 - oMLX corpus sweep: 47 records mined (scan178, 60 traces fetched, 46 unmined candidates). New model: Selene-1-Mini-Llama-3.1-8B (q4). Consolidated Qwable-v2 oQ4e DWQ MTP Vision. RAM table extended for 18 GB Macs. oMLX total 9214 -> 9261.
