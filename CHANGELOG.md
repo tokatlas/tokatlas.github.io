@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 174 (+41 rows)
+
+- oMLX corpus sweep: 41 records mined (scan156, 55 traces fetched, 41 unmined candidates). New model: Huihui-Qwen3.6-35B-A3B-Claude-4.7-Opus-abliterated (8bit). oMLX total 8428 -> 8469.
+- Dataset 13280 -> 13321. Models 438.
+
 ## 2026-10-09: oMLX batch 173 (+30 rows)
 
 - oMLX corpus sweep: 30 records mined (scan155, 44 traces fetched, 30 unmined candidates). No new models (Qwen3.6-35B-A3B oQ4e fp16 MTP, Qwopus3.8-27B-Flash-V2 oQ8e MTP, Swift-1.5-Qwen3.8-27b-oQ5e-fp16-mtp consolidated). oMLX total 8398 -> 8428.
