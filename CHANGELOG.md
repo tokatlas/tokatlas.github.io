@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 157 (+4 rows)
+
+- oMLX corpus sweep: 4 records mined (scan139, 18 traces fetched, 4 unmined candidates). No new models (Muse Glimmer 30B MXFP4 consolidated). oMLX total 8034 -> 8038.
+- Dataset 12886 -> 12890.
+
 ## 2026-10-09: oMLX batch 156 (+6 rows)
 
 - oMLX corpus sweep: 6 records mined (scan138, 20 traces fetched, 6 unmined candidates). New models: Mistral-Nemo-2407-12B-Thinking-Claude-Gemini-GPT5.2-Uncensored-HERETIC, Swift-1.5-Qwen3.8-27b-Uncensored-oQ5e (MTP). oMLX total 8028 -> 8034.
