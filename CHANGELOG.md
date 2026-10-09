@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 161 (+47 rows)
+
+- oMLX corpus sweep: 47 records mined (scan143, 60 traces fetched, 46 unmined candidates). New models: Ornith-1.0-35B-Vision, Qwen3.6-35B-A3B-Heretic (mxfp4). Consolidated Occamy-1.0 (4bit/oQ5e MTP), gemma-4-12b-it OptiQ 4bit, Gemma 4 E4B lmstudio-community 4bit/8bit, Qwen3.6-35B-A3B mlx-community 8bit. oMLX total 8139 -> 8186.
+- Dataset 12991 -> 13038. Models 430.
+
 ## 2026-10-09: oMLX batch 160 (+25 rows)
 
 - oMLX corpus sweep: 25 records mined (scan142, 32 traces fetched, 18 unmined candidates). No new models. oMLX total 8114 -> 8139.
