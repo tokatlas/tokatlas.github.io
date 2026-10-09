@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-09: oMLX batch 144 (+33 rows)
+
+- oMLX corpus sweep: 33 records mined (scan126, 47 traces fetched, 33 unmined candidates). No new models (GLM-5.3-Flash 2bit MTP consolidated). oMLX total 7749 -> 7782.
+- Dataset 12601 -> 12634.
+
 ## 2026-10-09: oMLX batch 143 (+37 rows)
 
 - oMLX corpus sweep: 37 records mined (scan125, 51 traces fetched, 37 unmined candidates). No new models (Ornith-1.5-35B-A3B-BigBang MTP zh 4bit consolidated). oMLX total 7712 -> 7749.
