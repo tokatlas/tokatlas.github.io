@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 270 (+54 rows)
+
+- oMLX corpus sweep: 54 records mined (scan252, 60 traces fetched, 46 unmined candidates). New models: Jev-Style-Qwen3.5-2B-Decision-v2 (bf16), NeoHorse-Jev-4B-TmuxPocket (oQ4), gemma-4-31B-it-qat (4bit mlx-community OptiQ). oMLX total 11806 -> 11860.
+- Dataset 16658 -> 16712. Models 490.
+
 ## 2026-10-10: oMLX batch 269 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan251, 60 traces fetched, 46 unmined candidates). New models: Bio-Medical-Llama-3-8B, II-Medical-8B-1706 (8bit). oMLX total 11755 -> 11806.
