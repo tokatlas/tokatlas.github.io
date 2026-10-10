@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 268 (+55 rows)
+
+- oMLX corpus sweep: 55 records mined (scan250, 60 traces fetched, 46 unmined candidates). No new models (bottlecapai ThinkingCap Qwen3.8-27B 4bit DWQ consolidated). oMLX total 11700 -> 11755.
+- Dataset 16552 -> 16607.
+
 ## 2026-10-10: oMLX batch 267 (+50 rows)
 
 - oMLX corpus sweep: 50 records mined (scan249, 60 traces fetched, 46 unmined candidates). New model: Qwen3.8-27B-Coder390 (oQ4e fp16 MTP). oMLX total 11650 -> 11700.
