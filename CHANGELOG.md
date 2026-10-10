@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 281 (+30 rows)
+
+- oMLX corpus sweep: 30 records mined (scan263, 44 traces fetched, 30 unmined candidates). No new models (gemma-4-12B-it-qat OptiQ MTP consolidated). oMLX total 12298 -> 12328.
+- Dataset 17150 -> 17180.
+
 ## 2026-10-10: oMLX batch 280 (+36 rows)
 
 - oMLX corpus sweep: 36 records mined (scan262, 50 traces fetched, 36 unmined candidates). No new models. oMLX total 12262 -> 12298.
