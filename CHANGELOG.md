@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 278 (+41 rows)
+
+- oMLX corpus sweep: 41 records mined (scan260, 55 traces fetched, 41 unmined candidates). New model: KAT-Coder-V2.5-Dev-VL (oQ4e MTP). oMLX total 12178 -> 12219.
+- Dataset 17030 -> 17071. Models 497.
+
 ## 2026-10-10: oMLX batch 277 (+22 rows)
 
 - oMLX corpus sweep: 22 records mined (scan259, 36 traces fetched, 22 unmined candidates). No new models (Qwen:Qwen3.8-27B oQ8e fp16 MTP consolidated). oMLX total 12156 -> 12178.
