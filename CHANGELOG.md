@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 290 (+45 rows)
+
+- oMLX corpus sweep: 45 records mined (scan272, 57 traces fetched, 41 unmined candidates). New models: gemma-4-12B-uncensored (oQ8e), Gemma 4 26B-A4B-it-uncensored (oQ8e MTP, consolidated to existing space form). oMLX total 12568 -> 12613.
+- Dataset 17420 -> 17465. Models 510.
+
 ## 2026-10-10: oMLX batch 289 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan271, 60 traces fetched, 44 unmined candidates). New models: LFM2.5-8B-A1B-Abliterated (PocketAiHub), Swift-1.5-3bit (TextOnly). oMLX total 12517 -> 12568.
