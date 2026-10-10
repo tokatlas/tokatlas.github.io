@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 222 (+17 rows)
+
+- oMLX corpus sweep: 17 records mined (scan204, 31 traces fetched, 17 unmined candidates). No new models. oMLX total 10211 -> 10228.
+- Dataset 15063 -> 15080.
+
 ## 2026-10-10: oMLX batch 221 (+12 rows)
 
 - oMLX corpus sweep: 12 records mined (scan203, 26 traces fetched, 12 unmined candidates). New model: VulnLLM-R-7B (8bit). Consolidated Qwen3.5-4B MTPLX Optimized Speed. oMLX total 10199 -> 10211.
