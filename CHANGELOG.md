@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 282 (+21 rows)
+
+- oMLX corpus sweep: 21 records mined (scan264, 35 traces fetched, 21 unmined candidates). New model: Huihui-Ornith-1.5-9B-abliterated (5Bit). Model count crossed 500. oMLX total 12328 -> 12349.
+- Dataset 17180 -> 17201. Models 500.
+
 ## 2026-10-10: oMLX batch 281 (+30 rows)
 
 - oMLX corpus sweep: 30 records mined (scan263, 44 traces fetched, 30 unmined candidates). No new models (gemma-4-12B-it-qat OptiQ MTP consolidated). oMLX total 12298 -> 12328.
