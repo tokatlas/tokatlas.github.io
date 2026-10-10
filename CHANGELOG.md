@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 265 (+38 rows)
+
+- oMLX corpus sweep: 38 records mined (scan247, 52 traces fetched, 38 unmined candidates). New model: Swift-Qwen3.8-27B-Uncensored (oQ8e MTP). oMLX total 11581 -> 11619.
+- Dataset 16433 -> 16471. Models 484.
+
 ## 2026-10-10: oMLX batch 264 (+14 rows)
 
 - oMLX corpus sweep: 14 records mined (scan246, 28 traces fetched, 14 unmined candidates). No new models. oMLX total 11567 -> 11581.
