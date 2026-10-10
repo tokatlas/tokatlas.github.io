@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 235 (+36 rows)
+
+- oMLX corpus sweep: 36 records mined (scan217, 50 traces fetched, 36 unmined candidates). No new models (Ornith-1.5-35B-A3B oQ6e MTP consolidated). oMLX total 10554 -> 10590.
+- Dataset 15406 -> 15442.
+
 ## 2026-10-10: oMLX batch 234 (+21 rows)
 
 - oMLX corpus sweep: 21 records mined (scan216, 35 traces fetched, 21 unmined candidates). New model: Ministral-3-8B-Instruct-2512. Consolidated K2-Horizon-MoVA-36B-A4B 4bit, KAT-Coder-V2.5-Dev oQ2e. oMLX total 10533 -> 10554.
