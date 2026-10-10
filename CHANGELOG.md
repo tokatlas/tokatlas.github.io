@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 297 (+37 rows)
+
+- oMLX corpus sweep: 37 records mined (scan279, 53 traces fetched, 37 unmined candidates). New model: North-Mini-Code-1.0 (6bit). oMLX total 12716 -> 12753.
+- Dataset 17568 -> 17605. Models 513.
+
 ## 2026-10-10: oMLX batch 296 (+23 rows)
 
 - oMLX corpus sweep: 23 records mined (scan278, 39 traces fetched, 23 unmined candidates). No new models. oMLX total 12693 -> 12716.
