@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 224 (+40 rows)
+
+- oMLX corpus sweep: 40 records mined (scan206, 54 traces fetched, 40 unmined candidates). New models: Apodex-1.1-mini (oQ4e, baseline + MTP variants), gemma-4-26B-A4B-it-uncensored-heretic (6Bit VLM). oMLX total 10238 -> 10278.
+- Dataset 15090 -> 15130. Models 466.
+
 ## 2026-10-10: oMLX batch 223 (+10 rows)
 
 - oMLX corpus sweep: 10 records mined (scan205, 24 traces fetched, 10 unmined candidates). New model: Qwen3.8-27B-Uncensored-OrcaRouter (8bit). Consolidated Huihui-Qwen3.8-27B-abliterated 4bit, Qwen3.6-35B-A3B-Uncensored-Heretic 8bit. oMLX total 10228 -> 10238.
