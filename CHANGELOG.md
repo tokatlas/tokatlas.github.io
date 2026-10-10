@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 269 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan251, 60 traces fetched, 46 unmined candidates). New models: Bio-Medical-Llama-3-8B, II-Medical-8B-1706 (8bit). oMLX total 11755 -> 11806.
+- Dataset 16607 -> 16658. Models 487.
+
 ## 2026-10-10: oMLX batch 268 (+55 rows)
 
 - oMLX corpus sweep: 55 records mined (scan250, 60 traces fetched, 46 unmined candidates). No new models (bottlecapai ThinkingCap Qwen3.8-27B 4bit DWQ consolidated). oMLX total 11700 -> 11755.
