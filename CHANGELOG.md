@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 241 (+47 rows)
+
+- oMLX corpus sweep: 47 records mined (scan223, 60 traces fetched, 46 unmined candidates). New model: medgemma-27b-text-it (8bit). oMLX total 10688 -> 10735.
+- Dataset 15540 -> 15587. Models 473.
+
 ## 2026-10-10: oMLX batch 240 (+36 rows)
 
 - oMLX corpus sweep: 36 records mined (scan222, 50 traces fetched, 36 unmined candidates). No new models. oMLX total 10652 -> 10688.
