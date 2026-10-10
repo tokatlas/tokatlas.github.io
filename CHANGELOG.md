@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 246 (+52 rows)
+
+- oMLX corpus sweep: 52 records mined (scan228, 60 traces fetched, 46 unmined candidates). No new models (SamQuant C58 build consolidated into Qwen3.8-Flash-Next-Uncensored 4bit; also fixed a slug collision where the underscore variant was merged into the hyphen variant). oMLX total 10837 -> 10889.
+- Dataset 15689 -> 15741.
+
 ## 2026-10-10: oMLX batch 245 (+39 rows)
 
 - oMLX corpus sweep: 39 records mined (scan227, 53 traces fetched, 39 unmined candidates). New model: gemma-3-12b-it. oMLX total 10798 -> 10837.
