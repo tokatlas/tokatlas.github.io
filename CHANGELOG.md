@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 284 (+34 rows)
+
+- oMLX corpus sweep: 34 records mined (scan266, 48 traces fetched, 34 unmined candidates). New models: Huihui-gemma-4-E4B-it-abliterated (4bit), MiMo-7B-RL (4bit), gemma-4-26B-A4B-it-ultra-uncensored-heretic (4bit culturerevolt). oMLX total 12382 -> 12416.
+- Dataset 17234 -> 17268. Models 504.
+
 ## 2026-10-10: oMLX batch 283 (+33 rows)
 
 - oMLX corpus sweep: 33 records mined (scan265, 47 traces fetched, 33 unmined candidates). New model: Qwen3.6-35B-A3B-OptiQ (5bpw, dawncr0w). oMLX total 12349 -> 12382.
