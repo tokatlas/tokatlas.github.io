@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 279 (+43 rows)
+
+- oMLX corpus sweep: 43 records mined (scan261, 57 traces fetched, 43 unmined candidates). New models: gemma-4-26b-a4b-it-UD (4bit), gemma-4-E2B-it (oQ4e MTP). oMLX total 12219 -> 12262.
+- Dataset 17071 -> 17114. Models 499.
+
 ## 2026-10-10: oMLX batch 278 (+41 rows)
 
 - oMLX corpus sweep: 41 records mined (scan260, 55 traces fetched, 41 unmined candidates). New model: KAT-Coder-V2.5-Dev-VL (oQ4e MTP). oMLX total 12178 -> 12219.
