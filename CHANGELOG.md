@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 233 (+13 rows)
+
+- oMLX corpus sweep: 13 records mined (scan215, 27 traces fetched, 13 unmined candidates). New models: Kimi-Linear-48B-A3B-Instruct (4bit), Qwen3.8-35B-36.82G-A3B-Distill (oQ8 fp16 MTP). oMLX total 10520 -> 10533.
+- Dataset 15372 -> 15385. Models 470.
+
 ## 2026-10-10: oMLX batch 232 (+17 rows)
 
 - oMLX corpus sweep: 17 records mined (scan214, 31 traces fetched, 17 unmined candidates). No new models (Vontra Qwen3.8-27B 4bit consolidated). oMLX total 10503 -> 10520.
