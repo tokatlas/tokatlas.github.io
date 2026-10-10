@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 247 (+30 rows)
+
+- oMLX corpus sweep: 30 records mined (scan229, 37 traces fetched, 23 unmined candidates). No new models (Qwen3.8-27B-Abliterated q3km 3bit, Qwen3.8-Flash-Next-Uncensored oQ6e fp16 MTP consolidated). oMLX total 10889 -> 10919.
+- Dataset 15741 -> 15771.
+
 ## 2026-10-10: oMLX batch 246 (+52 rows)
 
 - oMLX corpus sweep: 52 records mined (scan228, 60 traces fetched, 46 unmined candidates). No new models (SamQuant C58 build consolidated into Qwen3.8-Flash-Next-Uncensored 4bit; also fixed a slug collision where the underscore variant was merged into the hyphen variant). oMLX total 10837 -> 10889.
