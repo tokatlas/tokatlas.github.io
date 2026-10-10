@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 256 (+55 rows)
+
+- oMLX corpus sweep: 55 records mined (scan238, 60 traces fetched, 46 unmined candidates). New model: Qwen3.5-9B-DeepSeek-V4-Flash (oQ4 MTP). oMLX total 11282 -> 11337.
+- Dataset 16134 -> 16189. Models 480.
+
 ## 2026-10-10: oMLX batch 255 (+52 rows)
 
 - oMLX corpus sweep: 52 records mined (scan237, 60 traces fetched, 46 unmined candidates). No new models. oMLX total 11230 -> 11282.
