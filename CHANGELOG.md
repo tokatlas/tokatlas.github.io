@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 274 (+53 rows)
+
+- oMLX corpus sweep: 53 records mined (scan256, 60 traces fetched, 46 unmined candidates). New model: gpt-oss-120b-Sonnet-Reasoning-Distilled. oMLX total 12015 -> 12068.
+- Dataset 16867 -> 16920. Models 495.
+
 ## 2026-10-10: oMLX batch 273 (+51 rows)
 
 - oMLX corpus sweep: 51 records mined (scan255, 60 traces fetched, 46 unmined candidates). New model: Huihui-Qwen3.6-35B-A3B-abliterated (oQ4e fp16 MTP). oMLX total 11964 -> 12015.
