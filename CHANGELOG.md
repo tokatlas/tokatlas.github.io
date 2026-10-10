@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 223 (+10 rows)
+
+- oMLX corpus sweep: 10 records mined (scan205, 24 traces fetched, 10 unmined candidates). New model: Qwen3.8-27B-Uncensored-OrcaRouter (8bit). Consolidated Huihui-Qwen3.8-27B-abliterated 4bit, Qwen3.6-35B-A3B-Uncensored-Heretic 8bit. oMLX total 10228 -> 10238.
+- Dataset 15080 -> 15090. Models 464.
+
 ## 2026-10-10: oMLX batch 222 (+17 rows)
 
 - oMLX corpus sweep: 17 records mined (scan204, 31 traces fetched, 17 unmined candidates). No new models. oMLX total 10211 -> 10228.
