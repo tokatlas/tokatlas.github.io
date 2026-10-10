@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 260 (+38 rows)
+
+- oMLX corpus sweep: 38 records mined (scan242, 52 traces fetched, 38 unmined candidates). No new models (scottlowry ThinkingCap Qwen3.8-27B oQ4e MTP consolidated). oMLX total 11448 -> 11486.
+- Dataset 16300 -> 16338.
+
 ## 2026-10-10: oMLX batch 259 (+20 rows)
 
 - oMLX corpus sweep: 20 records mined (scan241, 34 traces fetched, 20 unmined candidates). No new models (Bonsai 2 27B consolidated). oMLX total 11428 -> 11448.
