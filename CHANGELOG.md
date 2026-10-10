@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 272 (+51 rows)
+
+- oMLX corpus sweep: 51 records mined (scan254, 60 traces fetched, 46 unmined candidates). New models: Sharp-MiniCPM5-2B (oQ6e), gemma-4-26B-A4B-it-qat (4bit mlx-community OptiQ). oMLX total 11913 -> 11964.
+- Dataset 16765 -> 16816. Models 493.
+
 ## 2026-10-10: oMLX batch 271 (+53 rows)
 
 - oMLX corpus sweep: 53 records mined (scan253, 60 traces fetched, 46 unmined candidates). New model: Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved (oQ4e MTP). oMLX total 11860 -> 11913.
