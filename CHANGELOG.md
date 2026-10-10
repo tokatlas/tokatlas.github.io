@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 218 (+15 rows)
+
+- oMLX corpus sweep: 15 records mined (scan200, 29 traces fetched, 15 unmined candidates). No new models (Gemma 4 E2B it 8bit consolidated). oMLX total 10135 -> 10150.
+- Dataset 14987 -> 15002 (15k crossed).
+
 ## 2026-10-10: oMLX batch 217 (+13 rows)
 
 - oMLX corpus sweep: 13 records mined (scan199, 27 traces fetched, 13 unmined candidates). No new models. oMLX total 10122 -> 10135.
