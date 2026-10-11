@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 334 (+91 rows)
+
+- oMLX corpus sweep: 91 records mined (scan316, 60 fetched, 31 unmined candidates, 29 404). No new models (Jundot--gemma-4-E2B variant, Qwen3-8B merged with existing Qwen3 8B, Qwen3.5-9B-4bit, MiMo-7B-RL; all canonicals existing). Models 526. oMLX total 15997 -> 16088 (**crossed 16k**).
+- Dataset 20841 -> 20932. check_quotes green (21581 verified).
+
 ## 2026-10-11: oMLX batch 333 (+80 rows)
 
 - oMLX corpus sweep: 80 records mined (scan315, 60 fetched, 28 unmined candidates, 32 404). 1 new model: RAZOR-19B-A3B. Also gemma-4-E2B-it-oQ8-fp16 (existing model). Models 525 -> 526. oMLX total 15917 -> 15997.
