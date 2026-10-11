@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 313 (+88 rows)
+
+- oMLX corpus sweep: 88 records mined (scan295, 60 fetched, 26 unmined candidates, 34 404). No new models (all 22 groups map to existing models; no new MAP entries). Models 521. oMLX total 13872 -> 13960.
+- Dataset 18716 -> 18804. check_quotes green (19453 verified).
+
 ## 2026-10-11: oMLX batch 312 (+102 rows)
 
 - oMLX corpus sweep: 102 records mined (scan294, 60 fetched, 39 unmined candidates, 21 404). No new models (Mellum2.1-12B-A2.5B-Thinking, Qwen3.6-35B-A3B, Qwen3.8-27B-Huihui-Abliterated, Qwen3-Coder-Next all existing). Models 521. oMLX total 13770 -> 13872.
