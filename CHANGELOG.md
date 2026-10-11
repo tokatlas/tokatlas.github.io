@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 303 (+45 rows)
+
+- oMLX corpus sweep: 45 records mined (scan285, 60 traces fetched, 20 unmined candidates, 18 404). New model: MiniMax-M2.7 (3bit, M5 Max 128 GB). oMLX total 12881 -> 12926.
+- Dataset 17725 -> 17770. Models 517 -> 518. check_quotes green (18419 verified).
+
 ## 2026-10-11: oMLX batch 302 (+47 rows)
 
 - oMLX corpus sweep: 47 records mined from 42 new traces (scan284). No new models; all 10 trace variants map to existing canonicals (Cyber-Tiel/Tiel-Coder-35B-A3B, Qwen3.6-27B/35B-A3B, DeepSeek-V4-Flash-0731 OptiQ-2bit, Qwen3.8-27B-TURBO ...-NM-DAU oQ8e-MTP, Qwen3.8-27B oQ4e-MTP, Qwen3.8-Flash-Next oQ4e-MTP, Swift-1.5-Qwen3.8-27b oQ8e-bf16-MTP, Jundot Qwen3.8-Flash-Next). oMLX total 12834 -> 12881.
