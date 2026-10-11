@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 333 (+80 rows)
+
+- oMLX corpus sweep: 80 records mined (scan315, 60 fetched, 28 unmined candidates, 32 404). 1 new model: RAZOR-19B-A3B. Also gemma-4-E2B-it-oQ8-fp16 (existing model). Models 525 -> 526. oMLX total 15917 -> 15997.
+- Dataset 20761 -> 20841. check_quotes green (21490 verified).
+
 ## 2026-10-11: oMLX batch 332 (+88 rows)
 
 - oMLX corpus sweep: 88 records mined (scan314, 60 fetched, 30 unmined candidates, 30 404). No new models (Qwen3-30B-A3B-4bit, DeepSeek-V4.1-Flash-oQ4e-mtp, gemma-4-26B-A4B-it-uncensored-heretic-mlx-vlm; all canonicals existing). Models 525. oMLX total 15829 -> 15917.
