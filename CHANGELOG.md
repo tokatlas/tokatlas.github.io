@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 335 (+94 rows)
+
+- oMLX corpus sweep: 94 records mined (scan317, 60 fetched, 32 unmined candidates, 28 404). 2 new models: Agents-A1, Nemotron-3.5-Lightning-30B-A3B. Also Jundot--gemma-4-E4B, Qwen3.8-Flash-Next-MLX-oQ4e-mtp, gpt-oss-20b (existing models). Models 526 -> 528. oMLX total 16088 -> 16182.
+- Dataset 20932 -> 21026. check_quotes green (21675 verified).
+
 ## 2026-10-11: oMLX batch 334 (+91 rows)
 
 - oMLX corpus sweep: 91 records mined (scan316, 60 fetched, 31 unmined candidates, 29 404). No new models (Jundot--gemma-4-E2B variant, Qwen3-8B merged with existing Qwen3 8B, Qwen3.5-9B-4bit, MiMo-7B-RL; all canonicals existing). Models 526. oMLX total 15997 -> 16088 (**crossed 16k**).
