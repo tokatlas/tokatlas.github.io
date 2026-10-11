@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 332 (+88 rows)
+
+- oMLX corpus sweep: 88 records mined (scan314, 60 fetched, 30 unmined candidates, 30 404). No new models (Qwen3-30B-A3B-4bit, DeepSeek-V4.1-Flash-oQ4e-mtp, gemma-4-26B-A4B-it-uncensored-heretic-mlx-vlm; all canonicals existing). Models 525. oMLX total 15829 -> 15917.
+- Dataset 20673 -> 20761. check_quotes green (21410 verified).
+
 ## 2026-10-11: oMLX batch 331 (+97 rows)
 
 - oMLX corpus sweep: 97 records mined (scan313, 60 fetched, 31 unmined candidates, 29 404). No new models (gemma-4-31B-it Mystery-Fine-Tune-HERETIC variant, Qwen3.8-Flash-Next-REAP-288, Qwen3.8-27B-8bit; all canonicals existing). Models 525. oMLX total 15732 -> 15829.
