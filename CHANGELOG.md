@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 304 (+80 rows)
+
+- oMLX corpus sweep: 80 records mined (scan286, 60 fetched, 36 unmined candidates, 18 404). No new models (all trace variants map to existing canonicals; Occamy-1.0 oQ8e-fp16-MTP on M2 Max 96 GB). oMLX total 12926 -> 13006.
+- Dataset 17770 -> 17850. Models 518. check_quotes green (18499 verified).
+
 ## 2026-10-11: oMLX batch 303 (+45 rows)
 
 - oMLX corpus sweep: 45 records mined (scan285, 60 traces fetched, 20 unmined candidates, 18 404). New model: MiniMax-M2.7 (3bit, M5 Max 128 GB). oMLX total 12881 -> 12926.
