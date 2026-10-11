@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 316 (+85 rows)
+
+- oMLX corpus sweep: 85 records mined (scan298, 60 fetched, 34 unmined candidates, 26 404). No new models (Bonsai-27B, Ornith-1.5-35B-A3B, Qwen3.6-35B-A3B-UD, Swift-1.5; all canonicals existing). Models 521. oMLX total 14158 -> 14243.
+- Dataset 19002 -> 19087. check_quotes green (19736 verified).
+
 ## 2026-10-11: oMLX batch 315 (+103 rows)
 
 - oMLX corpus sweep: 103 records mined (scan297, 60 fetched, 35 unmined candidates, 25 404). No new models (Mellum2.1 bf16 variant, Steven10429 UD-IQ4_XS build; all canonicals existing). Models 521. oMLX total 14055 -> 14158.
