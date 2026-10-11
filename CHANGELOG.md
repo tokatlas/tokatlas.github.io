@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 325 (+123 rows)
+
+- oMLX corpus sweep: 123 records mined (scan307, 60 fetched, 32 unmined candidates, 28 404). No new models (DeepSeek-V4-Flash-2bit-DQ, Noctalin--Qwen3.6-35B-A3B; all canonicals existing). Models 523. oMLX total 15065 -> 15188. Dataset crossed 20k records.
+- Dataset 19909 -> 20032. check_quotes green (20681 verified).
+
 ## 2026-10-11: oMLX batch 324 (+127 rows)
 
 - oMLX corpus sweep: 127 records mined (scan306, 60 fetched, 28 unmined candidates, 32 404). 1 new model: Qwopus3.8-27B-Flash (M5 Pro 20c 48GB, oQ4e MTP). Models 522 -> 523. oMLX total 14938 -> 15065.
