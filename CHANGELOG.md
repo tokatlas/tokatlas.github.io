@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 305 (+94 rows)
+
+- oMLX corpus sweep: 94 records mined (scan287, 60 fetched, 35 unmined candidates, 18 404). No new models (Llama-3.1-8B-Instruct maps to existing llama-3-1-8b-instruct; Ling-3.0-flash, GLM-5.3-Flash-UNCENSORED, Qwen3.8-27B-MTPLX all map to existing canonicals). oMLX total 13006 -> 13100.
+- Dataset 17850 -> 17944. Models 518. check_quotes green (18593 verified).
+
 ## 2026-10-11: oMLX batch 304 (+80 rows)
 
 - oMLX corpus sweep: 80 records mined (scan286, 60 fetched, 36 unmined candidates, 18 404). No new models (all trace variants map to existing canonicals; Occamy-1.0 oQ8e-fp16-MTP on M2 Max 96 GB). oMLX total 12926 -> 13006.
