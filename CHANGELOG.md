@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 319 (+88 rows)
+
+- oMLX corpus sweep: 88 records mined (scan301, 60 fetched, 25 unmined candidates, 35 404). No new models (Qwen3.8-27B-NVFP4-unsloth; all canonicals existing). Models 521. oMLX total 14406 -> 14494.
+- Dataset 19250 -> 19338. check_quotes green (19987 verified).
+
 ## 2026-10-11: oMLX batch 318 (+77 rows)
 
 - oMLX corpus sweep: 77 records mined (scan300, 60 fetched, 23 unmined candidates, 37 404). No new models (MiMo-7B-RL, Qwen3.6-27B, Swift-1.5-Qwen3.8-27b-oQ6e; all canonicals existing). Models 521. oMLX total 14329 -> 14406.
