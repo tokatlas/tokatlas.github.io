@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 307 (+125 rows)
+
+- oMLX corpus sweep: 125 records mined (scan289, 60 fetched, 45 unmined candidates, 18 404). No new models (Nemotron-Cascade-2-30B-A3B, Qwen3.5-4B, Qwen3.8-Flash-Next-REAP-288 all map to existing canonicals; NEO-CODER oQ8e-1M variant added). oMLX total 13209 -> 13334.
+- Dataset 18053 -> 18178. Models 519. check_quotes green (18827 verified).
+
 ## 2026-10-11: oMLX batch 306 (+109 rows)
 
 - oMLX corpus sweep: 109 records mined (scan288, 60 fetched, 37 unmined candidates, 18 404). 1 new model (Qwen3.5-9B-Distilled-OPUS-Heretic-MLX-VLM, 4bit, M6 12c 24GB). Models 518 -> 519. oMLX total 13100 -> 13209.
