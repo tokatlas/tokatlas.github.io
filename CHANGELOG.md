@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 339 (+76 rows)
+
+- oMLX corpus sweep: 76 records mined (scan321, 60 fetched, 31 unmined candidates, 29 404). 2 new models: Qwen3.6-35B-MoE, pplx-computer-qwen-3-6-35b-a3b. Also Ling-3.0-tiny-oQ8e-bf16, Qwen3.8-27B-heretic-ara-oQ4e-fp16-mtp (existing models). Models 530 -> 532. oMLX total 16407 -> 16483.
+- Dataset 21251 -> 21327. check_quotes green (21976 verified).
+
 ## 2026-10-11: oMLX batch 338 (+59 rows)
 
 - oMLX corpus sweep: 59 records mined (scan320, 60 fetched, 23 unmined candidates, 37 404). No new models. DeepSeek-V4-Flash-0731-oQ2e-mtp, LFM2.5-8B-A1B-gptq-jang, NVIDIA-Nemotron-3.5-Lightning-30B-A3B-MLX-4bit, Qwen3.6-14B-A3B-FableVibes-mlx-q4 (existing models). Models 530. oMLX total 16348 -> 16407.
