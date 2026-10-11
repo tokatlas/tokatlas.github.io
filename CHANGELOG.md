@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 310 (+98 rows)
+
+- oMLX corpus sweep: 98 records mined (scan292, 60 fetched, 36 unmined candidates, 22 404). 1 new model (Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V7-dequantized, M5 Max 128GB oQ8e MTP). Models 520 -> 521. oMLX total 13585 -> 13683.
+- Dataset 18429 -> 18527. check_quotes green (19176 verified).
+
 ## 2026-10-11: oMLX batch 309 (+120 rows)
 
 - oMLX corpus sweep: 120 records mined (scan291, 60 fetched, 49 unmined candidates, 18 404). 1 new model (ALoDLM-8B, M5 Pro 20c 64GB). Models 519 -> 520. oMLX total 13465 -> 13585.
