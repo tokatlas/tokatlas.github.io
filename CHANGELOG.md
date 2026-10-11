@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 327 (+116 rows)
+
+- oMLX corpus sweep: 116 records mined (scan309, 60 fetched, 38 unmined candidates, 22 404). 1 new model: qwen3.5-4B-super-coder (M4 10c 16GB, 4bit). Also AREX-2 6bit, gemma-4-31B-it-uncensored oQ4e variants. Models 523 -> 524. oMLX total 15327 -> 15443.
+- Dataset 20171 -> 20287. check_quotes green (20936 verified).
+
 ## 2026-10-11: oMLX batch 326 (+139 rows)
 
 - oMLX corpus sweep: 139 records mined (scan308, 60 fetched, 37 unmined candidates, 23 404). No new models (GLM-5.3-Flash, Qwen3.8-27B-Huihui-Abliterated, Qwen3.8-27B-MLX-oQ4e-mtp; all canonicals existing). Models 523. oMLX total 15188 -> 15327.
