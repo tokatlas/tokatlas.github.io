@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-10: oMLX batch 298 (+20 rows)
+
+- oMLX corpus sweep: 20 records mined (scan280, 36 traces fetched, 20 unmined candidates). New models: GLM-4.6V-Flash (8bit), KAT-Dev (8bit), Llama-3.2-11B-Vision-Instruct (8bit). oMLX total 12753 -> 12773.
+- Dataset 17605 -> 17625. Models 516.
+
 ## 2026-10-10: oMLX batch 297 (+37 rows)
 
 - oMLX corpus sweep: 37 records mined (scan279, 53 traces fetched, 37 unmined candidates). New model: North-Mini-Code-1.0 (6bit). oMLX total 12716 -> 12753.
