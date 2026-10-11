@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 331 (+97 rows)
+
+- oMLX corpus sweep: 97 records mined (scan313, 60 fetched, 31 unmined candidates, 29 404). No new models (gemma-4-31B-it Mystery-Fine-Tune-HERETIC variant, Qwen3.8-Flash-Next-REAP-288, Qwen3.8-27B-8bit; all canonicals existing). Models 525. oMLX total 15732 -> 15829.
+- Dataset 20576 -> 20673. check_quotes green (21322 verified).
+
 ## 2026-10-11: oMLX batch 330 (+79 rows)
 
 - oMLX corpus sweep: 79 records mined (scan312, 60 fetched, 27 unmined candidates, 33 404). 1 new model: Ornith-1.5-397B. Also diffusiongemma-26B-A4B-it (existing model). Models 524 -> 525. oMLX total 15653 -> 15732.
