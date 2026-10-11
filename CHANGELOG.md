@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 338 (+59 rows)
+
+- oMLX corpus sweep: 59 records mined (scan320, 60 fetched, 23 unmined candidates, 37 404). No new models. DeepSeek-V4-Flash-0731-oQ2e-mtp, LFM2.5-8B-A1B-gptq-jang, NVIDIA-Nemotron-3.5-Lightning-30B-A3B-MLX-4bit, Qwen3.6-14B-A3B-FableVibes-mlx-q4 (existing models). Models 530. oMLX total 16348 -> 16407.
+- Dataset 21192 -> 21251. check_quotes green (21900 verified).
+
 ## 2026-10-11: oMLX batch 337 (+66 rows)
 
 - oMLX corpus sweep: 66 records mined (scan319, 60 fetched, 34 unmined candidates, 26 404). 1 new model: Gemma-4-Dark-Gemistry-31B. Also Ternary-Bonsai-2-27B-MLX-oQ2-mtp, Qwen3.6-35B-A3B-OptiQ-4bit-REAP-19B, unsloth-gemma-4-26B, TensorFold--Qwen3.8-27B (existing models). Models 529 -> 530. oMLX total 16282 -> 16348.
