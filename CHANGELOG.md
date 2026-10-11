@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 315 (+103 rows)
+
+- oMLX corpus sweep: 103 records mined (scan297, 60 fetched, 35 unmined candidates, 25 404). No new models (Mellum2.1 bf16 variant, Steven10429 UD-IQ4_XS build; all canonicals existing). Models 521. oMLX total 14055 -> 14158.
+- Dataset 18899 -> 19002 (crossed 19k records). check_quotes green (19651 verified).
+
 ## 2026-10-11: oMLX batch 314 (+95 rows)
 
 - oMLX corpus sweep: 95 records mined (scan296, 60 fetched, 27 unmined candidates, 33 404). No new models (Nemotron-30B-A3B-8bit, gemma-4-26B-A4B-it-qat-8bit 8bit variants; all canonicals existing). Models 521. oMLX total 13960 -> 14055.
