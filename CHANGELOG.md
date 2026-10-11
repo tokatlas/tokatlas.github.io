@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 330 (+79 rows)
+
+- oMLX corpus sweep: 79 records mined (scan312, 60 fetched, 27 unmined candidates, 33 404). 1 new model: Ornith-1.5-397B. Also diffusiongemma-26B-A4B-it (existing model). Models 524 -> 525. oMLX total 15653 -> 15732.
+- Dataset 20497 -> 20576. check_quotes green (21225 verified).
+
 ## 2026-10-11: oMLX batch 329 (+105 rows)
 
 - oMLX corpus sweep: 105 records mined (scan311, 60 fetched, 36 unmined candidates, 24 404). No new models (OsaurusAI-Qwen3.6-35B-A3B-mxfp4, Qwen3.8-27B-8bit, Qwen3.6-35B-A3B-mxfp4; all canonicals existing). Models 524. oMLX total 15548 -> 15653.
