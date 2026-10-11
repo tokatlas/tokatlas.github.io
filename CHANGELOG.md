@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 329 (+105 rows)
+
+- oMLX corpus sweep: 105 records mined (scan311, 60 fetched, 36 unmined candidates, 24 404). No new models (OsaurusAI-Qwen3.6-35B-A3B-mxfp4, Qwen3.8-27B-8bit, Qwen3.6-35B-A3B-mxfp4; all canonicals existing). Models 524. oMLX total 15548 -> 15653.
+- Dataset 20392 -> 20497. check_quotes green (21146 verified).
+
 ## 2026-10-11: oMLX batch 328 (+105 rows)
 
 - oMLX corpus sweep: 105 records mined (scan310, 60 fetched, 31 unmined candidates, 29 404). No new models (NVIDIA-Nemotron-3.5-Lightning-30B-A3B MLX-4bit-mtp, Qwen3.8-27B-NVFP4, Qwen3.8-27B-oQ5e-SAGE-ARCS-mtp; all canonicals existing). Models 524. oMLX total 15443 -> 15548.
