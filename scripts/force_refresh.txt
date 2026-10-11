@@ -1,6 +1,2 @@
 # Re-fetch these URLs once in CI despite a fresh cache (source rewrite detected locally).
 # Remove entries after CI has saved the refreshed cache.
-https://github.com/ggml-org/llama.cpp/pull/29768
-https://github.com/ggml-org/llama.cpp/pull/29882
-https://github.com/ggml-org/llama.cpp/pull/29887
-https://github.com/vllm-project/vllm/pull/59894
