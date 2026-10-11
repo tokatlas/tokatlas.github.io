@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 321 (+116 rows)
+
+- oMLX corpus sweep: 116 records mined (scan303, 60 fetched, 31 unmined candidates, 29 404). 1 new model: SuperQwen3.8-27b-abliterated (M5 Ultra 64c 96GB, 4bit MLX). Models 521 -> 522. oMLX total 14595 -> 14711.
+- Dataset 19439 -> 19555. check_quotes green (20204 verified).
+
 ## 2026-10-11: oMLX batch 320 (+101 rows)
 
 - oMLX corpus sweep: 101 records mined (scan302, 60 fetched, 24 unmined candidates, 36 404). No new models (Qwen3.6-35B-A3B-4bit-DWQ, Qwen3.8-27B-4bit-MTP-MLX, Ornith-1.5-35B-A3B-oQ4e-mtp; all canonicals existing). Models 521. oMLX total 14494 -> 14595.
