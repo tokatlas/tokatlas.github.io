@@ -4167,10 +4167,6 @@ between builds of the same backend, see the
                  "cache. SPEED-Bench qualitative decode goes %s to %s tok/s "
                  "(%+.0f%%) with the full cache (partial %s)" % (val(rows, m, "tps"),
                   val(rows, fc, "tps"), pct(rows, m, fc, "tps"), val(rows, pc, "tps")))
-            if hw == "RTX 4090":
-                s += ("; prompt processing dips as whole layers move to the "
-                      "cache (pp2048 %d to %d)" % (val(rows, m, "pp_tps"),
-                                                   val(rows, fc, "pp_tps")))
             return s + "."
         if (venue, issue) == ("llama.cpp", "29892"):
             p1 = "lc-29892-ub1024-parent"

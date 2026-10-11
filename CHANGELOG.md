@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 301 (+13 rows) + source-change re-mine (28 records, -8 rows)
+
+- oMLX corpus sweep: 13 records mined (scan283). No new models. oMLX total 12821 -> 12834.
+- Source-change re-mine: 28 records re-mined across 4 drifted source pages (lc-29768 RTX 5090 Qwen3.8-27B, lc-29882 RTX 4060 Ti Q6_K, lc-29887 RTX 4090 pp_tps removed, vllm-59894 B200 DSV4.1-Flash). Model qwen35 removed (518 -> 517). Net -8 rows.
+- Dataset 17673 -> 17686 -> 17678. Models 517. check_quotes green (18327 verified).
+
 ## 2026-10-11: oMLX batch 300 (+23 rows)
 
 - oMLX corpus sweep: 23 records mined (scan282, 39 traces fetched, 23 unmined candidates). No new models. oMLX total 12798 -> 12821.
