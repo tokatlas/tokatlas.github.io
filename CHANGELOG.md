@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-11: oMLX batch 322 (+119 rows)
+
+- oMLX corpus sweep: 119 records mined (scan304, 60 fetched, 29 unmined candidates, 31 404). No new models (Qwen3.8-Flash-Next-REAP-288, Nail-Qwen3.6-35B-A3B; all canonicals existing). Models 522. oMLX total 14711 -> 14830.
+- Dataset 19555 -> 19674. check_quotes green (20323 verified).
+
 ## 2026-10-11: oMLX batch 321 (+116 rows)
 
 - oMLX corpus sweep: 116 records mined (scan303, 60 fetched, 31 unmined candidates, 29 404). 1 new model: SuperQwen3.8-27b-abliterated (M5 Ultra 64c 96GB, 4bit MLX). Models 521 -> 522. oMLX total 14595 -> 14711.
