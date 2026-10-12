@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 358 (+28 rows)
+
+- oMLX corpus sweep: 28 records mined (scan340, 60 fetched, 42 new ids in listing, 22 new candidates = mined + deduped). 1 new model: Devstral-Small-2505 (distinct from existing Devstral-Small-2-24B-Instruct-2512). Models 536 -> 537. oMLX total 17108 -> 17136.
+- Dataset 21952 -> 21980. check_quotes green (22629 verified).
+
 ## 2026-10-12: oMLX batch 357 (+27 rows)
 
 - oMLX corpus sweep: 27 records mined (scan339, 60 fetched, 15 new ids in listing, 22 new candidates = mined + deduped). No new models (7 unique trace models all IN-MAP). Models 536. oMLX total 17081 -> 17108.
