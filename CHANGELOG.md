@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 344 (+31 rows)
+
+- oMLX corpus sweep: 31 records mined (scan326, 60 fetched, 63 new ids in listing, 30 new candidates; 28 mined/deduped + 2 "4bit" minimal-title traces skipped). No new models (11 unique trace models all map to existing; Qwen3.5-9B-The-Defiant-Fable oQ4e variant, Qwen3.8-27B-Uncensored-OrcaRouter, Qwen3.8-Flash-Next mix6 variant). Models 534. oMLX total 16650 -> 16681.
+- Dataset 21494 -> 21525. check_quotes green (22174 verified).
+
 ## 2026-10-12: oMLX batch 343 (+35 rows)
 
 - oMLX corpus sweep: 35 records mined (scan325, 60 fetched, 43 new ids in listing, 30 new candidates = mined + deduped). No new models (12 unique trace models all map to existing; Qwen3.6-35B-35.98G-A3B-oQ8-mtp mapped to existing Qwen3.6-35B since the size string breaks the A3B substring; prism-ml--Bonsai-27B-mlx-1bit person build). Models 534. oMLX total 16615 -> 16650.
