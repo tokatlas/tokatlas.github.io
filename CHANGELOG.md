@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 365 (+29 rows)
+
+- oMLX corpus sweep: 29 records mined (scan347, 60 fetched, 58 new ids in listing, 22 new candidates = mined + deduped). 1 new model: FuseO1-DeepSeekR1-Qwen2.5-Coder-7B-Preview. Models 539 -> 540. oMLX total 17298 -> 17327.
+- Dataset 22142 -> 22171. check_quotes green (22820 verified).
+
 ## 2026-10-12: oMLX batch 364 (+25 rows)
 
 - oMLX corpus sweep: 25 records mined (scan346, 60 fetched, 71 new ids in listing, 22 new candidates = mined + deduped). 1 new model: Qwen2.5-Coder-3B (generic; existing is Qwen2.5-Coder-3B-Instruct). Models 538 -> 539. oMLX total 17273 -> 17298.
