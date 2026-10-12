@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 385 (+26 rows)
+
+- oMLX corpus sweep: 26 records mined (scan367, 60 fetched, 25 new ids in listing, 20 new candidates = mined + deduped). No new models (10 unique trace models all map to existing; MTPLX Optimized Speed builds -> base models, gemma-4-12B-it-oQ4e -> gemma-4-12b-it). Models 541. oMLX total 17850 -> 17876.
+- Dataset 22693 -> 22719. check_quotes green (23368 verified).
+
 ## 2026-10-12: oMLX batch 384 (+28 rows)
 
 - oMLX corpus sweep: 28 records mined (scan366, 60 fetched, 77 new ids in listing, 20 new candidates = mined + deduped). No new models (8 unique trace models all IN-MAP). Models 541. oMLX total 17822 -> 17850.
