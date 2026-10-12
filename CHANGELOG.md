@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 386 (+24 rows)
+
+- oMLX corpus sweep: 24 records mined (scan368, 60 fetched, 21 new ids in listing, 20 new candidates = mined + deduped). 1 new model: dsv4-0731 (author abbreviation for DeepSeek-V4-Flash-0731, mxfp4; kept distinct like dsv4-flash-vision-exp since the full name is not a norm-substring of the trace title). Models 541 -> 542. oMLX total 17876 -> 17900.
+- Dataset 22719 -> 22743. check_quotes green (23392 verified).
+
 ## 2026-10-12: oMLX batch 385 (+26 rows)
 
 - oMLX corpus sweep: 26 records mined (scan367, 60 fetched, 25 new ids in listing, 20 new candidates = mined + deduped). No new models (10 unique trace models all map to existing; MTPLX Optimized Speed builds -> base models, gemma-4-12B-it-oQ4e -> gemma-4-12b-it). Models 541. oMLX total 17850 -> 17876.
