@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 377 (+29 rows)
+
+- oMLX corpus sweep: 29 records mined (scan359, 60 fetched, 47 new ids in listing, 22 new candidates = mined + deduped). No new models (8 unique trace models all map to existing; Coder390 abbreviated build -> base Qwen3.8-27B-Coder390, Uncensored MLX 4Bit/8Bit -> Qwen3.8-27B-Uncensored). Models 541. oMLX total 17631 -> 17660.
+- Source rewrite: vLLM PR #60070 (persistent FlashInfer MLA counter buffer) rewritten upstream. Hardware label 4x NVIDIA B200 -> 4x B200; primary table baseline/patched 126.095/132.066 -> 130.8/132.5 tok/s (+1.35%). Re-mined both records.
+- Dataset 22474 -> 22503. check_quotes green (23152 verified). force_refresh.txt lists the rewritten URL for CI cache refresh.
+
 ## 2026-10-12: oMLX batch 376 (+26 rows)
 
 - oMLX corpus sweep: 26 records mined (scan358, 60 fetched, 21 new ids in listing, 22 new candidates = mined + deduped). No new models (10 unique trace models all IN-MAP). Models 541. oMLX total 17605 -> 17631.
