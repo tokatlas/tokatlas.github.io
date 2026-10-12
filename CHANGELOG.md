@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 371 (+24 rows)
+
+- oMLX corpus sweep: 24 records mined (scan353, 60 fetched, 44 new ids in listing, 22 new candidates = mined + deduped). 1 new model: DeepSeek-R1-Distill-Qwen-7B. Models 540 -> 541. oMLX total 17466 -> 17490.
+- Dataset 22310 -> 22334. check_quotes green (22983 verified).
+
 ## 2026-10-12: oMLX batch 370 (+24 rows)
 
 - oMLX corpus sweep: 24 records mined (scan352, 60 fetched, 79 new ids in listing, 22 new candidates = mined + deduped). No new models (5 unique trace models all map to existing; GLM-4.5-Air 4bit, GLM-5.3-Flash oQ3.5e MTP). Models 540. oMLX total 17442 -> 17466.
