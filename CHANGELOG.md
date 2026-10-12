@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 340 (+64 rows)
+
+- oMLX corpus sweep: 64 records mined (scan322, 60 fetched, 48 new candidates = 23 mined + 25 deduped; scan had transient DNS hiccups). No new models: 17 unique trace models all map to existing canonicals; only ThinkingCap-Qwen3.8-27B was NOT-IN-MAP (person/build prefix of existing Qwen3.8-27B). Models 532. oMLX total 16483 -> 16547.
+- Dataset 21327 -> 21391. check_quotes green (22040 verified).
+
 ## 2026-10-11: oMLX batch 339 (+76 rows)
 
 - oMLX corpus sweep: 76 records mined (scan321, 60 fetched, 31 unmined candidates, 29 404). 2 new models: Qwen3.6-35B-MoE, pplx-computer-qwen-3-6-35b-a3b. Also Ling-3.0-tiny-oQ8e-bf16, Qwen3.8-27B-heretic-ara-oQ4e-fp16-mtp (existing models). Models 530 -> 532. oMLX total 16407 -> 16483.
