@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 355 (+27 rows)
+
+- oMLX corpus sweep: 27 records mined (scan337, 60 fetched, 9 new ids in listing, 22 new candidates = mined + deduped). 1 new model: gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-uncensored-heretic (distinct community build). Models 535 -> 536. oMLX total 17029 -> 17056.
+- Dataset 21873 -> 21900. check_quotes green (22549 verified).
+
 ## 2026-10-12: oMLX batch 354 (+25 rows)
 
 - oMLX corpus sweep: 25 records mined (scan336, 60 fetched, 33 new ids in listing, 22 new candidates = mined + deduped). No new models (7 unique trace models all map to existing; AREX-Turbo 8bit). Models 535. oMLX total 17004 -> 17029.
