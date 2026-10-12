@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 376 (+26 rows)
+
+- oMLX corpus sweep: 26 records mined (scan358, 60 fetched, 21 new ids in listing, 22 new candidates = mined + deduped). No new models (10 unique trace models all IN-MAP). Models 541. oMLX total 17605 -> 17631.
+- Dataset 22448 -> 22474. check_quotes green (23123 verified).
+
 ## 2026-10-12: oMLX batch 375 (+25 rows)
 
 - oMLX corpus sweep: 25 records mined (scan357, 60 fetched, 24 new ids in listing, 22 new candidates = mined + deduped). No new models (9 unique trace models all map to existing; TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU oQ2e). Models 541. oMLX total 17580 -> 17605.
