@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 363 (+26 rows)
+
+- oMLX corpus sweep: 26 records mined (scan345, 60 fetched, 62 new ids in listing, 22 new candidates = mined + deduped). No new models (6 unique trace models all IN-MAP). Models 538. oMLX total 17247 -> 17273.
+- Dataset 22091 -> 22117. check_quotes green (22766 verified).
+
 ## 2026-10-12: oMLX batch 362 (+31 rows)
 
 - oMLX corpus sweep: 31 records mined (scan344, 60 fetched, 39 new ids in listing, 22 new candidates = mined + deduped). 1 new model: Spark-X2.5-4B (generic; existing is Spark-X2.5-4B-Abliterated-Uncensored). Models 537 -> 538. oMLX total 17216 -> 17247.
