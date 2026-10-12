@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 372 (+24 rows net)
+
+- oMLX corpus sweep: 25 records mined (scan354, 60 fetched, 46 new ids in listing, 22 new candidates = mined + deduped). No new models (4 unique trace models all map to existing; DeepSeek-Coder-V2-Lite-Instruct oQ4e). Models 541. oMLX total 17490 -> 17515.
+- Source rewrite: vLLM PR #60068 (confidence stop) description rewritten upstream. Old 5-arm table (stock / fixed 6 / stop) replaced by a 4-arm table (fixed 3 vs confidence stop, c=1 and c=4). Re-mined 5 stale records into 4 new (fixed3-c1 49.1, stop-c1 50.5, fixed3-c4 33.0, stop-c4 32.6 tok/s); net -1 record. ab_note rewritten to match.
+- Dataset 22334 -> 22358. check_quotes green (23007 verified). force_refresh.txt lists the rewritten URL for CI cache refresh.
+
 ## 2026-10-12: oMLX batch 371 (+24 rows)
 
 - oMLX corpus sweep: 24 records mined (scan353, 60 fetched, 44 new ids in listing, 22 new candidates = mined + deduped). 1 new model: DeepSeek-R1-Distill-Qwen-7B. Models 540 -> 541. oMLX total 17466 -> 17490.
