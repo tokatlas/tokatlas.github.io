@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 367 (+27 rows)
+
+- oMLX corpus sweep: 27 records mined (scan349, 60 fetched, 43 new ids in listing, 22 new candidates = mined + deduped). No new models (2 unique trace models all IN-MAP). Models 540. oMLX total 17357 -> 17384.
+- Dataset 22201 -> 22228. check_quotes green (22877 verified).
+
 ## 2026-10-12: oMLX batch 366 (+30 rows)
 
 - oMLX corpus sweep: 30 records mined (scan348, 60 fetched, 70 new ids in listing, 22 new candidates = mined + deduped). No new models (7 unique trace models all map to existing; AutomatosX AX-Tiel-Coder-35B-A3B MXFP4 MTP -> existing Tiel-Coder-35B-A3B). Models 540. oMLX total 17327 -> 17357.
