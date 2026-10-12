@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 362 (+31 rows)
+
+- oMLX corpus sweep: 31 records mined (scan344, 60 fetched, 39 new ids in listing, 22 new candidates = mined + deduped). 1 new model: Spark-X2.5-4B (generic; existing is Spark-X2.5-4B-Abliterated-Uncensored). Models 537 -> 538. oMLX total 17216 -> 17247.
+- Dataset 22060 -> 22091. check_quotes green (22740 verified).
+
 ## 2026-10-12: oMLX batch 361 (+26 rows)
 
 - oMLX corpus sweep: 26 records mined (scan343, 60 fetched, 79 new ids in listing, 22 new candidates = mined + deduped). No new models (10 unique trace models all map to existing; DeepSeek-V4.1-Flash UNCENSORED oQ4 MTP, Qwen3 4B MLX 8bit, Qwen3.8-Flash-Next oQ4e MTP build 20261011). Models 537. oMLX total 17190 -> 17216.
