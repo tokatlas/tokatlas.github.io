@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-12: source rewrite (vLLM PR #59082)
+
+- vLLM PR #59082 description was edited upstream: opening line changed from "Extend AMX-BF16 CPU attention's grouped-query (GQA) scheduling to eligible" to "Extend CPU attention's ...". Re-mined the 6 affected records (vllm-59082-amx-*): first quote fragment replaced with the verbatim title fragment "Improve long-context MTP attention scheduling on AMX" (still contains the AMX hardware token). Table values unchanged. Dataset count unchanged (22798).
+
 ## 2026-10-12: oMLX batch 388 (+28 rows)
 
 - oMLX corpus sweep: 28 records mined (scan370, 60 fetched, 47 new ids in listing, 20 new candidates = mined + deduped). No new models (7 unique trace models all map to existing; Qwen3.5-0.8B-bf16 -> Qwen3.5-0.8B). Models 542. oMLX total 17927 -> 17955.
