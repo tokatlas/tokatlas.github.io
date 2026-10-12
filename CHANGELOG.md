@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 378 (+28 rows)
+
+- oMLX corpus sweep: 28 records mined (scan360, 60 fetched, 128 new ids in listing, 22 new candidates = mined + deduped). No new models (9 unique trace models all map to existing; Flash-Next-Uncensored mixed-quant MoE 384e oQ4e + 128e oQ2 -> Qwen3.8-Flash-Next-Uncensored). Models 541. oMLX total 17660 -> 17688.
+- Dataset 22503 -> 22531. check_quotes green (23180 verified).
+
 ## 2026-10-12: oMLX batch 377 (+29 rows)
 
 - oMLX corpus sweep: 29 records mined (scan359, 60 fetched, 47 new ids in listing, 22 new candidates = mined + deduped). No new models (8 unique trace models all map to existing; Coder390 abbreviated build -> base Qwen3.8-27B-Coder390, Uncensored MLX 4Bit/8Bit -> Qwen3.8-27B-Uncensored). Models 541. oMLX total 17631 -> 17660.
