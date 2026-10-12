@@ -27654,9 +27654,9 @@
    "provenance": "sourced",
    "source_url": "https://github.com/vllm-project/vllm/pull/60110",
    "source_name": "vLLM PR #60110",
-   "retrieved": "2026-10-05",
-   "quote": "Kimi-K3; 8x MI355X; Output token throughput (tok/s): 685.62; Mean TTFT (ms): 340.08; Maximum request concurrency: 14",
-   "notes": "InferenceX agentic c14, before folding q_b_proj + W_UK into one GEMM; config=before"
+   "retrieved": "2026-10-12",
+   "quote": "Kimi-K3; 8x MI355X; Output throughput (tok/s) | 685.62 | 693.13 | +1.1%; Mean TTFT (ms) | 340.08 | 336.53 | -1.0%; c14 point",
+   "notes": "InferenceX agentic c14, before folding q_b_proj + W_UK into one GEMM; after arm 693.13 tok/s (+1.1%); config=before"
   },
   {
    "id": "vllm-60110-mi355x-kimik3-after",
@@ -27668,18 +27668,18 @@
    "backend": "vLLM",
    "ctx": null,
    "batch": 14,
-   "tps": 702.87,
+   "tps": 693.13,
    "pp_tps": null,
    "tg_tokens": null,
-   "ttft_s": 344.5,
+   "ttft_s": 336.53,
    "power_w": null,
    "date": "2026-10-05",
    "provenance": "sourced",
    "source_url": "https://github.com/vllm-project/vllm/pull/60110",
    "source_name": "vLLM PR #60110",
-   "retrieved": "2026-10-05",
-   "quote": "Kimi-K3; 8x MI355X; Output token throughput (tok/s): 702.87; Mean TTFT (ms): 344.50; Maximum request concurrency: 14",
-   "notes": "InferenceX agentic c14, after the folded GEMM; config=after"
+   "retrieved": "2026-10-12",
+   "quote": "Kimi-K3; 8x MI355X; Output throughput (tok/s) | 685.62 | 693.13 | +1.1%; Mean TTFT (ms) | 340.08 | 336.53 | -1.0%; c14 point",
+   "notes": "InferenceX agentic c14, after the folded GEMM; before arm 685.62 tok/s; config=after"
   },
   {
    "id": "hf-sakura-swift3-iq3xxs-mtp2-b2048",

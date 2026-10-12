@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 391 (+28 rows) + source rewrite (vLLM PR #60110)
+
+- oMLX corpus sweep: 28 records mined (scan373, 60 fetched, 38 new ids in listing, 20 new candidates = mined + deduped). No new models (9 unique trace models all map to existing; ThinkingCap-Qwen3.8-27B-8bit -> ThinkingCap-Qwen3.8-27B). Models 542. oMLX total 18006 -> 18034.
+- Source rewrite (vLLM PR #60110, Kimi-K3 on 8x MI355X): page rewritten upstream from colon format to a markdown table; after-values re-run (throughput 702.87 -> 693.13, Mean TTFT 344.50 -> 336.53 ms). Re-mined both records: quote -> verbatim table-row fragments "Output throughput (tok/s) | 685.62 | 693.13 | +1.1%" / "Mean TTFT (ms) | 340.08 | 336.53 | -1.0%" / "c14 point". force_refresh.txt added so CI re-fetches.
+- Dataset 22849 -> 22877. check_quotes green (23526 verified).
+
 ## 2026-10-12: oMLX batch 390 (+24 rows)
 
 - oMLX corpus sweep: 24 records mined (scan372, 60 fetched, 74 new ids in listing, 20 new candidates = mined + deduped). No new models (7 unique trace models all IN-MAP). Models 542. oMLX total 17982 -> 18006.
