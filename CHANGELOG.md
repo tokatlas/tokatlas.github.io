@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 341 (+33 rows)
+
+- oMLX corpus sweep: 33 records mined (scan323, 60 fetched, listing found 312 new ids but only 30 candidates fetched this run; 30 new candidates = mined + deduped). No new models: 15 unique trace models all map to existing canonicals. 3 new person-prefix MAP entries (IsValorum--Qwen3.8-35B-A3B-Distill, LiquidAI--LFM2.5-8B-A1B, mchen04--Ornith-1.5-35B-A3B-REAP192). Models 532. oMLX total 16547 -> 16580.
+- Dataset 21391 -> 21424. check_quotes green (22073 verified).
+
 ## 2026-10-12: oMLX batch 340 (+64 rows)
 
 - oMLX corpus sweep: 64 records mined (scan322, 60 fetched, 48 new candidates = 23 mined + 25 deduped; scan had transient DNS hiccups). No new models: 17 unique trace models all map to existing canonicals; only ThinkingCap-Qwen3.8-27B was NOT-IN-MAP (person/build prefix of existing Qwen3.8-27B). Models 532. oMLX total 16483 -> 16547.
