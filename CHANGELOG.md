@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 366 (+30 rows)
+
+- oMLX corpus sweep: 30 records mined (scan348, 60 fetched, 70 new ids in listing, 22 new candidates = mined + deduped). No new models (7 unique trace models all map to existing; AutomatosX AX-Tiel-Coder-35B-A3B MXFP4 MTP -> existing Tiel-Coder-35B-A3B). Models 540. oMLX total 17327 -> 17357.
+- Dataset 22171 -> 22201. check_quotes green (22850 verified).
+
 ## 2026-10-12: oMLX batch 365 (+29 rows)
 
 - oMLX corpus sweep: 29 records mined (scan347, 60 fetched, 58 new ids in listing, 22 new candidates = mined + deduped). 1 new model: FuseO1-DeepSeekR1-Qwen2.5-Coder-7B-Preview. Models 539 -> 540. oMLX total 17298 -> 17327.
