@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 343 (+35 rows)
+
+- oMLX corpus sweep: 35 records mined (scan325, 60 fetched, 43 new ids in listing, 30 new candidates = mined + deduped). No new models (12 unique trace models all map to existing; Qwen3.6-35B-35.98G-A3B-oQ8-mtp mapped to existing Qwen3.6-35B since the size string breaks the A3B substring; prism-ml--Bonsai-27B-mlx-1bit person build). Models 534. oMLX total 16615 -> 16650.
+- Source rewrite: llama.cpp #29949 "Remote results (2x RTX 3090)" table updated (EN plain 50.4 -> 47.6, EN + MTP-Q8 61.1 -> 59.6); re-mined 2 records, added URL to force_refresh.txt.
+- Dataset 21459 -> 21494. check_quotes green (22143 verified).
+
 ## 2026-10-12: oMLX batch 342 (+35 rows)
 
 - oMLX corpus sweep: 35 records mined (scan324, 60 fetched, 61 new ids in listing, 30 new candidates = mined + deduped). 2 new models: qwen38-obliteratus, Youtu-Parsing-Omni. Also Qwen3.8-27B-heretic-ara-oQ4e-mtp (existing variant). Models 532 -> 534. oMLX total 16580 -> 16615.
