@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 405 (+33 rows, +1 model)
+
+- oMLX corpus sweep: 33 records mined (scan387, 60 fetched, 14 new ids in listing, 20 new candidates = mined + deduped). 1 new model (Qwythos-9B-Claude-Mythos-5-1M-BF16-MLX-MTP-Visual, Claude-Mythos variant kept distinct). Qwen3.8-35B-A3B-Distill-MLX-APEX-MiniPlus-Abliterated -> existing base. Models 542 -> 543. oMLX total 18394 -> 18427.
+- Dataset 23237 -> 23270. check_quotes green (23919 verified).
+
 ## 2026-10-12: oMLX batch 404 (+29 rows)
 
 - oMLX corpus sweep: 29 records mined (scan386, 60 fetched, 6 new ids in listing, 20 new candidates = mined + deduped). No new models (5 unique trace models all IN-MAP). Models 542. oMLX total 18365 -> 18394.
