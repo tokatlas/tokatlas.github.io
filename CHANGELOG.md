@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 421 (+18 rows)
+
+- oMLX corpus sweep: 18 records mined (scan403, 60 fetched, 37 new ids in listing, 13 new candidates = mined + deduped). No new models (4 unique trace models all IN-MAP, incl. 2 from b420). Models 545. oMLX total 18720 -> 18738.
+- Dataset 23561 -> 23579. check_quotes green (24228 verified).
+
 ## 2026-10-12: oMLX batch 420 (+21 rows; glm53flash HF page source rewrite)
 
 - oMLX corpus sweep: 21 records mined (scan402, 60 fetched, 19 new ids in listing, 13 new candidates = mined + deduped). No new models (8 unique trace models; 6 IN-MAP + 2 new MAP entries -> existing models Huihui-Qwen3.6-35B-A3B-abliterated and Qwen3.8-27B-heretic-ara). Models 545. oMLX total 18699 -> 18720.
