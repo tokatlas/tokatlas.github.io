@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 437 (+58 rows)
+
+- oMLX corpus sweep: 58 records mined (scan421, 60 fetched, 41 new ids in listing, 53 new candidates; 7 more stale 404 ids marked dead and skipped). No new models (11 unique trace models all IN-MAP). Models 548. oMLX total 19139 -> 19197.
+- Dataset 23980 -> 24038 (crossed 24k records). check_quotes green (24687 verified).
+
 ## 2026-10-13: oMLX batch 436 (+69 rows)
 
 - oMLX corpus sweep: 69 records mined (scan420, 60 fetched, 56 new ids in listing, 55 new candidates; 5 more stale 404 ids marked dead and skipped). No new models (12 unique trace models; 11 IN-MAP + 1 new MAP entry -> existing gemma-4-26B-A4B-it, oQ4e fp16 build). Models 548. oMLX total 19070 -> 19139.
