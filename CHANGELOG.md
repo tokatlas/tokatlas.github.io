@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 406 (+24 rows) + llama.cpp #30035 source rewrite
+
+- oMLX corpus sweep: 24 records mined (scan388, 60 fetched, 15 new ids in listing, 20 new candidates = mined + deduped). No new models (7 unique trace models all IN-MAP). Models 543. oMLX total 18427 -> 18451.
+- Source change: llama.cpp PR #30035 page re-run (master baseline moved 7049ff0cb -> c479922, all 7 rows re-benchmarked). 14 records (7 A/B pairs) re-mined to new tg64 values; notes commit updated to c479922. force_refresh.txt used.
+- Dataset 23270 -> 23294. check_quotes green (23943 verified).
+
 ## 2026-10-12: oMLX batch 405 (+33 rows, +1 model)
 
 - oMLX corpus sweep: 33 records mined (scan387, 60 fetched, 14 new ids in listing, 20 new candidates = mined + deduped). 1 new model (Qwythos-9B-Claude-Mythos-5-1M-BF16-MLX-MTP-Visual, Claude-Mythos variant kept distinct). Qwen3.8-35B-A3B-Distill-MLX-APEX-MiniPlus-Abliterated -> existing base. Models 542 -> 543. oMLX total 18394 -> 18427.
