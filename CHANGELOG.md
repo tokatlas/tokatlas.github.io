@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 439 (+65 rows)
+
+- oMLX corpus sweep: 65 records mined (scan423, 60 fetched, 115 new ids in listing, 60 new candidates; 0 stale 404s). No new models (14 unique trace models; 13 IN-MAP + 1 new MAP entry -> existing Occamy-1.0, MLX 6bit build). Models 548. oMLX total 19269 -> 19334.
+- Dataset 24108 -> 24173. check_quotes green (24822 verified).
+
 ## 2026-10-13: oMLX batch 438 (+72 rows)
 
 - oMLX corpus sweep: 72 records mined (scan422, 60 fetched, 171 new ids in listing, 60 new candidates; 0 stale 404s). No new models (14 unique trace models; 13 IN-MAP + 1 new MAP entry -> existing Qwen3.6-27B, mlx-community OptiQ 4bit build). Models 548. oMLX total 19197 -> 19269.
