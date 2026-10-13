@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 448 (+67 rows, +2 models)
+
+- oMLX corpus sweep: 67 records mined (scan432, 60 fetched, 105 new ids in listing, 60 new candidates; 0 stale 404s). +2 new models: Huihui-Ornith-1.5-35B-A3B-abliterated-VL (VL variant kept distinct per Ornith VL/Vision precedent), OmniCoder-9B (new family). Qwen3.6-35B-A3B-UD-Q4_K_XL -> existing Qwen3.6-35B-A3B. Models 550 -> 552. oMLX total 19883 -> 19950.
+- Dataset 24722 -> 24789. check_quotes green (25438 verified).
+
 ## 2026-10-13: oMLX batch 447 (+65 rows)
 
 - oMLX corpus sweep: 65 records mined (scan431, 60 fetched, 62 new ids in listing, 60 new candidates; 0 stale 404s). No new models (17 unique trace models; 14 IN-MAP + 3 new MAP entries -> existing: Laguna XS 2.1, Ornith-1.5-35B-A3B [oQ5-MTP], Qwen3.6-35B-A3B [oQ5-MTP]). Models 550. oMLX total 19818 -> 19883.
