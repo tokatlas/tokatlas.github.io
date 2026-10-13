@@ -55,6 +55,10 @@ def _is_reddit(url):
     return "reddit.com" in url
 
 
+def _is_omlx(url):
+    return "omlx.ai" in url
+
+
 # Re-fetch cached responses older than this (seconds) to catch source-page
 # drift (e.g. a PR description edited in place). 7 days balances freshness
 # against CI runtime: the 888 unique URLs take ~20 min to fetch cold.
@@ -77,13 +81,14 @@ def _force_refresh():
 FORCE_REFRESH = _force_refresh()
 
 
-def _download(url, reddit):
+def _download(url, reddit, omlx=False):
     # Reddit blocks by IP with a persistent 403 that no backoff clears (5
     # attempts over 390 s per URL made each run take 3+ hours for 29 URLs),
     # so a Reddit URL gets one attempt. Other hosts keep the retry/backoff
-    # for transient Cloudflare 403s and 5xx.
+    # for transient Cloudflare 403s and 5xx. oMLX rate-limits bursts of fresh
+    # trace fetches with 429, so it gets a longer backoff.
     max_attempts = 1 if reddit else 3
-    backoffs = [10, 30]
+    backoffs = [30, 90] if omlx else [10, 30]
     for attempt in range(max_attempts):
         req = urllib.request.Request(url, headers={"User-Agent": UA})
         try:
@@ -105,8 +110,9 @@ def fetch(url):
                         or url in FORCE_REFRESH)
     if not cached or stale:
         reddit = _is_reddit(url)
+        omlx = _is_omlx(url)
         try:
-            body = _download(url, reddit)
+            body = _download(url, reddit, omlx)
         except Exception as e:  # noqa: BLE001
             if not cached:
                 raise
@@ -119,7 +125,7 @@ def fetch(url):
             with open(tmp, "wb") as f:
                 f.write(body)
             os.replace(tmp, path)
-            time.sleep(10.0 if reddit else 0.25)
+            time.sleep(10.0 if reddit else (2.0 if omlx else 0.25))
     with open(path, "rb") as f:
         return f.read().decode("utf-8", "replace")
 
