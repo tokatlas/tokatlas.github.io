@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 445 (+63 rows, +1 model)
+
+- oMLX corpus sweep: 63 records mined (scan429, 60 fetched, 85 new ids in listing, 60 new candidates; 0 stale 404s). +1 new model: glm53 (abbreviated GLM-5.3 trace title; base name not a norm-substring of "glm53", forced distinct). GLM-4.7-Flash-MLX-6bit -> existing GLM-4.7-Flash. Models 549 -> 550. oMLX total 19691 -> 19754.
+- Dataset 24530 -> 24593. check_quotes green (25242 verified).
+
 ## 2026-10-13: oMLX batch 444 (+66 rows)
 
 - oMLX corpus sweep: 66 records mined (scan428, 60 fetched, 80 new ids in listing, 60 new candidates; 0 stale 404s). No new models (23 unique trace models; 20 IN-MAP + 3 new MAP entries -> existing: llama-3-2-1b-instruct [Llama-3.2-1B-Instruct trace, lowercase existing form], Qwen3.8-27B [nvfp4], gemma-4-26B-A4B-it-qat [q4_0 mlx-aligned]). Models 549. oMLX total 19625 -> 19691.
