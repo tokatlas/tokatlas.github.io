@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 438 (+72 rows)
+
+- oMLX corpus sweep: 72 records mined (scan422, 60 fetched, 171 new ids in listing, 60 new candidates; 0 stale 404s). No new models (14 unique trace models; 13 IN-MAP + 1 new MAP entry -> existing Qwen3.6-27B, mlx-community OptiQ 4bit build). Models 548. oMLX total 19197 -> 19269.
+- Dataset 24036 -> 24108. check_quotes green (24757 verified).
+
 ## 2026-10-13: source rewrites (vLLM #59973, RolanDorisTech Qwen3.8-9B-Distill)
 
 - vLLM PR #59973 rewritten: the c=1/c=4 benchmark table was replaced with prose. Re-mined the 2 c=1 arms (stock BF16 39.4 -> NVFP4 46.5 tok/s, +18%, AL unchanged -0.4%); deleted the 2 c=4 arms (new page reports c=4 only as +9% to +11% relative, no absolute tok/s).
