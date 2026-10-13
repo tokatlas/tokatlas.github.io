@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 402 (+32 rows) + vLLM #60153 source rewrite
+
+- oMLX corpus sweep: 32 records mined (scan384, 60 fetched, 43 new ids in listing, 20 new candidates = mined + deduped). No new models (6 unique trace models; 5 already in MAP, 1 added as qwen3.8-flash-next-oQ4e -> existing Qwen3.8-Flash-Next). Models 542. oMLX total 18269 -> 18331.
+- Source change: vllm-60153 PR page rewritten. Old 8k/262k off/on rows replaced by a Concurrency-2 table with columns (Output tok/s, Mean TTFT, Mean TPOT, Median TPOT) for shapes 262144->1024 and 8192->1024. All 4 values re-run. 4 records re-mined: off-262k 32.84/37310.48, on-262k 33.58/36063.46, off-8k 155.45/1101.50, on-8k 155.50/1070.71. force_refresh.txt used.
+- Dataset 23142 -> 23174. check_quotes green (23823 verified).
+
 ## 2026-10-12: oMLX batch 401 (+30 rows)
 
 - oMLX corpus sweep: 30 records mined (scan383, 60 fetched, 58 new ids in listing, 20 new candidates = mined + deduped). No new models (6 unique trace models all IN-MAP). Models 542. oMLX total 18269 -> 18299.
