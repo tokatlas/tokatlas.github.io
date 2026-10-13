@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 404 (+29 rows)
+
+- oMLX corpus sweep: 29 records mined (scan386, 60 fetched, 6 new ids in listing, 20 new candidates = mined + deduped). No new models (5 unique trace models all IN-MAP). Models 542. oMLX total 18365 -> 18394.
+- Dataset 23208 -> 23237. check_quotes green (23886 verified).
+
 ## 2026-10-12: oMLX batch 403 (+34 rows)
 
 - oMLX corpus sweep: 34 records mined (scan385, 60 fetched, 62 new ids in listing, 20 new candidates = mined + deduped). No new models (6 unique trace models all IN-MAP). Models 542. oMLX total 18331 -> 18365.
