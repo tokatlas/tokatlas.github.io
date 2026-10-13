@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 441 (+72 rows, +1 model)
+
+- oMLX corpus sweep: 72 records mined (scan425, 60 fetched, 57 new ids in listing, 60 new candidates; 0 stale 404s). +1 new model: gemma-4-E4B-it-ultra-uncensored-heretic (distinct uncensored-heretic variant, per gemma-4-26B-A4B-it-ultra-uncensored-heretic precedent; mixed 4+6bit). Models 548 -> 549. oMLX total 19413 -> 19485.
+- Dataset 24252 -> 24324. check_quotes green (24973 verified).
+
 ## 2026-10-13: oMLX batch 440 (+79 rows)
 
 - oMLX corpus sweep: 79 records mined (scan424, 60 fetched, 72 new ids in listing, 60 new candidates; 0 stale 404s). No new models (12 unique trace models all IN-MAP). Models 548. oMLX total 19334 -> 19413.
