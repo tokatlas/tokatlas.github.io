@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 434 (+68 rows)
+
+- oMLX corpus sweep: 68 records mined (scan418, 60 fetched, 66 new ids in listing, 60 new candidates). This batch cleared a backlog: two prior scans had been blocked by a run of stale trace ids (deleted traces that return HTTP 404) sitting at the head of the fetch queue; those ids are now recorded as dead and skipped, so the scan reached the valid traces behind them. 2 new models: Coder390 (abbreviated Coder390 trace title, kept distinct since the full base name is not in the published title) and Schattenblume-31B (new family). Models 546 -> 548. oMLX total 18932 -> 19000.
+- Dataset 23773 -> 23841. check_quotes green (24490 verified).
+
 ## 2026-10-12: oMLX batch 433 (+7 rows)
 
 - oMLX corpus sweep: 7 records mined (scan415, 60 fetched, 30 new ids in listing, 2 new candidates = mined + deduped). No new models (1 unique trace model IN-MAP). Models 546. oMLX total 18925 -> 18932.
