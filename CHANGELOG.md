@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 429 (+19 rows, +1 model)
+
+- oMLX corpus sweep: 19 records mined (scan411, 60 fetched, 29 new ids in listing, 10 new candidates = mined + deduped). 1 new model (Qwen3.8-27B-TWIN-TURBO-f-c-f-709-l-unc, abbreviated TWIN-TURBO-Fable-Cold-Fusion-709-L build with aura6; kept distinct since the abbreviated name is not a norm-substring of the Uncensored/uncher variants). Models 545 -> 546. oMLX total 18869 -> 18888.
+- Dataset 23710 -> 23729. check_quotes green (24378 verified).
+
 ## 2026-10-12: oMLX batch 428 (+15 rows)
 
 - oMLX corpus sweep: 15 records mined (scan410, 60 fetched, 44 new ids in listing, 10 new candidates = mined + deduped). No new models (5 unique trace models all IN-MAP). Models 545. oMLX total 18854 -> 18869.
