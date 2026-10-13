@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 432 (+7 rows) + vLLM #60226 source rewrite
+
+- oMLX corpus sweep: 7 records mined (scan414, 60 fetched, 29 new ids in listing, 4 new candidates = mined + deduped). No new models (1 unique trace model IN-MAP). Models 546. oMLX total 18918 -> 18925.
+- vLLM #60226 source rewrite: the stock-arm table row was reformatted to a markdown table and the numbers changed (Qwen3.6-35B-A3B NVFP4 stock: c1 117.8 -> 118.1 tok/s, c4 73.4 -> 72.9 tok/s; AL 2.919 -> 2.935, 3.126 -> 3.060, GSM8K 94.5 -> 97.0). Re-mined 2 records (c1, c4) with new values and a new verbatim quote.
+- Dataset 23759 -> 23766. check_quotes green (24415 verified). force_refresh set for the vLLM #60226 URL.
+
 ## 2026-10-12: oMLX batch 431 (+16 rows)
 
 - oMLX corpus sweep: 16 records mined (scan413, 60 fetched, 60 new ids in listing, 6 new candidates = mined + deduped). No new models (3 unique trace models all IN-MAP). Models 546. oMLX total 18902 -> 18918.
