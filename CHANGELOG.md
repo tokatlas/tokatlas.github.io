@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-12: oMLX batch 420 (+21 rows; glm53flash HF page source rewrite)
+
+- oMLX corpus sweep: 21 records mined (scan402, 60 fetched, 19 new ids in listing, 13 new candidates = mined + deduped). No new models (8 unique trace models; 6 IN-MAP + 2 new MAP entries -> existing models Huihui-Qwen3.6-35B-A3B-abliterated and Qwen3.8-27B-heretic-ara). Models 545. oMLX total 18699 -> 18720.
+- Source rewrite: glm53flash HF model card (hf7) was repurposed to a storage/quantization contract page; the decode-benchmark section (170 tok/s c1, 490-540 tok/s c8 on 2x RTX PRO 6000 Blackwell Max-Q) was removed. Deleted 2 hf7 records; hardware 432 -> 431. Dataset net 23542 -> 23561 (+21 mined, -2 removed).
+- check_quotes green (24210 verified).
+
 ## 2026-10-12: oMLX batch 419 (+18 rows)
 
 - oMLX corpus sweep: 18 records mined (scan401, 60 fetched, 44 new ids in listing, 13 new candidates = mined + deduped). No new models (2 unique trace models all IN-MAP). Models 545. oMLX total 18681 -> 18699.
