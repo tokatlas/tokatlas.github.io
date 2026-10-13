@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 444 (+66 rows)
+
+- oMLX corpus sweep: 66 records mined (scan428, 60 fetched, 80 new ids in listing, 60 new candidates; 0 stale 404s). No new models (23 unique trace models; 20 IN-MAP + 3 new MAP entries -> existing: llama-3-2-1b-instruct [Llama-3.2-1B-Instruct trace, lowercase existing form], Qwen3.8-27B [nvfp4], gemma-4-26B-A4B-it-qat [q4_0 mlx-aligned]). Models 549. oMLX total 19625 -> 19691.
+- Dataset 24464 -> 24530. check_quotes green (25179 verified).
+
 ## 2026-10-13: oMLX batch 443 (+69 rows)
 
 - oMLX corpus sweep: 69 records mined (scan427, 60 fetched, 58 new ids in listing, 60 new candidates; 0 stale 404s). No new models (17 unique trace models; 16 IN-MAP + 1 new MAP entry -> existing Qwen3.8-35B-A3B-Distill, MiniPlus build). Models 549. oMLX total 19556 -> 19625.
