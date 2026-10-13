@@ -2893,22 +2893,19 @@ between builds of the same backend, see the
                     "64k and 128k both arms.")
         if (venue, issue) == ("vLLM", "59973"):
             return ("Opt-in quantized draft lm_head for MTP spec-decode "
-                    "(Qwen3.8-Flash-Next NVFP4, GB10, MTP k=3, "
-                    "SPEED-Bench 11 categories x 32 prompts at c=1, 6 "
-                    "categories at c=4, greedy, 256 output "
-                    "tokens, full vocabulary). At c=4, the NVFP4 draft "
-                    f"lm_head lifts decode from BF16 "
-                    f"{val(rows,'vllm-59973-gb10-bf16-c4','tps')} -> "
-                    f"{val(rows,'vllm-59973-gb10-nvfp4-c4','tps')} tok/s "
-                    f"({pct(rows,'vllm-59973-gb10-bf16-c4','vllm-59973-gb10-nvfp4-c4','tps'):+.1f}%). "
-                    f"At c=1: stock "
+                    "(Qwen3.8-Flash-Next NVFP4 + MTP k=3, one DGX Spark / "
+                    "GB10, measured on three nodes with SM121 skinny-GEMM "
+                    "plans, SPEED-Bench). At c=1 the NVFP4 draft lm_head "
+                    f"lifts decode from BF16 "
                     f"{val(rows,'vllm-59973-gb10-bf16-c1','tps')} -> "
                     f"{val(rows,'vllm-59973-gb10-nvfp4-c1','tps')} tok/s "
                     f"({pct(rows,'vllm-59973-gb10-bf16-c1','vllm-59973-gb10-nvfp4-c1','tps'):+.1f}%), "
-                    "ABBA same-node run, AL within run-to-run noise. The "
-                    "FP8 arm (+21.0% relative) is measured against a "
-                    "different stock node, so no absolute FP8 value is "
-                    "recorded.")
+                    "average acceptance length unchanged (-0.4%). Across "
+                    "three nodes decode is +17.5% to +18.4% at c=1 and +9% "
+                    "to +11% at c=4 (NVFP4); the FP8 arm is +10.8% / +6.5% "
+                    "at c=1 / c=4 on one node. Only the c=1 absolute values "
+                    "are recorded; c=4 and FP8 are reported as relative "
+                    "gains.")
         if (venue, issue) == ("vLLM", "60110"):
             return ("Kimi-K3 MLA decode on a 8x MI355X node (vLLM ROCm, "
                     "AITER, InferenceX agentic c14, 14 concurrent users). "

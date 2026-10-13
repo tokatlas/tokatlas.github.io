@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-13: source rewrites (vLLM #59973, RolanDorisTech Qwen3.8-9B-Distill)
+
+- vLLM PR #59973 rewritten: the c=1/c=4 benchmark table was replaced with prose. Re-mined the 2 c=1 arms (stock BF16 39.4 -> NVFP4 46.5 tok/s, +18%, AL unchanged -0.4%); deleted the 2 c=4 arms (new page reports c=4 only as +9% to +11% relative, no absolute tok/s).
+- HF RolanDorisTech/Qwen3.8-9B-Distill-MLX-8bit rewritten: benchmark reformatted into a new Variant/Size/Prompt/Gen/Peak table. Re-mined the 4 9B arms (gen tok/s unchanged 43.0 / 37.1 / 33.3 / 28.7) with the new quote form.
+- Dataset 24038 -> 24036. force_refresh.txt set for both URLs so CI refreshes its quote cache. check_quotes green (24685 verified).
+
 ## 2026-10-13: oMLX batch 437 (+58 rows)
 
 - oMLX corpus sweep: 58 records mined (scan421, 60 fetched, 41 new ids in listing, 53 new candidates; 7 more stale 404 ids marked dead and skipped). No new models (11 unique trace models all IN-MAP). Models 548. oMLX total 19139 -> 19197.
