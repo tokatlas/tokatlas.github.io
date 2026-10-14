@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-14: Ternary Bonsai 2 HF card rewrite (RTX 4070 depth table)
+
+- Upstream rewrote the CaryPalmer/Ternary-Bonsai-2-27B-262k-GGUF model card: the 2026-10-07 two-column depth table (decode / prefill) was replaced by a 2026-10-08 three-column table (decode new text / decode code / prefill, fresh prompt at each depth, 400-token greedy answers with default lookup+MTP drafting). Re-mined all 8 hf1-ternary4070 records to the new numbers (4k 102/1,173; 16k 83/1,137; 32k 78/1,031; 64k 69/867; 112k 61/698; 131k 30/649; 180k 17.9/547; 258k 8.6/436; decode new-text tok/s / cumulative prefill tok/s), dates 2026-10-07 -> 2026-10-08. Added the card URL to scripts/force_refresh.txt so CI replaces its cached copy. Record count unchanged.
+
+## 2026-10-14: vLLM ROCm pulse: #61482 + #61573 (+14 rows)
+
+- vLLM PR pulse triage of the open ROCm perf PRs. #61482 (DeepSeek-V4-Pro FP8, TP8 on MI355X gfx950): InferenceX AgentX closed-loop mono-decode A/B, mined 6 records, P50 tok/s/user at c1/c4/c8 x mono off/on (241/299, 218/247, 192/201; +24/+13/+5%); both arms run DSpark spec-decode with 6 drafts (synthetic acceptance 3.77), aggregate output and P90/ITL in notes; +1 new model DeepSeek-V4-Pro (the earlier #41603 GB200 rows are scope=cluster reference rows). #61573 (Qwen3.8-27B-Quark-AWQ-MXFP4, MI355X): FlyDSL dense mono decode opt-in, mined 8 records, aggregate output tok/s at c4/c8 x TP1/TP2 x non-mono/mono (430.1/576.4, 751.7/911.4, 579.6/655.8, 987.1/1080.7; 8k in / 1k out sglang.bench_serving; ITL/TPOT/TTFT medians in notes); the c16+ table is stock-graph replay with mono inactive, not mined. Parked: #61498 (delta-only percentages, no absolute numbers). TP8/TP2 rows carry the GPU count in notes per the vllm-58887/58944 precedent (the #61482 page writes 8x MI355X only as 8x, which the quote checks cannot match). Dataset 26207 -> 26221, models 578 -> 579. check_quotes green (26874 verified).
+
+## 2026-10-14: oMLX batch 467 (+65 rows)
+
+- oMLX corpus sweep: 65 records mined (scan451, 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Anubis-70B (4bit MLX, M1 Max 32c). 1 MAP -> existing: Qwen3.8-Flash-Next-oQ3.5e-fp16-mtp -> Qwen3.8-Flash-Next (oQ3.5e, fp16 MTP build). Models 577 -> 578. oMLX total 21143 -> 21208. known.txt = 15267.
+- Dataset 26142 -> 26207, 434 hardware, 578 models, 45 backends.
+
 ## 2026-10-14: vLLM #60413 source rewrite (Qwen3.8-27B, AMD Strix Halo)
 
 - Upstream edited the #60413 comment in place: the old "Flag on (this PR)" MTP table (12.45 / 22.45) was removed and replaced with a clean decode-kernel comparison table. Re-mined the 2 stale records into 3 clean arms (all MTP=3, single stream max-num-seqs 1, AMD Strix Halo gfx1151 RDNA 3.5, Qwen3.8-27B-Quark-AWQ-MXFP4, vllm bench serve random 128 in/256 out, decode tok/s): This PR W4A8 int8-dot GEMV 28.89, #46676 W4A16 scalar FMA 26.19, Emulation dequant+F.linear 4.94. Added #60413 to scripts/force_refresh.txt so CI replaces its cached copy of the edited page. github_issues.json 1963 -> 1964. Dataset 26141 -> 26142. check_quotes green (26795 verified).

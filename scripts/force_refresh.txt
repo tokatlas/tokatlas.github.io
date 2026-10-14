@@ -1,3 +1,4 @@
 # URLs re-fetched even when a fresh cached copy exists. Used right after an
 # upstream source rewrite so CI replaces its cached copy immediately instead of
 # waiting out CACHE_MAX_AGE. Remove entries once CI has saved the refreshed cache.
+https://huggingface.co/CaryPalmer/Ternary-Bonsai-2-27B-262k-GGUF
