@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 465 (+73 rows)
+
+- oMLX corpus sweep: 73 records mined (scan449, 41 new ids in listing (total 19348), 60 fetched, 60 new candidates, 0 stale 404s). +4 new models: Fara1.5-9B (OptiQ-4bit, M1 Max 32c), Rocinante-X-12B (8bit MLX, M1 Max 32c), Skyfall-31B (Mixed-4-8 MLX, M1 Max 32c), Skyfall-31B-v4.2-heretic (8bit MLX, M1 Max 32c; distinct heretic fine-tune, version kept in label so it is a substring of the trace title). 3 MAP -> existing: Artemis-31B-v1.1-mlx-8Bit -> Artemis-31B (8bit MLX), Artemis-31B-v1.1-oQ4e -> Artemis-31B (oQ4e), gemma-4-26B-A4B-it-qat-mxfp4 -> gemma-4-26B-A4B-it-qat (mxfp4). Models 571 -> 575. oMLX total 21002 -> 21075. known.txt = 15147.
+- Dataset 26000 -> 26073, 434 hardware, 575 models, 45 backends. check_quotes green (26726 verified).
+
 ## 2026-10-14: oMLX batch 464 (+68 rows)
 
 - oMLX corpus sweep: 68 records mined (scan448, 77 new ids in listing (total 19307), 60 fetched, 60 new candidates, 0 stale 404s). +5 new models: JOSIE-2-4B (quant unstated, M1 Max 32c), JOSIE-2-9B-OSS (quant unstated, M1 Max 32c), Llama-3.2-3B-Instruct-uncensored (6bit, M1 Max 32c; distinct uncensored fine-tune), MagenticBrain (8bit, M1 Max 32c), Nex-N2-mini-MLX-VLM-4bit-MTP (4bit, M1 Max 32c; mtp_enabled=true VLM spec-decode, full-title label kept separate). 2 MAP -> existing: Laguna-XS-2.1-MLX-8bit -> Laguna XS 2.1 (space form), Nex-N2.5-mini-MLX-oQ4 -> Nex-N2.5-mini (oQ4 MLX). Models 566 -> 571. oMLX total 20934 -> 21002. known.txt = 15087.
