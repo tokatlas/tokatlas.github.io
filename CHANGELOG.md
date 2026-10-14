@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 458 (+64 rows)
+
+- oMLX corpus sweep: 64 records mined (scan442, 39 new ids in listing (total 19070), 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Humanizer-12B (MLX 8bit build, M5 Max 40c; new family, no existing norm-substring). Models 558 -> 559. oMLX total 20536 -> 20600. known.txt = 14727.
+- Dataset 25534 -> 25598, 434 hardware, 559 models, 45 backends. check_quotes green (26251 verified).
+
 ## 2026-10-14: oMLX batch 457 (+64 rows)
 
 - oMLX corpus sweep: 64 records mined (scan441, 120 new ids in listing (total 19031), 60 fetched, 60 new candidates, 0 stale 404s). No new models (1 new MAP entry Qwen3.5-35B-A3B-bf16 -> existing Qwen3.5-35B-A3B, bf16 build). Models 558. oMLX total 20472 -> 20536. known.txt = 14667.
