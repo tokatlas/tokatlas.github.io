@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 472 (+64 rows)
+
+- scan456 sweep (60 new traces), mined 64 records, +1 new model Qwen3.5-9B-OmniCoder-Claude-Polaris; MAPs for Agents-A1 4bit, KAT-Coder-V2.5-Dev-VL oQ6e MTP, Ornith-1.5-35B-A3B OptiQ-4bit (mlx-community prefix variant).
+- Dataset 26729 -> 26793, 582 -> 583 models, community 25788 -> 25852. check_quotes green (27446 verified).
+
 ## 2026-10-14: vLLM pulse #61088 (+12 rows)
 
 - #61088 (fused DeepSeek-V4.1 C1/C2 compression with RoPE, FP8 quantization and 584-byte cache write): mined 12 records, two TP4 instances crossover on H20-3e SM90, DeepSeek-V4.1-Flash with real DSpark 5 acceptance, cold/warm 4K/16K at c4/c16 baseline vs fused aggregate output tok/s (cold 16K/c16 355.06/354.86, warm 846.13/839.59, cold 4K 479.74/470.55, warm 562.92/520.78, cold 16K/c4 270.43/276.63, warm 526.67/531.65); precision unstated on page, +1 hardware label H20-3e; per-cell phase splits and CV in notes.
