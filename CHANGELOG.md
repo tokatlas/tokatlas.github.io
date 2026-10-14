@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: vLLM ROCm pulse #61325 + #61109 + #60895 (+33 rows)
+
+- #61325 (Qwen3.8-Flash-Next MXFP4, TP2 on MI355X gfx950): mono decode layer opt-in, mined 20 records, aggregate output tok/s stock/mono at 8k/1k c1-c8 and 60k/600 c1/c4 (146.8/253.8, 267.4/417.0, 443.5/632.2, 642.5/854.7, 84.5/99.8, 143.3/154.7) plus the MTP-3 table (284.4/379.1, 397.2/491.2, 654.0/684.5, 123.7/133.0; the c4 MTP row runs stock in both arms, noted as the noise floor); TP2 in notes per the #61573 precedent, TTFT/TPOT medians in notes.
+- #61109 (Qwen2.5-72B-Instruct, 8x MI210 gfx90a TP8): ISLAND all-reduce backend for two 4-GPU XGMI islands joined by PCIe, mined 10 records, aggregate output tok/s off/on on decode c1/c8/c16 (37.2/42.5, 147/190, 287/351) and 3k-prompt prefill c1/c8 (19.0/22.3, 34.3/42.2); quant unstated on the page; +1 new model Qwen2.5-72B-Instruct, +1 hardware label 8x MI210 (page writes 8x MI210 in ASCII, unlike the MI355X pages).
+- #60895 (GLM-5.3-Flash FP8, 4x B200): DeepGEMM FP8 MegaMoE vs TP4 and DEP4 generic MoE, mined 3 records, AgentX replay concurrency 96 output tok/s 3,152 / 2,063 / 3,332 (MTP-5 synthetic acceptance 3.61, TTFT/ITL in notes); the random-prompt microbench rows have no stated concurrency, not mined. Parked: #61273 (diffusion image shapes), #60936 (prefill ms only), #60833 (kernel launch counts).
+- Dataset 26384 -> 26417, 434 -> 435 hardware, 580 -> 581 models, sourced 744 -> 777. check_quotes green (27070 verified).
+
 ## 2026-10-14: oMLX batch 469 (+69 rows)
 
 - oMLX corpus sweep: 69 records mined (scan453, 60 fetched, 60 new candidates, 0 stale 404s). No new models. 1 MAP added: Occamy-1.0-oQ6e-mtp -> Occamy-1.0 (oQ6e, MTP speculative decoding enabled). Top models: Qwen3.8-27B (13), Qwen3.8-Flash-Next (13), Occamy-1.0 (11), GLM-5.3-Flash (10), Ornith-1.5-35B-A3B (7). oMLX total 21276 -> 21345. known.txt = 15387.
