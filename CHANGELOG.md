@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 451 (+65 rows) + llama.cpp #10879 Vulkan rows (+4)
+
+- oMLX corpus sweep: 65 records mined (scan435, 60 fetched, 122 new ids in listing, 60 new candidates; 0 stale 404s). No new models (14 unique trace models; 13 IN-MAP + 1 new MAP entry -> existing gemma-4-12B-it-qat [8bit QAT build]). Models 554. oMLX total 20085 -> 20150.
+- llama.cpp discussion #10879 (Vulkan megathread) c18847326: Acer Nitro ANV15-41 (Ryzen 7 7735HS, 66 GiB RAM), Llama 2 7B Q4_0, ngl 100, sm none, fa 0/1, build 11540 (1e6f04a75), GPUs isolated via GGML_VK_VISIBLE_DEVICES. RTX 4060 Laptop GPU: pp512 1793.16 (fa0) / 1908.24 (fa1), tg128 52.58 / 53.80. AMD Radeon 680M iGPU (RADV, RADV_PERFTEST=nogttspill): pp512 260.18 (fa0) / 325.54 (fa1), tg128 14.58 / 15.42. 4 rows.
+- Dataset 24924 -> 24993. check_quotes green (25642 verified).
+
+
 ## 2026-10-13: oMLX batch 449 (+72 rows, +1 model)
 
 - oMLX corpus sweep: 72 records mined (scan433, 60 fetched, 138 new ids in listing, 60 new candidates; 0 stale 404s). +1 new model: Qwen3.8-27B-VL (distinct VL variant, per Swift VL precedent). Dagger-Qwen3.6-27B -> existing Qwen3.6-27B; qwen3.8-27b-zp -> existing Qwen3.8-27B; 2 HauhauCS-Aggressive builds -> existing. Models 552 -> 553. oMLX total 19950 -> 20022 (crossed 20k).
