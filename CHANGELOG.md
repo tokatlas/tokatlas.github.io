@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14: vLLM pulse #61435 + #61264 + #61555 + #60932 (+43 rows)
+
+- #61435 (Kimi-K3 mono decode M1, TP8 on MI355X): mined 19 records, InferenceX recipe k=7 c1 at DCP1 with three arms (base 178.20, #60683 221.79, #61435 226.77 output tok/s, random 8k/1k synthetic acceptance 3.84) plus the k=3 serving tables at DCP1 (69.5/100.3, 233.9/256.2, 403.1/315.9, 644.7/401.2) and DCP8 (65.7/103.4, 214.4/248.6, 373.2/300.0, 585.6/375.4) base/mono at c1-c16; c8/c16 mono runs past the 16-row cap fall back to the vLLM path, noted; MoE MXFP4 weights with BF16 dense linears (FP8 online quant removed), fp8 KV.
+- #61264 (TurboQuant verify batch + split-KV, Qwen2.5-3B-Instruct BF16 on one MI355X): mined 12 records, eager speculative cells 1024/16/128 347.68/942.92, 8192/16/128 443.52/736.38, 8192/64/128 499.36/568.81 and the graph-enabled scope check 2688.94/2681.27, 918.01/953.94, 570.16/570.92 base/patched; +1 new model Qwen2.5-3B-Instruct.
+- #61555 (DeepSeek V4.1 PCP decode-only CUDA graphs on four H20 TP1/PCP4/EP4): mined 6 records, GSM8K natural-question serving c1 32.494/169.756 and c4 82.069/369.892 output tok/s eager/graph plus the cold 64K prefill input tok/s 15,255.437/15,265.495; +1 hardware label H20 (page writes Four H20 GPUs, TP1/PCP4/EP4 in notes).
+- #60932 (peer-device expert tier, DGX Station GB300 + RTX PRO 6000 sidecar, DeepSeek-V4.1-Flash MXFP4): mined 6 records, decode c1/c16/c32 output tok/s UVA 268.7/722.7/927.5 vs sidecar 528.7/2,048.7/2,616.5 (1.97x-2.83x); the K-notation prefill rows are not mined; board power in notes. Parked: #60893 (e2e delta-only), #61553 (no serving table), #61242 (test counts only).
+- Dataset 26442 -> 26485, 435 -> 436 hardware, 581 -> 582 models, sourced 793 -> 836. check_quotes green (27138 verified).
+
 ## 2026-10-14: llama.cpp pulse #30380 + #30276 (+25 rows)
 
 - #30380 (trimmed draft vocab `--spec-draft-vocab-dynamic 16384`): SPEED-Bench qualitative decode tok/s full-head vs trimmed arms, mined 16 records on DGX Spark GB10 (Qwen3.8-Flash-Next UD-IQ4_XS 41.51/43.97, Gemma 4 12B 67.31/68.42, Qwen3.6-27B 24.29/26.77), RTX PRO 6000 Blackwell Workstation Edition (155.87/157.33, 285.98/287.33, 135.98/145.14) and RTX 5090 (Gemma 4 12B 279.09/278.37, Qwen3.6-27B 130.11/136.59; Flash-Next does not fit 32 GB); draft-mtp max 3, acceptance rates in notes.
