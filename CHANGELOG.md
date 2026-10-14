@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 462 (+74 rows)
+
+- oMLX corpus sweep: 74 records mined (scan446, 41 new ids in listing (total 19192), 60 fetched, 60 new candidates, 0 stale 404s). +2 new models: GPT-OSS-Coder (4bit MLX, M5 Max 40c), granite-4.2-3b (4bit MLX, M5 Pro 20c; distinct size from existing granite-4.2-30b). 1 MAP -> existing: gpt-oss-20b-oQ6e-bf16-MLX -> gpt-oss 20B (oQ6e MLX, space form). Models 563 -> 565. oMLX total 20801 -> 20875. known.txt = 14967.
+- Dataset 25799 -> 25873, 434 hardware, 565 models, 45 backends. check_quotes green (26526 verified).
+
 ## 2026-10-14: oMLX batch 461 (+72 rows)
 
 - oMLX corpus sweep: 72 records mined (scan445, 31 new ids in listing (total 19151), 60 fetched, 60 new candidates, 0 stale 404s). +3 new models: Bonsai-8B (4bit MLX, M4 10c), Gemma-4-26B-A4B-Hermes-VLM (4bit MLX, M5 10c), Qwen3.6-35B-A3B-oQ8-mtp (oQ8, M5 Max 40c; MTP speculative-decode traces kept in a separate model so they do not inflate the 1624-row base Qwen3.6-35B-A3B). 2 MAP -> existing: Qwen3.5-9B-6bit -> Qwen3.5-9B (6bit), gemma-4-e2b-it -> gemma-4-E2B-it (capital-E form avoids slug collision). Models 560 -> 563. oMLX total 20729 -> 20801. known.txt = 14907.
