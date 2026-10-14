@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: llama.cpp pulse #30380 + #30276 (+25 rows)
+
+- #30380 (trimmed draft vocab `--spec-draft-vocab-dynamic 16384`): SPEED-Bench qualitative decode tok/s full-head vs trimmed arms, mined 16 records on DGX Spark GB10 (Qwen3.8-Flash-Next UD-IQ4_XS 41.51/43.97, Gemma 4 12B 67.31/68.42, Qwen3.6-27B 24.29/26.77), RTX PRO 6000 Blackwell Workstation Edition (155.87/157.33, 285.98/287.33, 135.98/145.14) and RTX 5090 (Gemma 4 12B 279.09/278.37, Qwen3.6-27B 130.11/136.59; Flash-Next does not fit 32 GB); draft-mtp max 3, acceptance rates in notes.
+- #30276 (Bonsai 2 27B PQ2_0 on RTX 5060 Ti 16 GB): decode-throughput collapse bug report, mined 9 records, aggregate decode tok/s at n_ctx/--parallel (32k np8 127.8, 131k np8 127.3, 196k-245k np4 112-115, 262k np2 79.7, np1 47.9, np8 13.3 collapsed, 524k np2 11.0; per-request values in notes); the np=4 collapse row is a range (3.6-3.9), not mined. Parked: #30343/#30342 (range values), #30449/#30342 (no absolute serving numbers).
+- Dataset 26417 -> 26442, sourced 777 -> 793, community 25640 -> 25649. check_quotes green (27095 verified).
+
 ## 2026-10-14: vLLM ROCm pulse #61325 + #61109 + #60895 (+33 rows)
 
 - #61325 (Qwen3.8-Flash-Next MXFP4, TP2 on MI355X gfx950): mono decode layer opt-in, mined 20 records, aggregate output tok/s stock/mono at 8k/1k c1-c8 and 60k/600 c1/c4 (146.8/253.8, 267.4/417.0, 443.5/632.2, 642.5/854.7, 84.5/99.8, 143.3/154.7) plus the MTP-3 table (284.4/379.1, 397.2/491.2, 654.0/684.5, 123.7/133.0; the c4 MTP row runs stock in both arms, noted as the noise floor); TP2 in notes per the #61573 precedent, TTFT/TPOT medians in notes.
