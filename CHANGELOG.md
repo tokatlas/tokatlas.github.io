@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 456 (+63 rows)
+
+- oMLX corpus sweep: 63 records mined (scan440, 23 new ids in listing (total 18911), 60 fetched, 60 new candidates, 0 stale 404s). No new models (7 unique trace models, all IN-MAP: Qwen3.8-27B-TURBO-Fable-Cold-Fusion NM-DAU oQ4e/oQ6e, Mellum2-12B-A2.5B, Qwen3.8-Flash-Next oQ4e/oQ3e/REAP-384, Swift-1.5-Qwen3.8-27b). Models 558. oMLX total 20409 -> 20472. known.txt = 14607.
+- Dataset 25407 -> 25470, 434 hardware, 558 models, 45 backends. check_quotes green (26123 verified).
+
 ## 2026-10-14: llama.cpp parked items #30334/#30364/#30478 (+59 rows)
 
 - Mined the three parked llama.cpp issues with clean absolute A/B tok/s tables. #30334 (Tesla P40, compute capability 6.1; MMVQ fusion stock-vs-off A/B, -ngl 99 -fa 1): Mixtral 8x7B Q2_K/Q3_K_M and Llama 3.1 8B Q4_0/Q4_K_M, tg128 at depth 0/496/2016 (24 rows) + Mixtral pp512 at -ub 1/2/4/8 (16 rows) = 40. #30364 (Radeon 8065S Strix Halo gfx1151, MiniMax-M2.7 UD-IQ4_XS): Vulkan pp512 ubatch(32/64/128/256/512) x depth(0/32768) sweep = 9 rows + ROCm build ubatch-128 reference (2 rows); depth-32768 collapses above ubatch 128 on Vulkan, no collapse on ROCm. #30478 (Arc A770, SYCL backend, gemma-2-2b-it): MMVQ GLU fusion on(default) vs off, pp512/tg128 for Q4_K_M and Q2_K = 8 rows; unfused ~1.08x faster on tg128.
