@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: vLLM #60317 source rewrite (15 prefill arms re-mined)
+
+- vLLM PR #60317 benchmark table re-run (main baseline 5d9214d6b2 -> ab905a885d). Re-mined all 15 A100-SXM4-80GB prefill arms (gemma-4-E2B/E4B/12B-it, ctx 2048/4096, bs 1/4/8, out=1) to the new baseline tok/s (e.g. E2B 2k b1 30604.9 -> 30314.2, E4B 2k b1 19747.7 -> 19742.0, 12B 2k b1 8313.6 -> 8268.4). PR-arm speedups now 1.02x to 1.11x (was 1.04x to 1.12x).
+- Dataset 24993 (in-place rewrite, no count change). check_quotes green (25642 verified).
+
 ## 2026-10-14: oMLX batch 451 (+65 rows) + llama.cpp #10879 Vulkan rows (+4)
 
 - oMLX corpus sweep: 65 records mined (scan435, 60 fetched, 122 new ids in listing, 60 new candidates; 0 stale 404s). No new models (14 unique trace models; 13 IN-MAP + 1 new MAP entry -> existing gemma-4-12B-it-qat [8bit QAT build]). Models 554. oMLX total 20085 -> 20150.
