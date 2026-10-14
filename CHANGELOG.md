@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 452 (+64 rows)
+
+- oMLX corpus sweep: 64 records mined (scan436, 60 fetched, 400 new ids in listing, 60 new candidates; 0 stale 404 ids). No new models (9 unique trace models; 7 IN-MAP + 2 new MAP entries -> existing: Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored [oQ6e, 1M NM DAU build], Gemma 4 E4B [mxfp4]). Models 554. oMLX total 20150 -> 20214. known.txt = 14367.
+- Dataset 24993 -> 25057. check_quotes green (25706 verified).
+
 ## 2026-10-14: vLLM #60317 source rewrite (15 prefill arms re-mined)
 
 - vLLM PR #60317 benchmark table re-run (main baseline 5d9214d6b2 -> ab905a885d). Re-mined all 15 A100-SXM4-80GB prefill arms (gemma-4-E2B/E4B/12B-it, ctx 2048/4096, bs 1/4/8, out=1) to the new baseline tok/s (e.g. E2B 2k b1 30604.9 -> 30314.2, E4B 2k b1 19747.7 -> 19742.0, 12B 2k b1 8313.6 -> 8268.4). PR-arm speedups now 1.02x to 1.11x (was 1.04x to 1.12x).
