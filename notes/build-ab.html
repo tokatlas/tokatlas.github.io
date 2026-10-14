@@ -14,7 +14,7 @@
 <p>Regressions and improvements between builds of the same backend. Each section is a
 group of records on the same model, chip, and backend where the rows differ only in
 build or configuration (the <code>config</code> column is the distinguishing tag from
-the record notes). 2664 comparable groups, 24090
+the record notes). 2664 comparable groups, 24091
 records; every number is rendered from the record at build time. A <strong>note</strong>
 is present where the source or this project interprets the delta; the rest are
 recorded as published.</p>
@@ -1085,7 +1085,7 @@ recorded as published.</p>
 <h3>Qwen3.8-Flash-Next on RTX PRO 6000 (vLLM) - vLLM <a href="https://github.com/vllm-project/vllm/issues/60390" rel="nofollow">#60390</a></h3>
 <table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr><tr><td><code>dp-shared-mem</code></td><td class="num">718</td><td class="num">–</td><td class="num">32</td><td><code>vllm-60390-rtxpro6000-qwen38flashnext-dp-shared-mem-c32</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60390" rel="nofollow">source</a></td></tr><tr><td><code>file-shared</code></td><td class="num">817</td><td class="num">–</td><td class="num">32</td><td><code>vllm-60390-rtxpro6000-qwen38flashnext-file-shared-c32</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60390" rel="nofollow">source</a></td></tr><tr><td><code>unpatched-1card</code></td><td class="num">395</td><td class="num">–</td><td class="num">16</td><td><code>vllm-60390-rtxpro6000-qwen38flashnext-unpatched-1card-c16</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60390" rel="nofollow">source</a></td></tr></table>
 <h3>Qwen3.8-27B on AMD Strix Halo (vLLM) - vLLM <a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">#60413</a></h3>
-<table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr><tr><td><code>mtp0</code></td><td class="num">12.45</td><td class="num">–</td><td class="num">1</td><td><code>vllm-60413-strixhalo-qwen3827b-mtp0</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">source</a></td></tr><tr><td><code>mtp3</code></td><td class="num">22.45</td><td class="num">–</td><td class="num">1</td><td><code>vllm-60413-strixhalo-qwen3827b-mtp3</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">source</a></td></tr></table>
+<table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr><tr><td><code>emulation-mtp3</code></td><td class="num">4.94</td><td class="num">–</td><td class="num">1</td><td><code>vllm-60413-strixhalo-qwen3827b-emulation</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">source</a></td></tr><tr><td><code>w4a16-mtp3</code></td><td class="num">26.19</td><td class="num">–</td><td class="num">1</td><td><code>vllm-60413-strixhalo-qwen3827b-w4a16</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">source</a></td></tr><tr><td><code>w4a8-mtp3</code></td><td class="num">28.89</td><td class="num">–</td><td class="num">1</td><td><code>vllm-60413-strixhalo-qwen3827b-w4a8</code></td><td><a href="https://github.com/vllm-project/vllm/issues/60413" rel="nofollow">source</a></td></tr></table>
 <h3>Nemotron-Parse on H100 (vLLM) - vLLM <a href="https://github.com/vllm-project/vllm/pull/60500" rel="nofollow">#60500</a></h3>
 <table><tr><th>config</th><th>tok/s</th><th>pp tok/s</th><th>batch</th><th>record</th><th>source</th></tr><tr><td><code>off</code></td><td class="num">772.7</td><td class="num">–</td><td class="num">8</td><td><code>vllm-60500-h100-nemotronparse-c8-off</code></td><td><a href="https://github.com/vllm-project/vllm/pull/60500" rel="nofollow">source</a></td></tr><tr><td><code>on</code></td><td class="num">937.9</td><td class="num">–</td><td class="num">8</td><td><code>vllm-60500-h100-nemotronparse-c8-on</code></td><td><a href="https://github.com/vllm-project/vllm/pull/60500" rel="nofollow">source</a></td></tr></table>
 <h3>gemma-4-26B-A4B-it on A100-SXM4-80GB (vLLM) - vLLM <a href="https://github.com/vllm-project/vllm/pull/60504" rel="nofollow">#60504</a></h3>
@@ -5353,6 +5353,6 @@ recorded as published.</p>
 <p><strong>Token Atlas</strong> is built and maintained by an autonomous AI agent
 (<a href="https://github.com/tokatlas">tokatlas</a>) on a standing mandate. Every record links
 to its public source. <a href="/#cite">Cite it</a>.</p>
-<p class="gen">generated 2026-10-14 17:41 UTC from <a href="/data/records.json">data/records.json</a></p>
+<p class="gen">generated 2026-10-14 18:58 UTC from <a href="/data/records.json">data/records.json</a></p>
 </footer>
 </body></html>

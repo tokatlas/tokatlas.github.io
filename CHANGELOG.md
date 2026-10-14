@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-14: vLLM #60413 source rewrite (Qwen3.8-27B, AMD Strix Halo)
+
+- Upstream edited the #60413 comment in place: the old "Flag on (this PR)" MTP table (12.45 / 22.45) was removed and replaced with a clean decode-kernel comparison table. Re-mined the 2 stale records into 3 clean arms (all MTP=3, single stream max-num-seqs 1, AMD Strix Halo gfx1151 RDNA 3.5, Qwen3.8-27B-Quark-AWQ-MXFP4, vllm bench serve random 128 in/256 out, decode tok/s): This PR W4A8 int8-dot GEMV 28.89, #46676 W4A16 scalar FMA 26.19, Emulation dequant+F.linear 4.94. Added #60413 to scripts/force_refresh.txt so CI replaces its cached copy of the edited page. github_issues.json 1963 -> 1964. Dataset 26141 -> 26142. check_quotes green (26795 verified).
+
+## 2026-10-14: oMLX batch 466 (+68 rows)
+
+- oMLX corpus sweep: 68 records mined (scan450, 79 new ids in listing (total 19427), 60 fetched, 60 new candidates, 0 stale 404s). +2 new models: gemma-4-26B-A4B-it-oQ8e-fp16-mtp (oQ8e, M2 Max 38c; mtp_enabled=true spec-decode, full-title label kept separate), gemma-4-E2B-Heretic-Uncensored (4bit MLX, M1 Max 32c; distinct uncensored fine-tune). 5 MAP -> existing: gemma-4-12B-it-qat-bf16 -> gemma-4-12B-it-qat (bf16), gemma-4-26B-A4B-it-qat-oQ8-fp16 -> gemma-4-26B-A4B-it-qat (oQ8), gemma-4-26B-A4B-it-uncensored-heretic-ara-MLX-8bit-int8-affine-betterCache -> gemma-4-26B-A4B-it-uncensored-heretic-ara (8bit MLX), gpt-oss-20b-MXFP4-Q4 -> gpt-oss 20B (MXFP4-Q4), mistralai_Devstral-Small-2-24B-Instruct-2512-MLX-8Bit -> Devstral-Small-2-24B-Instruct-2512 (8bit MLX). Models 575 -> 577. oMLX total 21075 -> 21143. known.txt = 15207.
+- Dataset 26073 -> 26141, 434 hardware, 577 models, 45 backends.
+
 ## 2026-10-14: oMLX batch 465 (+73 rows)
 
 - oMLX corpus sweep: 73 records mined (scan449, 41 new ids in listing (total 19348), 60 fetched, 60 new candidates, 0 stale 404s). +4 new models: Fara1.5-9B (OptiQ-4bit, M1 Max 32c), Rocinante-X-12B (8bit MLX, M1 Max 32c), Skyfall-31B (Mixed-4-8 MLX, M1 Max 32c), Skyfall-31B-v4.2-heretic (8bit MLX, M1 Max 32c; distinct heretic fine-tune, version kept in label so it is a substring of the trace title). 3 MAP -> existing: Artemis-31B-v1.1-mlx-8Bit -> Artemis-31B (8bit MLX), Artemis-31B-v1.1-oQ4e -> Artemis-31B (oQ4e), gemma-4-26B-A4B-it-qat-mxfp4 -> gemma-4-26B-A4B-it-qat (mxfp4). Models 571 -> 575. oMLX total 21002 -> 21075. known.txt = 15147.
