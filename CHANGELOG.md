@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 468 (+68 rows)
+
+- oMLX corpus sweep: 68 records mined (scan452, 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Phi-3.5-mini-instruct (4bit MLX, M5 Max 40c; new family). 1 MAP -> existing: Qwen3.5-0.8B-oQ6 -> Qwen3.5-0.8B (oQ6). Models 579 -> 580. oMLX total 21208 -> 21276. known.txt = 15327.
+- Dataset 26221 -> 26289, 434 hardware, 580 models, 45 backends. check_quotes green (26942 verified).
+
 ## 2026-10-14: Ternary Bonsai 2 HF card rewrite (RTX 4070 depth table)
 
 - Upstream rewrote the CaryPalmer/Ternary-Bonsai-2-27B-262k-GGUF model card: the 2026-10-07 two-column depth table (decode / prefill) was replaced by a 2026-10-08 three-column table (decode new text / decode code / prefill, fresh prompt at each depth, 400-token greedy answers with default lookup+MTP drafting). Re-mined all 8 hf1-ternary4070 records to the new numbers (4k 102/1,173; 16k 83/1,137; 32k 78/1,031; 64k 69/867; 112k 61/698; 131k 30/649; 180k 17.9/547; 258k 8.6/436; decode new-text tok/s / cumulative prefill tok/s), dates 2026-10-07 -> 2026-10-08. Added the card URL to scripts/force_refresh.txt so CI replaces its cached copy. Record count unchanged.
