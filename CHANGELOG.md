@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: llama.cpp pulse #30535 + #30526 (+22 rows)
+
+- #30535 (OpenCL dp4a q4_0 GEMM default for batched matmul): mined 10 records, pp512 prefill tok/s before/after on Adreno 840 (Llama-3.2-1B 849 → 998, Gemma 4 E4B 132 → 152), Adreno 850 (Llama-3.2-1B 1202 → 1371) and X2-90 (Gemma 4 E2B 881 → 1028, Qwen3.8-27B 95.8 → 110.3); +3 hardware labels Adreno 840, Adreno 850, X2-90 (page wording, distinct from existing Adreno X2-90).
+- #30526 (ggml-cpu pad_f32 optimization): mined 12 records, llama-bench prefill tok/s old/new on Intel(R) Xeon(R) Platinum 8488C with gemma-embedding2 0.3B Q4_K_M at pp8 (652.25 → 1460.06, 2.24x) through pp1024 (2366.24 → 2535.64); +1 new model gemma-embedding2 0.3B, +1 hardware label Intel(R) Xeon(R) Platinum 8488C. Parked: #30553 (RTX 5090 Stream-K caps, model never named), #30542 (no tables).
+- Dataset 26793 -> 26815, 438 -> 442 hardware, 583 -> 584 models, sourced 941 -> 963. check_quotes green (27468 verified).
+
 ## 2026-10-14: oMLX batch 472 (+64 rows)
 
 - scan456 sweep (60 new traces), mined 64 records, +1 new model Qwen3.5-9B-OmniCoder-Claude-Polaris; MAPs for Agents-A1 4bit, KAT-Coder-V2.5-Dev-VL oQ6e MTP, Ornith-1.5-35B-A3B OptiQ-4bit (mlx-community prefix variant).
