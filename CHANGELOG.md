@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 464 (+68 rows)
+
+- oMLX corpus sweep: 68 records mined (scan448, 77 new ids in listing (total 19307), 60 fetched, 60 new candidates, 0 stale 404s). +5 new models: JOSIE-2-4B (quant unstated, M1 Max 32c), JOSIE-2-9B-OSS (quant unstated, M1 Max 32c), Llama-3.2-3B-Instruct-uncensored (6bit, M1 Max 32c; distinct uncensored fine-tune), MagenticBrain (8bit, M1 Max 32c), Nex-N2-mini-MLX-VLM-4bit-MTP (4bit, M1 Max 32c; mtp_enabled=true VLM spec-decode, full-title label kept separate). 2 MAP -> existing: Laguna-XS-2.1-MLX-8bit -> Laguna XS 2.1 (space form), Nex-N2.5-mini-MLX-oQ4 -> Nex-N2.5-mini (oQ4 MLX). Models 566 -> 571. oMLX total 20934 -> 21002. known.txt = 15087.
+- Dataset 25932 -> 26000, 434 hardware, 571 models, 45 backends. check_quotes green (26653 verified).
+
 ## 2026-10-14: oMLX batch 463 (+59 rows)
 
 - oMLX corpus sweep: 59 records mined (scan447, 38 new ids in listing (total 19230), 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Artemis-31B (6bit MLX, M1 Max 32c). 8 junk traces skipped (model name is just a quant string 3bit/4bit/6bit/8bit on M1 Max 32c, no identifiable model on the page) -> added to mine.py SKIP. Models 565 -> 566. oMLX total 20875 -> 20934. known.txt = 15027.
