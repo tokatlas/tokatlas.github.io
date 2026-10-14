@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 463 (+59 rows)
+
+- oMLX corpus sweep: 59 records mined (scan447, 38 new ids in listing (total 19230), 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Artemis-31B (6bit MLX, M1 Max 32c). 8 junk traces skipped (model name is just a quant string 3bit/4bit/6bit/8bit on M1 Max 32c, no identifiable model on the page) -> added to mine.py SKIP. Models 565 -> 566. oMLX total 20875 -> 20934. known.txt = 15027.
+- Dataset 25873 -> 25932, 434 hardware, 566 models, 45 backends. check_quotes green (26585 verified).
+
 ## 2026-10-14: oMLX batch 462 (+74 rows)
 
 - oMLX corpus sweep: 74 records mined (scan446, 41 new ids in listing (total 19192), 60 fetched, 60 new candidates, 0 stale 404s). +2 new models: GPT-OSS-Coder (4bit MLX, M5 Max 40c), granite-4.2-3b (4bit MLX, M5 Pro 20c; distinct size from existing granite-4.2-30b). 1 MAP -> existing: gpt-oss-20b-oQ6e-bf16-MLX -> gpt-oss 20B (oQ6e MLX, space form). Models 563 -> 565. oMLX total 20801 -> 20875. known.txt = 14967.
