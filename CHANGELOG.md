@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 471 (+73 rows)
+
+- scan455 sweep (60 new traces), mined 73 records, no new models or hardware, no new MAP entries needed.
+- Dataset 26644 -> 26717, community 25715 -> 25788. check_quotes green (27370 verified).
+
 ## 2026-10-14: vLLM pulse #61091 + #61421 (+93 rows)
 
 - #61091 (native Triton per-token FP8 linear for Radeon AI PRO R9700 / gfx1201): mined 16 records, TP1 serving of Gemma 4 12B FP8-Dynamic, GuideLLM 8-turn 2048-token workload, streams 1/2/4/8 across two same-GPU pairs, Torch RowWise vs native Triton mean per-request output rate (28.09 → 32.62 tok/s at 1 stream up to 20.65 → 23.60 at 8 streams, +14-18%); GSM8K accuracy run was TP2 and is not mined.
