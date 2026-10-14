@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: vLLM pulse #61091 + #61421 (+93 rows)
+
+- #61091 (native Triton per-token FP8 linear for Radeon AI PRO R9700 / gfx1201): mined 16 records, TP1 serving of Gemma 4 12B FP8-Dynamic, GuideLLM 8-turn 2048-token workload, streams 1/2/4/8 across two same-GPU pairs, Torch RowWise vs native Triton mean per-request output rate (28.09 → 32.62 tok/s at 1 stream up to 20.65 → 23.60 at 8 streams, +14-18%); GSM8K accuracy run was TP2 and is not mined.
+- #61421 (opt-in ROCM_RDNA_SINGLESEQ_ATTN for gfx1151 RDNA3.5): mined 77 records, single-sequence vllm bench serve decode tok/s across three arms (ours / ROCM_ATTN / ROCM_SEGMENTED_ATTN) for Llama 3.1 8B AWQ-INT4 EAGLE3, Qwen3.5-9B (quant unstated), Qwen3.6-27B AWQ-INT4 at in/out 128/4k/16k × 128/4k/16k, plus the Gemma 4 D=512 tables against TRITON_ATTN for Gemma 4 26B-A4B AWQ-4bit and Gemma-4-31B AWQ-4bit MTP; the page names the GPU only as gfx1151, so that is the hardware label; one ROCM_ATTN 128/16k cell timed out and is skipped. Parked: #61257 (tiny test checkpoint), #61029 (percentages only), #61118/#60947/#60843/#60844 (no serving tables).
+- Dataset 26551 -> 26644, 436 -> 437 hardware, sourced 836 -> 929. check_quotes green (27297 verified).
+
 ## 2026-10-14: oMLX batch 470 (+66 rows)
 
 - scan454 sweep (60 new traces), mined 66 records, no new models or hardware; Cyber-Tiel-Coder-35B-A3B oQ4e REAP-19B mapped to the existing Cyber-Tiel-Coder-35B-A3B label with the REAP-19B pruned variant in notes (full trace name interleaves the quant, breaking the substring rule), Gemma-4-26B-A4B-IT-6Bit to Gemma 4 26B-A4B 6bit, Phi-3.5-mini-instruct 4bit (mlx-community prefix variant), Qwen3.8-27B-Uncensored / Qwen3.8-Flash-Next oQ2.5e / Qwopus3.8-27B-Flash-V2 fp16 MTP builds.
