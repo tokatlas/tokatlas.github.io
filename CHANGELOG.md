@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 453 (+67 rows)
+
+- oMLX corpus sweep: 67 records mined (scan437, 60 fetched, 0 stale 404s; 6 unique trace models, all IN-MAP, no new models). Models 554. oMLX total 20214 -> 20281. known.txt = 14427.
+- Dataset 25057 -> 25124. check_quotes green (25773 verified).
+
 ## 2026-10-14: oMLX batch 452 (+64 rows)
 
 - oMLX corpus sweep: 64 records mined (scan436, 60 fetched, 400 new ids in listing, 60 new candidates; 0 stale 404 ids). No new models (9 unique trace models; 7 IN-MAP + 2 new MAP entries -> existing: Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored [oQ6e, 1M NM DAU build], Gemma 4 E4B [mxfp4]). Models 554. oMLX total 20150 -> 20214. known.txt = 14367.
