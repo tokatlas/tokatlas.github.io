@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-13: oMLX batch 449 (+72 rows, +1 model)
+
+- oMLX corpus sweep: 72 records mined (scan433, 60 fetched, 138 new ids in listing, 60 new candidates; 0 stale 404s). +1 new model: Qwen3.8-27B-VL (distinct VL variant, per Swift VL precedent). Dagger-Qwen3.6-27B -> existing Qwen3.6-27B; qwen3.8-27b-zp -> existing Qwen3.8-27B; 2 HauhauCS-Aggressive builds -> existing. Models 552 -> 553. oMLX total 19950 -> 20022 (crossed 20k).
+- Dataset 24789 -> 24861. check_quotes green (25510 verified).
+
 ## 2026-10-13: oMLX batch 448 (+67 rows, +2 models)
 
 - oMLX corpus sweep: 67 records mined (scan432, 60 fetched, 105 new ids in listing, 60 new candidates; 0 stale 404s). +2 new models: Huihui-Ornith-1.5-35B-A3B-abliterated-VL (VL variant kept distinct per Ornith VL/Vision precedent), OmniCoder-9B (new family). Qwen3.6-35B-A3B-UD-Q4_K_XL -> existing Qwen3.6-35B-A3B. Models 550 -> 552. oMLX total 19883 -> 19950.
