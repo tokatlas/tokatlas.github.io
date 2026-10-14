@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 473 (+64 rows)
+
+- scan457 sweep (60 new traces), mined 64 records, +2 new models Unlimited-OCR and Devstral-4bit-mlx (page names the repo only, no base model stated); MAPs for GLM-5.3-Flash-UNCENSORED JK oQ3.5e, Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive OptiQ-4bit MLX, Qwen3.8-27B-heretic-ara oQ8e MTP, qwen35-9b 4bit to Qwen3.5-9B.
+- Dataset 26815 -> 26879, 584 -> 586 models, community 25852 -> 25916. check_quotes green (27532 verified).
+
 ## 2026-10-14: llama.cpp pulse #30535 + #30526 (+22 rows)
 
 - #30535 (OpenCL dp4a q4_0 GEMM default for batched matmul): mined 10 records, pp512 prefill tok/s before/after on Adreno 840 (Llama-3.2-1B 849 → 998, Gemma 4 E4B 132 → 152), Adreno 850 (Llama-3.2-1B 1202 → 1371) and X2-90 (Gemma 4 E2B 881 → 1028, Qwen3.8-27B 95.8 → 110.3); +3 hardware labels Adreno 840, Adreno 850, X2-90 (page wording, distinct from existing Adreno X2-90).
