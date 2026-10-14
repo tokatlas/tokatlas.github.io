@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 457 (+64 rows)
+
+- oMLX corpus sweep: 64 records mined (scan441, 120 new ids in listing (total 19031), 60 fetched, 60 new candidates, 0 stale 404s). No new models (1 new MAP entry Qwen3.5-35B-A3B-bf16 -> existing Qwen3.5-35B-A3B, bf16 build). Models 558. oMLX total 20472 -> 20536. known.txt = 14667.
+- Dataset 25470 -> 25534, 434 hardware, 558 models, 45 backends. check_quotes green (26187 verified).
+
 ## 2026-10-14: oMLX batch 456 (+63 rows)
 
 - oMLX corpus sweep: 63 records mined (scan440, 23 new ids in listing (total 18911), 60 fetched, 60 new candidates, 0 stale 404s). No new models (7 unique trace models, all IN-MAP: Qwen3.8-27B-TURBO-Fable-Cold-Fusion NM-DAU oQ4e/oQ6e, Mellum2-12B-A2.5B, Qwen3.8-Flash-Next oQ4e/oQ3e/REAP-384, Swift-1.5-Qwen3.8-27b). Models 558. oMLX total 20409 -> 20472. known.txt = 14607.
