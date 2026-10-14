@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 469 (+69 rows)
+
+- oMLX corpus sweep: 69 records mined (scan453, 60 fetched, 60 new candidates, 0 stale 404s). No new models. 1 MAP added: Occamy-1.0-oQ6e-mtp -> Occamy-1.0 (oQ6e, MTP speculative decoding enabled). Top models: Qwen3.8-27B (13), Qwen3.8-Flash-Next (13), Occamy-1.0 (11), GLM-5.3-Flash (10), Ornith-1.5-35B-A3B (7). oMLX total 21276 -> 21345. known.txt = 15387.
+- Dataset 26315 -> 26384, 434 hardware, 580 models, 45 backends. check_quotes green (27037 verified).
+
 ## 2026-10-14: vLLM ROCm pulse #61682 + #61694, #60470 GB300 rewrite (+17 rows)
 
 - vLLM PR pulse triage. #61682 (DeepSeek-V4.1-Flash MXFP8, TP4 on 4x MI325X gfx942): ROCm decoder-replay kept-length rule (unfinished prefill chunk keeps 1 replay row), mined 10 records, aggregate tok/s at 8k/256k in x 1k out x MC2/MC6/MC8 x baseline/one-row (431.1/430.2, 165.8/165.7, 699.8/714.8, 95.5/98.2, 109.3/113.5; median TTFT/TPOT in notes, one run per cell). #61694 (Kimi-K3, TP8 on 8x MI355X, quant unstated): pipeline mono verification kernels through 48 tokens, mined 7 records, aggregate output tok/s on AgenticX conc8/k7 (312.49/312.29, single round no stable difference) and conc4/k5 (181.91/190.84, cross-machine, flagged in notes) and 8k/1k conc8/k5 (non-mono 446.27, #60683 334.99, this PR 472.28 provisional). Parked: #61646 (kernel microbenchmarks, ratios only), #61604 (scheduling microbenchmarks), #61615 (accuracy tables only). #60470 (Kimi-K3 NVFP4, TP8 over two GB300 nodes) page rewrite: the old single total-tok/s line (8213) was replaced upstream by a 5-scenario native-vs-fiauto serving table; re-mined as 10 records, out tok/s at c32/c32-warm/c8/c1/c1-8k (909/902, 946/942, 413/415, 78.2/78.7, 29.6/29.4, one run per arm within +/-1.5%). Dataset 26289 -> 26315, sourced 717 -> 744. check_quotes green (26968 verified).
