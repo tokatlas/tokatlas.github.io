@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 461 (+72 rows)
+
+- oMLX corpus sweep: 72 records mined (scan445, 31 new ids in listing (total 19151), 60 fetched, 60 new candidates, 0 stale 404s). +3 new models: Bonsai-8B (4bit MLX, M4 10c), Gemma-4-26B-A4B-Hermes-VLM (4bit MLX, M5 10c), Qwen3.6-35B-A3B-oQ8-mtp (oQ8, M5 Max 40c; MTP speculative-decode traces kept in a separate model so they do not inflate the 1624-row base Qwen3.6-35B-A3B). 2 MAP -> existing: Qwen3.5-9B-6bit -> Qwen3.5-9B (6bit), gemma-4-e2b-it -> gemma-4-E2B-it (capital-E form avoids slug collision). Models 560 -> 563. oMLX total 20729 -> 20801. known.txt = 14907.
+- Dataset 25727 -> 25799, 434 hardware, 563 models, 45 backends. check_quotes green (26452 verified).
+
 ## 2026-10-14: oMLX batch 460 (+65 rows)
 
 - oMLX corpus sweep: 65 records mined (scan444, 24 new ids in listing (total 19120), 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Qwen3-8B-Uncensored (oQ6/oQ8, M4 Max 32c). 3 MAP entries -> existing: Qwen--Qwen3-14B-MLX-8bit -> Qwen3 14B (8bit MLX, merged with existing 4bit rows; label uses the space form to avoid slug collision), Qwen--Qwen3-8B-MLX-8bit -> Qwen3-8B (8bit MLX), mlx-community--Devstral-Small-2505-4bit -> Devstral-Small-2505 (4bit). Models 559 -> 560. oMLX total 20664 -> 20729. known.txt = 14847.
