@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 470 (+66 rows)
+
+- scan454 sweep (60 new traces), mined 66 records, no new models or hardware; Cyber-Tiel-Coder-35B-A3B oQ4e REAP-19B mapped to the existing Cyber-Tiel-Coder-35B-A3B label with the REAP-19B pruned variant in notes (full trace name interleaves the quant, breaking the substring rule), Gemma-4-26B-A4B-IT-6Bit to Gemma 4 26B-A4B 6bit, Phi-3.5-mini-instruct 4bit (mlx-community prefix variant), Qwen3.8-27B-Uncensored / Qwen3.8-Flash-Next oQ2.5e / Qwopus3.8-27B-Flash-V2 fp16 MTP builds.
+- Dataset 26485 -> 26551, community 25649 -> 25715. check_quotes green (27204 verified).
+
 ## 2026-10-14: vLLM pulse #61435 + #61264 + #61555 + #60932 (+43 rows)
 
 - #61435 (Kimi-K3 mono decode M1, TP8 on MI355X): mined 19 records, InferenceX recipe k=7 c1 at DCP1 with three arms (base 178.20, #60683 221.79, #61435 226.77 output tok/s, random 8k/1k synthetic acceptance 3.84) plus the k=3 serving tables at DCP1 (69.5/100.3, 233.9/256.2, 403.1/315.9, 644.7/401.2) and DCP8 (65.7/103.4, 214.4/248.6, 373.2/300.0, 585.6/375.4) base/mono at c1-c16; c8/c16 mono runs past the 16-row cap fall back to the vLLM path, noted; MoE MXFP4 weights with BF16 dense linears (FP8 online quant removed), fp8 KV.
