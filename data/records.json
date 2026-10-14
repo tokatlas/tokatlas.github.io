@@ -1,5 +1,5 @@
 {
- "count": 25218,
+ "count": 25220,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -51526,6 +51526,44 @@
    "retrieved": "2026-10-14",
    "source_name": "llama.cpp PR #30226",
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30226"
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "Arc B580",
+   "id": "lc-30503-master-pp16384",
+   "model": "Gemma 4 E4B",
+   "notes": "Vulkan, Intel Arc B580 (driver 32.0.101.9033); coopmat FA cm1 shader never selected (driver exposes 8x16x16, shape_ok requires 16x16x16); pp16384; fa=off ceiling 3523 t/s stock master",
+   "pp_tokens": "16384",
+   "pp_tps": "896",
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Observed on Intel Arc B580; gemma-4-E4B Q4_0 -t 14 -ub 512 -r 3 llama-bench; stock master 896 t/s",
+   "retrieved": "2026-10-14",
+   "source_name": "llama.cpp #30503",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/30503"
+  },
+  {
+   "backend": "llama.cpp (Vulkan)",
+   "batch": null,
+   "ctx": null,
+   "date": "2026-10",
+   "flags": [],
+   "hardware": "Arc B580",
+   "id": "lc-30503-gaterelaxed-pp16384",
+   "model": "Gemma 4 E4B",
+   "notes": "Vulkan, Intel Arc B580 (driver 32.0.101.9033); coopmat FA cm1 shader never selected (driver exposes 8x16x16, shape_ok requires 16x16x16); pp16384; fa=off ceiling 3523 t/s gate relaxed (accept 8x16x16)",
+   "pp_tokens": "16384",
+   "pp_tps": "2731",
+   "provenance": "community",
+   "quant": "Q4_0",
+   "quote": "Observed on Intel Arc B580; gemma-4-E4B Q4_0 -t 14 -ub 512 -r 3 llama-bench; gate relaxed (accept 8x16x16) 2731 t/s",
+   "retrieved": "2026-10-14",
+   "source_name": "llama.cpp #30503",
+   "source_url": "https://github.com/ggml-org/llama.cpp/issues/30503"
   },
   {
    "backend": "llama.cpp",
