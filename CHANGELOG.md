@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 460 (+65 rows)
+
+- oMLX corpus sweep: 65 records mined (scan444, 24 new ids in listing (total 19120), 60 fetched, 60 new candidates, 0 stale 404s). +1 new model: Qwen3-8B-Uncensored (oQ6/oQ8, M4 Max 32c). 3 MAP entries -> existing: Qwen--Qwen3-14B-MLX-8bit -> Qwen3 14B (8bit MLX, merged with existing 4bit rows; label uses the space form to avoid slug collision), Qwen--Qwen3-8B-MLX-8bit -> Qwen3-8B (8bit MLX), mlx-community--Devstral-Small-2505-4bit -> Devstral-Small-2505 (4bit). Models 559 -> 560. oMLX total 20664 -> 20729. known.txt = 14847.
+- Dataset 25662 -> 25727, 434 hardware, 560 models, 45 backends. check_quotes green (26380 verified).
+
 ## 2026-10-14: oMLX batch 459 (+64 rows)
 
 - oMLX corpus sweep: 64 records mined (scan443, 26 new ids in listing (total 19096), 60 fetched, 60 new candidates, 0 stale 404s). No new models (all trace models IN-MAP). Models 559. oMLX total 20600 -> 20664. known.txt = 14787.
