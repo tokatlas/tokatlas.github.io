@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-10-14: llama.cpp parked items #30334/#30364/#30478 (+59 rows)
+
+- Mined the three parked llama.cpp issues with clean absolute A/B tok/s tables. #30334 (Tesla P40, compute capability 6.1; MMVQ fusion stock-vs-off A/B, -ngl 99 -fa 1): Mixtral 8x7B Q2_K/Q3_K_M and Llama 3.1 8B Q4_0/Q4_K_M, tg128 at depth 0/496/2016 (24 rows) + Mixtral pp512 at -ub 1/2/4/8 (16 rows) = 40. #30364 (Radeon 8065S Strix Halo gfx1151, MiniMax-M2.7 UD-IQ4_XS): Vulkan pp512 ubatch(32/64/128/256/512) x depth(0/32768) sweep = 9 rows + ROCm build ubatch-128 reference (2 rows); depth-32768 collapses above ubatch 128 on Vulkan, no collapse on ROCm. #30478 (Arc A770, SYCL backend, gemma-2-2b-it): MMVQ GLU fusion on(default) vs off, pp512/tg128 for Q4_K_M and Q2_K = 8 rows; unfused ~1.08x faster on tg128.
+- New models: Mixtral 8x7B, gemma-2-2b-it (models 556 -> 558). Dataset 25348 -> 25407, 434 hardware, 558 models, 45 backends. check_quotes green (26060 verified).
+- Also backfilled the four data events committed since batch 453 without changelog entries (oMLX 455, oMLX 454, #30503, pulse batch); entries below.
+
+## 2026-10-14: oMLX batch 455 (+63 rows)
+
+- oMLX corpus sweep: 63 records mined (scan439, 60 fetched, 60 new candidates, 0 stale 404s; all trace models IN-MAP, no new models). Models 556. oMLX total 20346 -> 20409. known.txt = 14547.
+- Dataset 25285 -> 25348, 434 hardware, 556 models, 45 backends. check_quotes green (26001 verified).
+
+## 2026-10-14: oMLX batch 454 (+65 rows)
+
+- oMLX corpus sweep: 65 records mined (scan438, 60 fetched, 60 new candidates, 0 stale 404s). No new models (Qwen3-VL-8B-Instruct-MLX-4bit -> existing Qwen3-VL-8B-Instruct, MLX 4bit build; 2 traces M4 10c 24GB). Models 556. oMLX total 20281 -> 20346. known.txt = 14487.
+- Dataset 25220 -> 25285, 434 hardware, 556 models, 45 backends. check_quotes green (25938 verified).
+
+## 2026-10-14: llama.cpp #30503 (+2 rows)
+
+- Vulkan Intel Arc B580, Gemma 4 E4B Q4_0, pp16384: stock master 896 t/s vs gate-relaxed 2731 t/s (fa-off ceiling 3523). 2 rows (master + gate-relaxed arms).
+- Dataset 25218 -> 25220. check_quotes green (25873 verified).
+
+## 2026-10-14: llama.cpp pulse batch, 9 PRs/issues (+98 rows)
+
+- Mined 9 llama.cpp PRs/issues with clean absolute A/B tok/s tables: #30215 (16), #30226 (10), #30231 (8), #30247 (6), #30249 (6), #30374 (20), #30489 (6), #30491 (6), #30493 (20) = 98 records. Convention: A/B PRs record both arms (master baseline + PR patched) as separate records. "Muse-Glimmer" relabelled to "Muse Glimmer" (10 records, avoids slug collision). Date normalized to YYYY-MM.
+- New hardware pages: Adreno X2-90, B70, Xeon 6985P-C. New models: Gemma-31B, Kimi-Linear-48B-A3B. Dataset 25124 -> 25218. check_quotes green (25871 verified).
+
 ## 2026-10-14: oMLX batch 453 (+67 rows)
 
 - oMLX corpus sweep: 67 records mined (scan437, 60 fetched, 0 stale 404s; 6 unique trace models, all IN-MAP, no new models). Models 554. oMLX total 20214 -> 20281. known.txt = 14427.
