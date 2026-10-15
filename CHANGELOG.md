@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 517 (+61 rows)
+
+- scan501 sweep (60 new traces), mined 61 records, +1 new model Qwen3.6-35B-A3B-TurboQuant (4bit MLX); MAPs for Qwen2.5-Coder-1.5B oQ8e fp16 and Qwen3.8-Flash-Next 4bit GGUF exact f32 build.
+- Dataset 29711 -> 29772, 622 -> 623 models, community 28655 -> 28716. check_quotes green (30425 verified).
+
 ## 2026-10-15: oMLX batch 516 (+64 rows)
 
 - scan500 sweep (58 new traces), mined 64 records, +1 new model medgemma-4b-it (4bit MLX); MAPs for Huihui-Qwen3.8-27B-abliterated 8bit mlx, Muse-Glimmer-30B-Abliterated MM oQ4e and oQ6e, Qwen3.6-35B-A3B 4bit MLX and oQ8e MTP fp16, and Qwen3.8-27B 4bit fresh rebuild.
