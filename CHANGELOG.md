@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 484 (+62 rows)
+
+- scan468 sweep (60 new traces), mined 62 records, +1 new model DeepSeek-R1-Distill-Qwen-32B (8bit MLX); MAPs for MiniCPM5-2B 4bit MLX and mlx-community Qwen3-Coder-30B-A3B-Instruct 4bit.
+- Dataset 27569 -> 27631, 597 -> 598 models, community 26549 -> 26611. check_quotes green (28284 verified).
+
 ## 2026-10-15: oMLX batch 483 (+62 rows)
 
 - scan467 sweep (60 new traces, 1 dead 404), mined 62 records, +1 new model Magidonia-24B-v4.3; MAPs for K2-Horizon-7B oQ6e, NeoHorse-1-9B 8bit MLX, Ornith-1.5-9B oQ6e MTP, Qwen3.8-27B-Coder390 oQ4e MTP text and Qwen3.8-27B-Uncensored-OrcaRouter 6bit MLX. Two degenerate BF16-oQ8e-mtp traces (model never named, M3 Ultra) added to the SKIP set after a known.txt mishap was fully restored.
