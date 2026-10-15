@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 523 (+67 rows)
+
+- scan507 sweep (60 new traces), mined 67 records, no new models or hardware; MAP for Qwen3 30B A3B 4bit MLX (space form after slug collision).
+- Dataset 30100 -> 30167, community 29040 -> 29107. check_quotes green (30820 verified).
+
 ## 2026-10-15: oMLX batch 522 (+67 rows)
 
 - scan506 sweep (60 new traces), mined 67 records, no new models or hardware.
