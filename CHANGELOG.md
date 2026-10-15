@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 516 (+64 rows)
+
+- scan500 sweep (58 new traces), mined 64 records, +1 new model medgemma-4b-it (4bit MLX); MAPs for Huihui-Qwen3.8-27B-abliterated 8bit mlx, Muse-Glimmer-30B-Abliterated MM oQ4e and oQ6e, Qwen3.6-35B-A3B 4bit MLX and oQ8e MTP fp16, and Qwen3.8-27B 4bit fresh rebuild.
+- Dataset 29647 -> 29711, 621 -> 622 models, community 28591 -> 28655. check_quotes green (30364 verified).
+
 ## 2026-10-15: oMLX batch 515 (+66 rows)
 
 - scan499 sweep (60 new traces), mined 66 records, +1 new model MiniCPM-V-4.7-35B-A3B (oQ4e).
