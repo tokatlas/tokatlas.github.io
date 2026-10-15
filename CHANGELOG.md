@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: vLLM PR #61868 (+24 rows)
+
+- DeepSeek-V4.1-Flash low-latency decode paths on GB300 TP4 with DSpark speculative decoding; AgentX agentic-coding traces at concurrency 1 to 64, both arms (upstream main vs switch on).
+- 12 records of total tok/s per GPU and 12 records of P90 interactivity tok/s per user, labeled in notes. Dataset 29295 -> 29319, sourced 1020 -> 1044. check_quotes green (29972 verified).
+
 ## 2026-10-15: oMLX batch 510 (+67 rows)
 
 - scan494 sweep (60 new traces), mined 67 records, +3 new models Qwen2.5-Coder-0.5B-Instruct (oQ8e fp16), Qwen3-Coder-Next-REAP-40B-A3B (oQ4e) and Kolibri-1 (3bit MLX); MAPs for MiMo-V2.6-Distill-Qwen-9B oQ8e fp16, Ornith-1.5-35B-A3B-uncensored MXFP4 MLX and Ornith-1.5-9B oQ8e fp16 MTP.
