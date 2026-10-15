@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 493 (+62 rows)
+
+- scan477 sweep (60 new traces, 52 genuinely new after 8 relistings), mined 62 records, +1 new model Qwen3.6-27B-MTPLX-Optimized-Speed-V2; MAPs for Genesis-Final oQ5e MTP, ThinkingCap-Qwen3.6-27B oQ4e DWQ MTP Vision MLX and qwen3.8-27b 4bit MTP.
+- Dataset 28152 -> 28214, 605 -> 606 models, community 27132 -> 27194. check_quotes green (28867 verified).
+
 ## 2026-10-15: oMLX batch 492 (+64 rows)
 
 - scan476 sweep (60 new traces), mined 64 records, +4 new models Huihui-ThinkingCap-Qwen3.6-27B-abliterated, LFM2.5-VL-1.6B, Qwen2.5-0.5B-Instruct (4bit MLX) and ThinkingCap-Qwen3.6-27B (3bit mlx); MAP for LFM2.5-8B-A1B.
