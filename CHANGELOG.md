@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 477 (+65 rows)
+
+- scan461 sweep (60 new traces), mined 65 records, +1 new model Qwen3.5-VL-2B (8bit MLX CRACK build); MAPs for Hy-MT2-1.8B 4bit MLX, Qwythos-9B-v2 OptiQ-4bit and Swift1.5 Qwen3.8-Flash-Next oQ5e MTP.
+- Dataset 27120 -> 27185, 590 -> 591 models, community 26107 -> 26172. check_quotes green (27838 verified).
+
 ## 2026-10-15: oMLX batch 476 (+62 rows)
 
 - scan460 sweep (60 new traces), mined 62 records, +2 new models Qwen2.5-VL-3B-Instruct (4bit) and Qwythos-9B-Claude-Mythos-5 (MTP build); MAPs for DeepSeek-V4.1-Flash quant-unstated and oQ2e MTP; degenerate oMLX traces titled "4bit" on M4 Pro and M5 Max added to SKIP (model identity unrecoverable from page).
