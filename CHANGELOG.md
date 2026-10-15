@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 489 (+70 rows)
+
+- scan473 sweep (60 new traces), mined 70 records, +2 new models Jev-Style-Qwen3.5-2B-Decision (v1, distinct from v2) and Qwen2.5-32B-Instruct (4bit); MAPs for muse-glimmer 30B mxfp4, Qwen3.5-0.8B 5bit MLX MTP and Qwen3.6-35B-A3B UD-Q8_K_XL mlx.
+- Dataset 27886 -> 27956, 599 -> 601 models, community 26866 -> 26936. check_quotes green (28609 verified).
+
 ## 2026-10-15: oMLX batch 488 (+69 rows)
 
 - scan472 sweep (60 new traces), mined 69 records, no new models or hardware; MAPs for Qwen3.8-27B UD-Q4_K_XL-AWQ MTP mlx and mlx-community Qwen3.8-27B-Uncensored OptiQ-4bit.
