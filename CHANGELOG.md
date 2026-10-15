@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 503 (+60 rows)
+
+- scan487 sweep (60 new traces), mined 60 records, +2 new models LFM2.5-24B-A2B (4bit MLX) and gemma-4-26B-A4B-heretic-v2-qat-aligned (4bit mlx); MAPs for Coder390 27B oq4e and ThinkingCap-Qwen3.8-27B oQ5e MTP.
+- Dataset 28788 -> 28848, 607 -> 609 models, community 27768 -> 27828. check_quotes green (29501 verified).
+
 ## 2026-10-15: oMLX batch 502 (+62 rows)
 
 - scan486 sweep (60 new traces), mined 62 records, no new models or hardware; MAPs for Agents-A1 4B 8bit mlx, Qwen2.5-1.5B oQ8e fp16, Qwen3.5-35B-A3B-Heretic 8bit MLX and Qwen3.8-Flash-Next 8bit MLX.
