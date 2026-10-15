@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: llama.cpp pulse #29353 (+44 rows)
+
+- #29353 (cuda/hip GDN chunked kernel, merged): mined 44 records, llama-bench prompt-processing tok/s master vs PR at 2048/4096 prompt tokens across five GPUs (RTX PRO 6000 Blackwell, Spark GB10, RTX 5090, RTX 4090, RTX 3090) and five Qwen builds (Qwen3.5-35B-A3B Q8_0/Q4_K_S, Qwen3.8-27B Q8_0/Q4_K_M/UD-Q8_K_L, Qwen3.6-35B-A3B UD-Q4_K_M, Qwen3.8-Flash-Next UD-IQ4_XS with -lzm on); gains +0.9% to +20.6%, biggest on 35B-A3B MoE prefill.
+- Dataset 26951 -> 26995, sourced 969 -> 1013. check_quotes green (27648 verified).
+
 ## 2026-10-14: oMLX batch 474 (+66 rows)
 
 - scan458 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for Qwen3.8-27B 6bit MLX and Qwen3.8-Flash-Next oQ4e mix6 MTP v2.
