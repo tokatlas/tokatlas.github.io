@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 509 (+64 rows)
+
+- scan493 sweep (60 new traces), mined 64 records, no new models or hardware; MAP for Qwen3.5-9B oQ6e fp16 MTP.
+- Dataset 29164 -> 29228, community 28144 -> 28208. check_quotes green (29881 verified).
+
 ## 2026-10-15: oMLX batch 508 (+61 rows)
 
 - scan492 sweep (60 new traces), mined 61 records, +1 new model Qwen3.6-35B-A3B-Brainwaves-Nex-Uncensored (qx64-hi mlx); MAPs for GLM-5.3-Flash, LFM2.5-24B-A2B oQ8e fp16, Qwen3.5-9B oQ4e fp16 MTP and Qwen3.8-27B-MTPLX 8bit.
