@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 513 (+64 rows)
+
+- scan497 sweep (60 new traces), mined 64 records, no new models or hardware; MAPs for Ornith-1.5-9B oQ4e, Qwen3.5-4B oQ4e MTP and Qwen3.8-27B oQ4e DWQ MTP MLX.
+- Dataset 29456 -> 29520, community 28400 -> 28464. check_quotes green (30173 verified).
+
 ## 2026-10-15: vLLM PR #61875 (+12 rows)
 
 - DeepSeek-V4-Flash MXFP4 on 4x H200 with the Humming MoE backend, TP4+EP and TP4 arms, BF16 vs block FP8 GS128 MoE activations; decode, prefill and low-concurrency workloads at max-model-len 16384.
