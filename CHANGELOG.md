@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 482 (+62 rows)
+
+- scan466 sweep (60 new traces, 1 dead 404), mined 62 records, no new models or hardware; MAPs for Qwen3.8-27B oQ2e fp16 MTP and gemma-4-31B-it 6bit.
+- Dataset 27445 -> 27507, community 26425 -> 26487. check_quotes green (28160 verified).
+
 ## 2026-10-15: oMLX batch 481 (+57 rows)
 
 - scan465 sweep (60 new traces, 8 dead 404s), mined 57 records, +1 new model Qwen3.8-35B-A3B (oQ4e base, distinct from the Distill variants).
