@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 494 (+65 rows)
+
+- scan478 sweep (60 new traces), mined 65 records, no new models or hardware; all trace names mapped without additions.
+- Dataset 28214 -> 28279, community 27194 -> 27259. check_quotes green (28932 verified).
+
 ## 2026-10-15: oMLX batch 493 (+62 rows)
 
 - scan477 sweep (60 new traces, 52 genuinely new after 8 relistings), mined 62 records, +1 new model Qwen3.6-27B-MTPLX-Optimized-Speed-V2; MAPs for Genesis-Final oQ5e MTP, ThinkingCap-Qwen3.6-27B oQ4e DWQ MTP Vision MLX and qwen3.8-27b 4bit MTP.
