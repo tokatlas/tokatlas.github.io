@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 475 (+63 rows)
+
+- scan459 sweep (60 new traces), mined 63 records, +2 new models Qwen3.6-40B-Claude-4.6-Opus-Deckard-Heretic (qx64 hi MLX build) and Qwen3.8-27B-CRACK (DWQ-4bit MLX); MAPs for DeepSeek-V4.1-Flash oQ2.5e MTP and swdjojo Qwen3.8-27B-AEON-ULTIMATE-UNCENSORED oQ4e MTP to the existing aeon-ultimate-uncensored label.
+- Dataset 26995 -> 27058, 586 -> 588 models, community 25982 -> 26045. check_quotes green (27711 verified).
+
 ## 2026-10-15: llama.cpp pulse #29353 (+44 rows)
 
 - #29353 (cuda/hip GDN chunked kernel, merged): mined 44 records, llama-bench prompt-processing tok/s master vs PR at 2048/4096 prompt tokens across five GPUs (RTX PRO 6000 Blackwell, Spark GB10, RTX 5090, RTX 4090, RTX 3090) and five Qwen builds (Qwen3.5-35B-A3B Q8_0/Q4_K_S, Qwen3.8-27B Q8_0/Q4_K_M/UD-Q8_K_L, Qwen3.6-35B-A3B UD-Q4_K_M, Qwen3.8-Flash-Next UD-IQ4_XS with -lzm on); gains +0.9% to +20.6%, biggest on 35B-A3B MoE prefill.
