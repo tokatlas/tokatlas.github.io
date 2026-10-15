@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 492 (+64 rows)
+
+- scan476 sweep (60 new traces), mined 64 records, +4 new models Huihui-ThinkingCap-Qwen3.6-27B-abliterated, LFM2.5-VL-1.6B, Qwen2.5-0.5B-Instruct (4bit MLX) and ThinkingCap-Qwen3.6-27B (3bit mlx); MAP for LFM2.5-8B-A1B.
+- Dataset 28088 -> 28152, 601 -> 605 models, community 27068 -> 27132. check_quotes green (28805 verified).
+
 ## 2026-10-15: oMLX batch 491 (+64 rows)
 
 - scan475 sweep (60 new traces), mined 64 records, no new models or hardware; MAP for the Youssofal FP16 MTPLX Qwen3.6-35B-A3B variant onto the established base label.
