@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 515 (+66 rows)
+
+- scan499 sweep (60 new traces), mined 66 records, +1 new model MiniCPM-V-4.7-35B-A3B (oQ4e).
+- nerkyor Coder390 NInfer HF card rewritten again (prose reworded, numbers unchanged): 5 hf-ninfer-coder390 quotes repointed to the new wording.
+- Dataset 29581 -> 29647, 620 -> 621 models, community 28525 -> 28591. check_quotes green (30300 verified).
+
 ## 2026-10-15: oMLX batch 514 (+61 rows)
 
 - scan498 sweep (58 new traces), mined 61 records, +2 new models Spark-X2.5-1.7B and Huihui-gemma-4-26B-A4B-it (8bit XL mlx, page wording kept distinct from the abliterated label); MAP for LFM2.5-2.6B.
