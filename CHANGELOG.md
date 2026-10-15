@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 525 (+62 rows)
+
+- scan509 sweep (58 new traces), mined 62 records, +2 new models Mamba-Codestral-7B-v0.1 (8bit) and Qwen3.8-Flash-Next-REAM-288 (oQ4e MTP); MAPs for GLM-5.3-Flash oQ8e, Jundot Qwen3.8-Flash-Next oQ8e MTP, LFM2.5-24B-A2B oQ4e fp16, MiniCPM5-1B OptiQ 4bit.
+- Dataset 30229 -> 30291, 626 -> 628 models, community 29169 -> 29231. check_quotes green (30944 verified).
+
 ## 2026-10-15: oMLX batch 524 (+62 rows)
 
 - scan508 sweep (56 new traces), mined 62 records, +1 new model Qwen2-57B-A14B-Instruct (4bit mlx-community); MAP for Qwen2.5-Coder-7B-Instruct oQ4e fp16.
