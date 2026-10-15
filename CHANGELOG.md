@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 524 (+62 rows)
+
+- scan508 sweep (56 new traces), mined 62 records, +1 new model Qwen2-57B-A14B-Instruct (4bit mlx-community); MAP for Qwen2.5-Coder-7B-Instruct oQ4e fp16.
+- Dataset 30167 -> 30229, 625 -> 626 models, community 29107 -> 29169. check_quotes green (30882 verified).
+
 ## 2026-10-15: oMLX batch 523 (+67 rows)
 
 - scan507 sweep (60 new traces), mined 67 records, no new models or hardware; MAP for Qwen3 30B A3B 4bit MLX (space form after slug collision).
