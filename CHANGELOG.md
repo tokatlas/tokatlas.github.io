@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 504 (+60 rows)
+
+- scan488 sweep (60 new traces), mined 60 records, +1 new model LFM2-8B-A1B (8bit MLX); MAPs for LFM2.5-24B-A2B 4bit MLX FP16 and Mellum2.1-12B-A2.5B-Thinking oQ4e fp16.
+- Dataset 28848 -> 28908, 609 -> 610 models, community 27828 -> 27888. check_quotes green (29561 verified).
+
 ## 2026-10-15: oMLX batch 503 (+60 rows)
 
 - scan487 sweep (60 new traces), mined 60 records, +2 new models LFM2.5-24B-A2B (4bit MLX) and gemma-4-26B-A4B-heretic-v2-qat-aligned (4bit mlx); MAPs for Coder390 27B oq4e and ThinkingCap-Qwen3.8-27B oQ5e MTP.
