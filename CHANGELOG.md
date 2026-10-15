@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: oMLX batch 474 (+66 rows)
+
+- scan458 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for Qwen3.8-27B 6bit MLX and Qwen3.8-Flash-Next oQ4e mix6 MTP v2.
+- Dataset 26885 -> 26951, community 25916 -> 25982. check_quotes green (27604 verified).
+
 ## 2026-10-14: vLLM pulse #56273 (+6 rows)
 
 - #56273 (packed NVFP4 Qwen4Exp PLE embeddings): mined 6 single-DGX-Spark reference records, Qwen3.8-Flash-Next NVFP4 on one GB10 with MTP four draft tokens, 32k-prefix/2k-suffix/256-out workload at concurrency 1/4/8, aggregate active decode tok/s and TTFT for the local b12x checkpoint (32.41/36.31/43.44 tok/s, packed PLE resident) vs the NVIDIA checkpoint on upstream vLLM with disk PLE offload (23.51/34.25/45.92, 47.7 GiB FP8 PLE through page cache with host swap observed); PLE payload sizes, KV cache formats and acceptance lengths in notes. Parked: #59815 (config + accuracy only), #61556 (no tables).
