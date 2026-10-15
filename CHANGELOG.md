@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 495 (+66 rows)
+
+- scan479 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for Qwen3.8-27B 5bit MLX and spicyneuron Qwen3.6-35B-A3B 5.4bit MLX.
+- Dataset 28279 -> 28345, community 27259 -> 27325. check_quotes green (28998 verified).
+
 ## 2026-10-15: oMLX batch 494 (+65 rows)
 
 - scan478 sweep (60 new traces), mined 65 records, no new models or hardware; all trace names mapped without additions.
