@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 502 (+62 rows)
+
+- scan486 sweep (60 new traces), mined 62 records, no new models or hardware; MAPs for Agents-A1 4B 8bit mlx, Qwen2.5-1.5B oQ8e fp16, Qwen3.5-35B-A3B-Heretic 8bit MLX and Qwen3.8-Flash-Next 8bit MLX.
+- Dataset 28726 -> 28788, community 27706 -> 27768. check_quotes green (29441 verified).
+
 ## 2026-10-15: oMLX batch 501 (+63 rows)
 
 - scan485 sweep (60 new traces), mined 63 records, no new models or hardware; all trace names mapped without additions.
