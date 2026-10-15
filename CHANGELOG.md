@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 486 (+60 rows)
+
+- scan470 sweep (60 new traces), mined 60 records, no new models or hardware; MAPs for Jundot Qwen3.8-27B oQ6e MTP and Muse-Glimmer-30B oQ4e mapped to the established space-form label muse-glimmer 30B after a slug collision warning.
+- Dataset 27692 -> 27752, community 26672 -> 26732. check_quotes green (28405 verified).
+
 ## 2026-10-15: oMLX batch 485 (+61 rows)
 
 - scan469 sweep (60 new traces), mined 61 records, no new models or hardware; MAPs for GLM-4.7-Flash 4bit, Qwen3.5-2B 4bit MLX, Qwen3.6-35B-A3B bf16-pt oQ6e MTP and Qwen3.8-27B-Uncensored-HauhauCS-Aggressive MTPLX 4bit.
