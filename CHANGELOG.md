@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 498 (+62 rows)
+
+- scan482 sweep (60 new traces), mined 62 records, no new models or hardware; all trace names mapped without additions.
+- Dataset 28476 -> 28538, community 27456 -> 27518. check_quotes green (29191 verified).
+
 ## 2026-10-15: oMLX batch 497 (+64 rows)
 
 - scan481 sweep (60 new traces), mined 64 records, no new models or hardware; MAPs for DeepSeek-R1-Distill-Qwen-7B 4bit, TWIN-TURBO Fable Cold Fusion 709-L oQ4 MTP MLX and mlx-community DeepSeek-V4-Flash-0731 2.4bit mixed.
