@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 506 (+69 rows)
+
+- scan490 sweep (60 new traces), mined 69 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 8bit MLX and Preview 4bit FP16 variants and MiniCPM5-1B oQ4.
+- Dataset 28972 -> 29041, community 27952 -> 28021. check_quotes green (29694 verified).
+
 ## 2026-10-15: oMLX batch 505 (+64 rows)
 
 - scan489 sweep (60 new traces), mined 64 records, +1 new model Qwen3.8-27B-TTURBO-Cold-Fusion-709-L-Uncensored (oQ6e mlx 1M context; page spells TTURBO, kept distinct from the TWIN-TURBO label).
