@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 501 (+63 rows)
+
+- scan485 sweep (60 new traces), mined 63 records, no new models or hardware; all trace names mapped without additions.
+- Dataset 28663 -> 28726, community 27643 -> 27706. check_quotes green (29379 verified).
+
 ## 2026-10-15: oMLX batch 500 (+63 rows)
 
 - scan484 sweep (60 new traces), mined 63 records, +1 new model MiniCPM5-2B-Abliterated-Uncensored (4bit MLX).
