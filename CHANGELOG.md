@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 510 (+67 rows)
+
+- scan494 sweep (60 new traces), mined 67 records, +3 new models Qwen2.5-Coder-0.5B-Instruct (oQ8e fp16), Qwen3-Coder-Next-REAP-40B-A3B (oQ4e) and Kolibri-1 (3bit MLX); MAPs for MiMo-V2.6-Distill-Qwen-9B oQ8e fp16, Ornith-1.5-35B-A3B-uncensored MXFP4 MLX and Ornith-1.5-9B oQ8e fp16 MTP.
+- Dataset 29228 -> 29295, 613 -> 616 models, community 28208 -> 28275. check_quotes green (29948 verified).
+
 ## 2026-10-15: oMLX batch 509 (+64 rows)
 
 - scan493 sweep (60 new traces), mined 64 records, no new models or hardware; MAP for Qwen3.5-9B oQ6e fp16 MTP.
