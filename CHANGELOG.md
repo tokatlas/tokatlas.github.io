@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 488 (+69 rows)
+
+- scan472 sweep (60 new traces), mined 69 records, no new models or hardware; MAPs for Qwen3.8-27B UD-Q4_K_XL-AWQ MTP mlx and mlx-community Qwen3.8-27B-Uncensored OptiQ-4bit.
+- Dataset 27817 -> 27886, community 26797 -> 26866. check_quotes green (28539 verified).
+
 ## 2026-10-15: oMLX batch 487 (+65 rows)
 
 - scan471 sweep (60 new traces), mined 65 records, +1 new model Qwen3.6-27B-Abliterated-Heretic-Uncensored (6bit MLX); MAPs for Qwen3.8-27B 3bit MLX TextOnly, deepseek-ai DeepSeek-V4-Flash 8bit and Laguna XS 2.1 3bit (mapped to the established space-form label after a slug collision warning).
