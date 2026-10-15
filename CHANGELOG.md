@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 496 (+67 rows)
+
+- scan480 sweep (60 new traces), mined 67 records, no new models or hardware; MAP for Qwen3.6-35B-A3B-Uncensored-Heretic 6bit MLX.
+- Dataset 28345 -> 28412, community 27325 -> 27392. check_quotes green (29065 verified).
+
 ## 2026-10-15: oMLX batch 495 (+66 rows)
 
 - scan479 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for Qwen3.8-27B 5bit MLX and spicyneuron Qwen3.6-35B-A3B 5.4bit MLX.
