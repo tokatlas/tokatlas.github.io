@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 511 (+67 rows)
+
+- scan495 sweep (60 new traces), mined 67 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 5bit MLX and Ornith-1.5-9B oQ4e fp16 MTP.
+- Dataset 29319 -> 29386, community 28275 -> 28342. check_quotes green (30039 verified).
+
 ## 2026-10-15: vLLM PR #61868 (+24 rows)
 
 - DeepSeek-V4.1-Flash low-latency decode paths on GB300 TP4 with DSpark speculative decoding; AgentX agentic-coding traces at concurrency 1 to 64, both arms (upstream main vs switch on).
