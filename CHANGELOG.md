@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 514 (+61 rows)
+
+- scan498 sweep (58 new traces), mined 61 records, +2 new models Spark-X2.5-1.7B and Huihui-gemma-4-26B-A4B-it (8bit XL mlx, page wording kept distinct from the abliterated label); MAP for LFM2.5-2.6B.
+- Dataset 29520 -> 29581, 618 -> 620 models, community 28464 -> 28525. check_quotes green (30234 verified).
+
 ## 2026-10-15: oMLX batch 513 (+64 rows)
 
 - scan497 sweep (60 new traces), mined 64 records, no new models or hardware; MAPs for Ornith-1.5-9B oQ4e, Qwen3.5-4B oQ4e MTP and Qwen3.8-27B oQ4e DWQ MTP MLX.
