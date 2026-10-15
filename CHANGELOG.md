@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 518 (+66 rows)
+
+- scan502 sweep (60 new traces), mined 66 records, no new models or hardware; MAP for Qwen3.8-Flash-Next FP8.
+- Dataset 29772 -> 29838, community 28716 -> 28782. check_quotes green (30491 verified).
+
 ## 2026-10-15: oMLX batch 517 (+61 rows)
 
 - scan501 sweep (60 new traces), mined 61 records, +1 new model Qwen3.6-35B-A3B-TurboQuant (4bit MLX); MAPs for Qwen2.5-Coder-1.5B oQ8e fp16 and Qwen3.8-Flash-Next 4bit GGUF exact f32 build.
