@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 519 (+62 rows)
+
+- scan503 sweep (60 new traces), mined 62 records, no new models or hardware.
+- Dataset 29842 -> 29904, community 28782 -> 28844. check_quotes green (30557 verified).
+
 ## 2026-10-15: vLLM PR #61903 (+4 rows)
 
 - MiniMax M2.5 FP8 TP2 on 2xH200 (new hardware label), output tok/s at concurrency 64, main vs BF16x3 router GEMM arm, two containers, first of 2 runs recorded with both runs in notes.
