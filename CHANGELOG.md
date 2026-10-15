@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 490 (+68 rows)
+
+- scan474 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for supergemma4-26b-abliterated-multimodal 8bit MLX.
+- Dataset 27956 -> 28024, community 26936 -> 27004. check_quotes green (28677 verified).
+
 ## 2026-10-15: oMLX batch 489 (+70 rows)
 
 - scan473 sweep (60 new traces), mined 70 records, +2 new models Jev-Style-Qwen3.5-2B-Decision (v1, distinct from v2) and Qwen2.5-32B-Instruct (4bit); MAPs for muse-glimmer 30B mxfp4, Qwen3.5-0.8B 5bit MLX MTP and Qwen3.6-35B-A3B UD-Q8_K_XL mlx.
