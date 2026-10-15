@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 491 (+64 rows)
+
+- scan475 sweep (60 new traces), mined 64 records, no new models or hardware; MAP for the Youssofal FP16 MTPLX Qwen3.6-35B-A3B variant onto the established base label.
+- Dataset 28024 -> 28088, community 27004 -> 27068. check_quotes green (28741 verified).
+
 ## 2026-10-15: oMLX batch 490 (+68 rows)
 
 - scan474 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for supergemma4-26b-abliterated-multimodal 8bit MLX.
