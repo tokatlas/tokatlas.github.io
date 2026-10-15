@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 481 (+57 rows)
+
+- scan465 sweep (60 new traces, 8 dead 404s), mined 57 records, +1 new model Qwen3.8-35B-A3B (oQ4e base, distinct from the Distill variants).
+- Dataset 27388 -> 27445, 595 -> 596 models, community 26368 -> 26425. check_quotes green (28098 verified).
+
 ## 2026-10-15: oMLX batch 480 (+66 rows)
 
 - scan464 sweep (60 new traces), mined 66 records, +3 new models Alice-27B, Ornith-1.5-9B-uncensored (oQ4e) and Qwen4Exp (page form of Qwen4-exp, added via vLLM #61728); MAPs for Qwen3-1.7B 4bit MLX, Qwen3.8-27B-Uncensored oQ5e MTP, Swift oQ4e/oQ8e mixed MTP, gemma-4-12b-it 4bit and swdjojo Qwen3.8-27B MLX oQ4e.
