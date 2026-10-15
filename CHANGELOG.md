@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: vLLM PR #61875 (+12 rows)
+
+- DeepSeek-V4-Flash MXFP4 on 4x H200 with the Humming MoE backend, TP4+EP and TP4 arms, BF16 vs block FP8 GS128 MoE activations; decode, prefill and low-concurrency workloads at max-model-len 16384.
+- New hardware label 4x H200 (page wording). Dataset 29444 -> 29456, sourced 1044 -> 1056. check_quotes green (30109 verified).
+
 ## 2026-10-15: oMLX batch 512 (+58 rows)
 
 - scan496 sweep (53 new traces), mined 58 records, +2 new models Hy-MT2-30B-A3B (oQ2 MLX) and Index-Translate-2B (4bit MLX); MAP for MiMo-V2.6-Flash-RL mxfp4 MLX REAP50 MTP.
