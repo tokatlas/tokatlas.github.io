@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 480 (+66 rows)
+
+- scan464 sweep (60 new traces), mined 66 records, +3 new models Alice-27B, Ornith-1.5-9B-uncensored (oQ4e) and Qwen4Exp (page form of Qwen4-exp, added via vLLM #61728); MAPs for Qwen3-1.7B 4bit MLX, Qwen3.8-27B-Uncensored oQ5e MTP, Swift oQ4e/oQ8e mixed MTP, gemma-4-12b-it 4bit and swdjojo Qwen3.8-27B MLX oQ4e.
+- Dataset 27322 -> 27388, 593 -> 595 models, community 26302 -> 26368. check_quotes green (28041 verified).
+
 ## 2026-10-15: vLLM pulse #61728 (+2 rows)
 
 - #61728 (Qwen4Exp QSA DCP follow-ups to #59279): mined 2 records, output tok/s per user on 8x A100-SXM4-40GB TP8+EP DCP4 with FP8 KV and MTP3, MLPerf agentic multi-turn 32 in flight 60 min per arm; #59279 plus block-table fix 42.5 tok/s (SLO pass 68.8%) vs this PR 45.3 tok/s (SLO pass 76.2%), req/s 2.72 vs 2.80, TTFT and TPOT percentiles in notes; quant unstated (weights dtype not stated, KV FP8), model label Qwen4Exp in page form (hyphenated Qwen4-exp from oMLX cannot norm-match the page). Parked: #61731-61736 (no tables).
