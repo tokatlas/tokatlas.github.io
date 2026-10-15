@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 520 (+63 rows)
+
+- scan504 sweep (60 new traces), mined 63 records, no new models or hardware; MAPs for LFM2.5-24B-A2B oQ4e and Qwen2.5-7B-Instruct AWQ.
+- Dataset 29904 -> 29967, community 28844 -> 28907. check_quotes green (30620 verified).
+
 ## 2026-10-15: oMLX batch 519 (+62 rows)
 
 - scan503 sweep (60 new traces), mined 62 records, no new models or hardware.
