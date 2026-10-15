@@ -1,5 +1,5 @@
 {
- "count": 2287,
+ "count": 2289,
  "records": [
   {
    "backend": "llama.cpp",
@@ -50422,6 +50422,52 @@
    "retrieved": "2026-10-15",
    "quote": "Mistral-Small-4-119B-2603; UD-Q4_K_XL; Radeon 8060S; this PR (llama-server, same model) | - | 39.5",
    "notes": "llama.cpp PR #30544 vulkan keep F32 MUL_MAT_ID on GPU for mat-vec skip MMVQ, llama-bench -ngl 99 -fa 1 -p 512 -n 32 on AMD Ryzen AI Max Strix Halo Radeon 8060S gfx1151 RADV Mesa 26.0.8 Linux 7.0 uma 1 int dot 1, unsloth/Mistral-Small-4-119B-2603 UD-Q4_K_XL; tg32 with this PR applied via llama-server, same model; pp512 not measured for this arm; config=pr"
+  },
+  {
+   "id": "vllm-61728-a100sxm4-qwen4exp-qsa-dcp-59279",
+   "model": "Qwen4Exp",
+   "params": null,
+   "quant": "unstated",
+   "hardware": "A100-SXM4-40GB",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 32,
+   "tps": 42.5,
+   "pp_tps": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-15",
+   "provenance": "sourced",
+   "source_url": "https://github.com/vllm-project/vllm/pull/61728",
+   "source_name": "vLLM PR #61728",
+   "retrieved": "2026-10-15",
+   "quote": "Qwen4Exp; A100-SXM4-40GB; #59279 (+ its block-table fix) | 2.72 | 140.8 | 42.5 | 990 / 2,137 ms | 18.8 / 29.3 ms | 68.8 %",
+   "notes": "vLLM PR #61728 Qwen4Exp QSA DCP follow-ups to #59279 (copy-free LSE combine fused gate, MTP verify rows on decode path), 8x A100-SXM4-40GB TP8+EP DCP4 FP8 KV MTP3 max-num-batched-tokens 2048, MLPerf agentic multi-turn workload 32 requests in flight 1x60 min per arm 0 failed; output tok/s per user; #59279 plus its block-table fix arm, 2.72 req/s, 140.8 output tok/s per GPU, TTFT P50/P95 990/2137 ms, TPOT P50/P95 18.8/29.3 ms, SLO pass 68.8%; config=59279"
+  },
+  {
+   "id": "vllm-61728-a100sxm4-qwen4exp-qsa-dcp-pr",
+   "model": "Qwen4Exp",
+   "params": null,
+   "quant": "unstated",
+   "hardware": "A100-SXM4-40GB",
+   "ram_gb": null,
+   "backend": "vLLM",
+   "ctx": null,
+   "batch": 32,
+   "tps": 45.3,
+   "pp_tps": null,
+   "tg_tokens": null,
+   "ttft_s": null,
+   "power_w": null,
+   "date": "2026-10-15",
+   "provenance": "sourced",
+   "source_url": "https://github.com/vllm-project/vllm/pull/61728",
+   "source_name": "vLLM PR #61728",
+   "retrieved": "2026-10-15",
+   "quote": "Qwen4Exp; A100-SXM4-40GB; This PR | 2.80 | 149.8 | 45.3 | 967 / 2,233 ms | 17.4 / 27.8 ms | 76.2 %",
+   "notes": "vLLM PR #61728 Qwen4Exp QSA DCP follow-ups to #59279 (copy-free LSE combine fused gate, MTP verify rows on decode path), 8x A100-SXM4-40GB TP8+EP DCP4 FP8 KV MTP3 max-num-batched-tokens 2048, MLPerf agentic multi-turn workload 32 requests in flight 1x60 min per arm 0 failed; output tok/s per user; this PR arm, 2.80 req/s, 149.8 output tok/s per GPU, TTFT P50/P95 967/2233 ms, TPOT P50/P95 17.4/27.8 ms, SLO pass 76.2%; config=pr"
   }
  ],
  "source": {

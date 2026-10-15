@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: vLLM pulse #61728 (+2 rows)
+
+- #61728 (Qwen4Exp QSA DCP follow-ups to #59279): mined 2 records, output tok/s per user on 8x A100-SXM4-40GB TP8+EP DCP4 with FP8 KV and MTP3, MLPerf agentic multi-turn 32 in flight 60 min per arm; #59279 plus block-table fix 42.5 tok/s (SLO pass 68.8%) vs this PR 45.3 tok/s (SLO pass 76.2%), req/s 2.72 vs 2.80, TTFT and TPOT percentiles in notes; quant unstated (weights dtype not stated, KV FP8), model label Qwen4Exp in page form (hyphenated Qwen4-exp from oMLX cannot norm-match the page). Parked: #61731-61736 (no tables).
+- Dataset 27320 -> 27322, sourced 1018 -> 1020. check_quotes green (27975 verified).
+
 ## 2026-10-15: oMLX batch 479 (+63 rows)
 
 - scan463 sweep (60 new traces), mined 63 records, +1 new model gemma-4-31B-it-uncensored (oQ5e MTP); MAPs for GLM-4.7-Flash REAP-23B-A3B oQ5, Ornith-1.5-35B-A3B-uncensored 6bit fixed MTP vision MLX, Qwen3.5-9B OptiQ.
