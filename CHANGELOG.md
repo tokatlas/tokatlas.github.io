@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 507 (+62 rows)
+
+- scan491 sweep (60 new traces), mined 62 records, +1 new model Muse-Glimmer-30B-Abliterated (mxfp4 MLX); MAPs for MiMo-V2.6-Distill-Qwen-9B oQ4e fp16, NeoHorse-1-9B 4bit MLX, Qwen3.5-9B 8bit and mlx-lm mxfp4, Qwen3.8-9B MXFP4 MLX and mlx-community Qwen3 14B 4bit (established space-form label after a slug collision warning).
+- Dataset 29041 -> 29103, 611 -> 612 models, community 28021 -> 28083. check_quotes green (29756 verified).
+
 ## 2026-10-15: oMLX batch 506 (+69 rows)
 
 - scan490 sweep (60 new traces), mined 69 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 8bit MLX and Preview 4bit FP16 variants and MiniCPM5-1B oQ4.
