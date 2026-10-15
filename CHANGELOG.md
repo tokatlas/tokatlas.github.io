@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 522 (+67 rows)
+
+- scan506 sweep (60 new traces), mined 67 records, no new models or hardware.
+- Dataset 30033 -> 30100, community 28973 -> 29040. check_quotes green (30753 verified).
+
 ## 2026-10-15: oMLX batch 521 (+66 rows)
 
 - scan505 sweep (60 new traces), mined 66 records, +2 new models Jev-Style-0.8B-Decision-v3 (oQ8e MLX) and Qwopus3.6-35B-A3B-Coder (6bit, oQ6 MTP); MAPs for Qwen3.8-27B-Uncensored-OrcaRouter 5bit MLX, granite-4.2-8b 4bit MLX, Qwen3.6-35B-A3B spacecomx oQ6e fp16 MTP, and unsloth Qwen3.6-27B 8bit MLX.
