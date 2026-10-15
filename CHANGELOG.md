@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 479 (+63 rows)
+
+- scan463 sweep (60 new traces), mined 63 records, +1 new model gemma-4-31B-it-uncensored (oQ5e MTP); MAPs for GLM-4.7-Flash REAP-23B-A3B oQ5, Ornith-1.5-35B-A3B-uncensored 6bit fixed MTP vision MLX, Qwen3.5-9B OptiQ.
+- Dataset 27257 -> 27320, community 26239 -> 26302. check_quotes green (27973 verified).
+
 ## 2026-10-15: oMLX batch 478 (+67 rows)
 
 - scan462 sweep (60 new traces), mined 67 records, +1 new model gemma-3-4b-it-qat (QAT 4bit); MAPs for Apodex-1.1-mini oQ6e MTP, Qwen3.8-27B oQ2.5e MTP and granite-4.2-8b q8 MLX.
