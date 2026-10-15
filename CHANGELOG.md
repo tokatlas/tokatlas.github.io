@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 478 (+67 rows)
+
+- scan462 sweep (60 new traces), mined 67 records, +1 new model gemma-3-4b-it-qat (QAT 4bit); MAPs for Apodex-1.1-mini oQ6e MTP, Qwen3.8-27B oQ2.5e MTP and granite-4.2-8b q8 MLX.
+- Dataset 27190 -> 27257, 591 -> 592 models, community 26172 -> 26239. check_quotes green (27910 verified).
+
 ## 2026-10-15: llama.cpp pulse #30544 (+5 rows)
 
 - #30544 (Vulkan F32 MUL_MAT_ID on GPU for mat-vec, skip MMVQ): mined 5 records, llama-bench -ngl 99 -fa 1 -p 512 -n 32 on Radeon 8060S (gfx1151, Strix Halo) with Mistral-Small-4-119B-2603 UD-Q4_K_XL across three builds; master 5cdadfc32 regressed tg32 to 3.4 after #29029, this PR restores 39.5 via llama-server; pp512 334 (pre-#29029) vs 319 (master). Page HTML truncates commit hashes to 7 chars, quotes use the truncated form.
