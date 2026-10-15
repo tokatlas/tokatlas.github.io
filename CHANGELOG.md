@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 512 (+58 rows)
+
+- scan496 sweep (53 new traces), mined 58 records, +2 new models Hy-MT2-30B-A3B (oQ2 MLX) and Index-Translate-2B (4bit MLX); MAP for MiMo-V2.6-Flash-RL mxfp4 MLX REAP50 MTP.
+- Dataset 29386 -> 29444, 616 -> 618 models, community 28342 -> 28400. check_quotes green (30097 verified).
+
 ## 2026-10-15: oMLX batch 511 (+67 rows)
 
 - scan495 sweep (60 new traces), mined 67 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 5bit MLX and Ornith-1.5-9B oQ4e fp16 MTP.
