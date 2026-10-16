@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 534 (+68 rows)
+
+- scan518 sweep (58 new traces), mined 68 records, +1 new model MiniCPM5-2B-chat (4bit mlx); MAPs for Huihui-Qwen3.6-35B-A3B-abliterated 4bit mlx, LFM2.5-24B-A2B 4bit MLX fp16, Qwen2.5-VL-3B-Instruct 4bit, and Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive OptiQ-5bpw MLX.
+- Dataset 30829 -> 30897, 633 -> 634 models, community 29767 -> 29835. check_quotes green (31550 verified).
+
 ## 2026-10-16: oMLX batch 533 (+61 rows)
 
 - scan517 sweep (56 new traces, 4 dead 404), mined 61 records, no new models or hardware; MAPs for LFM2.5-24B-A2B oQ5e, oQ6e and oQ8e.
