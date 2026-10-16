@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 541 (+69 rows)
+
+- scan525 sweep (60 new traces), mined 69 records, +1 new model gemma-4-E4B-Agentic-Sol-Fable-Reasoning-GeminiCLI (4bit mlx); MAPs for LFM2.5-24B-A2B 4bit MLX DWQ v2, Qwen3.8-Flash-Next-Uncensored 4bit plefp8, and gemma-4-26B-A4B-it bf16.
+- Dataset 31309 -> 31378, 638 -> 639 models, community 30247 -> 30316. check_quotes green (32031 verified).
+
 ## 2026-10-16: oMLX batch 540 (+70 rows)
 
 - scan524 sweep (60 new traces), mined 70 records, +1 new model gemma-4-26B-A4B-it-qat-uncensored-heretic (4bit MLX VLM); MAP for gemma-4-E4B-it 8bit.
