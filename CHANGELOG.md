@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 569 (+68 rows)
+
+- scan553 sweep (60 new traces), mined 68 records, no new models or hardware; MAPs for Ornith-1.5-35B-A3B OptiQ static 5.5bpw 4bit and Qwen3.8-Flash-Next oQ4e MTP requant.
+- Dataset 33153 -> 33221, community 32091 -> 32159. check_quotes green (33874 verified).
+
 ## 2026-10-16: oMLX batch 568 (+61 rows)
 
 - scan552 sweep (56 new traces), mined 61 records, no new models or hardware; MAP for gemma-4-26B-A4B-it oQ4e.
