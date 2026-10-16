@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 565 (+66 rows)
+
+- scan549 sweep (60 new traces), mined 66 records, +1 new model Muse-Glimmer-30B-heretic (oQ4e); MAPs for Ling-3.0-tiny oQ8 fp16, Qwen3.6-35B-A3B oQ8e bf16 pt MTP, Qwen3.8-Flash-Next oQ2.7e MTP, and Qwopus3.8-27B-Flash-V2 oQ6e MTP.
+- Dataset 32890 -> 32956, 650 -> 651 models, community 31828 -> 31894. check_quotes green (33609 verified).
+
 ## 2026-10-16: oMLX batch 564 (+60 rows)
 
 - scan548 sweep (57 new traces), mined 60 records, no new models or hardware; MAP for gemma-4-26B-A4B-it oQ2.5e MTP.
