@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 556 (+66 rows)
+
+- scan540 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for MiniCPM-V-4.7-35B-A3B 5bit, Qwen3.6-35B-A3B oQ3e MTP MLX, and NVIDIA-Nemotron-3.5-Lightning-30B-A3B 4bit MLX.
+- Dataset 32293 -> 32359, community 31231 -> 31297. check_quotes green (33012 verified).
+
 ## 2026-10-16: oMLX batch 555 (+69 rows)
 
 - scan539 sweep (60 new traces), mined 69 records, +1 new model LOCAL-SMART (4bit); MAP for gemma-4-12b-it oQ4e MTP.
