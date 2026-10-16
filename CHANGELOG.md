@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 553 (+69 rows)
+
+- scan537 sweep (60 new traces), mined 69 records, +1 new model Qwen3.8-27B-MindMeld-AREX (mxfp4 mlx).
+- Dataset 32087 -> 32156, 647 -> 648 models, community 31025 -> 31094. check_quotes green (32809 verified).
+
 ## 2026-10-16: oMLX batch 552 (+65 rows)
 
 - scan536 sweep (60 new traces), mined 65 records, no new models or hardware; MAP for Qwen3.8-Flash-Next oQ4e fp16.
