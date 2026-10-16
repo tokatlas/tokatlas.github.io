@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 548 (+67 rows)
+
+- scan532 sweep (60 new traces), mined 67 records, no new models or hardware; MAPs for LFM2.5-2.6B 6bit MLX and Qwen3.5-9B 5bit MLX MTP.
+- Dataset 31761 -> 31828, community 30699 -> 30766. check_quotes green (32481 verified).
+
 ## 2026-10-16: oMLX batch 547 (+65 rows)
 
 - scan531 sweep (60 new traces), mined 65 records, +1 new model gemma-4-26B-A4B-it-Claude-Opus-Distilled-v2 (8bit mxfp8 MLX); MAPs for Mellum2.1-12B-A2.5B-Thinking oQ5e, Qwen3.8-35B-A3B-Distill-Heretic oQ8 fp16 MTP, and gemma-4-12b-it 8bit mlx-community.
