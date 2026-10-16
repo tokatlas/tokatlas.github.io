@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 529 (+68 rows)
+
+- scan513 sweep (58 new traces), mined 68 records, no new models or hardware; MAPs for GLM-5.3-Flash oQ8 MTP, LFM2.5-24B-A2B 6bit MLX, Qwen3.8-Flash-Next g32 MTP 4bit, and gemma-4-26B-A4B-it (quant unstated).
+- Dataset 30499 -> 30567, community 29439 -> 29507. check_quotes green (31220 verified).
+
 ## 2026-10-15: oMLX batch 528 (+76 rows)
 
 - scan512 sweep (60 new traces), mined 76 records, +1 new model StartLux-Decision-4B.
