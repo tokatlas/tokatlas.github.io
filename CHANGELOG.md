@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 527 (+70 rows)
+
+- scan511 sweep (60 new traces), mined 70 records, no new models or hardware; MAPs for MiniCPM5-2B bf16 and gemma-4-12b-it 4bit (lowercase form after slug collision).
+- Dataset 30353 -> 30423, community 29293 -> 29363. check_quotes green (31076 verified).
+
 ## 2026-10-15: oMLX batch 526 (+62 rows)
 
 - scan510 sweep (58 new traces), mined 62 records, no new models or hardware; MAPs for Huihui-Qwen3.6-35B-A3B-Claude-4.7-Opus-abliterated 6bit MLX, MiMo-V2.6-Flash-RL oQ8e MTP, and Qwen3 32B 4bit (space form).
