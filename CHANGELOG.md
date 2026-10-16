@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 554 (+68 rows)
+
+- scan538 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for gemma-4-12b-it oQ8e MTP.
+- Dataset 32156 -> 32224, community 31094 -> 31162. check_quotes green (32877 verified).
+
 ## 2026-10-16: oMLX batch 553 (+69 rows)
 
 - scan537 sweep (60 new traces), mined 69 records, +1 new model Qwen3.8-27B-MindMeld-AREX (mxfp4 mlx).
