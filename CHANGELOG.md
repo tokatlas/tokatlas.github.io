@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 577 (+68 rows)
+
+- scan561 sweep (60 new traces), mined 68 records, no new models or hardware; MAPs for gemma-4-12b-it oQ5e and MiniCPM-V-4.7-35B-A3B mxfp4 mlx-community.
+- Dataset 33670 -> 33738, community 32608 -> 32676. check_quotes green (34391 verified).
+
 ## 2026-10-16: oMLX batch 576 (+67 rows)
 
 - scan560 sweep (60 new traces), mined 67 records, +1 new model Qwen3-30B-A3B-Instruct-2507 (4bit); MAPs for LFM2.5-2.6B oQ4e MLX / fp16 / OptiQ 4bit, Qwen3-4B-Instruct-2507 4bit DWQ, and Qwen3.6-35B-A3B oQ3.
