@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 572 (+64 rows)
+
+- scan556 sweep (56 new traces), mined 64 records, +2 new models Ministral-3-3B-Instruct-2512 (8bit) and Ministral-8B-Instruct-2410 (8bit); MAPs for Agents-A1 OptiQ 4bit, Qwen2.5-Coder-3B-Instruct 4bit, and granite-4.2-3b q4.
+- Dataset 33347 -> 33411, 653 -> 655 models, community 32285 -> 32349. check_quotes green (34064 verified).
+
 ## 2026-10-16: oMLX batch 571 (+57 rows)
 
 - scan555 sweep (49 new traces), mined 57 records, +2 new models AX-Qwen3.8-27B (6bit AXQ MTP MLX) and Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored (oQ4e).
