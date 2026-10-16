@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 539 (+68 rows)
+
+- scan523 sweep (60 new traces), mined 68 records, +1 new model Gemma-4-E4B-Claude-Opus-Reasoning (4bit MLX); MAPs for Ornith-1.5-35B-A3B, gemma-4-31B-it-uncensored 4bit MLX, Gemma 4 E2B 8bit (after slug collision on the space form, 88 existing), and gemma-4-E2B-it OptiQ-4bit QAT.
+- Dataset 31171 -> 31239, 636 -> 637 models, community 30109 -> 30177. check_quotes green (31892 verified).
+
 ## 2026-10-16: oMLX batch 538 (+67 rows)
 
 - scan522 sweep (60 new traces), mined 67 records, +1 new model gpt-oss-120b-MXFP4-Q8 (4bit mlx-community).
