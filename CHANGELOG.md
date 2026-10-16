@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 568 (+61 rows)
+
+- scan552 sweep (56 new traces), mined 61 records, no new models or hardware; MAP for gemma-4-26B-A4B-it oQ4e.
+- Dataset 33092 -> 33153, community 32030 -> 32091. check_quotes green (33806 verified).
+
 ## 2026-10-16: oMLX batch 567 (+69 rows)
 
 - scan551 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3-Coder-Next 8bit MLX.
