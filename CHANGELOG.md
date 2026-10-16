@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 570 (+69 rows)
+
+- scan554 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ3.5e.
+- Dataset 33221 -> 33290, community 32159 -> 32228. check_quotes green (33943 verified).
+
 ## 2026-10-16: oMLX batch 569 (+68 rows)
 
 - scan553 sweep (60 new traces), mined 68 records, no new models or hardware; MAPs for Ornith-1.5-35B-A3B OptiQ static 5.5bpw 4bit and Qwen3.8-Flash-Next oQ4e MTP requant.
