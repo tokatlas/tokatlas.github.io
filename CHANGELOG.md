@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 538 (+67 rows)
+
+- scan522 sweep (60 new traces), mined 67 records, +1 new model gpt-oss-120b-MXFP4-Q8 (4bit mlx-community).
+- Dataset 31104 -> 31171, 635 -> 636 models, community 30042 -> 30109. check_quotes green (31824 verified).
+
 ## 2026-10-16: oMLX batch 537 (+71 rows)
 
 - scan521 sweep (60 new traces), mined 71 records, no new models or hardware; MAP for Qwen3.8-27B-Uncensored 4bit MLX.
