@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 542 (+67 rows)
+
+- scan526 sweep (60 new traces), mined 67 records, +2 new models granite-4.1-3b (mxfp4) and Huihui-Qwen3.5-4B-Claude-4.6-Opus-abliterated (4bit mlx-community); MAPs for LFM2.5-24B-A2B oQ4e MLX and Qwen3.5-9B-Uncensored-HauhauCS-Aggressive mxfp8 MLX.
+- Dataset 31378 -> 31445, 639 -> 641 models, community 30316 -> 30383. check_quotes green (32098 verified).
+
 ## 2026-10-16: oMLX batch 541 (+69 rows)
 
 - scan525 sweep (60 new traces), mined 69 records, +1 new model gemma-4-E4B-Agentic-Sol-Fable-Reasoning-GeminiCLI (4bit mlx); MAPs for LFM2.5-24B-A2B 4bit MLX DWQ v2, Qwen3.8-Flash-Next-Uncensored 4bit plefp8, and gemma-4-26B-A4B-it bf16.
