@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 573 (+64 rows)
+
+- scan557 sweep (56 new traces), mined 64 records, +1 new model Qwen3.6-40B-Fable-Fusion-6-Core-Deckard-Eleanor-Heretic-Uncensored (oQ4e MTP); MAPs for Ornith-1.0-35B oQ4e, Qwen3.8-Flash-Next oQ5e WLSRefit MTP, and Qwen3-VL-8B-Instruct 4bit mlx-community.
+- Dataset 33411 -> 33475, 655 -> 656 models, community 32349 -> 32413. check_quotes green (34128 verified).
+
 ## 2026-10-16: oMLX batch 572 (+64 rows)
 
 - scan556 sweep (56 new traces), mined 64 records, +2 new models Ministral-3-3B-Instruct-2512 (8bit) and Ministral-8B-Instruct-2410 (8bit); MAPs for Agents-A1 OptiQ 4bit, Qwen2.5-Coder-3B-Instruct 4bit, and granite-4.2-3b q4.
