@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 545 (+62 rows)
+
+- scan529 sweep (60 new traces), mined 62 records, no new models or hardware.
+- Dataset 31572 -> 31634, community 30510 -> 30572. check_quotes green (32287 verified).
+
 ## 2026-10-16: oMLX batch 544 (+63 rows)
 
 - scan528 sweep (60 new traces), mined 63 records, +1 new model deepseek-coder-6.7b-instruct-hf (4bit mlx); MAPs for DeepSeek-Coder-V2-Lite-Instruct 4bit and Ling-3.0-tiny oQ8e fp16.
