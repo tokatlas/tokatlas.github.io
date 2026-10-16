@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 531 (+67 rows)
+
+- scan515 sweep (60 new traces), mined 67 records, +2 new models Josiefied-Qwen3-4B-abliterated-v1 (4bit) and Qwen3.6-35B-A3B-MTPLX-Optimized-Balance; MAPs for Qwen3.6-35B-A3B-Uncensored-Heretic, gemma-4-12b-it 8bit MLX, and gemma-4-26B-A4B-it OptiQ.
+- Dataset 30631 -> 30698, 630 -> 632 models, community 29571 -> 29638. check_quotes green (31351 verified).
+
 ## 2026-10-15: oMLX batch 530 (+64 rows)
 
 - scan514 sweep (60 new traces), mined 64 records, +1 new model Bonsai-4B (1bit mlx); MAPs for Cyber-Tiel-Coder-35B-A3B oQ6e, MiniCPM-V-4.6, Ornith-1.5-35B-A3B-uncensored 4bit MLX, gemma-4-26B-A4B-it OptiQ 4bit, and Occamy-1.0 oQ4e MTP (uppercase form).
