@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 574 (+63 rows)
+
+- scan558 sweep (58 new traces), mined 63 records, +1 new model Jundot:Qwen3.8-Flash-Next (oQ4e fp16 MTP).
+- Dataset 33475 -> 33538, 656 -> 657 models, community 32413 -> 32476. check_quotes green (34191 verified).
+
 ## 2026-10-16: oMLX batch 573 (+64 rows)
 
 - scan557 sweep (56 new traces), mined 64 records, +1 new model Qwen3.6-40B-Fable-Fusion-6-Core-Deckard-Eleanor-Heretic-Uncensored (oQ4e MTP); MAPs for Ornith-1.0-35B oQ4e, Qwen3.8-Flash-Next oQ5e WLSRefit MTP, and Qwen3-VL-8B-Instruct 4bit mlx-community.
