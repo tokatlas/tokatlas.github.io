@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 555 (+69 rows)
+
+- scan539 sweep (60 new traces), mined 69 records, +1 new model LOCAL-SMART (4bit); MAP for gemma-4-12b-it oQ4e MTP.
+- Dataset 32224 -> 32293, 648 -> 649 models, community 31162 -> 31231. check_quotes green (32946 verified).
+
 ## 2026-10-16: oMLX batch 554 (+68 rows)
 
 - scan538 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for gemma-4-12b-it oQ8e MTP.
