@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 532 (+68 rows)
+
+- scan516 sweep (56 new traces), mined 68 records, no new models or hardware; MAPs for LFM2.5-2.6B oQ4e and Qwen3.8-Flash-Next-Uncensored oQ4e 100K MTP plefp8.
+- Dataset 30698 -> 30766, community 29638 -> 29706. check_quotes green (31419 verified).
+
 ## 2026-10-15: oMLX batch 531 (+67 rows)
 
 - scan515 sweep (60 new traces), mined 67 records, +2 new models Josiefied-Qwen3-4B-abliterated-v1 (4bit) and Qwen3.6-35B-A3B-MTPLX-Optimized-Balance; MAPs for Qwen3.6-35B-A3B-Uncensored-Heretic, gemma-4-12b-it 8bit MLX, and gemma-4-26B-A4B-it OptiQ.
