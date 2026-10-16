@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 576 (+67 rows)
+
+- scan560 sweep (60 new traces), mined 67 records, +1 new model Qwen3-30B-A3B-Instruct-2507 (4bit); MAPs for LFM2.5-2.6B oQ4e MLX / fp16 / OptiQ 4bit, Qwen3-4B-Instruct-2507 4bit DWQ, and Qwen3.6-35B-A3B oQ3.
+- Dataset 33603 -> 33670, 658 -> 659 models, community 32541 -> 32608. check_quotes green (34323 verified).
+
 ## 2026-10-16: oMLX batch 575 (+65 rows)
 
 - scan559 sweep (60 new traces), mined 65 records, +1 new model Signal-3.8-27B-Terse-Coder (oQ4e MTP); MAP for Jundot:Qwen3.8-Flash-Next oQ4e MTP.
