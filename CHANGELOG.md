@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 558 (+71 rows)
+
+- scan542 sweep (60 new traces), mined 71 records, no new models or hardware; MAPs for Kolibri-1 mixed 4-8 bit mlx and Occamy-1.0 oQ4e fp16.
+- Dataset 32428 -> 32499, community 31366 -> 31437. check_quotes green (33152 verified).
+
 ## 2026-10-16: oMLX batch 557 (+69 rows)
 
 - scan541 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3.6-35B-A3B oQ3.5 FP16.
