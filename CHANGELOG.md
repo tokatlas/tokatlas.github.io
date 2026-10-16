@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 543 (+64 rows)
+
+- scan527 sweep (60 new traces), mined 64 records, no new models or hardware; MAPs for Qwen3.8-27B Official MLX 4bit and oQ5e, Qwen3.8-27B-Uncensored 6bit MLX, and Qwen3.8-27B-Coder390 6bit.
+- Dataset 31445 -> 31509, community 30383 -> 30447. check_quotes green (32162 verified).
+
 ## 2026-10-16: oMLX batch 542 (+67 rows)
 
 - scan526 sweep (60 new traces), mined 67 records, +2 new models granite-4.1-3b (mxfp4) and Huihui-Qwen3.5-4B-Claude-4.6-Opus-abliterated (4bit mlx-community); MAPs for LFM2.5-24B-A2B oQ4e MLX and Qwen3.5-9B-Uncensored-HauhauCS-Aggressive mxfp8 MLX.
