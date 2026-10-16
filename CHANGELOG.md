@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 544 (+63 rows)
+
+- scan528 sweep (60 new traces), mined 63 records, +1 new model deepseek-coder-6.7b-instruct-hf (4bit mlx); MAPs for DeepSeek-Coder-V2-Lite-Instruct 4bit and Ling-3.0-tiny oQ8e fp16.
+- Dataset 31509 -> 31572, 641 -> 642 models, community 30447 -> 30510. check_quotes green (32225 verified).
+
 ## 2026-10-16: oMLX batch 543 (+64 rows)
 
 - scan527 sweep (60 new traces), mined 64 records, no new models or hardware; MAPs for Qwen3.8-27B Official MLX 4bit and oQ5e, Qwen3.8-27B-Uncensored 6bit MLX, and Qwen3.8-27B-Coder390 6bit.
