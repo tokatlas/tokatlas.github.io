@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 563 (+66 rows)
+
+- scan547 sweep (60 new traces), mined 66 records, no new models or hardware; MAP for RavenX-CyberAgent RATH 8bit mlx.
+- Dataset 32764 -> 32830, community 31702 -> 31768. check_quotes green (33483 verified).
+
 ## 2026-10-16: oMLX batch 562 (+64 rows)
 
 - scan546 sweep (60 new traces), mined 64 records, +1 new model MiniCPM-V-4.7-1B (4bit); MAP for Qwen3.6-35B-A3B-Uncensored-Genesis-Final-dequantized oQ4e fp16 MTP.
