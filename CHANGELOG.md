@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 546 (+62 rows)
+
+- scan530 sweep (60 new traces), mined 62 records, no new models or hardware; MAPs for AREX-2 4bit, Qwen3.8-27B-Uncensored oQ5e bf16 MTP MLX, Qwen3.8-35B-A3B-Distill oQ6e fp16 MTP, Qwen3.8-Flash-Next-Uncensored REAP288 MTP 4bit MLX, and gpt-oss 20B oQ5e bf16 (space form after slug collision, 285 existing).
+- Dataset 31634 -> 31696, community 30572 -> 30634. check_quotes green (32349 verified).
+
 ## 2026-10-16: oMLX batch 545 (+62 rows)
 
 - scan529 sweep (60 new traces), mined 62 records, no new models or hardware.
