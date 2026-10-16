@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 528 (+76 rows)
+
+- scan512 sweep (60 new traces), mined 76 records, +1 new model StartLux-Decision-4B.
+- Dataset 30423 -> 30499, 628 -> 629 models, community 29363 -> 29439. check_quotes green (31152 verified).
+
 ## 2026-10-15: oMLX batch 527 (+70 rows)
 
 - scan511 sweep (60 new traces), mined 70 records, no new models or hardware; MAPs for MiniCPM5-2B bf16 and gemma-4-12b-it 4bit (lowercase form after slug collision).
