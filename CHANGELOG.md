@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 567 (+69 rows)
+
+- scan551 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3-Coder-Next 8bit MLX.
+- Dataset 33023 -> 33092, community 31961 -> 32030. check_quotes green (33745 verified).
+
 ## 2026-10-16: oMLX batch 566 (+67 rows)
 
 - scan550 sweep (56 new traces), mined 67 records, no new models or hardware; MAPs for muse-glimmer 30B oQ4e fp16 and Swift-Qwen3.8-27B 6bit MLX.
