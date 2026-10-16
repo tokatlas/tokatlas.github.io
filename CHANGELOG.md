@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 560 (+66 rows)
+
+- scan544 sweep (58 new traces), mined 66 records, no new models or hardware; MAPs for Qwopus3.8-27B-Flash oQ4e MTP and gemma-4-E4B-it oQ6 MTP.
+- Dataset 32565 -> 32631, community 31503 -> 31569. check_quotes green (33284 verified).
+
 ## 2026-10-16: oMLX batch 559 (+66 rows)
 
 - scan543 sweep (60 new traces), mined 66 records, no new models or hardware.
