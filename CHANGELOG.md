@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 537 (+71 rows)
+
+- scan521 sweep (60 new traces), mined 71 records, no new models or hardware; MAP for Qwen3.8-27B-Uncensored 4bit MLX.
+- Dataset 31033 -> 31104, community 29971 -> 30042. check_quotes green (31757 verified).
+
 ## 2026-10-16: oMLX batch 536 (+69 rows)
 
 - scan520 sweep (60 new traces), mined 69 records, no new models or hardware.
