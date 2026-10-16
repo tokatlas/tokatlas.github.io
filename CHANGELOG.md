@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: oMLX batch 530 (+64 rows)
+
+- scan514 sweep (60 new traces), mined 64 records, +1 new model Bonsai-4B (1bit mlx); MAPs for Cyber-Tiel-Coder-35B-A3B oQ6e, MiniCPM-V-4.6, Ornith-1.5-35B-A3B-uncensored 4bit MLX, gemma-4-26B-A4B-it OptiQ 4bit, and Occamy-1.0 oQ4e MTP (uppercase form).
+- Dataset 30567 -> 30631, 629 -> 630 models, community 29507 -> 29571. check_quotes green (31284 verified).
+
 ## 2026-10-15: oMLX batch 529 (+68 rows)
 
 - scan513 sweep (58 new traces), mined 68 records, no new models or hardware; MAPs for GLM-5.3-Flash oQ8 MTP, LFM2.5-24B-A2B 6bit MLX, Qwen3.8-Flash-Next g32 MTP 4bit, and gemma-4-26B-A4B-it (quant unstated).
