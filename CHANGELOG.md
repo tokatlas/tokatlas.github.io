@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: vLLM PR #61942 (+2 rows)
+
+- GLM-5.1-FP8 (new model) MI355X TP4, 1K in c32 total throughput, main vs AITER top-k sparse indexer skip arm (16616 -> 17042 tok/s, +2.6% within noise).
+- Dataset 30766 -> 30768, 632 -> 633 models, sourced 1060 -> 1062. check_quotes green (31421 verified).
+
 ## 2026-10-15: oMLX batch 532 (+68 rows)
 
 - scan516 sweep (56 new traces), mined 68 records, no new models or hardware; MAPs for LFM2.5-2.6B oQ4e and Qwen3.8-Flash-Next-Uncensored oQ4e 100K MTP plefp8.

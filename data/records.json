@@ -1,5 +1,5 @@
 {
- "count": 30766,
+ "count": 30768,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -61722,6 +61722,54 @@
    "source_url": "https://github.com/vllm-project/vllm/pull/61903",
    "tg_tokens": null,
    "tps": 1524,
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 32,
+   "ctx": null,
+   "date": "2026-10-16",
+   "flags": [],
+   "hardware": "MI355X",
+   "id": "vllm-61942-tt-c32-main",
+   "model": "GLM-5.1-FP8",
+   "notes": "vLLM PR #61942 AITER top-k sparse indexer skip; main arm; GLM-5.1-FP8 MI355X TP4; 1K in, c32 total throughput, +2.6% within noise per PR",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "sourced",
+   "quant": "FP8",
+   "quote": "GLM-5.1-FP8; MI355X; gsm8k flexible: main 0.9462 / 0.9409, PR 0.9439 / 0.9484. 1K c32 total throughput 16616 \u2192 17042 tok/s",
+   "ram_gb": null,
+   "retrieved": "2026-10-16",
+   "source_name": "vLLM PR #61942",
+   "source_url": "https://github.com/vllm-project/vllm/pull/61942",
+   "tg_tokens": null,
+   "tps": 16616,
+   "ttft_s": null
+  },
+  {
+   "backend": "vLLM",
+   "batch": 32,
+   "ctx": null,
+   "date": "2026-10-16",
+   "flags": [],
+   "hardware": "MI355X",
+   "id": "vllm-61942-tt-c32-pr",
+   "model": "GLM-5.1-FP8",
+   "notes": "vLLM PR #61942 AITER top-k sparse indexer skip; pr arm; GLM-5.1-FP8 MI355X TP4; 1K in, c32 total throughput, +2.6% within noise per PR",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "sourced",
+   "quant": "FP8",
+   "quote": "GLM-5.1-FP8; MI355X; gsm8k flexible: main 0.9462 / 0.9409, PR 0.9439 / 0.9484. 1K c32 total throughput 16616 \u2192 17042 tok/s",
+   "ram_gb": null,
+   "retrieved": "2026-10-16",
+   "source_name": "vLLM PR #61942",
+   "source_url": "https://github.com/vllm-project/vllm/pull/61942",
+   "tg_tokens": null,
+   "tps": 17042,
    "ttft_s": null
   },
   {
@@ -785320,5 +785368,5 @@
    "ttft_s": 1
   }
  ],
- "retrieved": "2026-10-15"
+ "retrieved": "2026-10-16"
 }
