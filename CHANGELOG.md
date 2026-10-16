@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 535 (+67 rows)
+
+- scan519 sweep (60 new traces), mined 67 records, +1 new model gemma-3-1b-it (4bit mlx-community).
+- Dataset 30897 -> 30964, 634 -> 635 models, community 29835 -> 29902. check_quotes green (31617 verified).
+
 ## 2026-10-16: oMLX batch 534 (+68 rows)
 
 - scan518 sweep (58 new traces), mined 68 records, +1 new model MiniCPM5-2B-chat (4bit mlx); MAPs for Huihui-Qwen3.6-35B-A3B-abliterated 4bit mlx, LFM2.5-24B-A2B 4bit MLX fp16, Qwen2.5-VL-3B-Instruct 4bit, and Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive OptiQ-5bpw MLX.
