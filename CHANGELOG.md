@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 549 (+63 rows)
+
+- scan533 sweep (60 new traces), mined 63 records, +3 new models Mellum2-12B-A2.5B-Thinking (4bit), Qwen3.8-27B-TURBO-Fable5.5-Cold-Fusion-L-Uncensored (oQ4e fp16 MTP), and qwen4flashNext (4bit); MAPs for AREX-Turbo, KAT-Coder-V2.5-Dev 4bit MLX, and Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ5 fp16 MTP.
+- Dataset 31828 -> 31891, 643 -> 646 models, community 30766 -> 30829. check_quotes green (32544 verified).
+
 ## 2026-10-16: oMLX batch 548 (+67 rows)
 
 - scan532 sweep (60 new traces), mined 67 records, no new models or hardware; MAPs for LFM2.5-2.6B 6bit MLX and Qwen3.5-9B 5bit MLX MTP.
