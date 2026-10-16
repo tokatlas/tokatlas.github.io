@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 552 (+65 rows)
+
+- scan536 sweep (60 new traces), mined 65 records, no new models or hardware; MAP for Qwen3.8-Flash-Next oQ4e fp16.
+- Dataset 32022 -> 32087, community 30960 -> 31025. check_quotes green (32740 verified).
+
 ## 2026-10-16: oMLX batch 551 (+65 rows)
 
 - scan535 sweep (60 new traces), mined 65 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 4bit MLX, Qwen3-Coder-Next-REAP-48B-A3B 4bit mlx, gemma-4-12b-it oQ6e MTP, and Gemma 4 26B-A4B 4bit (space form after slug collision, 177 existing).
