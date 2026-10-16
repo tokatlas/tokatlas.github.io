@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 562 (+64 rows)
+
+- scan546 sweep (60 new traces), mined 64 records, +1 new model MiniCPM-V-4.7-1B (4bit); MAP for Qwen3.6-35B-A3B-Uncensored-Genesis-Final-dequantized oQ4e fp16 MTP.
+- Dataset 32700 -> 32764, 649 -> 650 models, community 31638 -> 31702. check_quotes green (33417 verified).
+
 ## 2026-10-16: oMLX batch 561 (+69 rows)
 
 - scan545 sweep (60 new traces), mined 69 records, no new models or hardware; MAPs for LFM2.5-24B-A2B oQ5e fp16 and Qwen3-VL-8B-Instruct 4bit.
