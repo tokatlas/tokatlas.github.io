@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 564 (+60 rows)
+
+- scan548 sweep (57 new traces), mined 60 records, no new models or hardware; MAP for gemma-4-26B-A4B-it oQ2.5e MTP.
+- Dataset 32830 -> 32890, community 31768 -> 31828. check_quotes green (33543 verified).
+
 ## 2026-10-16: oMLX batch 563 (+66 rows)
 
 - scan547 sweep (60 new traces), mined 66 records, no new models or hardware; MAP for RavenX-CyberAgent RATH 8bit mlx.
