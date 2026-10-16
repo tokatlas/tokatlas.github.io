@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 536 (+69 rows)
+
+- scan520 sweep (60 new traces), mined 69 records, no new models or hardware.
+- Dataset 30964 -> 31033, community 29902 -> 29971. check_quotes green (31686 verified).
+
 ## 2026-10-16: oMLX batch 535 (+67 rows)
 
 - scan519 sweep (60 new traces), mined 67 records, +1 new model gemma-3-1b-it (4bit mlx-community).
