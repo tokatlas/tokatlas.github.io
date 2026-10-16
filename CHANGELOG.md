@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 550 (+66 rows)
+
+- scan534 sweep (60 new traces), mined 66 records, +1 new model Kimi-VL-A3B-Instruct (4bit mlx); MAPs for LFM2.5-1.2B 8bit MLX and gemma-4-26B-A4B-it QAT q4_0 4bit MLX aligned.
+- Dataset 31891 -> 31957, 646 -> 647 models, community 30829 -> 30895. check_quotes green (32610 verified).
+
 ## 2026-10-16: oMLX batch 549 (+63 rows)
 
 - scan533 sweep (60 new traces), mined 63 records, +3 new models Mellum2-12B-A2.5B-Thinking (4bit), Qwen3.8-27B-TURBO-Fable5.5-Cold-Fusion-L-Uncensored (oQ4e fp16 MTP), and qwen4flashNext (4bit); MAPs for AREX-Turbo, KAT-Coder-V2.5-Dev 4bit MLX, and Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ5 fp16 MTP.
