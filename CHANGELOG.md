@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 571 (+57 rows)
+
+- scan555 sweep (49 new traces), mined 57 records, +2 new models AX-Qwen3.8-27B (6bit AXQ MTP MLX) and Qwen3-48B-A4B-Savant-Commander-Distill-12X-Closed-Open-Heretic-Uncensored (oQ4e).
+- Dataset 33290 -> 33347, 651 -> 653 models, community 32228 -> 32285. check_quotes green (34000 verified).
+
 ## 2026-10-16: oMLX batch 570 (+69 rows)
 
 - scan554 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ3.5e.
