@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 578 (+68 rows)
+
+- scan562 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for gemma-4-12b-it (quant unstated).
+- Dataset 33738 -> 33806, community 32676 -> 32744. check_quotes green (34459 verified).
+
 ## 2026-10-16: oMLX batch 577 (+68 rows)
 
 - scan561 sweep (60 new traces), mined 68 records, no new models or hardware; MAPs for gemma-4-12b-it oQ5e and MiniCPM-V-4.7-35B-A3B mxfp4 mlx-community.
