@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 575 (+65 rows)
+
+- scan559 sweep (60 new traces), mined 65 records, +1 new model Signal-3.8-27B-Terse-Coder (oQ4e MTP); MAP for Jundot:Qwen3.8-Flash-Next oQ4e MTP.
+- Dataset 33538 -> 33603, 657 -> 658 models, community 32476 -> 32541. check_quotes green (34256 verified).
+
 ## 2026-10-16: oMLX batch 574 (+63 rows)
 
 - scan558 sweep (58 new traces), mined 63 records, +1 new model Jundot:Qwen3.8-Flash-Next (oQ4e fp16 MTP).
