@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 557 (+69 rows)
+
+- scan541 sweep (60 new traces), mined 69 records, no new models or hardware; MAP for Qwen3.6-35B-A3B oQ3.5 FP16.
+- Dataset 32359 -> 32428, community 31297 -> 31366. check_quotes green (33081 verified).
+
 ## 2026-10-16: oMLX batch 556 (+66 rows)
 
 - scan540 sweep (60 new traces), mined 66 records, no new models or hardware; MAPs for MiniCPM-V-4.7-35B-A3B 5bit, Qwen3.6-35B-A3B oQ3e MTP MLX, and NVIDIA-Nemotron-3.5-Lightning-30B-A3B 4bit MLX.
