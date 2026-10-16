@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 551 (+65 rows)
+
+- scan535 sweep (60 new traces), mined 65 records, no new models or hardware; MAPs for LFM2.5-24B-A2B 4bit MLX, Qwen3-Coder-Next-REAP-48B-A3B 4bit mlx, gemma-4-12b-it oQ6e MTP, and Gemma 4 26B-A4B 4bit (space form after slug collision, 177 existing).
+- Dataset 31957 -> 32022, community 30895 -> 30960. check_quotes green (32675 verified).
+
 ## 2026-10-16: oMLX batch 550 (+66 rows)
 
 - scan534 sweep (60 new traces), mined 66 records, +1 new model Kimi-VL-A3B-Instruct (4bit mlx); MAPs for LFM2.5-1.2B 8bit MLX and gemma-4-26B-A4B-it QAT q4_0 4bit MLX aligned.
