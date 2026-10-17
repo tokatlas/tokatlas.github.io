@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 579 (+73 rows)
+
+- scan563 sweep (60 new traces), mined 73 records, +2 new models DeepSeek-R1-Distill-Qwen-1.5B-chat (oQ4 mlx) and NuExtract3 (8bits mlx); MAPs for CyberTiel-Coder-35B MLX and Qwen3.5-9B 4bit mlx-community.
+- Dataset 33806 -> 33879, 659 -> 661 models, community 32744 -> 32817. check_quotes green (34532 verified).
+
 ## 2026-10-16: oMLX batch 578 (+68 rows)
 
 - scan562 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for gemma-4-12b-it (quant unstated).
