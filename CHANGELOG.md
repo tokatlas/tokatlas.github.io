@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 627 (+68 rows)
+
+- scan611 sweep (60 new traces), mined 68 records, no new models; MAP for Mellum2.1-12B-A2.5B-Thinking oQ8e.
+- Dataset 36888 -> 36956, community 35797 -> 35865. check_quotes green (37609 verified).
+
 ## 2026-10-17: oMLX batch 626 (+68 rows)
 
 - scan610 sweep (60 new traces), mined 68 records, +2 new models LFM2.5-24B-A2B-abliterated (4bit MLX) and Ternary-Bonsai-2-27B-Uncensored-Heretic-v2 (2bit MLX compact); MAPs for Qwen3.6-35B-A3B mixed 3/4bit and Qwen3.8-Flash-Next-Uncensored mixed.
