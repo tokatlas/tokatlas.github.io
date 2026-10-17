@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: llama.cpp PR #30701 (+10 rows)
+
+- Mined SYCL fast q8_0 reorder dequant A/B (Intel Arc Pro B70, prompt eval t/s only, ctx 512): Qwen3.8-27B Q8_0 (516.36 -> 906.28), UD-Q8_K_XL (547.57 -> 938.73), UD-Q8_K_4XL dual GPU (630.00 -> 975.48), Mistral-Small-3.2-24B-Instruct Q8_0 (635.88 -> 1164.05), Qwen3 4B Q8_0 (2985.50 -> 4831.58); stock and optimized arms as separate records.
+- +1 new model Mistral-Small-3.2-24B-Instruct; Qwen3 4B mapped to space form (61 records).
+- Dataset 34226 -> 34236, 661 -> 662 models, sourced 1062 -> 1072. check_quotes green (34889 verified).
+
 ## 2026-10-17: oMLX batch 585 (+62 rows)
 
 - scan569 sweep (57 new traces), mined 62 records, no new models or hardware; MAPs for Qwen3.6-35B-A3B-MTPLX-Optimized-Balance FP16, Qwen3.6-35B-A3B oQ8 fp16 MTP, Qwen3.8-27B oQ8 mlx fp16 MTP, and gemma-4-31B-it mxfp4.
