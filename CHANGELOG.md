@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 607 (+60 rows)
+
+- scan591 sweep (58 new traces), mined 60 records, +1 new model Qwen3.6-35B-A3B-Fable-5-Distill (oQ6 fp16 MTP); MAP for GLM-5.3 MLX mixed 4/8bit.
+- Dataset 35590 -> 35650, community 34518 -> 34578. check_quotes green (36303 verified).
+
 ## 2026-10-17: oMLX batch 606 (+65 rows)
 
 - scan590 sweep (60 new traces), mined 65 records, +1 new model Ternary-Bonsai-2-4B (2bit MLX); MAP for Qwen2.5-1.5B-Instruct 4bit.
