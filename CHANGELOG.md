@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 582 (+59 rows)
+
+- scan566 sweep (53 new traces), mined 58 records, no new models or hardware; MAPs for LFM2.5-2.6B oQ3.5e / oQ5e MLX and MiniCPM-V-4.7-35B-A3B mxfp4.
+- Fixed duplicate trace id: second 87mc1tub row re-attributed to w2nbqalu (+1 distinct record).
+- Dataset 34009 -> 34067, community 32947 -> 33005. check_quotes green (34720 verified).
+
 ## 2026-10-16: oMLX batch 581 (+68 rows)
 
 - scan565 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for LFM2.5-2.6B oQ4e MLX bf16 matrix-oQ4e.
