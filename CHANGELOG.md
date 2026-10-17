@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 610 (+63 rows)
+
+- scan594 sweep (60 new traces), mined 63 records, no new models; MAPs for GLM-5.3-Flash 6bit MLX, Qwen3.5-2B bf16, gemma-4-E4B-it-qat mxfp4.
+- Dataset 35774 -> 35837, community 34702 -> 34765. check_quotes green (36490 verified).
+
 ## 2026-10-17: oMLX batch 609 (+66 rows)
 
 - scan593 sweep (60 new traces), mined 66 records, +1 new model Qwen3.6-27B-Claude-Opus-Reasoning-Distill-v2-abliterated (4bit OptiQ MLX); MAPs for GLM-5.3-Flash-UNCENSORED 6bit MLX and Occamy-1.0 oQ4e.
