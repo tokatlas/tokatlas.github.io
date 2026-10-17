@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 581 (+68 rows)
+
+- scan565 sweep (60 new traces), mined 68 records, no new models or hardware; MAP for LFM2.5-2.6B oQ4e MLX bf16 matrix-oQ4e.
+- Dataset 33941 -> 34009, community 32879 -> 32947. check_quotes green (34662 verified).
+
 ## 2026-10-16: oMLX batch 580 (+62 rows)
 
 - scan564 sweep (55 new traces), mined 62 records, no new models or hardware; MAPs for Qwen3.8-27B-Abliterated 4bit MTPLX and lowercase Flash-Next oQ4e MTP.
