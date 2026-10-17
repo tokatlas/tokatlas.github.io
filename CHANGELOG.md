@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 626 (+68 rows)
+
+- scan610 sweep (60 new traces), mined 68 records, +2 new models LFM2.5-24B-A2B-abliterated (4bit MLX) and Ternary-Bonsai-2-27B-Uncensored-Heretic-v2 (2bit MLX compact); MAPs for Qwen3.6-35B-A3B mixed 3/4bit and Qwen3.8-Flash-Next-Uncensored mixed.
+- Dataset 36820 -> 36888, community 35729 -> 35797. check_quotes green (37541 verified).
+
 ## 2026-10-17: oMLX batch 625 (+66 rows)
 
 - scan609 sweep (60 new traces), mined 66 records, no new models; MAP for LFM2.5-2.6B oQ8e.
