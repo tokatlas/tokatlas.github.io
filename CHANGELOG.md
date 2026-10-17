@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 604 (+64 rows)
+
+- scan588 sweep (60 new traces), mined 64 records, no new models or hardware.
+- Dataset 35394 -> 35458, community 34322 -> 34386. check_quotes green (36111 verified).
+
 ## 2026-10-17: oMLX batch 603 (+62 rows)
 
 - scan587 sweep (53 new traces), mined 62 records, no new models or hardware.
