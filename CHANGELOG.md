@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 609 (+66 rows)
+
+- scan593 sweep (60 new traces), mined 66 records, +1 new model Qwen3.6-27B-Claude-Opus-Reasoning-Distill-v2-abliterated (4bit OptiQ MLX); MAPs for GLM-5.3-Flash-UNCENSORED 6bit MLX and Occamy-1.0 oQ4e.
+- Dataset 35708 -> 35774, community 34636 -> 34702. check_quotes green (36427 verified).
+
 ## 2026-10-17: oMLX batch 608 (+58 rows)
 
 - scan592 sweep (56 new traces), mined 58 records, no new models or hardware.
