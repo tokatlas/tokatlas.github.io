@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 585 (+62 rows)
+
+- scan569 sweep (57 new traces), mined 62 records, no new models or hardware; MAPs for Qwen3.6-35B-A3B-MTPLX-Optimized-Balance FP16, Qwen3.6-35B-A3B oQ8 fp16 MTP, Qwen3.8-27B oQ8 mlx fp16 MTP, and gemma-4-31B-it mxfp4.
+- Dataset 34164 -> 34226, community 33102 -> 33164. check_quotes green (34879 verified).
+
 ## 2026-10-16: oMLX batch 584 (+48 rows)
 
 - scan568 sweep (45 new traces), mined 48 records, no new models or hardware.
