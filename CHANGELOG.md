@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 594 (+60 rows)
+
+- scan578 sweep (60 new traces), mined 60 records, no new models; MAPs for Qwen3.6-35B-A3B oQ4 and Qwen3.8-Flash-Next oQ4 MTP.
+- Dataset 34765 -> 34825, community 33693 -> 33753. check_quotes green (35478 verified).
+
 ## 2026-10-17: oMLX batch 593 (+67 rows)
 
 - scan577 sweep (60 new traces), mined 67 records, no new models (Muse-Glimmer mapped to space form "Muse Glimmer"); MAPs for Muse-Glimmer 4bit MLX, Ornith-1.0-35B OptiQ 4bit, Spark-X2.5-4B OptiQ 4bit.
