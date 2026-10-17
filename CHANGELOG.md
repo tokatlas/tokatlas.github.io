@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 601 (+62 rows)
+
+- scan585 sweep (60 new traces), mined 62 records, +2 new models Qwen3.8-27B-Coder390-EfficientThink-DFlash2 (oQ8e MTP) and Ternary-Bonsai-2-9B (2bit MLX).
+- Dataset 35214 -> 35276, community 34142 -> 34204. check_quotes green (35929 verified).
+
 ## 2026-10-17: oMLX batch 600 (+65 rows)
 
 - scan584 sweep (60 new traces), mined 65 records, no new models; MAP for Ornith-1.5-35B-A3B oQ8e fixed MTP.
