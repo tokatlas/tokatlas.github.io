@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 597 (+63 rows)
+
+- scan581 sweep (60 new traces), mined 63 records, +2 new models LFM2.5-1.2B-Instruct (4bit MLX) and Muse-Spark-Open-816B-A42B (oQ3e).
+- Dataset 34959 -> 35022, community 33887 -> 33950. check_quotes green (35675 verified).
+- CI note: batch 596 run flaked on a cold fetch timeout (omlx.ai trace pkzedvud, no cache in CI since .cache is gitignored); re-run green.
+
 ## 2026-10-17: oMLX batch 596 (+65 rows)
 
 - scan580 sweep (60 new traces), mined 65 records, +1 new model Mistral-Medium-3.5-128B (4bit).
