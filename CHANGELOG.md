@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 608 (+58 rows)
+
+- scan592 sweep (56 new traces), mined 58 records, no new models or hardware.
+- Dataset 35650 -> 35708, community 34578 -> 34636. check_quotes green (36361 verified).
+
 ## 2026-10-17: oMLX batch 607 (+60 rows)
 
 - scan591 sweep (58 new traces), mined 60 records, +1 new model Qwen3.6-35B-A3B-Fable-5-Distill (oQ6 fp16 MTP); MAP for GLM-5.3 MLX mixed 4/8bit.
