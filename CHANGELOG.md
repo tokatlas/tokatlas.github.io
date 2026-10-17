@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 619 (+67 rows)
+
+- scan603 sweep (60 new traces), mined 67 records, +1 new model MiMo-V2.6-Distill-Qwen-9B-Ablitrated (oQ4e); MAPs for K2-Horizon-MoVA-36B-A4B oQ8e and Gemma 4 26B-A4B 8bit.
+- Dataset 36380 -> 36447, community 35289 -> 35356. check_quotes green (37100 verified).
+
 ## 2026-10-17: oMLX batch 618 (+69 rows)
 
 - scan602 sweep (60 new traces), mined 69 records, no new models; MAPs for Ornith-1.5-35B-A3B oQ6 MTP, gemma-4-26B-A4B-it oQ8e, gemma-4-E2B-it oQ3.
