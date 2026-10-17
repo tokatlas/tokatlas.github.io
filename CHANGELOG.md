@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 587 (+67 rows)
+
+- scan571 sweep (60 new traces), mined 67 records, +2 new models K2-Horizon-7B-uno (6bit) and TheCluster--amoral-gemma-3-12B-v2 (4bit MLX); MAPs for muse-glimmer 30B nvfp4 and Swift 1.5 4bit MLX (mapped to space form, 61 -> 63 records).
+- Dataset 34300 -> 34367, community 33228 -> 33295. check_quotes green (35020 verified).
+
 ## 2026-10-17: oMLX batch 586 (+64 rows)
 
 - scan570 sweep (60 new traces), mined 64 records, +1 new model gemma-4-E2B-it-Uncensored-MAX (4bit); MAPs for GLM-5.3-Flash 4bit, Spark-X2.5-4B (quant unstated), and the new E2B variant.
