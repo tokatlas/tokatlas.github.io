@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 586 (+64 rows)
+
+- scan570 sweep (60 new traces), mined 64 records, +1 new model gemma-4-E2B-it-Uncensored-MAX (4bit); MAPs for GLM-5.3-Flash 4bit, Spark-X2.5-4B (quant unstated), and the new E2B variant.
+- Dataset 34236 -> 34300, community 33164 -> 33228. check_quotes green (34953 verified).
+
 ## 2026-10-17: llama.cpp PR #30701 (+10 rows)
 
 - Mined SYCL fast q8_0 reorder dequant A/B (Intel Arc Pro B70, prompt eval t/s only, ctx 512): Qwen3.8-27B Q8_0 (516.36 -> 906.28), UD-Q8_K_XL (547.57 -> 938.73), UD-Q8_K_4XL dual GPU (630.00 -> 975.48), Mistral-Small-3.2-24B-Instruct Q8_0 (635.88 -> 1164.05), Qwen3 4B Q8_0 (2985.50 -> 4831.58); stock and optimized arms as separate records.
