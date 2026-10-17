@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 580 (+62 rows)
+
+- scan564 sweep (55 new traces), mined 62 records, no new models or hardware; MAPs for Qwen3.8-27B-Abliterated 4bit MTPLX and lowercase Flash-Next oQ4e MTP.
+- Dataset 33879 -> 33941, community 32817 -> 32879. check_quotes green (34594 verified).
+
 ## 2026-10-16: oMLX batch 579 (+73 rows)
 
 - scan563 sweep (60 new traces), mined 73 records, +2 new models DeepSeek-R1-Distill-Qwen-1.5B-chat (oQ4 mlx) and NuExtract3 (8bits mlx); MAPs for CyberTiel-Coder-35B MLX and Qwen3.5-9B 4bit mlx-community.
