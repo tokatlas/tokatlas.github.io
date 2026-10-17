@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 588 (+63 rows)
+
+- scan572 sweep (60 new traces), mined 63 records, no new models; MAPs for Ornith-1.5-35B-A3B MXFP4 MLX and Qwen3.5-0.8B oQ8 MTP.
+- Dataset 34367 -> 34430, community 33295 -> 33358. check_quotes green (35083 verified).
+
 ## 2026-10-17: oMLX batch 587 (+67 rows)
 
 - scan571 sweep (60 new traces), mined 67 records, +2 new models K2-Horizon-7B-uno (6bit) and TheCluster--amoral-gemma-3-12B-v2 (4bit MLX); MAPs for muse-glimmer 30B nvfp4 and Swift 1.5 4bit MLX (mapped to space form, 61 -> 63 records).
