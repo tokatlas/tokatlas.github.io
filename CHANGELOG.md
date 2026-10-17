@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 620 (+65 rows)
+
+- scan604 sweep (60 new traces), mined 65 records, +2 new models Qwen3.5-9b-Sushi-Coder-RL (4bit MLX) and Ternary-Bonsai-8B (2bit MLX); MAPs for LFM2.5-24B-A2B DWQ 3bit v2 and gemma-4-26B-A4B-it nvfp4.
+- Dataset 36447 -> 36512, community 35356 -> 35421. check_quotes green (37165 verified).
+
 ## 2026-10-17: oMLX batch 619 (+67 rows)
 
 - scan603 sweep (60 new traces), mined 67 records, +1 new model MiMo-V2.6-Distill-Qwen-9B-Ablitrated (oQ4e); MAPs for K2-Horizon-MoVA-36B-A4B oQ8e and Gemma 4 26B-A4B 8bit.
