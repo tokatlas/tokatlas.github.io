@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 615 (+69 rows)
+
+- scan599 sweep (60 new traces), mined 69 records, no new models; MAP for Qwen3.8-27B-Abliterated 6bit MTP MLX.
+- Dataset 36114 -> 36183, community 35023 -> 35092. check_quotes green (36836 verified).
+
 ## 2026-10-17: oMLX batch 614 (+64 rows)
 
 - scan598 sweep (56 new traces), mined 64 records, no new models; MAP for Qwen3.6-35B-A3B oQ4 fp16 MLX.
