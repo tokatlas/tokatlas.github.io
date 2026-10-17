@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: llama.cpp PR #30728 (+19 rows)
+
+- Metal GQA vec decode PR, master-arm baseline decode tok/s on M4 Max 128 GB (19 rows, 9 models, ctx 2k-100k); +2 new models GLM-4-9B-0414 and SmolLM2-1.7B, Llama-3.1-8B aliased to Llama 3.1 8B.
+- Dataset 36031 -> 36050, sourced 1072 -> 1091. check_quotes green (36703 verified).
+
 ## 2026-10-17: oMLX batch 613 (+65 rows)
 
 - scan597 sweep (58 new traces), mined 65 records, no new models; MAP for Agents-A1 oQ8e MLX.
