@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 592 (+72 rows)
+
+- scan576 sweep (57 new traces), mined 72 records, no new models; MAP for Qwen3-Coder-30B-A3B-Instruct 3bit.
+- Dataset 34626 -> 34698, community 33554 -> 33626. check_quotes green (35351 verified).
+
 ## 2026-10-17: oMLX batch 591 (+54 rows)
 
 - scan575 sweep (60 new traces), mined 54 records, +3 new models NVIDIA-Nemotron-3.5-Bolt-74B-A9B (oQ4e fp16), NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (4bit MLX), Qwen3.8-27B-Cold-Fusion-GAIN-V1.1 (oQ4e fp16 MTP).
