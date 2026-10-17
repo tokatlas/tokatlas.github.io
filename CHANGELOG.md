@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 616 (+64 rows)
+
+- scan600 sweep (60 new traces), mined 64 records, +1 new model Nemotron-3.5-Lightning-30B-A3B-refusal-ablated (8bit MTP MLX).
+- Dataset 36183 -> 36247, community 35092 -> 35156. check_quotes green (36900 verified).
+
 ## 2026-10-17: oMLX batch 615 (+69 rows)
 
 - scan599 sweep (60 new traces), mined 69 records, no new models; MAP for Qwen3.8-27B-Abliterated 6bit MTP MLX.
