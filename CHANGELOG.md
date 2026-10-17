@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 621 (+63 rows)
+
+- scan605 sweep (58 new traces), mined 63 records, no new models; MAP for NVIDIA-Nemotron-3.5-Lightning-30B-A3B oQ4.
+- Dataset 36512 -> 36575, community 35421 -> 35484. check_quotes green (37228 verified).
+
 ## 2026-10-17: oMLX batch 620 (+65 rows)
 
 - scan604 sweep (60 new traces), mined 65 records, +2 new models Qwen3.5-9b-Sushi-Coder-RL (4bit MLX) and Ternary-Bonsai-8B (2bit MLX); MAPs for LFM2.5-24B-A2B DWQ 3bit v2 and gemma-4-26B-A4B-it nvfp4.
