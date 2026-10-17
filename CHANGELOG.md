@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 599 (+58 rows)
+
+- scan583 sweep (58 new traces), mined 58 records, +1 new model LFM2.5-1.2B-Thinking (8bit).
+- Dataset 35091 -> 35149, community 34019 -> 34077. check_quotes green (35802 verified).
+
 ## 2026-10-17: oMLX batch 598 (+69 rows)
 
 - scan582 sweep (60 new traces), mined 69 records, +2 new models Huihui-gemma-4-31B-it-v2 (8bit MLX) and Qwen3-Next-80B-A3B-Instruct-1M (6bit qx64n MLX), plus the Coder390 distill chain (oQ8e fp16 MTP).
