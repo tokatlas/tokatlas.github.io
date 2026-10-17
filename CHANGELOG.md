@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 590 (+73 rows)
+
+- scan574 sweep (60 new traces), mined 73 records, no new models or hardware.
+- Dataset 34499 -> 34572, community 33427 -> 33500. check_quotes green (35225 verified).
+
 ## 2026-10-17: oMLX batch 589 (+69 rows)
 
 - scan573 sweep (60 new traces), mined 69 records, +1 new model Qwen3.8-35B-A3B-DistillAPEX-MiniPlus-Abliterated (4bit); MAP for Huihui-Qwen3.8-27B-abliterated oQ3.5e MTP.
