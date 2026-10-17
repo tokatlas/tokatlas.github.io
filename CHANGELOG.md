@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 606 (+65 rows)
+
+- scan590 sweep (60 new traces), mined 65 records, +1 new model Ternary-Bonsai-2-4B (2bit MLX); MAP for Qwen2.5-1.5B-Instruct 4bit.
+- Dataset 35525 -> 35590, community 34453 -> 34518. check_quotes green (36243 verified).
+
 ## 2026-10-17: oMLX batch 605 (+67 rows)
 
 - scan589 sweep (60 new traces), mined 67 records, +1 new model Qwen3.8-27B-MLX-AD-4.50bpw-DWQ-16.0GB (4bit DWQ); MAPs for MiniCPM-V-4.7-35B-A3B MLX serve 4bit, NVIDIA-Nemotron-3.5-Lightning-30B-A3B 4bit, Qwen3.5-2B 4bit; Swift-1.5 records mapped to space form.
