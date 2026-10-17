@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 596 (+65 rows)
+
+- scan580 sweep (60 new traces), mined 65 records, +1 new model Mistral-Medium-3.5-128B (4bit).
+- Dataset 34894 -> 34959, community 33822 -> 33887. check_quotes green (35612 verified).
+
 ## 2026-10-17: oMLX batch 595 (+69 rows)
 
 - scan579 sweep (60 new traces), mined 69 records, no new models or hardware.
