@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 600 (+65 rows)
+
+- scan584 sweep (60 new traces), mined 65 records, no new models; MAP for Ornith-1.5-35B-A3B oQ8e fixed MTP.
+- Dataset 35149 -> 35214, community 34077 -> 34142. check_quotes green (35867 verified).
+
 ## 2026-10-17: oMLX batch 599 (+58 rows)
 
 - scan583 sweep (58 new traces), mined 58 records, +1 new model LFM2.5-1.2B-Thinking (8bit).
