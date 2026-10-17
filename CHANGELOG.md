@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 602 (+56 rows)
+
+- scan586 sweep (55 new traces), mined 56 records, +1 new model Nail-Qwen3.6-35B-A3B (8bit MLX); MAPs for LFM2.5-24B-A2B bf16 MLX and Qwen3.8-27B Q4_K_M llama.cpp MLX.
+- Dataset 35276 -> 35332, community 34204 -> 34260. check_quotes green (35985 verified).
+
 ## 2026-10-17: oMLX batch 601 (+62 rows)
 
 - scan585 sweep (60 new traces), mined 62 records, +2 new models Qwen3.8-27B-Coder390-EfficientThink-DFlash2 (oQ8e MTP) and Ternary-Bonsai-2-9B (2bit MLX).
