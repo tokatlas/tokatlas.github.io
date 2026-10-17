@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 598 (+69 rows)
+
+- scan582 sweep (60 new traces), mined 69 records, +2 new models Huihui-gemma-4-31B-it-v2 (8bit MLX) and Qwen3-Next-80B-A3B-Instruct-1M (6bit qx64n MLX), plus the Coder390 distill chain (oQ8e fp16 MTP).
+- Dataset 35022 -> 35091, community 33950 -> 34019. check_quotes green (35744 verified).
+
 ## 2026-10-17: oMLX batch 597 (+63 rows)
 
 - scan581 sweep (60 new traces), mined 63 records, +2 new models LFM2.5-1.2B-Instruct (4bit MLX) and Muse-Spark-Open-816B-A42B (oQ3e).
