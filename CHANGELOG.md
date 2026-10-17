@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 605 (+67 rows)
+
+- scan589 sweep (60 new traces), mined 67 records, +1 new model Qwen3.8-27B-MLX-AD-4.50bpw-DWQ-16.0GB (4bit DWQ); MAPs for MiniCPM-V-4.7-35B-A3B MLX serve 4bit, NVIDIA-Nemotron-3.5-Lightning-30B-A3B 4bit, Qwen3.5-2B 4bit; Swift-1.5 records mapped to space form.
+- Dataset 35458 -> 35525, community 34386 -> 34453. check_quotes green (36178 verified).
+
 ## 2026-10-17: oMLX batch 604 (+64 rows)
 
 - scan588 sweep (60 new traces), mined 64 records, no new models or hardware.
