@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 618 (+69 rows)
+
+- scan602 sweep (60 new traces), mined 69 records, no new models; MAPs for Ornith-1.5-35B-A3B oQ6 MTP, gemma-4-26B-A4B-it oQ8e, gemma-4-E2B-it oQ3.
+- Dataset 36311 -> 36380, community 35220 -> 35289. check_quotes green (37033 verified).
+
 ## 2026-10-17: oMLX batch 617 (+64 rows)
 
 - scan601 sweep (58 new traces), mined 64 records, no new models; MAP for Qwen3.5-4B 8bit.
