@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-16: oMLX batch 583 (+49 rows)
+
+- scan567 sweep (48 new traces), mined 49 records, no new models or hardware; MAP for LFM2.5-24B-A2B 8bit.
+- Dataset 34067 -> 34116, community 33005 -> 33054. check_quotes green (34769 verified).
+
 ## 2026-10-16: oMLX batch 582 (+59 rows)
 
 - scan566 sweep (53 new traces), mined 58 records, no new models or hardware; MAPs for LFM2.5-2.6B oQ3.5e / oQ5e MLX and MiniCPM-V-4.7-35B-A3B mxfp4.
