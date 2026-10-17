@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 611 (+63 rows)
+
+- scan595 sweep (59 new traces), mined 63 records, +1 new model Mistral-Small-24B-Instruct-2501 (4bit); MAP for Agents-A1 MLX (quant unstated on page).
+- Dataset 35837 -> 35900, community 34765 -> 34828. check_quotes green (36553 verified).
+
 ## 2026-10-17: oMLX batch 610 (+63 rows)
 
 - scan594 sweep (60 new traces), mined 63 records, no new models; MAPs for GLM-5.3-Flash 6bit MLX, Qwen3.5-2B bf16, gemma-4-E4B-it-qat mxfp4.
