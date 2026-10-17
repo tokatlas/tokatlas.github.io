@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 624 (+59 rows)
+
+- scan608 sweep (55 new traces), mined 59 records, no new models; MAPs for Nemotron-3-Super-120B-A12B 6bit MLX, Nemotron-3.5-Lightning-30B-A3B mxfp4 MLX, Qwen3.8-Flash-Next oQ6e fp16 MTP.
+- Dataset 36695 -> 36754, community 35604 -> 35663. check_quotes green (37407 verified).
+
 ## 2026-10-17: oMLX batch 623 (+58 rows)
 
 - scan607 sweep (54 new traces), mined 58 records, no new models or hardware.
