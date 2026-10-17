@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 591 (+54 rows)
+
+- scan575 sweep (60 new traces), mined 54 records, +3 new models NVIDIA-Nemotron-3.5-Bolt-74B-A9B (oQ4e fp16), NVIDIA-Nemotron-3.5-Super-VL-120B-A12B (4bit MLX), Qwen3.8-27B-Cold-Fusion-GAIN-V1.1 (oQ4e fp16 MTP).
+- Dataset 34572 -> 34626, community 33500 -> 33554. check_quotes green (35279 verified).
+
 ## 2026-10-17: oMLX batch 590 (+73 rows)
 
 - scan574 sweep (60 new traces), mined 73 records, no new models or hardware.
