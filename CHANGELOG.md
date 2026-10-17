@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 613 (+65 rows)
+
+- scan597 sweep (58 new traces), mined 65 records, no new models; MAP for Agents-A1 oQ8e MLX.
+- Dataset 35966 -> 36031, community 34894 -> 34959. check_quotes green (36684 verified).
+
 ## 2026-10-17: oMLX batch 612 (+66 rows)
 
 - scan596 sweep (60 new traces), mined 66 records, +2 new models Dirk-Qwen3.8-27B (oQ4e MLX) and StartLux-Decision-v1.1-9B-AutoThink (8bit MLX); MAPs for gemma-4-12B-it-qat 4bit and gemma-4-12B nvfp4.
