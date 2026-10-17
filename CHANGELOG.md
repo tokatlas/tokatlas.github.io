@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 622 (+62 rows)
+
+- scan606 sweep (56 new traces), mined 62 records, no new models; MAP for Occamy-1.0 oQ5e MTP.
+- Dataset 36575 -> 36637, community 35484 -> 35546. check_quotes green (37290 verified).
+
 ## 2026-10-17: oMLX batch 621 (+63 rows)
 
 - scan605 sweep (58 new traces), mined 63 records, no new models; MAP for NVIDIA-Nemotron-3.5-Lightning-30B-A3B oQ4.
