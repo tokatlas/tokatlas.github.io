@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 628 (+71 rows)
+
+- scan612 sweep (60 new traces), mined 71 records, no new models; MAP for GLM-5.3-Flash-UNCENSORED oQ4e MTP.
+- Dataset 36964 -> 37035, community 35865 -> 35936. check_quotes green (37688 verified).
+
 ## 2026-10-17: llama.cpp PR #30738 (+8 rows)
 
 - Vulkan Q4_0 KV dequant fast path PR, llama-bench pp512/tg128 before/after on Qwen3.5-4B Q4_K_M at 32K ctx, q4_0/q4_0 and q8_0/q4_0 KV arms; new hardware AMD Radeon HD 7900 (GCN1/radv).
