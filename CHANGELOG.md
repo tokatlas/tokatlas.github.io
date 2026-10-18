@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 630 (+68 rows)
+
+- scan614 sweep (60 new traces), mined 68 records, no new models or hardware.
+- Dataset 37102 -> 37170, community 36003 -> 36071. check_quotes green (37823 verified).
+
 ## 2026-10-17: oMLX batch 629 (+67 rows)
 
 - scan613 sweep (60 new traces), mined 67 records, no new models; MAP for Qwen3-30B-A3B-Instruct-2507 4bit.
