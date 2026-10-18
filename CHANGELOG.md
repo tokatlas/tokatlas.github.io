@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 651 (+69 rows)
+
+- scan635 sweep (60 new traces), mined 69 records, no new models; MAP for Qwen3.5-35B-A3B 6bit.
+- Dataset 38512 -> 38581, community 37401 -> 37470. check_quotes green (39234 verified).
+
 ## 2026-10-18: oMLX batch 650 (+63 rows)
 
 - scan634 sweep (57 new traces), mined 63 records, +2 new models: DeepSeek-V4.1-Flash-Abliterated (MLX) and Hermes-4.3-36B (5bit MLX);
