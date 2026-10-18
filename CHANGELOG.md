@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 650 (+63 rows)
+
+- scan634 sweep (57 new traces), mined 63 records, +2 new models: DeepSeek-V4.1-Flash-Abliterated (MLX) and Hermes-4.3-36B (5bit MLX);
+  MAPs for DeepSeek-V4-Flash-0731 oQ2e, Llama 3.3 70B Instruct 4bit.
+- Dataset 38449 -> 38512, community 37338 -> 37401. check_quotes green (39165 verified).
+
 ## 2026-10-18: oMLX batch 649 (+65 rows)
 
 - scan633 sweep (60 new traces), mined 65 records, no new models.
