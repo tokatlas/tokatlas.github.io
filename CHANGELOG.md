@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 639 (+67 rows)
+
+- scan623 sweep (60 new traces), mined 67 records, no new models; MAPs for
+  Ornith-1.5-9B MLX (quant unstated) and Qwen3.8-27B 4bit (triple-underscore page form).
+- Dataset 37702 -> 37769, community 36603 -> 36670. check_quotes green (38422 verified).
+
 ## 2026-10-17: oMLX batch 638 (+62 rows)
 
 - scan622 sweep (60 new traces), mined 62 records, no new models.
