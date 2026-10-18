@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 652 (+67 rows)
+
+- scan636 sweep (60 new traces), mined 67 records, no new models; MAPs for MiniCPM-V-4.7-35B-A3B OptiQ REAP-19B 4bit, Nex-N2.5-mini oQ8 MLX, Qwen3.6-35B-A3B 6bit-XL (plain + MTP) MLX, Qwen3-Coder-30B-A3B-Instruct 4bit MLX.
+- Dataset 38581 -> 38648, community 37470 -> 37537. check_quotes green (39301 verified).
+
 ## 2026-10-18: oMLX batch 651 (+69 rows)
 
 - scan635 sweep (60 new traces), mined 69 records, no new models; MAP for Qwen3.5-35B-A3B 6bit.
