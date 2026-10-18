@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 643 (+64 rows)
+
+- scan627 sweep (60 new traces), mined 64 records, +1 new model dots.mocr (8bit);
+  MAPs for Nemotron-3-Super-120B-A12B 4bit MLX, Qwen3.8-27B-MindMeld-AREX mxfp8 MLX, Qwen3.8-Flash-Next oQ4e WLSRefit MTP.
+- Dataset 37980 -> 38044, community 36869 -> 36933. check_quotes green (38697 verified).
+
 ## 2026-10-18: oMLX batch 642 (+64 rows)
 
 - scan626 sweep (60 new traces), mined 64 records, no new models; MAPs for Mellum2.1-12B-A2.5B-Thinking oQ4, Qwen2.5-VL-7B-Instruct 8bit, gemma-3-12b-it 4bit.
