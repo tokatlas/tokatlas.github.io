@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 660 (+64 rows)
+
+- scan644 sweep (60 new traces), mined 64 records, no new models; MAP for Qwen3.8-9B-heretic-uncensored 5bit MLX.
+- Dataset 39103 -> 39167, community 37992 -> 38056. check_quotes green (39820 verified).
+
 ## 2026-10-18: oMLX batch 659 (+64 rows)
 
 - scan643 sweep (58 new traces), mined 64 records, +1 new model Qwen3.6-35B-A3B-Holo3-Qwopus-Instruct (qx64-hi MLX); MAP for MiniCPM5-2B 8bit MLX.
