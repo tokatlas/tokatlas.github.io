@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 642 (+64 rows)
+
+- scan626 sweep (60 new traces), mined 64 records, no new models; MAPs for Mellum2.1-12B-A2.5B-Thinking oQ4, Qwen2.5-VL-7B-Instruct 8bit, gemma-3-12b-it 4bit.
+- Dataset 37916 -> 37980, community 36805 -> 36869. check_quotes green (38633 verified).
+
 ## 2026-10-18: oMLX batch 641 (+69 rows)
 
 - scan625 sweep (60 new traces), mined 69 records, +2 new models: Step-3.7-Flash (oQ8 MLX) and gemma-3-4b-pt (4bit, pretrained base distinct from gemma-3-4b-it-qat);
