@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 644 (+68 rows)
+
+- scan628 sweep (60 new traces), mined 68 records, +5 new models: Ministral-3-3B-Reasoning-2512 (4bit),
+  Qwen3.6-27B-Architect-Polaris2-Fable-B-F451 (oQ4 MTP), ...F451-Medical (mxfp8), ...F451-Tess-1M (qx64-hi),
+  Qwen3.6-27B-Fable-Fusion-711-BigBubba-717 (mxfp8); MAP for Tiel-Coder-35B-A3B oQ6e MLX.
+- Dataset 38044 -> 38112, community 36933 -> 37001. check_quotes green (38765 verified).
+
 ## 2026-10-18: oMLX batch 643 (+64 rows)
 
 - scan627 sweep (60 new traces), mined 64 records, +1 new model dots.mocr (8bit);
