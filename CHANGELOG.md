@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 653 (+66 rows)
+
+- scan637 sweep (58 new traces), mined 66 records, +1 new model Agents-A1-4B (oQe4); MAP for gpt-oss 20B OptiQ 4bit fp16; fixed recurring occamy-1.0 slug collision (lowercase oQ4e MAP now maps to Occamy-1.0).
+- Dataset 38648 -> 38714, community 37537 -> 37603. check_quotes green (39367 verified).
+
 ## 2026-10-18: oMLX batch 652 (+67 rows)
 
 - scan636 sweep (60 new traces), mined 67 records, no new models; MAPs for MiniCPM-V-4.7-35B-A3B OptiQ REAP-19B 4bit, Nex-N2.5-mini oQ8 MLX, Qwen3.6-35B-A3B 6bit-XL (plain + MTP) MLX, Qwen3-Coder-30B-A3B-Instruct 4bit MLX.
