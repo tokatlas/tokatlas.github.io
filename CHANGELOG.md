@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 649 (+65 rows)
+
+- scan633 sweep (60 new traces), mined 65 records, no new models.
+- Dataset 38384 -> 38449, community 37273 -> 37338. check_quotes green (39102 verified).
+
 ## 2026-10-18: oMLX batch 648 (+62 rows)
 
 - scan632 sweep (57 new traces), mined 62 records, no new models; MAP for Underdog-27B-1.1 4bit MLX.
