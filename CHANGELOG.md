@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 641 (+69 rows)
+
+- scan625 sweep (60 new traces), mined 69 records, +2 new models: Step-3.7-Flash (oQ8 MLX) and gemma-3-4b-pt (4bit, pretrained base distinct from gemma-3-4b-it-qat);
+  MAPs for Kimi-K3 REAP80 mxfp4 MLX, MiniMax-M3 4bit, Qwen3.8-Flash-Next-Uncensored 8bit MLX, Step-3.7-Flash, gemma-3-4b-pt.
+- Dataset 37847 -> 37916, community 36736 -> 36805. check_quotes green (38569 verified).
+
 ## 2026-10-17: oMLX batch 640 (+66 rows) + llama.cpp #30752 (+12 rows)
 
 - scan624 sweep (60 new traces), mined 66 records, +2 new models: drowzeys-DeepSeek-V4-Flash-0731-MXFP4-MLX-Abliterated (4bit) and Qwen3.6-35B-A3B-4bit-MTPLX-Optimized-Speed (4bit, page title distinct from the existing non-4bit form); MAPs for GLM-5.3-Flash oQ2.5e MTP, Qwen2.5-7B-Instruct 4bit, drowzeys, and the 4bit-MTPLX form.
