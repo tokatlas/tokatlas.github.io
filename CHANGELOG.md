@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 646 (+67 rows)
+
+- scan630 sweep (60 new traces), mined 67 records, no new models; MAP for Qwen3.6-35B-A3B nvfp4.
+- Dataset 38186 -> 38253, community 37075 -> 37142. check_quotes green (38906 verified).
+
 ## 2026-10-18: oMLX batch 645 (+74 rows)
 
 - scan629 sweep (60 new traces), mined 74 records, no new models; MAPs for NVIDIA-Nemotron-3.5-Bolt-74B-A9B 24GB LiLiCorr MLX (quant unstated), NVIDIA-Nemotron-3.5-Lightning-30B-A3B oQ8e MTP, Qwen3.6-35B-A3B-Heretic 4bit MLX.
