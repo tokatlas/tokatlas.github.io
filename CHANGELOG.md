@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 629 (+67 rows)
+
+- scan613 sweep (60 new traces), mined 67 records, no new models; MAP for Qwen3-30B-A3B-Instruct-2507 4bit.
+- Dataset 37035 -> 37102, community 35936 -> 36003. check_quotes green (37755 verified).
+
 ## 2026-10-17: oMLX batch 628 (+71 rows)
 
 - scan612 sweep (60 new traces), mined 71 records, no new models; MAP for GLM-5.3-Flash-UNCENSORED oQ4e MTP.
