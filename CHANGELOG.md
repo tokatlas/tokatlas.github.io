@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 635 (+66 rows)
+
+- scan619 sweep (60 new traces), mined 66 records, +1 new model medgemma-27b-it (bf16);
+  MAP for medgemma-27b-it bf16.
+- Dataset 37435 -> 37501, community 36336 -> 36402. check_quotes green (38154 verified).
+
 ## 2026-10-17: oMLX batch 634 (+71 rows)
 
 - scan618 sweep (60 new traces), mined 71 records, no new models; MAP for LFM2.5-24B-A2B bf16 MLX.
