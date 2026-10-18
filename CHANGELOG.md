@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 634 (+71 rows)
+
+- scan618 sweep (60 new traces), mined 71 records, no new models; MAP for LFM2.5-24B-A2B bf16 MLX.
+- Dataset 37364 -> 37435, community 36265 -> 36336. check_quotes green (38088 verified).
+
 ## 2026-10-17: oMLX batch 633 (+65 rows)
 
 - scan617 sweep (60 new traces), mined 65 records, no new models; MAP for NVIDIA-Nemotron-3.5-Lightning-30B-A3B bf16.
