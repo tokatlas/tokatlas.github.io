@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 632 (+66 rows)
+
+- scan616 sweep (60 new traces), mined 66 records, +1 new model Qwen2-VL-2B-Instruct (quant unstated on page); MAP for Qwen2-VL-2B-Instruct.
+- Dataset 37233 -> 37299, community 36134 -> 36200. check_quotes green (37952 verified).
+
 ## 2026-10-17: oMLX batch 631 (+67 rows) + source-rewrite fixes
 
 - scan615 sweep (60 new traces), mined 67 records, no new models; MAPs for Ornith-1.5-9B oQ5e fp16 MTP and KAT-Coder-V2.5-Dev OptiQ REAP-18B 4bit.
