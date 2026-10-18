@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 645 (+74 rows)
+
+- scan629 sweep (60 new traces), mined 74 records, no new models; MAPs for NVIDIA-Nemotron-3.5-Bolt-74B-A9B 24GB LiLiCorr MLX (quant unstated), NVIDIA-Nemotron-3.5-Lightning-30B-A3B oQ8e MTP, Qwen3.6-35B-A3B-Heretic 4bit MLX.
+- Dataset 38112 -> 38186, community 37001 -> 37075. check_quotes green (38839 verified).
+
 ## 2026-10-18: oMLX batch 644 (+68 rows)
 
 - scan628 sweep (60 new traces), mined 68 records, +5 new models: Ministral-3-3B-Reasoning-2512 (4bit),
