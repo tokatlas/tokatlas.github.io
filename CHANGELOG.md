@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 655 (+64 rows)
+
+- scan639 sweep (60 new traces), mined 64 records, no new models.
+- Dataset 38779 -> 38843, community 37668 -> 37732. check_quotes green (39496 verified).
+
 ## 2026-10-18: oMLX batch 654 (+65 rows)
 
 - scan638 sweep (60 new traces), mined 65 records, no new models; MAP for Llama 3.3 70B Instruct 4bit (non-prefixed form).
