@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 636 (+68 rows)
+
+- scan620 sweep (60 new traces), mined 68 records, no new models.
+- Dataset 37501 -> 37569, community 36402 -> 36470. check_quotes green (38222 verified).
+
 ## 2026-10-17: oMLX batch 635 (+66 rows)
 
 - scan619 sweep (60 new traces), mined 66 records, +1 new model medgemma-27b-it (bf16);
