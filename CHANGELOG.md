@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 640 (+66 rows) + llama.cpp #30752 (+12 rows)
+
+- scan624 sweep (60 new traces), mined 66 records, +2 new models: drowzeys-DeepSeek-V4-Flash-0731-MXFP4-MLX-Abliterated (4bit) and Qwen3.6-35B-A3B-4bit-MTPLX-Optimized-Speed (4bit, page title distinct from the existing non-4bit form); MAPs for GLM-5.3-Flash oQ2.5e MTP, Qwen2.5-7B-Instruct 4bit, drowzeys, and the 4bit-MTPLX form.
+- llama.cpp PR #30752 (SYCL q8 fast dequant, Intel Arc Pro B70): 12 records from the in-tree A/B table (llama-perplexity t/s, mainline vs PR arms, 6 model/quant rows including 2-run Q8_0 and dual-device UD-Q8_K_4XL).
+- Dataset 37769 -> 37847, community 36670 -> 36736, sourced 1099 -> 1111. check_quotes green (38500 verified).
+
 ## 2026-10-17: oMLX batch 639 (+67 rows)
 
 - scan623 sweep (60 new traces), mined 67 records, no new models; MAPs for
