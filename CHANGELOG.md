@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 654 (+65 rows)
+
+- scan638 sweep (60 new traces), mined 65 records, no new models; MAP for Llama 3.3 70B Instruct 4bit (non-prefixed form).
+- Dataset 38714 -> 38779, community 37603 -> 37668. check_quotes green (39432 verified).
+
 ## 2026-10-18: oMLX batch 653 (+66 rows)
 
 - scan637 sweep (58 new traces), mined 66 records, +1 new model Agents-A1-4B (oQe4); MAP for gpt-oss 20B OptiQ 4bit fp16; fixed recurring occamy-1.0 slug collision (lowercase oQ4e MAP now maps to Occamy-1.0).
