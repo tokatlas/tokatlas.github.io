@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 657 (+63 rows)
+
+- scan641 sweep (60 new traces), mined 63 records, +1 new model gemma-4-E2B-it-qat (8bit); MAP for gemma-4-E2B-it TurboQuant 8bit MLX.
+- Dataset 38911 -> 38974, community 37800 -> 37863. check_quotes green (39627 verified).
+
 ## 2026-10-18: oMLX batch 656 (+68 rows)
 
 - scan640 sweep (60 new traces), mined 68 records, no new models; MAP for DeepSeek-V4.1-Flash oQ3e MTP (1017 dated build).
