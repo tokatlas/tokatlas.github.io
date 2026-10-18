@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 633 (+65 rows)
+
+- scan617 sweep (60 new traces), mined 65 records, no new models; MAP for NVIDIA-Nemotron-3.5-Lightning-30B-A3B bf16.
+- Dataset 37299 -> 37364, community 36200 -> 36265. check_quotes green (38017 verified).
+
 ## 2026-10-17: oMLX batch 632 (+66 rows)
 
 - scan616 sweep (60 new traces), mined 66 records, +1 new model Qwen2-VL-2B-Instruct (quant unstated on page); MAP for Qwen2-VL-2B-Instruct.
