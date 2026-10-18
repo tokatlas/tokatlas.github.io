@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 631 (+67 rows) + source-rewrite fixes
+
+- scan615 sweep (60 new traces), mined 67 records, no new models; MAPs for Ornith-1.5-9B oQ5e fp16 MTP and KAT-Coder-V2.5-Dev OptiQ REAP-18B 4bit.
+- Source rewrites repaired in the same pass: llama.cpp #29534 gfx906 table removed upstream (10 records dropped); Ornith-1.5-35B-A3B R9700 card re-benchmarked with WHIRL 0.2.0 (6 old R9700 rows replaced by 12 fresh llama.cpp ROCm rows across 2k-128k); Swift-1.5 and Luigi cards re-fetched with patched quote fragments.
+- Dataset 37170 -> 37233, community 36071 -> 36134. check_quotes green (37886 verified).
+
 ## 2026-10-17: oMLX batch 630 (+68 rows)
 
 - scan614 sweep (60 new traces), mined 68 records, no new models or hardware.
