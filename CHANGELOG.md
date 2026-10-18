@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: oMLX batch 638 (+62 rows)
+
+- scan622 sweep (60 new traces), mined 62 records, no new models.
+- Dataset 37640 -> 37702, community 36541 -> 36603. check_quotes green (38355 verified).
+
 ## 2026-10-17: oMLX batch 637 (+71 rows)
 
 - scan621 sweep (60 new traces), mined 71 records, no new models; MAPs for Qwen3.8-Flash-Next oQ5 mixed MTP and gemma-4-E4B-it oQ4 MTP.
