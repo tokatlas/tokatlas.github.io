@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 647 (+69 rows)
+
+- scan631 sweep (60 new traces), mined 69 records, no new models; MAPs for Qwen3.5-9B-The-Defiant-Fable-Uncensored-Heretic-NEO-IMATRIX-MAX oQ4e-fp16 MTP (existing hyphen form) and prism-ml Ternary-Bonsai-27B 2bit MLX.
+- Dataset 38253 -> 38322, community 37142 -> 37211. check_quotes green (38975 verified).
+
 ## 2026-10-18: oMLX batch 646 (+67 rows)
 
 - scan630 sweep (60 new traces), mined 67 records, no new models; MAP for Qwen3.6-35B-A3B nvfp4.
