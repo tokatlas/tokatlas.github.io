@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 656 (+68 rows)
+
+- scan640 sweep (60 new traces), mined 68 records, no new models; MAP for DeepSeek-V4.1-Flash oQ3e MTP (1017 dated build).
+- Dataset 38843 -> 38911, community 37732 -> 37800. check_quotes green (39564 verified).
+
 ## 2026-10-18: oMLX batch 655 (+64 rows)
 
 - scan639 sweep (60 new traces), mined 64 records, no new models.
