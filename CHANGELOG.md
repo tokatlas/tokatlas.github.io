@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 661 (+62 rows)
+
+- scan645 sweep (58 new traces), mined 62 records, no new models; MAPs for DeepSeek-V4.1-Flash oQ2.5e MTP (1017 build), K2-Horizon-7B oQ4e, Kolibri-1 8bit MLX.
+- Dataset 39167 -> 39229, community 38056 -> 38118. check_quotes green (39882 verified).
+
 ## 2026-10-18: oMLX batch 660 (+64 rows)
 
 - scan644 sweep (60 new traces), mined 64 records, no new models; MAP for Qwen3.8-9B-heretic-uncensored 5bit MLX.
