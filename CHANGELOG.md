@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 671 (+48 rows)
+
+- scan655 sweep (45 new traces), mined 48 records, no new models; MAP for Ornith-1.5-35B-A3B oQ4e fp16.
+- Dataset 39695 -> 39743, community 38584 -> 38632. check_quotes green (40395 verified).
+
 ## 2026-10-18: oMLX batch 670 (+49 rows)
 
 - scan654 sweep (45 new traces), mined 49 records, +3 new models Huihui-MiniCPM-V-4.6-abliterated (bf16 MLX), Hy-Memory-30B-A3B (MLX Mixed4-6), Jundot--GLM-5.3-Flash (oQ4e); MAPs for Ling-mini-2.0 2bit DWQ, Qwen3.8-27B oQ6e fp16 MLX MTP, Spark-X2.5-4B oQ6e fp16, gemma-4-26B-A4B-it mxfp4.
