@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 663 (+48 rows)
+
+- scan647 sweep (41 new traces), mined 48 records, no new models; MAPs for Cyber-Tiel-Coder-35B-A3B oQ4e fp16 MLX, LFM2.5-8B-A1B OptiQ 4bit.
+- Dataset 39291 -> 39339, community 38180 -> 38228. check_quotes green (39991 verified).
+
 ## 2026-10-18: oMLX batch 662 (+62 rows)
 
 - scan646 sweep (45 new traces), mined 62 records, +1 new model gemma-3-4b-it (4bit DWQ); MAP for gemma-3-4b-it DWQ.
