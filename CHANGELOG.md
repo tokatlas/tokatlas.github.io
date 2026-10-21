@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 664 (+49 rows)
+
+- scan648 sweep (43 new traces), mined 49 records, +1 new model Ling-mini-2.0 (4bit); MAPs for Bonsai-8B 1bit MLX, NVIDIA-Nemotron-3.5-Bolt-74B-A9B 5bit, Qwen3.8-Flash-Next oQ4e MTP BF16 ngram.
+- Dataset 39339 -> 39388, community 38228 -> 38277. check_quotes green (40040 verified).
+
 ## 2026-10-18: oMLX batch 663 (+48 rows)
 
 - scan647 sweep (41 new traces), mined 48 records, no new models; MAPs for Cyber-Tiel-Coder-35B-A3B oQ4e fp16 MLX, LFM2.5-8B-A1B OptiQ 4bit.
