@@ -32308,7 +32308,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 1,
-   "tps": 95.0,
+   "tps": 95.5,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32319,7 +32319,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 1; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq1-master"
   },
   {
@@ -32332,7 +32332,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 1,
-   "tps": 95.6,
+   "tps": 95.1,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32343,7 +32343,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 1; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq1-pr"
   },
   {
@@ -32356,7 +32356,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 2,
-   "tps": 146.1,
+   "tps": 145.9,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32367,7 +32367,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 2; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq2-master"
   },
   {
@@ -32380,7 +32380,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 2,
-   "tps": 145.5,
+   "tps": 145.4,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32391,7 +32391,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 2; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq2-pr"
   },
   {
@@ -32404,7 +32404,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 3,
-   "tps": 184.6,
+   "tps": 185.0,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32415,7 +32415,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 3; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq3-master"
   },
   {
@@ -32428,7 +32428,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 3,
-   "tps": 185.1,
+   "tps": 184.7,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32439,7 +32439,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 3; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq3-pr"
   },
   {
@@ -32452,7 +32452,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 4,
-   "tps": 213.1,
+   "tps": 213.6,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32463,7 +32463,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 4; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq4-master"
   },
   {
@@ -32476,7 +32476,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 4,
-   "tps": 213.5,
+   "tps": 213.3,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32487,7 +32487,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 4; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq4-pr"
   },
   {
@@ -32500,7 +32500,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 8,
-   "tps": 297.4,
+   "tps": 297.3,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32511,7 +32511,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 8; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq8-master"
   },
   {
@@ -32524,7 +32524,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 8,
-   "tps": 297.1,
+   "tps": 295.9,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32535,7 +32535,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 8; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq8-pr"
   },
   {
@@ -32548,7 +32548,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 16,
-   "tps": 346.3,
+   "tps": 346.8,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32559,7 +32559,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.0 146.1 184.6 213.1 297.4 346.3",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; master (t/s) 95.5 145.9 185.0 213.6 297.3 346.8",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 16; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); master arm; config=seq16-master"
   },
   {
@@ -32572,7 +32572,7 @@
    "backend": "llama.cpp",
    "ctx": null,
    "batch": 16,
-   "tps": 372.0,
+   "tps": 365.5,
    "pp_tps": null,
    "pp_tokens": 512,
    "tg_tokens": 32,
@@ -32583,7 +32583,7 @@
    "source_url": "https://github.com/ggml-org/llama.cpp/pull/30047",
    "source_name": "llama.cpp PR #30047",
    "retrieved": "2026-10-06",
-   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.6 145.5 185.1 213.5 297.1 372.0",
+   "quote": "Apple M3 Ultra (60-core GPU), macOS 15.7.9; Qwen3.6-35B-A3B Q4_K_M, text generation; this PR (t/s) 95.1 145.4 184.7 213.3 295.9 365.5",
    "notes": "Apple M3 Ultra (60-core GPU), llama.cpp (Metal); llama-batched-bench -npp 512 -ntg 32, Qwen3.6-35B-A3B Q4_K_M text generation, seq 16; A/B master vs PR (few-row MMA MUL_MAT_ID kernels); pr arm; config=seq16-pr"
   },
   {

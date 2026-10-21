@@ -1,5 +1,5 @@
 {
- "count": 619,
+ "count": 618,
  "note": "reference estimates only (source models, not measurements); excluded from record counts",
  "records": [
   {
@@ -3278,28 +3278,6 @@
    "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
    "source_url": "https://llmcheck.net/data/benchmarks.json",
    "tps": 15,
-   "ttft_s": null
-  },
-  {
-   "backend": "MLX",
-   "batch": null,
-   "ctx": null,
-   "date": "2026-08",
-   "hardware": "M1 Ultra",
-   "id": "llmcheck-qwen-3-6-35b-a3b-m1-ultra-q4-k-m-mlx",
-   "model": "Qwen 3.6-35B-A3B",
-   "notes": "LLMCheck model-based estimate (bandwidth model)",
-   "params": "35B-A3B",
-   "power_w": null,
-   "pp_tps": null,
-   "provenance": "estimated",
-   "quant": "Q4_K_M",
-   "quote": "Qwen 3.6-35B-A3B,35B-A3B,Q4_K_M,M1 Ultra,64,MLX,138,None,2026-08",
-   "ram_gb": 64,
-   "retrieved": "2026-10-05",
-   "source_name": "LLMCheck Apple Silicon LLM Benchmark Database (CC BY 4.0)",
-   "source_url": "https://llmcheck.net/data/benchmarks.json",
-   "tps": 138,
    "ttft_s": null
   },
   {

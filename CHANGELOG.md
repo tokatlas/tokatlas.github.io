@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 662 (+62 rows)
+
+- scan646 sweep (45 new traces), mined 62 records, +1 new model gemma-3-4b-it (4bit DWQ); MAP for gemma-3-4b-it DWQ.
+- Source-rewrite fixes: llama.cpp PR #30047 table re-measured, 12 records re-synced to current values; llmcheck Maple Preview 20B-A1B re-synced (281 to 387 tps, re-pointed to benchmarks.json); 1 llmcheck row dropped (upstream now marks it estimated).
+- Dataset 39229 -> 39291, community 38118 -> 38180. check_quotes green (39943 verified).
+
 ## 2026-10-18: oMLX batch 661 (+62 rows)
 
 - scan645 sweep (58 new traces), mined 62 records, no new models; MAPs for DeepSeek-V4.1-Flash oQ2.5e MTP (1017 build), K2-Horizon-7B oQ4e, Kolibri-1 8bit MLX.
