@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 668 (+55 rows)
+
+- scan652 sweep (45 new traces), mined 55 records, +2 new models Qwen3.8-27B-JANG_4D (4bit), Ternary-Bonsai-2-2B (2bit MLX).
+- Dataset 39543 -> 39598, community 38432 -> 38487. check_quotes green (40250 verified).
+
 ## 2026-10-18: oMLX batch 667 (+54 rows)
 
 - scan651 sweep (45 new traces), mined 54 records, no new models.
