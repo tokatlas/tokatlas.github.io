@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 665 (+51 rows)
+
+- scan649 sweep (45 new traces), mined 51 records, no new models; MAPs for Qwen3.8-27B-Abliterated oQ4e MTP, Qwen3.8-27B oQ8 fp16 VLM MTP.
+- Dataset 39388 -> 39439, community 38277 -> 38328. check_quotes green (40091 verified).
+
 ## 2026-10-18: oMLX batch 664 (+49 rows)
 
 - scan648 sweep (43 new traces), mined 49 records, +1 new model Ling-mini-2.0 (4bit); MAPs for Bonsai-8B 1bit MLX, NVIDIA-Nemotron-3.5-Bolt-74B-A9B 5bit, Qwen3.8-Flash-Next oQ4e MTP BF16 ngram.
