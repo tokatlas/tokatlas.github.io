@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 669 (+48 rows)
+
+- scan653 sweep (45 new traces), mined 48 records, no new models; MAP for Ornith-1.5-35B-A3B oQ4 fp16 MLX.
+- Dataset 39598 -> 39646, community 38487 -> 38535. check_quotes green (40298 verified).
+
 ## 2026-10-18: oMLX batch 668 (+55 rows)
 
 - scan652 sweep (45 new traces), mined 55 records, +2 new models Qwen3.8-27B-JANG_4D (4bit), Ternary-Bonsai-2-2B (2bit MLX).
