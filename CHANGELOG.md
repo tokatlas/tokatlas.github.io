@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 683 (+50 rows)
+
+- scan667 sweep (45 new traces), mined 50 records, no new models (incl. Qwen3.8-Flash-Next oQ4e MTP build 2615fc0).
+- Dataset 40242 -> 40292, community 39157 -> 39207. check_quotes green (40944 verified).
+
 ## 2026-10-22: oMLX batch 682 (+52 rows)
 
 - scan666 sweep (45 new traces), mined 52 records, +1 new model LFM2.5-24B-A2B-Uncensored-Heretic (4bit MLX); MAPs also for Huihui-Qwen3.8-27B-abliterated 6bit MLX, LFM2.5-24B-A2B MLX Serve mixed-4-8bit, and Qwen3.6-35B-A3B oQ3e MTP.
