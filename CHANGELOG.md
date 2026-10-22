@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 687 (+46 rows)
+
+- scan671 sweep (45 new traces), mined 46 records, +4 new models Codestral-22B-v0.1, DeepSeek-V4-Pro-Qwen3.5-9B (distill), MinerU2.5-2509-1.2B, and deepseek-v41-lsq (verbatim page label; v41 has no dot so a V4.1 form would not norm-match); MAP also for Qwen3.8-27B oQ3.5e MTP.
+- Dataset 40434 -> 40480, community 39349 -> 39395. check_quotes green (41132 verified).
+
 ## 2026-10-22: oMLX batch 686 (+43 rows)
 
 - scan670 sweep (41 new traces), mined 43 records, +1 new model Qwen3.8-27B-JANG_2D (JANG_4D variant family); MAPs also for MiniCPM-V-4.7-1B 8bit/bf16, Qwen3.6-35B-A3B MXFP8 MTP, and Qwen3.8-Flash-Next oQ4e MTP build 20261011.
