@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 681 (+51 rows)
+
+- scan665 sweep (45 new traces), mined 51 records, no new models; MAPs for Jundot Qwen3.8-Flash-Next oQ2.7e MTP (to the distinct Jundot:Qwen3.8-Flash-Next model), Qwen3.5-0.8B MTP, and Qwen3.8-27B-Uncensored oQ5e fp16 MLX MTP.
+- Dataset 40139 -> 40190, community 39054 -> 39105. check_quotes green (40842 verified).
+
 ## 2026-10-22: oMLX batch 680 (+54 rows)
 
 - scan664 sweep (45 new traces), mined 54 records, no new models (incl. Qwen3.8-27B-Abliterated bf16 MTP variant with a malformed page label).
