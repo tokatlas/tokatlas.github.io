@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 677 (+48 rows)
+
+- scan661 sweep (45 new traces), mined 48 records, +1 new model Occamy-1.0-6bit-XL-mlx (6bit; XL size variant, kept as the full page-label form per the Devstral-4bit-mlx precedent since the page interleaves the quant token).
+- Dataset 39938 -> 39986, community 38853 -> 38901. check_quotes green (40638 verified).
+
 ## 2026-10-22: oMLX batch 676 (+48 rows)
 
 - scan660 sweep (45 new traces), mined 48 records, +1 new model BigBang-v1 (oQ6e MTP); MAPs for BigBang-v1, Qwen3.8-Flash-Next oct11 build, and lowercase glm-5.3-flash-uncensored oQ4e MTP.
