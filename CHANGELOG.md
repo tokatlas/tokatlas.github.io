@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 690 (+52 rows)
+
+- scan674 sweep (44 new traces), mined 52 records, no new models; MAPs for Youssofal Qwen3.6-35B-A3B MTPLX-Optimized-Balance FP16 and mlx-community Qwen2.5-Coder-32B-Instruct 4bit (prefix stripped).
+- Dataset 40581 -> 40633, community 39496 -> 39548. check_quotes green (41285 verified).
+
 ## 2026-10-22: oMLX batch 689 (+49 rows)
 
 - scan673 sweep (42 new traces), mined 49 records, no new models; MAPs for MiniCPM-V-4.7-35B-A3B bf16, Qwen3.8-27B AEON-ultimate-uncensored 4bit MLX, Qwen3.8-27B-Uncensored-HauhauCS-Aggressive MTPLX 6bit, Qwen3.8-27B oQ6e, and gemma-4 12B/26B/31B variants.
