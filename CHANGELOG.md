@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 693 (+45 rows)
+
+- scan677 sweep (40 new traces), mined 45 records, no new models; MAPs for MiniCPM-V-4.7-35B-A3B 4bit, gemma-4-E4B-it 5bit MLX, and gemma-4-E4B-it-qat 4bit (distinct qat model).
+- Dataset 40714 -> 40759, community 39629 -> 39674. check_quotes green (41411 verified).
+
 ## 2026-10-22: oMLX batch 692 (+42 rows)
 
 - scan676 sweep (39 new traces), mined 42 records, no new models (clean batch, no unmapped labels).
