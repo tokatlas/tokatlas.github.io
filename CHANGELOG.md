@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 673 (+44 rows)
+
+- scan657 sweep (41 new traces), mined 44 records, no new models; MAP for Mellum2-12B-A2.5B-Instruct 8bit.
+- Dataset 39750 -> 39794, community 38669 -> 38713. check_quotes green (40446 verified).
+
 ## 2026-10-22: vLLM #61435 re-sync + CI seed/prefetch fixes
 
 - vLLM PR #61435 (Kimi-K3 MI355X) was rewritten upstream again: the DCP1/DCP8 MXFP4 table mined in batch 672 is gone, replaced by a TPOT-focused matrix plus a small InferenceX Output tok/s table. Dropped the 16 now-unverifiable rows and re-mined 4 from the new table (DCP1 auto 179.77, DCP1 specialized 232.87, DCP8 auto 164.79, DCP8 specialized 233.11 output tok/s, c1 k=7, TP8 on 8x MI355X; weight quant no longer stated, marked unstated).
