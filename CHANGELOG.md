@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-18: oMLX batch 672 (+37 rows) + upstream source-rewrite sweep
+
+- scan656 sweep (37 new traces), mined 37 records, no new models; MAP for ThinkingCap-Qwen3.8-27B mxfp8 MLX.
+- Upstream rewrites of six vLLM/llama.cpp PR bodies surfaced as caches aged out; re-verified all 264 GitHub PR sources fresh and repaired every affected record:
+  - vLLM #61694 (Kimi-K3 MI355X): old AgenticX conc8 table removed; re-mined 4 records from the new AgentX conc4 InferenceX recipe table (main 174.25, BF16 175.70, +latency_specialized 180.98, this PR 190.90 output tok/s), dropped 7 stale rows.
+  - vLLM #61109 (Qwen2.5-72B MI210): body rewritten to an ISLAND all-reduce backend with TPOT/TTFT-only tables and delta claims; no absolute tok/s left, dropped 10 throughput records.
+  - vLLM #61435 (Kimi-K3 MI355X): InferenceX table removed (dropped 3); DCP1/DCP8 tables merged into one wide table, re-pointed 16 fragments to the contiguous value pairs.
+  - vLLM #61682 (DeepSeek-V4.1-Flash MI325X): table reformatted to per-shape TTFT/TPOT/E2E/Output blocks; re-pointed 10 fragments to the Output (tok/s) rows (MXFP8 no longer restated, kept in notes).
+  - vLLM #61903 (MiniMax-M2.5 2xH200): benchmark re-run to four runs per arm; re-mined 2 records (main 1422, PR 1518 output tok/s), dropped 4 stale rows.
+  - llama.cpp #30738 (Radeon HD 7900 K/V): context/hardware phrasing reordered; re-pointed 8 fragments (values unchanged).
+- Dataset 39743 -> 39762, community 38632 -> 38669, sourced 1111 -> 1093. check_quotes green (40414 verified).
+
 ## 2026-10-18: oMLX batch 671 (+48 rows)
 
 - scan655 sweep (45 new traces), mined 48 records, no new models; MAP for Ornith-1.5-35B-A3B oQ4e fp16.
