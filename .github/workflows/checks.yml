@@ -33,15 +33,19 @@ jobs:
         # the job timeout (omlx 429-throttles bursts). A restored cache can also
         # be near-full yet missing the specific pages a prior CI run never
         # fetched (e.g. traces deleted upstream after we cached them), which then
-        # 404 on re-fetch. So always top up from a pre-warmed release asset;
-        # --keep-newer-files means a fresher restored entry is never reverted by
-        # the snapshot, and existing files are untouched, so this only fills gaps.
+        # 404 on re-fetch. So always top up from a pre-warmed release asset. The
+        # tarball is unpacked to a temp dir and copied in with cp -n (no-clobber):
+        # it only adds files the restore is missing and never reverts a fresher
+        # restored entry. (tar --keep-newer-files would work but exits 2 on every
+        # skip, which the step would read as a failure.)
         run: |
           echo "cache has $(ls .cache 2>/dev/null | wc -l) files after restore"
           curl -fsSL -o /tmp/cache-seed.tar.gz \
             https://github.com/tokatlas/tokatlas.github.io/releases/download/cache-seed/cache-seed.tar.gz
-          mkdir -p .cache
-          tar xzf /tmp/cache-seed.tar.gz -C .cache --keep-newer-files
+          mkdir -p .cache /tmp/seed
+          tar xzf /tmp/cache-seed.tar.gz -C /tmp/seed
+          cp -rn /tmp/seed/. .cache/
+          rm -rf /tmp/seed /tmp/cache-seed.tar.gz
           echo "cache now has $(ls .cache | wc -l) files"
       - name: Quotes verified against (cached) sources
         run: python3 scripts/check_quotes.py
