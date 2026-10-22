@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 675 (+50 rows)
+
+- scan659 sweep (45 new traces), mined 50 records, +1 new model Phi-4-reasoning-plus (4bit MLX); MAPs for GLM-5.3 4bit, Phi-4-reasoning-plus 4bit MLX, and Qwen3.8-27B 4bit MLX (p4ik conversion).
+- Dataset 39840 -> 39890, community 38755 -> 38805. check_quotes green (40542 verified).
+
 ## 2026-10-22: llama.cpp #30923 (LFM2.5-24B-A2B on Ryzen 7 8845H)
 
 - llama.cpp PR #30923 (CPU softmax parallelism across head/batch dims): LFM2.5-24B-A2B Q4_K_M, CPU-only on AMD Ryzen 7 8845H (8 threads), 32K context, Q8_0 K-cache, F16 V-cache, flash-attn off. Mined 2 records (master 15.156, this PR 17.640 decode tok/s). New hardware AMD Ryzen 7 8845H.
