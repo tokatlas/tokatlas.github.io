@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 678 (+49 rows)
+
+- scan662 sweep (45 new traces), mined 49 records, no new models.
+- Dataset 39986 -> 40035, community 38901 -> 38950. check_quotes green (40687 verified).
+
 ## 2026-10-22: oMLX batch 677 (+48 rows)
 
 - scan661 sweep (45 new traces), mined 48 records, +1 new model Occamy-1.0-6bit-XL-mlx (6bit; XL size variant, kept as the full page-label form per the Devstral-4bit-mlx precedent since the page interleaves the quant token).
