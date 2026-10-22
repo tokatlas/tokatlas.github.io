@@ -1,5 +1,5 @@
 {
- "count": 39838,
+ "count": 39840,
  "records": [
   {
    "backend": "ExLlamaV2",
@@ -62185,6 +62185,56 @@
    "source_url": "https://github.com/vllm-project/vllm/pull/63101",
    "tg_tokens": null,
    "tps": 91.6,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp",
+   "batch": null,
+   "ctx": 32768,
+   "date": "2026-10-21",
+   "flags": [
+    "contradiction"
+   ],
+   "hardware": "AMD Ryzen 7 8845H",
+   "id": "lc-30923-ryzen8845h-lfm2524ba2b-q4km-32768-master",
+   "model": "LFM2.5-24B-A2B",
+   "notes": "llama.cpp PR #30923 CPU softmax parallelism across head/batch dims; LFM2.5-24B-A2B Q4_K_M, CPU-only on AMD Ryzen 7 8845H (8 threads), 32K context, Q8_0 K-cache, F16 V-cache, flash-attn off; decode tok/s; master arm",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "sourced",
+   "quant": "Q4_K_M",
+   "quote": "LFM2.5-24B-A2B; Q4_K_M; AMD Ryzen 7 8845H; Decode throughput 15.156",
+   "ram_gb": null,
+   "retrieved": "2026-10-22",
+   "source_name": "llama.cpp PR #30923",
+   "source_url": "https://github.com/ggml-org/llama.cpp/pull/30923",
+   "tg_tokens": null,
+   "tps": 15.156,
+   "ttft_s": null
+  },
+  {
+   "backend": "llama.cpp",
+   "batch": null,
+   "ctx": 32768,
+   "date": "2026-10-21",
+   "flags": [],
+   "hardware": "AMD Ryzen 7 8845H",
+   "id": "lc-30923-ryzen8845h-lfm2524ba2b-q4km-32768-pr",
+   "model": "LFM2.5-24B-A2B",
+   "notes": "llama.cpp PR #30923 CPU softmax parallelism across head/batch dims; LFM2.5-24B-A2B Q4_K_M, CPU-only on AMD Ryzen 7 8845H (8 threads), 32K context, Q8_0 K-cache, F16 V-cache, flash-attn off; decode tok/s; this PR arm, +16.4% over master",
+   "params": null,
+   "power_w": null,
+   "pp_tps": null,
+   "provenance": "sourced",
+   "quant": "Q4_K_M",
+   "quote": "LFM2.5-24B-A2B; Q4_K_M; AMD Ryzen 7 8845H; 15.156 tok/s 17.640",
+   "ram_gb": null,
+   "retrieved": "2026-10-22",
+   "source_name": "llama.cpp PR #30923",
+   "source_url": "https://github.com/ggml-org/llama.cpp/pull/30923",
+   "tg_tokens": null,
+   "tps": 17.64,
    "ttft_s": null
   },
   {

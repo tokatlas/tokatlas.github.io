@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: llama.cpp #30923 (LFM2.5-24B-A2B on Ryzen 7 8845H)
+
+- llama.cpp PR #30923 (CPU softmax parallelism across head/batch dims): LFM2.5-24B-A2B Q4_K_M, CPU-only on AMD Ryzen 7 8845H (8 threads), 32K context, Q8_0 K-cache, F16 V-cache, flash-attn off. Mined 2 records (master 15.156, this PR 17.640 decode tok/s). New hardware AMD Ryzen 7 8845H.
+- Dataset 39838 -> 39840, sourced 1083 -> 1085. check_quotes green (40492 verified).
+
 ## 2026-10-22: oMLX batch 674 (+42 rows)
 
 - scan658 sweep (39 new traces), mined 42 records, +1 new model DeepSeek-R1-Distill-Qwen-14B (4bit); MAPs for DeepSeek-R1-Distill-Qwen-14B 4bit and GLM-5.3-Flash-UNCENSORED oQ5e.
