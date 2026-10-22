@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 695 (+51 rows)
+
+- scan679 sweep (40 new traces), mined 51 records, +1 new model Qwen3.6-35B-A3B-Uncensored (base uncensored variant, distinct from the HauhauCS/Heretic/Genesis sub-variants).
+- Dataset 40808 -> 40859, community 39723 -> 39774. check_quotes green (41511 verified).
+
 ## 2026-10-22: oMLX batch 694 (+49 rows)
 
 - scan678 sweep (42 new traces), mined 49 records, no new models (clean batch, no unmapped labels).
