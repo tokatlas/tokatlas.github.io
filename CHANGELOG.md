@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 674 (+42 rows)
+
+- scan658 sweep (39 new traces), mined 42 records, +1 new model DeepSeek-R1-Distill-Qwen-14B (4bit); MAPs for DeepSeek-R1-Distill-Qwen-14B 4bit and GLM-5.3-Flash-UNCENSORED oQ5e.
+- Dataset 39796 -> 39838, community 38713 -> 38755. check_quotes green (40490 verified).
+
 ## 2026-10-22: vLLM #63101 (GLM-5.3-MXFP4 on B300)
 
 - vLLM PR #63101 (MXFP4 MoE activation quant, sorted_expert_ids direct index): E2E benchmark on RedHatAI/GLM-5.3-MXFP4, TP4 on B300, random 256 in / 1024 out, max-concurrency 1, fp8 KV cache. Mined 2 records (baseline 86.66, this PR 91.60 output tok/s, +5.7%).
