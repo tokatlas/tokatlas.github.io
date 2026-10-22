@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: vLLM #63101 (GLM-5.3-MXFP4 on B300)
+
+- vLLM PR #63101 (MXFP4 MoE activation quant, sorted_expert_ids direct index): E2E benchmark on RedHatAI/GLM-5.3-MXFP4, TP4 on B300, random 256 in / 1024 out, max-concurrency 1, fp8 KV cache. Mined 2 records (baseline 86.66, this PR 91.60 output tok/s, +5.7%).
+- Dataset 39794 -> 39796, sourced 1081 -> 1083. check_quotes green (40448 verified).
+
 ## 2026-10-22: oMLX batch 673 (+44 rows)
 
 - scan657 sweep (41 new traces), mined 44 records, no new models; MAP for Mellum2-12B-A2.5B-Instruct 8bit.
