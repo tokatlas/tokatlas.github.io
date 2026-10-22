@@ -9,7 +9,7 @@ concurrency:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,6 +27,25 @@ jobs:
           path: .cache
           key: quote-cache-${{ github.sha }}
           restore-keys: quote-cache-
+      - name: Seed quote cache from release
+        # The actions cache only ever holds what a prior run managed to save,
+        # and a cold run cannot fetch the ~13k immutable oMLX trace pages inside
+        # the job timeout (omlx 429-throttles bursts, ~0.15 url/s). So when the
+        # restored cache is thin, top it up from a pre-warmed release asset once;
+        # after that the full cache round-trips through actions/cache and this
+        # download is skipped. --keep-newer-files so a fresher restored entry is
+        # never reverted by the older snapshot.
+        run: |
+          n=$(ls .cache 2>/dev/null | wc -l)
+          echo "cache has $n files after restore"
+          if [ "$n" -lt 5000 ]; then
+            echo "seeding from release asset"
+            curl -fsSL -o /tmp/cache-seed.tar.gz \
+              https://github.com/tokatlas/tokatlas.github.io/releases/download/cache-seed/cache-seed.tar.gz
+            mkdir -p .cache
+            tar xzf /tmp/cache-seed.tar.gz -C .cache --keep-newer-files
+            echo "cache now has $(ls .cache | wc -l) files"
+          fi
       - name: Quotes verified against (cached) sources
         run: python3 scripts/check_quotes.py
       - name: Save quote cache

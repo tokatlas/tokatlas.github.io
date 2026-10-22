@@ -12,6 +12,7 @@ once if absent) and confirms the quoted material is actually on the page:
 
 Exits non-zero on any failure. Stdlib only.
 """
+import concurrent.futures
 import glob
 import hashlib
 import html as htmllib
@@ -19,9 +20,11 @@ import json
 import os
 import re
 import sys
+import threading
 import time
 import urllib.request
 import urllib.error
+from urllib.parse import urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, ".cache")
@@ -63,6 +66,60 @@ def _is_omlx(url):
 # drift (e.g. a PR description edited in place). 7 days balances freshness
 # against CI runtime: the 888 unique URLs take ~20 min to fetch cold.
 CACHE_MAX_AGE = 7 * 24 * 3600  # 7 days
+
+# Cold-fetch concurrency. The oMLX trace pages dominate the URL set (~13k) and
+# each fresh fetch sleeps OMLX_SLEEP; fetched one at a time that alone exceeds
+# the CI timeout, so the cache never seeds and every run re-cold-fetches. A
+# bounded pool of per-host connections keeps the same per-connection throttle
+# (so oMLX still sees a polite steady rate, not a burst) while finishing the
+# cold fetch inside the job timeout. Tunable via env for one-off seeding runs.
+OMLX_CONC = int(os.environ.get("QO_OMLX_CONC", "4"))
+GEN_CONC = int(os.environ.get("QO_GEN_CONC", "8"))
+_SEMS = {}
+_SEM_LOCK = threading.Lock()
+
+
+def _host_sem(url):
+    if _is_omlx(url):
+        cap = OMLX_CONC
+    elif _is_reddit(url):
+        cap = 1
+    else:
+        cap = GEN_CONC
+    host = urlparse(url).netloc
+    with _SEM_LOCK:
+        sem = _SEMS.get(host)
+        if sem is None:
+            sem = _SEMS[host] = threading.Semaphore(cap)
+    return sem
+
+
+def prefetch(urls):
+    # Warm the response cache for every URL up front, concurrently but with a
+    # per-host connection cap. fetch() is idempotent (cache hit is a no-op), so
+    # the later per-record fetches just read what this already stored.
+    todo = sorted({u for u in urls if u.startswith(("http://", "https://"))})
+    if not todo:
+        return
+    workers = OMLX_CONC + GEN_CONC + 2
+    done = [0]
+    lock = threading.Lock()
+
+    def one(url):
+        try:
+            with _host_sem(url):
+                fetch(url)
+        except Exception:  # noqa: BLE001 - lazy fetch later reports the error
+            pass
+        with lock:
+            done[0] += 1
+            if done[0] % 500 == 0:
+                print("prefetch: %d/%d" % (done[0], len(todo)), flush=True)
+
+    print("prefetch: warming %d urls" % len(todo), flush=True)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as ex:
+        list(ex.map(one, todo))
+    print("prefetch: done", flush=True)
 
 
 def _force_refresh():
@@ -209,6 +266,20 @@ def main():
         return 1
     errors = 0
     checked = 0
+    # Warm the cache concurrently before the (sequential) verification pass so
+    # a cold CI run finishes the fetch inside its timeout and can seed the
+    # actions cache; on a warm run every fetch is a cache hit and this is fast.
+    all_urls = []
+    for path in files:
+        try:
+            doc = json.load(open(path))
+        except Exception:  # noqa: BLE001
+            continue
+        for r in doc.get("records", []):
+            u = r.get("source_url") or ""
+            if u.startswith(("http://", "https://")):
+                all_urls.append(u.split("#")[0])
+    prefetch(all_urls)
     for path in files:
         name = os.path.basename(path)
         doc = json.load(open(path))
