@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 684 (+47 rows)
+
+- scan668 sweep (45 new traces), mined 47 records, +2 new models MiMo-V2.6-Flash-RL-UNCENSORED (oQ8e MTP) and Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive (mxfp4 MLX).
+- Dataset 40292 -> 40339, community 39207 -> 39254. check_quotes green (40991 verified).
+
 ## 2026-10-22: oMLX batch 683 (+50 rows)
 
 - scan667 sweep (45 new traces), mined 50 records, no new models (incl. Qwen3.8-Flash-Next oQ4e MTP build 2615fc0).
