@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 676 (+48 rows)
+
+- scan660 sweep (45 new traces), mined 48 records, +1 new model BigBang-v1 (oQ6e MTP); MAPs for BigBang-v1, Qwen3.8-Flash-Next oct11 build, and lowercase glm-5.3-flash-uncensored oQ4e MTP.
+- Dataset 39890 -> 39938, community 38805 -> 38853. check_quotes green (40590 verified).
+
 ## 2026-10-22: oMLX batch 675 (+50 rows)
 
 - scan659 sweep (45 new traces), mined 50 records, +1 new model Phi-4-reasoning-plus (4bit MLX); MAPs for GLM-5.3 4bit, Phi-4-reasoning-plus 4bit MLX, and Qwen3.8-27B 4bit MLX (p4ik conversion).
