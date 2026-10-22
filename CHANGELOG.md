@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 679 (+50 rows)
+
+- scan663 sweep (45 new traces), mined 50 records, +2 new models Huihui-GLM-4.7-Flash-abliterated (4bit MLX) and Qwen3.6-28B-REAP (oQ4); MAPs also for DeepSeek-V4.1-Flash 1017 build and Qwen3.8-27B-Abliterated bf16 MLX MTP.
+- Dataset 40035 -> 40085, community 38950 -> 39000. check_quotes green (40737 verified).
+
 ## 2026-10-22: oMLX batch 678 (+49 rows)
 
 - scan662 sweep (45 new traces), mined 49 records, no new models.
