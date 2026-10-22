@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 696 (+47 rows)
+
+- scan680 sweep (42 new traces), mined 47 records, +1 new model Inkling-Small (2bit MLX); MAPs also for DeepSeek-R1-0528-Qwen3-8B 4bit, Laguna-S-2.1 NVFP4 MLX, and the bare Qwen3.8-Flash-Next label.
+- Dataset 40859 -> 40906, community 39774 -> 39821. check_quotes green (41558 verified).
+
 ## 2026-10-22: oMLX batch 695 (+51 rows)
 
 - scan679 sweep (40 new traces), mined 51 records, +1 new model Qwen3.6-35B-A3B-Uncensored (base uncensored variant, distinct from the HauhauCS/Heretic/Genesis sub-variants).
