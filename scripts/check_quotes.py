@@ -94,11 +94,28 @@ def _host_sem(url):
     return sem
 
 
+def _needs_fetch(url):
+    # Mirror fetch()'s cache decision without touching the network, so warm
+    # entries can skip the per-host slot entirely (only stale/missing fetches
+    # contend for connections). FORCE_REFRESH is set by main() before prefetch.
+    path = os.path.join(CACHE, hashlib.sha256(url.encode()).hexdigest())
+    if os.path.exists(path):
+        try:
+            fresh = time.time() - os.path.getmtime(path) <= CACHE_MAX_AGE
+        except OSError:
+            fresh = False
+        if fresh and url not in FORCE_REFRESH:
+            return False
+    return True
+
+
 def prefetch(urls):
-    # Warm the response cache for every URL up front, concurrently but with a
-    # per-host connection cap. fetch() is idempotent (cache hit is a no-op), so
-    # the later per-record fetches just read what this already stored.
-    todo = sorted({u for u in urls if u.startswith(("http://", "https://"))})
+    # Warm the response cache for every URL that is missing or stale, concurrently
+    # but with a per-host connection cap. Warm cache entries are skipped entirely
+    # (submitting them would starve the pool behind slow stale fetches); the later
+    # per-record fetch() just reads what is already cached.
+    todo = sorted({u for u in urls
+                   if u.startswith(("http://", "https://")) and _needs_fetch(u)})
     if not todo:
         return
     workers = OMLX_CONC + GEN_CONC + 2
@@ -107,8 +124,9 @@ def prefetch(urls):
 
     def one(url):
         try:
-            with _host_sem(url):
-                fetch(url)
+            if _needs_fetch(url):
+                with _host_sem(url):
+                    fetch(url)
         except Exception:  # noqa: BLE001 - lazy fetch later reports the error
             pass
         with lock:
