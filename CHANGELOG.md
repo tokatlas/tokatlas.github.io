@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 697 (+50 rows)
+
+- scan681 sweep (45 new traces), mined 50 records, +1 new model Gemma-4-26B-A4B-Heretic (no -it- form, distinct from the -it-heretic variant which would not norm-match the page label).
+- Dataset 40906 -> 40956, community 39821 -> 39871. check_quotes green (41608 verified).
+
 ## 2026-10-22: oMLX batch 696 (+47 rows)
 
 - scan680 sweep (42 new traces), mined 47 records, +1 new model Inkling-Small (2bit MLX); MAPs also for DeepSeek-R1-0528-Qwen3-8B 4bit, Laguna-S-2.1 NVFP4 MLX, and the bare Qwen3.8-Flash-Next label.
