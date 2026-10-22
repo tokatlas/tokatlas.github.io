@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 688 (+52 rows)
+
+- scan672 sweep (45 new traces), mined 52 records, +1 new model gemma-4-26B-A4B-it-qat-JANG_4M (JANG fine-tune family); MAPs also for Ornith-1.5-35B-A3B-Abliterated 8bit MLX and Qwen3-Coder-Next 5bit.
+- Dataset 40480 -> 40532, community 39395 -> 39447. check_quotes green (41184 verified).
+
 ## 2026-10-22: oMLX batch 687 (+46 rows)
 
 - scan671 sweep (45 new traces), mined 46 records, +4 new models Codestral-22B-v0.1, DeepSeek-V4-Pro-Qwen3.5-9B (distill), MinerU2.5-2509-1.2B, and deepseek-v41-lsq (verbatim page label; v41 has no dot so a V4.1 form would not norm-match); MAP also for Qwen3.8-27B oQ3.5e MTP.
