@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-22: vLLM #61435 re-sync + CI seed/prefetch fixes
+
+- vLLM PR #61435 (Kimi-K3 MI355X) was rewritten upstream again: the DCP1/DCP8 MXFP4 table mined in batch 672 is gone, replaced by a TPOT-focused matrix plus a small InferenceX Output tok/s table. Dropped the 16 now-unverifiable rows and re-mined 4 from the new table (DCP1 auto 179.77, DCP1 specialized 232.87, DCP8 auto 164.79, DCP8 specialized 233.11 output tok/s, c1 k=7, TP8 on 8x MI355X; weight quant no longer stated, marked unstated).
+- CI seed step fixed: `tar --keep-newer-files` exits 2 on every skipped file, which failed the job in ~6 minutes. The seed now unpacks to a temp dir and copies in with `cp -n` (same gap-fill, no-clobber, exit 0).
+- CI prefetch fixed: the pool now submits only missing/stale URLs instead of all 13.9k, so warm cache hits no longer queue behind the ~900 stale oMLX re-fetches (prefetch dropped from ~2h13m toward the stale-set cost alone). Immutable oMLX trace pages are treated as authoritative once cached, so they are no longer re-fetched every run.
+- Dataset 39762 -> 39750, sourced 1093 -> 1081. check_quotes green (40402 verified).
+
 ## 2026-10-22: CI quote-cache bootstrap fix
 
 - The data-checks job could not go green: a cold run cannot fetch the ~13k immutable oMLX trace pages inside the job timeout (omlx 429-throttles concurrent bursts), so the actions cache only ever saved a partial copy and every run re-cold-fetched. Added a parallel prefetch phase (per-host connection cap, same per-connection throttle) and a pre-warmed release-asset seed that tops up the cache each run; raised the job timeout to 240m.

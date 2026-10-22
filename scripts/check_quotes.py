@@ -100,6 +100,9 @@ def _needs_fetch(url):
     # contend for connections). FORCE_REFRESH is set by main() before prefetch.
     path = os.path.join(CACHE, hashlib.sha256(url.encode()).hexdigest())
     if os.path.exists(path):
+        # Immutable oMLX traces are authoritative once cached (see fetch()).
+        if _is_omlx(url) and url not in FORCE_REFRESH:
+            return False
         try:
             fresh = time.time() - os.path.getmtime(path) <= CACHE_MAX_AGE
         except OSError:
@@ -183,6 +186,13 @@ def fetch(url):
     cached = os.path.exists(path)
     stale = cached and (time.time() - os.path.getmtime(path) > CACHE_MAX_AGE
                         or url in FORCE_REFRESH)
+    # oMLX trace pages are immutable benchmark records: once cached they are the
+    # authoritative snapshot (drift is only deletion, which the refresh path
+    # reports as a warning). Re-fetching ~1k of them every run is slow (omlx
+    # throttles and serves slowly) and detects nothing actionable, so trust the
+    # cache regardless of age. Mutable sources still re-fetch when stale.
+    if cached and _is_omlx(url) and url not in FORCE_REFRESH:
+        stale = False
     if not cached or stale:
         reddit = _is_reddit(url)
         omlx = _is_omlx(url)
