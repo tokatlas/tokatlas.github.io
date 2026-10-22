@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 680 (+54 rows)
+
+- scan664 sweep (45 new traces), mined 54 records, no new models (incl. Qwen3.8-27B-Abliterated bf16 MTP variant with a malformed page label).
+- Dataset 40085 -> 40139, community 39000 -> 39054. check_quotes green (40791 verified).
+
 ## 2026-10-22: oMLX batch 679 (+50 rows)
 
 - scan663 sweep (45 new traces), mined 50 records, +2 new models Huihui-GLM-4.7-Flash-abliterated (4bit MLX) and Qwen3.6-28B-REAP (oQ4); MAPs also for DeepSeek-V4.1-Flash 1017 build and Qwen3.8-27B-Abliterated bf16 MLX MTP.
