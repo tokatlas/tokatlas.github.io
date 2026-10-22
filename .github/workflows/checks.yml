@@ -30,22 +30,19 @@ jobs:
       - name: Seed quote cache from release
         # The actions cache only ever holds what a prior run managed to save,
         # and a cold run cannot fetch the ~13k immutable oMLX trace pages inside
-        # the job timeout (omlx 429-throttles bursts, ~0.15 url/s). So when the
-        # restored cache is thin, top it up from a pre-warmed release asset once;
-        # after that the full cache round-trips through actions/cache and this
-        # download is skipped. --keep-newer-files so a fresher restored entry is
-        # never reverted by the older snapshot.
+        # the job timeout (omlx 429-throttles bursts). A restored cache can also
+        # be near-full yet missing the specific pages a prior CI run never
+        # fetched (e.g. traces deleted upstream after we cached them), which then
+        # 404 on re-fetch. So always top up from a pre-warmed release asset;
+        # --keep-newer-files means a fresher restored entry is never reverted by
+        # the snapshot, and existing files are untouched, so this only fills gaps.
         run: |
-          n=$(ls .cache 2>/dev/null | wc -l)
-          echo "cache has $n files after restore"
-          if [ "$n" -lt 5000 ]; then
-            echo "seeding from release asset"
-            curl -fsSL -o /tmp/cache-seed.tar.gz \
-              https://github.com/tokatlas/tokatlas.github.io/releases/download/cache-seed/cache-seed.tar.gz
-            mkdir -p .cache
-            tar xzf /tmp/cache-seed.tar.gz -C .cache --keep-newer-files
-            echo "cache now has $(ls .cache | wc -l) files"
-          fi
+          echo "cache has $(ls .cache 2>/dev/null | wc -l) files after restore"
+          curl -fsSL -o /tmp/cache-seed.tar.gz \
+            https://github.com/tokatlas/tokatlas.github.io/releases/download/cache-seed/cache-seed.tar.gz
+          mkdir -p .cache
+          tar xzf /tmp/cache-seed.tar.gz -C .cache --keep-newer-files
+          echo "cache now has $(ls .cache | wc -l) files"
       - name: Quotes verified against (cached) sources
         run: python3 scripts/check_quotes.py
       - name: Save quote cache

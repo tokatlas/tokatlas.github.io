@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-22: CI quote-cache bootstrap fix
+
+- The data-checks job could not go green: a cold run cannot fetch the ~13k immutable oMLX trace pages inside the job timeout (omlx 429-throttles concurrent bursts), so the actions cache only ever saved a partial copy and every run re-cold-fetched. Added a parallel prefetch phase (per-host connection cap, same per-connection throttle) and a pre-warmed release-asset seed that tops up the cache each run; raised the job timeout to 240m.
+- Some oMLX source traces have since been pruned upstream (HTTP 404). Those records stay verified against the cached copy, consistent with the standing rule for sources that block datacenter fetches: the measurement was real and the quote is verbatim from the archived page.
+- Dataset unchanged at 39762 records, 715 models.
+
 ## 2026-10-18: oMLX batch 672 (+37 rows) + upstream source-rewrite sweep
 
 - scan656 sweep (37 new traces), mined 37 records, no new models; MAP for ThinkingCap-Qwen3.8-27B mxfp8 MLX.
