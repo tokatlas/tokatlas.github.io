@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 686 (+43 rows)
+
+- scan670 sweep (41 new traces), mined 43 records, +1 new model Qwen3.8-27B-JANG_2D (JANG_4D variant family); MAPs also for MiniCPM-V-4.7-1B 8bit/bf16, Qwen3.6-35B-A3B MXFP8 MTP, and Qwen3.8-Flash-Next oQ4e MTP build 20261011.
+- Dataset 40391 -> 40434, community 39306 -> 39349. check_quotes green (41086 verified).
+
 ## 2026-10-22: oMLX batch 685 (+52 rows)
 
 - scan669 sweep (45 new traces), mined 52 records, no new models (incl. Agnes-3.0-Flash 8bit MLX MTP).
