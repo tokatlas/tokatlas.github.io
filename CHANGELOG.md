@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 685 (+52 rows)
+
+- scan669 sweep (45 new traces), mined 52 records, no new models (incl. Agnes-3.0-Flash 8bit MLX MTP).
+- Dataset 40339 -> 40391, community 39254 -> 39306. check_quotes green (41043 verified).
+
 ## 2026-10-22: oMLX batch 684 (+47 rows)
 
 - scan668 sweep (45 new traces), mined 47 records, +2 new models MiMo-V2.6-Flash-RL-UNCENSORED (oQ8e MTP) and Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive (mxfp4 MLX).
