@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 682 (+52 rows)
+
+- scan666 sweep (45 new traces), mined 52 records, +1 new model LFM2.5-24B-A2B-Uncensored-Heretic (4bit MLX); MAPs also for Huihui-Qwen3.8-27B-abliterated 6bit MLX, LFM2.5-24B-A2B MLX Serve mixed-4-8bit, and Qwen3.6-35B-A3B oQ3e MTP.
+- Dataset 40190 -> 40242, community 39105 -> 39157. check_quotes green (40894 verified).
+
 ## 2026-10-22: oMLX batch 681 (+51 rows)
 
 - scan665 sweep (45 new traces), mined 51 records, no new models; MAPs for Jundot Qwen3.8-Flash-Next oQ2.7e MTP (to the distinct Jundot:Qwen3.8-Flash-Next model), Qwen3.5-0.8B MTP, and Qwen3.8-27B-Uncensored oQ5e fp16 MLX MTP.
