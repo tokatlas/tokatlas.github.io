@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 692 (+42 rows)
+
+- scan676 sweep (39 new traces), mined 42 records, no new models (clean batch, no unmapped labels).
+- Dataset 40672 -> 40714, community 39587 -> 39629. check_quotes green (41366 verified).
+
 ## 2026-10-22: oMLX batch 691 (+39 rows)
 
 - scan675 sweep (34 new traces), mined 39 records, no new models; MAPs for DeepSeek-V4.1-Flash 1017 oQ2e MTP and Duckets NVIDIA-Nemotron-3.5-Super-VL-120B-A12B 4bit MLX (prefix stripped).
