@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 689 (+49 rows)
+
+- scan673 sweep (42 new traces), mined 49 records, no new models; MAPs for MiniCPM-V-4.7-35B-A3B bf16, Qwen3.8-27B AEON-ultimate-uncensored 4bit MLX, Qwen3.8-27B-Uncensored-HauhauCS-Aggressive MTPLX 6bit, Qwen3.8-27B oQ6e, and gemma-4 12B/26B/31B variants.
+- Dataset 40532 -> 40581, community 39447 -> 39496. check_quotes green (41233 verified).
+
 ## 2026-10-22: oMLX batch 688 (+52 rows)
 
 - scan672 sweep (45 new traces), mined 52 records, +1 new model gemma-4-26B-A4B-it-qat-JANG_4M (JANG fine-tune family); MAPs also for Ornith-1.5-35B-A3B-Abliterated 8bit MLX and Qwen3-Coder-Next 5bit.
