@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 698 (+48 rows)
+
+- scan682 sweep (45 new traces), mined 48 records, no new models; MAPs for K2-Horizon-7B 8bit and MiniCPM-V-4.7-35B-A3B 8bit.
+- Dataset 40956 -> 41004, community 39871 -> 39919. check_quotes green (41656 verified).
+
 ## 2026-10-22: oMLX batch 697 (+50 rows)
 
 - scan681 sweep (45 new traces), mined 50 records, +1 new model Gemma-4-26B-A4B-Heretic (no -it- form, distinct from the -it-heretic variant which would not norm-match the page label).
