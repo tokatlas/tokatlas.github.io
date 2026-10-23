@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 700 (+50 rows)
+
+- scan684 sweep (45 new traces), mined 50 records, no new models; MAPs for Nex-N2.5-mini oQ8e fp16 MTP and Qwen3.8-27B-TTURBO-Cold-Fusion-709-L-Uncensored oQ8e 1M context.
+- Dataset 41053 -> 41103, community 39968 -> 40018. check_quotes green (41755 verified).
+
 ## 2026-10-22: oMLX batch 699 (+49 rows)
 
 - scan683 sweep (45 new traces), mined 49 records, no new models; MAP for Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ8e.
