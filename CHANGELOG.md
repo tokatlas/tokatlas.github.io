@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-22: oMLX batch 699 (+49 rows)
+
+- scan683 sweep (45 new traces), mined 49 records, no new models; MAP for Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled oQ8e.
+- Dataset 41004 -> 41053, community 39919 -> 39968. check_quotes green (41705 verified).
+
 ## 2026-10-22: oMLX batch 698 (+48 rows)
 
 - scan682 sweep (45 new traces), mined 48 records, no new models; MAPs for K2-Horizon-7B 8bit and MiniCPM-V-4.7-35B-A3B 8bit.
